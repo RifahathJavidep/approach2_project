@@ -1,0 +1,247 @@
+{
+  "metrics": {
+    "precision": 0.5,
+    "recall": 0.5909090909090909,
+    "f1_score": 0.5416666666666667
+  },
+  "counts": {
+    "gt": 22,
+    "extracted": 26,
+    "true_positives": 13,
+    "false_negatives": 9,
+    "false_positives": 13
+  },
+  "matched": [
+    {
+      "extracted_id": "PTW-001",
+      "extracted_title": "Wireless Management Dashboard",
+      "gt_id": "PTWPH1-4",
+      "gt_name": "NAG Metric Tiles",
+      "similarity": 0.14285714285714285,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-003",
+      "extracted_title": "Usage at a Glance",
+      "gt_id": "PTWPH1-5",
+      "gt_name": "Usage Summary Tabs",
+      "similarity": 0.5,
+      "match_method": "jaccard"
+    },
+    {
+      "extracted_id": "PTW-004",
+      "extracted_title": "Plans in Overage Display",
+      "gt_id": "PTWPH1-12",
+      "gt_name": "In-plan Usage Threshold Donut",
+      "similarity": 0.2857142857142857,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-005",
+      "extracted_title": "Usage Summary Toggle",
+      "gt_id": "PTWPH1-11",
+      "gt_name": "Individual Plans Usage Breakdown",
+      "similarity": 0.16666666666666666,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-007",
+      "extracted_title": "Display Warranty Expiry Date",
+      "gt_id": "PTWPH1-1W",
+      "gt_name": "Warranty - Subscriber Info",
+      "similarity": 0.5,
+      "match_method": "jaccard"
+    },
+    {
+      "extracted_id": "PTW-009",
+      "extracted_title": "Display Data",
+      "gt_id": "PTWPH1-7",
+      "gt_name": "Data Usage Bar Chart",
+      "similarity": 0.2222222222222222,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-010",
+      "extracted_title": "Unbilled Usages Dashboard",
+      "gt_id": "PTWPH1-9",
+      "gt_name": "Usage Bar Chart Drilldown",
+      "similarity": 0.15384615384615385,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-011",
+      "extracted_title": "Drill Down Navigation",
+      "gt_id": "PTWPH1-10",
+      "gt_name": "Shared Plans Usage Breakdown",
+      "similarity": 0.125,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-016",
+      "extracted_title": "My Inventory Page",
+      "gt_id": "PTWPH1-14",
+      "gt_name": "Shareplans Detail Table",
+      "similarity": 0.4,
+      "match_method": "jaccard"
+    },
+    {
+      "extracted_id": "PTW-017",
+      "extracted_title": "Warranty Data Display",
+      "gt_id": "PTWPH1-2W",
+      "gt_name": "Warranty - BAN Info",
+      "similarity": 0.2222222222222222,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-018",
+      "extracted_title": "Shopping Section",
+      "gt_id": "PTWPH1-17",
+      "gt_name": "Shopping and Orders Widget",
+      "similarity": 0.3333333333333333,
+      "match_method": "jaccard"
+    },
+    {
+      "extracted_id": "PTW-020",
+      "extracted_title": "Request Filtering",
+      "gt_id": "PTWPH1-2",
+      "gt_name": "NAG (Group) Filter",
+      "similarity": 0.14285714285714285,
+      "match_method": "llm"
+    },
+    {
+      "extracted_id": "PTW-022",
+      "extracted_title": "eOrdering Link",
+      "gt_id": "PTWPH1-18",
+      "gt_name": "Shop Now Button",
+      "similarity": 0.25,
+      "match_method": "llm"
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "PTWPH1-1",
+      "gt_name": "Export Feature",
+      "description": "Implementation of export feature within each widget - CSV, PDF, EXCEL, PNG and JPEG files"
+    },
+    {
+      "gt_id": "PTWPH1-3",
+      "gt_name": "NAG Favoriting",
+      "description": "Ability to favorite specific NAG for default dashboard view"
+    },
+    {
+      "gt_id": "PTWPH1-8",
+      "gt_name": "Interaction Prompt",
+      "description": "Display static prompt below bar graph"
+    },
+    {
+      "gt_id": "PTWPH1-13",
+      "gt_name": "Breakdown Table Back Button",
+      "description": "Back button navigation in breakdown tables"
+    },
+    {
+      "gt_id": "PTWPH1-15",
+      "gt_name": "Individual Plans Detail Table",
+      "description": "Display detailed individual plan information"
+    },
+    {
+      "gt_id": "PTWPH1-16",
+      "gt_name": "Back Button to Drilldown",
+      "description": "Back button from detail tables"
+    },
+    {
+      "gt_id": "PTWPH1-19",
+      "gt_name": "Latest Orders Table",
+      "description": "Display order columns in table"
+    },
+    {
+      "gt_id": "PTWPH1-23",
+      "gt_name": "View All Orders Link",
+      "description": "Link to full orders list"
+    },
+    {
+      "gt_id": "PTWPH1-24",
+      "gt_name": "Permissions Quick Links",
+      "description": "Display 3 permission management links"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "PTW-002",
+      "title": "Suspended Subscribers Display",
+      "type": "UI",
+      "description": "Display the number of suspended subscribers"
+    },
+    {
+      "extracted_id": "PTW-006",
+      "title": "Add Warranty Information",
+      "type": "Functional",
+      "description": "Allow users to add warranty details to wireless devices"
+    },
+    {
+      "extracted_id": "PTW-008",
+      "title": "Login to BAM Info Page",
+      "type": "Functional",
+      "description": "User can log in to the BAM info page"
+    },
+    {
+      "extracted_id": "PTW-012",
+      "title": "Toggle Scenarios",
+      "type": "UI",
+      "description": "User can toggle scenarios for Data, Voice, LD, and SMS usages"
+    },
+    {
+      "extracted_id": "PTW-013",
+      "title": "Usage Threshold Display",
+      "type": "UI",
+      "description": "User can view threshold of usage %"
+    },
+    {
+      "extracted_id": "PTW-014",
+      "title": "Filtered Data View",
+      "type": "UI",
+      "description": "User can view filtered data for specific usage types (e.g., Data, Voice, LD, SMS)"
+    },
+    {
+      "extracted_id": "PTW-015",
+      "title": "Billed Usages View",
+      "type": "UI",
+      "description": "Show billed usages in dashboard"
+    },
+    {
+      "extracted_id": "PTW-019",
+      "title": "Request Display",
+      "type": "UI",
+      "description": "Display requests with creation date and status"
+    },
+    {
+      "extracted_id": "PTW-021",
+      "title": "My Requests Page Redirect",
+      "type": "Functional",
+      "description": "Redirect to My Requests page filtered by selection"
+    },
+    {
+      "extracted_id": "PTW-023",
+      "title": "Redirect to eOrdering",
+      "type": "Functional",
+      "description": "Redirect to eOrdering page"
+    },
+    {
+      "extracted_id": "PTW-024",
+      "title": "My Dashboard",
+      "type": "UI",
+      "description": "View dashboard with integrated data from BBSSC and BCIM"
+    },
+    {
+      "extracted_id": "PTW-025",
+      "title": "Subscriber Information Page",
+      "type": "UI",
+      "description": "View subscriber information"
+    },
+    {
+      "extracted_id": "PTW-026",
+      "title": "Warranty Expiry Display",
+      "type": "UI",
+      "description": "View warranty expiry information"
+    }
+  ]
+}

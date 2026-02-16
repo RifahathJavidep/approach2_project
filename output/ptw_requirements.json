@@ -1,0 +1,161 @@
+{
+  "project": "ptw",
+  "requirements": [
+    {
+      "title": "Wireless Management Dashboard",
+      "description": "Provide key wireless management insights and actions in a single dashboard",
+      "type": "UI",
+      "requirement_id": "PTW-001"
+    },
+    {
+      "title": "Suspended Subscribers Display",
+      "description": "Display the number of suspended subscribers",
+      "type": "UI",
+      "requirement_id": "PTW-002"
+    },
+    {
+      "title": "Usage at a Glance",
+      "description": "Display usage summary",
+      "type": "UI",
+      "requirement_id": "PTW-003"
+    },
+    {
+      "title": "Plans in Overage Display",
+      "description": "Display plans in overage by thresholds (100%, 85%, 75%, <75%)",
+      "type": "UI",
+      "requirement_id": "PTW-004"
+    },
+    {
+      "title": "Usage Summary Toggle",
+      "description": "Ability to toggle between each type of usage (data, voice, long distance, text messaging)",
+      "type": "UI",
+      "requirement_id": "PTW-005"
+    },
+    {
+      "title": "Add Warranty Information",
+      "description": "Allow users to add warranty details to wireless devices",
+      "type": "Functional",
+      "requirement_id": "PTW-006"
+    },
+    {
+      "title": "Display Warranty Expiry Date",
+      "description": "Show the expiry date of the warranty for wireless devices",
+      "type": "UI",
+      "requirement_id": "PTW-007"
+    },
+    {
+      "title": "Login to BAM Info Page",
+      "description": "User can log in to the BAM info page",
+      "type": "Functional",
+      "requirement_id": "PTW-008"
+    },
+    {
+      "title": "Display Data",
+      "description": "User can view displayed data",
+      "type": "UI",
+      "requirement_id": "PTW-009"
+    },
+    {
+      "title": "Unbilled Usages Dashboard",
+      "description": "User can view unbilled usages dashboard",
+      "type": "UI",
+      "requirement_id": "PTW-010"
+    },
+    {
+      "title": "Drill Down Navigation",
+      "description": "User can navigate through dashboard widgets to show drill down scenarios",
+      "type": "UI",
+      "requirement_id": "PTW-011"
+    },
+    {
+      "title": "Toggle Scenarios",
+      "description": "User can toggle scenarios for Data, Voice, LD, and SMS usages",
+      "type": "UI",
+      "requirement_id": "PTW-012"
+    },
+    {
+      "title": "Usage Threshold Display",
+      "description": "User can view threshold of usage %",
+      "type": "UI",
+      "requirement_id": "PTW-013"
+    },
+    {
+      "title": "Filtered Data View",
+      "description": "User can view filtered data for specific usage types (e.g., Data, Voice, LD, SMS)",
+      "type": "UI",
+      "requirement_id": "PTW-014"
+    },
+    {
+      "title": "Billed Usages View",
+      "description": "Show billed usages in dashboard",
+      "type": "UI",
+      "requirement_id": "PTW-015"
+    },
+    {
+      "title": "My Inventory Page",
+      "description": "Display inventory information",
+      "type": "UI",
+      "requirement_id": "PTW-016"
+    },
+    {
+      "title": "Warranty Data Display",
+      "description": "Show warranty data from BCIM",
+      "type": "UI",
+      "requirement_id": "PTW-017"
+    },
+    {
+      "title": "Shopping Section",
+      "description": "Display shopping and order section",
+      "type": "UI",
+      "requirement_id": "PTW-018"
+    },
+    {
+      "title": "Request Display",
+      "description": "Display requests with creation date and status",
+      "type": "UI",
+      "requirement_id": "PTW-019"
+    },
+    {
+      "title": "Request Filtering",
+      "description": "Filter requests based on selection",
+      "type": "Functional",
+      "requirement_id": "PTW-020"
+    },
+    {
+      "title": "My Requests Page Redirect",
+      "description": "Redirect to My Requests page filtered by selection",
+      "type": "Functional",
+      "requirement_id": "PTW-021"
+    },
+    {
+      "title": "eOrdering Link",
+      "description": "Display static link to eOrdering",
+      "type": "UI",
+      "requirement_id": "PTW-022"
+    },
+    {
+      "title": "Redirect to eOrdering",
+      "description": "Redirect to eOrdering page",
+      "type": "Functional",
+      "requirement_id": "PTW-023"
+    },
+    {
+      "title": "My Dashboard",
+      "description": "View dashboard with integrated data from BBSSC and BCIM",
+      "type": "UI",
+      "requirement_id": "PTW-024"
+    },
+    {
+      "title": "Subscriber Information Page",
+      "description": "View subscriber information",
+      "type": "UI",
+      "requirement_id": "PTW-025"
+    },
+    {
+      "title": "Warranty Expiry Display",
+      "description": "View warranty expiry information",
+      "type": "UI",
+      "requirement_id": "PTW-026"
+    }
+  ]
+}

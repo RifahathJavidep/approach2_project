@@ -4,5 +4,7 @@
   "ground_truth_excel": "ground_truth/PTW_Requirements_Document.xlsx",
   "output_dir": "output",
   "chunk_size": 6000,
-  "similarity_threshold": 0.5
+  "similarity_threshold": 0.5,
+  "backend_url": "http://localhost:8080",
+  "project_id": 1
 }
