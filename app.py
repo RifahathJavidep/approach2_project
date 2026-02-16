@@ -4,6 +4,7 @@ Run: uvicorn app:app --reload --port 8000
 """
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import json
@@ -18,6 +19,15 @@ app = FastAPI(
     title="Requirements Extraction Service",
     description="AI-powered requirement extraction from PDF documents",
     version="1.0.0"
+)
+
+# CORS - allows frontend (Angular/React) to call this API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ============================================================================
@@ -153,3 +163,7 @@ def post_to_backend(requirements: list, backend_url: str, project_id: int) -> di
     except Exception as e:
         print(f"  ✗ Error: {e}")
         return {'success': False, 'error': str(e)}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
