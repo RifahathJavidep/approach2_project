@@ -1,0 +1,8 @@
+{
+  "project_name": "ptw",
+  "input_pdf": "input/PTW_Self_Serve_Phase_1_Solution.pdf",
+  "ground_truth_excel": "ground_truth/PTW_Requirements_Document.xlsx",
+  "output_dir": "output",
+  "chunk_size": 6000,
+  "similarity_threshold": 0.5
+}
