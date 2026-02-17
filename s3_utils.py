@@ -14,13 +14,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+from botocore.config import Config
+
 def get_s3_client():
-    """Create and return an S3 client using env credentials."""
+    """Create and return an S3 client using env credentials with SigV4 support."""
+    region = os.getenv("AWS_REGION", "us-east-1")
     return boto3.client(
         "s3",
         aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
         aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-        region_name=os.getenv("AWS_REGION", "us-east-1"),
+        region_name=region,
+        config=Config(signature_version='s3v4')
     )
 
 
@@ -130,6 +134,27 @@ def download_json_from_s3(s3_key: str) -> dict:
     response = s3.get_object(Bucket=bucket, Key=s3_key)
     content = response["Body"].read().decode("utf-8")
     return json.loads(content)
+
+
+def generate_presigned_upload_url(s3_key: str, expiration: int = 3600) -> dict:
+    """
+    Generate a pre-signed POST URL to upload a file directly to S3 from a frontend.
+    Returns a dict with 'url' and 'fields'.
+    """
+    s3 = get_s3_client()
+    bucket = get_bucket_name()
+
+    print(f"  Generating pre-signed POST URL for: s3://{bucket}/{s3_key}")
+    
+    # Generate the pre-signed POST data
+    # Note: Conditions can be added here (e.g., content-length-range)
+    response = s3.generate_presigned_post(
+        Bucket=bucket,
+        Key=s3_key,
+        ExpiresIn=expiration
+    )
+    
+    return response
 
 
 def file_exists_in_s3(s3_key: str) -> bool:

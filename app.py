@@ -54,6 +54,11 @@ class ExtractionRequest(BaseModel):
     project_id: str
     file_urls: List[str]  # S3 URLs or S3 keys
 
+class UploadUrlRequest(BaseModel):
+    """Request body for POST /generate-upload-url"""
+    project_id: str
+    filename: str
+
 class ExtractionResponse(BaseModel):
     """Response body for POST /extract"""
     status: str
@@ -194,6 +199,36 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         # Clean up temp files
         if os.path.exists(tmp_dir):
             shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+@app.post("/generate-upload-url")
+async def generate_upload_url_endpoint(request: UploadUrlRequest):
+    """
+    Generate a pre-signed URL for the frontend to upload a file directly to S3.
+    Choice B workflow: Use this to get a secure upload link without exposing AWS keys.
+    """
+    try:
+        from s3_utils import generate_presigned_upload_url
+        
+        project_id = request.project_id
+        filename = request.filename
+        
+        # Consistent pathing: uploads/{project_id}/{filename}
+        s3_key = f"uploads/{project_id}/{filename}"
+        
+        presigned_data = generate_presigned_upload_url(s3_key)
+        
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "filename": filename,
+            "s3_key": s3_key,
+            "presigned_post": presigned_data
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, detail=f"Failed to generate upload URL: {str(e)}"
+        )
 
 
 @app.get("/requirements/{project_id}")
