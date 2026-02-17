@@ -1,169 +1,241 @@
 """
-Requirements Extraction FastAPI Service
-Run: uvicorn app:app --reload --port 8000
+FastAPI service for PTW Requirements Extraction with S3 Integration
+Start: python app.py
+Docs:  http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Optional
 import json
 import os
-import requests
+import sys
+import tempfile
+import shutil
 from pathlib import Path
+from typing import List, Optional
+from datetime import datetime
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import uvicorn
 from dotenv import load_dotenv
 
+# Load environment
 load_dotenv()
 
+# Ensure project directory is in path
+sys.path.insert(0, str(Path(__file__).parent))
+
+# ============================================================================
+# FASTAPI APP
+# ============================================================================
+
 app = FastAPI(
-    title="Requirements Extraction Service",
-    description="AI-powered requirement extraction from PDF documents",
-    version="1.0.0"
+    title="PTW Requirements Extractor",
+    description="Extract user-facing requirements from project documents stored in S3",
+    version="2.0.0",
 )
 
-# CORS - allows frontend (Angular/React) to call this API
+# Allow Angular frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_origins=["*"],  # Update with your Angular app URL in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # ============================================================================
-# MODELS
+# REQUEST / RESPONSE MODELS
 # ============================================================================
 
-class ExtractRequest(BaseModel):
-    project_id: int = 1
-    project_name: str = "ptw"
-    backend_url: str = "http://localhost:8080"
+class ExtractionRequest(BaseModel):
+    """Request body for POST /extract"""
+    project_id: str
+    file_urls: List[str]  # S3 URLs or S3 keys
 
-class ExtractResponse(BaseModel):
-    project: str
+class ExtractionResponse(BaseModel):
+    """Response body for POST /extract"""
+    status: str
+    project_id: str
     total_requirements: int
     requirements: list
-    backend_result: Optional[dict] = None
-
-class HealthResponse(BaseModel):
-    status: str
-    groq_key_set: bool
-    config_loaded: bool
+    s3_output: dict
 
 # ============================================================================
 # ENDPOINTS
 # ============================================================================
 
-@app.get("/health", response_model=HealthResponse)
-def health_check():
-    """Check service status and environment configuration."""
-    groq_key = os.getenv("GROQ_API_KEY", "")
-    config_file = Path("config/config.json")
-    
-    return HealthResponse(
-        status="healthy",
-        groq_key_set=bool(groq_key),
-        config_loaded=config_file.exists()
-    )
+@app.get("/health")
+async def health_check():
+    """Check if the service is running and all credentials configured."""
+    groq_key = os.getenv("GROQ_API_KEY")
+    aws_key = os.getenv("AWS_ACCESS_KEY_ID")
+    bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
 
-@app.post("/extract", response_model=ExtractResponse)
-def extract_requirements_endpoint(request: ExtractRequest):
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat(),
+        "config": {
+            "groq_api_key_set": bool(groq_key),
+            "aws_credentials_set": bool(aws_key),
+            "s3_bucket": bucket,
+        },
+    }
+
+
+@app.post("/extract")
+async def extract_requirements_endpoint(request: ExtractionRequest):
     """
-    Extract, enrich, and POST requirements from a PDF document.
-    
-    Pipeline: OCR → Extract → Classify → Dedup → Enrich → POST to Backend
-    
-    Only requires project_name, project_id, and backend_url.
-    PDF path and other config are read from config/config.json.
+    Main extraction endpoint.
+
+    Flow:
+    1. Download files from S3 URLs
+    2. Extract text (OCR for image-based PDFs)
+    3. Train classifier + extract requirements
+    4. Upload results + trained model to S3
+    5. Return requirements JSON
     """
-    from extract_requirements import extract_requirements
-    
-    # Load base config from file
-    config_file = Path("config/config.json")
-    if not config_file.exists():
-        raise HTTPException(status_code=500, detail="config/config.json not found")
-    
-    with open(config_file) as f:
-        config = json.load(f)
-    
-    # Override with request values
-    config["project_name"] = request.project_name
-    config["project_id"] = request.project_id
-    config["backend_url"] = ""  # Don't POST from extract_requirements, we do it here
-    
-    input_path = Path(config.get("input_pdf", ""))
-    if not input_path.exists():
-        raise HTTPException(status_code=404, detail=f"PDF not found: {config.get('input_pdf')}")
-    
+    project_id = request.project_id
+    file_urls = request.file_urls
+
+    if not file_urls:
+        raise HTTPException(status_code=400, detail="No file URLs provided")
+
+    if not project_id:
+        raise HTTPException(status_code=400, detail="No project_id provided")
+
+    # Create temp directory for this extraction
+    tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_{project_id}")
+    input_dir = os.path.join(tmp_dir, "input")
+    output_dir = os.path.join(tmp_dir, "output")
+    os.makedirs(input_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
+
     try:
-        # Run extraction (without backend POST)
-        result = extract_requirements(config)
-        
-        # Load enriched output
-        enriched_file = Path(config["output_dir"]) / f"{request.project_name}_requirements_enriched.json"
-        enriched = []
-        if enriched_file.exists():
-            with open(enriched_file) as f:
-                enriched = json.load(f).get('requirements', [])
-        
-        # POST to backend from here
-        backend_result = None
-        if request.backend_url and enriched:
-            backend_result = post_to_backend(enriched, request.backend_url, request.project_id)
-        
-        return ExtractResponse(
-            project=result['project'],
-            total_requirements=len(enriched),
-            requirements=enriched,
-            backend_result=backend_result
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        from s3_utils import download_from_s3, upload_json_to_s3
+        from extract_requirements import extract_from_files
 
-@app.get("/evaluation/{project_name}")
-def get_evaluation(project_name: str):
-    """Get evaluation results (precision, recall, F1) for a project."""
-    eval_file = Path("output") / f"{project_name}_evaluation.json"
-    
-    if not eval_file.exists():
+        # ----------------------------------------------------------
+        # Step 1: Download all files from S3
+        # ----------------------------------------------------------
+        print(f"\n{'='*60}")
+        print(f"PROJECT: {project_id}")
+        print(f"{'='*60}")
+        print(f"\n1. Downloading {len(file_urls)} file(s) from S3...")
+
+        local_files = []
+        for url in file_urls:
+            try:
+                local_path = download_from_s3(url, input_dir)
+                local_files.append(local_path)
+            except Exception as e:
+                print(f"  WARNING: Failed to download {url}: {e}")
+
+        if not local_files:
+            raise HTTPException(
+                status_code=400,
+                detail="Failed to download any files from S3",
+            )
+
+        print(f"  Downloaded {len(local_files)} file(s)")
+
+        # ----------------------------------------------------------
+        # Step 2: Extract requirements from all files
+        # ----------------------------------------------------------
+        print(f"\n2. Extracting requirements...")
+
+        result = extract_from_files(
+            project_name=project_id,
+            file_paths=local_files,
+            output_dir=output_dir,
+        )
+
+        requirements = result["requirements"]
+        print(f"  Extracted {len(requirements)} requirements")
+
+        # ----------------------------------------------------------
+        # Step 3: Upload results to S3
+        # ----------------------------------------------------------
+        print(f"\n3. Uploading results to S3...")
+
+        # Upload requirements JSON
+        req_s3_key = f"projects/{project_id}/output/requirements.json"
+        req_s3_url = upload_json_to_s3(result, req_s3_key)
+
+        # Upload trained model state if available
+        model_s3_url = None
+        if "model_state" in result:
+            model_s3_key = f"projects/{project_id}/models/classifier_model.json"
+            model_s3_url = upload_json_to_s3(result["model_state"], model_s3_key)
+
+        print(f"\n{'='*60}")
+        print(f"DONE: {len(requirements)} requirements extracted")
+        print(f"{'='*60}")
+
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "total_requirements": len(requirements),
+            "requirements": requirements,
+            "s3_output": {
+                "requirements_url": req_s3_url,
+                "model_url": model_s3_url,
+            },
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
         raise HTTPException(
-            status_code=404,
-            detail=f"No evaluation for project '{project_name}'. Run evaluate.py first."
+            status_code=500, detail=f"Extraction failed: {str(e)}"
         )
-    
-    with open(eval_file) as f:
-        return json.load(f)
+    finally:
+        # Clean up temp files
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir, ignore_errors=True)
 
-# ============================================================================
-# BACKEND API CALL
-# ============================================================================
 
-def post_to_backend(requirements: list, backend_url: str, project_id: int) -> dict:
-    """POST enriched requirements to the backend API."""
-    url = f"{backend_url}/api/requirements/project/{project_id}"
-    print(f"\n📤 Posting {len(requirements)} requirements to {url}...")
-    
+@app.get("/requirements/{project_id}")
+async def get_requirements(project_id: str):
+    """
+    Get cached requirements from S3 (no re-extraction).
+    Fetches the last extracted results from S3.
+    """
     try:
-        response = requests.post(
-            url,
-            json=requirements,
-            headers={'Content-Type': 'application/json'},
-            timeout=30
-        )
-        
-        if response.status_code in [200, 201]:
-            print(f"  ✓ Backend accepted: {response.status_code}")
-            return {'success': True, 'status_code': response.status_code, 'response': response.json() if response.text else {}}
-        else:
-            print(f"  ✗ Backend rejected: {response.status_code} - {response.text[:200]}")
-            return {'success': False, 'status_code': response.status_code, 'error': response.text[:500]}
-    except requests.exceptions.ConnectionError:
-        print(f"  ⚠ Backend not reachable at {backend_url}")
-        return {'success': False, 'error': f'Connection refused: {backend_url}'}
+        from s3_utils import download_json_from_s3, file_exists_in_s3
+
+        s3_key = f"projects/{project_id}/output/requirements.json"
+
+        if not file_exists_in_s3(s3_key):
+            raise HTTPException(
+                status_code=404,
+                detail=f"No requirements found for project '{project_id}'. Run POST /extract first.",
+            )
+
+        data = download_json_from_s3(s3_key)
+
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "total_requirements": len(data.get("requirements", [])),
+            "requirements": data.get("requirements", []),
+            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsuai-tcgen')}/{s3_key}",
+        }
+
+    except HTTPException:
+        raise
     except Exception as e:
-        print(f"  ✗ Error: {e}")
-        return {'success': False, 'error': str(e)}
+        raise HTTPException(
+            status_code=500, detail=f"Failed to fetch requirements: {str(e)}"
+        )
+
+
+# ============================================================================
+# MAIN
+# ============================================================================
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print("Starting PTW Requirements Extractor API...")
+    print("Docs: http://localhost:8000/docs")
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)

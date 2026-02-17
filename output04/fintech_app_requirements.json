@@ -1,0 +1,209 @@
+{
+  "project": "fintech_app",
+  "requirements": [
+    {
+      "title": "Card Controls",
+      "description": "Instantly freeze or unfreeze card, set spending limits, block merchants, and decline transactions outside home region",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-001"
+    },
+    {
+      "title": "ATM Access",
+      "description": "Find and access fee-free ATMs, including cardless withdrawal using QR code",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-002"
+    },
+    {
+      "title": "Rewards Program",
+      "description": "Earn cashback on purchases, with rotating bonus categories and weekly deposit to savings account",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-003"
+    },
+    {
+      "title": "Display Account Summary",
+      "description": "View a summary of all accounts, including account type, balance, and status",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-004"
+    },
+    {
+      "title": "Manage Transactions",
+      "description": "View, filter, and search transactions by account, type, and date",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-005"
+    },
+    {
+      "title": "Card Management",
+      "description": "Add, remove, and manage card details, including virtual and physical cards",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-006"
+    },
+    {
+      "title": "Initiate Transfers",
+      "description": "Send money internally or externally, with options for different transfer methods",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-007"
+    },
+    {
+      "title": "Set Savings Goals",
+      "description": "Create, edit, and track savings goals, including target amounts and auto-deposit options",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-008"
+    },
+    {
+      "title": "Initiate P2P Transfer",
+      "description": "Initiate a P2P transfer to another user",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-009"
+    },
+    {
+      "title": "Receive Notifications",
+      "description": "Receive notifications for transfer confirmations and other events",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-010"
+    },
+    {
+      "title": "Open Investment Account",
+      "description": "Open an investment account through the digital banking app",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-011"
+    },
+    {
+      "title": "Digital Account Opening",
+      "description": "Open a digital account in under 5 minutes with ID verification",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-012"
+    },
+    {
+      "title": "Virtual Debit Card",
+      "description": "Issue a virtual debit card instantly upon account approval",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-013"
+    },
+    {
+      "title": "Biometric Login",
+      "description": "Login to the app using biometric authentication (FaceID, TouchID, fingerprint)",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-014"
+    },
+    {
+      "title": "Transaction Management",
+      "description": "View and manage transactions, including categorization and search",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-015"
+    },
+    {
+      "title": "Account Statements",
+      "description": "Generate and download monthly account statements",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-016"
+    },
+    {
+      "title": "Transaction Alerts",
+      "description": "Receive real-time push notifications for every debit and credit transaction",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-017"
+    },
+    {
+      "title": "Recurring Transaction Detection",
+      "description": "Detect recurring transactions and receive bill prediction alerts",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-018"
+    },
+    {
+      "title": "Create and Manage Savings Goals",
+      "description": "Create savings goals with target amount and target date, and view progress visualization",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-019"
+    },
+    {
+      "title": "High-Yield Savings Account Management",
+      "description": "View APY, interest earned breakdown, and manage savings accounts with no minimum balance or monthly fees",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-020"
+    },
+    {
+      "title": "Crypto Trading",
+      "description": "Buy and sell cryptocurrencies, view real-time crypto price alerts, and track crypto portfolio value",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-021"
+    },
+    {
+      "title": "Investment Tracking and Visualization",
+      "description": "View progress visualization with percentage complete and projected completion, and track investment performance",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-022"
+    },
+    {
+      "title": "Display Home Dashboard",
+      "description": "Display total balance, available and pending amounts, quick action circles, and recent transactions",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-023"
+    },
+    {
+      "title": "Perform P2P Transfers",
+      "description": "Allow users to send money to contacts, enter amount, add memo, and confirm transactions",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-024"
+    },
+    {
+      "title": "View Investment Portfolio",
+      "description": "Display portfolio value, daily change, and percentage change, with interactive line chart and asset allocation donut chart",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-025"
+    },
+    {
+      "title": "Track Budget",
+      "description": "Display monthly spending summary, category breakdown, and budget settings",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-026"
+    },
+    {
+      "title": "Manage Cards",
+      "description": "Allow users to view card details, toggle card settings, set spending limits, and order physical cards",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-027"
+    },
+    {
+      "title": "Open a new account",
+      "description": "Allow users to download the app, accept legal disclaimers, and enter personal information to open a new account",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-028"
+    },
+    {
+      "title": "Send money to contacts",
+      "description": "Enable users to send money to contacts using a quick action or navigating to the Transfers tab",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-029"
+    },
+    {
+      "title": "Buy fractional stock or ETF",
+      "description": "Allow users to search for stock/ETF, select order type, and enter dollar amount or share quantity to buy fractional stock or ETF",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-030"
+    },
+    {
+      "title": "Split bills with groups",
+      "description": "Enable users to split bills with groups, enter total bill amount, add participants, and select split options",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-031"
+    },
+    {
+      "title": "View account balance and transactions",
+      "description": "Allow users to view their account balance and transaction history",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-032"
+    },
+    {
+      "title": "Link external bank accounts",
+      "description": "Enable users to link external bank accounts via Plaid for ACH transfer or mobile check deposit",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-033"
+    },
+    {
+      "title": "Track payment status for split bills",
+      "description": "Enable users to track the payment status for split bills and send reminders to unpaid participants",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-034"
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "metrics": {
+    "precision": 0.3235294117647059,
+    "recall": 0.4230769230769231,
+    "f1_score": 0.3666666666666667
+  },
+  "counts": {
+    "gt": 23,
+    "extracted": 34,
+    "true_positives": 11,
+    "false_negatives": 15,
+    "false_positives": 23
+  },
+  "matched": [
+    {
+      "extracted_id": "FINTECH_APP-001",
+      "extracted_title": "Card Controls",
+      "gt_id": "Card Management UI",
+      "gt_name": "3D virtual card with toggle controls",
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "FINTECH_APP-003",
+      "extracted_title": "Rewards Program",
+      "gt_id": "Cashback Rewards",
+      "gt_name": "Debit card rewards program",
+      "similarity": 0.5
+    },
+    {
+      "extracted_id": "FINTECH_APP-006",
+      "extracted_title": "Card Management",
+      "gt_id": "Card Controls",
+      "gt_name": "Debit card management features",
+      "similarity": 0.5
+    },
+    {
+      "extracted_id": "FINTECH_APP-008",
+      "extracted_title": "Set Savings Goals",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "similarity": 0.4
+    },
+    {
+      "extracted_id": "FINTECH_APP-013",
+      "extracted_title": "Virtual Debit Card",
+      "gt_id": "Card Controls",
+      "gt_name": "Debit card management features",
+      "similarity": 0.4
+    },
+    {
+      "extracted_id": "FINTECH_APP-017",
+      "extracted_title": "Transaction Alerts",
+      "gt_id": "Bill Prediction",
+      "gt_name": "Recurring transaction detection and alerts",
+      "similarity": 0.4
+    },
+    {
+      "extracted_id": "FINTECH_APP-018",
+      "extracted_title": "Recurring Transaction Detection",
+      "gt_id": "Bill Prediction",
+      "gt_name": "Recurring transaction detection and alerts",
+      "similarity": 0.6
+    },
+    {
+      "extracted_id": "FINTECH_APP-019",
+      "extracted_title": "Create and Manage Savings Goals",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "FINTECH_APP-025",
+      "extracted_title": "View Investment Portfolio",
+      "gt_id": "Investment Portfolio UI",
+      "gt_name": "Portfolio view with charts and holdings",
+      "similarity": 0.3793103448275862
+    },
+    {
+      "extracted_id": "FINTECH_APP-029",
+      "extracted_title": "Send money to contacts",
+      "gt_id": "P2P Transfer Workflow",
+      "gt_name": "End-to-end send money journey",
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "FINTECH_APP-030",
+      "extracted_title": "Buy fractional stock or ETF",
+      "gt_id": "Stock Purchase Workflow",
+      "gt_name": "Buy fractional stock or ETF",
+      "similarity": 1.0
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "Biometric Authentication",
+      "gt_name": "FaceID and fingerprint login",
+      "description": "Biometric login with PIN fallback, device binding, login alerts"
+    },
+    {
+      "gt_id": "Real-Time Notifications",
+      "gt_name": "Push notifications for all transactions",
+      "description": "Transaction alerts, categorization, merchant logos, recurring detection"
+    },
+    {
+      "gt_id": "P2P Instant Transfers",
+      "gt_name": "Send money using phone number",
+      "description": "Instant settlement under $1000, request money, split bills, receipt sharing"
+    },
+    {
+      "gt_id": "High-Yield Savings",
+      "gt_name": "Fee-free savings with competitive APY",
+      "description": "Daily interest accrual, no minimum balance, monthly interest breakdown"
+    },
+    {
+      "gt_id": "Investment Portfolio",
+      "gt_name": "Fractional stock and ETF trading",
+      "description": "From $1 purchases, auto-rebalancing, real-time charts, tax documents"
+    },
+    {
+      "gt_id": "Crypto Trading",
+      "gt_name": "Buy/sell top cryptocurrencies",
+      "description": "Bitcoin, Ethereum, top 20 coins, price alerts, integrated portfolio view"
+    },
+    {
+      "gt_id": "ATM Network Access",
+      "gt_name": "Fee-free ATM withdrawals",
+      "description": "55,000+ Allpoint locations, ATM finder map, cardless QR withdrawal"
+    },
+    {
+      "gt_id": "Mobile Banking Dashboard UI",
+      "gt_name": "Home screen with balance card and quick actions",
+      "description": "36px balance on gradient card, scrollable quick action circles (Send/Request/Pay Bills/Deposit), recent transactions with merchant logos, bottom navigation with 5 tabs"
+    },
+    {
+      "gt_id": "P2P Transfer UI",
+      "gt_name": "Send money screen with contact picker and amount entry",
+      "description": "Recent recipient avatars, quick amount buttons ($5-$100), confirmation with biometric, success animation with share receipt"
+    },
+    {
+      "gt_id": "Budget Tracker UI",
+      "gt_name": "Monthly spending insights by category",
+      "description": "Spending summary card, horizontal bar chart by category, drill-into transactions, month-over-month comparison, budget alerts at 80/100% thresholds"
+    },
+    {
+      "gt_id": "Account Opening Workflow",
+      "gt_name": "Digital onboarding from download to funded account",
+      "description": "8-step flow: download, personal info, Onfido KYC (selfie + ID), account type selection, virtual card issuance, funding via Plaid, welcome tutorial. Alternate paths for minors and failed verification"
+    },
+    {
+      "gt_id": "Banking Integration Architecture",
+      "gt_name": "Core banking and payment system connections",
+      "description": "Onfido KYC SDK, Plaid bank linking, FedNow instant settlement, Visa DPS card processing, Apex Clearing brokerage, Alpaca market data WebSocket"
+    },
+    {
+      "gt_id": "Financial Data Security",
+      "gt_name": "PCI DSS and BSA/AML compliance for financial data",
+      "description": "AES-256 PII encryption, SSN SHA-256 hashing, Visa tokenization for PAN, immutable audit ledger, SAR auto-generation for suspicious transactions"
+    },
+    {
+      "gt_id": "Banking Performance SLAs",
+      "gt_name": "Mobile app and backend performance targets",
+      "description": "App cold launch < 3s, 60fps transaction scroll, P2P < 5s, portfolio refresh < 2s, push delivery < 500ms, 50K concurrent sessions, 5000 TPS card auth"
+    },
+    {
+      "gt_id": "Regulatory Compliance Standards",
+      "gt_name": "Financial regulatory requirements",
+      "description": "PCI DSS Level 1, SOC 2 Type II, BSA/AML monitoring, Reg E claims processing, FDIC insurance disclosure, 99.99% uptime SLA"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "FINTECH_APP-002",
+      "title": "ATM Access",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-004",
+      "title": "Display Account Summary",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "FINTECH_APP-005",
+      "title": "Manage Transactions",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-007",
+      "title": "Initiate Transfers",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-009",
+      "title": "Initiate P2P Transfer",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-010",
+      "title": "Receive Notifications",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-011",
+      "title": "Open Investment Account",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-012",
+      "title": "Digital Account Opening",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-014",
+      "title": "Biometric Login",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-015",
+      "title": "Transaction Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-016",
+      "title": "Account Statements",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-020",
+      "title": "High-Yield Savings Account Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-021",
+      "title": "Crypto Trading",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-022",
+      "title": "Investment Tracking and Visualization",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-023",
+      "title": "Display Home Dashboard",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "FINTECH_APP-024",
+      "title": "Perform P2P Transfers",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-026",
+      "title": "Track Budget",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "FINTECH_APP-027",
+      "title": "Manage Cards",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-028",
+      "title": "Open a new account",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-031",
+      "title": "Split bills with groups",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-032",
+      "title": "View account balance and transactions",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-033",
+      "title": "Link external bank accounts",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-034",
+      "title": "Track payment status for split bills",
+      "type": "Functional"
+    }
+  ]
+}

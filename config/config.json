@@ -1,10 +1,33 @@
 {
-  "project_name": "ptw",
-  "input_pdf": "input/PTW_Self_Serve_Phase_1_Solution.pdf",
-  "ground_truth_excel": "ground_truth/PTW_Requirements_Document.xlsx",
+  "current_project": "ecommerce_gateway",
   "output_dir": "output",
   "chunk_size": 6000,
   "similarity_threshold": 0.5,
-  "backend_url": "http://localhost:8080",
-  "project_id": 1
+
+  "projects": {
+    "ptw": {
+      "input_dir": "input/ptw",
+      "ground_truth": "ground_truth/PTW_Requirements_Document.xlsx"
+    },
+    "crm_cloud": {
+      "input_dir": "input/crm_cloud",
+      "ground_truth": "ground_truth/crm_cloud.xlsx"
+    },
+    "fintech_app": {
+      "input_dir": "input/fintech_app",
+      "ground_truth": "ground_truth/fintech_gt.xlsx"
+    },
+    "healthcare_portal": {
+      "input_dir": "input/healthcare_portal",
+      "ground_truth": "ground_truth/healthcare_gt.xlsx"
+    },
+    "logistics_manager": {
+      "input_dir": "input/logistics_manager",
+      "ground_truth": "ground_truth/logistics_gt.xlsx"
+    },
+    "ecommerce_gateway": {
+      "input_dir": "input/ecommerce_gateway",
+      "ground_truth": "ground_truth/ecommerce_gt.xlsx"
+    }
+  }
 }

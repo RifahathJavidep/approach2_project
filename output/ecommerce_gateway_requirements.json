@@ -1,0 +1,149 @@
+{
+  "project": "ecommerce_gateway",
+  "requirements": [
+    {
+      "title": "Digital Wallet Support",
+      "description": "Enables one-tap checkout with Apple Pay, Google Pay, Samsung Pay, and PayPal Express Checkout",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-001"
+    },
+    {
+      "title": "Saved Cards and Auto-Fill",
+      "description": "Allows returning customers to use saved cards and auto-fill payment methods",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-002"
+    },
+    {
+      "title": "Manage Subscriptions",
+      "description": "Enable users to create, update, and cancel subscriptions",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-003"
+    },
+    {
+      "title": "Make Payments",
+      "description": "Allow users to initiate payments through the platform",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-004"
+    },
+    {
+      "title": "View Payment Summaries",
+      "description": "Enable users to view summaries of their payments, including transaction history",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-005"
+    },
+    {
+      "title": "Receive Transaction Notifications",
+      "description": "Notify users about the status of their transactions, such as success or failure",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-006"
+    },
+    {
+      "title": "Display Dashboard Summary",
+      "description": "Show real-time transaction volume, revenue, and disputes",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-007"
+    },
+    {
+      "title": "View Transaction Trends",
+      "description": "Display daily/weekly/monthly trends with drill-down capability",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-008"
+    },
+    {
+      "title": "Search and Manage Transactions",
+      "description": "Search transactions by ID, amount, date range, and status, and perform bulk actions",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-009"
+    },
+    {
+      "title": "Access Automated Settlement Reports",
+      "description": "Receive automated daily settlement reports via email",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-010"
+    },
+    {
+      "title": "Custom Report Builder",
+      "description": "Build custom reports with filters for date, currency, payment method, and status",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-011"
+    },
+    {
+      "title": "Display Transaction Summary",
+      "description": "Show a summary of transactions with options to view details",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-012"
+    },
+    {
+      "title": "Refund and Chargeback Management",
+      "description": "Allow merchants to initiate refunds and track chargeback cases with document upload capability",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-013"
+    },
+    {
+      "title": "Display Checkout Page",
+      "description": "Display a checkout page with a single-column centered layout, containing fields for card number, expiry, and CVV",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-014"
+    },
+    {
+      "title": "Merchant Dashboard Overview",
+      "description": "Display a dashboard overview with four KPI summary cards and a line chart showing transaction volume over a selected time range",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-015"
+    },
+    {
+      "title": "Transaction Detail Modal",
+      "description": "Display a transaction detail modal with a vertical stepper showing the transaction lifecycle and action buttons",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-016"
+    },
+    {
+      "title": "Merchant Onboarding Wizard",
+      "description": "Guide the user through a 4-step onboarding wizard with a horizontal progress bar and document upload functionality",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-017"
+    },
+    {
+      "title": "Export Data",
+      "description": "Allow the user to export data, such as transaction receipts, in various formats",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-018"
+    },
+    {
+      "title": "Refund Transaction",
+      "description": "Allow the user to refund a transaction, with a confirmation dialog and amount field",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-019"
+    },
+    {
+      "title": "Filter Dashboard",
+      "description": "Allow the user to filter the dashboard by selecting a time range, with options for today, 7 days, 30 days, 90 days, and custom",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-020"
+    },
+    {
+      "title": "Refund Processing",
+      "description": "Allow merchants to initiate refunds for transactions",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-021"
+    },
+    {
+      "title": "Dashboard Transaction Details",
+      "description": "Display transaction details, including refund options",
+      "type": "UI",
+      "requirement_id": "ECOMMERCE_GATEWAY-022"
+    },
+    {
+      "title": "Payment Method Management",
+      "description": "Allow customers to enter and save payment methods",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-023"
+    },
+    {
+      "title": "Customer Checkout",
+      "description": "Allow customers to complete payment transactions",
+      "type": "Functional",
+      "requirement_id": "ECOMMERCE_GATEWAY-024"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "project": "ptw",
+  "requirements": [
+    {
+      "title": "Export data to CSV, PDF, EXCEL, PNG, and JPEG formats",
+      "description": "Allow customers to export dashboard details in various file formats",
+      "type": "Functional",
+      "requirement_id": "PTW-001"
+    },
+    {
+      "title": "Display breakdown of Roaming, Overage, and In-plan usages",
+      "description": "Provide a breakdown of usage into Roaming, Overage, and In-plan usages",
+      "type": "Functional",
+      "requirement_id": "PTW-002"
+    },
+    {
+      "title": "Provide quick links to other Bell tools",
+      "description": "Offer quick links to other Bell tools for easy access",
+      "type": "Functional",
+      "requirement_id": "PTW-003"
+    },
+    {
+      "title": "Allow drill-down on usage details",
+      "description": "Enable customers to drill down into details of billed and unbilled usage",
+      "type": "Functional",
+      "requirement_id": "PTW-004"
+    },
+    {
+      "title": "Filter Dashboard by NAG",
+      "description": "Ability to filter dashboard and information by selecting a NAG",
+      "type": "Functional",
+      "requirement_id": "PTW-005"
+    },
+    {
+      "title": "Favorite NAG",
+      "description": "Ability to mark a NAG as favorite for default view",
+      "type": "Functional",
+      "requirement_id": "PTW-006"
+    },
+    {
+      "title": "View NAG Metric Tiles",
+      "description": "Display key metrics for a selected NAG, including groups, billing accounts, and subscriber information",
+      "type": "Functional",
+      "requirement_id": "PTW-007"
+    },
+    {
+      "title": "Switch Between Usage Summary Tabs",
+      "description": "Selectable data groupings to switch dashboard's view between Data, Voice, Long Distance, and SMS",
+      "type": "Functional",
+      "requirement_id": "PTW-008"
+    },
+    {
+      "title": "Display data usage bar chart with drilldown capability",
+      "description": "Display a monthly bar chart reflecting data usage for the last 14 months, with the ability to drill down into specific months",
+      "type": "Functional",
+      "requirement_id": "PTW-009"
+    },
+    {
+      "title": "Display usage breakdown for shared and individual plans",
+      "description": "Display tables summarizing roaming, overage, and in-plan usage for shared and individual plans",
+      "type": "Functional",
+      "requirement_id": "PTW-010"
+    },
+    {
+      "title": "Provide interaction prompt",
+      "description": "Display static instruction text below charts to prompt customers to select and retrieve appropriate data",
+      "type": "UI",
+      "requirement_id": "PTW-011"
+    },
+    {
+      "title": "Display In-plan Usage Thresholds",
+      "description": "Display a usage summary with a visual representation of the data for the current month, including a 'donut wheel' and tables for shared and individual plans",
+      "type": "UI",
+      "requirement_id": "PTW-012"
+    },
+    {
+      "title": "View Shareplan Details",
+      "description": "Allow customers to view detailed data for their shareplans, including billing account, plan name, and usage information",
+      "type": "Functional",
+      "requirement_id": "PTW-013"
+    },
+    {
+      "title": "Display Usage Summary Table",
+      "description": "Display a table with usage summary information, including title, thresholds, and corresponding number of shared or individual plans",
+      "type": "UI",
+      "requirement_id": "PTW-014"
+    },
+    {
+      "title": "Shopping and Orders Widget",
+      "description": "Display a widget with submitted, in-progress, and completed orders, including order details and visuals",
+      "type": "Functional",
+      "requirement_id": "PTW-015"
+    },
+    {
+      "title": "Shop Now Button",
+      "description": "Provide a button to quickly access the shop for further orders",
+      "type": "Functional",
+      "requirement_id": "PTW-016"
+    },
+    {
+      "title": "Back Button to Drill Down Table",
+      "description": "Implement a back button to bring the user back to the standard usage bar chart drilldown view",
+      "type": "Functional",
+      "requirement_id": "PTW-017"
+    },
+    {
+      "title": "View All Orders",
+      "description": "A link to view all orders associated with the user's account, filtered by product (Mobile devices and plans)",
+      "type": "UI",
+      "requirement_id": "PTW-018"
+    },
+    {
+      "title": "Permissions Quick Links",
+      "description": "A set of links for user and access management, providing quick access to manage access, users, and create new users",
+      "type": "UI",
+      "requirement_id": "PTW-019"
+    },
+    {
+      "title": "Display usage summary with tabs for Data, Voice, Text, and Long Distance",
+      "description": "Display a summary of usage with tabs for different types of services",
+      "type": "UI",
+      "requirement_id": "PTW-020"
+    },
+    {
+      "title": "NAG group favoriting",
+      "description": "Allow users to favorite NAG groups for easy access",
+      "type": "Functional",
+      "requirement_id": "PTW-021"
+    },
+    {
+      "title": "Display Unbilled Month Drill Down",
+      "description": "Allow users to drill down into unbilled month data",
+      "type": "Functional",
+      "requirement_id": "PTW-022"
+    },
+    {
+      "title": "Display Shared Plans Detail Table",
+      "description": "Provide a detailed table of shared plans data",
+      "type": "Functional",
+      "requirement_id": "PTW-023"
+    },
+    {
+      "title": "Show Individual Plans Usage Breakdown",
+      "description": "Display usage data for individual plans",
+      "type": "Functional",
+      "requirement_id": "PTW-024"
+    },
+    {
+      "title": "My Inventory",
+      "description": "Provide access to the user's inventory",
+      "type": "UI",
+      "requirement_id": "PTW-025"
+    },
+    {
+      "title": "Request Status",
+      "description": "Display the status of a request",
+      "type": "UI",
+      "requirement_id": "PTW-026"
+    },
+    {
+      "title": "Drill Down to Specific Customers",
+      "description": "Ability to drill down to specific customers from the dashboard",
+      "type": "Functional",
+      "requirement_id": "PTW-027"
+    },
+    {
+      "title": "Display Warranty Expiration Date",
+      "description": "Display the warranty expiration date for a customer's device on the Subscriber Information Page",
+      "type": "Functional",
+      "requirement_id": "PTW-028"
+    },
+    {
+      "title": "Provide Warranty Information",
+      "description": "Provide standard manufacturer warranty expiration details for a device, including the date of activation",
+      "type": "Functional",
+      "requirement_id": "PTW-029"
+    },
+    {
+      "title": "Visualize Warranty Eligibility",
+      "description": "Allow customers to visualize their warranty eligibility linked to their Subscriber profile",
+      "type": "Functional",
+      "requirement_id": "PTW-030"
+    }
+  ]
+}

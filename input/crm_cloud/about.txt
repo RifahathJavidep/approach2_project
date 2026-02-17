@@ -1,0 +1,7 @@
+# Cloud CRM System
+Requirements for a enterprise-grade CRM system focused on sales automation and customer insights.
+Key features:
+- Lead Management
+- Sales Pipeline
+- Email Integration
+- Analytics Dashboard

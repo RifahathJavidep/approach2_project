@@ -1,0 +1,7 @@
+# E-Commerce Payment Gateway
+This project involves extracting requirements for a secure, multi-currency payment gateway.
+Key features:
+- Credit Card Processing
+- Refund API
+- Subscription Management
+- Fraud Detection

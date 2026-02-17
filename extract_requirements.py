@@ -8,7 +8,6 @@ import json
 import os
 from pathlib import Path
 from typing import List, Dict
-from datetime import datetime
 import openpyxl
 from dotenv import load_dotenv
 import sys
@@ -46,13 +45,22 @@ NEGATIVE_EXAMPLES = [
     {"text": "Use MongoDB for data storage", "title": "Database Technology", "description": "Store data in MongoDB database", "type": "Technical", "is_requirement": False},
     {"text": "Data integration via ETL pipeline", "title": "Data Integration", "description": "ETL process to sync data from source systems", "type": "Technical", "is_requirement": False},
     {"text": "System integrates with backend BBSSC service", "title": "Backend Integration", "description": "Integration with BBSSC backend service layer", "type": "Technical", "is_requirement": False},
-    # Design specs / UI details (too granular)
+    # Design specs / UI details (too granular — NOT actual requirements)
     {"text": "Display dates in YYYY-MM-DD format", "title": "Date Format Specification", "description": "Use ISO format for date display", "type": "UI Detail", "is_requirement": False},
     {"text": "Use blue color (#0066CC) for primary buttons", "title": "Button Color Scheme", "description": "Primary button color specification", "type": "UI Detail", "is_requirement": False},
+    {"text": "Show tooltip when hovering over chart element", "title": "Hover for Tooltip", "description": "Tooltip displayed on mouse hover over chart bars", "type": "UI Detail", "is_requirement": False},
+    {"text": "Use color delineation for different data categories", "title": "Color Delineation", "description": "Different colors for different data types in charts", "type": "UI Detail", "is_requirement": False},
+    {"text": "Add loading spinner while data loads", "title": "Spin Button", "description": "Spinner animation during data loading", "type": "UI Detail", "is_requirement": False},
+    {"text": "Auto-adjust layout when data is empty", "title": "Auto-Adjust Empty Data", "description": "Automatically adjust display when no data available", "type": "UI Detail", "is_requirement": False},
+    {"text": "Sort data in table columns and paginate results", "title": "Sort and Paginate Data", "description": "Table sorting and pagination functionality", "type": "UI Detail", "is_requirement": False},
+    {"text": "Display billing period information label", "title": "Billing Period Information", "description": "Show billing period label on dashboard", "type": "UI Detail", "is_requirement": False},
+    {"text": "Display dashboard based on user role permissions", "title": "Role-Based Dashboard View", "description": "Show dashboard based on user roles and permissions", "type": "Technical", "is_requirement": False},
     # Vague / Generic
     {"text": "Ensure system security", "title": "Security", "description": "Implement security measures", "type": "Technical", "is_requirement": False},
     {"text": "Optimize performance", "title": "Performance Optimization", "description": "Improve system performance", "type": "Technical", "is_requirement": False},
     {"text": "System must be scalable", "title": "Scalability", "description": "Ensure system can scale", "type": "Technical", "is_requirement": False},
+    {"text": "Navigate between pages", "title": "Navigation", "description": "General navigation between application pages", "type": "Vague", "is_requirement": False},
+    {"text": "Display data visualization", "title": "Data Visualization", "description": "General data visualization capability", "type": "Vague", "is_requirement": False},
     # Process / Document noise
     {"text": "Conduct annual compliance audit", "title": "Compliance Audit", "description": "Yearly audit for regulatory compliance", "type": "Process", "is_requirement": False},
     {"text": "This document provides a detailed solution design", "title": "Document Overview", "description": "Introduction and executive summary of the document", "type": "Document Noise", "is_requirement": False},
@@ -68,22 +76,25 @@ NEGATIVE_EXAMPLES = [
 # ============================================================================
 
 class RequirementExtraction(dspy.Signature):
-    """Extract ALL user-facing functional requirements from the document text.
+    """Extract ONLY top-level, user-facing functional requirements from the document text.
     
-    A requirement is something an end-user can SEE on screen or DO/interact with 
-    in the application. Examples: display a chart, click a button, filter data, 
-    export a file, navigate to a page, view a table, toggle tabs.
+    A requirement is a DISTINCT feature an end-user can SEE on screen or DO in the 
+    application. Think at the feature level, NOT the widget/button level.
     
-    IMPORTANT:
-    - Extract EVERY distinct feature, widget, button, chart, table, filter, or navigation element
-    - Each feature should be its OWN separate requirement (do NOT merge multiple features into one)
-    - Use SHORT specific titles (e.g. 'NAG Filter', 'Export to CSV', 'Usage Bar Chart')
+    GOOD examples (feature level): 'Display usage summary with tabs for Data/Voice/Text',
+    'Export data to CSV/PDF formats', 'Filter dashboard by NAG group'
     
-    DO NOT extract: technical architecture, API integrations, performance specs,
-    document metadata, executive summaries, or implementation details.
+    BAD examples (too granular): 'Hover for tooltip', 'Color code the bars', 
+    'Sort table columns', 'Spin button while loading', 'Paginate results'
+    
+    RULES:
+    - Merge related sub-features into ONE parent requirement
+    - If it's just a UI behavior (tooltip, color, animation, sorting), skip it
+    - Aim for 5-15 requirements per document chunk, not 20+
+    - DO NOT extract: architecture, integrations, performance, document metadata
     """
     document_text = dspy.InputField()
-    requirements_json = dspy.OutputField(desc="JSON array of ALL user-facing requirements found: [{'title': 'Short specific name', 'description': 'What user sees or does', 'type': 'UI' or 'Functional'}]. Extract every distinct feature separately.")
+    requirements_json = dspy.OutputField(desc="JSON array of ONLY top-level user-facing features: [{'title': '...', 'description': '...', 'type': 'UI' or 'Functional'}]. Fewer, higher-quality requirements. Merge sub-features into parent.")
 
 class RequirementClassifier(dspy.Signature):
     """Strictly classify if this is a genuine user-facing requirement.
@@ -101,24 +112,6 @@ class RequirementClassifier(dspy.Signature):
     description = dspy.InputField()
     is_requirement = dspy.OutputField(desc="'yes' ONLY if user can directly see/interact with this feature, 'no' otherwise")
     reason = dspy.OutputField(desc="Brief explanation of why this is or isn't user-facing")
-
-class EnrichRequirement(dspy.Signature):
-    """Generate detailed requirement enrichment from a requirement title, description, and source text.
-    
-    Produce a user story, acceptance criteria, test steps, test scenarios,
-    assumptions, and ambiguities for the given requirement.
-    """
-    requirement_title = dspy.InputField(desc="Short title of the requirement")
-    requirement_description = dspy.InputField(desc="Description of the requirement")
-    source_text = dspy.InputField(desc="Original document text the requirement was extracted from")
-    
-    user_story = dspy.OutputField(desc="User story in format: As a [user], I want [feature] so that [benefit]")
-    acceptance_criteria = dspy.OutputField(desc="JSON array of acceptance criteria strings, e.g. ['criterion 1', 'criterion 2']")
-    test_steps = dspy.OutputField(desc='JSON array of test step objects: [{"step_num": 1, "action": "...", "expected_result": "...", "test_data": "..."}]')
-    test_scenarios = dspy.OutputField(desc="JSON array of test scenario strings, e.g. ['scenario 1', 'scenario 2']")
-    assumptions = dspy.OutputField(desc="JSON array of assumption strings")
-    ambiguities = dspy.OutputField(desc="JSON array of ambiguity strings")
-    confidence = dspy.OutputField(desc="'high', 'medium', or 'low' based on how clear the requirement is")
 
 # ============================================================================
 # EXTRACTOR MODULE
@@ -151,15 +144,9 @@ class TrainedExtractor(dspy.Module):
             title = candidate.get('title', '')
             desc = candidate.get('description', '')
             
-            # Pre-filter: skip obviously bad candidates (only very clear noise)
-            skip_keywords = [
-                'executive summary', 'problem statement',
-                'impacted system', 'high level flow',
-                'this document provides', 'conceptual solution',
-                'document overview'
-            ]
+            # Pre-filter: skip obviously bad candidates
             combined = f"{title} {desc}".lower()
-            if any(kw in combined for kw in skip_keywords):
+            if any(kw in combined for kw in SKIP_KEYWORDS):
                 filtered_out.append(candidate)
                 continue
             
@@ -180,14 +167,107 @@ class TrainedExtractor(dspy.Module):
         }
 
 # ============================================================================
-# TRAINING
+# MULTI-PROJECT TRAINING
 # ============================================================================
 
-def train_extractor(extractor: TrainedExtractor):
-    print("\n🎓 Training extractor...")
+# Skip keywords used both in classifier pre-filter and training label generation
+SKIP_KEYWORDS = [
+    # Document noise
+    'executive summary', 'objective', 'problem statement',
+    'solution scope', 'impacted system', 'high level flow',
+    'architecture', 'integration', 'this document',
+    'phase 1', 'scope', 'conceptual solution',
+    # UI implementation details (too granular)
+    'tooltip', 'hover for', 'color delineation', 'colour coded',
+    'spin button', 'spinner', 'loading indicator',
+    'paginate', 'pagination', 'sort and paginate',
+    'navigate back', 'back to default',
+    'billing period information', 'billing period label',
+    'auto-adjust', 'auto adjust',
+    'clickable order id', 'clickable id',
+    'metric tile link', 'data grouping selection',
+    # Technical details disguised as requirements
+    'user roles and permissions', 'role-based',
+]
+
+
+def _generate_training_from_projects(current_project: str, projects: Dict) -> List[Dict]:
+    """
+    Scan other projects' PDFs to generate additional training examples.
+    Uses the LLM extractor to get candidates, then labels them as
+    positive/negative using the keyword skip filter.
     
+    Returns list of dicts with: text, title, description, is_requirement (bool)
+    """
+    extra_examples = []
+    extractor_sig = dspy.ChainOfThought(RequirementExtraction)
+
+    for project_name, project_config in projects.items():
+        if project_name == current_project:
+            continue  # Skip — this is the extraction target
+
+        input_dir = Path(project_config['input_dir'])
+        if not input_dir.exists():
+            print(f"    Skipping {project_name}: directory not found")
+            continue
+
+        # Get PDF files (skip non-requirement files)
+        pdf_files = sorted(input_dir.glob('*.pdf'))
+        skip_file_patterns = ['test_strategy', 'test strategy', 'traceability', 'about']
+        pdf_files = [f for f in pdf_files if not any(p in f.name.lower() for p in skip_file_patterns)]
+
+        if not pdf_files:
+            continue
+
+        print(f"    {project_name}: scanning {len(pdf_files)} files...")
+
+        for pdf_file in pdf_files[:3]:  # Limit to 3 files per project for speed
+            try:
+                doc_text = process_pdf(str(pdf_file))
+                if not doc_text or len(doc_text.strip()) < 100:
+                    continue
+
+                # Take only first chunk to keep it fast
+                chunks = chunk_document(doc_text)
+                chunk = chunks[0] if chunks else ""
+                if not chunk:
+                    continue
+
+                # Run LLM extraction
+                result = extractor_sig(document_text=chunk)
+                raw = result.requirements_json
+                if '```' in raw:
+                    raw = raw.split('```')[1]
+                    if raw.startswith('json'):
+                        raw = raw[4:]
+                candidates = json.loads(raw.strip())
+
+                # Label each candidate using skip keywords
+                for candidate in candidates:
+                    title = candidate.get('title', '')
+                    desc = candidate.get('description', '')
+                    combined = f"{title} {desc}".lower()
+
+                    is_positive = not any(kw in combined for kw in SKIP_KEYWORDS)
+                    extra_examples.append({
+                        'text': f"{title} - {desc}",
+                        'title': title,
+                        'description': desc,
+                        'is_requirement': is_positive
+                    })
+
+            except Exception as e:
+                continue  # Skip files that fail
+
+    return extra_examples
+
+
+def train_extractor(extractor: TrainedExtractor, config: Dict = None):
+    print("\nTraining extractor...")
+
     train_examples = []
-    
+
+    # 1. Hardcoded examples
     for ex in POSITIVE_EXAMPLES:
         train_examples.append(
             dspy.Example(
@@ -198,7 +278,7 @@ def train_extractor(extractor: TrainedExtractor):
                 reason="User-facing feature that can be seen or interacted with"
             ).with_inputs('text', 'title', 'description')
         )
-    
+
     for ex in NEGATIVE_EXAMPLES:
         train_examples.append(
             dspy.Example(
@@ -209,84 +289,100 @@ def train_extractor(extractor: TrainedExtractor):
                 reason="Not a user-facing feature - technical/noise/vague"
             ).with_inputs('text', 'title', 'description')
         )
-    
+
+    # 2. Multi-project examples (from other projects' PDFs)
+    if config:
+        current_project = config.get('current_project', '')
+        projects = config.get('projects', {})
+        if len(projects) > 1:
+            print(f"  Generating training data from other projects...")
+            extra = _generate_training_from_projects(current_project, projects)
+            pos_count = sum(1 for e in extra if e['is_requirement'])
+            neg_count = len(extra) - pos_count
+            print(f"  Got {len(extra)} extra examples ({pos_count} positive, {neg_count} negative)")
+
+            for ex in extra:
+                label = 'yes' if ex['is_requirement'] else 'no'
+                reason = "Real document feature" if ex['is_requirement'] else "Technical/noise from document"
+                train_examples.append(
+                    dspy.Example(
+                        text=ex['text'],
+                        title=ex['title'],
+                        description=ex['description'],
+                        is_requirement=label,
+                        reason=reason
+                    ).with_inputs('text', 'title', 'description')
+                )
+
+    print(f"  Total training examples: {len(train_examples)}")
+
     from dspy.teleprompt import BootstrapFewShot
-    
+
     def metric(example, prediction, trace=None):
         predicted = prediction.is_requirement.lower().strip() in ['yes', 'true']
         expected = example.is_requirement.lower().strip() in ['yes', 'true']
         return 1.0 if predicted == expected else 0.0
-    
+
     optimizer = BootstrapFewShot(
         metric=metric,
         max_bootstrapped_demos=8,
         max_labeled_demos=8
     )
-    
+
     extractor.classifier = optimizer.compile(extractor.classifier, trainset=train_examples)
-    print("✓ Training complete")
+    print("Training complete")
     return extractor
 
 # ============================================================================
 # DOCUMENT PROCESSING
 # ============================================================================
 
-def process_pdf(pdf_path: str) -> List[str]:
-    """Extract text from PDF as per-page list, with OCR fallback.
-    Returns a list of strings, one per page (used as individual chunks).
-    """
-    pages_text = []
-    
+def process_pdf(pdf_path: str) -> str:
+    """Extract text from PDF, with OCR fallback for image-based PDFs."""
     # Try standard text extraction first
     try:
         import pymupdf4llm
         text = pymupdf4llm.to_markdown(pdf_path)
         if text and len(text.strip()) > 100:
             print("  ✓ Text extracted via pymupdf4llm")
-            # Split by page markers if present, otherwise return as single chunk
-            return [text]
+            return text
     except Exception as e:
         print(f"  ⚠ pymupdf4llm failed: {e}")
     
-    # Fallback: OCR for image-based PDFs with image preprocessing
+    # Fallback: OCR for image-based PDFs
     print("  ⚠ Standard extraction returned empty — falling back to OCR...")
     try:
         import pymupdf
         import pytesseract
-        from PIL import Image, ImageEnhance, ImageFilter
+        from PIL import Image
         import io
         
         doc = pymupdf.open(pdf_path)
+        all_text = []
         
         for page_num in range(len(doc)):
             page = doc[page_num]
-            # Render page at 300 DPI for better OCR quality
-            pix = page.get_pixmap(dpi=300)
+            # Render page at 200 DPI for good OCR quality
+            pix = page.get_pixmap(dpi=200)
             img = Image.open(io.BytesIO(pix.tobytes('png')))
-            
-            # Image preprocessing for better OCR
-            enhancer = ImageEnhance.Contrast(img)
-            img = enhancer.enhance(1.5)
-            img = img.filter(ImageFilter.SHARPEN)
-            
-            # OCR with page segmentation mode 6 (block of text)
-            page_text = pytesseract.image_to_string(img, config='--psm 6')
+            page_text = pytesseract.image_to_string(img)
             
             if page_text.strip():
-                pages_text.append(page_text)
+                all_text.append(f"--- Page {page_num + 1} ---\n{page_text}")
                 print(f"  ✓ Page {page_num + 1}: {len(page_text)} chars via OCR")
             else:
                 print(f"  ⚠ Page {page_num + 1}: No text detected")
         
         doc.close()
         
-        if pages_text:
-            total = sum(len(p) for p in pages_text)
-            print(f"  ✓ OCR complete: {total} total chars from {len(pages_text)} pages")
+        if all_text:
+            combined = "\n\n".join(all_text)
+            print(f"  ✓ OCR complete: {len(combined)} total chars from {len(all_text)} pages")
+            return combined
     except Exception as e:
         print(f"  ✗ OCR failed: {e}")
     
-    return pages_text
+    return ""
 
 def chunk_document(text: str, max_chars: int = 6000) -> List[str]:
     chunks = []
@@ -312,236 +408,290 @@ def calculate_similarity(text1: str, text2: str) -> float:
     union = words1.union(words2)
     return len(intersection) / len(union)
 
+def _title_similarity(title1: str, title2: str) -> float:
+    """Compare two titles using multiple strategies."""
+    t1 = title1.lower().strip()
+    t2 = title2.lower().strip()
+
+    # Exact match
+    if t1 == t2:
+        return 1.0
+
+    # One title contains the other
+    if t1 in t2 or t2 in t1:
+        return 0.85
+
+    # Jaccard on title words
+    return calculate_similarity(t1, t2)
+
+
 def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.45) -> List[Dict]:
-    """Remove duplicate requirements using word-overlap similarity."""
+    """Remove duplicate requirements using multi-strategy similarity.
+    Compares titles separately (tighter match) and full text (looser match).
+    """
     unique = []
     for req in reqs:
         is_dup = False
-        req_text = f"{req.get('title', '')} {req.get('description', '')}".lower()
-        
+        req_title = req.get('title', '')
+        req_desc = req.get('description', '')
+        req_full = f"{req_title} {req_desc}".lower()
+
         for existing in unique:
-            existing_text = f"{existing.get('title', '')} {existing.get('description', '')}".lower()
-            sim = calculate_similarity(req_text, existing_text)
-            if sim > similarity_threshold:
+            ex_title = existing.get('title', '')
+            ex_desc = existing.get('description', '')
+            ex_full = f"{ex_title} {ex_desc}".lower()
+
+            # Strategy 1: Title-to-title (catches cross-file duplicates)
+            title_sim = _title_similarity(req_title, ex_title)
+            # Strategy 2: Full text comparison
+            full_sim = calculate_similarity(req_full, ex_full)
+            # Use the best score
+            best_sim = max(title_sim, full_sim)
+
+            if best_sim > similarity_threshold:
                 is_dup = True
                 # Keep the one with the longer description
-                if len(req.get('description', '')) > len(existing.get('description', '')):
+                if len(req_desc) > len(ex_desc):
                     unique.remove(existing)
                     unique.append(req)
                 break
-        
+
         if not is_dup:
             unique.append(req)
-    
+
     return unique
 
 # ============================================================================
-# ENRICHMENT
+# DSPY SETUP HELPER
 # ============================================================================
 
-def parse_json_field(raw: str) -> list:
-    """Safely parse a JSON array string from LLM output."""
-    try:
-        if '```' in raw:
-            raw = raw.split('```')[1]
-            if raw.startswith('json'):
-                raw = raw[4:]
-        result = json.loads(raw.strip())
-        if isinstance(result, list):
-            return result
-        return [result]
-    except:
-        # If JSON parsing fails, return as single-item list
-        return [raw.strip()] if raw.strip() else []
+def _setup_dspy(config: Dict = None):
+    """Configure DSPy with Groq LLM. Returns trained extractor."""
+    groq_key = os.getenv("GROQ_API_KEY")
+    if not groq_key:
+        raise ValueError("GROQ_API_KEY not found in .env")
 
-def enrich_requirements(requirements: List[Dict], source_text: str, model_name: str, source_file: str) -> List[Dict]:
-    """Enrich each extracted requirement with user story, test steps, etc."""
-    enricher = dspy.ChainOfThought(EnrichRequirement)
-    enriched = []
-    
-    for i, req in enumerate(requirements, 1):
-        title = req.get('title', '')
-        desc = req.get('description', '')
-        print(f"  Enriching {i}/{len(requirements)}: {title}...", end='')
-        
+    lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
+    dspy.configure(lm=lm)
+    print("DSPy configured")
+
+    extractor = TrainedExtractor()
+    extractor = train_extractor(extractor, config=config)
+    return extractor
+
+def _process_single_file(file_path: str, extractor) -> tuple:
+    """Process a single file through extraction. Returns (reqs, filtered)."""
+    print(f"\n  Processing: {file_path}")
+
+    # Extract text (supports PDF with OCR fallback)
+    ext = Path(file_path).suffix.lower()
+    if ext == '.pdf':
+        doc_text = process_pdf(file_path)
+    else:
+        # For non-PDF files, try reading as text
         try:
-            result = enricher(
-                requirement_title=title,
-                requirement_description=desc,
-                source_text=source_text[:4000]  # Limit context to avoid token overflow
-            )
-            
-            enriched_req = {
-                'is_requirement': True,
-                'short_title': title,
-                'description': desc,
-                'user_story': result.user_story,
-                'acceptance_criteria': parse_json_field(result.acceptance_criteria),
-                'test_steps': parse_json_field(result.test_steps),
-                'test_scenarios': parse_json_field(result.test_scenarios),
-                'assumptions': parse_json_field(result.assumptions),
-                'ambiguities': parse_json_field(result.ambiguities),
-                'confidence': result.confidence.strip().lower(),
-                'extraction_model': model_name,
-                'extraction_timestamp': datetime.now().isoformat(),
-                'validation_confirmed': True,
-                'metadata': {
-                    'source_file': source_file,
-                    'extraction_timestamp': datetime.now().isoformat(),
-                    'extraction_model': model_name,
-                    'validation_confirmed': True
-                }
-            }
-            enriched.append(enriched_req)
-            print(f" ✓")
+            with open(file_path, 'r', encoding='utf-8') as f:
+                doc_text = f.read()
+        except Exception:
+            doc_text = ""
+
+    if not doc_text:
+        print(f"  WARNING: No text extracted from {file_path}")
+        return [], []
+
+    chunks = chunk_document(doc_text)
+    print(f"  Split into {len(chunks)} chunks")
+
+    all_reqs = []
+    all_filtered = []
+    for i, chunk in enumerate(chunks, 1):
+        print(f"    Chunk {i}/{len(chunks)}...", end='')
+        try:
+            result = extractor(document_text=chunk)
+            all_reqs.extend(result['requirements'])
+            all_filtered.extend(result['filtered_out'])
+            print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
         except Exception as e:
-            print(f" ✗ {e}")
-            # Still include basic info on failure
-            enriched.append({
-                'is_requirement': True,
-                'short_title': title,
-                'description': desc,
-                'user_story': '',
-                'acceptance_criteria': [],
-                'test_steps': [],
-                'test_scenarios': [],
-                'assumptions': [],
-                'ambiguities': [],
-                'confidence': 'low',
-                'extraction_model': model_name,
-                'extraction_timestamp': datetime.now().isoformat(),
-                'validation_confirmed': False,
-                'metadata': {
-                    'source_file': source_file,
-                    'extraction_timestamp': datetime.now().isoformat(),
-                    'extraction_model': model_name,
-                    'validation_confirmed': False
-                }
-            })
-    
-    return enriched
+            print(f" ERROR: {e}")
 
+    return all_reqs, all_filtered
 
+def save_model_state(extractor) -> Dict:
+    """Save the trained model demos/state as a serializable dict."""
+    try:
+        state = extractor.classifier.dump_state()
+        return state
+    except Exception as e:
+        print(f"  WARNING: Could not save model state: {e}")
+        return {}
 
 # ============================================================================
-# MAIN
+# EXTRACT FROM FILES (FastAPI / S3 flow)
+# ============================================================================
+
+def extract_from_files(project_name: str, file_paths: List[str], output_dir: str = None) -> Dict:
+    """
+    Extract requirements from a list of local file paths.
+    Called by FastAPI after downloading files from S3.
+
+    Args:
+        project_name: Project identifier (e.g. 'ptw_phase1')
+        file_paths: List of local file paths to process
+        output_dir: Optional local output directory to save results
+
+    Returns:
+        Dict with project, requirements, and model_state
+    """
+    print("=" * 80)
+    print(f"REQUIREMENTS EXTRACTION - {project_name.upper()}")
+    print("=" * 80)
+
+    # Setup DSPy and train
+    extractor = _setup_dspy()
+
+    # Process each file
+    all_reqs = []
+    all_filtered = []
+
+    for file_path in file_paths:
+        reqs, filtered = _process_single_file(file_path, extractor)
+        all_reqs.extend(reqs)
+        all_filtered.extend(filtered)
+
+    print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
+
+    # Deduplicate
+    unique = deduplicate_requirements(all_reqs)
+    print(f"  After dedup: {len(all_reqs)} -> {len(unique)} unique")
+
+    # Add IDs
+    for i, req in enumerate(unique, 1):
+        req['requirement_id'] = f"{project_name.upper()}-{i:03d}"
+
+    # Save model state for S3 upload
+    model_state = save_model_state(extractor)
+
+    # Build result
+    result_data = {
+        'project': project_name,
+        'requirements': unique,
+        'model_state': model_state,
+    }
+
+    # Optionally save locally
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = Path(output_dir) / f"{project_name}_requirements.json"
+        with open(output_file, 'w') as f:
+            json.dump(result_data, f, indent=2)
+        print(f"  Saved locally to: {output_file}")
+
+    print(f"\nDone! {len(unique)} requirements extracted")
+    return result_data
+
+# ============================================================================
+# EXTRACT FROM CONFIG (standalone CLI flow)
 # ============================================================================
 
 def extract_requirements(config: Dict = None) -> Dict:
-    """Core extraction logic. Returns dict with project name and requirements.
-    Can be called standalone or from FastAPI.
+    """Core extraction logic using multi-project config.
+    Reads current_project from config, processes all PDFs in that project's input_dir.
     """
-    print("="*80)
+    print("=" * 80)
     print("REQUIREMENTS EXTRACTION - TRAINED APPROACH")
-    print("="*80)
-    
-    # Config
+    print("=" * 80)
+
+    # Load config
     if config is None:
         config_file = Path("config/config.json")
         if not config_file.exists():
             raise FileNotFoundError(f"Config not found: {config_file}")
         with open(config_file) as f:
             config = json.load(f)
-    
-    project = config['project_name']
-    input_file = Path(config['input_pdf'])
-    output_dir = Path(config['output_dir'])
-    
-    if not input_file.exists():
-        raise FileNotFoundError(f"Input file not found: {input_file}")
-    
+
+    # Read current project
+    current_project = config.get('current_project')
+    if not current_project:
+        raise ValueError("'current_project' not set in config.json")
+
+    projects = config.get('projects', {})
+    if current_project not in projects:
+        raise ValueError(f"Project '{current_project}' not found in config.projects. Available: {list(projects.keys())}")
+
+    project_config = projects[current_project]
+    input_dir = Path(project_config['input_dir'])
+    output_dir = Path(config.get('output_dir', 'output'))
+
+    if not input_dir.exists():
+        raise FileNotFoundError(f"Input directory not found: {input_dir}")
+
     output_dir.mkdir(exist_ok=True)
-    
-    # Setup DSPy
-    groq_key = os.getenv("GROQ_API_KEY")
-    if not groq_key:
-        raise ValueError("GROQ_API_KEY not found in .env")
-    
-    lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
-    dspy.configure(lm=lm)
-    print("✓ DSPy configured")
-    
-    # Train
-    extractor = TrainedExtractor()
-    extractor = train_extractor(extractor)
-    
-    # Process PDF into per-page text
-    print(f"\n📄 Processing: {input_file}")
-    page_texts = process_pdf(str(input_file))
-    if not page_texts:
-        raise RuntimeError("Failed to extract text from PDF (both standard and OCR failed)")
-    
-    # Build chunks: each page is its own chunk, plus combined for context
-    chunks = []
-    for pt in page_texts:
-        # Split large pages into sub-chunks if needed
-        if len(pt) > 6000:
-            chunks.extend(chunk_document(pt))
+
+    # Find all PDF files in the project's input directory
+    pdf_files = sorted(input_dir.glob('*.pdf'))
+    pptx_files = sorted(input_dir.glob('*.pptx'))
+    all_files = pdf_files + pptx_files
+
+    # Skip files that are NOT requirement sources
+    skip_patterns = ['test_strategy', 'test strategy', 'traceability', 'about.txt']
+    filtered_files = []
+    for f in all_files:
+        fname = f.name.lower()
+        if any(pat in fname for pat in skip_patterns):
+            print(f"  Skipping (not a requirements source): {f.name}")
         else:
-            chunks.append(pt)
-    print(f"✓ {len(page_texts)} pages → {len(chunks)} chunks")
-    
-    # Extract
-    print(f"\n🔍 Extracting requirements...")
+            filtered_files.append(f)
+    all_files = filtered_files
+
+    if not all_files:
+        raise FileNotFoundError(f"No PDF/PPTX files found in {input_dir}")
+
+    print(f"\nProject: {current_project}")
+    print(f"Input dir: {input_dir}")
+    print(f"Files to process: {len(all_files)}")
+    for f in all_files:
+        print(f"  - {f.name}")
+
+    # Setup DSPy and train (with multi-project training data)
+    extractor = _setup_dspy(config=config)
+
+    # Process each file
     all_reqs = []
     all_filtered = []
-    for i, chunk in enumerate(chunks, 1):
-        if len(chunk.strip()) < 50:  # Skip near-empty chunks
-            print(f"  Chunk {i}/{len(chunks)}... ⏭ too short, skipping")
-            continue
-        print(f"  Chunk {i}/{len(chunks)}...", end='')
-        try:
-            result = extractor(document_text=chunk)
-            all_reqs.extend(result['requirements'])
-            all_filtered.extend(result['filtered_out'])
-            print(f" ✓ {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
-        except Exception as e:
-            print(f" ✗ {e}")
-    
-    print(f"\n  Raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
-    
+
+    for file_path in all_files:
+        reqs, filtered = _process_single_file(str(file_path), extractor)
+        all_reqs.extend(reqs)
+        all_filtered.extend(filtered)
+
+    print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
+
     # Deduplicate using similarity
     unique = deduplicate_requirements(all_reqs)
-    print(f"  After dedup: {len(all_reqs)} → {len(unique)} unique")
-    
+    print(f"  After dedup: {len(all_reqs)} -> {len(unique)} unique")
+
     # Add IDs
     for i, req in enumerate(unique, 1):
-        req['requirement_id'] = f"{project.upper()}-{i:03d}"
-    
-    # Enrich requirements with user stories, test steps, etc.
-    source_file = config.get('input_pdf', '')
-    model_name = 'llama-3.3-70b-versatile'
-    full_source_text = '\n\n'.join(page_texts)
-    
-    print(f"\n🔧 Enriching {len(unique)} requirements...")
-    enriched = enrich_requirements(unique, full_source_text, model_name, source_file)
-    print(f"✓ Enriched {len(enriched)} requirements")
-    
-    # Build result (both formats: simple for eval, enriched for backend)
-    result_data = {'project': project, 'requirements': unique}
-    enriched_data = {'project': project, 'requirements': enriched}
-    
-    # Save simple format (for evaluation)
-    output_file = output_dir / f"{project}_requirements.json"
+        req['requirement_id'] = f"{current_project.upper()}-{i:03d}"
+
+    # Build result
+    result_data = {'project': current_project, 'requirements': unique}
+
+    # Save
+    output_file = output_dir / f"{current_project}_requirements.json"
     with open(output_file, 'w') as f:
         json.dump(result_data, f, indent=2)
-    print(f"✓ Saved simple: {output_file}")
-    
-    # Save enriched format
-    enriched_file = output_dir / f"{project}_requirements_enriched.json"
-    with open(enriched_file, 'w') as f:
-        json.dump(enriched_data, f, indent=2)
-    print(f"✓ Saved enriched: {enriched_file}")
-    
-    print(f"\n✅ Done! {len(unique)} requirements extracted and enriched")
-    
+
+    print(f"Saved to: {output_file}")
+    print(f"\nDone! {len(unique)} requirements extracted from {len(all_files)} files")
+
     return result_data
 
 def main():
     try:
         extract_requirements()
     except Exception as e:
-        print(f"\n❌ ERROR: {e}")
+        print(f"\nERROR: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

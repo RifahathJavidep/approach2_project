@@ -1,0 +1,7 @@
+# Patient Management Portal
+Requirements for a HIPAA-compliant portal for patient record management and appointment scheduling.
+Key features:
+- Patient Profiles
+- Doctor Scheduling
+- Telehealth Integration
+- Billing & Insurance

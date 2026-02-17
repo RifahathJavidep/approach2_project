@@ -1,0 +1,149 @@
+{
+  "project": "logistics_manager",
+  "requirements": [
+    {
+      "title": "Track Shipments",
+      "description": "Allow users to track shipments and view their status",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-001"
+    },
+    {
+      "title": "Manage Inventory",
+      "description": "Enable users to manage inventory items, including viewing and editing details",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-002"
+    },
+    {
+      "title": "View Package Details",
+      "description": "Allow users to view details of packages, including weight, dimensions, and tracking information",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-003"
+    },
+    {
+      "title": "Manage Warehouse Orders",
+      "description": "Enable users to manage warehouse orders, including creating, editing, and canceling orders",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-004"
+    },
+    {
+      "title": "View Customs Declarations",
+      "description": "Allow users to view customs declarations for international shipments",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-005"
+    },
+    {
+      "title": "View Carrier Rate Quotes",
+      "description": "Enable users to view carrier rate quotes and compare prices",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-006"
+    },
+    {
+      "title": "Create and Manage Shipments",
+      "description": "Create shipments with origin, destination, weight, dimensions, and service level, and manage shipment status lifecycle",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-007"
+    },
+    {
+      "title": "Real-Time Shipment Tracking",
+      "description": "Track shipments in real-time with live GPS tracking, ETA calculation, and geofence alerts",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-008"
+    },
+    {
+      "title": "Compare Shipping Rates",
+      "description": "Display a comparison table of shipping rates from different carriers",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-009"
+    },
+    {
+      "title": "Book Shipments",
+      "description": "Allow users to select a carrier and book a shipment",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-010"
+    },
+    {
+      "title": "Track Packages",
+      "description": "Provide real-time tracking updates for shipped packages",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-011"
+    },
+    {
+      "title": "Live Tracking",
+      "description": "Track shipments in real-time on a map",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-012"
+    },
+    {
+      "title": "Display Shipment Dashboard",
+      "description": "Show KPI summary bar, data table with active shipments, and bulk action toolbar",
+      "type": "UI",
+      "requirement_id": "LOGISTICS_MANAGER-013"
+    },
+    {
+      "title": "Create Shipment Wizard",
+      "description": "Multi-step wizard for creating shipments with origin/destination, package details, service selection, and review/submit",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-014"
+    },
+    {
+      "title": "Warehouse Floor Plan View",
+      "description": "Interactive SVG floor plan showing warehouse zones, heat map overlay, and active pick lists",
+      "type": "UI",
+      "requirement_id": "LOGISTICS_MANAGER-015"
+    },
+    {
+      "title": "Carrier Rate Shopping",
+      "description": "Rate comparison table, shipment details summary, and rate history chart",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-016"
+    },
+    {
+      "title": "Analytics and Reporting",
+      "description": "Executive dashboard with interactive filters, drill-down capability, and export reports",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-017"
+    },
+    {
+      "title": "Left Sidebar Navigation",
+      "description": "Navigation menu with links to different sections of the application",
+      "type": "UI",
+      "requirement_id": "LOGISTICS_MANAGER-018"
+    },
+    {
+      "title": "Export Data",
+      "description": "Export data to CSV or PDF formats",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-019"
+    },
+    {
+      "title": "Create and Book Shipment",
+      "description": "Allow users to create a shipment by entering origin and destination addresses, package details, and service requirements, and then book the shipment with a selected carrier",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-020"
+    },
+    {
+      "title": "Delivery Exception Handling",
+      "description": "Allow users to manage delivery exceptions by reviewing exception details, selecting resolution options, and communicating with carriers",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-021"
+    },
+    {
+      "title": "Shipment Tracking and Status Updates",
+      "description": "Provide users with real-time shipment tracking and status updates, including notifications for delivery exceptions and updates",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-022"
+    },
+    {
+      "title": "Carrier Selection and Comparison",
+      "description": "Enable users to compare rates and services from multiple carriers and select a carrier for their shipment",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-023"
+    },
+    {
+      "title": "Warehouse Analytics Dashboard",
+      "description": "View warehouse utilization, order fulfillment metrics, and labor productivity reports",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-024"
+    }
+  ]
+}

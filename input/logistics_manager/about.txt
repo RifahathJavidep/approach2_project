@@ -1,0 +1,7 @@
+# Supply Chain Logistics Manager
+Extracting requirements for a logistics platform that tracks shipments across multiple carriers.
+Key features:
+- Real-time GPS Tracking
+- Warehouse Management
+- Carrier Integration
+- Route Optimization
