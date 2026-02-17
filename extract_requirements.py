@@ -76,42 +76,54 @@ NEGATIVE_EXAMPLES = [
 # ============================================================================
 
 class RequirementExtraction(dspy.Signature):
-    """Extract ONLY top-level, user-facing functional requirements from the document text.
+    """Extract HIGH-LEVEL software requirements from the document text.
     
-    A requirement is a DISTINCT feature an end-user can SEE on screen or DO in the 
-    application. Think at the feature level, NOT the widget/button level.
+    Cover ALL categories: Functional, UI/Wireframe, Workflow, Architecture,
+    Data Model, Non-Functional (SLAs/performance), Security/Compliance.
     
-    GOOD examples (feature level): 'Display usage summary with tabs for Data/Voice/Text',
-    'Export data to CSV/PDF formats', 'Filter dashboard by NAG group'
+    CRITICAL: Extract only 3-5 TOP-LEVEL requirements per chunk.
+    Merge related sub-items into ONE parent requirement.
     
-    BAD examples (too granular): 'Hover for tooltip', 'Color code the bars', 
-    'Sort table columns', 'Spin button while loading', 'Paginate results'
+    GOOD (high-level, merged):
+    - 'API Gateway Architecture' (covers auth, versioning, rate limiting)
+    - 'Payment Checkout Workflow' (covers the full 10-step flow)
+    - 'PCI DSS Compliance' (covers encryption, audit, TLS)
+    
+    BAD (too granular - merge these UP):
+    - 'Rate Limiting' (part of API Gateway)
+    - 'Bearer Token Auth' (part of API Gateway)  
+    - 'Hover for tooltip', 'Color code bars' (UI micro-details - skip)
     
     RULES:
-    - Merge related sub-features into ONE parent requirement
-    - If it's just a UI behavior (tooltip, color, animation, sorting), skip it
-    - Aim for 5-15 requirements per document chunk, not 20+
-    - DO NOT extract: architecture, integrations, performance, document metadata
+    - Maximum 3-5 requirements per chunk, NOT more
+    - Each requirement should represent a MAJOR capability area
+    - Merge ALL sub-features into their parent requirement
+    - Skip: tooltips, colors, animations, document metadata, scope statements
     """
     document_text = dspy.InputField()
-    requirements_json = dspy.OutputField(desc="JSON array of ONLY top-level user-facing features: [{'title': '...', 'description': '...', 'type': 'UI' or 'Functional'}]. Fewer, higher-quality requirements. Merge sub-features into parent.")
+    requirements_json = dspy.OutputField(desc="JSON array of 3-5 HIGH-LEVEL requirements: [{'title': '...', 'description': '...', 'type': 'Functional'|'UI'|'Workflow'|'Architecture'|'Data Model'|'Non-Functional'|'Security'}]. Maximum 5 items. Merge sub-features into parent.")
 
 class RequirementClassifier(dspy.Signature):
-    """Strictly classify if this is a genuine user-facing requirement.
+    """Classify if this is a genuine software requirement of ANY type.
     
-    Answer 'yes' ONLY if ALL of these are true:
-    1. A real end-user can SEE this on screen OR physically DO/interact with it
-    2. It describes a specific, testable feature (not vague or generic)
-    3. It is NOT about: architecture, integration, performance, security, scalability,
-       document structure, project scope, objectives, or implementation approach
+    Answer 'yes' if ANY of these are true:
+    1. User can SEE it on screen or DO/interact with it (functional/UI)
+    2. It describes a workflow or end-to-end process flow
+    3. It specifies architecture, API design, or system integration
+    4. It defines a data model, entity relationship, or schema
+    5. It sets a performance target, SLA, or scalability requirement
+    6. It defines security, compliance, or data protection standards
     
-    When in doubt, answer 'no'. Be strict - we want FEWER, higher quality requirements.
+    Answer 'no' ONLY if it is:
+    - Document noise (executive summary, project objectives, scope statements)
+    - A UI micro-detail (tooltip text, color hex code, hover animation)
+    - Vague/generic with no specifics (e.g., 'ensure security', 'optimize performance')
     """
     text = dspy.InputField()
     title = dspy.InputField()
     description = dspy.InputField()
-    is_requirement = dspy.OutputField(desc="'yes' ONLY if user can directly see/interact with this feature, 'no' otherwise")
-    reason = dspy.OutputField(desc="Brief explanation of why this is or isn't user-facing")
+    is_requirement = dspy.OutputField(desc="'yes' if this is a specific, actionable requirement of any type, 'no' if document noise or vague")
+    reason = dspy.OutputField(desc="Brief explanation of why this is or isn't a valid requirement")
 
 # ============================================================================
 # EXTRACTOR MODULE
@@ -174,20 +186,16 @@ class TrainedExtractor(dspy.Module):
 SKIP_KEYWORDS = [
     # Document noise
     'executive summary', 'objective', 'problem statement',
-    'solution scope', 'impacted system', 'high level flow',
-    'architecture', 'integration', 'this document',
-    'phase 1', 'scope', 'conceptual solution',
+    'solution scope', 'impacted system', 'this document',
+    'conceptual solution',
     # UI implementation details (too granular)
     'tooltip', 'hover for', 'color delineation', 'colour coded',
     'spin button', 'spinner', 'loading indicator',
     'paginate', 'pagination', 'sort and paginate',
-    'navigate back', 'back to default',
     'billing period information', 'billing period label',
     'auto-adjust', 'auto adjust',
     'clickable order id', 'clickable id',
     'metric tile link', 'data grouping selection',
-    # Technical details disguised as requirements
-    'user roles and permissions', 'role-based',
 ]
 
 
@@ -425,7 +433,7 @@ def _title_similarity(title1: str, title2: str) -> float:
     return calculate_similarity(t1, t2)
 
 
-def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.45) -> List[Dict]:
+def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.55) -> List[Dict]:
     """Remove duplicate requirements using multi-strategy similarity.
     Compares titles separately (tighter match) and full text (looser match).
     """
@@ -460,6 +468,97 @@ def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.4
             unique.append(req)
 
     return unique
+
+
+# ============================================================================
+# LLM-BASED CONSOLIDATION (merges overlapping requirements)
+# ============================================================================
+
+class RequirementConsolidation(dspy.Signature):
+    """Consolidate a list of overlapping software requirements into fewer, high-level items.
+    
+    You are given a JSON array of requirements extracted from multiple document chunks.
+    Many are duplicates or sub-features of the same parent capability.
+    
+    Your job:
+    1. Merge related/overlapping requirements into ONE parent requirement
+    2. Keep the most descriptive title and combine descriptions
+    3. Target approximately 20-30 consolidated requirements total
+    4. Preserve ALL distinct capability areas — do NOT drop unique requirements
+    
+    Examples of merging:
+    - 'Rate Limiting' + 'API Versioning' + 'Bearer Token Auth' → 'API Gateway Architecture'
+    - 'Refund Processing' + 'Refund Button' + 'Refund Transaction' → 'Refund Management'
+    - 'Track Shipments' + 'Track Packages' + 'Shipment Status' → 'Real-Time Shipment Tracking'
+    """
+    requirements_json = dspy.InputField(desc="JSON array of raw requirements to consolidate")
+    consolidated_json = dspy.OutputField(desc="JSON array of 20-30 consolidated requirements: [{'title': '...', 'description': '...', 'type': '...'}]. Merge overlapping items, keep unique ones.")
+
+
+def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
+    """Use LLM to merge overlapping requirements into fewer high-level items."""
+    if len(reqs) <= 30:
+        print(f"  Consolidation: {len(reqs)} items — no consolidation needed")
+        return reqs
+    
+    print(f"  Consolidating {len(reqs)} requirements via LLM...")
+    
+    consolidator = dspy.ChainOfThought(RequirementConsolidation)
+    
+    # If too many items, process in batches to avoid token limits
+    MAX_BATCH = 60
+    if len(reqs) > MAX_BATCH:
+        # Split into batches, consolidate each, then consolidate the results
+        batches = [reqs[i:i+MAX_BATCH] for i in range(0, len(reqs), MAX_BATCH)]
+        intermediate = []
+        for i, batch in enumerate(batches, 1):
+            print(f"    Batch {i}/{len(batches)} ({len(batch)} items)...")
+            try:
+                result = consolidator(requirements_json=json.dumps(batch))
+                raw = result.consolidated_json
+                if '```' in raw:
+                    raw = raw.split('```')[1]
+                    if raw.startswith('json'):
+                        raw = raw[4:]
+                batch_consolidated = json.loads(raw.strip())
+                intermediate.extend(batch_consolidated)
+                print(f"      → {len(batch_consolidated)} items")
+            except Exception as e:
+                print(f"      ERROR: {e} — keeping original batch")
+                intermediate.extend(batch)
+        
+        # Second pass to merge across batches
+        if len(intermediate) > 30:
+            print(f"    Final merge pass ({len(intermediate)} items)...")
+            try:
+                result = consolidator(requirements_json=json.dumps(intermediate))
+                raw = result.consolidated_json
+                if '```' in raw:
+                    raw = raw.split('```')[1]
+                    if raw.startswith('json'):
+                        raw = raw[4:]
+                final = json.loads(raw.strip())
+                print(f"      → {len(final)} items")
+                return final
+            except Exception as e:
+                print(f"      ERROR in final merge: {e}")
+                return intermediate
+        return intermediate
+    else:
+        # Single batch
+        try:
+            result = consolidator(requirements_json=json.dumps(reqs))
+            raw = result.consolidated_json
+            if '```' in raw:
+                raw = raw.split('```')[1]
+                if raw.startswith('json'):
+                    raw = raw[4:]
+            consolidated = json.loads(raw.strip())
+            print(f"  Consolidated: {len(reqs)} → {len(consolidated)} requirements")
+            return consolidated
+        except Exception as e:
+            print(f"  ERROR in consolidation: {e} — keeping original")
+            return reqs
 
 # ============================================================================
 # DSPY SETUP HELPER
@@ -563,6 +662,10 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
     # Deduplicate
     unique = deduplicate_requirements(all_reqs)
     print(f"  After dedup: {len(all_reqs)} -> {len(unique)} unique")
+
+    # Consolidate overlapping requirements via LLM
+    unique = consolidate_requirements(unique)
+    print(f"  After consolidation: {len(unique)} requirements")
 
     # Add IDs
     for i, req in enumerate(unique, 1):
@@ -669,6 +772,10 @@ def extract_requirements(config: Dict = None) -> Dict:
     # Deduplicate using similarity
     unique = deduplicate_requirements(all_reqs)
     print(f"  After dedup: {len(all_reqs)} -> {len(unique)} unique")
+
+    # Consolidate overlapping requirements via LLM
+    unique = consolidate_requirements(unique)
+    print(f"  After consolidation: {len(unique)} requirements")
 
     # Add IDs
     for i, req in enumerate(unique, 1):

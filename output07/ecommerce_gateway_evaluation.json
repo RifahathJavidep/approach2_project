@@ -1,51 +1,93 @@
 {
   "metrics": {
-    "precision": 0.20833333333333334,
-    "recall": 0.18518518518518517,
-    "f1_score": 0.19607843137254902
+    "precision": 0.5238095238095238,
+    "recall": 0.3793103448275862,
+    "f1_score": 0.44
   },
   "counts": {
     "gt": 27,
-    "extracted": 24,
-    "true_positives": 5,
-    "false_negatives": 22,
-    "false_positives": 19
+    "extracted": 21,
+    "true_positives": 11,
+    "false_negatives": 18,
+    "false_positives": 10
   },
   "matched": [
     {
       "extracted_id": "ECOMMERCE_GATEWAY-001",
-      "extracted_title": "Digital Wallet Support",
-      "gt_id": "Digital Wallet Integration",
-      "gt_name": "Apple Pay, Google Pay, Samsung Pay support",
-      "similarity": 0.6111111111111112
+      "extracted_title": "Checkout and Cart Workflow",
+      "gt_id": "Cart Integration API",
+      "gt_name": "Shopping cart and checkout API",
+      "similarity": 0.5
     },
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-007",
-      "extracted_title": "Display Dashboard Summary",
+      "extracted_id": "ECOMMERCE_GATEWAY-002",
+      "extracted_title": "Digital Wallet and Payment Method Support",
+      "gt_id": "Digital Wallet Integration",
+      "gt_name": "Apple Pay, Google Pay, Samsung Pay support",
+      "similarity": 0.5454545454545454
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-006",
+      "extracted_title": "API Gateway Architecture",
+      "gt_id": "API Gateway Architecture",
+      "gt_name": "API authentication, versioning, and rate limiting",
+      "similarity": 0.5
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-011",
+      "extracted_title": "Reporting and Analytics",
       "gt_id": "Merchant Dashboard",
       "gt_name": "Real-time transaction monitoring and analytics",
       "similarity": 0.3333333333333333
     },
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-017",
-      "extracted_title": "Merchant Onboarding Wizard",
-      "gt_id": "Onboarding Wizard UI",
-      "gt_name": "4-step merchant onboarding wizard with KYC upload",
-      "similarity": 0.42857142857142855
+      "extracted_id": "ECOMMERCE_GATEWAY-012",
+      "extracted_title": "Observability and Monitoring",
+      "gt_id": "Merchant Dashboard",
+      "gt_name": "Real-time transaction monitoring and analytics",
+      "similarity": 0.3333333333333333
     },
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-021",
-      "extracted_title": "Refund Processing",
-      "gt_id": "Refund Management",
-      "gt_name": "Full and partial refund processing",
+      "extracted_id": "ECOMMERCE_GATEWAY-014",
+      "extracted_title": "Payment Processing Workflow",
+      "gt_id": "Payment Checkout Workflow",
+      "gt_name": "End-to-end card payment processing flow",
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-015",
+      "extracted_title": "Security and Compliance",
+      "gt_id": "PCI DSS Compliance",
+      "gt_name": "Security and encryption standards",
       "similarity": 0.4
     },
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-023",
-      "extracted_title": "Payment Method Management",
+      "extracted_id": "ECOMMERCE_GATEWAY-017",
+      "extracted_title": "Refund and Chargeback Management",
+      "gt_id": "Refund Management",
+      "gt_name": "Full and partial refund processing",
+      "similarity": 0.32142857142857145
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-019",
+      "extracted_title": "E-Commerce Payment Processing",
+      "gt_id": "Payment Checkout Workflow",
+      "gt_name": "End-to-end card payment processing flow",
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-020",
+      "extracted_title": "Subscription and Recurring Billing Management",
       "gt_id": "Subscription Billing",
       "gt_name": "Recurring payment management",
-      "similarity": 0.5
+      "similarity": 0.3333333333333333
+    },
+    {
+      "extracted_id": "ECOMMERCE_GATEWAY-021",
+      "extracted_title": "API and Integration",
+      "gt_id": "Merchant Onboarding",
+      "gt_name": "Self-service KYC and API provisioning",
+      "similarity": 0.3333333333333333
     }
   ],
   "missed": [
@@ -70,11 +112,6 @@
       "description": "Loads within 2 seconds on 3G, supports auto-fill, real-time card detection, saved cards"
     },
     {
-      "gt_id": "Merchant Onboarding",
-      "gt_name": "Self-service KYC and API provisioning",
-      "description": "Document upload, verification, sandbox environment provisioning within 5 minutes"
-    },
-    {
       "gt_id": "Webhook Notifications",
       "gt_name": "Event-driven merchant notifications",
       "description": "HMAC-SHA256 signed webhooks with retry logic for payment, refund, chargeback events"
@@ -83,16 +120,6 @@
       "gt_id": "Settlement Engine",
       "gt_name": "Daily multi-currency settlement processing",
       "description": "Daily settlement at 00:00 UTC with locked exchange rates and detailed reports"
-    },
-    {
-      "gt_id": "PCI DSS Compliance",
-      "gt_name": "Security and encryption standards",
-      "description": "AES-256 encryption, TLS 1.3, annual Level 1 audit, rate limiting, log masking"
-    },
-    {
-      "gt_id": "Cart Integration API",
-      "gt_name": "Shopping cart and checkout API",
-      "description": "Line items with SKU, discount validation, shipping cost calculation, abandonment tracking"
     },
     {
       "gt_id": "Checkout UI Layout",
@@ -110,19 +137,14 @@
       "description": "Right-side 400px panel with vertical stepper (Authorization, Capture, Settlement), status badges, refund action button with confirmation dialog"
     },
     {
-      "gt_id": "Payment Checkout Workflow",
-      "gt_name": "End-to-end card payment processing flow",
-      "description": "10-step flow: PaymentIntent creation, tokenization, fraud scoring, 3DS auth, bank authorization, webhook notification, with decision points for auto-capture"
+      "gt_id": "Onboarding Wizard UI",
+      "gt_name": "4-step merchant onboarding wizard with KYC upload",
+      "description": "Horizontal progress bar, drag-and-drop document upload zone, micro-deposit bank verification, auto-provisioned sandbox"
     },
     {
       "gt_id": "Subscription Dunning Flow",
       "gt_name": "Failed recurring payment retry and dunning email workflow",
       "description": "Retry on days 1/3/5/7, escalating dunning emails with update-payment CTA, merchant-brandable templates, auto-cancellation after 7 days"
-    },
-    {
-      "gt_id": "API Gateway Architecture",
-      "gt_name": "API authentication, versioning, and rate limiting",
-      "description": "Bearer token auth, URL-based versioning with 12-month deprecation, 100 req/sec rate limit, consistent response envelope"
     },
     {
       "gt_id": "Card Network Integration",
@@ -162,98 +184,53 @@
   ],
   "over_created": [
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-002",
-      "title": "Saved Cards and Auto-Fill",
-      "type": "Functional"
-    },
-    {
       "extracted_id": "ECOMMERCE_GATEWAY-003",
-      "title": "Manage Subscriptions",
-      "type": "Functional"
+      "title": "Performance and Scalability",
+      "type": "Non-Functional"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-004",
-      "title": "Make Payments",
-      "type": "Functional"
+      "title": "Data Model and Entity Relationships",
+      "type": "Data Model"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-005",
-      "title": "View Payment Summaries",
-      "type": "Functional"
+      "title": "Data Validation and Retention",
+      "type": "Non-Functional"
     },
     {
-      "extracted_id": "ECOMMERCE_GATEWAY-006",
-      "title": "Receive Transaction Notifications",
+      "extracted_id": "ECOMMERCE_GATEWAY-007",
+      "title": "Webhook Delivery and Notification",
       "type": "Functional"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-008",
-      "title": "View Transaction Trends",
-      "type": "Functional"
+      "title": "Non-Functional Requirements",
+      "type": "Non-Functional"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-009",
-      "title": "Search and Manage Transactions",
+      "title": "Merchant Dashboard",
       "type": "Functional"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-010",
-      "title": "Access Automated Settlement Reports",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-011",
-      "title": "Custom Report Builder",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-012",
-      "title": "Display Transaction Summary",
-      "type": "UI"
+      "title": "Transaction Management Workflow",
+      "type": "Workflow"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-013",
-      "title": "Refund and Chargeback Management",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-014",
-      "title": "Display Checkout Page",
-      "type": "UI"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-015",
-      "title": "Merchant Dashboard Overview",
-      "type": "UI"
+      "title": "Payment Gateway Architecture",
+      "type": "Architecture"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-016",
-      "title": "Transaction Detail Modal",
-      "type": "UI"
+      "title": "Multi-Currency Support and Fraud Detection",
+      "type": "Functional"
     },
     {
       "extracted_id": "ECOMMERCE_GATEWAY-018",
-      "title": "Export Data",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-019",
-      "title": "Refund Transaction",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-020",
-      "title": "Filter Dashboard",
-      "type": "Functional"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-022",
-      "title": "Dashboard Transaction Details",
-      "type": "UI"
-    },
-    {
-      "extracted_id": "ECOMMERCE_GATEWAY-024",
-      "title": "Customer Checkout",
+      "title": "Merchant Onboarding and Management",
       "type": "Functional"
     }
   ]
