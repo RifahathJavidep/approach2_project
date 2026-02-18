@@ -52,7 +52,8 @@ app.add_middleware(
 class ExtractionRequest(BaseModel):
     """Request body for POST /extract"""
     project_id: str
-    file_urls: List[str]  # S3 URLs or S3 keys
+    file_urls: List[str]  # S3 URLs, FTP/SFTP URLs, or S3 keys
+    storage: Optional[str] = "s3"  # 's3' or 'ftp' (Miipe Team Server)
 
 class UploadUrlRequest(BaseModel):
     """Request body for POST /generate-upload-url"""
@@ -119,6 +120,7 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
 
     try:
         from s3_utils import download_from_s3, upload_json_to_s3
+        from ftp_utils import download_from_miipe_server, upload_json_to_miipe_server
         from extract_requirements import extract_from_files
 
         # ----------------------------------------------------------
@@ -132,7 +134,13 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         local_files = []
         for url in file_urls:
             try:
-                local_path = download_from_s3(url, input_dir)
+                # Determine protocol
+                if url.startswith("ftp://") or url.startswith("sftp://"):
+                    print(f"  Detected FTP/SFTP URL: {url}")
+                    local_path = download_from_miipe_server(url, input_dir)
+                else:
+                    # Default to S3
+                    local_path = download_from_s3(url, input_dir)
                 local_files.append(local_path)
             except Exception as e:
                 print(f"  WARNING: Failed to download {url}: {e}")
@@ -160,19 +168,34 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         print(f"  Extracted {len(requirements)} requirements")
 
         # ----------------------------------------------------------
-        # Step 3: Upload results to S3
+        # Step 3: Upload results to Cloud Storage
         # ----------------------------------------------------------
-        print(f"\n3. Uploading results to S3...")
+        storage_type = request.storage.lower() if request.storage else "s3"
+        print(f"\n3. Uploading results to {storage_type.upper()}...")
 
-        # Upload requirements JSON
-        req_s3_key = f"projects/{project_id}/output/requirements.json"
-        req_s3_url = upload_json_to_s3(result, req_s3_key)
+        if storage_type == "ftp":
+            # Upload to Miipe Team Server
+            req_filename = "requirements.json"
+            model_filename = "classifier_model.json"
+            
+            # Paths on FTP: /uploads/project_id/output/...
+            # Note: ftp_utils uses FTP_REMOTE_DIR as base
+            req_s3_url = upload_json_to_miipe_server(result, f"projects/{project_id}/output/{req_filename}")
+            
+            model_s3_url = None
+            if "model_state" in result:
+                model_s3_url = upload_json_to_miipe_server(result["model_state"], f"projects/{project_id}/models/{model_filename}")
+        else:
+            # Default to S3
+            # Upload requirements JSON
+            req_s3_key = f"projects/{project_id}/output/requirements.json"
+            req_s3_url = upload_json_to_s3(result, req_s3_key)
 
-        # Upload trained model state if available
-        model_s3_url = None
-        if "model_state" in result:
-            model_s3_key = f"projects/{project_id}/models/classifier_model.json"
-            model_s3_url = upload_json_to_s3(result["model_state"], model_s3_key)
+            # Upload trained model state if available
+            model_s3_url = None
+            if "model_state" in result:
+                model_s3_key = f"projects/{project_id}/models/classifier_model.json"
+                model_s3_url = upload_json_to_s3(result["model_state"], model_s3_key)
 
         print(f"\n{'='*60}")
         print(f"DONE: {len(requirements)} requirements extracted")
