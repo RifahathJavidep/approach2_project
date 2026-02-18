@@ -101,7 +101,19 @@ class RequirementExtraction(dspy.Signature):
     - Skip: tooltips, colors, animations, document metadata, scope statements
     """
     document_text = dspy.InputField()
-    requirements_json = dspy.OutputField(desc="JSON array of 3-5 HIGH-LEVEL requirements: [{'title': '...', 'description': '...', 'type': 'Functional'|'UI'|'Workflow'|'Architecture'|'Data Model'|'Non-Functional'|'Security'}]. Maximum 5 items. Merge sub-features into parent.")
+    requirements_json = dspy.OutputField(desc="""JSON array of 3-5 HIGH-LEVEL requirements: 
+    [{
+      'title': '...', 
+      'description': '...', 
+      'type': 'Functional'|'UI'|'Workflow'|'Architecture'|'Data Model'|'Non-Functional'|'Security',
+      'user_story': 'As a [role], I want [action], so that [benefit]',
+      'acceptance_criteria': ['criterion 1', 'criterion 2'],
+      'test_steps': [{'step_num': 1, 'action': '...', 'expected_result': '...', 'test_data': '...'}],
+      'test_scenarios': ['scenario 1'],
+      'assumptions': ['assumption 1'],
+      'ambiguities': ['ambiguity 1'],
+      'confidence': 'high'|'medium'|'low'
+    }]. Max 5 items. Merge sub-features.""")
 
 class RequirementClassifier(dspy.Signature):
     """Classify if this is a genuine software requirement of ANY type.
@@ -169,6 +181,14 @@ class TrainedExtractor(dspy.Module):
             )
             
             if classification.is_requirement.lower().strip() in ['yes', 'true']:
+                # Ensure all fields exist with fallback values for richness
+                candidate['user_story'] = candidate.get('user_story', f"As a user, I want to use {title} so that I can achieve my goal.")
+                candidate['acceptance_criteria'] = candidate.get('acceptance_criteria', [f"Verify {title} functionality"])
+                candidate['test_steps'] = candidate.get('test_steps', [{'step_num': 1, 'action': f'Interact with {title}', 'expected_result': 'System responds correctly', 'test_data': 'N/A'}])
+                candidate['test_scenarios'] = candidate.get('test_scenarios', [f"Successful {title} interaction"])
+                candidate['assumptions'] = candidate.get('assumptions', [])
+                candidate['ambiguities'] = candidate.get('ambiguities', [])
+                candidate['confidence'] = candidate.get('confidence', 'medium')
                 valid_requirements.append(candidate)
             else:
                 filtered_out.append(candidate)
@@ -564,15 +584,30 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
 # DSPY SETUP HELPER
 # ============================================================================
 
-def _setup_dspy(config: Dict = None):
-    """Configure DSPy with Groq LLM. Returns trained extractor."""
-    groq_key = os.getenv("GROQ_API_KEY")
-    if not groq_key:
-        raise ValueError("GROQ_API_KEY not found in .env")
+# Global LM instance to avoid re-configuring in async tasks
+_global_lm = None
 
-    lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
-    dspy.configure(lm=lm)
-    print("DSPy configured")
+def _get_lm():
+    global _global_lm
+    if _global_lm is None:
+        groq_key = os.getenv("GROQ_API_KEY")
+        if not groq_key:
+            raise ValueError("GROQ_API_KEY not found in .env")
+        _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
+    return _global_lm
+
+def _setup_dspy(config: Dict = None):
+    """Returns trained extractor using global settings."""
+    lm = _get_lm()
+    
+    # Use context manager or configure once
+    try:
+        dspy.settings.configure(lm=lm)
+    except Exception:
+        # Already configured or in a restricted context
+        pass
+        
+    print("DSPy settings checked")
 
     extractor = TrainedExtractor()
     extractor = train_extractor(extractor, config=config)
@@ -642,7 +677,7 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
         Dict with project, requirements, and model_state
     """
     print("=" * 80)
-    print(f"REQUIREMENTS EXTRACTION - {project_name.upper()}")
+    print(f"REQUIREMENTS EXTRACTION - {str(project_name).upper()}")
     print("=" * 80)
 
     # Setup DSPy and train
@@ -669,7 +704,7 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
 
     # Add IDs
     for i, req in enumerate(unique, 1):
-        req['requirement_id'] = f"{project_name.upper()}-{i:03d}"
+        req['requirement_id'] = f"{str(project_name).upper()}-{i:03d}"
 
     # Save model state for S3 upload
     model_state = save_model_state(extractor)

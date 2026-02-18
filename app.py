@@ -12,6 +12,8 @@ import shutil
 from pathlib import Path
 from typing import List, Optional
 from datetime import datetime
+import httpx
+from typing import List, Optional, Union, Any
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
@@ -51,7 +53,8 @@ app.add_middleware(
 
 class ExtractionRequest(BaseModel):
     """Request body for POST /extract"""
-    project_id: str
+    project_id: Union[str, int]
+    project_name: Optional[str] = None
     file_urls: List[str]  # S3 URLs or S3 keys
 
 class UploadUrlRequest(BaseModel):
@@ -150,11 +153,16 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         # ----------------------------------------------------------
         print(f"\n2. Extracting requirements...")
 
-        result = extract_from_files(
-            project_name=project_id,
-            file_paths=local_files,
-            output_dir=output_dir,
-        )
+        import dspy
+        from extract_requirements import _get_lm
+        
+        # Use dspy.context for thread/async safety
+        with dspy.context(lm=_get_lm()):
+            result = extract_from_files(
+                project_name=project_id,
+                file_paths=local_files,
+                output_dir=output_dir,
+            )
 
         requirements = result["requirements"]
         print(f"  Extracted {len(requirements)} requirements")
@@ -177,6 +185,49 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         print(f"\n{'='*60}")
         print(f"DONE: {len(requirements)} requirements extracted")
         print(f"{'='*60}")
+
+        # ----------------------------------------------------------
+        # Step 4: Automatically store in Java Backend (Postgres)
+        # ----------------------------------------------------------
+        try:
+            java_backend_url = f"http://localhost:8080/api/requirements/project/{project_id}"
+            print(f"\n4. Storing {len(requirements)} requirements in Java backend...")
+            
+            # Map Python format to Java DTO format
+            mapped_requirements = []
+            for req in requirements:
+                mapped_requirements.append({
+                    "short_title": req.get("title") or req.get("short_title"),
+                    "description": req.get("description"),
+                    "is_requirement": True,
+                    "user_story": req.get("user_story", ""),
+                    "acceptance_criteria": req.get("acceptance_criteria", []),
+                    "test_steps": req.get("test_steps", []),
+                    "test_scenarios": req.get("test_scenarios", []),
+                    "assumptions": req.get("assumptions", []),
+                    "ambiguities": req.get("ambiguities", []),
+                    "confidence": req.get("confidence", "High"),
+                    "extraction_model": "llama-3.3-70b-versatile",
+                    "extraction_timestamp": datetime.utcnow().isoformat(),
+                    "validation_confirmed": False,
+                    "metadata": {
+                        "source_file": (file_urls[0].split("/")[-1]) if file_urls else "unknown",
+                        "extraction_timestamp": datetime.utcnow().isoformat()
+                    }
+                })
+
+            async with httpx.AsyncClient() as client:
+                java_response = await client.post(
+                    java_backend_url, 
+                    json=mapped_requirements,
+                    timeout=10.0
+                )
+                if java_response.status_code in [200, 201]:
+                    print(f"  ✓ Successfully stored in Java backend (Postgres)")
+                else:
+                    print(f"  ⚠ Java backend returned error: {java_response.status_code} - {java_response.text}")
+        except Exception as e:
+            print(f"  ⚠ Failed to store in Java backend: {e}")
 
         return {
             "status": "success",
@@ -231,7 +282,7 @@ async def generate_upload_url_endpoint(request: UploadUrlRequest):
         )
 
 
-@app.get("/requirements/{project_id}")
+@app.get("/requirements/project/{project_id}")
 async def get_requirements(project_id: str):
     """
     Get cached requirements from S3 (no re-extraction).
