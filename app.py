@@ -10,10 +10,9 @@ import sys
 import tempfile
 import shutil
 from pathlib import Path
-from typing import List, Optional
-from datetime import datetime
-import httpx
-from typing import List, Optional, Union, Any
+from typing import List, Optional, Union, Any, Dict
+from celery.result import AsyncResult
+from celery_app import extract_requirements_task
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
@@ -113,6 +112,18 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
     if not project_id:
         raise HTTPException(status_code=400, detail="No project_id provided")
 
+    # Load multi-project config for training context
+    config_path = Path(__file__).parent / "config" / "config.json"
+    multi_project_config = None
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                multi_project_config = json.load(f)
+                # Ensure the current project is correctly set in config
+                multi_project_config['current_project'] = project_id
+        except Exception as e:
+            print(f"  WARNING: Failed to load config.json: {e}")
+
     # Create temp directory for this extraction
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_{project_id}")
     input_dir = os.path.join(tmp_dir, "input")
@@ -149,6 +160,22 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
         print(f"  Downloaded {len(local_files)} file(s)")
 
         # ----------------------------------------------------------
+        # Step 1.5: Check for existing model state LOCALLY
+        # ----------------------------------------------------------
+        model_dir = Path(__file__).parent / "models" / str(project_id)
+        model_path = model_dir / "classifier_model.json"
+        existing_model_state = None
+        
+        if model_path.exists():
+            try:
+                print(f"\n1.5. Found existing model LOCALLY: {model_path}")
+                with open(model_path, 'r') as f:
+                    existing_model_state = json.load(f)
+                print("  ✓ Model state loaded from local disk")
+            except Exception as e:
+                print(f"  ⚠ Failed to load local model: {e}")
+
+        # ----------------------------------------------------------
         # Step 2: Extract requirements from all files
         # ----------------------------------------------------------
         print(f"\n2. Extracting requirements...")
@@ -162,23 +189,32 @@ async def extract_requirements_endpoint(request: ExtractionRequest):
                 project_name=project_id,
                 file_paths=local_files,
                 output_dir=output_dir,
+                model_state=existing_model_state,
+                config=multi_project_config
             )
 
         requirements = result["requirements"]
         print(f"  Extracted {len(requirements)} requirements")
 
         # ----------------------------------------------------------
-        # Step 3: Upload results to S3
+        # Step 3: Upload results to S3 & Save model LOCALLY
         # ----------------------------------------------------------
-        print(f"\n3. Uploading results to S3...")
+        print(f"\n3. Uploading results to S3 and Saving Model Locally...")
 
-        # Upload requirements JSON
+        # Upload requirements JSON to S3
         req_s3_key = f"projects/{project_id}/output/requirements.json"
         req_s3_url = upload_json_to_s3(result, req_s3_key)
 
-        # Upload trained model state if available
+        # Save trained model state LOCALLY
         model_s3_url = None
         if "model_state" in result:
+            os.makedirs(model_dir, exist_ok=True)
+            with open(model_path, 'w') as f:
+                json.dump(result["model_state"], f, indent=2)
+            print(f"  ✓ Model state saved LOCALLY to: {model_path}")
+            
+            # (Optional) Still upload a backup to S3 if desired, 
+            # but the user asked to work locally.
             model_s3_key = f"projects/{project_id}/models/classifier_model.json"
             model_s3_url = upload_json_to_s3(result["model_state"], model_s3_key)
 
@@ -320,6 +356,95 @@ async def get_requirements(project_id: str):
 # ============================================================================
 # MAIN
 # ============================================================================
+
+@app.post("/extract-async")
+async def extract_requirements_async(request: ExtractionRequest):
+    """
+    Asynchronous version of the extraction endpoint.
+    Queues the task in Celery and returns a task_id immediately.
+    """
+    project_id = request.project_id
+    file_urls = request.file_urls
+    
+    if not project_id:
+        raise HTTPException(status_code=400, detail="No project_id provided")
+
+    # Load multi-project config
+    config_path = Path(__file__).parent / "config" / "config.json"
+    multi_project_config = None
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                multi_project_config = json.load(f)
+                multi_project_config['current_project'] = project_id
+        except Exception:
+            pass
+
+    # Check local model
+    model_dir = Path(__file__).parent / "models" / str(project_id)
+    model_path = model_dir / "classifier_model.json"
+    existing_model_state = None
+    if model_path.exists():
+        try:
+            with open(model_path, 'r') as f:
+                existing_model_state = json.load(f)
+        except Exception:
+            pass
+
+    # Create temp directory
+    tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_async_{project_id}")
+    input_dir = os.path.join(tmp_dir, "input")
+    output_dir = os.path.join(tmp_dir, "output")
+    os.makedirs(input_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Download files (Worker will need local paths)
+    from s3_utils import download_from_s3
+    local_files = []
+    for url in file_urls:
+        try:
+            local_path = download_from_s3(url, input_dir)
+            local_files.append(local_path)
+        except Exception:
+            pass
+
+    if not local_files:
+        raise HTTPException(status_code=400, detail="Failed to download any files from S3")
+
+    # Dispatch to Celery
+    task = extract_requirements_task.delay(
+        project_id=str(project_id),
+        local_files=local_files,
+        output_dir=output_dir,
+        existing_model_state=existing_model_state,
+        multi_project_config=multi_project_config
+    )
+
+    return {
+        "status": "accepted",
+        "task_id": task.id,
+        "message": "Requirement extraction queued successfully"
+    }
+
+
+@app.get("/status/{task_id}")
+async def get_task_status(task_id: str):
+    """
+    Check the status of a Celery task.
+    """
+    task_result = AsyncResult(task_id)
+    response = {
+        "task_id": task_id,
+        "status": task_result.status,
+    }
+    
+    if task_result.status == 'SUCCESS':
+        response["result"] = task_result.result
+    elif task_result.status == 'FAILURE':
+        response["error"] = str(task_result.result)
+    
+    return response
+
 
 if __name__ == "__main__":
     print("Starting PTW Requirements Extractor API...")

@@ -596,7 +596,7 @@ def _get_lm():
         _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
     return _global_lm
 
-def _setup_dspy(config: Dict = None):
+def _setup_dspy(config: Dict = None, model_state: Dict = None):
     """Returns trained extractor using global settings."""
     lm = _get_lm()
     
@@ -610,7 +610,17 @@ def _setup_dspy(config: Dict = None):
     print("DSPy settings checked")
 
     extractor = TrainedExtractor()
-    extractor = train_extractor(extractor, config=config)
+    
+    if model_state:
+        print("  ✓ Loading existing model state (skipping training)")
+        try:
+            extractor.classifier.load_state(model_state)
+        except Exception as e:
+            print(f"  ⚠ Failed to load model state: {e}. Falling back to training.")
+            extractor = train_extractor(extractor, config=config)
+    else:
+        extractor = train_extractor(extractor, config=config)
+        
     return extractor
 
 def _process_single_file(file_path: str, extractor) -> tuple:
@@ -641,6 +651,7 @@ def _process_single_file(file_path: str, extractor) -> tuple:
     for i, chunk in enumerate(chunks, 1):
         print(f"    Chunk {i}/{len(chunks)}...", end='')
         try:
+            # Important: extract_from_files calls extractor as a module
             result = extractor(document_text=chunk)
             all_reqs.extend(result['requirements'])
             all_filtered.extend(result['filtered_out'])
@@ -663,7 +674,7 @@ def save_model_state(extractor) -> Dict:
 # EXTRACT FROM FILES (FastAPI / S3 flow)
 # ============================================================================
 
-def extract_from_files(project_name: str, file_paths: List[str], output_dir: str = None) -> Dict:
+def extract_from_files(project_name: str, file_paths: List[str], output_dir: str = None, model_state: Dict = None, config: Dict = None) -> Dict:
     """
     Extract requirements from a list of local file paths.
     Called by FastAPI after downloading files from S3.
@@ -672,6 +683,8 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
         project_name: Project identifier (e.g. 'ptw_phase1')
         file_paths: List of local file paths to process
         output_dir: Optional local output directory to save results
+        model_state: Optional pre-trained model state to skip training
+        config: Optional multi-project config for training
 
     Returns:
         Dict with project, requirements, and model_state
@@ -680,8 +693,8 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
     print(f"REQUIREMENTS EXTRACTION - {str(project_name).upper()}")
     print("=" * 80)
 
-    # Setup DSPy and train
-    extractor = _setup_dspy()
+    # Setup DSPy (load or train)
+    extractor = _setup_dspy(model_state=model_state, config=config)
 
     # Process each file
     all_reqs = []
@@ -707,13 +720,13 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
         req['requirement_id'] = f"{str(project_name).upper()}-{i:03d}"
 
     # Save model state for S3 upload
-    model_state = save_model_state(extractor)
+    new_model_state = save_model_state(extractor)
 
     # Build result
     result_data = {
         'project': project_name,
         'requirements': unique,
-        'model_state': model_state,
+        'model_state': new_model_state,
     }
 
     # Optionally save locally
