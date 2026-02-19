@@ -1,5 +1,5 @@
 {
-  "current_project": "crm_cloud",
+  "current_project": "logistics_manager",
   "output_dir": "output",
   "chunk_size": 6000,
   "similarity_threshold": 0.5,

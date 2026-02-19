@@ -1,0 +1,536 @@
+{
+  "project": "fintech_app",
+  "requirements": [
+    {
+      "title": "Comprehensive ATM Access",
+      "description": "Fee-free ATM transactions at over 55,000 locations through the Allpoint network, with an ATM locator and map interface for convenience.",
+      "type": "Business Feature",
+      "user_story": "As a cardholder, I want to have convenient and fee-free access to my money through a wide network of ATMs.",
+      "acceptance_criteria": [
+        "Fee-free ATM access is available at Allpoint network locations",
+        "No fees are charged for ATM withdrawals",
+        "ATM locator and map interface are available"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Find an Allpoint network ATM location",
+          "expected_result": "ATM location is found and fee-free",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Withdraw cash from the ATM and verify no fees are charged",
+          "expected_result": "Cash is withdrawn and no fees are charged",
+          "test_data": "None"
+        }
+      ],
+      "test_scenarios": [
+        "Withdrawing cash from multiple Allpoint network ATMs"
+      ],
+      "assumptions": [
+        "The ATM is part of the Allpoint network"
+      ],
+      "ambiguities": [
+        "What happens if the ATM is not part of the Allpoint network?"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-001"
+    },
+    {
+      "title": "Secure Card Management",
+      "description": "Ability to freeze/unfreeze cards instantly through a mobile app interface, with security measures to ensure only authorized users can perform these actions.",
+      "type": "Business Feature",
+      "user_story": "As a cardholder, I want to be able to control my card\u2019s status for security purposes.",
+      "acceptance_criteria": [
+        "Card can be frozen/unfrozen from the app",
+        "Card status is updated in real-time",
+        "Security measures are in place to prevent unauthorized actions"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Open the app and navigate to card settings",
+          "expected_result": "Card freeze/unfreeze option is available",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Freeze the card and verify the status",
+          "expected_result": "Card is frozen and status is updated",
+          "test_data": "None"
+        }
+      ],
+      "test_scenarios": [
+        "Freezing and unfreezing the card multiple times"
+      ],
+      "assumptions": [
+        "The app has the necessary permissions to freeze/unfreeze the card"
+      ],
+      "ambiguities": [
+        "What happens if the card is frozen/unfrozen multiple times in a row?"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-002"
+    },
+    {
+      "title": "Cashback Rewards",
+      "description": "Earn 1% cashback on all purchases, with the ability to track expenditures and earn bonus cashback on specific categories.",
+      "type": "Business Feature",
+      "user_story": "As a cardholder, I want to earn cashback rewards on my purchases to get more value from my debit card.",
+      "acceptance_criteria": [
+        "1% cashback is earned on all debit card purchases",
+        "Bonus cashback categories are available and rotate monthly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Make a purchase using the debit card",
+          "expected_result": "1% cashback is earned on the purchase",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the cashback is deposited to the savings account weekly",
+          "expected_result": "Cashback is deposited to the savings account weekly",
+          "test_data": "None"
+        }
+      ],
+      "test_scenarios": [
+        "Earning cashback on multiple purchases"
+      ],
+      "assumptions": [
+        "The purchase is eligible for cashback rewards"
+      ],
+      "ambiguities": [
+        "What happens if the purchase is not eligible for cashback rewards?"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-003"
+    },
+    {
+      "title": "Real-Time Market Data",
+      "description": "Continuous stream of current market data for informed trading decisions, achieved through integration with Alpaca Markets API.",
+      "type": "Functional",
+      "user_story": "As a user, I want to view real-time market data, so that I can make informed trading decisions.",
+      "acceptance_criteria": [
+        "Market data is retrieved",
+        "Data is displayed in real-time"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate market data retrieval",
+          "expected_result": "Alpaca Markets API integration",
+          "test_data": "Valid API credentials"
+        },
+        {
+          "step_num": 2,
+          "action": "Enter API credentials",
+          "expected_result": "Market data displayed",
+          "test_data": "Valid market data"
+        }
+      ],
+      "test_scenarios": [
+        "Valid API credentials",
+        "Invalid API credentials"
+      ],
+      "assumptions": [
+        "Alpaca Markets API integration is enabled",
+        "API credentials are valid"
+      ],
+      "ambiguities": [
+        "Market data retrieval failure handling"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-004"
+    },
+    {
+      "title": "Instant P2P Transfers",
+      "description": "Initiate peer-to-peer instant transfers securely through biometric verification and FedNow integration.",
+      "type": "Functional",
+      "user_story": "As a user, I want to initiate a P2P instant transfer, so that I can send money quickly.",
+      "acceptance_criteria": [
+        "Transfer is initiated",
+        "Transfer is completed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate transfer",
+          "expected_result": "Biometric verification prompt",
+          "test_data": "Valid biometric data"
+        },
+        {
+          "step_num": 2,
+          "action": "Enter biometric data",
+          "expected_result": "Session token validated",
+          "test_data": "Valid session token"
+        },
+        {
+          "step_num": 3,
+          "action": "Validate sender balance",
+          "expected_result": "Balance confirmed",
+          "test_data": "Valid sender balance"
+        }
+      ],
+      "test_scenarios": [
+        "Valid sender balance",
+        "Insufficient sender balance"
+      ],
+      "assumptions": [
+        "Biometric verification is enabled",
+        "Session token is valid"
+      ],
+      "ambiguities": [
+        "Transfer failure handling"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-005"
+    },
+    {
+      "title": "Secure Transaction Processing",
+      "description": "Ensure all transactions are secure, including encryption of sensitive data and compliance with regulatory requirements.",
+      "type": "Security",
+      "user_story": "As a system administrator, I want to ensure that all transactions are secure and compliant with regulations.",
+      "acceptance_criteria": [
+        "Transactions are encrypted",
+        "Compliance with regulatory requirements is maintained"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify transaction encryption",
+          "expected_result": "Transactions are encrypted",
+          "test_data": "Valid transaction data"
+        }
+      ],
+      "test_scenarios": [
+        "Transactions are encrypted"
+      ],
+      "assumptions": [
+        "Valid transaction data is provided"
+      ],
+      "ambiguities": [
+        "What is the format of the encrypted transactions?"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-006"
+    },
+    {
+      "title": "Account Verification",
+      "description": "System initiates micro-deposits to verify account ownership",
+      "type": "Functional",
+      "user_story": "As a user, I want to verify my account, so that I can ensure secure transactions",
+      "acceptance_criteria": [
+        "Account verification is successful",
+        "Account is confirmed"
+      ],
+      "requirement_id": "FINTECH_APP-007"
+    },
+    {
+      "title": "Debit Card Transaction Authorization",
+      "description": "System authorizes debit card transactions",
+      "type": "Functional",
+      "user_story": "As a user, I want to authorize debit card transactions, so that I can securely make purchases",
+      "acceptance_criteria": [
+        "Transaction authorization is successful",
+        "Transaction is cleared"
+      ],
+      "requirement_id": "FINTECH_APP-008"
+    },
+    {
+      "title": "Order Routing",
+      "description": "System directs orders to appropriate destinations for execution",
+      "type": "Functional",
+      "user_story": "As a user, I want to route orders, so that I can trade securities",
+      "acceptance_criteria": [
+        "Order routing is successful",
+        "Order is executed"
+      ],
+      "requirement_id": "FINTECH_APP-009"
+    },
+    {
+      "title": "App Performance",
+      "description": "App launches quickly and provides a smooth user experience",
+      "type": "Performance",
+      "user_story": "As a user, I want the app to launch quickly, so that I can start using it immediately",
+      "acceptance_criteria": [
+        "App launches to home screen in under 3 seconds"
+      ],
+      "requirement_id": "FINTECH_APP-010"
+    },
+    {
+      "title": "Security and Compliance",
+      "description": "App handles card data securely and complies with PCI DSS Level 1 requirements",
+      "type": "Security",
+      "user_story": "As a user, I want my card data to be handled securely, so that I can trust the app with my financial information",
+      "acceptance_criteria": [
+        "App handles card data in compliance with PCI DSS Level 1 certification requirements"
+      ],
+      "requirement_id": "FINTECH_APP-011"
+    },
+    {
+      "title": "Uptime and Availability",
+      "description": "System maintains an uptime of 99.99% on a monthly basis",
+      "type": "Availability",
+      "user_story": "As a user, I want to access my banking services at any time, so that I can manage my finances as needed",
+      "acceptance_criteria": [
+        "Core banking services have an uptime SLA of 99.99%"
+      ],
+      "requirement_id": "FINTECH_APP-012"
+    },
+    {
+      "title": "Savings Goal Setting",
+      "description": "User interface to input target amount and target date for savings goals",
+      "type": "Business Feature",
+      "user_story": "As a user, I want to create savings goals, so that I can track my progress",
+      "acceptance_criteria": [
+        "Target amount can be set",
+        "Target date can be set"
+      ],
+      "requirement_id": "FINTECH_APP-013"
+    },
+    {
+      "title": "Automated Savings",
+      "description": "Rounded-up amount is deposited into a savings account",
+      "type": "Business Feature",
+      "user_story": "As a user, I want my purchases to be rounded up, so that I can save more",
+      "acceptance_criteria": [
+        "Purchases are rounded up to nearest dollar",
+        "Rounded-up amount is deposited into savings"
+      ],
+      "requirement_id": "FINTECH_APP-014"
+    },
+    {
+      "title": "Investment Features",
+      "description": "Enable the purchasing of fractional ETFs and provide portfolio rebalancing",
+      "type": "Business Feature",
+      "user_story": "As a user, I want to buy and sell investments, so that I can grow my wealth",
+      "acceptance_criteria": [
+        "Fractional ETFs can be purchased",
+        "Portfolio is rebalanced automatically"
+      ],
+      "requirement_id": "FINTECH_APP-015"
+    },
+    {
+      "title": "Tax Document Generation",
+      "description": "System generates tax documents, including 1099-DIV",
+      "type": "Business Feature",
+      "user_story": "As a user, I want to generate tax documents, so that I can file taxes",
+      "acceptance_criteria": [
+        "Tax documents are generated",
+        "Documents are available for tax season"
+      ],
+      "requirement_id": "FINTECH_APP-016"
+    },
+    {
+      "title": "Cryptocurrency Trading",
+      "description": "Enable users to buy and sell cryptocurrencies",
+      "type": "Business Feature",
+      "user_story": "As a user, I want to buy and sell cryptocurrencies, so that I can invest",
+      "acceptance_criteria": [
+        "Cryptocurrencies can be bought and sold",
+        "Top 20 cryptocurrencies are available"
+      ],
+      "requirement_id": "FINTECH_APP-017"
+    },
+    {
+      "title": "Comprehensive Home Screen",
+      "description": "The home screen should display total balance, provide a transaction list, and include quick action buttons, all within a well-designed and user-friendly layout.",
+      "type": "UI Interface",
+      "user_story": "As a user, I want to view my financial information and access common actions easily from the home screen.",
+      "acceptance_criteria": [
+        "Total balance is displayed",
+        "Transaction list is shown",
+        "Quick action buttons are available"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Launch the app",
+          "expected_result": "Home screen is displayed",
+          "test_data": "Valid user credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Initial app launch"
+      ],
+      "assumptions": [
+        "User has a valid account"
+      ],
+      "ambiguities": [
+        "Layout and design specifics"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-018"
+    },
+    {
+      "title": "Crypto Price Tracking and Alerts",
+      "description": "The app should provide real-time cryptocurrency price updates, allow for customizable thresholds, and send alert notifications when these thresholds are reached.",
+      "type": "UI Interface",
+      "user_story": "As a user, I want to track cryptocurrency prices and receive alerts based on my custom thresholds.",
+      "acceptance_criteria": [
+        "Real-time crypto price updates are provided",
+        "Thresholds are customizable",
+        "Alerts are sent when thresholds are reached"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set up price alert",
+          "expected_result": "Price alert is set up successfully",
+          "test_data": "Threshold: $1000"
+        }
+      ],
+      "test_scenarios": [
+        "Real-time crypto price alert with valid data"
+      ],
+      "assumptions": [
+        "User has a crypto account"
+      ],
+      "ambiguities": [
+        "Alert notification details"
+      ],
+      "confidence": "medium",
+      "requirement_id": "FINTECH_APP-019"
+    },
+    {
+      "title": "Investment Portfolio Management",
+      "description": "The app should allow users to view their investment portfolio, including asset allocation, and provide features for managing investments.",
+      "type": "UI Interface",
+      "user_story": "As a user, I want to manage my investment portfolio and track my investments.",
+      "acceptance_criteria": [
+        "Investment portfolio is displayed",
+        "Asset allocation is shown"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View investment portfolio",
+          "expected_result": "Portfolio is displayed",
+          "test_data": "Various investments"
+        }
+      ],
+      "test_scenarios": [
+        "Initial app launch",
+        "After investment"
+      ],
+      "assumptions": [
+        "User has investments"
+      ],
+      "ambiguities": [
+        "Portfolio update frequency"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-020"
+    },
+    {
+      "title": "Secure Account Opening Process",
+      "description": "The app should provide a secure and comprehensive account opening process, including identity verification through Onfido.",
+      "type": "Workflow",
+      "user_story": "As a new user, I want to securely open an account and verify my identity.",
+      "acceptance_criteria": [
+        "Account opening process is secure",
+        "Identity verification through Onfido is successful"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Download and install the app",
+          "expected_result": "App is successfully installed",
+          "test_data": "Android or iOS device"
+        }
+      ],
+      "test_scenarios": [
+        "Successful account opening"
+      ],
+      "assumptions": [
+        "User has valid identification"
+      ],
+      "ambiguities": [
+        "What happens if the user fails identity verification?"
+      ],
+      "confidence": "high",
+      "requirement_id": "FINTECH_APP-021"
+    },
+    {
+      "title": "Selfie Capture Interface",
+      "description": "Design an interface for users to take a selfie for identity verification",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-022"
+    },
+    {
+      "title": "Government-Issued ID Photo Capture Interface",
+      "description": "Develop an interface for users to capture a photo of their government-issued ID for verification",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-023"
+    },
+    {
+      "title": "Contact Search Functionality",
+      "description": "The app allows users to search for contacts by name, phone number, or email.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-024"
+    },
+    {
+      "title": "Instant Money Transfer",
+      "description": "The app enables users to send money instantly to selected contacts.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-025"
+    },
+    {
+      "title": "User Interface for Transfer",
+      "description": "The app provides a user-friendly interface for users to initiate and confirm money transfers.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-026"
+    },
+    {
+      "title": "Fractional Stock Purchasing",
+      "description": "The app allows users to buy fractional parts of stocks or ETFs.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-027"
+    },
+    {
+      "title": "Stock Search by Ticker",
+      "description": "The app provides an option for users to search for stocks by their ticker symbols.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-028"
+    },
+    {
+      "title": "Group Management",
+      "description": "The app allows users to create and manage groups for bill splitting.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-029"
+    },
+    {
+      "title": "Bill Splitting and Payment",
+      "description": "The app facilitates the splitting of bills and payment among group members.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-030"
+    },
+    {
+      "title": "Account Management",
+      "description": "The app allows users to view their account information, manage passwords, and ensures account security.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-031"
+    },
+    {
+      "title": "Secure Transaction Processing",
+      "description": "The app ensures the security and integrity of all transactions.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-032"
+    },
+    {
+      "title": "User Account Setup",
+      "description": "The app guides users through the account setup process, including registration, information validation, password creation, and account confirmation.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-033"
+    },
+    {
+      "title": "Payment Integration",
+      "description": "The app integrates with payment systems to facilitate the transfer of funds according to the split bill.",
+      "type": "Business Feature",
+      "requirement_id": "FINTECH_APP-034"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "project": "logistics_manager",
+  "requirements": [
+    {
+      "title": "Shipment Planning and Booking",
+      "description": "Enable users to plan and book shipments efficiently, including rate shopping and carrier selection.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-001"
+    },
+    {
+      "title": "Customs Compliance and Import Regulations",
+      "description": "Provide users with the ability to ensure customs compliance and generate necessary documentation.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-002"
+    },
+    {
+      "title": "Shipment Tracking and Delivery",
+      "description": "Enable users to track shipments and manage delivery, including exception handling.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-003"
+    },
+    {
+      "title": "Warehouse Operations and Inventory Management",
+      "description": "Enable users to efficiently manage warehouse operations, including picking and packing.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-004"
+    },
+    {
+      "title": "Logistics Management and Analytics",
+      "description": "Provide users with the ability to manage logistics operations and analyze key performance metrics.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-005"
+    },
+    {
+      "title": "Security and Compliance",
+      "description": "Ensure the security and integrity of customer data and maintain compliance with regulations.",
+      "type": "Non-Functional",
+      "requirement_id": "LOGISTICS_MANAGER-006"
+    },
+    {
+      "title": "Automate Commercial Invoice",
+      "description": "Auto-generate commercial invoices based on shipment contents and destination to streamline customs documentation and reduce errors.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-007"
+    },
+    {
+      "title": "Generate Packing Slips",
+      "description": "Generate packing slips with itemized contents and declared values to facilitate customs inspection and clearance.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-008"
+    },
+    {
+      "title": "Screen for Denied Parties",
+      "description": "Screen shipments against denied party lists to ensure compliance with trade regulations and avoid penalties.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-009"
+    },
+    {
+      "title": "Estimate Duty and Tax",
+      "description": "Estimate duty and tax for shipments before they are sent to ensure accurate landed cost visibility and avoid surprises.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-010"
+    },
+    {
+      "title": "Real-time Inventory Tracking",
+      "description": "Track inventory levels across global warehouses in real-time to ensure accurate stock management and efficient order fulfillment.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-011"
+    },
+    {
+      "title": "Automated Reorder Point Calculation",
+      "description": "Automate reorder point calculation to ensure timely replenishment of stock and minimize stockouts.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-012"
+    },
+    {
+      "title": "Inventory Audit Trail",
+      "description": "Maintain an inventory audit trail to ensure accountability and compliance.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-013"
+    },
+    {
+      "title": "Order Management",
+      "description": "Enable users to efficiently manage orders from entry to fulfillment, ensuring accurate and timely processing.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-014"
+    },
+    {
+      "title": "Shipment Planning",
+      "description": "Provide users with the ability to plan shipments efficiently, including rate shopping and carrier selection.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-015"
+    },
+    {
+      "title": "Warehouse Fulfillment",
+      "description": "Enable users to efficiently manage warehouse operations, including picking and packing.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-016"
+    },
+    {
+      "title": "Carrier Rate Shopping",
+      "description": "Enables logistics managers to compare carrier rates and select the best option for their shipments, optimizing transportation costs.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-017"
+    },
+    {
+      "title": "Analytics and Reporting",
+      "description": "Provides logistics managers with insights into shipment performance and cost, enabling data-driven decision-making.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-018"
+    },
+    {
+      "title": "Shipment Creation",
+      "description": "Allow users to create and book shipments with selected carriers, including origin and destination addresses, package details, and service requirements.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-019"
+    },
+    {
+      "title": "Delivery Exception Handling",
+      "description": "Allow users to manage delivery exceptions, including resolution options and communication with carriers.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-020"
+    }
+  ]
+}

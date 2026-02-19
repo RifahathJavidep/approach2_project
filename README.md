@@ -33,20 +33,53 @@ python extract_requirements.py
 python evaluate.py
 ```
 
+## Background Processing (Celery & Redis)
+
+For long-running extractions, the project uses Celery and Redis to handle tasks in the background.
+
+### 1. Prerequisite: Redis
+Redis must be installed and running.
+```bash
+# macOS (Homebrew)
+brew install redis
+brew services start redis
+```
+
+### 2. Start Celery Worker
+Run the worker in its own terminal to process the queued jobs.
+```bash
+celery -A celery_app worker --loglevel=info
+```
+
+### 3. API Usage
+The extraction can be triggered via a non-blocking asynchronous call.
+
+- **Trigger Extraction**: `POST /extract-async`
+  - Payload matches `POST /extract`
+  - Returns a `task_id` immediately.
+- **Poll Status**: `GET /status/{task_id}`
+  - Track if the job is `PENDING`, `STARTED`, `PROGRESS`, or `SUCCESS`.
+
 ## Folder Structure
 
 ```
 approach2_project/
-├── input/                    # Place your PDF here
-├── output/                   # Results saved here
-├── ground_truth/             # Place Excel ground truth here
+├── app.py                   # FastAPI service
+├── celery_app.py            # Celery application & tasks
+├── extract_requirements.py  # AI extraction logic
+├── CELERY_REDIS_ARCHITECTURE.md # Detailed system docs
+├── models/                  # Locally saved trained models
 ├── config/
-│   └── config.json          # Configuration
-├── extract_requirements.py  # Main extraction script
-├── evaluate.py              # Evaluation script
-├── .env                     # Your API keys (create from .env.template)
-└── requirements.txt         # Python dependencies
+│   └── config.json          # Multi-project configuration
+└── requirements.txt         # Dependencies (includes Celery/Redis)
 ```
+
+## Monitoring
+You can use **Flower** to monitor background tasks in a web dashboard:
+```bash
+celery -A celery_app flower
+```
+Access at: `http://localhost:5555`
 
 ## Training Data
 

@@ -1,0 +1,319 @@
+{
+  "metrics": {
+    "precision": 0.8,
+    "recall": 0.7777777777777778,
+    "f1_score": 0.7887323943661971
+  },
+  "counts": {
+    "gt": 22,
+    "extracted": 35,
+    "true_positives": 28,
+    "false_negatives": 8,
+    "false_positives": 7
+  },
+  "matched": [
+    {
+      "extracted_id": "LOGISTICS_MANAGER-001",
+      "extracted_title": "Comprehensive Packing Slip Generation",
+      "gt_id": "Customs Documentation",
+      "gt_name": "Automated international shipping documents",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-002",
+      "extracted_title": "Real-Time Shipment Status Updates",
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-003",
+      "extracted_title": "Geofencing System with Integrated Shipment Tracking and Alerts",
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-004",
+      "extracted_title": "Publicly Accessible, Customizable, and Shareable Tracking Page",
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-005",
+      "extracted_title": "Push Notification System for Consignees",
+      "gt_id": "Shipment Notifications",
+      "gt_name": "Push notifications for status changes",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-006",
+      "extracted_title": "Carrier Performance Monitoring",
+      "gt_id": "Carrier Performance",
+      "gt_name": "SLA monitoring and carrier scorecards",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-007",
+      "extracted_title": "Carrier Performance Dashboard",
+      "gt_id": "Carrier Performance",
+      "gt_name": "SLA monitoring and carrier scorecards",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-008",
+      "extracted_title": "Shipping Functionality",
+      "gt_id": "Carrier API Integration",
+      "gt_name": "Multi-carrier shipping and tracking APIs",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-010",
+      "extracted_title": "Route Optimization",
+      "gt_id": "Route Optimization",
+      "gt_name": "AI-powered delivery route planning",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-012",
+      "extracted_title": "KPI Summary Bar",
+      "gt_id": "Shipment Dashboard UI",
+      "gt_name": "KPI summary bar and shipment data table",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-013",
+      "extracted_title": "Google Maps Integration",
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-015",
+      "extracted_title": "Shipment Booking",
+      "gt_id": "Rate Shopping UI",
+      "gt_name": "Carrier rate comparison table with booking",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-016",
+      "extracted_title": "Order Fulfillment Workflow",
+      "gt_id": "Warehouse Operations",
+      "gt_name": "Pick-pack-ship workflow management",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-017",
+      "extracted_title": "International Shipments Management",
+      "gt_id": "Customs Documentation",
+      "gt_name": "Automated international shipping documents",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-018",
+      "extracted_title": "Inventory Management System",
+      "gt_id": "Inventory Management",
+      "gt_name": "Real-time warehouse inventory tracking",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-019",
+      "extracted_title": "User Interface for Warehouse Operations",
+      "gt_id": "Warehouse Floor Plan UI",
+      "gt_name": "Interactive SVG warehouse visualization",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-021",
+      "extracted_title": "Inventory Monitoring and Alerting",
+      "gt_id": "Inventory Management",
+      "gt_name": "Real-time warehouse inventory tracking",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-022",
+      "extracted_title": "Warehouse Operations Workflow",
+      "gt_id": "Warehouse Operations",
+      "gt_name": "Pick-pack-ship workflow management",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-023",
+      "extracted_title": "Warehouse Optimization",
+      "gt_id": "Warehouse Operations",
+      "gt_name": "Pick-pack-ship workflow management",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-025",
+      "extracted_title": "Cross-Docking and Time-Sensitive Shipments Management",
+      "gt_id": "Warehouse Operations",
+      "gt_name": "Pick-pack-ship workflow management",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-026",
+      "extracted_title": "Warehouse Utilization and Capacity Management",
+      "gt_id": "Warehouse Analytics",
+      "gt_name": "Warehouse performance dashboards",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-027",
+      "extracted_title": "Warehouse Utilization Dashboard",
+      "gt_id": "Warehouse Analytics",
+      "gt_name": "Warehouse performance dashboards",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-028",
+      "extracted_title": "Order Fulfillment Metrics",
+      "gt_id": "Warehouse Fulfillment Workflow",
+      "gt_name": "Order to shipped warehouse process",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-029",
+      "extracted_title": "Labor Productivity Reporting",
+      "gt_id": "Warehouse Analytics",
+      "gt_name": "Warehouse performance dashboards",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-031",
+      "extracted_title": "Shipment Planning and Rate Shopping",
+      "gt_id": "Rate Shopping UI",
+      "gt_name": "Carrier rate comparison table with booking",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-032",
+      "extracted_title": "Order Picking and Packing Process",
+      "gt_id": "Warehouse Fulfillment Workflow",
+      "gt_name": "Order to shipped warehouse process",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-033",
+      "extracted_title": "Customs Compliance",
+      "gt_id": "International Customs Workflow",
+      "gt_name": "Customs clearance for international shipments",
+      "similarity": 0.85,
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-034",
+      "extracted_title": "Shipment Management",
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "similarity": 0.85,
+      "semantic_match": true
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "Carrier Integration",
+      "gt_name": "Multi-carrier API integration",
+      "description": "FedEx, UPS, DHL, USPS, Canada Post; rate comparison, label generation, scorecards"
+    },
+    {
+      "gt_id": "Trade Compliance",
+      "gt_name": "Export control and sanctions screening",
+      "description": "Denied party screening, export license detection, duty estimation, import restrictions"
+    },
+    {
+      "gt_id": "Live Tracking Map UI",
+      "gt_name": "Full-screen map with color-coded shipment markers",
+      "description": "Truck icons by status (green/blue/red/gray), sidebar detail panel, geofence polygons, map filters for carrier/status/customer, 30-second auto-refresh"
+    },
+    {
+      "gt_id": "Shipment Lifecycle Workflow",
+      "gt_name": "End-to-end shipment creation and booking",
+      "description": "7-step flow: create shipment, package details, service requirements, parallel rate queries, carrier selection, label generation, pickup scheduling. Alternate paths for templates and no-carrier scenarios"
+    },
+    {
+      "gt_id": "IoT Sensor Integration",
+      "gt_name": "GPS trackers and environmental sensors",
+      "description": "CalAmp/Samsara GPS via MQTT, temperature/humidity for cold chain, RFID dock door readers for auto inventory updates"
+    },
+    {
+      "gt_id": "Logistics Data Model",
+      "gt_name": "Shipment and warehouse entity design",
+      "description": "Shipment/Package/TrackingEvent/InventoryItem/WarehouseOrder/CustomsDeclaration entities, TimescaleDB for time-series tracking, Redis rate caching"
+    },
+    {
+      "gt_id": "Logistics Performance SLAs",
+      "gt_name": "Platform performance and scalability targets",
+      "description": "Dashboard < 2s, rate shopping < 3s, 5000 map markers, scan latency < 200ms, 2M shipments/month, 500K tracking events/hour"
+    },
+    {
+      "gt_id": "Supply Chain Security",
+      "gt_name": "Compliance and data isolation requirements",
+      "description": "SOC 2 Type II, C-TPAT tier 2, carrier credential rotation, denied party screening < 5s, multi-tenant data isolation"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "LOGISTICS_MANAGER-009",
+      "title": "Inventory Synchronization",
+      "type": "Business Feature"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-011",
+      "title": "Real-Time Delay Detection",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-014",
+      "title": "Executive Dashboard",
+      "type": "UI Interface"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-020",
+      "title": "Inventory Forecasting and Planning",
+      "type": "Business Feature"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-024",
+      "title": "Put-Away Rules and Inventory Management",
+      "type": "Business Feature"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-030",
+      "title": "ERP System Integration",
+      "type": "Business Feature"
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-035",
+      "title": "Exception Handling",
+      "type": "Business Feature"
+    }
+  ]
+}

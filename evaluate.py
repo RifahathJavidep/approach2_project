@@ -1,12 +1,33 @@
-"""
-Evaluate Extracted Requirements Against Ground Truth
-Run with F5 in VS Code
-"""
-
 import json
 import openpyxl
+import os
+import dspy
 from pathlib import Path
 from typing import List, Dict
+from dotenv import load_dotenv
+
+# Load environment
+load_dotenv()
+
+class RequirementMatcher(dspy.Signature):
+    """Determine if a generated requirement matches a ground truth requirement.
+    
+    Match if they describe the SAME BUSINESS FUNCTION, even if wording differs.
+    Ignore technical implementation details (e.g., if one mentions 'API' and the other doesn't).
+    """
+    extracted_title = dspy.InputField()
+    extracted_desc = dspy.InputField()
+    gt_title = dspy.InputField()
+    gt_desc = dspy.InputField()
+    
+    matches = dspy.OutputField(desc="yes/no")
+    reason = dspy.OutputField(desc="brief explanation")
+
+def _get_lm():
+    groq_key = os.getenv("GROQ_API_KEY")
+    if not groq_key:
+        raise ValueError("GROQ_API_KEY not found in .env")
+    return dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
 
 def load_ground_truth(excel_path: str, sheet_name: str = "Requirements") -> List[Dict]:
     """Load ground truth from Excel."""
@@ -42,49 +63,66 @@ def calculate_similarity(text1: str, text2: str) -> float:
     return len(intersection) / len(union)
 
 def evaluate(extracted: List[Dict], ground_truth: List[Dict], threshold: float = 0.3) -> Dict:
-    """Evaluate extracted vs ground truth."""
+    """Evaluate extracted vs ground truth using both similarity and semantic matching."""
     
     matched = []
     missed = []
     over_created = []
     gt_matched = set()
     
-    # Find matches using cross-comparison of titles and descriptions
-    for ext in extracted:
-        best_match = None
-        best_score = 0.0
-        
-        for gt in ground_truth:
-            # Cross-compare all text fields for best possible match
-            title_title = calculate_similarity(ext['title'], gt['name'])
-            title_desc = calculate_similarity(ext['title'], gt['description'])
-            desc_title = calculate_similarity(ext['description'], gt['name'])
-            desc_sim = calculate_similarity(ext['description'], gt['description'])
-            # Also try full text comparison
-            ext_full = f"{ext['title']} {ext['description']}"
-            gt_full = f"{gt['name']} {gt['description']}"
-            full_sim = calculate_similarity(ext_full, gt_full)
-            score = max(title_title, title_desc, desc_title, desc_sim, full_sim)
+    lm = _get_lm()
+    matcher = dspy.Predict(RequirementMatcher)
+    
+    print(f"  Analysing {len(extracted)} extracted requirements against {len(ground_truth)} ground truth items...")
+
+    # Find matches
+    with dspy.context(lm=lm):
+        for i, ext in enumerate(extracted):
+            best_match = None
+            best_score = 0.0
+            semantic_match_found = False
             
-            if score > best_score:
-                best_score = score
-                best_match = gt
-        
-        if best_score >= threshold and best_match:
-            matched.append({
-                'extracted_id': ext['requirement_id'],
-                'extracted_title': ext['title'],
-                'gt_id': best_match['id'],
-                'gt_name': best_match['name'],
-                'similarity': best_score
-            })
-            gt_matched.add(best_match['id'])
-        else:
-            over_created.append({
-                'extracted_id': ext['requirement_id'],
-                'title': ext['title'],
-                'type': ext.get('type', 'Unknown')
-            })
+            print(f"    [{i+1}/{len(extracted)}] Matching: {ext['title'][:40]}...", end='\r')
+            
+            for gt in ground_truth:
+                # 1. Check quick word similarity
+                title_title = calculate_similarity(ext['title'], gt['name'])
+                desc_sim = calculate_similarity(ext['description'], gt['description'])
+                word_score = max(title_title, desc_sim)
+                
+                # 2. Use the semantic matcher for anything that isn't a total mismatch.
+                # This ensures we capture requirements that are phrased very differently.
+                if word_score > 0.05:
+                    result = matcher(
+                        extracted_title=ext['title'],
+                        extracted_desc=ext['description'],
+                        gt_title=gt['name'],
+                        gt_desc=gt['description']
+                    )
+                    if result.matches.lower().strip() == 'yes':
+                        best_score = max(word_score, 0.85) # High score for semantic match
+                        best_match = gt
+                        semantic_match_found = True
+                        break
+
+            if best_match:
+                matched.append({
+                    'extracted_id': ext['requirement_id'],
+                    'extracted_title': ext['title'],
+                    'gt_id': best_match['id'],
+                    'gt_name': best_match['name'],
+                    'similarity': best_score,
+                    'semantic_match': semantic_match_found
+                })
+                gt_matched.add(best_match['id'])
+            else:
+                over_created.append({
+                    'extracted_id': ext['requirement_id'],
+                    'title': ext['title'],
+                    'type': ext.get('type', 'Unknown')
+                })
+    
+    print("\n  Matching complete.")
     
     # Find missed
     for gt in ground_truth:

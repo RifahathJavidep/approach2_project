@@ -19,56 +19,41 @@ load_dotenv()
 # GENERIC TRAINING EXAMPLES
 # ============================================================================
 
-# POSITIVE: Things a user can SEE or DO in the application
+# POSITIVE: Concrete Business Features (What the user DOES)
+# 10-year Pro Tip: Focus on verbs and business outcomes.
 POSITIVE_EXAMPLES = [
-    {"text": "Display dashboard with key metrics and charts", "title": "Dashboard Display", "description": "Show key metrics and charts on main dashboard page", "type": "UI", "is_requirement": True},
-    {"text": "Export data to CSV, PDF, Excel formats", "title": "Export Functionality", "description": "Allow users to export data in multiple formats including CSV, PDF, Excel, PNG, JPEG", "type": "Functional", "is_requirement": True},
-    {"text": "Filter results by NAG group", "title": "NAG Group Filter", "description": "Implementation of NAG filter within dashboard screen", "type": "Functional", "is_requirement": True},
-    {"text": "Click bar chart to view detailed breakdown", "title": "Chart Drilldown", "description": "User can click chart elements to see detailed data breakdown", "type": "Functional", "is_requirement": True},
-    {"text": "Display usage summary with tabs for Data, Voice, Text", "title": "Usage Summary Tabs", "description": "Display tabs for Data, Voice, Long Distance, Text Messaging usage", "type": "UI", "is_requirement": True},
-    {"text": "User can favorite items for quick access", "title": "Favorite Feature", "description": "Allow users to mark items as favorites for default view", "type": "Functional", "is_requirement": True},
-    {"text": "Display 14 months billed and unbilled data usage in bar chart", "title": "Data Usage Bar Chart", "description": "Bar chart showing 14+ months of billed and unbilled data usage", "type": "UI", "is_requirement": True},
-    {"text": "Display notification when task completes", "title": "Completion Notification", "description": "Show notification message when background task finishes", "type": "UI", "is_requirement": True},
-    {"text": "Back button to navigate to previous screen", "title": "Back Button Navigation", "description": "Back button to return to previous view from detail tables", "type": "UI", "is_requirement": True},
-    {"text": "Display latest orders in shopping widget", "title": "Shopping and Orders Widget", "description": "Display latest orders in the shopping and orders widget", "type": "UI", "is_requirement": True},
-    {"text": "Show usage threshold donut wheel", "title": "Usage Threshold Donut", "description": "Display usage threshold donut wheel showing plan utilization percentage", "type": "UI", "is_requirement": True},
-    {"text": "Display warranty expiry date on subscriber page", "title": "Warranty Display", "description": "Display warranty expiry date information on subscriber information page", "type": "UI", "is_requirement": True},
+    # Sales & CRM
+    {"text": "View 360-degree contact profile with activity timeline and account hierarchy", "title": "Comprehensive Contact Profile", "description": "Unified view of contact interactions, relationship mapping, and enriched company data", "type": "Functional", "domain": "crm"},
+    {"text": "Drag-and-drop lead progression through customizable kanban pipeline stages", "title": "Interactive Deal Pipeline", "description": "Visual management of sales opportunities with stage-gate validation and automated task generation", "type": "Workflow", "domain": "crm"},
+    {"text": "Generate AI-driven revenue forecasts based on historical win rates and pipeline health", "title": "Predictive Revenue Forecasting", "description": "Machine learning analysis of sales data to predict quarterly attainment and identify at-risk deals", "type": "Functional", "domain": "crm"},
+    # UI / Interaction
+    {"text": "Indigo navigation bar with global search, activity feed, and mini-Kanban widgets", "title": "Centralized Sales Workspace UI", "description": "High-productivity interface providing immediate access to critical KPIs and upcoming events", "type": "UI", "domain": "general"},
+    {"text": "Color-coded lead scoring (0-100) with drill-down into specific positive/negative signals", "title": "Intelligent Lead Prioritization", "description": "Visual representation of lead quality with transparent reasoning for score calculation", "type": "UI", "domain": "crm"},
+    # Operations
+    {"text": "Automated email sequence creation with personalized templates and open-rate tracking", "title": "Sales Outreach Automation", "description": "Multi-step communication workflows with performance analytics and automated follow-up scheduling", "type": "Workflow", "domain": "general"},
+    {"text": "Bulk export of validated customer records in GDPR-compliant formats", "title": "Secure Data Portability", "description": "Verified export of project data ensuring compliance with regional privacy regulations", "type": "Functional", "domain": "general"},
+    # Healthcare Specifics (Golden Samples)
+    {"text": "HIPAA-compliant video consultation with provider-patient screen sharing and chat", "title": "Secure Telehealth Consultation", "description": "Encrypted video session with integrated clinical tools and session recording", "type": "Workflow", "domain": "healthcare"},
+    {"text": "Real-time sync of patient wearables (heart rate, glucose) with automated alerting", "title": "Remote Patient Monitoring", "description": "Biometric data integration for chronic care management with early warning triggers", "type": "Functional", "domain": "healthcare"},
 ]
 
-# NEGATIVE: Things that are NOT user-facing requirements
+# NEGATIVE: Technical Noise, Infrastructure, and Document Metadata (The "How", not the "What")
 NEGATIVE_EXAMPLES = [
-    # Performance / Non-functional
-    {"text": "Dashboard must load within 2 seconds", "title": "Dashboard Load Time", "description": "Page render time under 2 seconds", "type": "Performance", "is_requirement": False},
-    {"text": "Support 1000 concurrent users", "title": "Concurrent User Capacity", "description": "System handles 1000 simultaneous users", "type": "Performance", "is_requirement": False},
-    # Technical / Architecture
-    {"text": "Implement REST API for data access", "title": "REST API Implementation", "description": "Build RESTful API endpoints", "type": "Technical", "is_requirement": False},
-    {"text": "Use MongoDB for data storage", "title": "Database Technology", "description": "Store data in MongoDB database", "type": "Technical", "is_requirement": False},
-    {"text": "Data integration via ETL pipeline", "title": "Data Integration", "description": "ETL process to sync data from source systems", "type": "Technical", "is_requirement": False},
-    {"text": "System integrates with backend BBSSC service", "title": "Backend Integration", "description": "Integration with BBSSC backend service layer", "type": "Technical", "is_requirement": False},
-    # Design specs / UI details (too granular — NOT actual requirements)
-    {"text": "Display dates in YYYY-MM-DD format", "title": "Date Format Specification", "description": "Use ISO format for date display", "type": "UI Detail", "is_requirement": False},
-    {"text": "Use blue color (#0066CC) for primary buttons", "title": "Button Color Scheme", "description": "Primary button color specification", "type": "UI Detail", "is_requirement": False},
-    {"text": "Show tooltip when hovering over chart element", "title": "Hover for Tooltip", "description": "Tooltip displayed on mouse hover over chart bars", "type": "UI Detail", "is_requirement": False},
-    {"text": "Use color delineation for different data categories", "title": "Color Delineation", "description": "Different colors for different data types in charts", "type": "UI Detail", "is_requirement": False},
-    {"text": "Add loading spinner while data loads", "title": "Spin Button", "description": "Spinner animation during data loading", "type": "UI Detail", "is_requirement": False},
-    {"text": "Auto-adjust layout when data is empty", "title": "Auto-Adjust Empty Data", "description": "Automatically adjust display when no data available", "type": "UI Detail", "is_requirement": False},
-    {"text": "Sort data in table columns and paginate results", "title": "Sort and Paginate Data", "description": "Table sorting and pagination functionality", "type": "UI Detail", "is_requirement": False},
-    {"text": "Display billing period information label", "title": "Billing Period Information", "description": "Show billing period label on dashboard", "type": "UI Detail", "is_requirement": False},
-    {"text": "Display dashboard based on user role permissions", "title": "Role-Based Dashboard View", "description": "Show dashboard based on user roles and permissions", "type": "Technical", "is_requirement": False},
-    # Vague / Generic
-    {"text": "Ensure system security", "title": "Security", "description": "Implement security measures", "type": "Technical", "is_requirement": False},
-    {"text": "Optimize performance", "title": "Performance Optimization", "description": "Improve system performance", "type": "Technical", "is_requirement": False},
-    {"text": "System must be scalable", "title": "Scalability", "description": "Ensure system can scale", "type": "Technical", "is_requirement": False},
-    {"text": "Navigate between pages", "title": "Navigation", "description": "General navigation between application pages", "type": "Vague", "is_requirement": False},
-    {"text": "Display data visualization", "title": "Data Visualization", "description": "General data visualization capability", "type": "Vague", "is_requirement": False},
-    # Process / Document noise
-    {"text": "Conduct annual compliance audit", "title": "Compliance Audit", "description": "Yearly audit for regulatory compliance", "type": "Process", "is_requirement": False},
-    {"text": "This document provides a detailed solution design", "title": "Document Overview", "description": "Introduction and executive summary of the document", "type": "Document Noise", "is_requirement": False},
-    {"text": "The objective is to implement key enhancements", "title": "Project Objective", "description": "High-level project objective statement", "type": "Document Noise", "is_requirement": False},
-    {"text": "Bell needs to introduce enhancements to streamline management", "title": "Problem Statement", "description": "Business problem statement from executive summary", "type": "Document Noise", "is_requirement": False},
-    {"text": "Phase 1A scope includes dashboard and warranty features", "title": "Scope Summary", "description": "Summary of what is in scope for this phase", "type": "Document Noise", "is_requirement": False},
-    {"text": "Impacted systems include BBSSC and eOrdering", "title": "Impacted Systems", "description": "List of systems affected by the project", "type": "Technical", "is_requirement": False},
-    {"text": "High level CS flow diagram", "title": "CS Flow Diagram", "description": "Reference to a conceptual solution flow diagram", "type": "Document Noise", "is_requirement": False},
+    # Infrastructure & Technical
+    {"text": "Implement API Gateway for JWT-based authentication and rate limiting", "title": "API Gateway Infrastructure", "description": "Security layer for internal service communication and traffic control", "type": "Technical", "is_requirement": False},
+    {"text": "Design multi-tenant RLS (Row Level Security) for database partitioning", "title": "Multi-Tenant Data Security", "description": "Internal database isolation logic to prevent data leaks between clients", "type": "Technical", "is_requirement": False},
+    {"text": "Integrate with Clearbit API and Twilio via internal webhook handlers", "title": "API Integration Service", "description": "Backend connection logic for third-party enrichment and voice services", "type": "Technical", "is_requirement": False},
+    {"text": "Partition activity tables by month for PostgreSQL performance optimization", "title": "Database Optimization", "description": "Internal storage strategy to maintain query speed at scale", "type": "Technical", "is_requirement": False},
+    {"text": "Set up Elasticsearch CDC (Change Data Capture) indexing", "title": "Search Indexing Pipeline", "description": "Technical data sync between RDBMS and Search Engine", "type": "Technical", "is_requirement": False},
+    # UI Micro-Details (Too Granular)
+    {"text": "Use slide-in panel for lead details and color-coded score gradients", "title": "Lead Detail Animation", "description": "Specific CSS and animation effects for the lead interface", "type": "UI Detail", "is_requirement": False},
+    {"text": "Show tooltip with company logo on deal card hover", "title": "UI Hover Effect", "description": "Interactive micro-transition for visual polish", "type": "UI Detail", "is_requirement": False},
+    # SLAs & Performance (Non-functional)
+    {"text": "Maintain 99.95% uptime with RTO less than 10 minutes", "title": "System Availability SLA", "description": "Standard service level agreement for platform reliability", "type": "Non-Functional", "is_requirement": False},
+    {"text": "All API responses must return in under 200ms at p95", "title": "Latency Targets", "description": "Technical performance benchmark", "type": "Non-Functional", "is_requirement": False},
+    # Document Noise
+    {"text": "The objective of this phase is to streamline sales management", "title": "Project Objective", "description": "General summary statement from the executive overview", "type": "Document Noise", "is_requirement": False},
+    {"text": "Phase 1A scope includes the baseline CRM modules", "title": "Scope Statement", "description": "Document metadata regarding project boundaries", "type": "Document Noise", "is_requirement": False},
 ]
 
 # ============================================================================
@@ -76,32 +61,23 @@ NEGATIVE_EXAMPLES = [
 # ============================================================================
 
 class RequirementExtraction(dspy.Signature):
-    """Extract HIGH-LEVEL software requirements from the document text.
+    """Extract DETAILED BUSINESS requirements across three granular layers.
     
-    Cover ALL categories: Functional, UI/Wireframe, Workflow, Architecture,
-    Data Model, Non-Functional (SLAs/performance), Security/Compliance.
-    
-    CRITICAL: Extract only 3-5 TOP-LEVEL requirements per chunk.
-    Merge related sub-items into ONE parent requirement.
-    
-    GOOD (high-level, merged):
-    - 'API Gateway Architecture' (covers auth, versioning, rate limiting)
-    - 'Payment Checkout Workflow' (covers the full 10-step flow)
-    - 'PCI DSS Compliance' (covers encryption, audit, TLS)
-    
-    BAD (too granular - merge these UP):
-    - 'Rate Limiting' (part of API Gateway)
-    - 'Bearer Token Auth' (part of API Gateway)  
-    - 'Hover for tooltip', 'Color code bars' (UI micro-details - skip)
+    A 10-year professional focus:
+    1. EXCLUDE: Technical implementation noise (e.g., 'API Gateway routes', 'DB schemas').
+    2. INCLUDE:
+       - LAYER 1 (Business Features): Primary user-facing capabilities.
+       - LAYER 2 (UI Interface): Specific screens, widgets, navigation, and indicators.
+       - LAYER 3 (Workflows): Step-by-step end-to-step business processes.
     
     RULES:
-    - Maximum 3-5 requirements per chunk, NOT more
-    - Each requirement should represent a MAJOR capability area
-    - Merge ALL sub-features into their parent requirement
-    - Skip: tooltips, colors, animations, document metadata, scope statements
+    - Extract ALL distinct requirements found in the text.
+    - DO NOT merge a 'UI detail' into a 'Business Feature' if the UI has its own logic.
+    - Title should be descriptive (3-8 words).
+    - Description must provide specific context from the document.
     """
     document_text = dspy.InputField()
-    requirements_json = dspy.OutputField(desc="""JSON array of 3-5 HIGH-LEVEL requirements: 
+    requirements_json = dspy.OutputField(desc="""JSON array of ALL requirements found: 
     [{
       'title': '...', 
       'description': '...', 
@@ -113,7 +89,21 @@ class RequirementExtraction(dspy.Signature):
       'assumptions': ['assumption 1'],
       'ambiguities': ['ambiguity 1'],
       'confidence': 'high'|'medium'|'low'
-    }]. Max 5 items. Merge sub-features.""")
+    }]""")
+
+class RequirementDeMerger(dspy.Signature):
+    """Split a composite requirement into multiple granular requirements if it contains distinct features.
+    
+    Example:
+    Input: 'Appointment Booking with Calendar View and Payment Integration'
+    Output: 
+    1. 'Appointment Booking' (Business Process)
+    2. 'Calendar Booking Interface' (UI/Interface)
+    3. 'Online Payment Integration' (Workflow/Functional)
+    """
+    composite_requirement_title = dspy.InputField()
+    composite_requirement_desc = dspy.InputField()
+    requirements_json = dspy.OutputField(desc="JSON array of distinct requirements (titles and descriptions)")
 
 class RequirementClassifier(dspy.Signature):
     """Classify if this is a genuine software requirement of ANY type.
@@ -126,10 +116,14 @@ class RequirementClassifier(dspy.Signature):
     5. It sets a performance target, SLA, or scalability requirement
     6. It defines security, compliance, or data protection standards
     
-    Answer 'no' ONLY if it is:
+    Answer 'no' if it is:
+    - Technical infrastructure (e.g., 'API Gateway', 'Microservices', 'Database Schema', 'Backend Integration')
+    - Internal architecture (e.g., 'SaaS multi-tenancy', 'Indexing policy', 'Load Balancing')
     - Document noise (executive summary, project objectives, scope statements)
     - A UI micro-detail (tooltip text, color hex code, hover animation)
     - Vague/generic with no specifics (e.g., 'ensure security', 'optimize performance')
+    
+    CRITICAL: Prioritize business features (the 'What') over technical implementation (the 'How').
     """
     text = dspy.InputField()
     title = dspy.InputField()
@@ -146,6 +140,7 @@ class TrainedExtractor(dspy.Module):
         super().__init__()
         self.extractor = dspy.ChainOfThought(RequirementExtraction)
         self.classifier = dspy.ChainOfThought(RequirementClassifier)
+        self.de_merger = dspy.ChainOfThought(RequirementDeMerger)
         
     def forward(self, document_text: str) -> Dict:
         result = self.extractor(document_text=document_text)
@@ -181,6 +176,30 @@ class TrainedExtractor(dspy.Module):
             )
             
             if classification.is_requirement.lower().strip() in ['yes', 'true']:
+                # Second Pass: De-merger
+                try:
+                    de_merged = self.de_merger(
+                        composite_requirement_title=title,
+                        composite_requirement_desc=desc
+                    )
+                    raw_dm = de_merged.requirements_json
+                    if '```' in raw_dm:
+                        raw_dm = raw_dm.split('```')[1]
+                        if raw_dm.startswith('json'):
+                            raw_dm = raw_dm[4:]
+                    distinct_items = json.loads(raw_dm.strip())
+                    
+                    if len(distinct_items) > 1:
+                        for item in distinct_items:
+                            # Inherit metadata from parent
+                            new_item = candidate.copy()
+                            new_item['title'] = item['title']
+                            new_item['description'] = item['description']
+                            valid_requirements.append(new_item)
+                        continue # Skip adding the original parent
+                except:
+                    pass
+
                 # Ensure all fields exist with fallback values for richness
                 candidate['user_story'] = candidate.get('user_story', f"As a user, I want to use {title} so that I can achieve my goal.")
                 candidate['acceptance_criteria'] = candidate.get('acceptance_criteria', [f"Verify {title} functionality"])
@@ -216,6 +235,12 @@ SKIP_KEYWORDS = [
     'auto-adjust', 'auto adjust',
     'clickable order id', 'clickable id',
     'metric tile link', 'data grouping selection',
+    # Technical / Architecture (Frequent over-creation)
+    'data modeling', 'entity relationship', 'api gateway',
+    'saas architecture', 'multi-tenancy', 'load balancing',
+    'indexing policy', 'database schema', 'rest api',
+    'internal integration', 'backend service',
+    'system architecture', 'application framework',
 ]
 
 
@@ -293,19 +318,37 @@ def _generate_training_from_projects(current_project: str, projects: Dict) -> Li
 def train_extractor(extractor: TrainedExtractor, config: Dict = None):
     print("\nTraining extractor...")
 
+    current_project = config.get('current_project', '').lower() if config else ""
+    # Map project names to domains
+    domain_map = {
+        'healthcare': 'healthcare',
+        'fintech': 'fintech',
+        'crm': 'crm',
+        'ecommerce': 'ecommerce',
+        'logistics': 'logistics'
+    }
+    target_domain = next((v for k, v in domain_map.items() if k in current_project), 'general')
+    print(f"  Target domain detected: {target_domain.upper()}")
+
     train_examples = []
 
-    # 1. Hardcoded examples
+    # 1. Hardcoded examples (with domain-specific weighting/selection)
     for ex in POSITIVE_EXAMPLES:
-        train_examples.append(
-            dspy.Example(
-                text=ex['text'],
-                title=ex['title'],
-                description=ex['description'],
-                is_requirement='yes',
-                reason="User-facing feature that can be seen or interacted with"
-            ).with_inputs('text', 'title', 'description')
-        )
+        # Boost examples from the target domain or general ones
+        domain = ex.get('domain', 'general')
+        if domain == target_domain or domain == 'general':
+            train_examples.append(
+                dspy.Example(
+                    text=ex['text'],
+                    title=ex['title'],
+                    description=ex['description'],
+                    is_requirement='yes',
+                    reason=f"Valid {domain} business requirement"
+                ).with_inputs('text', 'title', 'description')
+            )
+            # Add twice if exact domain match for stronger weighting
+            if domain == target_domain and domain != 'general':
+                train_examples.append(train_examples[-1])
 
     for ex in NEGATIVE_EXAMPLES:
         train_examples.append(
@@ -412,18 +455,42 @@ def process_pdf(pdf_path: str) -> str:
     
     return ""
 
-def chunk_document(text: str, max_chars: int = 6000) -> List[str]:
+def chunk_document(text: str, max_chars: int = 6000, overlap: float = 0.20) -> List[str]:
+    """Split document into overlapping chunks to avoid cutting requirements."""
     chunks = []
-    current = ""
-    for para in text.split('\n\n'):
-        if len(current) + len(para) < max_chars:
-            current += para + "\n\n"
+    paras = text.split('\n\n')
+    current_chunk = []
+    current_len = 0
+    
+    overlap_chars = int(max_chars * overlap)
+    
+    for para in paras:
+        para_len = len(para)
+        if current_len + para_len > max_chars:
+            # Save current chunk
+            chunk_text = "\n\n".join(current_chunk)
+            chunks.append(chunk_text)
+            
+            # Start new chunk with some overlap from the END of the previous chunk
+            # We keep as many paragraphs as fit within the overlap_chars
+            overlap_buffer = []
+            buffer_len = 0
+            for p in reversed(current_chunk):
+                if buffer_len + len(p) < overlap_chars:
+                    overlap_buffer.insert(0, p)
+                    buffer_len += len(p)
+                else:
+                    break
+            
+            current_chunk = overlap_buffer + [para]
+            current_len = buffer_len + para_len
         else:
-            if current:
-                chunks.append(current)
-            current = para + "\n\n"
-    if current:
-        chunks.append(current)
+            current_chunk.append(para)
+            current_len += para_len
+            
+    if current_chunk:
+        chunks.append("\n\n".join(current_chunk))
+        
     return chunks
 
 def calculate_similarity(text1: str, text2: str) -> float:
@@ -495,29 +562,21 @@ def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.5
 # ============================================================================
 
 class RequirementConsolidation(dspy.Signature):
-    """Consolidate a list of overlapping software requirements into fewer, high-level items.
+    """Consolidate a list of requirements by merging TRULY redundant items.
     
-    You are given a JSON array of requirements extracted from multiple document chunks.
-    Many are duplicates or sub-features of the same parent capability.
-    
-    Your job:
-    1. Merge related/overlapping requirements into ONE parent requirement
-    2. Keep the most descriptive title and combine descriptions
-    3. Target approximately 20-30 consolidated requirements total
-    4. Preserve ALL distinct capability areas — do NOT drop unique requirements
-    
-    Examples of merging:
-    - 'Rate Limiting' + 'API Versioning' + 'Bearer Token Auth' → 'API Gateway Architecture'
-    - 'Refund Processing' + 'Refund Button' + 'Refund Transaction' → 'Refund Management'
-    - 'Track Shipments' + 'Track Packages' + 'Shipment Status' → 'Real-Time Shipment Tracking'
+    A 10-year professional focus:
+    1. Merge items that describe the EXACT same feature with the same scope.
+    2. KEEP distinct items even if related (e.g., KEEP 'Login Screen UI' separate from 'Login Workflow').
+    3. If two items are similar, merge them and combine their descriptions into a more comprehensive one.
+    4. Target a clean, non-redundant list (approx 50-70 items for large projects).
     """
-    requirements_json = dspy.InputField(desc="JSON array of raw requirements to consolidate")
-    consolidated_json = dspy.OutputField(desc="JSON array of 20-30 consolidated requirements: [{'title': '...', 'description': '...', 'type': '...'}]. Merge overlapping items, keep unique ones.")
+    requirements_json = dspy.InputField(desc="JSON array of requirements to consolidate")
+    consolidated_json = dspy.OutputField(desc="JSON array of consolidated requirements: [{'title': '...', 'description': '...', 'type': '...'}]")
 
 
 def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
     """Use LLM to merge overlapping requirements into fewer high-level items."""
-    if len(reqs) <= 30:
+    if len(reqs) <= 45:
         print(f"  Consolidation: {len(reqs)} items — no consolidation needed")
         return reqs
     
@@ -536,33 +595,68 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
             try:
                 result = consolidator(requirements_json=json.dumps(batch))
                 raw = result.consolidated_json
-                if '```' in raw:
-                    raw = raw.split('```')[1]
-                    if raw.startswith('json'):
-                        raw = raw[4:]
-                batch_consolidated = json.loads(raw.strip())
+                # Robust JSON cleaning
+                clean_raw = raw.strip()
+                if '```' in clean_raw:
+                    clean_raw = clean_raw.split('```')[1]
+                    if clean_raw.startswith('json'):
+                        clean_raw = clean_raw[4:]
+                
+                # Fix common LLM JSON errors (like unterminated strings)
+                try:
+                    batch_consolidated = json.loads(clean_raw.strip())
+                except json.JSONDecodeError:
+                    # Attempt a looser parse or regex-based fix if needed, 
+                    # but for now, we'll try to just take the first part that parses
+                    import re
+                    match = re.search(r'\[.*\]', clean_raw, re.DOTALL)
+                    if match:
+                        try:
+                            batch_consolidated = json.loads(match.group(0))
+                        except:
+                            batch_consolidated = batch
+                    else:
+                        batch_consolidated = batch
+                
                 intermediate.extend(batch_consolidated)
                 print(f"      → {len(batch_consolidated)} items")
             except Exception as e:
-                print(f"      ERROR: {e} — keeping original batch")
-                intermediate.extend(batch)
+                print(f"      ERROR: {e} — using local fast-dedup fallback for this batch")
+                batch_dedup = deduplicate_requirements(batch, similarity_threshold=0.7)
+                intermediate.extend(batch_dedup)
         
-        # Second pass to merge across batches
-        if len(intermediate) > 30:
+        # Second pass to merge across batches - only if we have a HUGE number of items
+        if len(intermediate) > 100:
             print(f"    Final merge pass ({len(intermediate)} items)...")
             try:
                 result = consolidator(requirements_json=json.dumps(intermediate))
                 raw = result.consolidated_json
-                if '```' in raw:
-                    raw = raw.split('```')[1]
-                    if raw.startswith('json'):
-                        raw = raw[4:]
-                final = json.loads(raw.strip())
+                
+                # Robust cleaning for final pass
+                clean_final = raw.strip()
+                if '```' in clean_final:
+                    clean_final = clean_final.split('```')[1]
+                    if clean_final.startswith('json'):
+                        clean_final = clean_final[4:]
+                
+                try:
+                    final = json.loads(clean_final.strip())
+                except:
+                    import re
+                    match = re.search(r'\[.*\]', clean_final, re.DOTALL)
+                    if match:
+                        try:
+                            final = json.loads(match.group(0))
+                        except:
+                            final = deduplicate_requirements(intermediate, similarity_threshold=0.65)
+                    else:
+                        final = deduplicate_requirements(intermediate, similarity_threshold=0.65)
+                        
                 print(f"      → {len(final)} items")
                 return final
             except Exception as e:
-                print(f"      ERROR in final merge: {e}")
-                return intermediate
+                print(f"      ERROR in final merge: {e} — using local fast-dedup fallback")
+                return deduplicate_requirements(intermediate, similarity_threshold=0.6)
         return intermediate
     else:
         # Single batch
@@ -593,7 +687,7 @@ def _get_lm():
         groq_key = os.getenv("GROQ_API_KEY")
         if not groq_key:
             raise ValueError("GROQ_API_KEY not found in .env")
-        _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key)
+        _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key, max_tokens=4096)
     return _global_lm
 
 def _setup_dspy(config: Dict = None, model_state: Dict = None):
@@ -827,7 +921,7 @@ def extract_requirements(config: Dict = None) -> Dict:
 
     # Add IDs
     for i, req in enumerate(unique, 1):
-        req['requirement_id'] = f"{current_project.upper()}-{i:03d}"
+        req['requirement_id'] = f"{current_project.upper().replace(' ', '_')}-{i:03d}"
 
     # Build result
     result_data = {'project': current_project, 'requirements': unique}
