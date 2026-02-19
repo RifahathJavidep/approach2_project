@@ -1,0 +1,1661 @@
+{
+  "project": "test_crm",
+  "requirements": [
+    {
+      "title": "Web Form Lead Capture",
+      "description": "Capture leads from web forms",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to capture leads from various sources, so that I can manage and track them effectively.",
+      "acceptance_criteria": [
+        "Leads can be captured from web forms",
+        "Leads can be captured from email",
+        "Leads can be captured from API",
+        "Leads can be captured manually"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Capture lead from web form",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Web form lead capture"
+        },
+        {
+          "step_num": 2,
+          "action": "Capture lead from email",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Email lead capture"
+        }
+      ],
+      "test_scenarios": [
+        "Capture lead from web form",
+        "Capture lead from email"
+      ],
+      "assumptions": [
+        "Web form and email lead capture are implemented"
+      ],
+      "ambiguities": [
+        "How to handle duplicate leads"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-001"
+    },
+    {
+      "title": "Email Lead Capture",
+      "description": "Capture leads from email",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to capture leads from various sources, so that I can manage and track them effectively.",
+      "acceptance_criteria": [
+        "Leads can be captured from web forms",
+        "Leads can be captured from email",
+        "Leads can be captured from API",
+        "Leads can be captured manually"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Capture lead from web form",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Web form lead capture"
+        },
+        {
+          "step_num": 2,
+          "action": "Capture lead from email",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Email lead capture"
+        }
+      ],
+      "test_scenarios": [
+        "Capture lead from web form",
+        "Capture lead from email"
+      ],
+      "assumptions": [
+        "Web form and email lead capture are implemented"
+      ],
+      "ambiguities": [
+        "How to handle duplicate leads"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-002"
+    },
+    {
+      "title": "API Lead Capture",
+      "description": "Capture leads through API integration",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to capture leads from various sources, so that I can manage and track them effectively.",
+      "acceptance_criteria": [
+        "Leads can be captured from web forms",
+        "Leads can be captured from email",
+        "Leads can be captured from API",
+        "Leads can be captured manually"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Capture lead from web form",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Web form lead capture"
+        },
+        {
+          "step_num": 2,
+          "action": "Capture lead from email",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Email lead capture"
+        }
+      ],
+      "test_scenarios": [
+        "Capture lead from web form",
+        "Capture lead from email"
+      ],
+      "assumptions": [
+        "Web form and email lead capture are implemented"
+      ],
+      "ambiguities": [
+        "How to handle duplicate leads"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-003"
+    },
+    {
+      "title": "Manual Lead Entry",
+      "description": "Allow for manual entry of leads",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to capture leads from various sources, so that I can manage and track them effectively.",
+      "acceptance_criteria": [
+        "Leads can be captured from web forms",
+        "Leads can be captured from email",
+        "Leads can be captured from API",
+        "Leads can be captured manually"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Capture lead from web form",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Web form lead capture"
+        },
+        {
+          "step_num": 2,
+          "action": "Capture lead from email",
+          "expected_result": "Lead is created in the system",
+          "test_data": "Email lead capture"
+        }
+      ],
+      "test_scenarios": [
+        "Capture lead from web form",
+        "Capture lead from email"
+      ],
+      "assumptions": [
+        "Web form and email lead capture are implemented"
+      ],
+      "ambiguities": [
+        "How to handle duplicate leads"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-004"
+    },
+    {
+      "title": "Firmographics Scoring",
+      "description": "Scoring based on company characteristics such as industry, size, and location",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to score leads based on their firmographics, engagement, and fit, so that I can prioritize them effectively.",
+      "acceptance_criteria": [
+        "Lead score is calculated based on firmographics",
+        "Lead score is calculated based on engagement",
+        "Lead score is calculated based on fit"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Calculate lead score based on firmographics",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Firmographics lead scoring"
+        },
+        {
+          "step_num": 2,
+          "action": "Calculate lead score based on engagement",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Engagement lead scoring"
+        }
+      ],
+      "test_scenarios": [
+        "Calculate lead score based on firmographics",
+        "Calculate lead score based on engagement"
+      ],
+      "assumptions": [
+        "Firmographics and engagement data is available"
+      ],
+      "ambiguities": [
+        "How to handle missing data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-005"
+    },
+    {
+      "title": "Engagement Scoring",
+      "description": "Scoring based on lead interaction with the company such as email opens, clicks, and form submissions",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to score leads based on their firmographics, engagement, and fit, so that I can prioritize them effectively.",
+      "acceptance_criteria": [
+        "Lead score is calculated based on firmographics",
+        "Lead score is calculated based on engagement",
+        "Lead score is calculated based on fit"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Calculate lead score based on firmographics",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Firmographics lead scoring"
+        },
+        {
+          "step_num": 2,
+          "action": "Calculate lead score based on engagement",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Engagement lead scoring"
+        }
+      ],
+      "test_scenarios": [
+        "Calculate lead score based on firmographics",
+        "Calculate lead score based on engagement"
+      ],
+      "assumptions": [
+        "Firmographics and engagement data is available"
+      ],
+      "ambiguities": [
+        "How to handle missing data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-006"
+    },
+    {
+      "title": "Fit Scoring",
+      "description": "Scoring based on how well the lead fits the company's ideal customer profile",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to score leads based on their firmographics, engagement, and fit, so that I can prioritize them effectively.",
+      "acceptance_criteria": [
+        "Lead score is calculated based on firmographics",
+        "Lead score is calculated based on engagement",
+        "Lead score is calculated based on fit"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Calculate lead score based on firmographics",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Firmographics lead scoring"
+        },
+        {
+          "step_num": 2,
+          "action": "Calculate lead score based on engagement",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Engagement lead scoring"
+        }
+      ],
+      "test_scenarios": [
+        "Calculate lead score based on firmographics",
+        "Calculate lead score based on engagement"
+      ],
+      "assumptions": [
+        "Firmographics and engagement data is available"
+      ],
+      "ambiguities": [
+        "How to handle missing data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-007"
+    },
+    {
+      "title": "AI Lead Scoring System",
+      "description": "Overall system for assigning a score (0-100) to leads based on firmographics, engagement, and fit",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to score leads based on their firmographics, engagement, and fit, so that I can prioritize them effectively.",
+      "acceptance_criteria": [
+        "Lead score is calculated based on firmographics",
+        "Lead score is calculated based on engagement",
+        "Lead score is calculated based on fit"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Calculate lead score based on firmographics",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Firmographics lead scoring"
+        },
+        {
+          "step_num": 2,
+          "action": "Calculate lead score based on engagement",
+          "expected_result": "Lead score is calculated correctly",
+          "test_data": "Engagement lead scoring"
+        }
+      ],
+      "test_scenarios": [
+        "Calculate lead score based on firmographics",
+        "Calculate lead score based on engagement"
+      ],
+      "assumptions": [
+        "Firmographics and engagement data is available"
+      ],
+      "ambiguities": [
+        "How to handle missing data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-008"
+    },
+    {
+      "title": "Territory-Based Lead Assignment",
+      "description": "Automated assignment of leads based on geographic territory",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want leads to be assigned to me automatically based on territory, industry, and capacity, so that I can manage them effectively.",
+      "acceptance_criteria": [
+        "Leads are assigned based on territory",
+        "Leads are assigned based on industry",
+        "Leads are assigned based on capacity"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Assign lead based on territory",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Territory lead assignment"
+        },
+        {
+          "step_num": 2,
+          "action": "Assign lead based on industry",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Industry lead assignment"
+        }
+      ],
+      "test_scenarios": [
+        "Assign lead based on territory",
+        "Assign lead based on industry"
+      ],
+      "assumptions": [
+        "Territory, industry, and capacity data is available"
+      ],
+      "ambiguities": [
+        "How to handle conflicting assignment rules"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-009"
+    },
+    {
+      "title": "Industry-Based Lead Assignment",
+      "description": "Automated assignment of leads based on the industry of the lead",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want leads to be assigned to me automatically based on territory, industry, and capacity, so that I can manage them effectively.",
+      "acceptance_criteria": [
+        "Leads are assigned based on territory",
+        "Leads are assigned based on industry",
+        "Leads are assigned based on capacity"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Assign lead based on territory",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Territory lead assignment"
+        },
+        {
+          "step_num": 2,
+          "action": "Assign lead based on industry",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Industry lead assignment"
+        }
+      ],
+      "test_scenarios": [
+        "Assign lead based on territory",
+        "Assign lead based on industry"
+      ],
+      "assumptions": [
+        "Territory, industry, and capacity data is available"
+      ],
+      "ambiguities": [
+        "How to handle conflicting assignment rules"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-010"
+    },
+    {
+      "title": "Capacity-Based Lead Assignment",
+      "description": "Automated assignment of leads based on the capacity of the sales team or representatives",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want leads to be assigned to me automatically based on territory, industry, and capacity, so that I can manage them effectively.",
+      "acceptance_criteria": [
+        "Leads are assigned based on territory",
+        "Leads are assigned based on industry",
+        "Leads are assigned based on capacity"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Assign lead based on territory",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Territory lead assignment"
+        },
+        {
+          "step_num": 2,
+          "action": "Assign lead based on industry",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Industry lead assignment"
+        }
+      ],
+      "test_scenarios": [
+        "Assign lead based on territory",
+        "Assign lead based on industry"
+      ],
+      "assumptions": [
+        "Territory, industry, and capacity data is available"
+      ],
+      "ambiguities": [
+        "How to handle conflicting assignment rules"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-011"
+    },
+    {
+      "title": "Lead Assignment Rule Engine",
+      "description": "A rule engine that can handle and apply multiple criteria for lead assignment",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want leads to be assigned to me automatically based on territory, industry, and capacity, so that I can manage them effectively.",
+      "acceptance_criteria": [
+        "Leads are assigned based on territory",
+        "Leads are assigned based on industry",
+        "Leads are assigned based on capacity"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Assign lead based on territory",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Territory lead assignment"
+        },
+        {
+          "step_num": 2,
+          "action": "Assign lead based on industry",
+          "expected_result": "Lead is assigned correctly",
+          "test_data": "Industry lead assignment"
+        }
+      ],
+      "test_scenarios": [
+        "Assign lead based on territory",
+        "Assign lead based on industry"
+      ],
+      "assumptions": [
+        "Territory, industry, and capacity data is available"
+      ],
+      "ambiguities": [
+        "How to handle conflicting assignment rules"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-012"
+    },
+    {
+      "title": "Lead Nurturing Strategy",
+      "description": "Development of a strategic approach to nurture leads through various stages of the sales funnel.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to create lead nurture campaigns with automated email sequences, so that I can nurture leads effectively.",
+      "acceptance_criteria": [
+        "Lead nurture campaigns can be created",
+        "Automated email sequences can be sent"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create lead nurture campaign",
+          "expected_result": "Campaign is created correctly",
+          "test_data": "Lead nurture campaign creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Send automated email sequence",
+          "expected_result": "Email sequence is sent correctly",
+          "test_data": "Automated email sequence"
+        }
+      ],
+      "test_scenarios": [
+        "Create lead nurture campaign",
+        "Send automated email sequence"
+      ],
+      "assumptions": [
+        "Email sequence templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email sequence failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-013"
+    },
+    {
+      "title": "Automated Email Sequencing",
+      "description": "Creation and implementation of automated email sequences to engage and nurture leads.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to create lead nurture campaigns with automated email sequences, so that I can nurture leads effectively.",
+      "acceptance_criteria": [
+        "Lead nurture campaigns can be created",
+        "Automated email sequences can be sent"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create lead nurture campaign",
+          "expected_result": "Campaign is created correctly",
+          "test_data": "Lead nurture campaign creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Send automated email sequence",
+          "expected_result": "Email sequence is sent correctly",
+          "test_data": "Automated email sequence"
+        }
+      ],
+      "test_scenarios": [
+        "Create lead nurture campaign",
+        "Send automated email sequence"
+      ],
+      "assumptions": [
+        "Email sequence templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email sequence failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-014"
+    },
+    {
+      "title": "Email Content Creation",
+      "description": "Design and development of compelling email content to support lead nurturing efforts.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to create lead nurture campaigns with automated email sequences, so that I can nurture leads effectively.",
+      "acceptance_criteria": [
+        "Lead nurture campaigns can be created",
+        "Automated email sequences can be sent"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create lead nurture campaign",
+          "expected_result": "Campaign is created correctly",
+          "test_data": "Lead nurture campaign creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Send automated email sequence",
+          "expected_result": "Email sequence is sent correctly",
+          "test_data": "Automated email sequence"
+        }
+      ],
+      "test_scenarios": [
+        "Create lead nurture campaign",
+        "Send automated email sequence"
+      ],
+      "assumptions": [
+        "Email sequence templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email sequence failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-015"
+    },
+    {
+      "title": "Unified Contact View",
+      "description": "A unified interface to view all contact information in one place.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a 360-degree contact view with activity timeline, emails, calls, and notes, so that I can understand the contact's history and interactions.",
+      "acceptance_criteria": [
+        "Contact view displays activity timeline",
+        "Contact view displays emails",
+        "Contact view displays calls",
+        "Contact view displays notes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View contact activity timeline",
+          "expected_result": "Activity timeline is displayed correctly",
+          "test_data": "Contact activity timeline"
+        },
+        {
+          "step_num": 2,
+          "action": "View contact emails",
+          "expected_result": "Emails are displayed correctly",
+          "test_data": "Contact emails"
+        }
+      ],
+      "test_scenarios": [
+        "View contact activity timeline",
+        "View contact emails"
+      ],
+      "assumptions": [
+        "Contact data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of contact data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-016"
+    },
+    {
+      "title": "Activity Timeline",
+      "description": "A timeline that displays all activities related to a contact.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a 360-degree contact view with activity timeline, emails, calls, and notes, so that I can understand the contact's history and interactions.",
+      "acceptance_criteria": [
+        "Contact view displays activity timeline",
+        "Contact view displays emails",
+        "Contact view displays calls",
+        "Contact view displays notes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View contact activity timeline",
+          "expected_result": "Activity timeline is displayed correctly",
+          "test_data": "Contact activity timeline"
+        },
+        {
+          "step_num": 2,
+          "action": "View contact emails",
+          "expected_result": "Emails are displayed correctly",
+          "test_data": "Contact emails"
+        }
+      ],
+      "test_scenarios": [
+        "View contact activity timeline",
+        "View contact emails"
+      ],
+      "assumptions": [
+        "Contact data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of contact data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-017"
+    },
+    {
+      "title": "Email Integration",
+      "description": "The ability to view emails sent to or received from a contact within the contact view.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a 360-degree contact view with activity timeline, emails, calls, and notes, so that I can understand the contact's history and interactions.",
+      "acceptance_criteria": [
+        "Contact view displays activity timeline",
+        "Contact view displays emails",
+        "Contact view displays calls",
+        "Contact view displays notes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View contact activity timeline",
+          "expected_result": "Activity timeline is displayed correctly",
+          "test_data": "Contact activity timeline"
+        },
+        {
+          "step_num": 2,
+          "action": "View contact emails",
+          "expected_result": "Emails are displayed correctly",
+          "test_data": "Contact emails"
+        }
+      ],
+      "test_scenarios": [
+        "View contact activity timeline",
+        "View contact emails"
+      ],
+      "assumptions": [
+        "Contact data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of contact data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-018"
+    },
+    {
+      "title": "Call Log Integration",
+      "description": "The ability to view call history with a contact within the contact view.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a 360-degree contact view with activity timeline, emails, calls, and notes, so that I can understand the contact's history and interactions.",
+      "acceptance_criteria": [
+        "Contact view displays activity timeline",
+        "Contact view displays emails",
+        "Contact view displays calls",
+        "Contact view displays notes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View contact activity timeline",
+          "expected_result": "Activity timeline is displayed correctly",
+          "test_data": "Contact activity timeline"
+        },
+        {
+          "step_num": 2,
+          "action": "View contact emails",
+          "expected_result": "Emails are displayed correctly",
+          "test_data": "Contact emails"
+        }
+      ],
+      "test_scenarios": [
+        "View contact activity timeline",
+        "View contact emails"
+      ],
+      "assumptions": [
+        "Contact data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of contact data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-019"
+    },
+    {
+      "title": "Note Taking",
+      "description": "The ability to create, view, and manage notes related to a contact.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a 360-degree contact view with activity timeline, emails, calls, and notes, so that I can understand the contact's history and interactions.",
+      "acceptance_criteria": [
+        "Contact view displays activity timeline",
+        "Contact view displays emails",
+        "Contact view displays calls",
+        "Contact view displays notes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View contact activity timeline",
+          "expected_result": "Activity timeline is displayed correctly",
+          "test_data": "Contact activity timeline"
+        },
+        {
+          "step_num": 2,
+          "action": "View contact emails",
+          "expected_result": "Emails are displayed correctly",
+          "test_data": "Contact emails"
+        }
+      ],
+      "test_scenarios": [
+        "View contact activity timeline",
+        "View contact emails"
+      ],
+      "assumptions": [
+        "Contact data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of contact data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-020"
+    },
+    {
+      "title": "Hierarchical Data Structure",
+      "description": "A data structure capable of representing parent-child relationships between companies.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to manage account hierarchies with parent-child company relationships, so that I can understand the account structure.",
+      "acceptance_criteria": [
+        "Account hierarchies can be created",
+        "Parent-child company relationships can be managed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create account hierarchy",
+          "expected_result": "Account hierarchy is created correctly",
+          "test_data": "Account hierarchy creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Manage parent-child company relationships",
+          "expected_result": "Parent-child company relationships are managed correctly",
+          "test_data": "Parent-child company relationships"
+        }
+      ],
+      "test_scenarios": [
+        "Create account hierarchy",
+        "Manage parent-child company relationships"
+      ],
+      "assumptions": [
+        "Account data is available"
+      ],
+      "ambiguities": [
+        "How to handle complex account hierarchies"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-021"
+    },
+    {
+      "title": "Company Relationship Management",
+      "description": "The ability to manage and maintain relationships between parent and child companies within the hierarchy.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to manage account hierarchies with parent-child company relationships, so that I can understand the account structure.",
+      "acceptance_criteria": [
+        "Account hierarchies can be created",
+        "Parent-child company relationships can be managed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create account hierarchy",
+          "expected_result": "Account hierarchy is created correctly",
+          "test_data": "Account hierarchy creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Manage parent-child company relationships",
+          "expected_result": "Parent-child company relationships are managed correctly",
+          "test_data": "Parent-child company relationships"
+        }
+      ],
+      "test_scenarios": [
+        "Create account hierarchy",
+        "Manage parent-child company relationships"
+      ],
+      "assumptions": [
+        "Account data is available"
+      ],
+      "ambiguities": [
+        "How to handle complex account hierarchies"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-022"
+    },
+    {
+      "title": "User Interface for Hierarchy Visualization",
+      "description": "A user-friendly interface to visualize and navigate the account hierarchy.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to manage account hierarchies with parent-child company relationships, so that I can understand the account structure.",
+      "acceptance_criteria": [
+        "Account hierarchies can be created",
+        "Parent-child company relationships can be managed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create account hierarchy",
+          "expected_result": "Account hierarchy is created correctly",
+          "test_data": "Account hierarchy creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Manage parent-child company relationships",
+          "expected_result": "Parent-child company relationships are managed correctly",
+          "test_data": "Parent-child company relationships"
+        }
+      ],
+      "test_scenarios": [
+        "Create account hierarchy",
+        "Manage parent-child company relationships"
+      ],
+      "assumptions": [
+        "Account data is available"
+      ],
+      "ambiguities": [
+        "How to handle complex account hierarchies"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-023"
+    },
+    {
+      "title": "Access Control and Permissions",
+      "description": "Role-based access control to ensure that users can only view or edit companies within their authorized hierarchy level.",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to manage account hierarchies with parent-child company relationships, so that I can understand the account structure.",
+      "acceptance_criteria": [
+        "Account hierarchies can be created",
+        "Parent-child company relationships can be managed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create account hierarchy",
+          "expected_result": "Account hierarchy is created correctly",
+          "test_data": "Account hierarchy creation"
+        },
+        {
+          "step_num": 2,
+          "action": "Manage parent-child company relationships",
+          "expected_result": "Parent-child company relationships are managed correctly",
+          "test_data": "Parent-child company relationships"
+        }
+      ],
+      "test_scenarios": [
+        "Create account hierarchy",
+        "Manage parent-child company relationships"
+      ],
+      "assumptions": [
+        "Account data is available"
+      ],
+      "ambiguities": [
+        "How to handle complex account hierarchies"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-024"
+    },
+    {
+      "title": "Clearbit API Integration",
+      "description": "Integrate with Clearbit API for contact data enrichment",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to enrich contact data with company size, industry, and revenue via Clearbit API, so that I can have a more complete understanding of the contact.",
+      "acceptance_criteria": [
+        "Contact data can be enriched with company size",
+        "Contact data can be enriched with industry",
+        "Contact data can be enriched with revenue"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Enrich contact data with company size",
+          "expected_result": "Contact data is enriched correctly",
+          "test_data": "Company size enrichment"
+        },
+        {
+          "step_num": 2,
+          "action": "Enrich contact data with industry",
+          "expected_result": "Contact data is enriched correctly",
+          "test_data": "Industry enrichment"
+        }
+      ],
+      "test_scenarios": [
+        "Enrich contact data with company size",
+        "Enrich contact data with industry"
+      ],
+      "assumptions": [
+        "Clearbit API is available"
+      ],
+      "ambiguities": [
+        "How to handle enrichment failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-025"
+    },
+    {
+      "title": "Company Size Enrichment",
+      "description": "Enrich contact data with company size information",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to enrich contact data with company size, industry, and revenue via Clearbit API, so that I can have a more complete understanding of the contact.",
+      "acceptance_criteria": [
+        "Contact data can be enriched with company size",
+        "Contact data can be enriched with industry",
+        "Contact data can be enriched with revenue"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Enrich contact data with company size",
+          "expected_result": "Contact data is enriched correctly",
+          "test_data": "Company size enrichment"
+        },
+        {
+          "step_num": 2,
+          "action": "Enrich contact data with industry",
+          "expected_result": "Contact data is enriched correctly",
+          "test_data": "Industry enrichment"
+        }
+      ],
+      "test_scenarios": [
+        "Enrich contact data with company size",
+        "Enrich contact data with industry"
+      ],
+      "assumptions": [
+        "Clearbit API is available"
+      ],
+      "ambiguities": [
+        "How to handle enrichment failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-026"
+    },
+    {
+      "title": "Kanban Board Visualization",
+      "description": "Visual representation of the Kanban board",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a Kanban board with drag-and-drop deal stage progression, so that I can visualize and manage deals effectively.",
+      "acceptance_criteria": [
+        "Kanban board view displays deal stages",
+        "Deals can be dragged and dropped between stages"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View Kanban board",
+          "expected_result": "Kanban board is displayed correctly",
+          "test_data": "Kanban board view"
+        },
+        {
+          "step_num": 2,
+          "action": "Drag and drop deal between stages",
+          "expected_result": "Deal is moved correctly",
+          "test_data": "Deal stage progression"
+        }
+      ],
+      "test_scenarios": [
+        "View Kanban board",
+        "Drag and drop deal between stages"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of deal data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-027"
+    },
+    {
+      "title": "Drag-and-Drop Functionality",
+      "description": "Ability to move items across different stages on the Kanban board through drag-and-drop",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a Kanban board with drag-and-drop deal stage progression, so that I can visualize and manage deals effectively.",
+      "acceptance_criteria": [
+        "Kanban board view displays deal stages",
+        "Deals can be dragged and dropped between stages"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View Kanban board",
+          "expected_result": "Kanban board is displayed correctly",
+          "test_data": "Kanban board view"
+        },
+        {
+          "step_num": 2,
+          "action": "Drag and drop deal between stages",
+          "expected_result": "Deal is moved correctly",
+          "test_data": "Deal stage progression"
+        }
+      ],
+      "test_scenarios": [
+        "View Kanban board",
+        "Drag and drop deal between stages"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of deal data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-028"
+    },
+    {
+      "title": "Deal Stage Progression",
+      "description": "Automated or manual progression of deals through different stages on the Kanban board",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to view a Kanban board with drag-and-drop deal stage progression, so that I can visualize and manage deals effectively.",
+      "acceptance_criteria": [
+        "Kanban board view displays deal stages",
+        "Deals can be dragged and dropped between stages"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View Kanban board",
+          "expected_result": "Kanban board is displayed correctly",
+          "test_data": "Kanban board view"
+        },
+        {
+          "step_num": 2,
+          "action": "Drag and drop deal between stages",
+          "expected_result": "Deal is moved correctly",
+          "test_data": "Deal stage progression"
+        }
+      ],
+      "test_scenarios": [
+        "View Kanban board",
+        "Drag and drop deal between stages"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle large amounts of deal data"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-029"
+    },
+    {
+      "title": "Email Tracking",
+      "description": "Ability to log and track sales emails",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to track sales activities (calls, emails, meetings) linked to deals, so that I can understand the sales process.",
+      "acceptance_criteria": [
+        "Sales activities can be tracked",
+        "Sales activities are linked to deals"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Track sales activity",
+          "expected_result": "Sales activity is tracked correctly",
+          "test_data": "Sales activity tracking"
+        },
+        {
+          "step_num": 2,
+          "action": "Link sales activity to deal",
+          "expected_result": "Sales activity is linked correctly",
+          "test_data": "Sales activity linking"
+        }
+      ],
+      "test_scenarios": [
+        "Track sales activity",
+        "Link sales activity to deal"
+      ],
+      "assumptions": [
+        "Sales activity data is available"
+      ],
+      "ambiguities": [
+        "How to handle sales activity failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-030"
+    },
+    {
+      "title": "Meeting Scheduling and Tracking",
+      "description": "Ability to schedule and track sales meetings",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to track sales activities (calls, emails, meetings) linked to deals, so that I can understand the sales process.",
+      "acceptance_criteria": [
+        "Sales activities can be tracked",
+        "Sales activities are linked to deals"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Track sales activity",
+          "expected_result": "Sales activity is tracked correctly",
+          "test_data": "Sales activity tracking"
+        },
+        {
+          "step_num": 2,
+          "action": "Link sales activity to deal",
+          "expected_result": "Sales activity is linked correctly",
+          "test_data": "Sales activity linking"
+        }
+      ],
+      "test_scenarios": [
+        "Track sales activity",
+        "Link sales activity to deal"
+      ],
+      "assumptions": [
+        "Sales activity data is available"
+      ],
+      "ambiguities": [
+        "How to handle sales activity failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-031"
+    },
+    {
+      "title": "Deal Management System",
+      "description": "System to manage and track deals",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to track sales activities (calls, emails, meetings) linked to deals, so that I can understand the sales process.",
+      "acceptance_criteria": [
+        "Sales activities can be tracked",
+        "Sales activities are linked to deals"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Track sales activity",
+          "expected_result": "Sales activity is tracked correctly",
+          "test_data": "Sales activity tracking"
+        },
+        {
+          "step_num": 2,
+          "action": "Link sales activity to deal",
+          "expected_result": "Sales activity is linked correctly",
+          "test_data": "Sales activity linking"
+        }
+      ],
+      "test_scenarios": [
+        "Track sales activity",
+        "Link sales activity to deal"
+      ],
+      "assumptions": [
+        "Sales activity data is available"
+      ],
+      "ambiguities": [
+        "How to handle sales activity failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-032"
+    },
+    {
+      "title": "Activity-Deal Linkage",
+      "description": "Functionality to link sales activities to their corresponding deals",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to track sales activities (calls, emails, meetings) linked to deals, so that I can understand the sales process.",
+      "acceptance_criteria": [
+        "Sales activities can be tracked",
+        "Sales activities are linked to deals"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Track sales activity",
+          "expected_result": "Sales activity is tracked correctly",
+          "test_data": "Sales activity tracking"
+        },
+        {
+          "step_num": 2,
+          "action": "Link sales activity to deal",
+          "expected_result": "Sales activity is linked correctly",
+          "test_data": "Sales activity linking"
+        }
+      ],
+      "test_scenarios": [
+        "Track sales activity",
+        "Link sales activity to deal"
+      ],
+      "assumptions": [
+        "Sales activity data is available"
+      ],
+      "ambiguities": [
+        "How to handle sales activity failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-033"
+    },
+    {
+      "title": "Deal Tracking",
+      "description": "Track the age of deals in each stage",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to receive deal aging alerts when deals stall in a stage beyond threshold days, so that I can take action to move the deal forward.",
+      "acceptance_criteria": [
+        "Deal aging alerts are sent",
+        "Deal aging alerts are sent when deals stall beyond threshold days"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set deal aging threshold",
+          "expected_result": "Deal aging threshold is set correctly",
+          "test_data": "Deal aging threshold setting"
+        },
+        {
+          "step_num": 2,
+          "action": "Receive deal aging alert",
+          "expected_result": "Deal aging alert is received correctly",
+          "test_data": "Deal aging alert"
+        }
+      ],
+      "test_scenarios": [
+        "Set deal aging threshold",
+        "Receive deal aging alert"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle deal aging alert failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-034"
+    },
+    {
+      "title": "Stall Threshold Setup",
+      "description": "Set a threshold for the number of days a deal can stay in a stage",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to receive deal aging alerts when deals stall in a stage beyond threshold days, so that I can take action to move the deal forward.",
+      "acceptance_criteria": [
+        "Deal aging alerts are sent",
+        "Deal aging alerts are sent when deals stall beyond threshold days"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set deal aging threshold",
+          "expected_result": "Deal aging threshold is set correctly",
+          "test_data": "Deal aging threshold setting"
+        },
+        {
+          "step_num": 2,
+          "action": "Receive deal aging alert",
+          "expected_result": "Deal aging alert is received correctly",
+          "test_data": "Deal aging alert"
+        }
+      ],
+      "test_scenarios": [
+        "Set deal aging threshold",
+        "Receive deal aging alert"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle deal aging alert failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-035"
+    },
+    {
+      "title": "Aging Alert Notification",
+      "description": "Send alerts when a deal exceeds the threshold days in a stage",
+      "type": "Functional",
+      "user_story": "As a sales team member, I want to receive deal aging alerts when deals stall in a stage beyond threshold days, so that I can take action to move the deal forward.",
+      "acceptance_criteria": [
+        "Deal aging alerts are sent",
+        "Deal aging alerts are sent when deals stall beyond threshold days"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set deal aging threshold",
+          "expected_result": "Deal aging threshold is set correctly",
+          "test_data": "Deal aging threshold setting"
+        },
+        {
+          "step_num": 2,
+          "action": "Receive deal aging alert",
+          "expected_result": "Deal aging alert is received correctly",
+          "test_data": "Deal aging alert"
+        }
+      ],
+      "test_scenarios": [
+        "Set deal aging threshold",
+        "Receive deal aging alert"
+      ],
+      "assumptions": [
+        "Deal data is available"
+      ],
+      "ambiguities": [
+        "How to handle deal aging alert failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-036"
+    },
+    {
+      "title": "Built-in Email Composer",
+      "description": "A built-in feature for composing emails.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use a built-in email composer with template library and merge fields, so that I can create and send emails quickly and efficiently.",
+      "acceptance_criteria": [
+        "Email composer is available",
+        "Email composer has template library",
+        "Email composer has merge fields"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use email composer",
+          "expected_result": "Email composer is used correctly",
+          "test_data": "Email composition"
+        },
+        {
+          "step_num": 2,
+          "action": "Select email template",
+          "expected_result": "Email template is selected correctly",
+          "test_data": "Email template selection"
+        }
+      ],
+      "test_scenarios": [
+        "Use email composer",
+        "Select email template"
+      ],
+      "assumptions": [
+        "Email templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email composition failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-037"
+    },
+    {
+      "title": "Template Library",
+      "description": "A collection of pre-designed email templates for user convenience.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use a built-in email composer with template library and merge fields, so that I can create and send emails quickly and efficiently.",
+      "acceptance_criteria": [
+        "Email composer is available",
+        "Email composer has template library",
+        "Email composer has merge fields"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use email composer",
+          "expected_result": "Email composer is used correctly",
+          "test_data": "Email composition"
+        },
+        {
+          "step_num": 2,
+          "action": "Select email template",
+          "expected_result": "Email template is selected correctly",
+          "test_data": "Email template selection"
+        }
+      ],
+      "test_scenarios": [
+        "Use email composer",
+        "Select email template"
+      ],
+      "assumptions": [
+        "Email templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email composition failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-038"
+    },
+    {
+      "title": "Merge Fields Integration",
+      "description": "The ability to insert dynamic content into email templates using merge fields.",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use a built-in email composer with template library and merge fields, so that I can create and send emails quickly and efficiently.",
+      "acceptance_criteria": [
+        "Email composer is available",
+        "Email composer has template library",
+        "Email composer has merge fields"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use email composer",
+          "expected_result": "Email composer is used correctly",
+          "test_data": "Email composition"
+        },
+        {
+          "step_num": 2,
+          "action": "Select email template",
+          "expected_result": "Email template is selected correctly",
+          "test_data": "Email template selection"
+        }
+      ],
+      "test_scenarios": [
+        "Use email composer",
+        "Select email template"
+      ],
+      "assumptions": [
+        "Email templates are available"
+      ],
+      "ambiguities": [
+        "How to handle email composition failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-039"
+    },
+    {
+      "title": "Click-to-Call Interface",
+      "description": "A UI element that allows users to initiate calls with a single click",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use click-to-call with automatic call logging and recording, so that I can make calls quickly and efficiently.",
+      "acceptance_criteria": [
+        "Click-to-call is available",
+        "Calls are logged automatically",
+        "Calls are recorded automatically"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Make call using click-to-call",
+          "expected_result": "Call is made correctly",
+          "test_data": "Click-to-call"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify call log",
+          "expected_result": "Call log is accurate",
+          "test_data": "Call logging"
+        }
+      ],
+      "test_scenarios": [
+        "Make call using click-to-call",
+        "Verify call log"
+      ],
+      "assumptions": [
+        "Call data is available"
+      ],
+      "ambiguities": [
+        "How to handle call failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-040"
+    },
+    {
+      "title": "Automatic Call Logging",
+      "description": "A feature that automatically records call details",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use click-to-call with automatic call logging and recording, so that I can make calls quickly and efficiently.",
+      "acceptance_criteria": [
+        "Click-to-call is available",
+        "Calls are logged automatically",
+        "Calls are recorded automatically"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Make call using click-to-call",
+          "expected_result": "Call is made correctly",
+          "test_data": "Click-to-call"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify call log",
+          "expected_result": "Call log is accurate",
+          "test_data": "Call logging"
+        }
+      ],
+      "test_scenarios": [
+        "Make call using click-to-call",
+        "Verify call log"
+      ],
+      "assumptions": [
+        "Call data is available"
+      ],
+      "ambiguities": [
+        "How to handle call failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-041"
+    },
+    {
+      "title": "Call Recording",
+      "description": "A feature that captures the audio of calls",
+      "type": "UI",
+      "user_story": "As a sales team member, I want to use click-to-call with automatic call logging and recording, so that I can make calls quickly and efficiently.",
+      "acceptance_criteria": [
+        "Click-to-call is available",
+        "Calls are logged automatically",
+        "Calls are recorded automatically"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Make call using click-to-call",
+          "expected_result": "Call is made correctly",
+          "test_data": "Click-to-call"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify call log",
+          "expected_result": "Call log is accurate",
+          "test_data": "Call logging"
+        }
+      ],
+      "test_scenarios": [
+        "Make call using click-to-call",
+        "Verify call log"
+      ],
+      "assumptions": [
+        "Call data is available"
+      ],
+      "ambiguities": [
+        "How to handle call failures"
+      ],
+      "confidence": "high",
+      "requirement_id": "TEST_CRM-042"
+    }
+  ],
+  "model_state": {
+    "predict": {
+      "traces": [],
+      "train": [],
+      "demos": [
+        {
+          "augmented": true,
+          "text": "Indigo navigation bar with global search, activity feed, and mini-Kanban widgets",
+          "title": "Centralized Sales Workspace UI",
+          "description": "High-productivity interface providing immediate access to critical KPIs and upcoming events",
+          "reasoning": "The text describes a specific UI component with various features, including a navigation bar, global search, activity feed, and mini-Kanban widgets, which are all user-facing elements.",
+          "is_requirement": "yes",
+          "reason": "This is a user-facing feature that describes a specific UI component with various elements, making it a functional/UI requirement."
+        },
+        {
+          "augmented": true,
+          "text": "Automated email sequence creation with personalized templates and open-rate tracking",
+          "title": "Sales Outreach Automation",
+          "description": "Multi-step communication workflows with performance analytics and automated follow-up scheduling",
+          "reasoning": "The provided text describes a feature that allows users to create automated email sequences with personalized templates and track open rates. This feature is related to sales outreach automation and involves multi-step communication workflows with performance analytics.",
+          "is_requirement": "yes",
+          "reason": "This is a valid requirement because it describes a specific feature that users can interact with, which is the automated email sequence creation with personalized templates and open-rate tracking. It also relates to a workflow or end-to-end process flow, which is sales outreach automation."
+        },
+        {
+          "augmented": true,
+          "text": "Bulk export of validated customer records in GDPR-compliant formats",
+          "title": "Secure Data Portability",
+          "description": "Verified export of project data ensuring compliance with regional privacy regulations",
+          "reasoning": "The text describes a specific feature that allows users to export customer records in a GDPR-compliant format, which is a tangible and actionable requirement.",
+          "is_requirement": "yes",
+          "reason": "This is a valid requirement because it describes a specific feature that can be seen and interacted with by the user, and it also relates to a specific regulatory compliance standard."
+        },
+        {
+          "augmented": true,
+          "text": "Implement API Gateway for JWT-based authentication and rate limiting",
+          "title": "API Gateway Infrastructure",
+          "description": "Security layer for internal service communication and traffic control",
+          "reasoning": "The text describes a technical implementation of an API Gateway for authentication and rate limiting, which is an internal infrastructure component.",
+          "is_requirement": "no",
+          "reason": "This is a technical infrastructure detail, specifically related to the 'how' of implementing security and traffic control, rather than a user-facing feature or business requirement."
+        },
+        {
+          "augmented": true,
+          "text": "Design multi-tenant RLS (Row Level Security) for database partitioning",
+          "title": "Multi-Tenant Data Security",
+          "description": "Internal database isolation logic to prevent data leaks between clients",
+          "reasoning": "The text describes a technical implementation detail for database security, specifically row-level security for multi-tenancy.",
+          "is_requirement": "no",
+          "reason": "This is an internal architecture and technical implementation detail, not a user-facing feature or business requirement."
+        },
+        {
+          "augmented": true,
+          "text": "Integrate with Clearbit API and Twilio via internal webhook handlers",
+          "title": "API Integration Service",
+          "description": "Backend connection logic for third-party enrichment and voice services",
+          "reasoning": "The text describes integrating with external APIs (Clearbit and Twilio) using internal webhook handlers, which is a technical implementation detail.",
+          "is_requirement": "no",
+          "reason": "The statement is about technical implementation (how) rather than a business feature or user-facing requirement (what)."
+        },
+        {
+          "augmented": true,
+          "text": "Partition activity tables by month for PostgreSQL performance optimization",
+          "title": "Database Optimization",
+          "description": "Internal storage strategy to maintain query speed at scale",
+          "reasoning": "The statement describes a technical approach to optimize database performance by partitioning activity tables, which is an internal implementation detail.",
+          "is_requirement": "no",
+          "reason": "This is a technical infrastructure detail, focusing on how to optimize database performance, rather than a user-facing feature or business requirement."
+        },
+        {
+          "augmented": true,
+          "text": "Set up Elasticsearch CDC (Change Data Capture) indexing",
+          "title": "Search Indexing Pipeline",
+          "description": "Technical data sync between RDBMS and Search Engine",
+          "reasoning": "The text describes a technical setup for data indexing, focusing on the backend infrastructure.",
+          "is_requirement": "no",
+          "reason": "This is a technical implementation detail, not a user-facing feature or business requirement."
+        }
+      ],
+      "signature": {
+        "instructions": "Classify if this is a genuine software requirement of ANY type.\n\nAnswer 'yes' if ANY of these are true:\n1. User can SEE it on screen or DO/interact with it (functional/UI)\n2. It describes a workflow or end-to-end process flow\n3. It specifies architecture, API design, or system integration\n4. It defines a data model, entity relationship, or schema\n5. It sets a performance target, SLA, or scalability requirement\n6. It defines security, compliance, or data protection standards\n\nAnswer 'no' if it is:\n- Technical infrastructure (e.g., 'API Gateway', 'Microservices', 'Database Schema', 'Backend Integration')\n- Internal architecture (e.g., 'SaaS multi-tenancy', 'Indexing policy', 'Load Balancing')\n- Document noise (executive summary, project objectives, scope statements)\n- A UI micro-detail (tooltip text, color hex code, hover animation)\n- Vague/generic with no specifics (e.g., 'ensure security', 'optimize performance')\n\nCRITICAL: Prioritize business features (the 'What') over technical implementation (the 'How').",
+        "fields": [
+          {
+            "prefix": "Text:",
+            "description": "${text}"
+          },
+          {
+            "prefix": "Title:",
+            "description": "${title}"
+          },
+          {
+            "prefix": "Description:",
+            "description": "${description}"
+          },
+          {
+            "prefix": "Reasoning: Let's think step by step in order to",
+            "description": "${reasoning}"
+          },
+          {
+            "prefix": "Is Requirement:",
+            "description": "'yes' if this is a specific, actionable requirement of any type, 'no' if document noise or vague"
+          },
+          {
+            "prefix": "Reason:",
+            "description": "Brief explanation of why this is or isn't a valid requirement"
+          }
+        ]
+      },
+      "lm": null
+    }
+  }
+}

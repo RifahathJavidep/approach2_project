@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM — Extraction Pipeline Architecture & Workflow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d28;
+            --surface2: #232738;
+            --border: #2e3348;
+            --text: #e4e6f0;
+            --text-muted: #8b8fa7;
+            --accent: #6c63ff;
+            --accent2: #00d4aa;
+            --accent3: #ff6b6b;
+            --accent4: #ffd93d;
+            --blue: #4ea8de;
+            --green: #00d4aa;
+            --orange: #ffaa5c;
+            --pink: #f472b6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: #1a1a2e;
+                padding: 0;
+            }
+
+            .hero {
+                background: linear-gradient(135deg, #6c63ff 0%, #4ea8de 100%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .stage-card {
+                break-inside: avoid;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            background: linear-gradient(135deg, #1a1d28 0%, #2a1f5e 40%, #4a2f8a 70%, #6c63ff 100%);
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(108, 99, 255, 0.2);
+            border: 1px solid rgba(108, 99, 255, 0.4);
+            color: #a5a0ff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, #a5a0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 700px;
+        }
+
+        .hero-meta {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ==================== CONTAINER ==================== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* ==================== SECTION ==================== */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .section p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* ==================== TOC ==================== */
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px 36px;
+            margin-bottom: 50px;
+        }
+
+        .toc h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(46, 51, 72, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .toc-num {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(108, 99, 255, 0.15);
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .toc-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ==================== QUICK START ==================== */
+        .quick-start {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08) 0%, rgba(108, 99, 255, 0.08) 100%);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 30px 36px;
+            margin-bottom: 50px;
+        }
+
+        .quick-start h3 {
+            color: var(--green);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .cmd-block {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 10px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--green);
+            overflow-x: auto;
+        }
+
+        .cmd-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 14px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==================== FLOW DIAGRAM ==================== */
+        .flow-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px;
+            margin: 24px 0;
+        }
+
+        .flow-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 64px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+        }
+
+        .flow-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .flow-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .flow-file {
+            display: inline-block;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--accent);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* ==================== STAGE CARDS ==================== */
+        .stage-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px 36px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .stage-card.stage1::before {
+            background: linear-gradient(90deg, var(--blue), var(--accent));
+        }
+
+        .stage-card.stage2::before {
+            background: linear-gradient(90deg, var(--orange), var(--accent4));
+        }
+
+        .stage-card.stage-img::before {
+            background: linear-gradient(90deg, var(--pink), var(--accent3));
+        }
+
+        .stage-card.stage3::before {
+            background: linear-gradient(90deg, var(--green), var(--accent2));
+        }
+
+        .stage-card.stage-api::before {
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+        }
+
+        .stage-card.stage-s3::before {
+            background: linear-gradient(90deg, var(--orange), var(--accent3));
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .stage-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .stage1 .stage-num {
+            background: rgba(78, 168, 222, 0.15);
+            color: var(--blue);
+        }
+
+        .stage2 .stage-num {
+            background: rgba(255, 170, 92, 0.15);
+            color: var(--orange);
+        }
+
+        .stage-img .stage-num {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--pink);
+        }
+
+        .stage3 .stage-num {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--green);
+        }
+
+        .stage-api .stage-num {
+            background: rgba(108, 99, 255, 0.15);
+            color: var(--accent);
+        }
+
+        .stage-s3 .stage-num {
+            background: rgba(255, 170, 92, 0.15);
+            color: var(--orange);
+        }
+
+        .stage-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .module-item {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .module-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .module-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ==================== API TABLE ==================== */
+        .api-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        .api-table th {
+            background: var(--surface2);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .api-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .api-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .api-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .method.get {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--green);
+        }
+
+        .method.post {
+            background: rgba(108, 99, 255, 0.15);
+            color: var(--accent);
+        }
+
+        .endpoint {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        /* ==================== INFO BOX ==================== */
+        .info-box {
+            background: rgba(108, 99, 255, 0.06);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .info-box strong {
+            color: var(--text);
+        }
+
+        /* ==================== ENV TABLE ==================== */
+        .env-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+
+        .env-table th {
+            background: var(--surface2);
+            padding: 10px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .env-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .env-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .env-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .env-table code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--surface2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--green);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ==================== PIPELINE VISUAL ==================== */
+        .pipeline-visual {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .pv-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .pv-box {
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pv-arrow {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .pv-s1 {
+            background: rgba(78, 168, 222, 0.15);
+            color: var(--blue);
+            border: 1px solid rgba(78, 168, 222, 0.3);
+        }
+
+        .pv-s2 {
+            background: rgba(255, 170, 92, 0.15);
+            color: var(--orange);
+            border: 1px solid rgba(255, 170, 92, 0.3);
+        }
+
+        .pv-s2i {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--pink);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+        }
+
+        .pv-s3 {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .pv-out {
+            background: rgba(108, 99, 255, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(108, 99, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==================== HERO ==================== -->
+    <div class="hero">
+        <div class="hero-badge">Technical Architecture Document</div>
+        <h1>PRISM Extraction Pipeline</h1>
+        <p>AI-Powered Requirement Extraction from PDF, DOCX, PPTX & Images — with PaddleOCR, Vision LLM, and DSPy</p>
+        <div class="hero-meta">
+            <span>📦 Project: approach2_project</span>
+            <span>📅 February 2026</span>
+            <span>🔧 Version 2.0 (Modular Architecture)</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ==================== TABLE OF CONTENTS ==================== -->
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul class="toc-list">
+                <li><span class="toc-num">1</span><span class="toc-link">How to Run — Quick Start Commands</span></li>
+                <li><span class="toc-num">2</span><span class="toc-link">End-to-End Pipeline Flow (What Happens)</span>
+                </li>
+                <li><span class="toc-num">3</span><span class="toc-link">Stage 1 — File Classification</span></li>
+                <li><span class="toc-num">4</span><span class="toc-link">Stage 2 — Content Extraction</span></li>
+                <li><span class="toc-num">5</span><span class="toc-link">Image Processing Pipeline</span></li>
+                <li><span class="toc-num">6</span><span class="toc-link">Stage 3 — AI Requirement Generation
+                        (DSPy)</span></li>
+                <li><span class="toc-num">7</span><span class="toc-link">API Endpoints (FastAPI)</span></li>
+                <li><span class="toc-num">8</span><span class="toc-link">AWS S3 Integration</span></li>
+                <li><span class="toc-num">9</span><span class="toc-link">Async Processing (Celery + Redis)</span></li>
+                <li><span class="toc-num">10</span><span class="toc-link">Environment Configuration</span></li>
+            </ul>
+        </div>
+
+        <!-- ==================== 1. QUICK START ==================== -->
+        <div class="section" id="s1">
+            <span class="section-label">Section 1</span>
+            <h2>🚀 How to Run</h2>
+            <p>There are two ways to use the extraction pipeline: via the CLI or via the FastAPI server.</p>
+
+            <div class="quick-start">
+                <h3>Option A — CLI Mode (Direct Extraction)</h3>
+                <div class="cmd-label">Run extraction on files defined in config.json</div>
+                <div class="cmd-block">python extract_requirements.py</div>
+                <p style="font-size:13px; color: var(--text-muted); margin-top:12px;">
+                    This reads <code>config/config.json</code>, finds the <code>current_project</code>, loads its input
+                    files, and extracts requirements to the output directory.
+                </p>
+            </div>
+
+            <div class="quick-start">
+                <h3>Option B — API Mode (FastAPI Server)</h3>
+                <div class="cmd-label">1. Start the FastAPI server</div>
+                <div class="cmd-block">python app.py</div>
+                <div class="cmd-label">2. (Optional) Start Celery Worker for async processing</div>
+                <div class="cmd-block">celery -A celery_app worker --loglevel=info</div>
+                <div class="cmd-label">3. (Optional) Start Flower dashboard to monitor tasks</div>
+                <div class="cmd-block">celery -A celery_app flower --port=5555</div>
+                <div class="cmd-label">4. Open API docs in browser</div>
+                <div class="cmd-block">http://localhost:8000/docs</div>
+            </div>
+        </div>
+
+        <!-- ==================== 2. END-TO-END FLOW ==================== -->
+        <div class="section" id="s2">
+            <span class="section-label">Section 2</span>
+            <h2>🔄 End-to-End Pipeline Flow</h2>
+            <p>Here's what happens when you run an extraction — whether via CLI or API.</p>
+
+            <!-- Pipeline Visual -->
+            <div class="pipeline-visual">
+                <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; font-weight:600;">COMPLETE DATA
+                    FLOW</div>
+                <div class="pv-row">
+                    <span class="pv-box pv-out">📁 Input Files (S3 or Local)</span>
+                    <span class="pv-arrow">→</span>
+                    <span class="pv-box pv-s1">🔍 File Router</span>
+                    <span class="pv-arrow">→</span>
+                    <span class="pv-box pv-s2">📄 Extractors</span>
+                </div>
+                <div class="pv-row" style="margin: 4px 0;">
+                    <span class="pv-arrow" style="opacity:0;">→</span>
+                    <span class="pv-arrow" style="opacity:0;">→</span>
+                    <span class="pv-arrow" style="opacity:0;">→</span>
+                    <span class="pv-arrow" style="opacity:0;">→</span>
+                    <span class="pv-arrow">↓</span>
+                </div>
+                <div class="pv-row">
+                    <span class="pv-box pv-s2">Text Content</span>
+                    <span class="pv-arrow">+</span>
+                    <span class="pv-box pv-s2i">🖼️ Images → OCR → Verify → Classify → Analyze</span>
+                </div>
+                <div class="pv-row" style="margin: 4px 0;">
+                    <span class="pv-arrow">↓</span>
+                </div>
+                <div class="pv-row">
+                    <span class="pv-box pv-s3">🤖 DSPy Extractor → Classifier → De-merger</span>
+                    <span class="pv-arrow">→</span>
+                    <span class="pv-box pv-s3">Dedup + Consolidate</span>
+                </div>
+                <div class="pv-row" style="margin: 4px 0;">
+                    <span class="pv-arrow">↓</span>
+                </div>
+                <div class="pv-row">
+                    <span class="pv-box pv-out">📊 Requirements JSON → S3 + Java Backend</span>
+                </div>
+            </div>
+
+            <!-- Step-by-step flow -->
+            <div class="flow-container">
+                <div class="flow-title">Step-by-step Execution Flow</div>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(78,168,222,0.15); color: var(--blue);">📥</div>
+                        <div class="flow-content">
+                            <h4>1. Input Files Received</h4>
+                            <p><strong>API mode:</strong> Frontend uploads files to S3, sends S3 URLs to
+                                <code>/extract</code>. The server downloads files to a temp directory.<br>
+                                <strong>CLI mode:</strong> Reads files from the project's <code>input_dir</code> defined
+                                in <code>config.json</code>.
+                            </p>
+                            <span class="flow-file">app.py → download_from_s3()</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(78,168,222,0.15); color: var(--blue);">🔍</div>
+                        <div class="flow-content">
+                            <h4>2. File Classification (Stage 1)</h4>
+                            <p>Each file is classified by extension and content analysis: PDF, DOCX, PPTX, Image, or
+                                Scanned PDF. This determines which extractor is used.</p>
+                            <span class="flow-file">extraction/file_router.py → FileRouter.classify()</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(255,170,92,0.15); color: var(--orange);">📄</div>
+                        <div class="flow-content">
+                            <h4>3. Content Extraction (Stage 2)</h4>
+                            <p>Format-specific extractors pull text AND embedded images from each document. PDFs use
+                                <code>pymupdf4llm</code>, DOCX uses <code>python-docx</code>, PPTX uses
+                                <code>python-pptx</code>.
+                            </p>
+                            <span class="flow-file">extraction/extractors/pdf_extractor.py</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(244,114,182,0.15); color: var(--pink);">🖼️</div>
+                        <div class="flow-content">
+                            <h4>4. Image Processing Pipeline</h4>
+                            <p>Each embedded image goes through: <strong>PaddleOCR</strong> → <strong>Vision
+                                    Verify</strong> (Groq Llama 3.2 Vision corrects OCR errors) → <strong>Image
+                                    Classify</strong> (workflow or informational?) → <strong>Diagram Analyze</strong>
+                                (extract graph structure from workflows).</p>
+                            <span class="flow-file">extraction/processors/</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(0,212,170,0.15); color: var(--green);">🤖</div>
+                        <div class="flow-content">
+                            <h4>5. AI Requirement Generation (Stage 3)</h4>
+                            <p>Combined text (document + image OCR + diagram narratives) is chunked and fed to the DSPy
+                                <code>TrainedExtractor</code>. Each requirement is classified (real vs noise), then
+                                composite requirements are de-merged into granular items.
+                            </p>
+                            <span class="flow-file">extraction/generators/trained_extractor.py</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(0,212,170,0.15); color: var(--green);">🧹</div>
+                        <div class="flow-content">
+                            <h4>6. Postprocessing</h4>
+                            <p>Requirements are deduplicated using Jaccard similarity, then consolidated via LLM to
+                                merge overlapping items. Each requirement gets a unique ID (e.g., <code>PTW-001</code>).
+                            </p>
+                            <span class="flow-file">extraction/generators/postprocessing.py</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon" style="background: rgba(108,99,255,0.15); color: var(--accent);">☁️</div>
+                        <div class="flow-content">
+                            <h4>7. Output & Storage</h4>
+                            <p>Results are: (a) uploaded to S3 as <code>requirements.json</code>, (b) model state saved
+                                locally, (c) requirements pushed to the Java backend (Postgres). The API returns the
+                                full JSON response.</p>
+                            <span class="flow-file">app.py → upload_json_to_s3()</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 3. STAGE 1 ==================== -->
+        <div class="section" id="s3">
+            <span class="section-label">Section 3</span>
+            <h2>🔍 Stage 1 — File Classification</h2>
+
+            <div class="stage-card stage1">
+                <div class="stage-header">
+                    <div class="stage-num">S1</div>
+                    <h3>FileRouter</h3>
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                    Identifies the file type and routes it to the correct extractor. For PDFs, it also checks if the
+                    document is scanned (no text layer) by attempting text extraction on the first 3 pages.
+                </p>
+                <div class="module-grid">
+                    <div class="module-item">
+                        <div class="module-name">PDF</div>
+                        <div class="module-desc">.pdf files with a text layer → pymupdf4llm</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">Scanned PDF</div>
+                        <div class="module-desc">.pdf with &lt;100 chars of text → PaddleOCR renders each page as image
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">DOCX</div>
+                        <div class="module-desc">.docx, .doc → python-docx paragraph extraction</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">PPTX</div>
+                        <div class="module-desc">.pptx, .ppt → python-pptx slide-by-slide extraction</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">Image</div>
+                        <div class="module-desc">.png, .jpg, .jpeg, .svg, .gif, .webp, .bmp → Direct OCR + Vision</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">Unknown</div>
+                        <div class="module-desc">Unsupported formats → Skipped with a warning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 4. STAGE 2 ==================== -->
+        <div class="section" id="s4">
+            <span class="section-label">Section 4</span>
+            <h2>📄 Stage 2 — Content Extraction</h2>
+
+            <div class="stage-card stage2">
+                <div class="stage-header">
+                    <div class="stage-num">S2</div>
+                    <h3>Format-Specific Extractors</h3>
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                    Each extractor provides two methods: <code>extract_text()</code> for document text and
+                    <code>extract_images()</code> for embedded images. Small images (&lt;1KB) like icons are
+                    automatically filtered out.
+                </p>
+                <div class="module-grid">
+                    <div class="module-item">
+                        <div class="module-name">pdf_extractor.py</div>
+                        <div class="module-desc">Uses pymupdf4llm for markdown-formatted text extraction. Falls back to
+                            PaddleOCR for scanned PDFs (renders pages at 200 DPI). Extracts embedded images via PyMuPDF
+                            xref.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">docx_extractor.py</div>
+                        <div class="module-desc">Reads all paragraphs via python-docx. Extracts images from document
+                            relationships. Skips EMF/WMF formats (unsupported by Vision APIs).</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">pptx_extractor.py</div>
+                        <div class="module-desc">Goes through each slide, extracts text from all shapes (titles, text
+                            boxes, placeholders). Extracts images from picture-type shapes with slide number tracking.
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">ocr_extractor.py</div>
+                        <div class="module-desc">PaddleOCR wrapper supporting file paths, PIL Images, and base64.
+                            Returns text + confidence scores + bounding boxes. Replaces the old pytesseract dependency.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 5. IMAGE PIPELINE ==================== -->
+        <div class="section" id="s5">
+            <span class="section-label">Section 5</span>
+            <h2>🖼️ Image Processing Pipeline</h2>
+            <p>This is the <strong>new capability</strong> — handles embedded images and workflow diagrams that were
+                previously ignored entirely.</p>
+
+            <div class="stage-card stage-img">
+                <div class="stage-header">
+                    <div class="stage-num">🖼</div>
+                    <h3>4-Step Image Pipeline</h3>
+                </div>
+                <div class="flow-container" style="background: var(--bg); margin-top: 10px; padding: 20px;">
+                    <div class="pv-row">
+                        <span class="pv-box pv-s2">🖼️ Image</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s2i">OCR (PaddleOCR)</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s2i">Verify (GPT-4o)</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s2i">Classify</span>
+                    </div>
+                    <div class="pv-row" style="margin-top: 16px;">
+                        <span class="pv-arrow" style="opacity:0;">→</span>
+                        <span class="pv-arrow" style="opacity:0;">→</span>
+                        <span class="pv-arrow" style="opacity:0;">→</span>
+                        <span class="pv-arrow" style="opacity:0;">→</span>
+                        <span class="pv-arrow">↓ split</span>
+                    </div>
+                    <div class="pv-row" style="margin-top: 8px;">
+                        <span class="pv-box pv-s3">Informational → Use OCR text</span>
+                        <span style="color: var(--text-muted); font-size: 14px; padding: 0 12px;">|</span>
+                        <span class="pv-box pv-s2i">Workflow → Diagram Analyzer → Narrative</span>
+                    </div>
+                </div>
+                <div class="module-grid" style="margin-top: 20px;">
+                    <div class="module-item">
+                        <div class="module-name">vision_verifier.py</div>
+                        <div class="module-desc">Sends image + OCR text to Groq Llama 3.2 Vision. The LLM compares OCR
+                            output against the image and corrects errors. Especially useful for complex layouts,
+                            handwriting, and small labels.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">image_classifier.py</div>
+                        <div class="module-desc">Uses Groq Llama 3.2 Vision to classify images as "workflow"
+                            (flowcharts, process diagrams) or "informational" (screenshots, tables, charts). Determines
+                            the next processing step.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">diagram_analyzer.py</div>
+                        <div class="module-desc">Uses Groq Llama 3.2 Vision to extract graph structure from workflow
+                            diagrams: nodes, connections, decision points, flow paths. Converts the graph into a
+                            readable text narrative for DSPy.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">ocr_extractor.py</div>
+                        <div class="module-desc">PaddleOCR — local OCR engine. No API calls needed. Downloads models
+                            (~150MB) on first use. Supports angle classification for rotated text.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 6. STAGE 3 ==================== -->
+        <div class="section" id="s6">
+            <span class="section-label">Section 6</span>
+            <h2>🤖 Stage 3 — AI Requirement Generation</h2>
+
+            <div class="stage-card stage3">
+                <div class="stage-header">
+                    <div class="stage-num">S3</div>
+                    <h3>DSPy-Powered Extraction</h3>
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                    Uses <strong>Groq LLaMA 3.3 70B</strong> for text extraction via DSPy framework, and <strong>Groq
+                        Llama 4 Scout</strong> for image understanding. Trained per-project using
+                    BootstrapFewShot.
+                </p>
+                <div class="module-grid">
+                    <div class="module-item">
+                        <div class="module-name">signatures.py</div>
+                        <div class="module-desc"><strong>RequirementExtraction:</strong> Extracts all business
+                            requirements across 3 layers (Features, UI, Workflows).<br>
+                            <strong>RequirementClassifier:</strong> Validates if a candidate is a real requirement or
+                            noise.<br>
+                            <strong>RequirementDeMerger:</strong> Splits composite requirements into granular items.<br>
+                            <strong>RequirementConsolidation:</strong> Merges truly redundant requirements.
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">trained_extractor.py</div>
+                        <div class="module-desc">The <code>TrainedExtractor</code> DSPy Module chains: Extract →
+                            Pre-filter (skip keywords) → Classify (yes/no) → De-merge → Enrich with fallback fields.
+                            Returns accepted + filtered-out lists.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">training.py</div>
+                        <div class="module-desc">9 positive examples (CRM, Healthcare, General) + 11 negative examples
+                            (technical noise). Domain-weighted: healthcare/fintech examples get 2× weight for matching
+                            projects. Multi-project training scans other projects' PDFs.</div>
+                    </div>
+                    <div class="module-item">
+                        <div class="module-name">postprocessing.py</div>
+                        <div class="module-desc"><strong>Dedup:</strong> Jaccard similarity (title + full text) with
+                            threshold 0.55.<br>
+                            <strong>Consolidation:</strong> LLM-based merge for >45 items. Processes in batches of 60
+                            with cross-batch merge for >100 items.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 7. API ENDPOINTS ==================== -->
+        <div class="section" id="s7">
+            <span class="section-label">Section 7</span>
+            <h2>🌐 API Endpoints (FastAPI)</h2>
+            <p>All endpoints are served at <code>http://localhost:8000</code>. Interactive OpenAPI docs at
+                <code>/docs</code>.
+            </p>
+
+            <div class="stage-card stage-api">
+                <div class="stage-header">
+                    <div class="stage-num">API</div>
+                    <h3>Available Endpoints</h3>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Endpoint</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="method get">GET</span></td>
+                            <td><span class="endpoint">/health</span></td>
+                            <td>Health check — verifies API keys and Redis connection</td>
+                        </tr>
+                        <tr>
+                            <td><span class="method post">POST</span></td>
+                            <td><span class="endpoint">/extract</span></td>
+                            <td><strong>Synchronous extraction.</strong> Downloads from S3, extracts requirements,
+                                uploads results. Request: <code>{ project_id, file_urls[] }</code></td>
+                        </tr>
+                        <tr>
+                            <td><span class="method post">POST</span></td>
+                            <td><span class="endpoint">/extract-async</span></td>
+                            <td><strong>Async extraction.</strong> Queues in Celery, returns <code>task_id</code>
+                                immediately. Same request body as <code>/extract</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="method get">GET</span></td>
+                            <td><span class="endpoint">/status/{task_id}</span></td>
+                            <td>Check Celery task progress. Returns: <code>PENDING</code>, <code>PROGRESS</code>,
+                                <code>SUCCESS</code>, or <code>FAILURE</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="method get">GET</span></td>
+                            <td><span class="endpoint">/requirements/{project_id}</span></td>
+                            <td>Get cached requirements from S3 (no re-extraction)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="method post">POST</span></td>
+                            <td><span class="endpoint">/generate-upload-url</span></td>
+                            <td>Generate pre-signed S3 upload URL for frontend. Request:
+                                <code>{ project_id, filename }</code>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>Sync vs Async:</strong> Use <code>/extract</code> for small projects (1–3 files, &lt;2 min).
+                    Use <code>/extract-async</code> for large projects — it returns immediately with a
+                    <code>task_id</code> you can poll via <code>/status/{task_id}</code>.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 8. S3 INTEGRATION ==================== -->
+        <div class="section" id="s8">
+            <span class="section-label">Section 8</span>
+            <h2>☁️ AWS S3 Integration</h2>
+            <p>S3 is used for both file input (uploads) and output (results storage).</p>
+
+            <div class="stage-card stage-s3">
+                <div class="stage-header">
+                    <div class="stage-num">S3</div>
+                    <h3>S3 Bucket Structure</h3>
+                </div>
+                <div class="cmd-block" style="color: var(--text); line-height: 2;">
+                    <span style="color: var(--orange);">prism-bucket/</span>
+                    ├── projects/
+                    │ └── <span style="color: var(--accent);">{project_id}</span>/
+                    │ ├── input/
+                    │ │ ├── <span style="color: var(--green);">requirements.pdf</span> ← Uploaded by frontend
+                    │ │ ├── <span style="color: var(--green);">workflow.pptx</span> ← Uploaded by frontend
+                    │ │ └── <span style="color: var(--green);">diagram.png</span> ← Uploaded by frontend
+                    │ ├── output/
+                    │ │ └── <span style="color: var(--blue);">requirements.json</span> ← Generated by pipeline
+                    │ └── models/
+                    │ └── <span style="color: var(--pink);">classifier_model.json</span> ← Trained model backup
+                </div>
+
+                <h4 style="margin-top: 24px; margin-bottom: 12px; font-size: 16px;">Upload Flow (Frontend → S3)</h4>
+                <div class="flow-container" style="background: var(--bg); padding: 16px;">
+                    <div class="pv-row">
+                        <span class="pv-box pv-out">Frontend</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s1">POST /generate-upload-url</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-out">Pre-signed URL</span>
+                    </div>
+                    <div class="pv-row" style="margin-top: 8px;">
+                        <span class="pv-box pv-out">Frontend</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s3">PUT to Pre-signed URL</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-out">File in S3 ✓</span>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 16px;">
+                    <strong>Security:</strong> AWS credentials are never exposed to the frontend. The backend generates
+                    time-limited pre-signed URLs (via <code>/generate-upload-url</code>) that the frontend uses for
+                    direct S3 uploads. Keys stay on the server.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 9. ASYNC ==================== -->
+        <div class="section" id="s9">
+            <span class="section-label">Section 9</span>
+            <h2>⚡ Async Processing (Celery + Redis)</h2>
+
+            <div class="stage-card stage-api">
+                <div class="stage-header">
+                    <div class="stage-num">⚡</div>
+                    <h3>Background Task Architecture</h3>
+                </div>
+                <div class="flow-container" style="background: var(--bg); padding: 20px;">
+                    <div class="pv-row">
+                        <span class="pv-box pv-out">Frontend</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s1">POST /extract-async</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s2i">Redis Queue</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s3">Celery Worker</span>
+                    </div>
+                    <div class="pv-row" style="margin-top: 12px;">
+                        <span class="pv-box pv-out">Frontend</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-s1">GET /status/{task_id}</span>
+                        <span class="pv-arrow">→</span>
+                        <span class="pv-box pv-out">PENDING | PROGRESS | SUCCESS | FAILURE</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 16px;">
+                    <strong>Celery worker</strong> runs in a separate process
+                    (<code>celery -A celery_app worker</code>). It imports <code>extract_from_files</code> from
+                    <code>extract_requirements.py</code> and processes the extraction in the background. Results are
+                    stored in Redis and uploaded to S3.
+                </p>
+                <p style="color: var(--text-muted); font-size: 14px;">
+                    <strong>Task timeout:</strong> 1 hour maximum. Model state is saved locally to
+                    <code>models/{project_id}/classifier_model.json</code>.
+                </p>
+            </div>
+        </div>
+
+        <!-- ==================== 10. ENV CONFIG ==================== -->
+        <div class="section" id="s10">
+            <span class="section-label">Section 10</span>
+            <h2>⚙️ Environment Configuration</h2>
+            <p>All configuration is managed via <code>.env</code> file and <code>config/config.json</code>.</p>
+
+            <div class="stage-card stage1">
+                <div class="stage-header">
+                    <div class="stage-num">🔑</div>
+                    <h3>.env File — Required Variables</h3>
+                </div>
+                <table class="env-table">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Purpose</th>
+                            <th>Used By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>GROQ_API_KEY</code></td>
+                            <td>LLaMA 3.3 70B (DSPy) + Llama 4 Scout (image pipeline)</td>
+                            <td>Required — powers ALL AI features</td>
+                        </tr>
+                        <tr>
+                            <td><code>AWS_ACCESS_KEY_ID</code></td>
+                            <td>AWS S3 access</td>
+                            <td>API mode — Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>AWS_SECRET_ACCESS_KEY</code></td>
+                            <td>AWS S3 secret</td>
+                            <td>API mode — Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>S3_BUCKET_NAME</code></td>
+                            <td>Target S3 bucket for uploads/downloads</td>
+                            <td>API mode — Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>AWS_REGION</code></td>
+                            <td>AWS region (e.g., ap-south-1)</td>
+                            <td>API mode — Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>CELERY_BROKER_URL</code></td>
+                            <td>Redis broker URL (default: redis://localhost:6379/0)</td>
+                            <td>Async mode — Optional</td>
+                        </tr>
+                        <tr>
+                            <td><code>CELERY_RESULT_BACKEND</code></td>
+                            <td>Redis result URL (default: redis://localhost:6379/1)</td>
+                            <td>Async mode — Optional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stage-card stage3" style="margin-top: 20px;">
+                <div class="stage-header">
+                    <div class="stage-num">📋</div>
+                    <h3>config/config.json — Project Configuration</h3>
+                </div>
+                <div class="cmd-block" style="color: var(--text);">
+                    {
+                    "<span style="color: var(--accent);">current_project</span>": "ptw_phase1",
+                    "<span style="color: var(--accent);">output_dir</span>": "output",
+                    "<span style="color: var(--accent);">projects</span>": {
+                    "ptw_phase1": {
+                    "input_dir": "input/ptw_phase1"
+                    },
+                    "healthcare_app": {
+                    "input_dir": "input/healthcare"
+                    }
+                    }
+                    }
+                </div>
+                <div class="info-box" style="margin-top: 16px;">
+                    <strong>Multi-Project Training:</strong> When extracting for <code>current_project</code>, the
+                    pipeline automatically scans other projects' PDFs to generate additional training examples for the
+                    classifier, improving accuracy across domains.
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>PRISM — AI-Powered Requirement Extraction Pipeline</p>
+            <p style="margin-top: 4px;">Generated February 2026 · approach2_project</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
