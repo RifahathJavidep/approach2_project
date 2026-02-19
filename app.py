@@ -14,12 +14,15 @@ from typing import List, Optional, Union, Any, Dict
 from celery.result import AsyncResult
 from celery_app import extract_requirements_task
 
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import httpx
 import uvicorn
 from dotenv import load_dotenv
+from document_status import update_document_statuses
 
 # Load environment
 load_dotenv()
@@ -411,13 +414,17 @@ async def extract_requirements_async(request: ExtractionRequest):
     if not local_files:
         raise HTTPException(status_code=400, detail="Failed to download any files from S3")
 
+    # POST initial PENDING status to Java backend (best-effort)
+    update_document_statuses(str(project_id), file_urls, "PENDING")
+
     # Dispatch to Celery
     task = extract_requirements_task.delay(
         project_id=str(project_id),
         local_files=local_files,
         output_dir=output_dir,
         existing_model_state=existing_model_state,
-        multi_project_config=multi_project_config
+        multi_project_config=multi_project_config,
+        file_urls=file_urls,
     )
 
     return {

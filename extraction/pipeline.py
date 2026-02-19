@@ -20,7 +20,7 @@ Example:
 import json
 import os
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Callable
 
 import dspy
 from dotenv import load_dotenv
@@ -369,7 +369,8 @@ class ExtractionPipeline:
     # MAIN ENTRY POINTS
     # =========================================================================
 
-    def run(self, file_paths: List[str], project_name: str, output_dir: str = None) -> Dict:
+    def run(self, file_paths: List[str], project_name: str, output_dir: str = None,
+            status_callback: Callable[[str, str], None] = None) -> Dict:
         """
         Run the complete extraction pipeline on a list of files.
 
@@ -380,6 +381,8 @@ class ExtractionPipeline:
             file_paths: List of local file paths to process
             project_name: Project identifier (e.g. 'ptw_phase1')
             output_dir: Optional directory to save results locally
+            status_callback: Optional callback(file_path, status) called per file.
+                             status is "IN_PROGRESS", "COMPLETED", or "FAILED".
 
         Returns:
             Dict with 'project', 'requirements', and 'model_state'
@@ -392,25 +395,43 @@ class ExtractionPipeline:
         all_filtered = []
 
         for file_path in file_paths:
-            # Stage 1: Classify
-            file_type, description = FileRouter.route(file_path)
-            print(f"\n  {description}")
+            # Notify: this file is now being processed
+            if status_callback:
+                status_callback(file_path, "IN_PROGRESS")
 
-            if file_type == FileType.UNKNOWN:
-                print(f"  ⚠ Skipping unsupported file: {file_path}")
-                continue
+            try:
+                # Stage 1: Classify
+                file_type, description = FileRouter.route(file_path)
+                print(f"\n  {description}")
 
-            # Stage 2: Extract content
-            combined_text = self._extract_content(file_path, file_type)
+                if file_type == FileType.UNKNOWN:
+                    print(f"  ⚠ Skipping unsupported file: {file_path}")
+                    if status_callback:
+                        status_callback(file_path, "COMPLETED")
+                    continue
 
-            if not combined_text:
-                print(f"  ⚠ No text extracted from {file_path}")
-                continue
+                # Stage 2: Extract content
+                combined_text = self._extract_content(file_path, file_type)
 
-            # Stage 3: Generate requirements
-            reqs, filtered = self._generate_requirements(combined_text)
-            all_reqs.extend(reqs)
-            all_filtered.extend(filtered)
+                if not combined_text:
+                    print(f"  ⚠ No text extracted from {file_path}")
+                    if status_callback:
+                        status_callback(file_path, "COMPLETED")
+                    continue
+
+                # Stage 3: Generate requirements
+                reqs, filtered = self._generate_requirements(combined_text)
+                all_reqs.extend(reqs)
+                all_filtered.extend(filtered)
+
+                # Notify: this file completed successfully
+                if status_callback:
+                    status_callback(file_path, "COMPLETED")
+
+            except Exception as e:
+                print(f"  ✗ Error processing {file_path}: {e}")
+                if status_callback:
+                    status_callback(file_path, "FAILED")
 
         print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
 
@@ -457,6 +478,7 @@ def extract_from_files(
     output_dir: str = None,
     model_state: Dict = None,
     config: Dict = None,
+    status_callback: Callable[[str, str], None] = None,
 ) -> Dict:
     """
     Extract requirements from a list of local file paths.
@@ -465,7 +487,8 @@ def extract_from_files(
     Backward-compatible wrapper around ExtractionPipeline.
     """
     pipeline = ExtractionPipeline(config=config, model_state=model_state)
-    return pipeline.run(file_paths=file_paths, project_name=project_name, output_dir=output_dir)
+    return pipeline.run(file_paths=file_paths, project_name=project_name, output_dir=output_dir,
+                        status_callback=status_callback)
 
 
 def extract_requirements(config: Dict = None) -> Dict:

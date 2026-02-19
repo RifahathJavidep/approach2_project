@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 from celery import Celery
 from dotenv import load_dotenv
+from document_status import update_document_statuses, update_single_document_status
 
 # Ensure project directory is in path for Celery worker
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -33,7 +34,7 @@ app.conf.update(
 )
 
 @app.task(name="extract_requirements_task", bind=True)
-def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config):
+def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=None):
     """
     Background task to extract requirements.
     This runs the heavy lifting in a Celery worker.
@@ -57,7 +58,21 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
     import dspy
     
     self.update_state(state='PROGRESS', meta={'message': 'Starting extraction process'})
-    
+
+    # Build per-file status callback (maps local paths → S3 URLs)
+    status_callback = None
+    if file_urls:
+        # Map local file paths to their original S3 URLs by matching filenames
+        local_to_url = {}
+        for local_path, s3_url in zip(local_files, file_urls):
+            local_to_url[local_path] = s3_url
+
+        def status_callback(file_path, status):
+            """Called by the pipeline for each file: IN_PROGRESS, COMPLETED, or FAILED."""
+            s3_url = local_to_url.get(file_path)
+            if s3_url:
+                update_single_document_status(project_id, s3_url, status)
+
     try:
         # We MUST wrap in dspy.context for the worker thread
         with dspy.context(lm=_get_lm()):
@@ -66,9 +81,10 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 file_paths=local_files,
                 output_dir=output_dir,
                 model_state=existing_model_state,
-                config=multi_project_config
+                config=multi_project_config,
+                status_callback=status_callback,
             )
-            
+
             # Save the model locally as requested by the user previously
             if "model_state" in result:
                 model_dir = Path(__file__).parent / "models" / str(project_id)
@@ -84,7 +100,10 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 "total_requirements": len(result.get("requirements", [])),
                 "req_s3_key": f"projects/{project_id}/output/requirements.json"
             }
-            
+
     except Exception as e:
+        # Mark any remaining files as FAILED
+        if file_urls:
+            update_document_statuses(project_id, file_urls, "FAILED")
         self.update_state(state='FAILURE', meta={'error': str(e)})
         raise e
