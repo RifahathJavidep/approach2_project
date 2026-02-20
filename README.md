@@ -1,5 +1,8 @@
 # Requirements Extraction - Trained Approach
 
+## Overview
+This project provides a robust, multi-layer extraction pipeline to identify user requirements from various document formats (PDF, PPTX). It features a semantic evaluation system to measure extraction accuracy against ground truth data.
+
 ## Setup
 
 1. Install dependencies:
@@ -14,31 +17,62 @@ cp .env.template .env
 ```
 
 3. Place your files:
-   - Input PDF → `input/` folder
-   - Ground truth Excel → `ground_truth/` folder
+   - Input files (PDF/PPTX) → `input/{project_name}/`
+   - Ground truth Excel → `ground_truth/`
 
-4. Update `config/config.json` with your file names
+4. Update `config/config.json` with your project configurations.
 
-## Run (VS Code)
+## The New Flow (Multi-Project Pipeline)
 
-1. Open `extract_requirements.py`
-2. Press F5 to run extraction
-3. Open `evaluate.py`
-4. Press F5 to run evaluation
+This project has been updated with a universal flow that supports multiple projects and batch processing.
 
-## Run (Terminal)
+### 1. Run Extraction
+The `run_extraction.py` script uses a multi-layer pipeline to extract requirements:
+- **UI Elements**: Captures screens, buttons, and layouts.
+- **Workflows**: Extracts logical sequences and steps.
+- **Business Logic**: Identifies rules, constraints, and features.
 
+**Usage:**
 ```bash
-python extract_requirements.py
-python evaluate.py
+# Run for a specific project
+python3 run_extraction.py ptw
+
+# Run for all projects defined in config.json
+python3 run_extraction.py all
 ```
+*Extracted requirements are saved to `output/{project}_requirements.json`.*
+
+### 2. Run Evaluation
+The `run_evaluation.py` script compares extracted requirements with ground truth using semantic matching to calculate Precision, Recall, and F1 Score.
+
+**Usage:**
+```bash
+# Evaluate a specific project
+python3 run_evaluation.py ptw
+
+# Evaluate all projects and show a summary table
+python3 run_evaluation.py all
+```
+*Evaluation results are saved to `output/{project}_evaluation.json`.*
+
+## Progress Tracking
+We aim for an **F1 Score ≥ 80%** across all projects. The `run_evaluation.py all` command includes a summary table and highlights projects falling below this threshold.
+
+---
+
+## Legacy Flow (Single Project)
+
+While the new flow is recommended, you can still run extraction using the original scripts:
+1. Open `extract_requirements.py` and run it.
+2. Open `evaluate.py` and run it.
+
+---
 
 ## Background Processing (Celery & Redis)
 
-For long-running extractions, the project uses Celery and Redis to handle tasks in the background.
+For long-running extractions, the project uses Celery and Redis.
 
 ### 1. Prerequisite: Redis
-Redis must be installed and running.
 ```bash
 # macOS (Homebrew)
 brew install redis
@@ -46,49 +80,41 @@ brew services start redis
 ```
 
 ### 2. Start Celery Worker
-Run the worker in its own terminal to process the queued jobs.
 ```bash
 celery -A celery_app worker --loglevel=info
 ```
 
 ### 3. API Usage
-The extraction can be triggered via a non-blocking asynchronous call.
-
 - **Trigger Extraction**: `POST /extract-async`
-  - Payload matches `POST /extract`
-  - Returns a `task_id` immediately.
 - **Poll Status**: `GET /status/{task_id}`
-  - Track if the job is `PENDING`, `STARTED`, `PROGRESS`, or `SUCCESS`.
 
 ## Folder Structure
 
 ```
 approach2_project/
+├── run_extraction.py        # NEW: Universal extraction script
+├── run_evaluation.py        # NEW: Universal evaluation script
+├── extraction/              # Core pipeline logic
+│   ├── pipeline.py          # Multi-layer orchestration
+│   ├── extractors/          # Screen/Workflow/Logic extractors
+│   └── processors/          # Text and image processing
 ├── app.py                   # FastAPI service
-├── celery_app.py            # Celery application & tasks
-├── extract_requirements.py  # AI extraction logic
-├── CELERY_REDIS_ARCHITECTURE.md # Detailed system docs
-├── models/                  # Locally saved trained models
 ├── config/
 │   └── config.json          # Multi-project configuration
-└── requirements.txt         # Dependencies (includes Celery/Redis)
+├── input/                   # Input directories by project
+├── ground_truth/            # Ground truth Excel files
+└── output/                  # Results and metrics
 ```
 
 ## Monitoring
-You can use **Flower** to monitor background tasks in a web dashboard:
+Monitor background tasks using Flower:
 ```bash
 celery -A celery_app flower
 ```
 Access at: `http://localhost:5555`
 
 ## Training Data
-
-- 8 positive examples (user features)
-- 11 negative examples (implementation details, NFRs)
-- Domain-agnostic: teaches "requirement vs non-requirement"
-
-## Output Files
-
-- `output/{project}_requirements.json` - Extracted requirements
-- `output/{project}_evaluation.json` - Evaluation metrics
-# approach2_project
+The system currently uses:
+- 8 positive examples (User features)
+- 11 negative examples (Implementation details, NFRs)
+- Fine-tuned semantic matching thresholds for accuracy.

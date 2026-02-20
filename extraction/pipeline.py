@@ -34,9 +34,16 @@ from .extractors.ocr_extractor import LocalOCRExtractor, OCRConfig
 from .processors.vision_verifier import OCRVerifier
 from .processors.image_classifier import ImageClassifier
 from .processors.diagram_analyzer import DiagramAnalyzer
-from .generators.trained_extractor import TrainedExtractor
+from .generators.trained_extractor import (
+    TrainedExtractor,
+    BusinessFeatureExtractor,
+    UIRequirementExtractor,
+    WorkflowRequirementExtractor,
+    TechnicalRequirementExtractor
+)
 from .generators.training import train_extractor
-from .generators.postprocessing import deduplicate_requirements, consolidate_requirements
+from .generators.postprocessing import deduplicate_requirements, deduplicate_multi_layer_requirements, consolidate_requirements
+from .generators.validation import validate_requirement
 from .utils import chunk_document
 
 # Load environment
@@ -168,22 +175,6 @@ class ExtractionPipeline:
     def _extract_content(self, file_path: str, file_type: FileType) -> str:
         """
         Extract text + image content from a file based on its type.
-
-        For documents (PDF/DOCX/PPTX):
-            1. Extract text content
-            2. Extract embedded images
-            3. Process each image through the image pipeline
-            4. Combine all text
-
-        For standalone images:
-            Run through OCR directly
-
-        Args:
-            file_path: Path to the input file
-            file_type: Classification result from FileRouter
-
-        Returns:
-            Combined text (document text + image OCR + diagram narratives)
         """
         print(f"\n  Processing: {file_path}")
 
@@ -254,19 +245,6 @@ class ExtractionPipeline:
     def _process_embedded_images(self, images: List[Dict]) -> str:
         """
         Process all embedded images through the pipeline.
-
-        For each image:
-            1. PaddleOCR → extract text
-            2. Vision Verifier → correct OCR errors
-            3. Image Classifier → workflow or informational?
-            4. If workflow → Diagram Analyzer → text narrative
-            5. If informational → use OCR text directly
-
-        Args:
-            images: List of image dicts from extractors
-
-        Returns:
-            Combined text from all processed images
         """
         if not images:
             return ""
@@ -334,15 +312,7 @@ class ExtractionPipeline:
 
     def _generate_requirements(self, text: str) -> tuple:
         """
-        Run text through DSPy TrainedExtractor.
-
-        Chunks the text, processes each chunk, and collects results.
-
-        Args:
-            text: Combined document text
-
-        Returns:
-            Tuple of (accepted_requirements, filtered_out)
+        Run MULTI-LAYER extraction with 4 specialized passes.
         """
         if not text:
             return [], []
@@ -353,15 +323,33 @@ class ExtractionPipeline:
         all_reqs = []
         all_filtered = []
 
-        for i, chunk in enumerate(chunks, 1):
-            print(f"    Chunk {i}/{len(chunks)}...", end='')
-            try:
-                result = self.extractor(document_text=chunk)
-                all_reqs.extend(result['requirements'])
-                all_filtered.extend(result['filtered_out'])
-                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
-            except Exception as e:
-                print(f" ERROR: {e}")
+        # Initialize the 4 specialized extractors
+        extractors = [
+            ("Business Features", BusinessFeatureExtractor()),
+            ("UI Components", UIRequirementExtractor()),
+            ("Workflows", WorkflowRequirementExtractor()),
+            ("Technical", TechnicalRequirementExtractor())
+        ]
+
+        # Run 4 extraction passes
+        for pass_num, (layer_name, extractor) in enumerate(extractors, 1):
+            print(f"\n  Pass {pass_num}/4: Extracting {layer_name}...")
+            layer_reqs = []
+            layer_filtered = []
+
+            for i, chunk in enumerate(chunks, 1):
+                print(f"    Chunk {i}/{len(chunks)}...", end='')
+                try:
+                    result = extractor(document_text=chunk)
+                    layer_reqs.extend(result['requirements'])
+                    layer_filtered.extend(result['filtered_out'])
+                    print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+                except Exception as e:
+                    print(f" ERROR: {e}")
+
+            all_reqs.extend(layer_reqs)
+            all_filtered.extend(layer_filtered)
+            print(f"  {layer_name} total: {len(layer_reqs)} requirements")
 
         return all_reqs, all_filtered
 
@@ -435,9 +423,25 @@ class ExtractionPipeline:
 
         print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
 
-        # Postprocessing
-        unique = deduplicate_requirements(all_reqs)
-        print(f"  After dedup: {len(all_reqs)} -> {len(unique)} unique")
+        # Validation: Filter out vague/generic requirements
+        print(f"\n  Validation (specificity check):")
+        validated_reqs = []
+        rejected = []
+        for req in all_reqs:
+            is_valid, reason = validate_requirement(req)
+            if is_valid:
+                validated_reqs.append(req)
+            else:
+                rejected.append({'req': req, 'reason': reason})
+                print(f"    ✗ Rejected: {req.get('title', 'N/A')[:50]} — {reason}")
+
+        print(f"  After validation: {len(all_reqs)} -> {len(validated_reqs)} valid ({len(rejected)} rejected)")
+
+        # Postprocessing with layer-aware deduplication
+        print(f"\n  Deduplication (layer-aware):")
+        unique = deduplicate_multi_layer_requirements(validated_reqs)
+        print(f"  After dedup: {len(validated_reqs)} -> {len(unique)} unique")
+
 
         unique = consolidate_requirements(unique)
         print(f"  After consolidation: {len(unique)} requirements")

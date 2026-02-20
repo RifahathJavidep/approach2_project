@@ -11,23 +11,47 @@ Modules:
 """
 
 from .signatures import (
-    RequirementExtraction,
+    BusinessFeatureExtraction,
+    UIRequirementExtraction,
+    WorkflowRequirementExtraction,
+    TechnicalRequirementExtraction,
     RequirementDeMerger,
     RequirementClassifier,
     RequirementConsolidation,
 )
-from .trained_extractor import TrainedExtractor
+from .trained_extractor import (
+    TrainedExtractor,
+    BusinessFeatureExtractor,
+    UIRequirementExtractor,
+    WorkflowRequirementExtractor,
+    TechnicalRequirementExtractor,
+)
 from .training import train_extractor, SKIP_KEYWORDS, POSITIVE_EXAMPLES, NEGATIVE_EXAMPLES
-from .postprocessing import deduplicate_requirements, consolidate_requirements
+from .postprocessing import deduplicate_requirements, consolidate_requirements, deduplicate_multi_layer_requirements
+
+# Backward compatibility alias
+RequirementExtraction = BusinessFeatureExtraction
 
 __all__ = [
-    "RequirementExtraction",
+    # Signatures
+    "BusinessFeatureExtraction",
+    "UIRequirementExtraction",
+    "WorkflowRequirementExtraction",
+    "TechnicalRequirementExtraction",
+    "RequirementExtraction",  # Backward compatibility
     "RequirementDeMerger",
     "RequirementClassifier",
     "RequirementConsolidation",
+    # Extractors
     "TrainedExtractor",
+    "BusinessFeatureExtractor",
+    "UIRequirementExtractor",
+    "WorkflowRequirementExtractor",
+    "TechnicalRequirementExtractor",
+    # Training and postprocessing
     "train_extractor",
     "deduplicate_requirements",
+    "deduplicate_multi_layer_requirements",
     "consolidate_requirements",
     "SKIP_KEYWORDS",
     "POSITIVE_EXAMPLES",

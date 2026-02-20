@@ -1,5 +1,5 @@
 {
-  "current_project": "logistics_manager",
+  "current_project": "crm_cloud",
   "output_dir": "output",
   "chunk_size": 6000,
   "similarity_threshold": 0.5,
@@ -28,6 +28,10 @@
     "ecommerce_gateway": {
       "input_dir": "input/ecommerce_gateway",
       "ground_truth": "ground_truth/ecommerce_gt.xlsx"
+    },
+    "bbmsa": {
+      "input_dir": "input/bbmsa",
+      "ground_truth": "ground_truth/bbmsa_ground_truth.xlsx"
     }
   }
 }

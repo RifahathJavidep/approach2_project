@@ -62,12 +62,19 @@ def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.5
         is_dup = False
         req_title = req.get('title', '')
         req_desc = req.get('description', '')
+        req_type = req.get('type', 'Functional')  # NEW: Get type for layer-aware comparison
         req_full = f"{req_title} {req_desc}".lower()
 
         for existing in unique:
             ex_title = existing.get('title', '')
             ex_desc = existing.get('description', '')
+            ex_type = existing.get('type', 'Functional')  # NEW: Get existing type
             ex_full = f"{ex_title} {ex_desc}".lower()
+
+            # NEW: NEVER merge across types (preserve granularity layers)
+            # Functional ≠ UI ≠ Workflow ≠ Architecture ≠ Data Model
+            if req_type != ex_type:
+                continue  # Skip comparison if different types
 
             # Strategy 1: Title-to-title (catches cross-file duplicates)
             title_sim = _title_similarity(req_title, ex_title)
@@ -86,6 +93,39 @@ def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.5
 
         if not is_dup:
             unique.append(req)
+
+    return unique
+
+
+def deduplicate_multi_layer_requirements(reqs: List[Dict]) -> List[Dict]:
+    """
+    Deduplicate while preserving layer distinctions.
+
+    NEW FUNCTION: Layer-aware deduplication that ensures we NEVER merge across types.
+
+    Rules:
+    1. Merge EXACT duplicates (same title, same type)
+    2. Merge near-duplicates WITHIN the same type
+    3. NEVER merge across types (Functional ≠ UI ≠ Workflow ≠ Technical)
+
+    This prevents over-consolidation like:
+    - "Lead Management" (Functional) + "Lead List UI" (UI) → "Comprehensive Lead System"
+    """
+    # Group by type first
+    by_type = {}
+    for req in reqs:
+        req_type = req.get('type', 'Functional')
+        if req_type not in by_type:
+            by_type[req_type] = []
+        by_type[req_type].append(req)
+
+    # Deduplicate within each type
+    unique = []
+    for req_type, type_reqs in by_type.items():
+        print(f"    Deduplicating {req_type}: {len(type_reqs)} items", end='')
+        deduped = deduplicate_requirements(type_reqs, similarity_threshold=0.65)
+        print(f" → {len(deduped)} unique")
+        unique.extend(deduped)
 
     return unique
 
@@ -120,8 +160,12 @@ def _parse_json_safe(raw: str, fallback: List[Dict] = None) -> List[Dict]:
 
 
 def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
-    """Use LLM to merge overlapping requirements into fewer high-level items."""
-    if len(reqs) <= 45:
+    """Use LLM to merge overlapping requirements into fewer high-level items.
+
+    CHANGED: Only consolidate if >80 items (was 45)
+    Reason: Evaluation shows we're over-consolidating (11 vs 24 expected)
+    """
+    if len(reqs) <= 80:  # CHANGED from 45 to prevent over-consolidation
         print(f"  Consolidation: {len(reqs)} items — no consolidation needed")
         return reqs
 

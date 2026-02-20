@@ -1,0 +1,836 @@
+{
+  "project": "bbmsa",
+  "requirements": [
+    {
+      "title": "Catalog Consolidation",
+      "description": "Merge offerings from multiple sources into a single point of entry within the BBSSC",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to access all services from a single catalog, so that I can easily manage my services",
+      "acceptance_criteria": [
+        "All relevant offerings are migrated to the primary catalog",
+        "Legacy catalogs are decommissioned"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the primary catalog",
+          "expected_result": "All relevant offerings are available",
+          "test_data": "McDonald's customer credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path",
+        "Error handling"
+      ],
+      "assumptions": [
+        "All offerings are correctly mapped to the primary catalog"
+      ],
+      "ambiguities": [
+        "Definition of 'relevant offerings'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-001"
+    },
+    {
+      "title": "Datavalet Offering Reorganization",
+      "description": "Reorganize Datavalet offerings to provide a clean user journey",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to easily find and select Datavalet offerings, so that I can quickly provision services",
+      "acceptance_criteria": [
+        "Datavalet offerings are correctly mapped to the BBSSC taxonomy",
+        "User can select Datavalet offerings from the CI selection page"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the CI selection page",
+          "expected_result": "Datavalet offerings are visible and selectable",
+          "test_data": "McDonald's customer credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path",
+        "Error handling"
+      ],
+      "assumptions": [
+        "Datavalet offerings are correctly configured in the BBSSC"
+      ],
+      "ambiguities": [
+        "Definition of 'clean user journey'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-002"
+    },
+    {
+      "title": "System Mapping and Data Integration",
+      "description": "Integrate the BBSSC with Datavalet's ServiceNow instance",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to seamlessly interact with the BBSSC and Datavalet's ServiceNow instance, so that I can efficiently manage my services",
+      "acceptance_criteria": [
+        "BBSSC and Datavalet's ServiceNow instance are correctly integrated",
+        "Data is correctly passed between systems"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a service request in the BBSSC",
+          "expected_result": "Service request is correctly created in Datavalet's ServiceNow instance",
+          "test_data": "McDonald's customer credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path",
+        "Error handling"
+      ],
+      "assumptions": [
+        "BBSSC and Datavalet's ServiceNow instance are correctly configured"
+      ],
+      "ambiguities": [
+        "Definition of 'seamless interaction'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-003"
+    },
+    {
+      "title": "Defect Management",
+      "description": "Manage and track defects to ensure quality assurance",
+      "type": "Functional",
+      "user_story": "As a quality assurance engineer, I want to manage and track defects, so that I can ensure the system is reliable and stable",
+      "acceptance_criteria": [
+        "Defects are properly tracked and managed",
+        "Defect reports are accurate and up-to-date"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new defect report",
+          "expected_result": "Defect report is created and tracked",
+          "test_data": "Defect report details"
+        }
+      ],
+      "test_scenarios": [
+        "Defect report creation",
+        "Defect report updating"
+      ],
+      "assumptions": [
+        "Defect reports are properly categorized"
+      ],
+      "ambiguities": [
+        "Defect report fields and requirements"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-004"
+    },
+    {
+      "title": "External Synchronization",
+      "description": "Synchronize external tickets with the system for customer tracking",
+      "type": "Functional",
+      "user_story": "As a customer support engineer, I want to synchronize external tickets with the system, so that I can track customer issues",
+      "acceptance_criteria": [
+        "External tickets are properly synchronized",
+        "Ticket updates are reflected in the system"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an external ticket",
+          "expected_result": "External ticket is synchronized with the system",
+          "test_data": "External ticket details"
+        }
+      ],
+      "test_scenarios": [
+        "External ticket creation",
+        "External ticket updating"
+      ],
+      "assumptions": [
+        "External ticket synchronization is properly configured"
+      ],
+      "ambiguities": [
+        "External ticket field mappings"
+      ],
+      "confidence": "medium",
+      "requirement_id": "BBMSA-005"
+    },
+    {
+      "title": "Template Management",
+      "description": "Manage templates for customer profiles and offerings",
+      "type": "Functional",
+      "user_story": "As a sales engineer, I want to manage templates for customer profiles and offerings, so that I can efficiently create and manage customer data",
+      "acceptance_criteria": [
+        "Templates are properly managed and updated",
+        "Templates are accurately applied to customer profiles and offerings"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new template",
+          "expected_result": "Template is created and managed",
+          "test_data": "Template details"
+        }
+      ],
+      "test_scenarios": [
+        "Template creation",
+        "Template updating"
+      ],
+      "assumptions": [
+        "Templates are properly categorized"
+      ],
+      "ambiguities": [
+        "Template field requirements"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-006"
+    },
+    {
+      "title": "MCD Catalog Screen",
+      "description": "Primary catalog with consolidated offerings in a standardized layout",
+      "type": "UI",
+      "user_story": "As a user, I want to access the primary catalog, so that I can view all relevant offerings",
+      "acceptance_criteria": [
+        "Catalog loads in < 2s",
+        "Displays all consolidated offerings",
+        "Supports real-time updates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to MCD catalog",
+          "expected_result": "Catalog displays with offerings",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "View catalog",
+        "Refresh offerings"
+      ],
+      "assumptions": [
+        "User has catalog access"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-007"
+    },
+    {
+      "title": "CI Selection Page",
+      "description": "Page with CI selection form, including Datavalet-managed CIs and technical details",
+      "type": "UI",
+      "user_story": "As a user, I want to select a CI, so that I can view technical details and submit a request",
+      "acceptance_criteria": [
+        "CI selection form loads in < 2s",
+        "Displays only relevant CIs",
+        "Supports real-time updates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to CI selection page",
+          "expected_result": "Form displays with CIs",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "Select CI",
+        "Submit request"
+      ],
+      "assumptions": [
+        "User has CI selection access"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-008"
+    },
+    {
+      "title": "Technical Details Page",
+      "description": "Page with technical details, including mandatory drop-down for transfer site to template/profile",
+      "type": "UI",
+      "user_story": "As a user, I want to view technical details, so that I can understand the request requirements",
+      "acceptance_criteria": [
+        "Technical details page loads in < 2s",
+        "Displays all relevant details",
+        "Supports real-time updates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to technical details page",
+          "expected_result": "Page displays with details",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "View technical details",
+        "Submit request"
+      ],
+      "assumptions": [
+        "User has technical details access"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-009"
+    },
+    {
+      "title": "Datavalet Version (MCDO-03) Form",
+      "description": "Form for Datavalet version (MCDO-03), including CI selection, technical details, and transfer site to template/profile drop-down",
+      "type": "UI",
+      "user_story": "As a user, I want to fill out the Datavalet version (MCDO-03) form, so that I can submit a request",
+      "acceptance_criteria": [
+        "Form loads in < 2s",
+        "Displays all relevant fields",
+        "Supports real-time updates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to Datavalet version (MCDO-03) form",
+          "expected_result": "Form displays with fields",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "Fill out form",
+        "Submit request"
+      ],
+      "assumptions": [
+        "User has form access"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-010"
+    },
+    {
+      "title": "Device Selection Page",
+      "description": "CI selection page with a list of devices, including Meraki 139, 142, 82, 79, etc.",
+      "type": "UI",
+      "user_story": "As a user, I want to select a device from a list of available devices, so that I can manage its configuration.",
+      "acceptance_criteria": [
+        "Page loads in under 3 seconds for sites with >100 devices",
+        "Displays a list of devices"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to device selection page",
+          "expected_result": "Page displays with a list of devices",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "Select a device",
+        "Verify device details"
+      ],
+      "assumptions": [
+        "User has access to device selection page"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-011"
+    },
+    {
+      "title": "Template Dropdown Menu",
+      "description": "Dropdown menu with a list of templates, including MCD GW4 - 29.5.1, MCD GW4 DT-DMB - 29.5.1, etc.",
+      "type": "UI",
+      "user_story": "As a user, I want to select a template from a list of available templates, so that I can apply its configuration.",
+      "acceptance_criteria": [
+        "Dropdown menu displays with a list of templates",
+        "Template selection updates the configuration"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to template selection page",
+          "expected_result": "Dropdown menu displays with a list of templates",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "Select a template",
+        "Verify template details"
+      ],
+      "assumptions": [
+        "User has access to template selection page"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-012"
+    },
+    {
+      "title": "Maximo UI for Customer Tracking",
+      "description": "Maximo UI that displays customer tracking information, including external ticket numbers",
+      "type": "UI",
+      "user_story": "As a user, I want to view customer tracking information in Maximo, so that I can monitor the status of customer requests.",
+      "acceptance_criteria": [
+        "Maximo UI displays customer tracking information",
+        "External ticket numbers are displayed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to Maximo UI",
+          "expected_result": "Customer tracking information is displayed",
+          "test_data": "Valid user"
+        }
+      ],
+      "test_scenarios": [
+        "View customer tracking information",
+        "Verify external ticket numbers"
+      ],
+      "assumptions": [
+        "User has access to Maximo UI"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-013"
+    },
+    {
+      "title": "Catalog Consolidation Workflow",
+      "description": "Migrate all relevant offerings to primary catalog (MCD) and decommission legacy catalogs",
+      "type": "Workflow",
+      "user_story": "As a sales ops manager, I want to consolidate all offerings into a single catalog, so that customers have a consistent interface",
+      "acceptance_criteria": [
+        "All offerings are migrated to primary catalog (MCD)",
+        "Legacy catalogs are decommissioned"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Submit new offering",
+          "expected_result": "Offering is migrated to primary catalog (MCD)",
+          "test_data": "Test offering"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path consolidation",
+        "Error handling for legacy catalogs"
+      ],
+      "assumptions": [
+        "All offerings are properly categorized"
+      ],
+      "ambiguities": [
+        "What happens if an offering is not properly categorized?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-014"
+    },
+    {
+      "title": "Datavalet Offering Reorganization Workflow",
+      "description": "Reorganize Datavalet offerings in BBSSC taxonomy to provide a clean user journey",
+      "type": "Workflow",
+      "user_story": "As a sales ops manager, I want to reorganize Datavalet offerings, so that customers have a consistent interface",
+      "acceptance_criteria": [
+        "Datavalet offerings are reorganized in BBSSC taxonomy",
+        "Customer journey is clean and consistent"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Submit new Datavalet offering",
+          "expected_result": "Offering is reorganized in BBSSC taxonomy",
+          "test_data": "Test Datavalet offering"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path reorganization",
+        "Error handling for invalid offerings"
+      ],
+      "assumptions": [
+        "All Datavalet offerings are properly categorized"
+      ],
+      "ambiguities": [
+        "What happens if a Datavalet offering is not properly categorized?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-015"
+    },
+    {
+      "title": "Bell Managed Meraki Offering Updates Workflow",
+      "description": "Update Meraki offerings available to Enterprise Customers (EC) from Managed WAN and Managed LAN",
+      "type": "Workflow",
+      "user_story": "As a sales ops manager, I want to update Meraki offerings, so that customers have access to the latest offerings",
+      "acceptance_criteria": [
+        "Meraki offerings are updated",
+        "Customers have access to the latest offerings"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Submit new Meraki offering",
+          "expected_result": "Offering is updated",
+          "test_data": "Test Meraki offering"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path update",
+        "Error handling for invalid offerings"
+      ],
+      "assumptions": [
+        "All Meraki offerings are properly categorized"
+      ],
+      "ambiguities": [
+        "What happens if a Meraki offering is not properly categorized?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-016"
+    },
+    {
+      "title": "Datavalet Version (MCDO-03) Workflow",
+      "description": "Transfer site to another template (profile)",
+      "type": "Workflow",
+      "user_story": "As a sales ops manager, I want to transfer a site to another template (profile), so that customers have access to the latest templates",
+      "acceptance_criteria": [
+        "Site is transferred to another template (profile)",
+        "Customer has access to the latest templates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Submit new site transfer request",
+          "expected_result": "Site is transferred to another template (profile)",
+          "test_data": "Test site transfer request"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path transfer",
+        "Error handling for invalid requests"
+      ],
+      "assumptions": [
+        "All site transfers are properly categorized"
+      ],
+      "ambiguities": [
+        "What happens if a site transfer is not properly categorized?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-017"
+    },
+    {
+      "title": "Redirected Selection Workflow",
+      "description": "1. User selects 'Modify' -> 2. Template dropdown appears -> 3. User selects target template -> 4. Submit",
+      "type": "Workflow",
+      "user_story": "As a user, I want to modify a template, so that I can update the template settings",
+      "acceptance_criteria": [
+        "Template dropdown appears after selecting 'Modify'",
+        "User can select target template",
+        "Submit button is enabled after selecting template"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select 'Modify'",
+          "expected_result": "Template dropdown appears",
+          "test_data": "Test template"
+        },
+        {
+          "step_num": 2,
+          "action": "Select target template",
+          "expected_result": "Submit button is enabled",
+          "test_data": "Test template"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path selection",
+        "Invalid template selection"
+      ],
+      "assumptions": [
+        "Template dropdown is populated with valid templates"
+      ],
+      "ambiguities": [
+        "What happens if user cancels template selection?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-018"
+    },
+    {
+      "title": "External Sync Workflow",
+      "description": "1. Maximo creates External Ticket -> 2. ServiceNow number synced back to Maximo UI",
+      "type": "Workflow",
+      "user_story": "As a user, I want to sync the ServiceNow number with the Maximo UI, so that I can track the ticket status",
+      "acceptance_criteria": [
+        "External ticket is created in Maximo",
+        "ServiceNow number is synced back to Maximo UI"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create external ticket in Maximo",
+          "expected_result": "ServiceNow number is synced back to Maximo UI",
+          "test_data": "Test ticket"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path syncing",
+        "Error handling for syncing failure"
+      ],
+      "assumptions": [
+        "Maximo and ServiceNow are integrated correctly"
+      ],
+      "ambiguities": [
+        "What happens if syncing fails?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-019"
+    },
+    {
+      "title": "Final Verification Checklist Workflow",
+      "description": "1. Role Access: Verify catalog role (PARBAC) allows only NSMIS group access for McDonald's users -> 2. Cleanup: Confirm removal of old `mx_*` catalogs and verify no orphan offerings exist -> ...",
+      "type": "Workflow",
+      "user_story": "As a user, I want to verify the correctness of the production environment, so that I can ensure the system is working as expected",
+      "acceptance_criteria": [
+        "Catalog role (PARBAC) allows only NSMIS group access for McDonald's users",
+        "Old `mx_*` catalogs are removed and no orphan offerings exist"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify catalog role (PARBAC) access",
+          "expected_result": "Only NSMIS group has access",
+          "test_data": "Test user"
+        },
+        {
+          "step_num": 2,
+          "action": "Confirm removal of old `mx_*` catalogs",
+          "expected_result": "No old catalogs exist",
+          "test_data": "Test catalog"
+        }
+      ],
+      "test_scenarios": [
+        "Happy path verification",
+        "Error handling for verification failure"
+      ],
+      "assumptions": [
+        "Production environment is set up correctly"
+      ],
+      "ambiguities": [
+        "What happens if verification fails?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-020"
+    },
+    {
+      "title": "Catalog Consolidation",
+      "description": "Migrate relevant offerings to the primary catalog (MCD) and standardize on the NSMIS service group for all McDonald's consolidated offerings in BBSSC",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a consolidated catalog, so that we can provide a single point of entry for all service requests",
+      "acceptance_criteria": [
+        "All relevant offerings are migrated to the primary catalog (MCD)",
+        "NSMIS service group is standardized for all McDonald's consolidated offerings in BBSSC"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify catalog consolidation",
+          "expected_result": "All relevant offerings are migrated to the primary catalog (MCD)",
+          "test_data": "MCD catalog data"
+        }
+      ],
+      "test_scenarios": [
+        "Catalog consolidation test"
+      ],
+      "assumptions": [
+        "BBSSC is available and functional"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-021"
+    },
+    {
+      "title": "Datavalet Offering Reorganization",
+      "description": "Enforce strict taxonomy mappings in the BBSSC taxonomy to provide a clean user journey",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a reorganized Datavalet offering, so that we can provide a clean user journey",
+      "acceptance_criteria": [
+        "Taxonomy mappings are strictly enforced in the BBSSC taxonomy",
+        "Datavalet offerings are correctly categorized"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify taxonomy mappings",
+          "expected_result": "Taxonomy mappings are strictly enforced in the BBSSC taxonomy",
+          "test_data": "BBSSC taxonomy data"
+        }
+      ],
+      "test_scenarios": [
+        "Datavalet offering reorganization test"
+      ],
+      "assumptions": [
+        "BBSSC taxonomy is available and functional"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-022"
+    },
+    {
+      "title": "Bell Managed Meraki Offering Updates",
+      "description": "Add Meraki offerings available to Enterprise Customers (EC) from Managed WAN and Managed LAN to the MCD catalog",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want updated Bell managed Meraki offerings, so that we can provide a comprehensive service catalog",
+      "acceptance_criteria": [
+        "Meraki offerings are added to the MCD catalog",
+        "Bell managed Meraki offerings are correctly categorized"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Meraki offerings",
+          "expected_result": "Meraki offerings are added to the MCD catalog",
+          "test_data": "MCD catalog data"
+        }
+      ],
+      "test_scenarios": [
+        "Bell managed Meraki offering updates test"
+      ],
+      "assumptions": [
+        "MCD catalog is available and functional"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-023"
+    },
+    {
+      "title": "Configuration Item (CI) Visibility Matrix",
+      "description": "Implement a CI visibility matrix to control the visibility of offerings based on the managed by field",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a CI visibility matrix, so that we can control the visibility of offerings",
+      "acceptance_criteria": [
+        "CI visibility matrix is implemented",
+        "Offerings are correctly visible or hidden based on the managed by field"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify CI visibility matrix",
+          "expected_result": "CI visibility matrix is implemented",
+          "test_data": "CI visibility matrix data"
+        }
+      ],
+      "test_scenarios": [
+        "CI visibility matrix test"
+      ],
+      "assumptions": [
+        "CI visibility matrix is available and functional"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-024"
+    },
+    {
+      "title": "System Mapping and Data Integration",
+      "description": "Integrate Maximo with Datavalet ServiceNow using REST API synchronization",
+      "type": "Architecture",
+      "user_story": "As a system architect, I want integrated systems, so that we can provide real-time data synchronization",
+      "acceptance_criteria": [
+        "Maximo is integrated with Datavalet ServiceNow using REST API synchronization",
+        "Data is correctly passed between systems"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify system integration",
+          "expected_result": "Maximo is integrated with Datavalet ServiceNow using REST API synchronization",
+          "test_data": "System integration data"
+        }
+      ],
+      "test_scenarios": [
+        "System mapping and data integration test"
+      ],
+      "assumptions": [
+        "Maximo and Datavalet ServiceNow are available and functional"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-025"
+    },
+    {
+      "title": "CI Filtering and Security",
+      "description": "Implement CI filtering for both Bell and Datavalet offerings using PostgreSQL with row-level security (RLS) for multi-tenant isolation, ensuring no cross-provider visibility",
+      "type": "Security",
+      "user_story": "As a system architect, I want to ensure CI filtering and security, so that we can prevent cross-provider visibility",
+      "acceptance_criteria": [
+        "RLS enforced on all tables",
+        "No cross-provider visibility"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test CI filtering for Bell offerings",
+          "expected_result": "No Datavalet offerings visible",
+          "test_data": "Bell offerings data"
+        },
+        {
+          "step_num": 2,
+          "action": "Test CI filtering for Datavalet offerings",
+          "expected_result": "No Bell offerings visible",
+          "test_data": "Datavalet offerings data"
+        }
+      ],
+      "test_scenarios": [
+        "CI filtering test",
+        "Security test"
+      ],
+      "assumptions": [
+        "PostgreSQL 14+",
+        "RLS enabled"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-026"
+    },
+    {
+      "title": "External Sync with ServiceNow",
+      "description": "Implement external sync with ServiceNow using REST API, ensuring real-time synchronization of SR to ServiceNow sync for all MCDO-* offerings",
+      "type": "Integration",
+      "user_story": "As a system architect, I want to integrate with ServiceNow, so that we can synchronize SR to ServiceNow sync for all MCDO-* offerings",
+      "acceptance_criteria": [
+        "Real-time synchronization",
+        "SR to ServiceNow sync successful"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test external sync with ServiceNow",
+          "expected_result": "Real-time synchronization successful",
+          "test_data": "MCDO-* offerings data"
+        }
+      ],
+      "test_scenarios": [
+        "External sync test",
+        "ServiceNow integration test"
+      ],
+      "assumptions": [
+        "ServiceNow REST API available",
+        "Real-time API logs available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-027"
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Optimize CI selection page load time to under 3 seconds for sites with >100 devices using Elasticsearch CDC indexing and Redis caching",
+      "type": "Non-Functional",
+      "user_story": "As a system architect, I want to optimize performance, so that we can ensure a responsive CI selection page",
+      "acceptance_criteria": [
+        "Page load time < 3 seconds",
+        "Elasticsearch CDC indexing successful"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test CI selection page load time",
+          "expected_result": "Page load time < 3 seconds",
+          "test_data": "Sites with >100 devices data"
+        }
+      ],
+      "test_scenarios": [
+        "Performance optimization test",
+        "Elasticsearch CDC indexing test"
+      ],
+      "assumptions": [
+        "Elasticsearch cluster available",
+        "Redis caching enabled"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-028"
+    }
+  ]
+}
