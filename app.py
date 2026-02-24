@@ -415,7 +415,8 @@ async def extract_requirements_async(request: ExtractionRequest):
         raise HTTPException(status_code=400, detail="Failed to download any files from S3")
 
     # POST initial PENDING status to Java backend (best-effort)
-    update_document_statuses(str(project_id), file_urls, "PENDING")
+    # Returns the created records with their database IDs
+    document_statuses = update_document_statuses(str(project_id), file_urls, "PENDING")
 
     # Dispatch to Celery
     task = extract_requirements_task.delay(
@@ -430,7 +431,8 @@ async def extract_requirements_async(request: ExtractionRequest):
     return {
         "status": "accepted",
         "task_id": task.id,
-        "message": "Requirement extraction queued successfully"
+        "message": "Requirement extraction queued successfully",
+        "document_statuses": document_statuses,
     }
 
 
