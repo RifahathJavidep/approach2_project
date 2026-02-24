@@ -1,0 +1,238 @@
+{
+  "metrics": {
+    "precision": 0.4583333333333333,
+    "recall": 0.4583333333333333,
+    "f1_score": 0.4583333333333333
+  },
+  "counts": {
+    "gt": 24,
+    "extracted": 24,
+    "true_positives": 11,
+    "false_negatives": 13,
+    "false_positives": 13,
+    "redundant": 4
+  },
+  "matched": [
+    {
+      "extracted_id": "CRM_CLOUD-001",
+      "extracted_title": "Sales Dashboard Home Screen",
+      "gt_id": "Sales Dashboard UI",
+      "gt_name": "KPI summary with pipeline and activity widgets",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-002",
+      "extracted_title": "Revenue Forecast",
+      "gt_id": "Sales Analytics Dashboard",
+      "gt_name": "Executive KPIs and forecasting",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-004",
+      "extracted_title": "Pipeline Conversion Funnel",
+      "gt_id": "Deal Progression Workflow",
+      "gt_name": "Pipeline stage management to close",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-005",
+      "extracted_title": "Report Builder Workflow",
+      "gt_id": "Custom Reports",
+      "gt_name": "Drag-and-drop report builder",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-007",
+      "extracted_title": "Report Sharing",
+      "gt_id": "CRM Security & Compliance",
+      "gt_name": "Data protection and access control",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-009",
+      "extracted_title": "Sales Activity Metrics",
+      "gt_id": "Sales Activity Tracking",
+      "gt_name": "Log calls, emails, and meetings",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-011",
+      "extracted_title": "Deal Entity Screen",
+      "gt_id": "Sales Pipeline",
+      "gt_name": "Visual deal management and tracking",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-013",
+      "extracted_title": "System Performance and Scalability",
+      "gt_id": "CRM Performance SLAs",
+      "gt_name": "Platform performance and search targets",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-015",
+      "extracted_title": "Email Integration",
+      "gt_id": "CRM Integration Architecture",
+      "gt_name": "Email, enrichment, and communication API connections",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-016",
+      "extracted_title": "Calendar Integration",
+      "gt_id": "Calendar Integration",
+      "gt_name": "Meeting scheduling and sync",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-017",
+      "extracted_title": "Lead Management Workflow",
+      "gt_id": "Lead Conversion Workflow",
+      "gt_name": "End-to-end lead qualification and deal creation",
+      "semantic_match": true
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "Lead Deduplication",
+      "gt_name": "Prevent duplicate lead records",
+      "description": "Matching on email, phone, company name with merge capability"
+    },
+    {
+      "gt_id": "Contact Management",
+      "gt_name": "360-degree contact and account views",
+      "description": "Activity timeline, account hierarchy, Clearbit enrichment, custom fields"
+    },
+    {
+      "gt_id": "Email Integration",
+      "gt_name": "Gmail and Outlook sync",
+      "description": "Bidirectional sync, auto-logging to contacts, sidebar widget, thread view"
+    },
+    {
+      "gt_id": "Communication Tools",
+      "gt_name": "Email composer and call features",
+      "description": "Template library, email tracking, click-to-call, recording"
+    },
+    {
+      "gt_id": "Third-Party Integrations",
+      "gt_name": "Slack, Zapier, marketing automation",
+      "description": "Slack deal alerts, Zapier webhooks, HubSpot/Marketo sync, REST API"
+    },
+    {
+      "gt_id": "Data Management",
+      "gt_name": "Import, export, and audit",
+      "description": "Bulk import with validation, GDPR-compliant export, full audit logging"
+    },
+    {
+      "gt_id": "AI Revenue Forecasting",
+      "gt_name": "ML-driven sales predictions",
+      "description": "Committed/best-case/pipeline amounts, historical win rate factoring, accuracy tracking"
+    },
+    {
+      "gt_id": "Lead Management UI",
+      "gt_name": "Lead list with scoring and bulk actions",
+      "description": "Sortable/filterable lead table, color-coded score gradient (0-100), slide-in detail panel, bulk assign/merge/export, add lead modal with dedup check"
+    },
+    {
+      "gt_id": "Deal Pipeline Board UI",
+      "gt_name": "Kanban board with drag-and-drop deal cards",
+      "description": "Stage columns with count/value headers, deal cards with company logo and value, drag-drop with confirmation modals, filter by rep/date/value/tags"
+    },
+    {
+      "gt_id": "Contact 360\u00b0 View UI",
+      "gt_name": "Full-page contact view with tabbed content",
+      "description": "Header with action buttons, Timeline/Emails/Deals/Files/Notes tabs, right sidebar with enriched company data"
+    },
+    {
+      "gt_id": "Email Campaign Workflow",
+      "gt_name": "Automated email sequence creation and tracking",
+      "description": "7-step flow: template selection, recipient segmentation, sequence config, personalization, engagement tracking, rep notification, completion handling"
+    },
+    {
+      "gt_id": "CRM Data Model",
+      "gt_name": "Lead, Contact, Company, Deal entity design",
+      "description": "Lead/Contact/Company/Deal/Activity/Pipeline/EmailThread entities, multi-tenant RLS, Elasticsearch CDC indexing, partitioned activity tables"
+    },
+    {
+      "gt_id": "CRM Availability",
+      "gt_name": "Uptime and disaster recovery guarantees",
+      "description": "99.95% uptime SLA, multi-region deployment, data residency for EU, RTO < 10min, RPO < 30s, 30-day backup retention"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "CRM_CLOUD-006",
+      "title": "Scheduled Report Delivery",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-010",
+      "title": "Response Time Analytics",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-012",
+      "title": "Lead Capture Web Form",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-018",
+      "title": "Search Functionality",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-019",
+      "title": "Multi-Tenant Architecture",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-020",
+      "title": "Tenant Data Capacity",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-022",
+      "title": "Cross-Region Database Replication",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-023",
+      "title": "Webhook Delivery Guarantees",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "CRM_CLOUD-024",
+      "title": "Email Tracking UI",
+      "type": "UI"
+    }
+  ],
+  "redundant_items": [
+    {
+      "extracted_id": "CRM_CLOUD-003",
+      "extracted_title": "Sales Rep Leaderboard",
+      "gt_id": "Sales Analytics Dashboard",
+      "gt_name": "Executive KPIs and forecasting",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-008",
+      "extracted_title": "Cross-Object Reporting",
+      "gt_id": "Custom Reports",
+      "gt_name": "Drag-and-drop report builder",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-014",
+      "extracted_title": "GDPR Compliance",
+      "gt_id": "CRM Security & Compliance",
+      "gt_name": "Data protection and access control",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "CRM_CLOUD-021",
+      "extracted_title": "API Access and Rate Limiting",
+      "gt_id": "CRM Security & Compliance",
+      "gt_name": "Data protection and access control",
+      "semantic_match": true
+    }
+  ]
+}

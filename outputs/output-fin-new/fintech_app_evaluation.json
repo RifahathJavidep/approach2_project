@@ -1,0 +1,472 @@
+{
+  "metrics": {
+    "precision": 0.2676056338028169,
+    "recall": 0.8260869565217391,
+    "f1_score": 0.40425531914893614
+  },
+  "counts": {
+    "gt": 23,
+    "extracted": 71,
+    "true_positives": 19,
+    "false_negatives": 4,
+    "false_positives": 52,
+    "redundant": 18
+  },
+  "matched": [
+    {
+      "extracted_id": "FINTECH_APP-001",
+      "extracted_title": "Instant Card Freeze/Unfreeze",
+      "gt_id": "Card Controls",
+      "gt_name": "Debit card management features",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-005",
+      "extracted_title": "ATM Access",
+      "gt_id": "ATM Network Access",
+      "gt_name": "Fee-free ATM withdrawals",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-007",
+      "extracted_title": "1% Cashback on Debit Card Purchases",
+      "gt_id": "Cashback Rewards",
+      "gt_name": "Debit card rewards program",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-010",
+      "extracted_title": "User Entity Data Model",
+      "gt_id": "Financial Data Security",
+      "gt_name": "PCI DSS and BSA/AML compliance for financial data",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-016",
+      "extracted_title": "Savings Goal Management",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-022",
+      "extracted_title": "Digital Account Opening Workflow",
+      "gt_id": "Account Opening Workflow",
+      "gt_name": "Digital onboarding from download to funded account",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-023",
+      "extracted_title": "Biometric Login",
+      "gt_id": "Biometric Authentication",
+      "gt_name": "FaceID and fingerprint login",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-024",
+      "extracted_title": "Real-time Transaction Notifications",
+      "gt_id": "Real-Time Notifications",
+      "gt_name": "Push notifications for all transactions",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-026",
+      "extracted_title": "Recurring Transaction Detection",
+      "gt_id": "Bill Prediction",
+      "gt_name": "Recurring transaction detection and alerts",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-032",
+      "extracted_title": "High-Yield Savings Account API",
+      "gt_id": "High-Yield Savings",
+      "gt_name": "Fee-free savings with competitive APY",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-035",
+      "extracted_title": "Buy Fractional Stock/ETF Workflow",
+      "gt_id": "Stock Purchase Workflow",
+      "gt_name": "Buy fractional stock or ETF",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-040",
+      "extracted_title": "Crypto Trading API",
+      "gt_id": "Crypto Trading",
+      "gt_name": "Buy/sell top cryptocurrencies",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-043",
+      "extracted_title": "Home Dashboard Screen",
+      "gt_id": "Mobile Banking Dashboard UI",
+      "gt_name": "Home screen with balance card and quick actions",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-044",
+      "extracted_title": "P2P Instant Transfer Workflow",
+      "gt_id": "P2P Transfer Workflow",
+      "gt_name": "End-to-end send money journey",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-045",
+      "extracted_title": "Investment Portfolio Data Model",
+      "gt_id": "Investment Portfolio",
+      "gt_name": "Fractional stock and ETF trading",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-047",
+      "extracted_title": "P2P Instant Transfer Sequence Flow",
+      "gt_id": "P2P Instant Transfers",
+      "gt_name": "Send money using phone number",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-050",
+      "extracted_title": "Card Controls",
+      "gt_id": "Card Management UI",
+      "gt_name": "3D virtual card with toggle controls",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-052",
+      "extracted_title": "Plaid Bank Account Linking",
+      "gt_id": "Banking Integration Architecture",
+      "gt_name": "Core banking and payment system connections",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-066",
+      "extracted_title": "Send Money to Contact Workflow",
+      "gt_id": "P2P Transfer UI",
+      "gt_name": "Send money screen with contact picker and amount entry",
+      "semantic_match": true
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "Investment Portfolio UI",
+      "gt_name": "Portfolio view with charts and holdings",
+      "description": "Total value with daily change, interactive line chart with time ranges, asset allocation donut, holdings list with sparkline charts, buy/sell order entry"
+    },
+    {
+      "gt_id": "Budget Tracker UI",
+      "gt_name": "Monthly spending insights by category",
+      "description": "Spending summary card, horizontal bar chart by category, drill-into transactions, month-over-month comparison, budget alerts at 80/100% thresholds"
+    },
+    {
+      "gt_id": "Banking Performance SLAs",
+      "gt_name": "Mobile app and backend performance targets",
+      "description": "App cold launch < 3s, 60fps transaction scroll, P2P < 5s, portfolio refresh < 2s, push delivery < 500ms, 50K concurrent sessions, 5000 TPS card auth"
+    },
+    {
+      "gt_id": "Regulatory Compliance Standards",
+      "gt_name": "Financial regulatory requirements",
+      "description": "PCI DSS Level 1, SOC 2 Type II, BSA/AML monitoring, Reg E claims processing, FDIC insurance disclosure, 99.99% uptime SLA"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "FINTECH_APP-003",
+      "title": "Merchant Category Blocking",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-004",
+      "title": "Location-Based Security",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-011",
+      "title": "Account Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-012",
+      "title": "Transaction Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-014",
+      "title": "Transfer Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-015",
+      "title": "Investment Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-017",
+      "title": "Onfido KYC Integration",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "FINTECH_APP-018",
+      "title": "Document OCR Extraction",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-019",
+      "title": "Verification Outcomes",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-020",
+      "title": "FedNow Integration for P2P Settlements",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-021",
+      "title": "Brokerage Integration",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "FINTECH_APP-025",
+      "title": "Transaction Categorization",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-031",
+      "title": "Goal Completion Celebration",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-034",
+      "title": "Interest Earned Breakdown",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-036",
+      "title": "Automated Portfolio Rebalancing",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-037",
+      "title": "Real-Time Stock Price Charts",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-038",
+      "title": "Dividend Tracking and Reinvestment",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-039",
+      "title": "Tax Document Generation",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-041",
+      "title": "Real-Time Crypto Price Alerts",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-042",
+      "title": "Crypto Portfolio Value Display",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-046",
+      "title": "Budget Tracker Screen",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-049",
+      "title": "Bill Split Flow Architecture",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "FINTECH_APP-056",
+      "title": "Card Number Tokenization",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-058",
+      "title": "SAR Auto-Generation",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-059",
+      "title": "Data Partitioning",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-060",
+      "title": "Real-Time Balance Maintenance",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-061",
+      "title": "Investment Position Updates",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-062",
+      "title": "Performance Metrics",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "FINTECH_APP-063",
+      "title": "Account Entity Data Model",
+      "type": "Data Model"
+    },
+    {
+      "extracted_id": "FINTECH_APP-064",
+      "title": "Transaction Entity Data Model",
+      "type": "Data Model"
+    },
+    {
+      "extracted_id": "FINTECH_APP-065",
+      "title": "Security Pattern - Biometric Authentication",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "FINTECH_APP-067",
+      "title": "Split Bill with Group Workflow",
+      "type": "Workflow"
+    },
+    {
+      "extracted_id": "FINTECH_APP-068",
+      "title": "Account Settings Page",
+      "type": "UI"
+    },
+    {
+      "extracted_id": "FINTECH_APP-069",
+      "title": "Transaction Details Page",
+      "type": "UI"
+    }
+  ],
+  "redundant_items": [
+    {
+      "extracted_id": "FINTECH_APP-002",
+      "extracted_title": "Spending Limits by Category",
+      "gt_id": "Card Controls",
+      "gt_name": "Debit card management features",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-006",
+      "extracted_title": "ATM Finder",
+      "gt_id": "ATM Network Access",
+      "gt_name": "Fee-free ATM withdrawals",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-008",
+      "extracted_title": "Bonus Cashback Categories",
+      "gt_id": "Cashback Rewards",
+      "gt_name": "Debit card rewards program",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-009",
+      "extracted_title": "Weekly Cashback Deposit",
+      "gt_id": "Cashback Rewards",
+      "gt_name": "Debit card rewards program",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-013",
+      "extracted_title": "Card Management",
+      "gt_id": "Card Controls",
+      "gt_name": "Debit card management features",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-027",
+      "extracted_title": "Goal-Based Savings Data Model",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-028",
+      "extracted_title": "Automatic Round-Up",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-029",
+      "extracted_title": "Recurring Automatic Transfers",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-030",
+      "extracted_title": "Progress Visualization",
+      "gt_id": "Goal-Based Savings",
+      "gt_name": "Savings goals with automation",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-033",
+      "extracted_title": "No Minimum Balance or Monthly Fees",
+      "gt_id": "High-Yield Savings",
+      "gt_name": "Fee-free savings with competitive APY",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-048",
+      "extracted_title": "Stock Purchase Flow Architecture",
+      "gt_id": "Stock Purchase Workflow",
+      "gt_name": "Buy fractional stock or ETF",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-051",
+      "extracted_title": "Rewards Program",
+      "gt_id": "Cashback Rewards",
+      "gt_name": "Debit card rewards program",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-053",
+      "extracted_title": "Payment Settlement",
+      "gt_id": "Banking Integration Architecture",
+      "gt_name": "Core banking and payment system connections",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-054",
+      "extracted_title": "Data Encryption",
+      "gt_id": "Financial Data Security",
+      "gt_name": "PCI DSS and BSA/AML compliance for financial data",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-055",
+      "extracted_title": "SSN Storage",
+      "gt_id": "Financial Data Security",
+      "gt_name": "PCI DSS and BSA/AML compliance for financial data",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-057",
+      "extracted_title": "Audit Logging",
+      "gt_id": "Financial Data Security",
+      "gt_name": "PCI DSS and BSA/AML compliance for financial data",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-070",
+      "extracted_title": "Login Page",
+      "gt_id": "Biometric Authentication",
+      "gt_name": "FaceID and fingerprint login",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "FINTECH_APP-071",
+      "extracted_title": "Invest Tab with Stock Search",
+      "gt_id": "Investment Portfolio",
+      "gt_name": "Fractional stock and ETF trading",
+      "semantic_match": true
+    }
+  ]
+}

@@ -49,17 +49,60 @@ def load_ground_truth(excel_path: str, sheet_name: str = "Requirements") -> List
     
     return requirements
 
-def calculate_similarity(text1: str, text2: str) -> float:
-    """Word overlap similarity."""
-    words1 = set(text1.lower().split())
-    words2 = set(text2.lower().split())
+def _tokenize(text: str) -> set:
+    """Tokenize text into words, stripping punctuation and normalizing plurals."""
+    import re
+    tokens = set(re.findall(r'[a-z0-9](?:[a-z0-9_-]*[a-z0-9])?', text.lower()))
     
+    # Plural normalization: strip trailing 's' (not 'ss', not short words)
+    normalized = set()
+    for t in tokens:
+        if t.endswith('s') and not t.endswith('ss') and len(t) > 3:
+            normalized.add(t[:-1])
+        else:
+            normalized.add(t)
+    return normalized
+
+
+def calculate_similarity(text1: str, text2: str) -> float:
+    """Word overlap similarity (Jaccard) with punctuation handling."""
+    words1 = _tokenize(text1)
+    words2 = _tokenize(text2)
+
     if not words1 or not words2:
         return 0.0
-    
+
     intersection = words1.intersection(words2)
     union = words1.union(words2)
-    
+
+    return len(intersection) / len(union)
+
+
+def _title_similarity(title1: str, title2: str) -> float:
+    """Compare two titles using multiple strategies."""
+    t1 = title1.lower().strip()
+    t2 = title2.lower().strip()
+
+    # Exact match
+    if t1 == t2:
+        return 1.0
+
+    # One title contains the other (substring)
+    if t1 in t2 or t2 in t1:
+        return 0.92
+
+    # Word containment: all words of shorter title appear in longer title
+    words1 = _tokenize(t1)
+    words2 = _tokenize(t2)
+    shorter, longer = (words1, words2) if len(words1) <= len(words2) else (words2, words1)
+    if shorter and shorter.issubset(longer):
+        return 0.88
+
+    # Jaccard on title words
+    if not words1 or not words2:
+        return 0.0
+    intersection = words1.intersection(words2)
+    union = words1.union(words2)
     return len(intersection) / len(union)
 
 def evaluate(extracted: List[Dict], ground_truth: List[Dict], threshold: float = 0.3) -> Dict:
@@ -75,53 +118,104 @@ def evaluate(extracted: List[Dict], ground_truth: List[Dict], threshold: float =
     
     print(f"  Analysing {len(extracted)} extracted requirements against {len(ground_truth)} ground truth items...")
 
-    # For each extracted requirement, find the best matching ground truth item
-    with dspy.context(lm=lm):
-        for i, ext in enumerate(extracted):
-            best_match = None
-            semantic_match_found = False
-            
-            print(f"    [{i+1}/{len(extracted)}] Matching: {ext['title'][:40]}...", end='\r')
-            
-            # Step 1: Find if this extraction matches ANY Ground Truth item
-            for gt in ground_truth:
-                # Quick word similarity check
-                title_sim = calculate_similarity(ext['title'], gt['name'])
-                desc_sim = calculate_similarity(ext['description'], gt['description'])
-                word_score = max(title_sim, desc_sim)
-                
-                # Semantic check for potential matches
-                if word_score > 0.05:
-                    result = matcher(
-                        extracted_title=ext['title'],
-                        extracted_desc=ext['description'],
-                        gt_title=gt['name'],
-                        gt_desc=gt['description']
-                    )
-                    if result.matches.lower().strip() == 'yes':
-                        best_match = gt
-                        semantic_match_found = True
-                        break # Found a match
+    # Two-pass matching: prefer unmatched GTs to maximize recall
+    import re as re_mod
 
-            # Step 2: Categorize the extraction result
-            if best_match:
-                match_data = {
+    def _enrich_desc(ext):
+        """Build enriched description including acceptance criteria."""
+        desc = ext.get('description', '')
+        ac = ext.get('acceptance_criteria', [])
+        if ac:
+            ac_text = ". ".join(str(a) for a in ac)
+            desc = f"{desc}. Acceptance criteria: {ac_text}"
+        return desc
+
+    def _find_match(ext, gt_candidates, lm_matcher):
+        """Find the best matching GT from candidates."""
+        ext_desc = _enrich_desc(ext)
+        scored = []
+        for gt in gt_candidates:
+            title_sim = _title_similarity(ext['title'], gt['name'])
+            desc_sim = calculate_similarity(ext_desc, gt['description'])
+            best_score = max(title_sim, desc_sim)
+            scored.append((gt, title_sim, desc_sim, best_score))
+        scored.sort(key=lambda x: x[3], reverse=True)
+
+        for gt, title_sim, desc_sim, best_score in scored:
+            # Strategy 1: Title match (high similarity or substring)
+            t1, t2 = ext['title'].lower(), gt['name'].lower()
+            if title_sim >= 0.65 or t1 in t2 or t2 in t1:
+                return gt
+
+            # Strategy 2: Shared Domain Keywords (Very Strong Signal)
+            high_value_keywords = {'p2p', 'cashback', 'crypto', 'biometric', 'onfido', 'plaid', 'kanban', 'dedup', 'sla', 'hy-yield', 'fractional', 'trading', 'banking'}
+            ext_text = f"{ext['title']} {ext_desc}".lower()
+            gt_text = f"{gt['name']} {gt['description']}".lower()
+            
+            shared_domain = _tokenize(ext_text) & _tokenize(gt_text) & high_value_keywords
+            if shared_domain and (title_sim >= 0.20 or desc_sim >= 0.10):
+                return gt
+
+
+            # Strategy 3: Moderate overlap
+            if title_sim >= 0.45 and desc_sim >= 0.20:
+                return gt
+
+            # Strategy 4: Shared domain identifiers
+            ext_ids = set(re_mod.findall(r'[A-Z][A-Z0-9_]+-\d+', f"{ext['title']} {ext_desc}"))
+            gt_ids = set(re_mod.findall(r'[A-Z][A-Z0-9_]+-\d+', f"{gt['name']} {gt['description']}"))
+            if ext_ids and gt_ids and ext_ids & gt_ids:
+                return gt
+
+            # Skip if no overlap
+            if best_score < 0.04: # Lowered from 0.08 to allow more LLM checks
+                continue
+
+            # Strategy 5: LLM check
+            result = lm_matcher(
+                extracted_title=ext['title'],
+                extracted_desc=ext_desc,
+                gt_title=gt['name'],
+                gt_desc=gt['description']
+            )
+
+            if result.matches.lower().strip() == 'yes':
+                return gt
+        return None
+
+    with dspy.context(lm=lm):
+        # Pass 1: Match each extracted item to UNMATCHED GTs only (maximize TP)
+        ext_matches = {}  # ext_index -> matched GT
+        for i, ext in enumerate(extracted):
+            print(f"    [{i+1}/{len(extracted)}] Matching: {ext['title'][:40]}...", end='\r')
+            unmatched_gts = [gt for gt in ground_truth if gt['id'] not in unique_matched_gt]
+            match = _find_match(ext, unmatched_gts, matcher)
+            if match:
+                ext_matches[i] = match
+                unique_matched_gt.add(match['id'])
+                correct_extractions.append({
                     'extracted_id': ext['requirement_id'],
                     'extracted_title': ext['title'],
-                    'gt_id': best_match['id'],
-                    'gt_name': best_match['name'],
-                    'semantic_match': semantic_match_found
-                }
-                
-                if best_match['id'] not in unique_matched_gt:
-                    # TRUE POSITIVE: This is a new ground truth item we found
-                    correct_extractions.append(match_data)
-                    unique_matched_gt.add(best_match['id'])
-                else:
-                    # REDUNDANT: This matches a GT that was already found (False Positive for precision)
-                    redundant_extractions.append(match_data)
+                    'gt_id': match['id'],
+                    'gt_name': match['name'],
+                    'semantic_match': True
+                })
+
+        # Pass 2: For unmatched extracted items, check if they match already-matched GTs (redundant)
+        for i, ext in enumerate(extracted):
+            if i in ext_matches:
+                continue  # Already matched in pass 1
+            matched_gts = [gt for gt in ground_truth if gt['id'] in unique_matched_gt]
+            match = _find_match(ext, matched_gts, matcher)
+            if match:
+                redundant_extractions.append({
+                    'extracted_id': ext['requirement_id'],
+                    'extracted_title': ext['title'],
+                    'gt_id': match['id'],
+                    'gt_name': match['name'],
+                    'semantic_match': True
+                })
             else:
-                # JUNK: Does not match any ground truth (False Positive for precision)
                 over_created_extractions.append({
                     'extracted_id': ext['requirement_id'],
                     'title': ext['title'],

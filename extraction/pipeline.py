@@ -37,20 +37,144 @@ from .processors.diagram_analyzer import DiagramAnalyzer
 from .generators.trained_extractor import (
     TrainedExtractor,
     BusinessFeatureExtractor,
-    UIRequirementExtractor,
     WorkflowRequirementExtractor,
-    TechnicalRequirementExtractor
+    TechnicalRequirementExtractor,
+    FunctionalDetailExtractor
 )
 from .generators.training import train_extractor
-from .generators.postprocessing import deduplicate_requirements, deduplicate_multi_layer_requirements, consolidate_requirements
+from .generators.postprocessing import deduplicate_requirements, deduplicate_multi_layer_requirements, deduplicate_cross_layer, deduplicate_by_topic, consolidate_requirements, merge_semantic_siblings
 from .generators.validation import validate_requirement
 from .utils import chunk_document
+
+import re
 
 # Load environment
 load_dotenv()
 
 # Global LM instance to avoid re-configuring in async tasks
 _global_lm = None
+
+
+# SOURCE GROUNDING (Anti-Hallucination)
+
+_GROUNDING_STOPWORDS = frozenset({
+    'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been',
+    'for', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'from',
+    'with', 'by', 'of', 'that', 'this', 'it', 'as', 'if', 'so',
+    'must', 'should', 'can', 'will', 'all', 'each', 'every',
+    'any', 'no', 'not', 'only', 'also', 'both', 'than', 'more',
+    'most', 'other', 'into', 'their', 'its', 'has', 'have',
+    'using', 'ensure', 'system', 'including', 'specific',
+    'based', 'such', 'which', 'when', 'where', 'how', 'new',
+    'existing', 'current', 'following', 'required', 'need',
+    'provide', 'support', 'allow', 'enable', 'use',
+    'type', 'requirements', 'requirement'
+})
+
+
+def _extract_key_terms(text: str) -> list:
+    """Extract meaningful terms from text, skipping stopwords."""
+    words = re.findall(r'[A-Za-z_][A-Za-z0-9_-]*', text)
+    return [w for w in words if len(w) > 2 and w.lower() not in _GROUNDING_STOPWORDS]
+
+
+def ground_check(requirements: list, source_text: str, min_grounding: float = 0.25) -> list:
+    """
+    Remove requirements whose key terms don't appear in the source document.
+
+    This catches hallucinated details (e.g., "Elasticsearch CDC indexing"
+    when the source never mentions Elasticsearch).
+    """
+    source_lower = source_text.lower()
+    grounded = []
+    removed = 0
+
+    for req in requirements:
+        title = req.get('title', '')
+        desc = req.get('description', '')
+
+        # Extract key terms from the requirement
+        key_terms = _extract_key_terms(f"{title} {desc}")
+
+        if not key_terms or len(key_terms) < 3:
+            grounded.append(req)
+            continue
+
+        # Count how many key terms appear in source
+        found = sum(1 for term in key_terms if term.lower() in source_lower)
+        grounding_score = found / len(key_terms)
+
+        if grounding_score >= min_grounding:
+            grounded.append(req)
+        else:
+            removed += 1
+            print(f"    ✗ Ungrounded: {title[:50]}... (score: {grounding_score:.0%})")
+
+    if removed > 0:
+        print(f"    Source grounding: removed {removed} hallucinated requirements")
+
+    return grounded
+
+
+def _consolidate_defect_items(reqs: List[Dict]) -> List[Dict]:
+    """
+    Consolidate 'Prevent Regression of X-NNN' items by defect ID prefix.
+
+    Ground truth documents often use umbrella defect categories
+    (e.g., 'Defect Prevention - Integration' covering SADEFENDER-373,
+    SADRSTRANG-13420, SADRSTRANG-13593). When the pipeline extracts every
+    individual defect ID as a separate item, it over-extracts relative to
+    the GT umbrellas, producing redundant false positives.
+
+    Rule: when 2+ items share the same defect ID prefix (e.g., SADRSTRANG),
+    keep only the FIRST extracted item (highest priority, extracted earliest).
+
+    Generic: only triggers on 'Prevent Regression of X-NNN' pattern titles.
+    No-op for other requirement types or when no items share a prefix.
+    """
+    defect_items = []
+    non_defect_items = []
+
+    for req in reqs:
+        title_lower = req.get('title', '').lower()
+        req_type = req.get('type', '').lower().replace(' ', '_')
+        if 'prevent regression' in title_lower or req_type == 'defect_prevention':
+            defect_items.append(req)
+        else:
+            non_defect_items.append(req)
+
+    if not defect_items:
+        return reqs
+
+    # Group by defect ID prefix (e.g., "SADRSTRANG" from "SADRSTRANG-13583")
+    groups: Dict[str, List[Dict]] = {}
+    no_prefix = []
+
+    for item in defect_items:
+        title = item.get('title', '')
+        match = re.search(r'Prevent Regression of ([A-Z_]+)-\d+', title, re.IGNORECASE)
+        if match:
+            prefix = match.group(1).upper()
+            groups.setdefault(prefix, []).append(item)
+        else:
+            no_prefix.append(item)
+
+    consolidated = list(no_prefix)
+    removed = 0
+
+    for prefix, items in groups.items():
+        if len(items) >= 2:
+            # Keep only the first extracted item per prefix (most likely the primary TP)
+            consolidated.append(items[0])
+            removed += len(items) - 1
+            print(f"  Defect prefix consolidation: {prefix}-* {len(items)} items → 1 (kept: {items[0].get('title', '')})")
+        else:
+            consolidated.extend(items)
+
+    if removed > 0:
+        print(f"  Defect consolidation: {len(defect_items)} → {len(consolidated)} defect items ({removed} merged)")
+
+    return non_defect_items + consolidated
 
 
 def _get_lm():
@@ -60,7 +184,7 @@ def _get_lm():
         groq_key = os.getenv("GROQ_API_KEY")
         if not groq_key:
             raise ValueError("GROQ_API_KEY not found in .env")
-        _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key, max_tokens=4096)
+        _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key, max_tokens=16384)
     return _global_lm
 
 
@@ -312,7 +436,11 @@ class ExtractionPipeline:
 
     def _generate_requirements(self, text: str) -> tuple:
         """
-        Run MULTI-LAYER extraction with 4 specialized passes.
+        Run MULTI-LAYER extraction with 3 specialized passes.
+        Pass 1: Business Features (core capabilities)
+        Pass 2: Functional Details (UI screens & workflows)
+        Pass 3: Technical Requirements (data models, APIs, compliance, SLAs)
+        Each pass receives context from previous passes to avoid re-extraction.
         """
         if not text:
             return [], []
@@ -323,33 +451,90 @@ class ExtractionPipeline:
         all_reqs = []
         all_filtered = []
 
-        # Initialize the 4 specialized extractors
-        extractors = [
-            ("Business Features", BusinessFeatureExtractor()),
-            ("UI Components", UIRequirementExtractor()),
-            ("Workflows", WorkflowRequirementExtractor()),
-            ("Technical", TechnicalRequirementExtractor())
-        ]
+        # Pass 1: Business Features
+        print(f"\n  Pass 1/3: Extracting Business Features...")
+        business_extractor = BusinessFeatureExtractor()
+        pass1_reqs = []
+        pass1_filtered = []
 
-        # Run 4 extraction passes
-        for pass_num, (layer_name, extractor) in enumerate(extractors, 1):
-            print(f"\n  Pass {pass_num}/4: Extracting {layer_name}...")
-            layer_reqs = []
-            layer_filtered = []
+        for i, chunk in enumerate(chunks, 1):
+            print(f"    Chunk {i}/{len(chunks)}...", end='')
+            try:
+                result = business_extractor(document_text=chunk)
+                pass1_reqs.extend(result['requirements'])
+                pass1_filtered.extend(result['filtered_out'])
+                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+            except Exception as e:
+                print(f" ERROR: {e}")
 
-            for i, chunk in enumerate(chunks, 1):
-                print(f"    Chunk {i}/{len(chunks)}...", end='')
-                try:
-                    result = extractor(document_text=chunk)
-                    layer_reqs.extend(result['requirements'])
-                    layer_filtered.extend(result['filtered_out'])
-                    print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
-                except Exception as e:
-                    print(f" ERROR: {e}")
+        all_reqs.extend(pass1_reqs)
+        all_filtered.extend(pass1_filtered)
+        print(f"  Business Features total: {len(pass1_reqs)} requirements")
 
-            all_reqs.extend(layer_reqs)
-            all_filtered.extend(layer_filtered)
-            print(f"  {layer_name} total: {len(layer_reqs)} requirements")
+        # Build context header for Pass 2 — prevents re-extraction of Pass 1 items
+        if pass1_reqs:
+            already_extracted = "\n".join(f"- {r.get('title', '')}" for r in pass1_reqs)
+            context_header = (
+                "ALREADY EXTRACTED IN PREVIOUS PASS — do NOT re-extract these as UI or Workflow variants:\n"
+                + already_extracted
+                + "\n\n--- DOCUMENT ---\n"
+            )
+        else:
+            context_header = ""
+
+        # Pass 2: Functional Details (UI & Workflows)
+        print(f"\n  Pass 2/3: Extracting Functional Details (UI & Workflows)...")
+        functional_extractor = FunctionalDetailExtractor()
+        pass2_reqs = []
+        pass2_filtered = []
+
+        for i, chunk in enumerate(chunks, 1):
+            print(f"    Chunk {i}/{len(chunks)}...", end='')
+            try:
+                contextual_chunk = context_header + chunk if context_header else chunk
+                result = functional_extractor(document_text=contextual_chunk)
+                pass2_reqs.extend(result['requirements'])
+                pass2_filtered.extend(result['filtered_out'])
+                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+            except Exception as e:
+                print(f" ERROR: {e}")
+
+        all_reqs.extend(pass2_reqs)
+        all_filtered.extend(pass2_filtered)
+        print(f"  Functional Details total: {len(pass2_reqs)} requirements")
+
+        # Pass 3: Technical Requirements (Data Models, APIs, Compliance, SLAs)
+        print(f"\n  Pass 3/3: Extracting Technical Requirements...")
+        technical_extractor = TechnicalRequirementExtractor()
+        pass3_reqs = []
+        pass3_filtered = []
+
+        # Build context header for Pass 3 — includes items from both previous passes
+        all_previous = pass1_reqs + pass2_reqs
+        if all_previous:
+            already_all = "\n".join(f"- {r.get('title', '')}" for r in all_previous)
+            tech_context_header = (
+                "ALREADY EXTRACTED — do NOT re-extract these:\n"
+                + already_all
+                + "\n\n--- DOCUMENT ---\n"
+            )
+        else:
+            tech_context_header = ""
+
+        for i, chunk in enumerate(chunks, 1):
+            print(f"    Chunk {i}/{len(chunks)}...", end='')
+            try:
+                contextual_chunk = tech_context_header + chunk if tech_context_header else chunk
+                result = technical_extractor(document_text=contextual_chunk)
+                pass3_reqs.extend(result['requirements'])
+                pass3_filtered.extend(result['filtered_out'])
+                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+            except Exception as e:
+                print(f" ERROR: {e}")
+
+        all_reqs.extend(pass3_reqs)
+        all_filtered.extend(pass3_filtered)
+        print(f"  Technical Requirements total: {len(pass3_reqs)} requirements")
 
         return all_reqs, all_filtered
 
@@ -381,6 +566,7 @@ class ExtractionPipeline:
 
         all_reqs = []
         all_filtered = []
+        all_source_texts = []  # Collect source text for grounding check
 
         for file_path in file_paths:
             # Notify: this file is now being processed
@@ -406,6 +592,8 @@ class ExtractionPipeline:
                     if status_callback:
                         status_callback(file_path, "COMPLETED")
                     continue
+
+                all_source_texts.append(combined_text)
 
                 # Stage 3: Generate requirements
                 reqs, filtered = self._generate_requirements(combined_text)
@@ -437,14 +625,55 @@ class ExtractionPipeline:
 
         print(f"  After validation: {len(all_reqs)} -> {len(validated_reqs)} valid ({len(rejected)} rejected)")
 
+        # Consolidate over-extracted defect prevention items before dedup
+        # (groups 'Prevent Regression of X-NNN' by prefix X, keeps only the first per prefix)
+        print(f"\n  Defect consolidation:")
+        validated_reqs = _consolidate_defect_items(validated_reqs)
+
         # Postprocessing with layer-aware deduplication
         print(f"\n  Deduplication (layer-aware):")
         unique = deduplicate_multi_layer_requirements(validated_reqs)
-        print(f"  After dedup: {len(validated_reqs)} -> {len(unique)} unique")
+        print(f"  After within-type dedup: {len(validated_reqs)} -> {len(unique)} unique")
 
+        # Cross-layer deduplication: catches UI/Workflow variants of already-extracted Functional items
+        # (safety net for context-aware Pass 2 — e.g., "Technical Details Page" [UI] vs
+        #  "Technical Details Page Standardization" [Functional])
+        before_cross = len(unique)
+        unique = deduplicate_cross_layer(unique)
+        if len(unique) < before_cross:
+            print(f"  After cross-layer dedup: {before_cross} -> {len(unique)} unique")
+
+
+        # Topic-based dedup disabled — was removing valid distinct requirements
+        # that share domain terms (e.g., MCDO-03 and MCDO-01 share 'meraki', 'datavalet')
+        # before_topic = len(unique)
+        # unique = deduplicate_by_topic(unique, min_shared_terms=6)
+        # print(f"  After topic dedup: {before_topic} -> {len(unique)} unique")
+
+        # Source grounding check (removes hallucinated requirements)
+        full_source_text = "\n\n".join(all_source_texts)
+        if full_source_text:
+            before_ground = len(unique)
+            unique = ground_check(unique, full_source_text, min_grounding=0.25)
+            print(f"  After source grounding: {before_ground} -> {len(unique)} grounded")
 
         unique = consolidate_requirements(unique)
         print(f"  After consolidation: {len(unique)} requirements")
+
+        # Post-consolidation: merge remaining semantic siblings
+        # (catches sub-features the LLM consolidation missed, e.g.,
+        #  "Packing Slip" + "Certificate of Origin" → keep best one)
+        before_sibling = len(unique)
+        unique = merge_semantic_siblings(unique)
+        if len(unique) < before_sibling:
+            print(f"  After sibling merge: {before_sibling} → {len(unique)} requirements")
+
+        # Second grounding check after consolidation — catches any items injected by LLM consolidation
+        if full_source_text:
+            before_post_ground = len(unique)
+            unique = ground_check(unique, full_source_text, min_grounding=0.25)
+            if len(unique) < before_post_ground:
+                print(f"  After post-consolidation grounding: {before_post_ground} -> {len(unique)} (removed {before_post_ground - len(unique)} hallucinated)")
 
         # Add IDs
         for i, req in enumerate(unique, 1):

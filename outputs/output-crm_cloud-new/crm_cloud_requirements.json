@@ -1,0 +1,141 @@
+{
+  "project": "crm_cloud",
+  "requirements": [
+    {
+      "title": "Security and Compliance",
+      "description": "Ensuring the system's security and compliance with regulations.",
+      "type": "Security",
+      "requirement_id": "CRM_CLOUD-001"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "System performance and scalability infrastructure, including system performance",
+      "type": "Architecture",
+      "requirement_id": "CRM_CLOUD-002"
+    },
+    {
+      "title": "Communication Tools with Email Tracking",
+      "description": "Built-in email composer with template library and merge fields, and email tracking with real-time notifications",
+      "type": "Architecture",
+      "requirement_id": "CRM_CLOUD-003"
+    },
+    {
+      "title": "Real-time Index Updates",
+      "description": "Real-time index updates via CDC using Debezium from PostgreSQL WAL with index lag < 2 seconds",
+      "type": "Architecture",
+      "requirement_id": "CRM_CLOUD-004"
+    },
+    {
+      "title": "Multi-tenant Architecture",
+      "description": "Multi-tenant architecture using tenant_id column on all tables with row-level security policies",
+      "type": "Architecture",
+      "requirement_id": "CRM_CLOUD-005"
+    },
+    {
+      "title": "Data Partitioning",
+      "description": "Activity and EmailThread tables partitioned by created_at quarter with retention: 3 years in hot storage, 7 years in cold archive",
+      "type": "Architecture",
+      "requirement_id": "CRM_CLOUD-006"
+    },
+    {
+      "title": "Data Model",
+      "description": "Company entity with fields: company_id, name, domain, industry, employee_count, annual_revenue, parent_company_id, clearbit_data, created_at, updated_at, and relationships between Lead, Contact, Company, Deal, and Activity entities",
+      "type": "Data Model",
+      "requirement_id": "CRM_CLOUD-007"
+    },
+    {
+      "title": "Lead and Email Management",
+      "description": "Features for managing leads and emails, including detail panels, assignment workflows, qualification, conversion, enrichment, composition, integration, and automated sequences.",
+      "type": "UI/Workflow",
+      "user_story": "As a sales representative, I want to manage leads and emails, so that I can qualify and convert leads into deals and communicate with contacts and leads efficiently.",
+      "requirement_id": "CRM_CLOUD-008"
+    },
+    {
+      "title": "Lead Management",
+      "description": "Lead capture from web forms, email, API, and manual entry with AI lead scoring based on firmographics, engagement, and fit",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-009"
+    },
+    {
+      "title": "Meeting Scheduler",
+      "description": "Meeting scheduler with calendar availability sharing link",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-010"
+    },
+    {
+      "title": "DocuSign eSign API Integration",
+      "description": "Generate contracts from CRM templates, send for signature, track signing status, and auto-update deal stage on completion using DocuSign eSign API",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-011"
+    },
+    {
+      "title": "Custom Reports",
+      "description": "Drag-and-drop report builder with filters, grouping, and chart types, scheduled report delivery via email in PDF or CSV format",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-012"
+    },
+    {
+      "title": "Sales Analytics Dashboard",
+      "description": "Executive dashboard with KPIs: revenue, pipeline value, win rate, avg deal size, revenue forecast with AI-driven prediction and confidence intervals",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-013"
+    },
+    {
+      "title": "Activity Management",
+      "description": "Entity to manage activities with fields like activity_id, type, subject, body, contact_id, deal_id, owner_id, duration_minutes, scheduled_at, completed_at, outcome, created_at, and updated_at",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-014"
+    },
+    {
+      "title": "Backup and Recovery",
+      "description": "Ensuring data backup and recovery capabilities",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-015"
+    },
+    {
+      "title": "API Access and Rate Limiting",
+      "description": "Providing secure API access with rate limiting",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-016"
+    },
+    {
+      "title": "Multi-Region Deployment",
+      "description": "Deploying the system across multiple regions",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-017"
+    },
+    {
+      "title": "System Uptime and Maintenance",
+      "description": "Ensuring system uptime and maintaining it",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-018"
+    },
+    {
+      "title": "Webhook Delivery Guarantees",
+      "description": "Guaranteeing reliable webhook delivery",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-019"
+    },
+    {
+      "title": "Integration Management",
+      "description": "Features for configuring and managing integrations with other services, including calendar and third-party integrations, and their settings.",
+      "type": "UI",
+      "user_story": "As a system administrator, I want to configure integrations, so that I can extend the functionality of our CRM.",
+      "requirement_id": "CRM_CLOUD-020"
+    },
+    {
+      "title": "Deal Management",
+      "description": "Features for managing deals, including screens for deal management, Kanban board view, and deal pipeline progression.",
+      "type": "UI/Workflow",
+      "user_story": "As a sales representative, I want to manage deals effectively, so that I can track the sales pipeline and close deals.",
+      "requirement_id": "CRM_CLOUD-021"
+    },
+    {
+      "title": "Reporting and Data Management",
+      "description": "Features for building custom reports and exporting data in suitable formats, including CSV and JSON with GDPR compliance.",
+      "type": "UI",
+      "user_story": "As a sales manager, I want to build custom reports and export data, so that I can quickly access key information and make data-driven decisions.",
+      "requirement_id": "CRM_CLOUD-022"
+    }
+  ]
+}

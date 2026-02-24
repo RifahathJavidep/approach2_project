@@ -1,0 +1,59 @@
+{
+  "project": "bbmsa",
+  "requirements": [
+    {
+      "title": "MCD Catalog and Offerings",
+      "description": "Merge offerings from multiple sources into a single point of entry within the Bell Business Self-Service Center (BBSSC), including MCD catalog consolidation, Bell managed Meraki offering updates, and Datavalet offering reorganization.",
+      "type": "Functional",
+      "requirement_id": "BBMSA-001"
+    },
+    {
+      "title": "Profile and Template Management",
+      "description": "Enable transfer of site to another template/profile, modification of existing Bell-managed Meraki profiles, and creation of new profiles/templates with flexible technical details page.",
+      "type": "Functional",
+      "requirement_id": "BBMSA-002"
+    },
+    {
+      "title": "CI Visibility Matrix",
+      "description": "The matrix defines the visibility of configuration items (CIs) based on the offering type and target managed by.",
+      "type": "UI",
+      "requirement_id": "BBMSA-003"
+    },
+    {
+      "title": "Technical Details Page",
+      "description": "Must be standard/flexible as requirements for new profiles are highly variable and include custom payload definitions for the API.",
+      "type": "UI",
+      "requirement_id": "BBMSA-004"
+    },
+    {
+      "title": "Process Workflows (MACD)",
+      "description": "The process workflows include standard selection, redirected selection, and external sync.",
+      "type": "Workflow",
+      "requirement_id": "BBMSA-005"
+    },
+    {
+      "title": "Defect Prevention and Quality",
+      "description": "Prevent regression of defects SADRSTRANG-13583 and SADRSTRANG-13420.",
+      "type": "Quality",
+      "requirement_id": "BBMSA-006"
+    },
+    {
+      "title": "Maximo to ServiceNow (Datavalet) Integration",
+      "description": "The integration of Maximo and ServiceNow (Datavalet) systems to enable data synchronization.",
+      "type": "Workflow",
+      "requirement_id": "BBMSA-007"
+    },
+    {
+      "title": "Bell Version Workflow",
+      "description": "Similar to Datavalet, but follows Bell internal provisioning logic and Maximo job plans.",
+      "type": "Workflow",
+      "requirement_id": "BBMSA-008"
+    },
+    {
+      "title": "Offering Name Adjustments and Template Redirection List",
+      "description": "Change display name of DV-047 and use the template redirection list for 'Modify Profile' offering.",
+      "type": "Configuration",
+      "requirement_id": "BBMSA-009"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "project": "logistics_manager",
+  "requirements": [
+    {
+      "title": "Security and Compliance Infrastructure",
+      "description": "Merged security, encryption, audit, and compliance requirements for infrastructure.",
+      "type": "Security",
+      "requirement_id": "LOGISTICS_MANAGER-001"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "Merged requirements for system uptime, latency, throughput, and performance.",
+      "type": "Non-Functional",
+      "requirement_id": "LOGISTICS_MANAGER-002"
+    },
+    {
+      "title": "Logistics Workflow",
+      "description": "Route optimization, shipment creation, and warehouse pick-pack-ship flow",
+      "type": "Architecture",
+      "requirement_id": "LOGISTICS_MANAGER-003"
+    },
+    {
+      "title": "Data Architecture",
+      "description": "Not explicitly listed but considering the absence of a direct fit for the sixth item and the presence of various data-intensive requirements across different workflows, this item acknowledges the importance of a robust data architecture to support all other capabilities.",
+      "type": "Infrastructure",
+      "requirement_id": "LOGISTICS_MANAGER-004"
+    },
+    {
+      "title": "International Shipment with Customs Clearance",
+      "description": "International customs processing with HS code assignment, denied party screening, and customs document generation. Includes auto-generation of commercial invoices and packing slips.",
+      "type": "Architecture",
+      "requirement_id": "LOGISTICS_MANAGER-005"
+    },
+    {
+      "title": "Real-Time Tracking",
+      "description": "Live GPS tracking displayed on interactive Google Maps with vehicle icons",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-006"
+    },
+    {
+      "title": "Carrier Integration",
+      "description": "API integration with various carriers for streamlined shipment processing.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-007"
+    },
+    {
+      "title": "Warehouse Operations",
+      "description": "Workflows managing pick-pack-ship process, fulfilling orders, and potentially including low stock alerts for inventory management.",
+      "type": "Workflow",
+      "requirement_id": "LOGISTICS_MANAGER-008"
+    },
+    {
+      "title": "Customs Documentation",
+      "description": "Merged requirements for packing slips, commercial invoices, and certificates of origin.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-009"
+    },
+    {
+      "title": "Inventory Management",
+      "description": "Merged inventory audit trail, automated reorder, and real-time inventory for comprehensive inventory control.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-010"
+    },
+    {
+      "title": "GPS Tracking",
+      "description": "Integration with GPS tracker devices for real-time shipment location tracking.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-011"
+    },
+    {
+      "title": "Route Optimization",
+      "description": "Optimization of routes for efficient delivery.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-012"
+    },
+    {
+      "title": "Real-time Inventory Levels",
+      "description": "Real-time inventory levels across all warehouses for informed decision-making.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-013"
+    },
+    {
+      "title": "Labor Productivity Reports",
+      "description": "Reports on labor productivity by shift, team, and individual worker for optimizing labor allocation.",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-014"
+    },
+    {
+      "title": "Shipment Entity Configuration",
+      "description": "Shipment entity with fields: shipment_id, customer_id, origin_address_id, dest_address_id, carrier_id, tracking_number, service_level, status, total_weight_kg, declared_value, currency, estimated_delivery, actual_delivery, created_at",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-015"
+    },
+    {
+      "title": "Oracle NetSuite SuiteTalk API Integration",
+      "description": "Integrate with Oracle NetSuite SuiteTalk API for mid-market ERP integration, order import, and fulfillment status export",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-016"
+    },
+    {
+      "title": "Shopify/BigCommerce Webhook Integration",
+      "description": "Integrate with Shopify/BigCommerce webhook for e-commerce order fulfillment, auto-creating shipments from new orders",
+      "type": "Functional",
+      "requirement_id": "LOGISTICS_MANAGER-017"
+    },
+    {
+      "title": "Shipment Dashboard Screen",
+      "description": "A dashboard screen for managing shipments, including a KPI summary bar, data table, and bulk action toolbar.",
+      "type": "UI",
+      "requirement_id": "LOGISTICS_MANAGER-018"
+    },
+    {
+      "title": "UI Requirements",
+      "description": "Screens for comparing rates, warehouse floor plan, analytics & reporting, live tracking, and warehouse utilization.",
+      "type": "UI",
+      "requirement_id": "LOGISTICS_MANAGER-019"
+    },
+    {
+      "title": "Shipment Management",
+      "description": "Workflows and UI components managing creation, tracking, and delivery of shipments.",
+      "type": "Workflow",
+      "requirement_id": "LOGISTICS_MANAGER-020"
+    },
+    {
+      "title": "International Customs Processing Workflow",
+      "description": "Workflow guiding dispatchers through creating and processing international shipments, including customs clearance and denied party screening.",
+      "type": "Workflow",
+      "requirement_id": "LOGISTICS_MANAGER-021"
+    },
+    {
+      "title": "Exception Handling Workflow",
+      "description": "Workflow triggered when shipment exceptions occur, such as missed pickups or damaged shipments, to efficiently resolve issues.",
+      "type": "Workflow",
+      "requirement_id": "LOGISTICS_MANAGER-022"
+    }
+  ]
+}

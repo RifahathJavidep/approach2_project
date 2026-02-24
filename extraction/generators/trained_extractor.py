@@ -19,6 +19,7 @@ from .signatures import (
     UIRequirementExtraction,
     WorkflowRequirementExtraction,
     TechnicalRequirementExtraction,
+    FunctionalDetailExtraction,
     RequirementClassifier,
     RequirementDeMerger
 )
@@ -352,3 +353,64 @@ class TechnicalRequirementExtractor(dspy.Module):
                 filtered_out.append(candidate)
 
         return {'requirements': valid_requirements, 'filtered_out': filtered_out}
+
+
+class FunctionalDetailExtractor(dspy.Module):
+    """Extracts functional details (UI + Workflows) in a single pass."""
+
+    def __init__(self):
+        super().__init__()
+        self.extractor = dspy.ChainOfThought(FunctionalDetailExtraction)
+        self.classifier = dspy.ChainOfThought(RequirementClassifier)
+
+    def forward(self, document_text: str) -> Dict:
+        result = self.extractor(document_text=document_text)
+
+        try:
+            raw = result.requirements_json
+            if '```' in raw:
+                raw = raw.split('```')[1]
+                if raw.startswith('json'):
+                    raw = raw[4:]
+            candidates = json.loads(raw.strip())
+        except Exception:
+            candidates = []
+
+        valid_requirements = []
+        filtered_out = []
+
+        for candidate in candidates:
+            title = candidate.get('title', '')
+            desc = candidate.get('description', '')
+
+            # Pre-filter
+            combined = f"{title} {desc}".lower()
+            if any(kw in combined for kw in SKIP_KEYWORDS):
+                filtered_out.append(candidate)
+                continue
+
+            classification = self.classifier(
+                text=f"{title} - {desc}",
+                title=title,
+                description=desc
+            )
+
+            if classification.is_requirement.lower().strip() in ['yes', 'true']:
+                # Ensure type is either UI or Workflow
+                if candidate.get('type') not in ['UI', 'Workflow']:
+                    candidate['type'] = 'Workflow' # Default
+                
+                # Enrich with fallback values
+                candidate.setdefault('user_story', f"As a user, I want to use {title} to achieve my functional goal.")
+                candidate.setdefault('acceptance_criteria', [f"Verify {title} functionality"])
+                candidate.setdefault('test_steps', [{'step_num': 1, 'action': f'Interact with {title}', 'expected_result': 'Success'}])
+                candidate.setdefault('test_scenarios', [f"Successful {title} interaction"])
+                candidate.setdefault('assumptions', [])
+                candidate.setdefault('ambiguities', [])
+                candidate.setdefault('confidence', 'medium')
+                valid_requirements.append(candidate)
+            else:
+                filtered_out.append(candidate)
+
+        return {'requirements': valid_requirements, 'filtered_out': filtered_out}
+

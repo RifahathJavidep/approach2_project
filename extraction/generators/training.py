@@ -94,7 +94,25 @@ POSITIVE_EXAMPLES_BY_LAYER = {
         {"text": "Multi-tenant row-level security (RLS) on PostgreSQL with tenant isolation policies enforced at database layer", "title": "Multi-Tenant Data Security", "description": "Database-enforced tenant isolation preventing cross-tenant data access", "type": "Security", "pattern": "Data security", "is_requirement": "Yes"},
         {"text": "AES-256 encryption at rest for sensitive fields (SSN, credit card) with key rotation every 90 days", "title": "Data Encryption Policy", "description": "Field-level encryption for PII/PCI data with automated key management", "type": "Security", "pattern": "Data security", "is_requirement": "Yes"},
     ],
+#     # Layer 5: Domain-Specific CRM Examples
+#     "crm": [
+#         {"text": "Lead Deduplication with email and phone matching", "title": "Lead Deduplication", "description": "Prevent duplicate records by matching on primary email and mobile phone with manual merge capability", "type": "Functional", "pattern": "CRM Feature", "is_requirement": "Yes"},
+#         {"text": "ML-driven revenue forecasting with best-case and committed amounts", "title": "AI Revenue Forecasting", "description": "Sales predictions using historical win rates and current pipeline status", "type": "Functional", "pattern": "CRM Feature", "is_requirement": "Yes"},
+#         {"text": "Bidirectional Gmail and Outlook sync for sales activities", "title": "Email and Calendar Sync", "description": "Real-time sync of emails and meetings with auto-logging to contact records", "type": "Functional", "pattern": "CRM Feature", "is_requirement": "Yes"},
+#         {"text": "Click-to-call integration with Twilio for automated call logging", "title": "Sales Call Integration", "description": "In-app dialing with automatic CRM activity creation and recording", "type": "Functional", "pattern": "CRM Feature", "is_requirement": "Yes"},
+#     ],
+#     # Layer 6: Domain-Specific Fintech Examples
+
+#     "fintech": [
+#         {"text": "Goal-Based Savings with automated round-ups and recurring transfers", "title": "Goal-Based Savings", "description": "Users can set financial goals, automate round-ups on purchases, and track progress with visualizations", "type": "Functional", "pattern": "Fintech Feature", "is_requirement": "Yes"},
+#         {"text": "Instant P2P transfers using mobile number with FedNow settlement", "title": "P2P Instant Transfers", "description": "Send money instantly to users via phone number with immediate clearing and receipt sharing", "type": "Functional", "pattern": "Fintech Feature", "is_requirement": "Yes"},
+#         {"text": "Fractional stock and ETF trading from $1 per trade with real-time charts", "title": "Fractional Stock Trading", "description": "Purchase portions of stocks and ETFs using market or limit orders with automated portfolio rebalancing", "type": "Functional", "pattern": "Fintech Feature", "is_requirement": "Yes"},
+#         {"text": "Buy/Sell top 20 cryptocurrencies with secure wallet integration", "title": "Crypto Trading", "description": "Interactive crypto trading with price alerts and integrated portfolio view of top digital assets", "type": "Functional", "pattern": "Fintech Feature", "is_requirement": "Yes"},
+#         {"text": "Interactive budget tracker with spending insights by category", "title": "Budget Tracker", "description": "Automated transaction categorization with monthly spending bar charts and budget threshold alerts", "type": "Functional", "pattern": "Fintech Feature", "is_requirement": "Yes"},
+#     ]
 }
+
+
 
 # NEGATIVE EXAMPLES - Patterns to REJECT
 NEGATIVE_EXAMPLES = [
@@ -148,7 +166,17 @@ SKIP_KEYWORDS = [
     'indexing policy', 'database schema', 'rest api',
     'internal integration', 'backend service',
     'system architecture', 'application framework',
+    # NEW: Specific technical noise items (F1 killers)
+    'backups', 'sar auto-generation', 'ccpa compliance', 
+    'mfa', 'multi-factor', 'pci dss', 'soc 2', 
+    'disaster recovery', 'rto and rpo', '99.99%',
+    'merchant logos', 'app size', 'offline mode',
+    'entity management', 'crud operations', 'internal logs',
+    'aws deployment', 'engagement and feedback', 'analytics and reporting',
+    'customer support', 'fast transaction processing', 'settings management',
 ]
+
+
 
 
 # ============================================================================
@@ -184,8 +212,8 @@ def _generate_training_from_projects(
         chunk_fn = chunk_document
 
     for project_name, project_config in projects.items():
-        if project_name == current_project:
-            continue  # Skip — this is the extraction target
+        if project_name == current_project or project_name == 'bbmsa':
+            continue  # Skip target project and bbmsa as requested
 
         input_dir = Path(project_config['input_dir'])
         if not input_dir.exists():

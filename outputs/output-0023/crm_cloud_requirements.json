@@ -1,0 +1,65 @@
+{
+  "project": "crm_cloud",
+  "requirements": [
+    {
+      "title": "Security and Compliance Infrastructure",
+      "description": "Merge of all security, compliance, audit, and related items to ensure the system's integrity and adherence to regulations.",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-001"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "Consolidation of uptime, latency, throughput, scalability, and performance requirements to guarantee efficient system operation.",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-002"
+    },
+    {
+      "title": "Sales Management",
+      "description": "Features for managing sales-related data, including lead and contact management, deal management, and sales pipeline progression.",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-003"
+    },
+    {
+      "title": "Sales Analytics and Reporting",
+      "description": "Features for analyzing and reporting sales performance, including dashboards, custom reports, and activity analytics.",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-004"
+    },
+    {
+      "title": "Integration and Communication",
+      "description": "Features for integrating with other systems and communicating with users, including email, calendar, and API integrations.",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-005"
+    },
+    {
+      "title": "Data Management",
+      "description": "Features for managing and customizing data, including data import, export, enrichment, and customization.",
+      "type": "Functional",
+      "requirement_id": "CRM_CLOUD-006"
+    },
+    {
+      "title": "Search Functionality",
+      "description": "Includes full-text search, indexing, and related performance requirements for efficient data retrieval.",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-007"
+    },
+    {
+      "title": "User and Access Management",
+      "description": "Covers role-based access control, user management, and field-level security.",
+      "type": "Non-Functional",
+      "requirement_id": "CRM_CLOUD-008"
+    },
+    {
+      "title": "Deal Pipeline Progression",
+      "description": "Workflow for managing deal stages, including discovery, qualification, proposal, and closing",
+      "type": "Workflow",
+      "requirement_id": "CRM_CLOUD-009"
+    },
+    {
+      "title": "Automated Email Sequence",
+      "description": "Workflow for creating and sending automated email sequences to leads and contacts",
+      "type": "Workflow",
+      "requirement_id": "CRM_CLOUD-010"
+    }
+  ]
+}

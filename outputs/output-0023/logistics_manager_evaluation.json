@@ -1,0 +1,151 @@
+{
+  "metrics": {
+    "precision": 0.875,
+    "recall": 0.3181818181818182,
+    "f1_score": 0.4666666666666667
+  },
+  "counts": {
+    "gt": 22,
+    "extracted": 8,
+    "true_positives": 7,
+    "false_negatives": 15,
+    "false_positives": 1,
+    "redundant": 0
+  },
+  "matched": [
+    {
+      "extracted_id": "LOGISTICS_MANAGER-001",
+      "extracted_title": "Shipment Management",
+      "gt_id": "Shipment Lifecycle Workflow",
+      "gt_name": "End-to-end shipment creation and booking",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-002",
+      "extracted_title": "Security and Compliance Infrastructure",
+      "gt_id": "Supply Chain Security",
+      "gt_name": "Compliance and data isolation requirements",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-003",
+      "extracted_title": "System Performance and Scalability",
+      "gt_id": "Logistics Performance SLAs",
+      "gt_name": "Platform performance and scalability targets",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-004",
+      "extracted_title": "Carrier Integration and Rate Shopping",
+      "gt_id": "Rate Shopping UI",
+      "gt_name": "Carrier rate comparison table with booking",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-005",
+      "extracted_title": "Warehouse Management",
+      "gt_id": "Warehouse Operations",
+      "gt_name": "Pick-pack-ship workflow management",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-006",
+      "extracted_title": "Data Management and Analytics",
+      "gt_id": "Warehouse Analytics",
+      "gt_name": "Warehouse performance dashboards",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "LOGISTICS_MANAGER-008",
+      "extracted_title": "Workflow and Exception Handling",
+      "gt_id": "Route Optimization",
+      "gt_name": "AI-powered delivery route planning",
+      "semantic_match": true
+    }
+  ],
+  "missed": [
+    {
+      "gt_id": "Real-Time GPS Tracking",
+      "gt_name": "Live shipment tracking on interactive map",
+      "description": "Google Maps integration, 15-min ETA updates, geofence alerts, shareable tracking"
+    },
+    {
+      "gt_id": "Carrier Integration",
+      "gt_name": "Multi-carrier API integration",
+      "description": "FedEx, UPS, DHL, USPS, Canada Post; rate comparison, label generation, scorecards"
+    },
+    {
+      "gt_id": "Inventory Management",
+      "gt_name": "Real-time warehouse inventory tracking",
+      "description": "SKU-level tracking, barcode/RFID scanning, low stock alerts, demand forecasting"
+    },
+    {
+      "gt_id": "Customs Documentation",
+      "gt_name": "Automated international shipping documents",
+      "description": "Commercial invoice, packing slip, HS code lookup, certificate of origin"
+    },
+    {
+      "gt_id": "Trade Compliance",
+      "gt_name": "Export control and sanctions screening",
+      "description": "Denied party screening, export license detection, duty estimation, import restrictions"
+    },
+    {
+      "gt_id": "Carrier Performance",
+      "gt_name": "SLA monitoring and carrier scorecards",
+      "description": "On-time percentage, damage rate, cost per kg, SLA breach alerting"
+    },
+    {
+      "gt_id": "Shipment Notifications",
+      "gt_name": "Push notifications for status changes",
+      "description": "Status change alerts for shipper and consignee, configurable notification preferences"
+    },
+    {
+      "gt_id": "Shipment Dashboard UI",
+      "gt_name": "KPI summary bar and shipment data table",
+      "description": "Active shipments count, on-time rate, today's shipments, exception badge, sortable/filterable data table with bulk actions, create shipment wizard"
+    },
+    {
+      "gt_id": "Live Tracking Map UI",
+      "gt_name": "Full-screen map with color-coded shipment markers",
+      "description": "Truck icons by status (green/blue/red/gray), sidebar detail panel, geofence polygons, map filters for carrier/status/customer, 30-second auto-refresh"
+    },
+    {
+      "gt_id": "Warehouse Floor Plan UI",
+      "gt_name": "Interactive SVG warehouse visualization",
+      "description": "Zone-clickable floor plan, heat map utilization overlay, active pick list cards with progress bars, bin location search with highlight"
+    },
+    {
+      "gt_id": "Warehouse Fulfillment Workflow",
+      "gt_name": "Order to shipped warehouse process",
+      "description": "9-step flow: order receipt, wave planning, pick list generation, barcode scanning, packing station, weight verification, label printing, staging, carrier handoff. Error path for out-of-stock"
+    },
+    {
+      "gt_id": "International Customs Workflow",
+      "gt_name": "Customs clearance for international shipments",
+      "description": "8-step flow: detect international, HS code assignment, denied party screening, document generation, duty estimation, electronic filing, clearance tracking, exception handling"
+    },
+    {
+      "gt_id": "Carrier API Integration",
+      "gt_name": "Multi-carrier shipping and tracking APIs",
+      "description": "FedEx/UPS/DHL/USPS REST APIs with OAuth, carrier abstraction layer, webhook tracking with HMAC verification, 3-second timeout with fallback"
+    },
+    {
+      "gt_id": "IoT Sensor Integration",
+      "gt_name": "GPS trackers and environmental sensors",
+      "description": "CalAmp/Samsara GPS via MQTT, temperature/humidity for cold chain, RFID dock door readers for auto inventory updates"
+    },
+    {
+      "gt_id": "Logistics Data Model",
+      "gt_name": "Shipment and warehouse entity design",
+      "description": "Shipment/Package/TrackingEvent/InventoryItem/WarehouseOrder/CustomsDeclaration entities, TimescaleDB for time-series tracking, Redis rate caching"
+    }
+  ],
+  "over_created": [
+    {
+      "extracted_id": "LOGISTICS_MANAGER-007",
+      "title": "System Integration",
+      "type": "Integration"
+    }
+  ],
+  "redundant_items": []
+}

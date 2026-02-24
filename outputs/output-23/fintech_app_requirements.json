@@ -1,0 +1,257 @@
+{
+  "project": "fintech_app",
+  "requirements": [
+    {
+      "title": "Card Freeze/Unfreeze Process",
+      "description": "Freeze or unfreeze the physical debit card instantly from the app settings",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-001"
+    },
+    {
+      "title": "Configurable Spending Limits",
+      "description": "Spending limits configurable by category (ATM, online, international)",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-002"
+    },
+    {
+      "title": "Merchant Category Blocking",
+      "description": "Merchant category blocking (e.g., gambling, alcohol)",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-003"
+    },
+    {
+      "title": "Fee-Free ATM Access",
+      "description": "Fee-free ATM access at 55,000+ Allpoint network locations",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-004"
+    },
+    {
+      "title": "ATM Finder Screen",
+      "description": "A screen that displays the nearest fee-free ATMs on a map.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-005"
+    },
+    {
+      "title": "Cashback Rewards",
+      "description": "1% cashback on all debit card purchases",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-006"
+    },
+    {
+      "title": "Bonus Cashback Categories",
+      "description": "Bonus cashback categories rotating monthly (3% on dining, gas, etc.)",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-007"
+    },
+    {
+      "title": "Cashback Deposit",
+      "description": "Cashback earned deposited to savings account weekly",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-008"
+    },
+    {
+      "title": "Onfido KYC Integration for Digital Banking App",
+      "description": "SDK integration for iOS and Android with real-time selfie liveness detection",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-009"
+    },
+    {
+      "title": "Plaid Bank Account Linking for Digital Banking App",
+      "description": "Plaid Link SDK integration for external bank account connection",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-010"
+    },
+    {
+      "title": "Apex Clearing Brokerage Integration",
+      "description": "Apex Clearing as clearing broker for brokerage integration",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-011"
+    },
+    {
+      "title": "Alpaca Markets Real-time Market Data",
+      "description": "Real-time market data from Alpaca Markets API",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-012"
+    },
+    {
+      "title": "P2P Transfer Process",
+      "description": "Send money to other users using phone number or email, with transfer settlement in under 1 business day",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-013"
+    },
+    {
+      "title": "Investment Portfolio Screen",
+      "description": "The investment portfolio screen displays the user's portfolio value, daily change, and percentage change. It features an interactive line chart and asset allocation donut chart.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-014"
+    },
+    {
+      "title": "Transfer History",
+      "description": "Transfer history with receipt sharing capability",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-015"
+    },
+    {
+      "title": "Request Money",
+      "description": "Request money feature with customizable message",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-016"
+    },
+    {
+      "title": "Split Bill with Group",
+      "description": "A 7-step workflow for users to split a bill with a group, including entering total bill amount, adding participants, and reviewing split details.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-017"
+    },
+    {
+      "title": "Savings Goal Creation",
+      "description": "Create savings goals with target amount and target date, including progress visualization and goal completion celebration animation",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-018"
+    },
+    {
+      "title": "Automatic Round-Up",
+      "description": "Automatic round-up of purchases to nearest dollar, deposited into savings, with configurable schedule",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-019"
+    },
+    {
+      "title": "Recurring Transfers",
+      "description": "Recurring automatic transfers to savings on configurable schedule, with option to edit or cancel",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-020"
+    },
+    {
+      "title": "High-Yield Savings Account",
+      "description": "APY displayed prominently with daily interest accrual, no minimum balance or monthly fees",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-021"
+    },
+    {
+      "title": "Interest Earned Breakdown",
+      "description": "Interest earned breakdown shown monthly in account statements",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-022"
+    },
+    {
+      "title": "Buy Fractional Stock/ETF",
+      "description": "A 6-step workflow for users to buy fractional stock or ETF, including searching for stock, selecting order type, and confirming order.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-023"
+    },
+    {
+      "title": "Dividend Tracking and Reinvestment",
+      "description": "Dividend tracking and reinvestment configuration",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-024"
+    },
+    {
+      "title": "Tax Document Generation",
+      "description": "Tax document generation (1099-DIV, 1099-B) for tax season",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-025"
+    },
+    {
+      "title": "Real-Time Crypto Price Alerts",
+      "description": "Real-time crypto price alerts with customizable thresholds",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-026"
+    },
+    {
+      "title": "Home Dashboard Screen",
+      "description": "The home screen displays total balance prominently at top center, with available and pending amounts below. It also features a horizontal scrollable row of quick action circles, recent transactions list, and bottom navigation bar.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-027"
+    },
+    {
+      "title": "P2P Transfer Contact List",
+      "description": "Display a contact list with recent recipients as horizontal scroll of avatar circles",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-028"
+    },
+    {
+      "title": "Investment Portfolio Value Display",
+      "description": "Display portfolio value with total value, daily change, and percentage change",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-029"
+    },
+    {
+      "title": "Budget Tracker Monthly Spending Summary",
+      "description": "Display monthly spending summary with total spent, budget remaining, and spending pace indicator",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-030"
+    },
+    {
+      "title": "Card Management Screen",
+      "description": "The card management screen allows users to manage their virtual debit card, including toggling controls, spending limits, and ordering a physical card.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-031"
+    },
+    {
+      "title": "Rewards Program Screen",
+      "description": "A screen that displays cashback rewards earned and bonus cashback categories.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-032"
+    },
+    {
+      "title": "KYC Integration Screen",
+      "description": "The KYC integration screen will utilize Onfido's SDK for iOS and Android, with real-time selfie liveness detection. The screen will extract name, DOB, address, and document number from the user's ID via document OCR.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-033"
+    },
+    {
+      "title": "Account Dashboard",
+      "description": "Display account information, including account types, virtual debit card, and physical debit card request",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-034"
+    },
+    {
+      "title": "Budget Tracker Screen",
+      "description": "The budget tracker screen displays the user's monthly spending summary, category breakdown, and budget settings.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-035"
+    },
+    {
+      "title": "Invest Tab",
+      "description": "A screen that displays the user's investment portfolio and allows them to buy fractional stock or ETF.",
+      "type": "UI",
+      "requirement_id": "FINTECH_APP-036"
+    },
+    {
+      "title": "Cardless ATM Withdrawal Process",
+      "description": "A process that allows users to withdraw cash from an ATM using a QR code.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-037"
+    },
+    {
+      "title": "P2P Instant Transfer Workflow",
+      "description": "The P2P instant transfer workflow will involve the following steps: 1) biometric verification for transfer, 2) session token validation, 3) transfer service validation, 4) balance confirmation, 5) hold placement, 6) settlement confirmation, 7) debit sender, 8) credit recipient, and 9) notification service notification.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-038"
+    },
+    {
+      "title": "Digital Account Opening",
+      "description": "A 8-step workflow for new users to open a digital account, including entering personal details, identity verification, selecting account type, and initial funding.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-039"
+    },
+    {
+      "title": "Send Money to Contact",
+      "description": "A 7-step workflow for users to send money to contacts, including selecting recipient, entering transfer amount, and confirming transfer.",
+      "type": "Workflow",
+      "requirement_id": "FINTECH_APP-040"
+    },
+    {
+      "title": "Security and Compliance Infrastructure",
+      "description": "Merged security, encryption, audit, and compliance items into a single infrastructure item for simplicity.",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-041"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "Merged uptime, latency, throughput, and scalability items into a single system performance item for simplicity.",
+      "type": "Functional",
+      "requirement_id": "FINTECH_APP-042"
+    }
+  ]
+}

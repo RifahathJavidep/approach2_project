@@ -29,6 +29,20 @@ NFR_WITHOUT_METRICS = [
     'reliability', 'maintainability'
 ]
 
+CHECKLIST_KEYWORDS = [
+    'verification checklist', 'final verification', 'test checklist',
+    'sign-off', 'go-live checklist', 'deployment checklist',
+    'project tracking', 'ryg', 'rag status', 'release checklist'
+]
+
+# UI micro-detail patterns (isolated controls without page context)
+MICRO_DETAIL_PATTERNS = [
+    'dropdown menu', 'radio button', 'tooltip',
+    'hover effect', 'badge color', 'icon set', 'spinner',
+    'toggle switch', 'scrollbar'
+]
+
+
 # ============================================================================
 # VALIDATION FUNCTIONS
 # ============================================================================
@@ -69,6 +83,14 @@ def validate_requirement(req: Dict) -> Tuple[bool, str]:
     if len(title) > 100:
         return False, "Title too long - likely a paragraph, not a requirement title"
 
+    # Rule 6: Reject project management checklists
+    if any(kw in combined for kw in CHECKLIST_KEYWORDS):
+        return False, "Project management checklist, not software requirement"
+
+    # Rule 7: Reject isolated UI micro-details without page context
+    if is_micro_detail(req.get('title', ''), req.get('description', '')):
+        return False, "Isolated UI micro-detail without page context"
+
     return True, ""
 
 
@@ -81,6 +103,7 @@ def has_specific_details(text: str) -> bool:
     - Workflow indicators (step, flow, process)
     - Technical specifics (API, metric, SLA)
     - Business entities (lead, order, patient)
+    - Configuration indicators (rename, update, change, modify)
     """
     text_lower = text.lower()
 
@@ -88,7 +111,8 @@ def has_specific_details(text: str) -> bool:
     ui_elements = [
         'button', 'form', 'dashboard', 'panel', 'modal', 'table', 'chart',
         'widget', 'tab', 'sidebar', 'header', 'footer', 'dropdown', 'checkbox',
-        'radio', 'slider', 'calendar', 'grid', 'card', 'list', 'menu'
+        'radio', 'slider', 'calendar', 'grid', 'card', 'list', 'menu',
+        'page', 'screen', 'selection'
     ]
 
     # Workflow specifics
@@ -101,7 +125,8 @@ def has_specific_details(text: str) -> bool:
     tech_indicators = [
         'api', 'oauth', 'jwt', 'rest', 'graphql', 'webhook', 'endpoint',
         'ms', '< 1', '99.', 'sla', 'rto', 'rpo', 'p95', 'p99',
-        'database', 'schema', 'entity', 'table', 'index'
+        'database', 'schema', 'entity', 'table', 'index',
+        'sync', 'integration', 'payload', 'field mapping'
     ]
 
     # Entity specifics (common domain entities)
@@ -110,14 +135,26 @@ def has_specific_details(text: str) -> bool:
         'order', 'product', 'invoice', 'payment', 'transaction',
         'patient', 'appointment', 'prescription', 'diagnosis',
         'inventory', 'shipment', 'warehouse', 'supplier',
-        'user', 'customer', 'client', 'tenant', 'organization'
+        'user', 'customer', 'client', 'tenant', 'organization',
+        'offering', 'catalog', 'service', 'ticket', 'request',
+        'device', 'configuration', 'template', 'profile'
+    ]
+
+    # Configuration/naming change indicators
+    config_indicators = [
+        'change', 'rename', 'update display', 'modify',
+        'display name', 'terminology', 'label',
+        'classification', 'taxonomy', 'path', 'category',
+        'decommission', 'migrate', 'consolidate',
+        'defect', 'regression', 'prevent'
     ]
 
     # Check if text contains specific details
     return (any(ui in text_lower for ui in ui_elements) or
             any(wf in text_lower for wf in workflow_indicators) or
             any(tech in text_lower for tech in tech_indicators) or
-            any(ent in text_lower for ent in entities))
+            any(ent in text_lower for ent in entities) or
+            any(cfg in text_lower for cfg in config_indicators))
 
 
 def is_umbrella_requirement(title: str, desc: str) -> bool:
@@ -146,6 +183,29 @@ def is_umbrella_requirement(title: str, desc: str) -> bool:
     # Check for excessive comma-separated lists (3+ items)
     if desc.count(',') >= 3:
         return True
+
+    return False
+
+
+def is_micro_detail(title: str, desc: str) -> bool:
+    """
+    Reject isolated UI micro-components that lack parent page/screen context.
+
+    A "Template Dropdown Menu" by itself is a micro-detail.
+    A "Technical Details Page with mandatory template dropdown" is a proper requirement.
+    """
+    title_lower = title.lower()
+
+    # Check if title is JUST a UI control name
+    if any(p in title_lower for p in MICRO_DETAIL_PATTERNS):
+        # Check if description mentions the parent screen/page/form
+        desc_lower = desc.lower()
+        has_parent_context = any(w in desc_lower for w in [
+            'page', 'screen', 'form', 'section', 'within',
+            'part of', 'on the', 'in the', 'located in'
+        ])
+        if not has_parent_context:
+            return True
 
     return False
 

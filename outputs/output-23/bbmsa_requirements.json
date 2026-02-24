@@ -1,0 +1,536 @@
+{
+  "project": "bbmsa",
+  "requirements": [
+    {
+      "title": "MCD Catalog Consolidation",
+      "description": "Consolidate offerings from multiple sources into a single point of entry within the Bell Business Self-Service Center (BBSSC)",
+      "type": "Workflow",
+      "user_story": "As a McDonald's user, I want to access all services from a single catalog, so that I can easily find and request services",
+      "acceptance_criteria": [
+        "All relevant offerings are migrated to the MCD catalog",
+        "Legacy catalogs are decommissioned"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to MCD catalog",
+          "expected_result": "MCD catalog is displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Successful catalog consolidation",
+        "Failed catalog consolidation"
+      ],
+      "assumptions": [
+        "All offerings are correctly mapped to the MCD catalog"
+      ],
+      "ambiguities": [
+        "Definition of 'relevant offerings'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-001"
+    },
+    {
+      "title": "Datavalet Offering Reorganization",
+      "description": "Enforce strict taxonomy mappings in the BBSSC for Datavalet offerings",
+      "type": "Functional",
+      "user_story": "As a McDonald's user, I want to access Datavalet offerings from a standardized taxonomy, so that I can easily find the services I need",
+      "acceptance_criteria": [
+        "Meraki Wi-Fi taxonomy is correctly mapped",
+        "MIS Battery taxonomy is correctly mapped"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to the Meraki Wi-Fi taxonomy",
+          "expected_result": "User is navigated to the Meraki Wi-Fi taxonomy",
+          "test_data": "Meraki Wi-Fi taxonomy URL"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify the MIS Battery taxonomy mapping",
+          "expected_result": "The MIS Battery taxonomy is correctly mapped",
+          "test_data": "MIS Battery taxonomy URL"
+        }
+      ],
+      "test_scenarios": [
+        "Successful taxonomy navigation"
+      ],
+      "assumptions": [
+        "Datavalet offerings are correctly tagged"
+      ],
+      "ambiguities": [
+        "Definition of 'strict taxonomy mappings'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-002"
+    },
+    {
+      "title": "Bell Managed Meraki Offering Updates",
+      "description": "Add Meraki offerings from Managed WAN and Managed LAN to the MCD catalog",
+      "type": "Functional",
+      "user_story": "As a McDonald's user, I want to access Meraki offerings from the MCD catalog, so that I can easily find the services I need",
+      "acceptance_criteria": [
+        "Meraki offerings are added to the MCD catalog",
+        "MERAKI_113 is excluded from the merge"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to the MCD catalog",
+          "expected_result": "User is navigated to the MCD catalog",
+          "test_data": "MCD catalog URL"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify the Meraki offerings are added",
+          "expected_result": "The Meraki offerings are added to the MCD catalog",
+          "test_data": "Meraki offerings list"
+        }
+      ],
+      "test_scenarios": [
+        "Successful catalog navigation"
+      ],
+      "assumptions": [
+        "MERAKI_113 is handled separately"
+      ],
+      "ambiguities": [
+        "Definition of 'Meraki offerings'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-003"
+    },
+    {
+      "title": "Datavalet Version (MCDO-03)",
+      "description": "Implement Datavalet version (MCDO-03) to provide a standardized service catalog experience",
+      "type": "Workflow",
+      "user_story": "As a McDonald's user, I want to access standardized services, so that I can request services quickly",
+      "acceptance_criteria": [
+        "Datavalet version (MCDO-03) is correctly implemented",
+        "User can access standardized services"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to Datavalet version (MCDO-03)",
+          "expected_result": "Datavalet version (MCDO-03) is displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Successful implementation",
+        "Failed implementation"
+      ],
+      "assumptions": [
+        "Datavalet version (MCDO-03) is correctly implemented"
+      ],
+      "ambiguities": [
+        "Definition of 'standardized service catalog experience'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-004"
+    },
+    {
+      "title": "Datavalet Version (MCDO-04)",
+      "description": "Create new profile / template for Datavalet-managed CIs",
+      "type": "Functional",
+      "user_story": "As a McDonald's user, I want to create a new profile / template, so that I can manage my services efficiently",
+      "acceptance_criteria": [
+        "New profile / template is created successfully",
+        "Technical details page is standard and flexible"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully",
+          "test_data": "Valid credentials"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the new profile / template creation page",
+          "expected_result": "User is navigated to the new profile / template creation page",
+          "test_data": "New profile / template creation page URL"
+        }
+      ],
+      "test_scenarios": [
+        "Successful login",
+        "New profile / template creation page navigation"
+      ],
+      "assumptions": [
+        "Datavalet-managed CIs are correctly identified"
+      ],
+      "ambiguities": [
+        "Definition of 'Datavalet-managed CIs'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-005"
+    },
+    {
+      "title": "Offering Name Adjustments",
+      "description": "Update offering names to align with customer branding",
+      "type": "Functional",
+      "user_story": "As a McDonald's user, I want the offering names to be updated, so that I can easily identify the services I need",
+      "acceptance_criteria": [
+        "DV-047 display name is updated to 'Ad Hoc report or dashboard customization'",
+        "MERAKI_113 offering description is updated to improve readability"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully",
+          "test_data": "Valid credentials"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the offering details page",
+          "expected_result": "User is navigated to the offering details page",
+          "test_data": "Offering details page URL"
+        }
+      ],
+      "test_scenarios": [
+        "Successful login",
+        "Offering details page navigation"
+      ],
+      "assumptions": [
+        "Offering names are correctly updated"
+      ],
+      "ambiguities": [
+        "Definition of 'correct offering names'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-006"
+    },
+    {
+      "title": "Bell Version Action",
+      "description": "Similar to Datavalet, but follows Bell internal provisioning logic and Maximo job plans",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to configure the Bell version action to follow Bell internal provisioning logic and Maximo job plans, so that I can manage Bell-related profiles",
+      "acceptance_criteria": [
+        "Bell version action follows Bell internal provisioning logic",
+        "Bell version action follows Maximo job plans"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure Bell version action",
+          "expected_result": "Bell version action follows Bell internal provisioning logic and Maximo job plans",
+          "test_data": "Bell version action configuration data"
+        }
+      ],
+      "test_scenarios": [
+        "Configure Bell version action"
+      ],
+      "assumptions": [
+        "Bell internal provisioning logic is defined"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for Bell internal provisioning logic?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-007"
+    },
+    {
+      "title": "Field Mappings for Datavalet",
+      "description": "Ensure 'Custom Reference#' and 'Technical Details' fields are correctly passed to Datavalet without data truncation",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to ensure field mappings for Datavalet are accurate, so that I can prevent data truncation and ensure data integrity",
+      "acceptance_criteria": [
+        "'Custom Reference#' field is correctly passed to Datavalet",
+        "'Technical Details' field is correctly passed to Datavalet",
+        "Data truncation is prevented"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify field mappings for Datavalet",
+          "expected_result": "Field mappings are accurate and data truncation is prevented",
+          "test_data": "Field mapping configuration data"
+        }
+      ],
+      "test_scenarios": [
+        "Verify field mappings for Datavalet"
+      ],
+      "assumptions": [
+        "Field mappings are configurable"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for field mappings?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-008"
+    },
+    {
+      "title": "CI Visibility Matrix",
+      "description": "A matrix that determines the visibility of CIs based on offering type and target managed by",
+      "type": "UI",
+      "user_story": "As a user, I want to view CIs, so that I can understand the configuration",
+      "acceptance_criteria": [
+        "CIs are visible based on offering type and target managed by"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Open the CI Visibility Matrix",
+          "expected_result": "CIs are visible based on offering type and target managed by"
+        }
+      ],
+      "test_scenarios": [
+        "Viewing CIs for a device"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-009"
+    },
+    {
+      "title": "Process Workflows MACD",
+      "description": "Ensure process workflows are correctly configured for standard selection, redirected selection, and external sync",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to ensure process workflows are correctly configured, so that I can automate workflow processes",
+      "acceptance_criteria": [
+        "Process workflows are correctly configured for standard selection",
+        "Process workflows are correctly configured for redirected selection",
+        "Process workflows are correctly configured for external sync"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify process workflows configuration",
+          "expected_result": "Process workflows are correctly configured",
+          "test_data": "Process workflows configuration data"
+        }
+      ],
+      "test_scenarios": [
+        "Verify process workflows configuration"
+      ],
+      "assumptions": [
+        "Process workflows are configurable"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for process workflows configuration?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-010"
+    },
+    {
+      "title": "Maximo to ServiceNow (Datavalet) Integration",
+      "description": "Integrate Maximo with Datavalet ServiceNow to provide a seamless service experience",
+      "type": "Workflow",
+      "user_story": "As a McDonald's user, I want to access services seamlessly, so that I can request services quickly",
+      "acceptance_criteria": [
+        "Maximo to ServiceNow (Datavalet) integration is correctly implemented",
+        "User can access services seamlessly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to services",
+          "expected_result": "Services are displayed seamlessly"
+        }
+      ],
+      "test_scenarios": [
+        "Successful integration",
+        "Failed integration"
+      ],
+      "assumptions": [
+        "Maximo to ServiceNow (Datavalet) integration is correctly implemented"
+      ],
+      "ambiguities": [
+        "Definition of 'seamless service experience'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-011"
+    },
+    {
+      "title": "Meraki Wi-Fi Taxonomy",
+      "description": "Standardize Meraki Wi-Fi taxonomy to provide a consistent user experience",
+      "type": "UI",
+      "user_story": "As a McDonald's user, I want to easily find Meraki Wi-Fi services, so that I can request services quickly",
+      "acceptance_criteria": [
+        "Meraki Wi-Fi taxonomy is correctly implemented",
+        "User can easily find Meraki Wi-Fi services"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to Meraki Wi-Fi services",
+          "expected_result": "Meraki Wi-Fi services are displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Successful taxonomy implementation",
+        "Failed taxonomy implementation"
+      ],
+      "assumptions": [
+        "Meraki Wi-Fi taxonomy is correctly implemented"
+      ],
+      "ambiguities": [
+        "Definition of 'consistent user experience'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-012"
+    },
+    {
+      "title": "Global Filter (DATAVALET)",
+      "description": "Implement global filter to prevent users from selecting Bell-managed hardware for Datavalet-specific services",
+      "type": "UI",
+      "user_story": "As a McDonald's user, I want to only see relevant services, so that I can request services quickly",
+      "acceptance_criteria": [
+        "Global filter is correctly implemented",
+        "User can only see relevant services"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to BBSSC",
+          "expected_result": "User is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to services",
+          "expected_result": "Only relevant services are displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Successful filter implementation",
+        "Failed filter implementation"
+      ],
+      "assumptions": [
+        "Global filter is correctly implemented"
+      ],
+      "ambiguities": [
+        "Definition of 'relevant services'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-013"
+    },
+    {
+      "title": "Technical Details Page",
+      "description": "A standard/flexible page with custom payload definitions for the API",
+      "type": "UI",
+      "user_story": "As a user, I want to view technical details, so that I can understand the configuration",
+      "acceptance_criteria": [
+        "The page displays custom payload definitions"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Open the Technical Details Page",
+          "expected_result": "The page displays custom payload definitions"
+        }
+      ],
+      "test_scenarios": [
+        "Viewing technical details for a device"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-014"
+    },
+    {
+      "title": "Prevent Regression of SADRSTRANG-13583",
+      "description": "Prevent regression of defect SADRSTRANG-13583, which causes CIs to not appear on Device Selection for Meraki 139, 142, 82, 79, etc.",
+      "type": "Defect Prevention",
+      "user_story": "As a system administrator, I want to prevent the regression of defect SADRSTRANG-13583, so that I can ensure CIs appear correctly on Device Selection",
+      "acceptance_criteria": [
+        "Defect SADRSTRANG-13583 is prevented from regressing"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify defect SADRSTRANG-13583 is prevented from regressing",
+          "expected_result": "Defect SADRSTRANG-13583 is prevented from regressing",
+          "test_data": "Defect SADRSTRANG-13583 test data"
+        }
+      ],
+      "test_scenarios": [
+        "Verify defect SADRSTRANG-13583 is prevented from regressing"
+      ],
+      "assumptions": [
+        "Defect SADRSTRANG-13583 is preventable"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for preventing defect SADRSTRANG-13583?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-015"
+    },
+    {
+      "title": "Prevent Regression of OMNITOTORO-665",
+      "description": "Prevent regression of defect OMNITOTORO-665, which causes CI managed by Bell to appear for Datavalet offerings",
+      "type": "Defect Prevention",
+      "user_story": "As a system administrator, I want to prevent the regression of defect OMNITOTORO-665, so that I can ensure CI managed by Bell does not appear for Datavalet offerings",
+      "acceptance_criteria": [
+        "Defect OMNITOTORO-665 is prevented from regressing"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify defect OMNITOTORO-665 is prevented from regressing",
+          "expected_result": "Defect OMNITOTORO-665 is prevented from regressing",
+          "test_data": "Defect OMNITOTORO-665 test data"
+        }
+      ],
+      "test_scenarios": [
+        "Verify defect OMNITOTORO-665 is prevented from regressing"
+      ],
+      "assumptions": [
+        "Defect OMNITOTORO-665 is preventable"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for preventing defect OMNITOTORO-665?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-016"
+    },
+    {
+      "title": "Prevent Regression of SADEFENDER-373",
+      "description": "Prevent regression of defect SADEFENDER-373, which causes MCDO offerings to fail to be sent to Datavalet ServiceNow due to classification mismatch",
+      "type": "Defect Prevention",
+      "user_story": "As a system administrator, I want to prevent the regression of defect SADEFENDER-373, so that I can ensure MCDO offerings are sent to Datavalet ServiceNow successfully",
+      "acceptance_criteria": [
+        "Defect SADEFENDER-373 is prevented from regressing"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify defect SADEFENDER-373 is prevented from regressing",
+          "expected_result": "Defect SADEFENDER-373 is prevented from regressing",
+          "test_data": "Defect SADEFENDER-373 test data"
+        }
+      ],
+      "test_scenarios": [
+        "Verify defect SADEFENDER-373 is prevented from regressing"
+      ],
+      "assumptions": [
+        "Defect SADEFENDER-373 is preventable"
+      ],
+      "ambiguities": [
+        "What are the specific requirements for preventing defect SADEFENDER-373?"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-017"
+    }
+  ]
+}
