@@ -417,8 +417,10 @@ async def extract_requirements_async(request: ExtractionRequest):
     # POST initial PENDING status to Java backend (best-effort)
     # Returns the created records with their database IDs
     document_statuses = update_document_statuses(str(project_id), file_urls, "PENDING")
+    print(f"  [App] Java backend returned {len(document_statuses)} status records: {document_statuses}")
 
-    # Dispatch to Celery
+    # Dispatch to Celery — pass the document status records so the worker
+    # can UPDATE by ID instead of creating duplicate rows
     task = extract_requirements_task.delay(
         project_id=str(project_id),
         local_files=local_files,
@@ -426,8 +428,8 @@ async def extract_requirements_async(request: ExtractionRequest):
         existing_model_state=existing_model_state,
         multi_project_config=multi_project_config,
         file_urls=file_urls,
+        document_statuses=document_statuses,
     )
-
     return {
         "status": "accepted",
         "task_id": task.id,

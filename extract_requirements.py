@@ -318,7 +318,7 @@ def _generate_training_from_projects(current_project: str, projects: Dict) -> Li
 def train_extractor(extractor: TrainedExtractor, config: Dict = None):
     print("\nTraining extractor...")
 
-    current_project = config.get('current_project', '').lower() if config else ""
+    current_project = str(config.get('current_project', '')).lower() if config else ""
     # Map project names to domains
     domain_map = {
         'healthcare': 'healthcare',
@@ -768,7 +768,7 @@ def save_model_state(extractor) -> Dict:
 # EXTRACT FROM FILES (FastAPI / S3 flow)
 # ============================================================================
 
-def extract_from_files(project_name: str, file_paths: List[str], output_dir: str = None, model_state: Dict = None, config: Dict = None) -> Dict:
+def extract_from_files(project_name: str, file_paths: List[str], output_dir: str = None, model_state: Dict = None, config: Dict = None, status_callback=None) -> Dict:
     """
     Extract requirements from a list of local file paths.
     Called by FastAPI after downloading files from S3.
@@ -779,6 +779,7 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
         output_dir: Optional local output directory to save results
         model_state: Optional pre-trained model state to skip training
         config: Optional multi-project config for training
+        status_callback: Optional callback(file_path, status) for per-file status updates
 
     Returns:
         Dict with project, requirements, and model_state
@@ -795,9 +796,23 @@ def extract_from_files(project_name: str, file_paths: List[str], output_dir: str
     all_filtered = []
 
     for file_path in file_paths:
+        # Notify caller that this file is being processed
+        if status_callback:
+            try:
+                status_callback(file_path, "IN_PROGRESS")
+            except Exception as e:
+                print(f"  ⚠ status_callback IN_PROGRESS failed: {e}")
+
         reqs, filtered = _process_single_file(file_path, extractor)
         all_reqs.extend(reqs)
         all_filtered.extend(filtered)
+
+        # Notify caller that this file is done
+        if status_callback:
+            try:
+                status_callback(file_path, "COMPLETED")
+            except Exception as e:
+                print(f"  ⚠ status_callback COMPLETED failed: {e}")
 
     print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
 
