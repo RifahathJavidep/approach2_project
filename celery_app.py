@@ -38,7 +38,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
         sys.path.insert(0, BASE_DIR)
         
     try:
-        from extract_requirements import extract_from_files, _get_lm
+        from extraction.pipeline import extract_from_files, _get_lm
         from document_status import update_status_by_id, update_document_statuses
     except ImportError as e:
         print(f"  [Celery] CRITICAL: Path error. sys.path: {sys.path}")

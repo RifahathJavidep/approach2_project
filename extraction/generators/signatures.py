@@ -348,11 +348,24 @@ class RequirementConsolidation(dspy.Signature):
        - "IoT Sensors" ≠ "Carrier Integration" — DIFFERENT systems, keep separate
        - "Dashboard UI" ≠ "Floor Plan UI" ≠ "Tracking Map UI" — DIFFERENT screens, keep separate
     5. When merging, keep the MOST DESCRIPTIVE title and combine descriptions.
-    6. OUTPUT only items that exist in the input. Do NOT invent new features.
+    6. Merge the user_stories, acceptance_criteria, test_steps, and other lists into a single, cohesive, non-redundant set for the parent requirement.
+    7. OUTPUT only items that exist in the input. Do NOT invent new features.
     """
     requirements_json = dspy.InputField(desc="JSON array of requirements to consolidate")
     target_count = dspy.InputField(desc="Target number of consolidated requirements to produce (approximate)")
-    consolidated_json = dspy.OutputField(desc="JSON array of consolidated requirements: [{'title': '...', 'description': '...', 'type': '...'}]")
+    consolidated_json = dspy.OutputField(desc="""JSON array of consolidated requirements: 
+    [{
+      'title': '...', 
+      'description': '...', 
+      'type': '...',
+      'user_story': '...',
+      'acceptance_criteria': [...],
+      'test_steps': [...],
+      'test_scenarios': [...],
+      'assumptions': [...],
+      'ambiguities': [...],
+      'confidence': '...'
+    }]""")
 
 
 

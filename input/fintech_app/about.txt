@@ -1,7 +1,0 @@
-# Digital Banking App
-Requirements for a next-gen digital banking application with real-time transaction tracking.
-Key features:
-- Account Overview
-- P2P Transfers
-- Loan Applications
-- Investment Dashboard
