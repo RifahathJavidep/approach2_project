@@ -2,123 +2,1984 @@
   "project": "healthcare_portal",
   "requirements": [
     {
-      "title": "Security and Compliance Infrastructure",
-      "description": "Merged security, encryption, audit, compliance, HIPAA compliance, API endpoint security, patient authentication with MFA, session management, and log sanitization requirements.",
-      "type": "Infrastructure",
+      "title": "Clinical Management",
+      "description": "Manage clinical notes, medication, and lab results",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to manage clinical information, so that I can provide accurate care",
+      "acceptance_criteria": [
+        "Clinical notes are accurately stored and retrieved",
+        "Medication is accurately stored and retrieved",
+        "Lab results are accurately stored and retrieved"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new clinical note",
+          "expected_result": "Clinical note is created successfully",
+          "test_data": "Clinical note data"
+        }
+      ],
+      "test_scenarios": [
+        "Create a new clinical note",
+        "Update an existing clinical note"
+      ],
+      "assumptions": [
+        "Clinical note data is provided"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-001"
     },
     {
-      "title": "System Performance and Scalability",
-      "description": "Merged uptime, latency, throughput, performance, system uptime SLA, planned maintenance, and performance optimization requirements.",
-      "type": "Infrastructure",
+      "title": "Insurance Claim and Billing Workflow",
+      "description": "Visit to bill payment lifecycle with EDI 837 Professional claim submission and EDI 835 claim acknowledgment",
+      "type": "Architecture",
+      "user_story": "As a patient, I want to receive accurate and timely billing information, so that I can manage my financial responsibilities",
+      "acceptance_criteria": [
+        "EDI 837 Professional claim submitted",
+        "EDI 835 claim acknowledgment received"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Visit completed and charge entry done",
+          "expected_result": "EDI 837 Professional claim submitted",
+          "test_data": "Valid visit information"
+        }
+      ],
+      "test_scenarios": [
+        "Insurance claim test",
+        "Billing test"
+      ],
+      "assumptions": [
+        "EDI 837 and EDI 835 transactions available for insurance claim and billing"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-002"
     },
     {
-      "title": "Data Architecture",
-      "description": "Design and implement a scalable data architecture, including data models for patients, providers, and appointments.",
-      "type": "Architecture",
+      "title": "Telehealth and Virtual Care",
+      "description": "Provide video consultations, screen sharing, and virtual waiting rooms",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to provide virtual care, so that I can reach more patients",
+      "acceptance_criteria": [
+        "Video consultations are successfully initiated",
+        "Screen sharing is successfully initiated",
+        "Virtual waiting rooms are successfully displayed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate a video consultation",
+          "expected_result": "Video consultation is initiated successfully",
+          "test_data": "Video consultation data"
+        }
+      ],
+      "test_scenarios": [
+        "Initiate a video consultation",
+        "Share screen with a patient"
+      ],
+      "assumptions": [
+        "Video consultation data is provided"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-003"
     },
     {
-      "title": "Cloud-Native Deployment",
-      "description": "Deploy the system on a cloud-native platform, ensuring scalability and compliance.",
-      "type": "Architecture",
+      "title": "Security and Compliance Infrastructure",
+      "description": "Security, encryption, audit, and compliance infrastructure for the system",
+      "type": "Security",
+      "user_story": "As a system administrator, I want the system to be secure and compliant, so that patient data is protected",
+      "acceptance_criteria": [
+        "Security and compliance infrastructure in place",
+        "Data encryption at rest and in transit",
+        "Audit logs available",
+        "Compliance with regulatory requirements"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify security and compliance infrastructure",
+          "expected_result": "Security and compliance infrastructure in place",
+          "test_data": "Security and compliance infrastructure"
+        }
+      ],
+      "test_scenarios": [
+        "Security and compliance infrastructure test"
+      ],
+      "assumptions": [
+        "Security and compliance infrastructure available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-004"
     },
     {
-      "title": "Patient Care Management",
-      "description": "Manage patient information, including registration, profiles, medical history, appointment scheduling, clinical note management, and medical record management.",
-      "type": "Functional",
+      "title": "Infrastructure and Architecture",
+      "description": "Ensure system architecture, scalability, and performance",
+      "type": "Architecture",
+      "user_story": "As a healthcare provider, I want to ensure the system architecture, scalability, and performance, so that I can provide reliable and efficient care",
+      "acceptance_criteria": [
+        "System architecture is implemented and documented",
+        "Scalability is ensured and tested",
+        "Performance is ensured and tested"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify system architecture",
+          "expected_result": "System architecture is verified successfully",
+          "test_data": "System architecture parameters"
+        }
+      ],
+      "test_scenarios": [
+        "Verify system architecture",
+        "Test scalability"
+      ],
+      "assumptions": [
+        "System architecture parameters are provided"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-005"
     },
     {
-      "title": "Telehealth and Remote Monitoring",
-      "description": "Provide telehealth consultations, remote monitoring dashboard, and emergency symptoms alert.",
-      "type": "Functional",
+      "title": "Prescription Refill Workflow",
+      "description": "Patient-initiated prescription refill via Surescripts",
+      "type": "Architecture",
+      "user_story": "As a patient, I want to request prescription refills, so that I can easily manage my medications",
+      "acceptance_criteria": [
+        "Refill request sent to pharmacy or prescribing provider",
+        "E-prescription sent to patient's preferred pharmacy"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Patient requests prescription refill",
+          "expected_result": "Refill count checked and request sent",
+          "test_data": "Valid prescription information"
+        }
+      ],
+      "test_scenarios": [
+        "Prescription refill test",
+        "E-prescription test"
+      ],
+      "assumptions": [
+        "Surescripts available for prescription refill"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-006"
     },
     {
-      "title": "Interoperability and Integration",
-      "description": "Integrate with EHR systems using HL7 FHIR standards, insurance eligibility verification, and other relevant integrations.",
-      "type": "Integration",
+      "title": "Telehealth Service Failover",
+      "description": "Telehealth service must have independent failover to backup Zoom region to prevent single point of failure",
+      "type": "Architecture",
+      "user_story": "As a system administrator, I want the telehealth service to have a highly available architecture, so that patients can access it reliably",
+      "acceptance_criteria": [
+        "Telehealth service has independent failover to backup Zoom region"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test telehealth service failover",
+          "expected_result": "Failover works correctly",
+          "test_data": "Telehealth service failover"
+        }
+      ],
+      "test_scenarios": [
+        "Telehealth service failover test"
+      ],
+      "assumptions": [
+        "Telehealth service failover available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-007"
     },
     {
-      "title": "Patient Engagement",
-      "description": "Engage patients through a virtual waiting room, automated alerts, and document upload capabilities.",
-      "type": "Functional",
+      "title": "Multi-AZ Azure Deployment",
+      "description": "Multi-AZ Azure deployment with automatic failover",
+      "type": "Architecture",
+      "user_story": "As a system administrator, I want the system to be deployed in a highly available architecture, so that patients can access it reliably",
+      "acceptance_criteria": [
+        "Multi-AZ Azure deployment with automatic failover"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test multi-AZ Azure deployment with automatic failover",
+          "expected_result": "Deployment meets requirements",
+          "test_data": "Multi-AZ Azure deployment"
+        }
+      ],
+      "test_scenarios": [
+        "Multi-AZ Azure deployment test"
+      ],
+      "assumptions": [
+        "Multi-AZ Azure deployment available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-008"
     },
     {
-      "title": "Prescription Refill Workflow",
-      "description": "Manage prescription refills, including patient-initiated refills and pharmacy notifications.",
-      "type": "Functional",
+      "title": "Cloud-Native Deployment on Azure",
+      "description": "Cloud-native deployment on Azure with HIPAA BAA compliance",
+      "type": "Architecture",
+      "user_story": "As a system architect, I want a cloud-native deployment, so that we can ensure scalability and compliance",
+      "acceptance_criteria": [
+        "HIPAA BAA compliance",
+        "Azure deployment"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Azure deployment",
+          "expected_result": "Successful deployment",
+          "test_data": "Azure credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Deployment test",
+        "Compliance test"
+      ],
+      "assumptions": [
+        "Azure subscription",
+        "HIPAA BAA agreement"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-009"
     },
     {
-      "title": "Insurance Claim and Billing Workflow",
-      "description": "Manage insurance claims and billing, including EDI submissions and remittance advice processing.",
-      "type": "Functional",
+      "title": "Azure SQL Database with Transparent Data Encryption",
+      "description": "Database: Azure SQL with Transparent Data Encryption and geo-replication",
+      "type": "Architecture",
+      "user_story": "As a system architect, I want a secure database, so that we can protect patient data",
+      "acceptance_criteria": [
+        "Azure SQL implementation",
+        "Transparent Data Encryption implementation",
+        "Geo-replication implementation"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Azure SQL implementation",
+          "expected_result": "Successful implementation",
+          "test_data": "Azure SQL credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Database test",
+        "Security test"
+      ],
+      "assumptions": [
+        "Azure SQL expertise",
+        "Transparent Data Encryption expertise"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-010"
     },
     {
-      "title": "Accessibility Compliance",
-      "description": "Portal must comply with WCAG 2.1 Level AA.",
-      "type": "Non-Functional",
+      "title": "Video Consultation using Zoom Healthcare API",
+      "description": "Integrated video consultation using Zoom Healthcare API with HIPAA BAA",
+      "type": "Architecture",
+      "user_story": "As a provider, I want to conduct video consultations with patients using a secure and reliable platform",
+      "acceptance_criteria": [
+        "Video consultation integrated with Zoom Healthcare API",
+        "HIPAA BAA compliance"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate video consultation",
+          "expected_result": "Video consultation starts successfully",
+          "test_data": "Provider and patient accounts"
+        }
+      ],
+      "test_scenarios": [
+        "Video consultation with patient"
+      ],
+      "assumptions": [
+        "Zoom Healthcare API availability"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-011"
     },
     {
-      "title": "Role-Based Access Control",
-      "description": "Role-based access control (RBAC) with 4 roles: Patient, Provider, Staff, Admin.",
-      "type": "Non-Functional",
+      "title": "Symptom Checker Chatbot",
+      "description": "Symptom checker chatbot to guide patients to appropriate care level",
+      "type": "Architecture",
+      "user_story": "As a patient, I want to use a symptom checker chatbot to determine my care level",
+      "acceptance_criteria": [
+        "Symptom checker chatbot available",
+        "Care level determined successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use symptom checker chatbot",
+          "expected_result": "Care level determined successfully",
+          "test_data": "Patient symptoms and chatbot"
+        }
+      ],
+      "test_scenarios": [
+        "Symptom checker chatbot with varying patient symptoms"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-012"
     },
     {
-      "title": "Data Backup and Recovery",
-      "description": "Azure SQL point-in-time restore with 35-day retention.",
-      "type": "Non-Functional",
+      "title": "Patient Management Data Model",
+      "description": "Patient entity with fields: patient_id (UUID PK), mrn (VARCHAR 20 UNIQUE), first_name (VARCHAR 100, encrypted), last_name (VARCHAR 100, encrypted), date_of_birth (DATE, encrypted), email (VARCHAR 255, encrypted), phone (VARCHAR 20, encrypted), address_id (UUID FK), insurance_id (UUID FK)",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a scalable data model, so that we can support patient management securely",
+      "acceptance_criteria": [
+        "PHI fields encrypted with AES-256",
+        "Role-based authorization for PHI access"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new patient record",
+          "expected_result": "Patient record created with encrypted PHI fields",
+          "test_data": "Patient demographic data"
+        }
+      ],
+      "test_scenarios": [
+        "PHI encryption test",
+        "Role-based access test"
+      ],
+      "assumptions": [
+        "AWS KMS-managed keys available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-013"
     },
     {
-      "title": "SMART on FHIR Authorization",
-      "description": "Implement SMART on FHIR authorization for secure access to patient data by third-party applications.",
-      "type": "Security",
+      "title": "HL7 FHIR R4 Integration for Patient Demographics",
+      "description": "Bi-directional synchronization of patient demographics with EHR via FHIR Patient resource every 15 minutes",
+      "type": "Data Model",
+      "user_story": "As a healthcare provider, I want patient demographics to be synchronized with the EHR, so that I can have accurate and up-to-date patient information",
+      "acceptance_criteria": [
+        "Bi-directional sync every 15 minutes",
+        "FHIR Patient resource used"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update patient demographics in the portal",
+          "expected_result": "Demographics are updated in the EHR within 15 minutes"
+        }
+      ],
+      "test_scenarios": [
+        "Demographics update test"
+      ],
+      "assumptions": [
+        "HL7 FHIR R4 is supported by the EHR"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-014"
     },
     {
-      "title": "Medication Management",
-      "description": "Manage patient medications, including medication lists, history, and formulary checks.",
-      "type": "Functional",
+      "title": "Medical History Timeline",
+      "description": "REQ-HCP-007: Medical history timeline with chronological view of visits, tests, and diagnoses",
+      "type": "Data Model",
+      "user_story": "As a patient, I want to view my medical history, so that I can access my medical information",
+      "acceptance_criteria": [
+        "Medical history timeline implementation with chronological view of visits, tests, and diagnoses"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify medical history timeline implementation",
+          "expected_result": "Successful implementation",
+          "test_data": "Medical history timeline credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Medical history timeline test",
+        "Data model test"
+      ],
+      "assumptions": [
+        "Medical history timeline expertise"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-015"
     },
     {
-      "title": "Telehealth Consultation Execution",
-      "description": "Conducting telehealth consultations through the portal.",
-      "type": "Functional",
+      "title": "Patient Profile Data Model with Insurance Information",
+      "description": "Patient profile with insurance information (carrier, group number, member ID), pharmacy preference, emergency contact, and communication preferences",
+      "type": "Data Model",
+      "user_story": "As a patient, I want to manage my health information and preferences, so that I can ensure accurate and efficient care",
+      "acceptance_criteria": [
+        "Patient profile created with required fields",
+        "Insurance information verified via EDI 270 transaction"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Patient completes profile setup",
+          "expected_result": "Patient profile updated with insurance information",
+          "test_data": "Valid patient information"
+        }
+      ],
+      "test_scenarios": [
+        "Patient profile test",
+        "Insurance information test"
+      ],
+      "assumptions": [
+        "EDI 270 transaction available for insurance eligibility check"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-016"
     },
     {
-      "title": "Inventory Management",
-      "description": "No direct requirement, removed from consideration as it was not part of the original list.",
+      "title": "Appointment Scheduling Data Model",
+      "description": "Appointment entity with fields: appointment_id (UUID PK), patient_id (UUID FK), provider_id (UUID FK), appointment_datetime (TIMESTAMPTZ), duration_minutes (SMALLINT DEFAULT 30), type (ENUM: in_person, telehealth, phone), status (ENUM: scheduled, checked_in, in_progress, completed, no_show, cancelled)",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a scalable data model, so that we can support appointment scheduling",
+      "acceptance_criteria": [
+        "Appointment data stored in the database"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new appointment record",
+          "expected_result": "Appointment record created",
+          "test_data": "Appointment scheduling data"
+        }
+      ],
+      "test_scenarios": [
+        "Appointment scheduling test"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-017"
     },
     {
-      "title": "Patient Portal",
-      "description": "Encompasses patient profile, calendar view, appointment booking, remote monitoring dashboard, lab results viewer, registration form, telehealth video visit, prescriptions tab, and patient dashboard.",
-      "type": "UI",
+      "title": "Provider Data Model",
+      "description": "Provider entity with fields: provider_id (UUID PK), npi (VARCHAR 10 UNIQUE), first_name (VARCHAR 100), last_name (VARCHAR 100), specialty (VARCHAR 100), department (VARCHAR 100), license_state (CHAR 2), active (BOOLEAN DEFAULT true)",
+      "type": "Data Model",
+      "user_story": "As a system architect, I want a scalable data model, so that we can support provider management",
+      "acceptance_criteria": [
+        "Provider data stored in the database"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new provider record",
+          "expected_result": "Provider record created",
+          "test_data": "Provider demographic data"
+        }
+      ],
+      "test_scenarios": [
+        "Provider data test"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-018"
     },
     {
-      "title": "Scheduling and Consultation Workflows",
-      "description": "Includes online booking with real-time availability checking, video consultation workflow, and virtual triage workflow.",
-      "type": "Workflow",
+      "title": "Patient Billing",
+      "description": "Itemized billing statements available in portal with PDF download, online payment via credit card, HSA/FSA card, and bank transfer, payment plan setup for balances over $500, and billing dispute submission with document attachment and status tracking",
+      "type": "Functional",
+      "user_story": "As a patient, I want to access my billing statements and make payments online, so that I can easily manage my healthcare expenses",
+      "acceptance_criteria": [
+        "Itemized billing statements available in portal",
+        "Online payment options",
+        "Payment plan setup for balances over $500",
+        "Billing dispute submission with document attachment and status tracking"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access patient portal",
+          "expected_result": "Billing statement available for download",
+          "test_data": "Sample patient data"
+        }
+      ],
+      "test_scenarios": [
+        "Valid payment information",
+        "Invalid payment information"
+      ],
+      "assumptions": [
+        "Patient portal is available and accessible"
+      ],
+      "ambiguities": [
+        "How to handle billing disputes with missing documentation"
+      ],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-019"
     },
     {
-      "title": "Waitlist Functionality",
-      "description": "Waitlist functionality to fill cancelled slots automatically.",
-      "type": "Workflow",
+      "title": "Claims Processing",
+      "description": "Automated claim submission to insurance payers via EDI 837 format, claim status tracking visible to staff, and denial management workflow with appeal letter templates",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to submit claims electronically and track their status, so that I can efficiently manage my claims and reduce denials",
+      "acceptance_criteria": [
+        "Automated claim submission via EDI 837",
+        "Claim status tracking visible to staff",
+        "Denial management workflow with appeal letter templates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate claim submission",
+          "expected_result": "Claim submitted successfully",
+          "test_data": "Sample claim data"
+        }
+      ],
+      "test_scenarios": [
+        "Valid claim submission",
+        "Invalid claim submission"
+      ],
+      "assumptions": [
+        "EDI 837 format is supported by insurance payers"
+      ],
+      "ambiguities": [
+        "How to handle claim denials with missing information"
+      ],
+      "confidence": "high",
       "requirement_id": "HEALTHCARE_PORTAL-020"
+    },
+    {
+      "title": "Insurance Plan Management",
+      "description": "Manage insurance plans for patients",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to manage insurance plans for patients, so that I can provide accurate billing information",
+      "acceptance_criteria": [
+        "Insurance plans are accurately stored and retrieved",
+        "Insurance plans are encrypted at rest and in transit"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new insurance plan",
+          "expected_result": "Insurance plan is created successfully",
+          "test_data": "Sample insurance plan data"
+        }
+      ],
+      "test_scenarios": [
+        "Create a new insurance plan",
+        "Update an existing insurance plan"
+      ],
+      "assumptions": [
+        "Insurance plans are provided by the healthcare provider"
+      ],
+      "ambiguities": [
+        "How to handle duplicate insurance plans"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-021"
+    },
+    {
+      "title": "Medication List Synchronization",
+      "description": "Synchronize medication lists via FHIR MedicationRequest resource",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to ensure patient medication lists are up-to-date and synchronized with the EHR, so that I can provide accurate care",
+      "acceptance_criteria": [
+        "Medication lists are synchronized",
+        "FHIR MedicationRequest resource is used for synchronization"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update a patient's medication list via the patient portal",
+          "expected_result": "Medication list is successfully synchronized with the EHR",
+          "test_data": "Medication name, dosage, and frequency"
+        }
+      ],
+      "test_scenarios": [
+        "Synchronization with Epic EHR",
+        "Synchronization with Cerner EHR"
+      ],
+      "assumptions": [
+        "EHR system is configured for FHIR integration"
+      ],
+      "ambiguities": [
+        "Handling of duplicate or discontinued medications"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-022"
+    },
+    {
+      "title": "SMART on FHIR Authorization",
+      "description": "Implement SMART on FHIR authorization for third-party app access to patient data",
+      "type": "Functional",
+      "user_story": "As a patient, I want to grant access to my health data to third-party apps, so that I can utilize additional health services",
+      "acceptance_criteria": [
+        "SMART on FHIR authorization is implemented",
+        "Granular scope control is provided"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Grant access to a third-party app via the patient portal",
+          "expected_result": "Access is successfully granted to the third-party app",
+          "test_data": "Third-party app name and scope of access"
+        }
+      ],
+      "test_scenarios": [
+        "Granting access to a medication adherence app"
+      ],
+      "assumptions": [
+        "Third-party app is registered and configured for SMART on FHIR"
+      ],
+      "ambiguities": [
+        "Handling of revoked or expired access"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-023"
+    },
+    {
+      "title": "Medication History Query",
+      "description": "Retrieve 12-month fill history from all pharmacies via medication history query (RxHistoryRequest)",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to access a patient's medication history, so that I can make informed decisions about patient care",
+      "acceptance_criteria": [
+        "Medication history query is supported",
+        "12-month fill history is retrieved"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access a patient's medication history via the patient portal",
+          "expected_result": "Medication history is successfully displayed",
+          "test_data": "Patient name and medication name"
+        }
+      ],
+      "test_scenarios": [
+        "Accessing medication history for a patient with multiple prescriptions"
+      ],
+      "assumptions": [
+        "Pharmacy is configured for Surescripts integration"
+      ],
+      "ambiguities": [
+        "Handling of missing or incomplete medication history"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-024"
+    },
+    {
+      "title": "Real-time Formulary and Benefit Check",
+      "description": "Provide real-time formulary and benefit check (RxBenefitCheck) to show patient cost estimate before prescribing",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to check the formulary and benefits for a patient's medication, so that I can provide cost-effective care",
+      "acceptance_criteria": [
+        "Real-time formulary and benefit check is supported",
+        "Patient cost estimate is displayed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Check the formulary and benefits for a medication via the patient portal",
+          "expected_result": "Formulary and benefits are successfully displayed",
+          "test_data": "Medication name and patient insurance information"
+        }
+      ],
+      "test_scenarios": [
+        "Checking formulary and benefits for a patient with multiple insurance plans"
+      ],
+      "assumptions": [
+        "Patient insurance information is up-to-date and accurate"
+      ],
+      "ambiguities": [
+        "Handling of incomplete or invalid insurance information"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-025"
+    },
+    {
+      "title": "Medical Record Download",
+      "description": "Patients can download their complete medical record in CCD-A format",
+      "type": "Functional",
+      "user_story": "As a patient, I want to download my medical record, so that I can have a copy of my medical information",
+      "acceptance_criteria": [
+        "Medical record can be downloaded in CCD-A format"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Download medical record",
+          "expected_result": "Medical record is downloaded in CCD-A format",
+          "test_data": "Valid patient credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Medical record is downloaded in CCD-A format"
+      ],
+      "assumptions": [
+        "Patient has a valid medical record"
+      ],
+      "ambiguities": [
+        "What information is included in the medical record?"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-026"
+    },
+    {
+      "title": "Document Upload",
+      "description": "Document upload for insurance cards, referral letters, and prior authorizations",
+      "type": "Functional",
+      "user_story": "As a patient, I want to upload documents, so that I can provide required information",
+      "acceptance_criteria": [
+        "Documents can be uploaded"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Upload document",
+          "expected_result": "Document is uploaded successfully",
+          "test_data": "Valid patient credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Document is uploaded successfully"
+      ],
+      "assumptions": [
+        "Patient has a valid document to upload"
+      ],
+      "ambiguities": [
+        "What types of documents can be uploaded?"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-027"
+    },
+    {
+      "title": "Recording Capability",
+      "description": "Recording capability with patient consent, stored encrypted for 3 years",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to record video consultations with patient consent, so that I can review and store the recordings for future reference",
+      "acceptance_criteria": [
+        "Recording capability is available",
+        "Recordings are stored encrypted for 3 years"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Record video consultation",
+          "expected_result": "Recording is successfully stored",
+          "test_data": "Patient consent"
+        }
+      ],
+      "test_scenarios": [
+        "Recording video consultation"
+      ],
+      "assumptions": [
+        "Recording feature is enabled"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-028"
+    },
+    {
+      "title": "Automated Alerts",
+      "description": "Automated alerts when patient vitals exceed provider-configured thresholds",
+      "type": "Functional",
+      "user_story": "As a healthcare provider, I want to receive automated alerts when patient vitals exceed configured thresholds, so that I can take immediate action",
+      "acceptance_criteria": [
+        "Automated alerts are triggered when vitals exceed thresholds",
+        "Alerts are sent to healthcare provider"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure thresholds",
+          "expected_result": "Alerts are triggered when vitals exceed thresholds",
+          "test_data": "Threshold values"
+        }
+      ],
+      "test_scenarios": [
+        "Configuring thresholds and triggering alerts"
+      ],
+      "assumptions": [
+        "Thresholds are properly configured"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-029"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "System performance and scalability to handle increased traffic and data",
+      "type": "Non-Functional",
+      "user_story": "As a system administrator, I want the system to perform well and scale, so that users can access it efficiently",
+      "acceptance_criteria": [
+        "System performance and scalability in place",
+        "System can handle increased traffic and data"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify system performance and scalability",
+          "expected_result": "System performance and scalability in place",
+          "test_data": "System performance and scalability"
+        }
+      ],
+      "test_scenarios": [
+        "System performance and scalability test"
+      ],
+      "assumptions": [
+        "System performance and scalability available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-030"
+    },
+    {
+      "title": "Patient Care and Management",
+      "description": "Patient care and management functionality for remote monitoring, emergency symptoms, appointment booking, and telehealth consultation",
+      "type": "Functional",
+      "user_story": "As a patient, I want to use the system for remote monitoring, emergency symptoms, appointment booking, and telehealth consultation, so that I can manage my care",
+      "acceptance_criteria": [
+        "Remote monitoring functionality in place",
+        "Emergency symptoms functionality in place",
+        "Appointment booking functionality in place",
+        "Telehealth consultation functionality in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify patient care and management functionality",
+          "expected_result": "Patient care and management functionality in place",
+          "test_data": "Patient care and management"
+        }
+      ],
+      "test_scenarios": [
+        "Patient care and management test"
+      ],
+      "assumptions": [
+        "Patient care and management available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-031"
+    },
+    {
+      "title": "Prescription Management",
+      "description": "Patient navigates to Prescriptions tab and views active medications list. Patient requests refill for a medication",
+      "type": "UI",
+      "user_story": "As a patient, I want to view my active medications list, so that I can manage my medications. As a patient, I want to request a refill for my medication, so that I can receive my medication",
+      "acceptance_criteria": [
+        "Prescriptions tab is displayed",
+        "Patient can view active medications list",
+        "Request refill page is displayed",
+        "Patient can request refill"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access Prescriptions tab",
+          "expected_result": "Prescriptions tab is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "View active medications list",
+          "expected_result": "Patient can view list"
+        },
+        {
+          "step_num": 1,
+          "action": "Access request refill page",
+          "expected_result": "Request refill page is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Request refill",
+          "expected_result": "Refill request is sent to pharmacy or provider"
+        }
+      ],
+      "test_scenarios": [
+        "Valid active medications list",
+        "Invalid active medications list",
+        "Valid refill request",
+        "Invalid refill request"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-032"
+    },
+    {
+      "title": "Insurance Payer EDI Integration for Eligibility Verification",
+      "description": "Insurance payer EDI integration for eligibility verification",
+      "type": "Integration",
+      "user_story": "As a healthcare provider, I want to verify patient eligibility in real-time, so that I can ensure accurate billing",
+      "acceptance_criteria": [
+        "Insurance payer EDI integration in place",
+        "Eligibility verification functionality in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify insurance payer EDI integration and eligibility verification",
+          "expected_result": "Insurance payer EDI integration and eligibility verification in place",
+          "test_data": "Insurance payer EDI integration and eligibility verification"
+        }
+      ],
+      "test_scenarios": [
+        "Insurance payer EDI integration and eligibility verification test"
+      ],
+      "assumptions": [
+        "Insurance payer EDI integration and eligibility verification available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-033"
+    },
+    {
+      "title": "Data Backup and Recovery",
+      "description": "Data backup and recovery functionality to ensure business continuity",
+      "type": "Non-Functional",
+      "user_story": "As a system administrator, I want to ensure data backup and recovery, so that we can ensure business continuity",
+      "acceptance_criteria": [
+        "Data backup and recovery functionality in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify data backup and recovery functionality",
+          "expected_result": "Data backup and recovery functionality in place",
+          "test_data": "Data backup and recovery"
+        }
+      ],
+      "test_scenarios": [
+        "Data backup and recovery test"
+      ],
+      "assumptions": [
+        "Data backup and recovery available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-034"
+    },
+    {
+      "title": "Notification Service Scalability",
+      "description": "Notification service scalability to handle large volumes of appointment reminders",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the notification service to process a large number of appointment reminders, so that I can receive timely reminders",
+      "acceptance_criteria": [
+        "Notification service scalability in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify notification service scalability",
+          "expected_result": "Notification service scalability in place",
+          "test_data": "Notification service scalability"
+        }
+      ],
+      "test_scenarios": [
+        "Notification service scalability test"
+      ],
+      "assumptions": [
+        "Notification service scalability available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-035"
+    },
+    {
+      "title": "Role-Based Access Control",
+      "description": "Role-based access control to protect patient data",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to have role-based access control, so that my personal health information is protected",
+      "acceptance_criteria": [
+        "Role-based access control in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify role-based access control",
+          "expected_result": "Role-based access control in place",
+          "test_data": "Role-based access control"
+        }
+      ],
+      "test_scenarios": [
+        "Role-based access control test"
+      ],
+      "assumptions": [
+        "Role-based access control available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-036"
+    },
+    {
+      "title": "Screen Reader Compatibility",
+      "description": "Screen reader compatibility to ensure accessibility",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the portal to be compatible with screen readers, so that I can use it easily",
+      "acceptance_criteria": [
+        "Screen reader compatibility in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify screen reader compatibility",
+          "expected_result": "Screen reader compatibility in place",
+          "test_data": "Screen reader compatibility"
+        }
+      ],
+      "test_scenarios": [
+        "Screen reader compatibility test"
+      ],
+      "assumptions": [
+        "Screen reader compatibility available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-037"
+    },
+    {
+      "title": "Color Contrast Ratio",
+      "description": "Color contrast ratio to ensure accessibility",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the portal to have a sufficient color contrast ratio, so that I can read the text easily",
+      "acceptance_criteria": [
+        "Color contrast ratio in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify color contrast ratio",
+          "expected_result": "Color contrast ratio in place",
+          "test_data": "Color contrast ratio"
+        }
+      ],
+      "test_scenarios": [
+        "Color contrast ratio test"
+      ],
+      "assumptions": [
+        "Color contrast ratio available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-038"
+    },
+    {
+      "title": "System Uptime",
+      "description": "System uptime to ensure availability",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to be available most of the time, so that I can access it when I need to",
+      "acceptance_criteria": [
+        "System uptime in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify system uptime",
+          "expected_result": "System uptime in place",
+          "test_data": "System uptime"
+        }
+      ],
+      "test_scenarios": [
+        "System uptime test"
+      ],
+      "assumptions": [
+        "System uptime available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-039"
+    },
+    {
+      "title": "Planned Maintenance Windows",
+      "description": "Planned maintenance windows to ensure availability",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to have planned maintenance windows, so that I can plan my access accordingly",
+      "acceptance_criteria": [
+        "Planned maintenance windows in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify planned maintenance windows",
+          "expected_result": "Planned maintenance windows in place",
+          "test_data": "Planned maintenance windows"
+        }
+      ],
+      "test_scenarios": [
+        "Planned maintenance windows test"
+      ],
+      "assumptions": [
+        "Planned maintenance windows available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-040"
+    },
+    {
+      "title": "HL7 FHIR R4 Compliance",
+      "description": "HL7 FHIR R4 compliance to ensure interoperability",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to comply with HL7 FHIR R4 standards, so that my health information is exchanged correctly",
+      "acceptance_criteria": [
+        "HL7 FHIR R4 compliance in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify HL7 FHIR R4 compliance",
+          "expected_result": "HL7 FHIR R4 compliance in place",
+          "test_data": "HL7 FHIR R4 compliance"
+        }
+      ],
+      "test_scenarios": [
+        "HL7 FHIR R4 compliance test"
+      ],
+      "assumptions": [
+        "HL7 FHIR R4 compliance available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-041"
+    },
+    {
+      "title": "Surescripts Certification",
+      "description": "Surescripts certification to ensure prescription filling",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to have Surescripts certification, so that my prescriptions are filled correctly",
+      "acceptance_criteria": [
+        "Surescripts certification in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Surescripts certification",
+          "expected_result": "Surescripts certification in place",
+          "test_data": "Surescripts certification"
+        }
+      ],
+      "test_scenarios": [
+        "Surescripts certification test"
+      ],
+      "assumptions": [
+        "Surescripts certification available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-042"
+    },
+    {
+      "title": "X12 EDI Transactions",
+      "description": "X12 EDI transactions to ensure billing and claims processing",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the system to process X12 EDI transactions, so that my billing and claims are processed correctly",
+      "acceptance_criteria": [
+        "X12 EDI transactions in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify X12 EDI transactions",
+          "expected_result": "X12 EDI transactions in place",
+          "test_data": "X12 EDI transactions"
+        }
+      ],
+      "test_scenarios": [
+        "X12 EDI transactions test"
+      ],
+      "assumptions": [
+        "X12 EDI transactions available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-043"
+    },
+    {
+      "title": "Accessibility Compliance",
+      "description": "Accessibility compliance to ensure equal access",
+      "type": "Non-Functional",
+      "user_story": "As a patient, I want the portal to be accessible, so that I can use it efficiently",
+      "acceptance_criteria": [
+        "Accessibility compliance in place"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify accessibility compliance",
+          "expected_result": "Accessibility compliance in place",
+          "test_data": "Accessibility compliance"
+        }
+      ],
+      "test_scenarios": [
+        "Accessibility compliance test"
+      ],
+      "assumptions": [
+        "Accessibility compliance available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-044"
+    },
+    {
+      "title": "Prevent Regression of SADRSTRANG-13583",
+      "description": "Prevent regression of defect SADRSTRANG-13583 related to insurance verification",
+      "type": "Non-Functional",
+      "user_story": "As a quality assurance engineer, I want to ensure that defect SADRSTRANG-13583 is not reintroduced, so that insurance verification works correctly",
+      "acceptance_criteria": [
+        "Defect SADRSTRANG-13583 is not reproducible"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test insurance verification",
+          "expected_result": "No defect SADRSTRANG-13583 reproduction",
+          "test_data": "Sample patient data"
+        }
+      ],
+      "test_scenarios": [
+        "Valid insurance plan",
+        "Invalid insurance plan"
+      ],
+      "assumptions": [
+        "Defect SADRSTRANG-13583 has been previously fixed"
+      ],
+      "ambiguities": [
+        "How to verify that defect SADRSTRANG-13583 is not reproducible"
+      ],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-045"
+    },
+    {
+      "title": "Session Logout",
+      "description": "Automatic session logout after 15 minutes of inactivity with 2-minute warning dialog",
+      "type": "Security",
+      "user_story": "As a patient, I want the system to log me out automatically after a period of inactivity, so that my data is protected",
+      "acceptance_criteria": [
+        "Automatic session logout after 15 minutes of inactivity with 2-minute warning dialog"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test automatic session logout after 15 minutes of inactivity",
+          "expected_result": "Session logs out after 15 minutes of inactivity with 2-minute warning dialog",
+          "test_data": "15 minutes of inactivity"
+        }
+      ],
+      "test_scenarios": [
+        "Session logout test"
+      ],
+      "assumptions": [
+        "15 minutes of inactivity possible"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-046"
+    },
+    {
+      "title": "Password Policy",
+      "description": "Password policy requires minimum 12 characters with complexity rules",
+      "type": "Security",
+      "user_story": "As a patient, I want to ensure my password is secure, so that I can protect my account",
+      "acceptance_criteria": [
+        "Password policy implementation with minimum 12 characters and complexity rules"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify password policy implementation",
+          "expected_result": "Successful implementation",
+          "test_data": "Password policy credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Password policy test",
+        "Security test"
+      ],
+      "assumptions": [
+        "Password policy expertise"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-047"
+    },
+    {
+      "title": "Account Lockout",
+      "description": "Account lockout after 5 failed attempts with email notification to patient",
+      "type": "Security",
+      "user_story": "As a patient, I want to ensure my account is secure, so that I can protect my account",
+      "acceptance_criteria": [
+        "Account lockout implementation after 5 failed attempts",
+        "Email notification implementation to patient"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify account lockout implementation",
+          "expected_result": "Successful implementation",
+          "test_data": "Account lockout credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Account lockout test",
+        "Security test"
+      ],
+      "assumptions": [
+        "Account lockout expertise"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-048"
+    },
+    {
+      "title": "Secure Payment Processing",
+      "description": "Online payment via credit card, HSA/FSA card, and bank transfer",
+      "type": "Security",
+      "user_story": "As a patient, I want to make payments securely, so that my financial information is protected",
+      "acceptance_criteria": [
+        "Payment processing compliant with PCI-DSS",
+        "Support for credit card, HSA/FSA card, and bank transfer"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Make a payment using each accepted payment method",
+          "expected_result": "Payment processed successfully and securely",
+          "test_data": "Test payment amounts and payment methods"
+        }
+      ],
+      "test_scenarios": [
+        "Payment processing for itemized billing statements",
+        "Payment processing for payment plans"
+      ],
+      "assumptions": [
+        "PCI-DSS compliance is maintained"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-049"
+    },
+    {
+      "title": "PHI Data Protection Rules",
+      "description": "All PHI fields must be encrypted at rest using AES-256 with AWS KMS-managed keys",
+      "type": "Security",
+      "user_story": "As a system architect, I want to protect PHI data, so that we can ensure HIPAA compliance",
+      "acceptance_criteria": [
+        "PHI fields encrypted with AES-256"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify PHI field encryption",
+          "expected_result": "PHI fields encrypted",
+          "test_data": "PHI data"
+        }
+      ],
+      "test_scenarios": [
+        "PHI encryption test"
+      ],
+      "assumptions": [
+        "AWS KMS-managed keys available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-050"
+    },
+    {
+      "title": "Role-Based Authorization for PHI Access",
+      "description": "Only 'care_team' role can view clinical notes, 'patient' role can view own records only",
+      "type": "Security",
+      "user_story": "As a system architect, I want to control access to PHI data, so that we can ensure HIPAA compliance",
+      "acceptance_criteria": [
+        "Role-based authorization for PHI access"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify role-based access control",
+          "expected_result": "Role-based access control enforced",
+          "test_data": "User roles and PHI data"
+        }
+      ],
+      "test_scenarios": [
+        "Role-based access test"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-051"
+    },
+    {
+      "title": "HIPAA Compliance",
+      "description": "Annual HIPAA compliance audit must pass with zero high-risk findings",
+      "type": "Security",
+      "user_story": "As a system administrator, I want the system to be HIPAA compliant, so that patient data is protected",
+      "acceptance_criteria": [
+        "Annual HIPAA compliance audit passes with zero high-risk findings"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Conduct annual HIPAA compliance audit",
+          "expected_result": "Audit passes with zero high-risk findings",
+          "test_data": "HIPAA compliance audit"
+        }
+      ],
+      "test_scenarios": [
+        "HIPAA compliance audit"
+      ],
+      "assumptions": [
+        "Annual HIPAA compliance audit possible"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-052"
+    },
+    {
+      "title": "API Endpoint Security",
+      "description": "All API endpoints must enforce HTTPS (TLS 1.2+). HTTP connections must be rejected, not redirected",
+      "type": "Security",
+      "user_story": "As a system administrator, I want the API endpoints to be secure, so that patient data is protected",
+      "acceptance_criteria": [
+        "All API endpoints enforce HTTPS (TLS 1.2+). HTTP connections are rejected, not redirected"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test API endpoints with HTTPS (TLS 1.2+) and HTTP connections",
+          "expected_result": "API endpoints enforce HTTPS (TLS 1.2+). HTTP connections are rejected",
+          "test_data": "API endpoints"
+        }
+      ],
+      "test_scenarios": [
+        "API endpoint security test"
+      ],
+      "assumptions": [
+        "API endpoints available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-053"
+    },
+    {
+      "title": "Log Sanitization",
+      "description": "PHI data must never appear in application logs. Log sanitization middleware required on all services",
+      "type": "Security",
+      "user_story": "As a system administrator, I want the system to protect patient data by sanitizing logs, so that PHI data is not exposed",
+      "acceptance_criteria": [
+        "PHI data does not appear in application logs. Log sanitization middleware is required on all services"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test log sanitization with PHI data",
+          "expected_result": "PHI data does not appear in application logs",
+          "test_data": "PHI data"
+        }
+      ],
+      "test_scenarios": [
+        "Log sanitization test"
+      ],
+      "assumptions": [
+        "PHI data available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-054"
+    },
+    {
+      "title": "Patient Authentication with MFA",
+      "description": "Patients must authenticate using MFA via SMS OTP or authenticator app",
+      "type": "Security",
+      "user_story": "As a patient, I want to authenticate securely, so that I can protect my account",
+      "acceptance_criteria": [
+        "MFA implementation via SMS OTP or authenticator app"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify MFA implementation",
+          "expected_result": "Successful implementation",
+          "test_data": "MFA credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Authentication test",
+        "Security test"
+      ],
+      "assumptions": [
+        "MFA expertise"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-055"
+    },
+    {
+      "title": "Lab Results Management",
+      "description": "The lab results page must render within 1.5 seconds even with 200+ historical results, enabling patients to quickly view their lab results. The lab results viewer screen displays the patient's lab results in a list view with expandable cards.",
+      "type": "UI",
+      "user_story": "As a patient, I want to view my lab results, so that I can understand my medical information.",
+      "acceptance_criteria": [
+        "Page renders within 1.5 seconds",
+        "The lab results are displayed correctly",
+        "The 'View Trend' button works correctly",
+        "The 'Download Report' button works correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Load the lab results page with 200+ historical results.",
+          "expected_result": "The page renders within 1.5 seconds."
+        },
+        {
+          "step_num": 1,
+          "action": "View the lab results list",
+          "expected_result": "The lab results are displayed correctly"
+        },
+        {
+          "step_num": 2,
+          "action": "Expand a card",
+          "expected_result": "The card expands correctly"
+        },
+        {
+          "step_num": 3,
+          "action": "Click the 'View Trend' button",
+          "expected_result": "The trend chart is displayed correctly"
+        }
+      ],
+      "test_scenarios": [
+        "200+ historical results scenario",
+        "Viewing lab results"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-056"
+    },
+    {
+      "title": "Patient Profile and Dashboard",
+      "description": "A screen to display patient information, including name, date of birth, email, phone, and address. The patient dashboard page must load within 2 seconds at P95 on broadband connections, displaying patient information and possibly links to other functionalities like appointment calendars and lab results.",
+      "type": "UI",
+      "user_story": "As a care team member, I want to view a patient's profile information, so that I can access their medical history and contact details. As a patient, I want to access my dashboard quickly, so that I can view my information and schedule appointments efficiently.",
+      "acceptance_criteria": [
+        "The screen displays the patient's name, date of birth, email, phone, and address.",
+        "All PII fields are encrypted.",
+        "Page load time < 2 seconds"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in as a care team member",
+          "expected_result": "The user is redirected to the patient profile screen"
+        },
+        {
+          "step_num": 2,
+          "action": "View a patient's profile",
+          "expected_result": "The patient's name, date of birth, email, phone, and address are displayed"
+        },
+        {
+          "step_num": 1,
+          "action": "Load the patient dashboard page on a broadband connection.",
+          "expected_result": "The page loads within 2 seconds."
+        }
+      ],
+      "test_scenarios": [
+        "Viewing a patient's profile as a care team member",
+        "Viewing a patient's profile as a patient",
+        "Loading patient dashboard"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "HEALTHCARE_PORTAL-057"
+    },
+    {
+      "title": "Calendar and Appointment Booking",
+      "description": "A calendar view showing available slots by provider, specialty, and location. The appointment booking calendar screen displays a month view calendar with available slots and allows patients to book appointments.",
+      "type": "UI",
+      "user_story": "As a patient, I want to view a calendar of available appointment slots, so that I can easily schedule an appointment with my preferred provider.",
+      "acceptance_criteria": [
+        "The calendar view displays available slots by provider",
+        "The calendar view displays available slots by specialty",
+        "The calendar view displays available slots by location",
+        "The calendar displays available slots",
+        "The provider filter works correctly",
+        "The booking confirmation modal is displayed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to the appointment scheduling section",
+          "expected_result": "The calendar view is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Select a provider",
+          "expected_result": "Available slots for the selected provider are displayed"
+        },
+        {
+          "step_num": 3,
+          "action": "Select a specialty",
+          "expected_result": "Available slots for the selected specialty are displayed"
+        },
+        {
+          "step_num": 4,
+          "action": "Select a location",
+          "expected_result": "Available slots for the selected location are displayed"
+        },
+        {
+          "step_num": 1,
+          "action": "Select a date on the calendar",
+          "expected_result": "The available time slots are displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Filter by provider",
+          "expected_result": "The available slots are filtered correctly"
+        },
+        {
+          "step_num": 3,
+          "action": "Book an appointment",
+          "expected_result": "The booking confirmation modal is displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Scheduling an appointment with a specific provider",
+        "Scheduling an appointment for a specific specialty",
+        "Scheduling an appointment at a specific location"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-058"
+    },
+    {
+      "title": "Telehealth Video Consultation",
+      "description": "Integrated video consultation using Zoom Healthcare API with HIPAA BAA, virtual waiting room with estimated wait time and position in queue, screen sharing capability for providers to review lab results with patients, and recording capability with patient consent",
+      "type": "UI",
+      "user_story": "As a healthcare provider, I want to conduct video consultations with patients, so that I can provide remote care",
+      "acceptance_criteria": [
+        "Video consultation integrated with Zoom Healthcare API",
+        "Virtual waiting room with estimated wait time and position in queue",
+        "Screen sharing capability for providers"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate video consultation",
+          "expected_result": "Video consultation starts with virtual waiting room"
+        },
+        {
+          "step_num": 2,
+          "action": "Share screen",
+          "expected_result": "Provider can share screen with patient"
+        }
+      ],
+      "test_scenarios": [
+        "Video consultation with patient",
+        "Screen sharing with patient"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-059"
+    },
+    {
+      "title": "Billing Section",
+      "description": "Patient views billing information and pays online or sets up payment plan",
+      "type": "UI",
+      "user_story": "As a patient, I want to view my billing information and pay my bill, so that I can manage my financial obligations",
+      "acceptance_criteria": [
+        "Billing section is displayed",
+        "Patient can view billing information and pay bill"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access billing section",
+          "expected_result": "Billing section is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "View billing information and pay bill",
+          "expected_result": "Patient can pay bill online or set up payment plan"
+        }
+      ],
+      "test_scenarios": [
+        "Valid billing information",
+        "Invalid billing information"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-060"
+    },
+    {
+      "title": "Appointment Resource Creation",
+      "description": "Create appointment resources in EHR when patient books via portal using FHIR Appointment resource",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to book an appointment via the portal, so that I can schedule a visit with my healthcare provider",
+      "acceptance_criteria": [
+        "Appointment resource is created in EHR when patient books via portal"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Book an appointment via the portal",
+          "expected_result": "Appointment resource is created in EHR"
+        }
+      ],
+      "test_scenarios": [
+        "Book an appointment via the portal"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-061"
+    },
+    {
+      "title": "Telehealth Appointment Sequence Flow",
+      "description": "Sequence flow for telehealth appointments: 1. Patient Portal -> Scheduling Service: POST /api/appointments, 2. Scheduling Service -> EHR (FHIR): POST /Appointment, 3. Scheduling Service -> Notification Service: Send confirmation email and calendar invite, 4. Notification Service -> Patient: Email with 'Join Video Visit' link + SMS reminder at T-2h, 5. Patient Portal -> Telehealth Service: POST /api/sessions/join, 6. Telehealth Service -> Zoom Healthcare API: POST /meetings, 7. Zoom API -> Telehealth Service: {meeting_id, join_url, host_url}, 8. Telehealth Service -> Patient Portal: {join_url} -> Patient enters virtual waiting room, 9. Provider EHR -> Telehealth Service: Provider joins as host via host_url, 10. Telehealth Service: Video session active, recording with consent stored to Azure Blob encrypted",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to schedule a telehealth appointment, so that I can have a virtual visit with my healthcare provider",
+      "acceptance_criteria": [
+        "Telehealth appointment sequence flow is executed correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Schedule a telehealth appointment",
+          "expected_result": "Telehealth appointment is scheduled"
+        },
+        {
+          "step_num": 2,
+          "action": "Join the telehealth session",
+          "expected_result": "Patient joins the virtual waiting room"
+        }
+      ],
+      "test_scenarios": [
+        "Schedule a telehealth appointment",
+        "Join a telehealth session"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-062"
+    },
+    {
+      "title": "Online Booking",
+      "description": "Online booking with real-time availability checking against provider schedules. The system should allow patients to book an appointment and receive confirmation.",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to book an appointment online, so that I can schedule an appointment at my convenience.",
+      "acceptance_criteria": [
+        "The system checks availability in real-time",
+        "The system allows patients to book an appointment",
+        "The system sends confirmation of the booked appointment"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a provider and available time slot",
+          "expected_result": "The system checks availability in real-time"
+        },
+        {
+          "step_num": 2,
+          "action": "Book the appointment",
+          "expected_result": "The system sends confirmation of the booked appointment"
+        }
+      ],
+      "test_scenarios": [
+        "Booking an appointment with a specific provider",
+        "Booking an appointment for a specific specialty",
+        "Booking an appointment at a specific location"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-063"
+    },
+    {
+      "title": "Appointment Reminders",
+      "description": "Automated appointment reminders via SMS and email at 48hr and 2hr before. The system should send reminders to patients to reduce no-shows.",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to receive reminders about my upcoming appointments, so that I can prepare and attend the appointment.",
+      "acceptance_criteria": [
+        "The system sends reminders via SMS and email",
+        "Reminders are sent 48hr and 2hr before the appointment"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Schedule an appointment",
+          "expected_result": "The system sends a reminder 48hr before the appointment"
+        },
+        {
+          "step_num": 2,
+          "action": "Wait for 46 hours",
+          "expected_result": "The system sends a reminder 2hr before the appointment"
+        }
+      ],
+      "test_scenarios": [
+        "Receiving reminders for an upcoming appointment"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-064"
+    },
+    {
+      "title": "Video Consultation Workflow",
+      "description": "1. Initiate video consultation, 2. Patient enters virtual waiting room, 3. Provider starts consultation, 4. Screen sharing and recording capabilities available",
+      "type": "Workflow",
+      "user_story": "As a healthcare provider, I want to conduct video consultations with patients, so that I can provide remote care",
+      "acceptance_criteria": [
+        "Video consultation initiated",
+        "Patient enters virtual waiting room",
+        "Provider starts consultation"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate video consultation",
+          "expected_result": "Patient enters virtual waiting room"
+        },
+        {
+          "step_num": 2,
+          "action": "Start consultation",
+          "expected_result": "Provider can share screen and record consultation"
+        }
+      ],
+      "test_scenarios": [
+        "Video consultation with patient",
+        "Screen sharing with patient"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-065"
+    },
+    {
+      "title": "Virtual Triage Workflow",
+      "description": "1. Patient uses symptom checker chatbot, 2. Chatbot guides patient to care level, 3. Triage results shared with provider, 4. Provider prepares for consultation",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to use a symptom checker chatbot to determine the appropriate care level, so that I can receive timely and effective care",
+      "acceptance_criteria": [
+        "Symptom checker chatbot guides patient to care level",
+        "Triage results shared with provider"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use symptom checker chatbot",
+          "expected_result": "Chatbot guides patient to care level"
+        },
+        {
+          "step_num": 2,
+          "action": "View triage results",
+          "expected_result": "Triage results shared with provider"
+        }
+      ],
+      "test_scenarios": [
+        "Using symptom checker chatbot",
+        "Viewing triage results"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-066"
+    },
+    {
+      "title": "Waitlist Functionality",
+      "description": "Waitlist functionality to fill cancelled slots automatically. The system should allow patients to add themselves to a waitlist and fill cancelled slots.",
+      "type": "Workflow",
+      "user_story": "As a patient, I want to add myself to a waitlist, so that I can fill a cancelled slot and schedule an appointment.",
+      "acceptance_criteria": [
+        "The system allows patients to add themselves to a waitlist",
+        "The system fills cancelled slots automatically"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Add yourself to a waitlist",
+          "expected_result": "The system adds you to the waitlist"
+        },
+        {
+          "step_num": 2,
+          "action": "Cancel an appointment",
+          "expected_result": "The system fills the cancelled slot with a patient from the waitlist"
+        }
+      ],
+      "test_scenarios": [
+        "Adding yourself to a waitlist",
+        "Filling a cancelled slot"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-067"
+    },
+    {
+      "title": "Patient Onboarding and Scheduling",
+      "description": "Patient fills out registration form with First Name, Last Name, Date of Birth, Email, Phone, Create Password. Patient navigates to 'Book Appointment' and selects provider/specialty/date/time. Patient views pre-visit forms and signs them.",
+      "type": "UI",
+      "user_story": "As a new patient, I want to fill out the registration form, so that I can create my account. As a patient, I want to book an appointment, so that I can receive medical care. As a patient, I want to review and sign my pre-visit forms, so that I can prepare for my appointment",
+      "acceptance_criteria": [
+        "Registration form is displayed",
+        "Patient can submit form",
+        "Book appointment page is displayed",
+        "Patient can select provider/specialty/date/time",
+        "Pre-visit forms are displayed",
+        "Patient can review and sign forms"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access registration form",
+          "expected_result": "Registration form is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Fill out registration form",
+          "expected_result": "Patient can submit form"
+        },
+        {
+          "step_num": 1,
+          "action": "Access book appointment page",
+          "expected_result": "Book appointment page is displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Select provider/specialty/date/time",
+          "expected_result": "Patient can book appointment"
+        },
+        {
+          "step_num": 1,
+          "action": "Access pre-visit forms",
+          "expected_result": "Pre-visit forms are displayed"
+        },
+        {
+          "step_num": 2,
+          "action": "Review and sign forms",
+          "expected_result": "Patient can submit signed forms"
+        }
+      ],
+      "test_scenarios": [
+        "Valid registration form data",
+        "Invalid registration form data",
+        "Valid appointment booking",
+        "Invalid appointment booking",
+        "Valid pre-visit forms",
+        "Invalid pre-visit forms"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "HEALTHCARE_PORTAL-068"
     }
   ]
 }

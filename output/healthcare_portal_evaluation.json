@@ -1,86 +1,142 @@
 {
   "metrics": {
-    "precision": 0.5,
-    "recall": 0.43478260869565216,
-    "f1_score": 0.46511627906976744
+    "precision": 0.2647058823529412,
+    "recall": 0.782608695652174,
+    "f1_score": 0.3956043956043956
   },
   "counts": {
     "gt": 23,
-    "extracted": 20,
-    "true_positives": 10,
-    "false_negatives": 13,
-    "false_positives": 10,
-    "redundant": 3
+    "extracted": 68,
+    "true_positives": 18,
+    "false_negatives": 5,
+    "false_positives": 50,
+    "redundant": 17
   },
   "matched": [
     {
       "extracted_id": "HEALTHCARE_PORTAL-001",
-      "extracted_title": "Security and Compliance Infrastructure",
-      "gt_id": "HIPAA Compliance Standards",
-      "gt_name": "Security and privacy regulatory requirements",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-002",
-      "extracted_title": "System Performance and Scalability",
-      "gt_id": "Healthcare Performance SLAs",
-      "gt_name": "Portal and telehealth performance targets",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-005",
-      "extracted_title": "Patient Care Management",
+      "extracted_title": "Clinical Management",
       "gt_id": "Patient Records Management",
       "gt_name": "Comprehensive medical record display and management",
       "semantic_match": true
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-006",
-      "extracted_title": "Telehealth and Remote Monitoring",
-      "gt_id": "Video Consultation",
-      "gt_name": "HIPAA-compliant telehealth via Zoom",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-007",
-      "extracted_title": "Interoperability and Integration",
-      "gt_id": "HL7 FHIR Integration",
-      "gt_name": "EHR interoperability via FHIR R4 standard",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-008",
-      "extracted_title": "Patient Engagement",
-      "gt_id": "Telehealth Video UI",
-      "gt_name": "Pre-consultation check screen and video consultation interface",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-009",
-      "extracted_title": "Prescription Refill Workflow",
-      "gt_id": "E-Prescriptions",
-      "gt_name": "Electronic prescription to pharmacy",
-      "semantic_match": true
-    },
-    {
-      "extracted_id": "HEALTHCARE_PORTAL-010",
+      "extracted_id": "HEALTHCARE_PORTAL-002",
       "extracted_title": "Insurance Claim and Billing Workflow",
       "gt_id": "Claims Processing",
       "gt_name": "Automated insurance claim submission",
       "semantic_match": true
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-016",
-      "extracted_title": "Telehealth Consultation Execution",
+      "extracted_id": "HEALTHCARE_PORTAL-003",
+      "extracted_title": "Telehealth and Virtual Care",
+      "gt_id": "Video Consultation",
+      "gt_name": "HIPAA-compliant telehealth via Zoom",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-004",
+      "extracted_title": "Security and Compliance Infrastructure",
+      "gt_id": "HIPAA Compliance Standards",
+      "gt_name": "Security and privacy regulatory requirements",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-006",
+      "extracted_title": "Prescription Refill Workflow",
+      "gt_id": "E-Prescriptions",
+      "gt_name": "Electronic prescription to pharmacy",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-011",
+      "extracted_title": "Video Consultation using Zoom Healthcare API",
       "gt_id": "Telehealth Visit Workflow",
       "gt_name": "End-to-end video consultation journey",
       "semantic_match": true
     },
     {
+      "extracted_id": "HEALTHCARE_PORTAL-012",
+      "extracted_title": "Symptom Checker Chatbot",
+      "gt_id": "Virtual Triage",
+      "gt_name": "AI-powered symptom assessment",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-013",
+      "extracted_title": "Patient Management Data Model",
+      "gt_id": "PHI Data Protection",
+      "gt_name": "HIPAA-compliant data encryption and access control",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-014",
+      "extracted_title": "HL7 FHIR R4 Integration for Patient Demographics",
+      "gt_id": "HL7 FHIR Integration",
+      "gt_name": "EHR interoperability via FHIR R4 standard",
+      "semantic_match": true
+    },
+    {
       "extracted_id": "HEALTHCARE_PORTAL-019",
-      "extracted_title": "Scheduling and Consultation Workflows",
+      "extracted_title": "Patient Billing",
+      "gt_id": "Patient Billing",
+      "gt_name": "Online billing and payment",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-020",
+      "extracted_title": "Claims Processing",
+      "gt_id": "Claims & Billing Workflow",
+      "gt_name": "Visit-to-payment insurance claim lifecycle",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-032",
+      "extracted_title": "Prescription Management",
+      "gt_id": "Prescription Refill Workflow",
+      "gt_name": "Patient-initiated medication refill process",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-033",
+      "extracted_title": "Insurance Payer EDI Integration for Eligibility Verification",
+      "gt_id": "Insurance Verification",
+      "gt_name": "Real-time eligibility checking",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-056",
+      "extracted_title": "Lab Results Management",
+      "gt_id": "Lab Results Viewer",
+      "gt_name": "Online lab result display with trends",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-058",
+      "extracted_title": "Calendar and Appointment Booking",
+      "gt_id": "Appointment Calendar UI",
+      "gt_name": "Calendar booking interface with provider filtering",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-059",
+      "extracted_title": "Telehealth Video Consultation",
+      "gt_id": "Telehealth Video UI",
+      "gt_name": "Pre-consultation check screen and video consultation interface",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-063",
+      "extracted_title": "Online Booking",
       "gt_id": "Appointment Scheduling",
       "gt_name": "Online booking with real-time availability",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-068",
+      "extracted_title": "Patient Onboarding and Scheduling",
+      "gt_id": "Patient Onboarding Workflow",
+      "gt_name": "New patient registration through first appointment",
       "semantic_match": true
     }
   ],
@@ -96,34 +152,9 @@
       "description": "Apple Watch/Fitbit integration, automated threshold alerts, provider dashboard"
     },
     {
-      "gt_id": "Virtual Triage",
-      "gt_name": "AI-powered symptom assessment",
-      "description": "Chatbot symptom checker, results shared with provider, emergency detection"
-    },
-    {
-      "gt_id": "Insurance Verification",
-      "gt_name": "Real-time eligibility checking",
-      "description": "EDI 270/271 transactions, co-pay display, multiple plan support"
-    },
-    {
-      "gt_id": "Patient Billing",
-      "gt_name": "Online billing and payment",
-      "description": "Itemized statements, credit card/HSA payment, payment plans, dispute submission"
-    },
-    {
-      "gt_id": "Lab Results Viewer",
-      "gt_name": "Online lab result display with trends",
-      "description": "Normal range indicators, trend charts, provider notes, PDF download"
-    },
-    {
       "gt_id": "Patient Dashboard UI",
       "gt_name": "Personalized dashboard with appointment carousel and quick actions",
       "description": "Greeting with patient name, 3-card appointment carousel, sidebar navigation with active indicator, notification bell with badge, 2x2 quick action tiles"
-    },
-    {
-      "gt_id": "Appointment Calendar UI",
-      "gt_name": "Calendar booking interface with provider filtering",
-      "description": "Month view with green availability dots, time slot grouping (morning/afternoon/evening), provider search with specialty filter, booking confirmation modal with provider photo"
     },
     {
       "gt_id": "Lab Results UI",
@@ -131,83 +162,296 @@
       "description": "Grouped by test date with status badges, color-coded abnormal values, historical line chart with normal range shading, PDF download with clinic letterhead"
     },
     {
-      "gt_id": "Patient Onboarding Workflow",
-      "gt_name": "New patient registration through first appointment",
-      "description": "8-step flow: registration, email verification, insurance setup, eligibility check, appointment booking, pre-visit forms, reminders, check-in. Alternate paths for failed eligibility and no-show policy"
-    },
-    {
-      "gt_id": "Prescription Refill Workflow",
-      "gt_name": "Patient-initiated medication refill process",
-      "description": "6-step flow from prescription list to pharmacy fill confirmation, with provider approval for zero-refill medications, controlled substance verification"
-    },
-    {
-      "gt_id": "Claims & Billing Workflow",
-      "gt_name": "Visit-to-payment insurance claim lifecycle",
-      "description": "7-step flow: charge entry, EDI 837 submission, payer acknowledgment, EOB processing, patient statement, online payment, with denial management appeals"
-    },
-    {
-      "gt_id": "PHI Data Protection",
-      "gt_name": "HIPAA-compliant data encryption and access control",
-      "description": "AES-256 encryption for all PII/PHI fields, RBAC with 4 roles, immutable audit logging, 6-year minimum retention, Safe Harbor de-identification"
+      "gt_id": "Healthcare Performance SLAs",
+      "gt_name": "Portal and telehealth performance targets",
+      "description": "Dashboard load < 2s, calendar query < 800ms, lab results < 1.5s, video connection < 3s, 5000 concurrent sessions"
     }
   ],
   "over_created": [
     {
-      "extracted_id": "HEALTHCARE_PORTAL-003",
-      "title": "Data Architecture",
+      "extracted_id": "HEALTHCARE_PORTAL-005",
+      "title": "Infrastructure and Architecture",
       "type": "Architecture"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-004",
-      "title": "Cloud-Native Deployment",
+      "extracted_id": "HEALTHCARE_PORTAL-007",
+      "title": "Telehealth Service Failover",
       "type": "Architecture"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-011",
-      "title": "Accessibility Compliance",
+      "extracted_id": "HEALTHCARE_PORTAL-008",
+      "title": "Multi-AZ Azure Deployment",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-009",
+      "title": "Cloud-Native Deployment on Azure",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-010",
+      "title": "Azure SQL Database with Transparent Data Encryption",
+      "type": "Architecture"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-016",
+      "title": "Patient Profile Data Model with Insurance Information",
+      "type": "Data Model"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-017",
+      "title": "Appointment Scheduling Data Model",
+      "type": "Data Model"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-018",
+      "title": "Provider Data Model",
+      "type": "Data Model"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-021",
+      "title": "Insurance Plan Management",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-024",
+      "title": "Medication History Query",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-025",
+      "title": "Real-time Formulary and Benefit Check",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-026",
+      "title": "Medical Record Download",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-029",
+      "title": "Automated Alerts",
+      "type": "Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-030",
+      "title": "System Performance and Scalability",
       "type": "Non-Functional"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-012",
-      "title": "Role-Based Access Control",
-      "type": "Non-Functional"
+      "extracted_id": "HEALTHCARE_PORTAL-031",
+      "title": "Patient Care and Management",
+      "type": "Functional"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-013",
+      "extracted_id": "HEALTHCARE_PORTAL-034",
       "title": "Data Backup and Recovery",
       "type": "Non-Functional"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-017",
-      "title": "Inventory Management",
-      "type": "Unknown"
+      "extracted_id": "HEALTHCARE_PORTAL-035",
+      "title": "Notification Service Scalability",
+      "type": "Non-Functional"
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-018",
-      "title": "Patient Portal",
+      "extracted_id": "HEALTHCARE_PORTAL-037",
+      "title": "Screen Reader Compatibility",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-038",
+      "title": "Color Contrast Ratio",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-039",
+      "title": "System Uptime",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-040",
+      "title": "Planned Maintenance Windows",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-044",
+      "title": "Accessibility Compliance",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-045",
+      "title": "Prevent Regression of SADRSTRANG-13583",
+      "type": "Non-Functional"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-046",
+      "title": "Session Logout",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-047",
+      "title": "Password Policy",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-048",
+      "title": "Account Lockout",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-051",
+      "title": "Role-Based Authorization for PHI Access",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-053",
+      "title": "API Endpoint Security",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-055",
+      "title": "Patient Authentication with MFA",
+      "type": "Security"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-057",
+      "title": "Patient Profile and Dashboard",
       "type": "UI"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-061",
+      "title": "Appointment Resource Creation",
+      "type": "Workflow"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-064",
+      "title": "Appointment Reminders",
+      "type": "Workflow"
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-067",
+      "title": "Waitlist Functionality",
+      "type": "Workflow"
     }
   ],
   "redundant_items": [
     {
-      "extracted_id": "HEALTHCARE_PORTAL-014",
+      "extracted_id": "HEALTHCARE_PORTAL-015",
+      "extracted_title": "Medical History Timeline",
+      "gt_id": "Patient Records Management",
+      "gt_name": "Comprehensive medical record display and management",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-022",
+      "extracted_title": "Medication List Synchronization",
+      "gt_id": "HL7 FHIR Integration",
+      "gt_name": "EHR interoperability via FHIR R4 standard",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-023",
       "extracted_title": "SMART on FHIR Authorization",
       "gt_id": "HL7 FHIR Integration",
       "gt_name": "EHR interoperability via FHIR R4 standard",
       "semantic_match": true
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-015",
-      "extracted_title": "Medication Management",
+      "extracted_id": "HEALTHCARE_PORTAL-027",
+      "extracted_title": "Document Upload",
       "gt_id": "Patient Records Management",
       "gt_name": "Comprehensive medical record display and management",
       "semantic_match": true
     },
     {
-      "extracted_id": "HEALTHCARE_PORTAL-020",
-      "extracted_title": "Waitlist Functionality",
-      "gt_id": "Appointment Scheduling",
-      "gt_name": "Online booking with real-time availability",
+      "extracted_id": "HEALTHCARE_PORTAL-028",
+      "extracted_title": "Recording Capability",
+      "gt_id": "Video Consultation",
+      "gt_name": "HIPAA-compliant telehealth via Zoom",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-036",
+      "extracted_title": "Role-Based Access Control",
+      "gt_id": "PHI Data Protection",
+      "gt_name": "HIPAA-compliant data encryption and access control",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-041",
+      "extracted_title": "HL7 FHIR R4 Compliance",
+      "gt_id": "HL7 FHIR Integration",
+      "gt_name": "EHR interoperability via FHIR R4 standard",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-042",
+      "extracted_title": "Surescripts Certification",
+      "gt_id": "E-Prescriptions",
+      "gt_name": "Electronic prescription to pharmacy",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-043",
+      "extracted_title": "X12 EDI Transactions",
+      "gt_id": "Claims & Billing Workflow",
+      "gt_name": "Visit-to-payment insurance claim lifecycle",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-049",
+      "extracted_title": "Secure Payment Processing",
+      "gt_id": "Patient Billing",
+      "gt_name": "Online billing and payment",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-050",
+      "extracted_title": "PHI Data Protection Rules",
+      "gt_id": "PHI Data Protection",
+      "gt_name": "HIPAA-compliant data encryption and access control",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-052",
+      "extracted_title": "HIPAA Compliance",
+      "gt_id": "HIPAA Compliance Standards",
+      "gt_name": "Security and privacy regulatory requirements",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-054",
+      "extracted_title": "Log Sanitization",
+      "gt_id": "HIPAA Compliance Standards",
+      "gt_name": "Security and privacy regulatory requirements",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-060",
+      "extracted_title": "Billing Section",
+      "gt_id": "Patient Billing",
+      "gt_name": "Online billing and payment",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-062",
+      "extracted_title": "Telehealth Appointment Sequence Flow",
+      "gt_id": "Video Consultation",
+      "gt_name": "HIPAA-compliant telehealth via Zoom",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-065",
+      "extracted_title": "Video Consultation Workflow",
+      "gt_id": "Telehealth Visit Workflow",
+      "gt_name": "End-to-end video consultation journey",
+      "semantic_match": true
+    },
+    {
+      "extracted_id": "HEALTHCARE_PORTAL-066",
+      "extracted_title": "Virtual Triage Workflow",
+      "gt_id": "Virtual Triage",
+      "gt_name": "AI-powered symptom assessment",
       "semantic_match": true
     }
   ]

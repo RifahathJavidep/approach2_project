@@ -1,0 +1,437 @@
+{
+  "project": "bbmsa",
+  "requirements": [
+    {
+      "title": "MCD Catalog Consolidation",
+      "description": "Merge offerings from multiple sources into a single point of entry within the Bell Business Self-Service Center (BBSSC)",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to access all services from a single platform, so that I can avoid fragmentation",
+      "acceptance_criteria": [
+        "All relevant offerings are migrated to the MCD catalog",
+        "Customer access to legacy catalogs is removed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the MCD catalog",
+          "expected_result": "All relevant offerings are available",
+          "test_data": "MCD catalog"
+        }
+      ],
+      "test_scenarios": [
+        "Accessing the MCD catalog"
+      ],
+      "assumptions": [
+        "All relevant offerings are migrated to the MCD catalog"
+      ],
+      "ambiguities": [
+        "Definition of 'relevant offerings'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-001"
+    },
+    {
+      "title": "Datavalet Offering Reorganization",
+      "description": "The reorganization of Datavalet offerings in the BBSSC taxonomy to provide a clean user journey.",
+      "type": "Workflow",
+      "user_story": "As a McDonald's user, I want to access Datavalet offerings in a logical and organized manner, so that I can easily find the services I need.",
+      "acceptance_criteria": [
+        "Datavalet offerings are organized in a logical and consistent manner"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the BBSSC",
+          "expected_result": "The user is redirected to the Datavalet offerings page"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the Meraki Wi-Fi taxonomy",
+          "expected_result": "The user is redirected to the Meraki Wi-Fi page"
+        }
+      ],
+      "test_scenarios": [
+        "Navigate to the Meraki Wi-Fi taxonomy",
+        "Navigate to the MIS Battery taxonomy"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-002"
+    },
+    {
+      "title": "Bell Managed Meraki Offering Updates",
+      "description": "Add Meraki offerings to the MCD catalog and exclude MERAKI_113",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to access Bell Managed Meraki offerings from the MCD catalog, so that I can easily find what I need",
+      "acceptance_criteria": [
+        "Meraki offerings are added to the MCD catalog",
+        "MERAKI_113 is excluded"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the MCD catalog",
+          "expected_result": "Meraki offerings are available",
+          "test_data": "MCD catalog"
+        }
+      ],
+      "test_scenarios": [
+        "Accessing the MCD catalog"
+      ],
+      "assumptions": [
+        "Meraki offerings are correctly added to the MCD catalog"
+      ],
+      "ambiguities": [
+        "Definition of 'easily find what I need'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-003"
+    },
+    {
+      "title": "Datavalet Version (MCDO-03) - Transfer Site to Another Template",
+      "description": "Enable transfer of site to another template/profile with strict taxonomy path enforcement",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to transfer a site to another template/profile, so that I can manage my services effectively",
+      "acceptance_criteria": [
+        "Taxonomy path is enforced",
+        "CI selection is restricted to Datavalet-managed CIs"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the transfer site to another template/profile feature",
+          "expected_result": "Taxonomy path is enforced",
+          "test_data": "Datavalet-managed CIs"
+        }
+      ],
+      "test_scenarios": [
+        "Transferring a site to another template/profile"
+      ],
+      "assumptions": [
+        "Taxonomy path is correctly enforced"
+      ],
+      "ambiguities": [
+        "Definition of 'manage my services effectively'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-004"
+    },
+    {
+      "title": "Bell Version (MCDO-01) - Modification of Existing Bell-Managed Meraki Profiles",
+      "description": "Enable modification of existing Bell-managed Meraki profiles with automated change request creation",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to modify an existing Bell-managed Meraki profile, so that I can manage my services effectively",
+      "acceptance_criteria": [
+        "Automated change request creation is enabled",
+        "Classification is updated"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the modify existing Bell-managed Meraki profile feature",
+          "expected_result": "Automated change request creation is enabled",
+          "test_data": "Bell-managed Meraki profile"
+        }
+      ],
+      "test_scenarios": [
+        "Modifying an existing Bell-managed Meraki profile"
+      ],
+      "assumptions": [
+        "Automated change request creation is correctly enabled"
+      ],
+      "ambiguities": [
+        "Definition of 'manage my services effectively'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-005"
+    },
+    {
+      "title": "Datavalet Version (MCDO-04) - Create New Profile/Template",
+      "description": "Enable creation of new profiles/templates with flexible technical details page",
+      "type": "Functional",
+      "user_story": "As a McDonald's customer, I want to create a new profile/template, so that I can manage my services effectively",
+      "acceptance_criteria": [
+        "Technical details page is flexible",
+        "Rate category is updated"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the create new profile/template feature",
+          "expected_result": "Technical details page is flexible",
+          "test_data": "New profile/template"
+        }
+      ],
+      "test_scenarios": [
+        "Creating a new profile/template"
+      ],
+      "assumptions": [
+        "Technical details page is correctly flexible"
+      ],
+      "ambiguities": [
+        "Definition of 'manage my services effectively'"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-006"
+    },
+    {
+      "title": "Offering Name Adjustments",
+      "description": "Change display name of DV-047 to 'Ad Hoc report or dashboard customization'",
+      "type": "Configuration",
+      "user_story": "As a user, I want to change the display name of DV-047, so that it aligns with customer branding",
+      "acceptance_criteria": [
+        "The display name of DV-047 is changed to 'Ad Hoc report or dashboard customization'"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Change the display name of DV-047",
+          "expected_result": "The display name of DV-047 is changed to 'Ad Hoc report or dashboard customization'",
+          "test_data": "DV-047 display name"
+        }
+      ],
+      "test_scenarios": [
+        "Change the display name of DV-047"
+      ],
+      "assumptions": [
+        "The display name can be changed"
+      ],
+      "ambiguities": [
+        "The specifics of the display name change"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-007"
+    },
+    {
+      "title": "CI Visibility Matrix",
+      "description": "The matrix defines the visibility of configuration items (CIs) based on the offering type and target managed by. The matrix must ensure that CIs are visible or hidden according to the defined rules.",
+      "type": "UI",
+      "user_story": "As a system administrator, I want to access a CI visibility matrix that defines the visibility of configuration items based on the offering type and target managed by, so that I can ensure that CIs are visible or hidden according to our rules.",
+      "acceptance_criteria": [
+        "The matrix must define the visibility of CIs based on the offering type and target managed by."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the CI Visibility Matrix",
+          "expected_result": "The matrix is displayed with the correct visibility rules for CIs."
+        }
+      ],
+      "test_scenarios": [
+        "CI visibility matrix"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-008"
+    },
+    {
+      "title": "Process Workflows (MACD)",
+      "description": "The process workflows include standard selection, redirected selection, and external sync. The workflows must ensure that the correct processes are followed for each scenario.",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to follow the defined process workflows for MACD, so that I can ensure that the correct processes are followed for each scenario.",
+      "acceptance_criteria": [
+        "The workflows must include standard selection, redirected selection, and external sync."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Follow the standard selection workflow",
+          "expected_result": "The workflow is completed correctly and the form is populated."
+        }
+      ],
+      "test_scenarios": [
+        "Process workflows for MACD"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-009"
+    },
+    {
+      "title": "Template Redirection List",
+      "description": "Template redirection list includes specific templates for the 'Modify Profile' offering",
+      "type": "Configuration",
+      "user_story": "As a user, I want to use the template redirection list, so that I can redirect templates",
+      "acceptance_criteria": [
+        "The template redirection list includes specific templates for the 'Modify Profile' offering"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Use the template redirection list",
+          "expected_result": "The template redirection list includes specific templates for the 'Modify Profile' offering",
+          "test_data": "Template redirection list data"
+        }
+      ],
+      "test_scenarios": [
+        "Use the template redirection list"
+      ],
+      "assumptions": [
+        "The template redirection list is properly configured"
+      ],
+      "ambiguities": [
+        "The specifics of the template redirection list"
+      ],
+      "confidence": "medium",
+      "requirement_id": "BBMSA-010"
+    },
+    {
+      "title": "Defect Prevention",
+      "description": "Prevent regression of defect SADRSTRANG-13583",
+      "type": "Quality",
+      "user_story": "As a user, I want to prevent the regression of defect SADRSTRANG-13583, so that I can ensure the quality of the system",
+      "acceptance_criteria": [
+        "The defect SADRSTRANG-13583 is prevented from regressing"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the system for defect SADRSTRANG-13583",
+          "expected_result": "The defect SADRSTRANG-13583 is prevented from regressing",
+          "test_data": "Defect SADRSTRANG-13583 test data"
+        }
+      ],
+      "test_scenarios": [
+        "Test the system for defect SADRSTRANG-13583"
+      ],
+      "assumptions": [
+        "The defect SADRSTRANG-13583 is properly identified"
+      ],
+      "ambiguities": [
+        "The specifics of the defect SADRSTRANG-13583"
+      ],
+      "confidence": "high",
+      "requirement_id": "BBMSA-011"
+    },
+    {
+      "title": "Technical Details Page",
+      "description": "Must be standard/flexible as requirements for new profiles are highly variable and include custom payload definitions for the API.",
+      "type": "UI",
+      "user_story": "As a system administrator, I want to access a technical details page that can handle variable requirements for new profiles, so that I can configure the system according to our needs.",
+      "acceptance_criteria": [
+        "The page must be able to handle custom payload definitions for the API."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the Technical Details Page",
+          "expected_result": "The page is displayed with a flexible layout to accommodate variable requirements."
+        }
+      ],
+      "test_scenarios": [
+        "Variable requirements for new profiles"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-012"
+    },
+    {
+      "title": "Maximo to ServiceNow (Datavalet) Integration",
+      "description": "The integration of Maximo and ServiceNow (Datavalet) systems to enable data synchronization.",
+      "type": "Workflow",
+      "user_story": "As a McDonald's user, I want to ensure that data is synchronized between Maximo and ServiceNow (Datavalet), so that I can manage my services effectively.",
+      "acceptance_criteria": [
+        "Data is synchronized between Maximo and ServiceNow (Datavalet)"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the BBSSC",
+          "expected_result": "The user is redirected to the Maximo to ServiceNow (Datavalet) integration page"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify data synchronization",
+          "expected_result": "Data is synchronized between Maximo and ServiceNow (Datavalet)"
+        }
+      ],
+      "test_scenarios": [
+        "Verify data synchronization between Maximo and ServiceNow (Datavalet)"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-013"
+    },
+    {
+      "title": "Bell Version Workflow",
+      "description": "Similar to Datavalet, but follows Bell internal provisioning logic and Maximo job plans. The workflow includes SR creation, Maximo ticket generation, and payload transmission to Datavalet ServiceNow.",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to follow the Bell internal provisioning logic and Maximo job plans, so that I can ensure that the system is configured correctly for Bell offerings.",
+      "acceptance_criteria": [
+        "The workflow must follow Bell internal provisioning logic and Maximo job plans."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an SR in BBSSC",
+          "expected_result": "A Maximo ticket is generated and a payload is transmitted to Datavalet ServiceNow."
+        }
+      ],
+      "test_scenarios": [
+        "Bell internal provisioning logic and Maximo job plans"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-014"
+    },
+    {
+      "title": "Field Mappings",
+      "description": "Ensure correct field mappings between Maximo and ServiceNow",
+      "type": "Data Model",
+      "user_story": "As a user, I want correct field mappings between Maximo and ServiceNow",
+      "acceptance_criteria": [
+        "Custom Reference # and Technical Details fields are correctly passed",
+        "No data truncation occurs"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify field mappings",
+          "expected_result": "Field mappings are correct",
+          "test_data": "Maximo and ServiceNow data"
+        }
+      ],
+      "test_scenarios": [
+        "Field mapping test"
+      ],
+      "assumptions": [
+        "Maximo and ServiceNow are available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-015"
+    },
+    {
+      "title": "Performance Requirement",
+      "description": "CI selection page loads in under 3 seconds for sites with >100 devices",
+      "type": "Non-Functional",
+      "user_story": "As a system architect, I want the CI selection page to load quickly, so that users can efficiently select CIs",
+      "acceptance_criteria": [
+        "CI selection page loads in under 3 seconds for sites with >100 devices"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Load the CI selection page for a site with >100 devices",
+          "expected_result": "Page loads in under 3 seconds",
+          "test_data": "Page load time"
+        }
+      ],
+      "test_scenarios": [
+        "Page load time test"
+      ],
+      "assumptions": [
+        "CI selection page is available",
+        "Site has >100 devices"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "BBMSA-016"
+    }
+  ]
+}
