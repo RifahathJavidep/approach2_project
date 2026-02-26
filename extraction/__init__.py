@@ -17,9 +17,13 @@ __version__ = "1.0.0"
 
 from .file_router import FileRouter, FileType
 from .pipeline import ExtractionPipeline
+from .manual import ManualExtractor
+from .manual_dspy import ManualDSPyExtractor
 
 __all__ = [
     "FileRouter",
     "FileType",
     "ExtractionPipeline",
+    "ManualExtractor",
+    "ManualDSPyExtractor",
 ]

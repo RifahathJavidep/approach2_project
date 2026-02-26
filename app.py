@@ -1,5 +1,5 @@
 """
-FastAPI service for PTW Requirements Extraction with S3 Integration
+FastAPI service for PTW Requirements Extraction & Test Case Generation with S3 Integration
 Start: python app.py
 Docs:  http://localhost:8000/docs
 """
@@ -12,7 +12,7 @@ import shutil
 from pathlib import Path
 from typing import List, Optional, Union
 from celery.result import AsyncResult
-from celery_app import extract_requirements_task
+from celery_app import extract_requirements_task, generate_testcases_task
 
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
@@ -33,9 +33,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 # ============================================================================
 
 app = FastAPI(
-    title="PTW Requirements Extractor",
-    description="Extract user-facing requirements from project documents stored in S3",
-    version="2.0.0",
+    title="PRISM AI — Requirements & Test Cases",
+    description="Extract requirements from documents and generate professional test cases",
+    version="3.0.0",
 )
 
 # Allow Angular frontend to connect
@@ -69,6 +69,20 @@ class ExtractionResponse(BaseModel):
     total_requirements: int
     requirements: list
     s3_output: dict
+
+class ManualExtractionRequest(BaseModel):
+    """Request body for POST /manual-extract"""
+    document_url: str   # S3 URL or S3 key
+    description: str    # User's brief description (semantic anchor)
+    page_no: int        # 1-indexed page or slide number
+
+class TestCaseRequest(BaseModel):
+    """Request body for POST /generate-testcases"""
+    project_id: Union[str, int]
+    project_name: Optional[str] = None
+    requirements_s3_key: Optional[str] = None  # S3 key to requirements JSON
+    requirements: Optional[list] = None         # Direct requirements array
+    document_urls: Optional[List[str]] = []     # Source documents for rich context
 
 # ============================================================================
 # ENDPOINTS
@@ -247,7 +261,296 @@ async def get_task_status(task_id: str):
     return response
 
 
+@app.post("/manual-extract")
+async def manual_extract_endpoint(request: ManualExtractionRequest):
+    """
+    Manual requirement extraction from a specific page or slide.
+
+    Fallback when automatic extraction fails. The user provides:
+      - document_url: S3 URL of the document
+      - description:  Brief description of the requirement (semantic anchor)
+      - page_no:      1-indexed page number (or slide number for PPTX)
+
+    The API classifies the document type, extracts that page's content,
+    and calls Groq LLM to generate one structured requirement JSON.
+    Returns status "no_requirements" when the page has no readable content
+    or the description does not match anything on the page.
+    """
+    tmp_dir = None
+    try:
+        from s3_utils import download_from_s3
+        from manual_extract import extract_requirement_from_page
+
+        if request.page_no < 1:
+            raise HTTPException(status_code=400, detail="page_no must be 1 or greater")
+        if not request.description.strip():
+            raise HTTPException(status_code=400, detail="description cannot be empty")
+
+        # Download file from S3 to a temp directory
+        tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_{os.getpid()}")
+        os.makedirs(tmp_dir, exist_ok=True)
+        local_path = download_from_s3(request.document_url, tmp_dir)
+
+        result = extract_requirement_from_page(
+            file_path=local_path,
+            description=request.description,
+            page_no=request.page_no,
+        )
+        return result
+
+    except HTTPException:
+        raise
+    except ValueError as e:
+        # Out-of-range page numbers from extractors
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Manual extraction failed: {str(e)}")
+    finally:
+        if tmp_dir and os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+@app.post("/manual-extract-dspy")
+async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
+    """
+    DSPy-powered manual requirement extraction from a specific page.
+
+    Uses the SAME trained DSPy extractors as the main pipeline:
+    - BusinessFeatureExtractor
+    - FunctionalDetailExtractor
+    - WorkflowRequirementExtractor
+    - TechnicalRequirementExtractor
+
+    This produces HIGHER QUALITY requirements compared to /manual-extract
+    because it uses trained, validated extraction with multi-layer analysis.
+
+    Input:
+      - document_url: S3 URL of the document
+      - description:  Brief description (semantic anchor)
+      - page_no:      1-indexed page number
+
+    Returns:
+      - status: "success" or "no_requirements"
+      - requirements: list of structured requirement dicts
+      - extraction_method: "dspy_trained"
+    """
+    tmp_dir = None
+    try:
+        from s3_utils import download_from_s3
+        from extraction.manual_dspy import ManualDSPyExtractor
+        import dspy
+
+        if request.page_no < 1:
+            raise HTTPException(status_code=400, detail="page_no must be 1 or greater")
+        if not request.description.strip():
+            raise HTTPException(status_code=400, detail="description cannot be empty")
+
+        # Download file from S3
+        tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_dspy_{os.getpid()}")
+        os.makedirs(tmp_dir, exist_ok=True)
+        local_path = download_from_s3(request.document_url, tmp_dir)
+
+        # Run DSPy extraction
+        extractor = ManualDSPyExtractor()
+        result = extractor.extract_from_page(
+            file_path=local_path,
+            description=request.description,
+            page_no=request.page_no,
+        )
+        return result
+
+    except HTTPException:
+        raise
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"DSPy manual extraction failed: {str(e)}")
+    finally:
+        if tmp_dir and os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+# ============================================================================
+# TEST CASE GENERATION ENDPOINTS
+# ============================================================================
+
+@app.post("/generate-testcases")
+async def generate_testcases_async(request: TestCaseRequest):
+    """
+    Async test case generation (Phase 2). Queues a Celery task.
+
+    Provide EITHER:
+    - requirements_s3_key: S3 path to requirements JSON from Phase 1
+    - requirements: Direct JSON array of requirements
+
+    Optional:
+    - document_urls: S3 URLs of source documents for richer test cases
+    """
+    project_id = str(request.project_id)
+    project_name = request.project_name or f"project_{project_id}"
+
+    if not request.requirements_s3_key and not request.requirements:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide either 'requirements_s3_key' or 'requirements'"
+        )
+
+    # If direct requirements provided, save to temp file
+    requirements_data = None
+    if request.requirements:
+        requirements_data = request.requirements
+
+    # Download source documents for context
+    local_docs = []
+    if request.document_urls:
+        from s3_utils import download_from_s3
+        tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_testgen_{project_id}")
+        os.makedirs(tmp_dir, exist_ok=True)
+        for url in request.document_urls:
+            try:
+                local_path = download_from_s3(url, tmp_dir)
+                local_docs.append(local_path)
+            except Exception:
+                pass
+
+    task = generate_testcases_task.delay(
+        project_id=project_id,
+        project_name=project_name,
+        requirements_s3_key=request.requirements_s3_key,
+        requirements_data=requirements_data,
+        local_doc_paths=local_docs,
+    )
+
+    return {
+        "status": "accepted",
+        "task_id": task.id,
+        "message": "Test case generation queued successfully",
+        "documents_loaded": len(local_docs),
+    }
+
+
+@app.post("/generate-testcases-sync")
+async def generate_testcases_sync(request: TestCaseRequest):
+    """
+    Synchronous test case generation (Phase 2). Returns test cases immediately.
+
+    Provide EITHER:
+    - requirements_s3_key: S3 path to requirements JSON from Phase 1
+    - requirements: Direct JSON array of requirements
+
+    Optional:
+    - document_urls: S3 URLs of source documents for richer test cases
+    """
+    project_id = str(request.project_id)
+    project_name = request.project_name or f"project_{project_id}"
+    tmp_dir = None
+
+    try:
+        from s3_utils import download_from_s3, download_json_from_s3, upload_to_s3
+        from testgen import TestGenPipeline
+
+        # ── Load requirements ───────────────────────────────────────
+        if request.requirements:
+            requirements = request.requirements
+        elif request.requirements_s3_key:
+            data = download_json_from_s3(request.requirements_s3_key)
+            if isinstance(data, dict):
+                requirements = data.get("requirements", [])
+            else:
+                requirements = data
+        else:
+            raise HTTPException(status_code=400, detail="No requirements provided")
+
+        if not requirements:
+            raise HTTPException(status_code=400, detail="Requirements list is empty")
+
+        # ── Download source documents for context ──────────────────
+        local_docs = []
+        tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_testgen_{project_id}_{os.getpid()}")
+        if request.document_urls:
+            os.makedirs(tmp_dir, exist_ok=True)
+            for url in request.document_urls:
+                try:
+                    local_path = download_from_s3(url, tmp_dir)
+                    local_docs.append(local_path)
+                except Exception:
+                    pass
+
+        # ── Run test case generation ───────────────────────────────
+        output_dir = os.path.join(tmp_dir or tempfile.mkdtemp(), "output")
+        os.makedirs(output_dir, exist_ok=True)
+
+        pipeline = TestGenPipeline()
+        result = pipeline.run(
+            requirements=requirements,
+            project_name=project_name,
+            output_dir=output_dir,
+            document_paths=local_docs if local_docs else None,
+        )
+
+        # ── Upload results to S3 ───────────────────────────────────
+        s3_json_key = f"projects/{project_id}/output/test_plan.json"
+        s3_excel_key = f"projects/{project_id}/output/test_plan.xlsx"
+
+        upload_to_s3(result["json_path"], s3_json_key)
+        upload_to_s3(result["excel_path"], s3_excel_key)
+
+        bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "total_requirements": result["total_requirements"],
+            "total_test_cases": result["total_test_cases"],
+            "test_plan": result["test_plan"],
+            "s3_output": {
+                "json": f"s3://{bucket}/{s3_json_key}",
+                "excel": f"s3://{bucket}/{s3_excel_key}",
+            },
+            "documents_used": len(local_docs),
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Test case generation failed: {str(e)}")
+    finally:
+        if tmp_dir and os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+@app.get("/testcases/project/{project_id}")
+async def get_testcases(project_id: str):
+    """Get cached test plan from S3 (no re-generation)."""
+    try:
+        from s3_utils import download_json_from_s3, file_exists_in_s3
+
+        s3_key = f"projects/{project_id}/output/test_plan.json"
+
+        if not file_exists_in_s3(s3_key):
+            raise HTTPException(
+                status_code=404,
+                detail=f"No test plan found for project '{project_id}'. Run POST /generate-testcases first.",
+            )
+
+        data = download_json_from_s3(s3_key)
+
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "total_requirements": data.get("total_requirements", 0),
+            "total_test_cases": data.get("total_test_cases", 0),
+            "test_plan": data,
+            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsuai-tcgen')}/{s3_key}",
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch test plan: {str(e)}")
+
+
 if __name__ == "__main__":
-    print("Starting PTW Requirements Extractor API...")
+    print("Starting PRISM AI Service...")
     print("Docs: http://localhost:8000/docs")
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)

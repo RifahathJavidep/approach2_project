@@ -170,3 +170,108 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 else:
                     update_document_statuses(project_id, [url], "FAILED")
         raise
+
+
+@app.task(name="generate_testcases_task", bind=True)
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=None, requirements_data=None, local_doc_paths=None):
+    """
+    Background task to generate test cases from requirements.
+    Supports document context injection for richer test steps.
+    """
+    if BASE_DIR not in sys.path:
+        sys.path.insert(0, BASE_DIR)
+
+    import tempfile
+
+    try:
+        from testgen import TestGenPipeline
+        from s3_utils import download_json_from_s3, upload_to_s3
+    except ImportError as e:
+        raise ImportError(f"Cannot find modules in {BASE_DIR}. Error: {e}")
+
+    self.update_state(state='PROGRESS', meta={'message': 'Starting test case generation'})
+
+    # ── Load requirements ──────────────────────────────────────────
+    if requirements_data:
+        requirements = requirements_data
+    elif requirements_s3_key:
+        data = download_json_from_s3(requirements_s3_key)
+        if isinstance(data, dict):
+            requirements = data.get("requirements", [])
+        else:
+            requirements = data
+    else:
+        raise ValueError("No requirements provided")
+
+    if not requirements:
+        raise ValueError("Requirements list is empty")
+
+    self.update_state(state='PROGRESS', meta={
+        'message': f'Generating test cases for {len(requirements)} requirements'
+    })
+
+    # ── Run generation ─────────────────────────────────────────────
+    output_dir = os.path.join(tempfile.gettempdir(), f"prism_testgen_{project_id}", "output")
+    os.makedirs(output_dir, exist_ok=True)
+
+    pipeline = TestGenPipeline()
+    result = pipeline.run(
+        requirements=requirements,
+        project_name=project_name,
+        output_dir=output_dir,
+        document_paths=local_doc_paths if local_doc_paths else None,
+    )
+
+    # ── Upload to S3 ───────────────────────────────────────────────
+    s3_json_key = f"projects/{project_id}/output/test_plan.json"
+    s3_excel_key = f"projects/{project_id}/output/test_plan.xlsx"
+
+    upload_to_s3(result["json_path"], s3_json_key)
+    upload_to_s3(result["excel_path"], s3_excel_key)
+
+    bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+
+    # ── Store in Java Backend ──────────────────────────────────────
+    try:
+        import requests
+        java_url = f"http://localhost:8080/api/testcases/project/{project_id}"
+        test_plans = result["test_plan"].get("test_plans", [])
+
+        mapped_testcases = []
+        tc_counter = 1
+        for plan in test_plans:
+            req_id = plan.get("requirement_id", "N/A")
+            for tc in plan.get("test_cases", []):
+                mapped_testcases.append({
+                    "testCaseId": f"TC-{tc_counter:03d}",
+                    "requirementId": req_id,
+                    "title": tc.get("title", ""),
+                    "description": tc.get("description", ""),
+                    "testType": tc.get("test_type", "Functional"),
+                    "testPhase": tc.get("test_phase", "E2E"),
+                    "priority": tc.get("priority", "High"),
+                    "prerequisites": tc.get("prerequisites", ""),
+                    "testSteps": tc.get("test_steps", []),
+                    "expectedResult": tc.get("expected_result", ""),
+                    "status": "Not Executed",
+                })
+                tc_counter += 1
+
+        if mapped_testcases:
+            resp = requests.post(java_url, json=mapped_testcases, timeout=30.0)
+            if resp.status_code in [200, 201]:
+                print(f"  ✓ Stored {len(mapped_testcases)} test cases in Java backend")
+            else:
+                print(f"  ⚠ Java backend error: {resp.status_code}")
+    except Exception as e:
+        print(f"  ⚠ Failed to store in Java backend: {e}")
+
+    return {
+        "status": "success",
+        "total_requirements": result["total_requirements"],
+        "total_test_cases": result["total_test_cases"],
+        "s3_output": {
+            "json": f"s3://{bucket}/{s3_json_key}",
+            "excel": f"s3://{bucket}/{s3_excel_key}",
+        },
+    }

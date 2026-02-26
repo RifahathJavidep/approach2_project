@@ -1,0 +1,327 @@
+{
+  "project_name": "sample",
+  "test_plans": [
+    {
+      "requirement_id": "SAMPLE-001",
+      "requirement_title": "User Login with MFA",
+      "test_cases": [
+        {
+          "test_case_id": "TC-001",
+          "title": "Valid Login with Correct OTP",
+          "description": "Verify that the user is able to log in with a valid email, password, and correct OTP",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "User has a verified mobile number and SMS gateway is operational",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'john.doe@company.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Verify the MFA screen appears",
+            "Enter the 6-digit OTP sent to the registered mobile number",
+            "Click the 'Submit' button",
+            "Verify the user is logged in and redirected to the dashboard"
+          ],
+          "expected_result": "The user is logged in and redirected to the dashboard",
+          "test_data": {
+            "email": "john.doe@company.com",
+            "password": "password123",
+            "otp": "123456"
+          },
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-002",
+          "title": "Login with Expired OTP",
+          "description": "Verify that the user is unable to log in with an expired OTP",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "User has a verified mobile number and SMS gateway is operational",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'john.doe@company.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Verify the MFA screen appears",
+            "Wait for 5 minutes to expire the OTP",
+            "Enter the expired 6-digit OTP sent to the registered mobile number",
+            "Click the 'Submit' button",
+            "Verify an error message displays: 'OTP has expired'"
+          ],
+          "expected_result": "An error message displays: 'OTP has expired'",
+          "test_data": {
+            "email": "john.doe@company.com",
+            "password": "password123",
+            "otp": "123456"
+          },
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Account Lockout after 3 Failed Attempts",
+          "description": "Verify that the user account is locked out after 3 failed OTP attempts",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "User has a verified mobile number and SMS gateway is operational",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'john.doe@company.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Verify the MFA screen appears",
+            "Enter an incorrect 6-digit OTP sent to the registered mobile number",
+            "Click the 'Submit' button",
+            "Verify an error message displays: 'Invalid OTP'",
+            "Repeat steps 6-8 two more times",
+            "Verify the account is locked out and an error message displays: 'Account locked out for 30 minutes'"
+          ],
+          "expected_result": "The account is locked out and an error message displays: 'Account locked out for 30 minutes'",
+          "test_data": {
+            "email": "john.doe@company.com",
+            "password": "password123",
+            "otp": "123456"
+          },
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 3
+    },
+    {
+      "requirement_id": "SAMPLE-002",
+      "requirement_title": "Dashboard Data Export",
+      "test_cases": [
+        {
+          "test_case_id": "TC-001",
+          "title": "Export Dashboard Data as CSV",
+          "description": "Verify that the user is able to export dashboard analytics data in CSV format",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "User has export permissions and is logged in to the Dashboard page",
+          "test_steps": [
+            "Navigate to the Dashboard page",
+            "Verify the Export button is visible on the dashboard page",
+            "Click the Export button",
+            "Verify the export options dropdown appears",
+            "Select CSV from the export options dropdown",
+            "Select a custom date range for data filtering",
+            "Click the Export button to download the CSV file",
+            "Verify the CSV file downloads within 30 seconds",
+            "Verify the CSV file contains the same data displayed on the dashboard"
+          ],
+          "expected_result": "The user is able to export dashboard analytics data in CSV format and the file contains the same data displayed on the dashboard",
+          "test_data": "Custom date range: 2022-01-01 to 2022-01-31",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-002",
+          "title": "Export Dashboard Data as PDF",
+          "description": "Verify that the user is able to export dashboard analytics data in PDF format",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "User has export permissions and is logged in to the Dashboard page",
+          "test_steps": [
+            "Navigate to the Dashboard page",
+            "Verify the Export button is visible on the dashboard page",
+            "Click the Export button",
+            "Verify the export options dropdown appears",
+            "Select PDF from the export options dropdown",
+            "Select a custom date range for data filtering",
+            "Click the Export button to download the PDF file",
+            "Verify the PDF file downloads within 30 seconds",
+            "Verify the PDF file contains the same data displayed on the dashboard"
+          ],
+          "expected_result": "The user is able to export dashboard analytics data in PDF format and the file contains the same data displayed on the dashboard",
+          "test_data": "Custom date range: 2022-01-01 to 2022-01-31",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Export Dashboard Data as Excel",
+          "description": "Verify that the user is able to export dashboard analytics data in Excel format",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "User has export permissions and is logged in to the Dashboard page",
+          "test_steps": [
+            "Navigate to the Dashboard page",
+            "Verify the Export button is visible on the dashboard page",
+            "Click the Export button",
+            "Verify the export options dropdown appears",
+            "Select Excel from the export options dropdown",
+            "Select a custom date range for data filtering",
+            "Click the Export button to download the Excel file",
+            "Verify the Excel file downloads within 30 seconds",
+            "Verify the Excel file contains the same data displayed on the dashboard"
+          ],
+          "expected_result": "The user is able to export dashboard analytics data in Excel format and the file contains the same data displayed on the dashboard",
+          "test_data": "Custom date range: 2022-01-01 to 2022-01-31",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-004",
+          "title": "Export Dashboard Data with Date Filter",
+          "description": "Verify that the user is able to export dashboard analytics data with a custom date range filter",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "User has export permissions and is logged in to the Dashboard page",
+          "test_steps": [
+            "Navigate to the Dashboard page",
+            "Verify the Export button is visible on the dashboard page",
+            "Click the Export button",
+            "Verify the export options dropdown appears",
+            "Select CSV from the export options dropdown",
+            "Select a custom date range for data filtering: 2022-01-01 to 2022-01-15",
+            "Click the Export button to download the CSV file",
+            "Verify the CSV file downloads within 30 seconds",
+            "Verify the CSV file contains the same data displayed on the dashboard for the selected date range"
+          ],
+          "expected_result": "The user is able to export dashboard analytics data with a custom date range filter and the file contains the same data displayed on the dashboard",
+          "test_data": "Custom date range: 2022-01-01 to 2022-01-15",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-005",
+          "title": "Export Dashboard Data with Invalid Date Range",
+          "description": "Verify that the user is unable to export dashboard analytics data with an invalid date range filter",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Medium",
+          "prerequisites": "User has export permissions and is logged in to the Dashboard page",
+          "test_steps": [
+            "Navigate to the Dashboard page",
+            "Verify the Export button is visible on the dashboard page",
+            "Click the Export button",
+            "Verify the export options dropdown appears",
+            "Select CSV from the export options dropdown",
+            "Select an invalid date range for data filtering: 2022-02-01 to 2022-01-01",
+            "Click the Export button to download the CSV file",
+            "Verify an error message is displayed indicating an invalid date range"
+          ],
+          "expected_result": "The user is unable to export dashboard analytics data with an invalid date range filter and an error message is displayed",
+          "test_data": "Invalid date range: 2022-02-01 to 2022-01-01",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 5
+    },
+    {
+      "requirement_id": "SAMPLE-003",
+      "requirement_title": "Role-Based Access Control",
+      "test_cases": [
+        {
+          "test_case_id": "TC-001",
+          "title": "Admin Full Access",
+          "description": "Verify that the Admin user is able to view, edit, and delete all resources",
+          "test_type": "Non-Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "Admin user role assigned, resources exist in the system",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'admin@example.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Navigate to the Resource Management page",
+            "Verify the 'View' button is visible for a resource",
+            "Verify the 'Edit' button is visible for a resource",
+            "Verify the 'Delete' button is visible for a resource",
+            "Click the 'Edit' button for a resource",
+            "Make changes to the resource and click 'Save'",
+            "Verify the changes are reflected on the Resource Management page",
+            "Click the 'Delete' button for a resource",
+            "Verify the resource is removed from the Resource Management page"
+          ],
+          "expected_result": "The Admin user can view, edit, and delete resources without any restrictions",
+          "test_data": "admin@example.com, password123, existing resource",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-002",
+          "title": "Manager Restricted Delete",
+          "description": "Verify that the Manager user can view and edit but cannot delete resources",
+          "test_type": "Non-Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "Manager user role assigned, resources exist in the system",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'manager@example.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Navigate to the Resource Management page",
+            "Verify the 'View' button is visible for a resource",
+            "Verify the 'Edit' button is visible for a resource",
+            "Verify the 'Delete' button is not visible for a resource",
+            "Click the 'Edit' button for a resource",
+            "Make changes to the resource and click 'Save'",
+            "Verify the changes are reflected on the Resource Management page",
+            "Attempt to delete a resource and verify the 'Access Denied' message is displayed"
+          ],
+          "expected_result": "The Manager user can view and edit resources but cannot delete them",
+          "test_data": "manager@example.com, password123, existing resource",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Viewer Read-Only",
+          "description": "Verify that the Viewer user can only view resources",
+          "test_type": "Non-Functional",
+          "test_phase": "E2E",
+          "priority": "Medium",
+          "prerequisites": "Viewer user role assigned, resources exist in the system",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'viewer@example.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Navigate to the Resource Management page",
+            "Verify the 'View' button is visible for a resource",
+            "Verify the 'Edit' button is not visible for a resource",
+            "Verify the 'Delete' button is not visible for a resource",
+            "Attempt to edit a resource and verify the 'Access Denied' message is displayed",
+            "Attempt to delete a resource and verify the 'Access Denied' message is displayed"
+          ],
+          "expected_result": "The Viewer user can only view resources and cannot edit or delete them",
+          "test_data": "viewer@example.com, password123, existing resource",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-004",
+          "title": "Unauthorized Action",
+          "description": "Verify that unauthorized actions display the 'Access Denied' message",
+          "test_type": "Non-Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "Admin, Manager, and Viewer user roles assigned, resources exist in the system",
+          "test_steps": [
+            "Navigate to the Login page",
+            "Enter 'admin@example.com' in the 'Email' field",
+            "Enter 'password123' in the 'Password' field",
+            "Click the 'Sign In' button",
+            "Navigate to the Resource Management page",
+            "Attempt to perform an action that is not allowed for the Admin role (e.g. create a new resource without permission)",
+            "Verify the 'Access Denied' message is displayed",
+            "Logout and login as Manager",
+            "Attempt to perform an action that is not allowed for the Manager role (e.g. delete a resource)",
+            "Verify the 'Access Denied' message is displayed",
+            "Logout and login as Viewer",
+            "Attempt to perform an action that is not allowed for the Viewer role (e.g. edit a resource)",
+            "Verify the 'Access Denied' message is displayed"
+          ],
+          "expected_result": "Unauthorized actions display the 'Access Denied' message",
+          "test_data": "admin@example.com, password123, manager@example.com, password123, viewer@example.com, password123",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 4
+    }
+  ],
+  "total_requirements": 3,
+  "total_test_cases": 12
+}
