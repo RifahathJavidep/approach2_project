@@ -98,6 +98,38 @@ def find_duplicate_requirements(
     return new_requirements, duplicates_count
 
 
+def filter_unique_requirements(
+    project_id: str,
+    new_requirements: List[Dict],
+    threshold: float = DEFAULT_SIMILARITY_THRESHOLD,
+) -> List[Dict]:
+    """
+    Compare new requirements against existing ones and return ONLY the unique ones.
+    Duplicates are strictly filtered out (removed).
+    """
+    existing_requirements = _fetch_existing_requirements(project_id)
+    
+    if not existing_requirements:
+        return new_requirements
+        
+    unique_requirements = []
+    
+    for new_req in new_requirements:
+        best_match = _find_best_match(new_req, existing_requirements, threshold)
+        
+        if not best_match:
+            # No semantic match above threshold -> it is unique
+            unique_requirements.append(new_req)
+        else:
+            # Skip/discard the duplicate
+            existing_req, score = best_match
+            new_title = new_req.get('title') or new_req.get('short_title') or ''
+            existing_title = existing_req.get('short_title') or existing_req.get('title') or ''
+            print(f"  [Filter] REMOVING DUPLICATE ({score:.0%}): '{new_title}' \u2248 '{existing_title}'")
+            
+    return unique_requirements
+
+
 # =============================================================================
 # BACKEND API CALLS
 # =============================================================================

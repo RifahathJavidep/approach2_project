@@ -172,6 +172,29 @@ async def get_requirements(project_id: str):
         )
 
 
+def _is_document_already_processed(project_id: str, file_urls: List[str]) -> bool:
+    """
+    Check if any of these documents already exist in the project statuses.
+    """
+    try:
+        java_backend_url = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+        url = f"{java_backend_url}/api/document-statuses/projects/{project_id}"
+        response = requests.get(url, timeout=10)
+        
+        if response.status_code == 200:
+            existing_docs = response.json()
+            # If backend returns a list of objects with 'documentUrl'
+            existing_urls = {d.get("documentUrl") for d in existing_docs if d.get("documentUrl")}
+            
+            for f_url in file_urls:
+                if f_url in existing_urls:
+                    return True
+        return False
+    except Exception as e:
+        print(f"  [App] Check duplicate document failed: {e}")
+        return False
+
+
 # ============================================================================
 # MAIN
 # ============================================================================
@@ -180,24 +203,24 @@ async def get_requirements(project_id: str):
 async def extract_requirements_async(request: ExtractionRequest):
     """
     Asynchronous version of the extraction endpoint.
-    Queues the task in Celery and returns a task_id immediately.
+    1. Checks if document already exists in project.
+    2. Queues the CLEAN extraction task (removes duplicate BRs).
     """
-    project_id = request.project_id
+    project_id = str(request.project_id)
     file_urls = request.file_urls
     
     if not project_id:
         raise HTTPException(status_code=400, detail="No project_id provided")
 
-    # Check local model
-    model_dir = Path(__file__).parent / "models" / str(project_id)
-    model_path = model_dir / "classifier_model.json"
-    existing_model_state = None
-    if model_path.exists():
-        try:
-            with open(model_path, 'r') as f:
-                existing_model_state = json.load(f)
-        except Exception:
-            pass
+    # =============================================================
+    # NEW LOGIC: Document Duplication Check
+    # =============================================================
+    if _is_document_already_processed(project_id, file_urls):
+        return {
+            "status": "conflict",
+            "message": "This document has already been uploaded and processed for this project.",
+            "document_urls": file_urls
+        }
 
     # Create temp directory
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_async_{project_id}")
@@ -206,7 +229,7 @@ async def extract_requirements_async(request: ExtractionRequest):
     os.makedirs(input_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
-    # Download files (Worker will need local paths)
+    # Download files
     from s3_utils import download_from_s3
     local_files = []
     for url in file_urls:
@@ -219,26 +242,23 @@ async def extract_requirements_async(request: ExtractionRequest):
     if not local_files:
         raise HTTPException(status_code=400, detail="Failed to download any files from S3")
 
-    # POST initial PENDING status to Java backend (best-effort)
-    # Returns the created records with their database IDs
-    document_statuses = update_document_statuses(str(project_id), file_urls, "PENDING")
-    print(f"  [App] Java backend returned {len(document_statuses)} status records: {document_statuses}")
+    # POST initial PENDING status to Java backend
+    document_statuses = update_document_statuses(project_id, file_urls, "PENDING")
 
-    # Dispatch to Celery — pass the document status records so the worker
-    # can UPDATE by ID instead of creating duplicate rows
-    task = extract_requirements_task.delay(
-        project_id=str(project_id),
+    # Dispatch to the NEW Duplication-Aware Task
+    from celery_app import extract_and_filter_duplicates_task
+    task = extract_and_filter_duplicates_task.delay(
+        project_id=project_id,
         local_files=local_files,
         output_dir=output_dir,
-        existing_model_state=existing_model_state,
-        multi_project_config=None,
         file_urls=file_urls,
         document_statuses=document_statuses,
     )
+
     return {
         "status": "accepted",
         "task_id": task.id,
-        "message": "Requirement extraction queued successfully",
+        "message": "Clean extraction queued successfully. Duplicates will be filtered out before storage.",
         "document_statuses": document_statuses,
     }
 

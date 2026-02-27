@@ -275,3 +275,130 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
             "excel": f"s3://{bucket}/{s3_excel_key}",
         },
     }
+
+
+@app.task(name="extract_and_filter_duplicates_task", bind=True)
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, file_urls=None, document_statuses=None):
+    """
+    CLEAN EXTRACTION FLOW:
+    1. Extract requirements from files.
+    2. Fetch PREVIOUSLY created BRs from Java backend.
+    3. Remove duplicates using Cosine Similarity.
+    4. Store only UNIQUE BRs in database.
+    """
+    if BASE_DIR not in sys.path:
+        sys.path.insert(0, BASE_DIR)
+
+    try:
+        from extraction.pipeline import extract_from_files, _get_lm
+        from document_status import update_status_by_id, update_document_statuses
+        from duplication_service import filter_unique_requirements
+        from datetime import datetime
+        import requests
+        import dspy
+    except ImportError as e:
+        raise ImportError(f"Cannot find modules in {BASE_DIR}. Error: {e}")
+
+    self.update_state(state='PROGRESS', meta={'message': 'Starting clean extraction'})
+
+    # ---------------------------------------------------------
+    # Status Management (Mapping IDs)
+    # ---------------------------------------------------------
+    filename_to_id = {}
+    if document_statuses:
+        for record in document_statuses:
+            url = record.get('documentUrl', '')
+            doc_id = record.get('id')
+            if url and doc_id:
+                clean_url = urllib.parse.unquote(url)
+                fname = clean_url.split('/')[-1]
+                filename_to_id[fname] = doc_id
+
+    def status_callback(file_path, status):
+        fname = Path(file_path).name
+        doc_id = filename_to_id.get(fname)
+        s3_url = next((u for u in file_urls if fname in urllib.parse.unquote(u)), None) if file_urls else None
+        if doc_id and s3_url:
+            update_status_by_id(project_id, doc_id, s3_url, status)
+
+    try:
+        # Step 1: Run Extraction
+        with dspy.context(lm=_get_lm()):
+            result = extract_from_files(
+                project_name=project_id,
+                file_paths=local_files,
+                output_dir=output_dir,
+                status_callback=status_callback,
+            )
+
+        extracted_reqs = result.get("requirements", [])
+        if not extracted_reqs:
+            return {"status": "success", "message": "No requirements found on page", "stored_count": 0}
+
+        # Step 2: Fetch and Filter Duplicates (REMOVE duplicates)
+        self.update_state(state='PROGRESS', meta={'message': 'Filtering duplicate requirements'})
+        unique_reqs = filter_unique_requirements(
+            project_id=project_id,
+            new_requirements=extracted_reqs,
+            threshold=0.85
+        )
+
+        # Step 3: Store ONLY UNIQUE BRs as drafts
+        if unique_reqs:
+            java_backend_url = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+            java_url = f"{java_backend_url}/api/requirements/project/{project_id}"
+            now = datetime.now().isoformat()
+            
+            mapped = []
+            for r in unique_reqs:
+                mapped.append({
+                    "is_requirement": True,
+                    "short_title": r.get("title") or r.get("short_title", ""),
+                    "description": r.get("description", ""),
+                    "user_story": r.get("user_story", ""),
+                    "acceptance_criteria": r.get("acceptance_criteria", []),
+                    "test_steps": r.get("test_steps", []),
+                    "test_scenarios": r.get("test_scenarios", []),
+                    "assumptions": r.get("assumptions", []),
+                    "ambiguities": r.get("ambiguities", []),
+                    "confidence": r.get("confidence", "high"),
+                    "extraction_model": "llama-3.3-70b-versatile",
+                    "extraction_timestamp": now,
+                    "validation_confirmed": True,
+                    "metadata": {
+                        "source_file": file_urls[0] if file_urls else "unknown",
+                        "page_start": 0,
+                        "page_end": 0,
+                        "extraction_timestamp": now,
+                        "extraction_model": "llama-3.3-70b-versatile",
+                        "validation_confirmed": True,
+                    },
+                })
+
+            resp = requests.post(java_url, json=mapped, timeout=30)
+            print(f"  [Celery] Filtered {len(extracted_reqs)} -> {len(unique_reqs)}. Saved clean records.")
+
+        # Step 4: Finalize Document Status
+        if file_urls:
+            for url in file_urls:
+                fname = urllib.parse.unquote(url).split('/')[-1]
+                doc_id = filename_to_id.get(fname)
+                if doc_id:
+                    update_status_by_id(project_id, doc_id, url, "COMPLETED")
+
+        return {
+            "status": "success",
+            "extracted": len(extracted_reqs),
+            "stored_unique": len(unique_reqs),
+            "removed_duplicates": len(extracted_reqs) - len(unique_reqs)
+        }
+
+    except Exception as e:
+        print(f"  [Celery] Clean Async Extraction Failed: {e}")
+        if file_urls:
+            for url in file_urls:
+                fname = urllib.parse.unquote(url).split('/')[-1]
+                doc_id = filename_to_id.get(fname)
+                if doc_id:
+                    update_status_by_id(project_id, doc_id, url, "FAILED")
+        raise e
