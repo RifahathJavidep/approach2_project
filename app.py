@@ -71,7 +71,8 @@ class ExtractionResponse(BaseModel):
     s3_output: dict
 
 class ManualExtractionRequest(BaseModel):
-    """Request body for POST /manual-extract"""
+    """Request body for POST /manual-extract and /manual-extract-dspy"""
+    project_id: Union[str, int]  # Project ID for duplication checks
     document_url: str   # S3 URL or S3 key
     description: str    # User's brief description (semantic anchor)
     page_no: int        # 1-indexed page or slide number
@@ -321,16 +322,17 @@ async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
     - WorkflowRequirementExtractor
     - TechnicalRequirementExtractor
 
-    This produces HIGHER QUALITY requirements compared to /manual-extract
-    because it uses trained, validated extraction with multi-layer analysis.
+    Includes duplication detection:
+    1. Requirement-level: Checks new requirements against existing ones (TF-IDF)
 
     Input:
-      - document_url: S3 URL of the document
-      - description:  Brief description (semantic anchor)
-      - page_no:      1-indexed page number
+      - project_id:   Project ID for scoping duplication checks
+      - document_url:  S3 URL of the document
+      - description:   Brief description (semantic anchor)
+      - page_no:       1-indexed page number
 
     Returns:
-      - status: "success" or "no_requirements"
+      - status: "success", "no_requirements"
       - requirements: list of structured requirement dicts
       - extraction_method: "dspy_trained"
     """
@@ -338,26 +340,70 @@ async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
     try:
         from s3_utils import download_from_s3
         from extraction.manual_dspy import ManualDSPyExtractor
+        from duplication_service import find_duplicate_requirements
         import dspy
+
+        project_id = str(request.project_id)
 
         if request.page_no < 1:
             raise HTTPException(status_code=400, detail="page_no must be 1 or greater")
         if not request.description.strip():
             raise HTTPException(status_code=400, detail="description cannot be empty")
 
-        # Download file from S3
+        # =============================================================
+        # STEP 1: Download file and run DSPy extraction
+        # =============================================================
         tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_dspy_{os.getpid()}")
         os.makedirs(tmp_dir, exist_ok=True)
         local_path = download_from_s3(request.document_url, tmp_dir)
 
-        # Run DSPy extraction
         extractor = ManualDSPyExtractor()
         result = extractor.extract_from_page(
             file_path=local_path,
             description=request.description,
             page_no=request.page_no,
         )
-        return result
+
+        # If no requirements extracted, return as-is
+        if result.get("status") != "success" or not result.get("requirements"):
+            return result
+
+        new_requirements = result["requirements"]
+
+        # =============================================================
+        # STEP 2: Requirement-level duplication check
+        #         Sets is_duplicate + duplicate_of on each requirement
+        # =============================================================
+        requirements, duplicates_count = find_duplicate_requirements(
+            project_id=project_id,
+            new_requirements=new_requirements,
+        )
+
+        # =============================================================
+        # STEP 3: Store ALL requirements in main requirements table
+        #         (both duplicates and unique — full BR data)
+        # =============================================================
+        _store_manual_requirements(
+            project_id=project_id,
+            requirements=requirements,
+            document_url=request.document_url,
+            page_no=request.page_no,
+        )
+
+        # =============================================================
+        # STEP 4: Return unified response
+        #         Always same shape — each requirement has is_duplicate
+        #         + duplicate_of with full existing requirement details
+        # =============================================================
+        return {
+            "status": "success",
+            "requirements": requirements,
+            "total_extracted": len(requirements),
+            "duplicates_count": duplicates_count,
+            "source_page": request.page_no,
+            "source_file": Path(request.document_url).name,
+            "extraction_method": "dspy_trained",
+        }
 
     except HTTPException:
         raise
@@ -368,6 +414,64 @@ async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
     finally:
         if tmp_dir and os.path.exists(tmp_dir):
             shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+def _store_manual_requirements(
+    project_id: str,
+    requirements: list,
+    document_url: str,
+    page_no: int = 1,
+) -> None:
+    """
+    Store manually extracted requirements as drafts in the Java backend.
+    POST /api/requirements/drafts/project/{project_id}
+
+    Payload matches existing drafts API exactly — including placeholders for
+    start_line, end_line, and verbatim_text in metadata.
+    """
+    try:
+        import requests as req_lib
+
+        java_backend_url = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+        java_url = f"{java_backend_url}/api/requirements/drafts/project/{project_id}"
+
+        now = datetime.now().isoformat()
+        mapped = []
+        for r in requirements:
+            mapped.append({
+                "is_requirement": True,
+                "short_title": r.get("title") or r.get("short_title", ""),
+                "description": r.get("description", ""),
+                "user_story": r.get("user_story", ""),
+                "acceptance_criteria": r.get("acceptance_criteria", []),
+                "test_steps": r.get("test_steps", []),
+                "test_scenarios": r.get("test_scenarios", []),
+                "assumptions": r.get("assumptions", []),
+                "ambiguities": r.get("ambiguities", []),
+                "confidence": r.get("confidence", "high"),
+                "extraction_model": "llama-3.3-70b-versatile",
+                "extraction_timestamp": now,
+                "validation_confirmed": True,
+                "metadata": {
+                    "source_file": document_url,
+                    "page_start": page_no,
+                    "page_end": page_no,
+                    "start_line": 0,
+                    "end_line": 0,
+                    "verbatim_text": "",
+                    "extraction_timestamp": now,
+                    "extraction_model": "llama-3.3-70b-versatile",
+                    "validation_confirmed": True,
+                },
+            })
+
+        response = req_lib.post(java_url, json=mapped, timeout=30)
+        if response.status_code in [200, 201]:
+            print(f"  ✓ Stored {len(mapped)} requirements in Java backend (project {project_id})")
+        else:
+            print(f"  ⚠ Java backend returned {response.status_code}: {response.text}")
+    except Exception as e:
+        print(f"  ⚠ Failed to store requirements: {e}")
 
 
 # ============================================================================
