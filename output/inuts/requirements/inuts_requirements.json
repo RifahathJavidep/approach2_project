@@ -2,723 +2,292 @@
   "project": "inuts",
   "requirements": [
     {
-      "title": "Warranty Information Management",
-      "description": "Integrate with ESIDE to fetch warranty information and develop a data model to store warranty information for devices.",
-      "type": "Architecture",
-      "user_story": "As a user, I want to see my device warranty information, so that I can manage my account.",
+      "title": "Usage Display and Breakdown",
+      "description": "Display data, voice, SMS, and LD usages, as well as breakdown of roaming, overage, and in-plan usages",
+      "type": "Functional",
+      "user_story": "As a user, I want to view my data, voice, SMS, and LD usages, as well as breakdown of roaming, overage, and in-plan usages, so that I can understand my usage patterns",
       "acceptance_criteria": [
-        "Warranty information is accurately fetched from ESIDE",
-        "Dashboard is populated with the warranty information"
+        "Data, voice, SMS, and LD usages are displayed",
+        "Breakdown of roaming, overage, and in-plan usages is displayed"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Trigger a request for warranty information",
-          "expected_result": "Dashboard is populated with the warranty information",
-          "test_data": "Simulated warranty information request"
-        }
-      ],
-      "test_scenarios": [
-        "Warranty information fetch test"
-      ],
-      "assumptions": [
-        "ESIDE integration is available"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-001"
     },
     {
-      "title": "Dashboard Integration",
-      "description": "Integrate with Kafka and Analance to provide key wireless management insights and actions in a single dashboard.",
-      "type": "Architecture",
-      "user_story": "As a user, I want a unified dashboard to manage my wireless services, so that I can have a streamlined experience.",
+      "title": "Dashboard and Metrics",
+      "description": "Display key wireless management insights and actions, including subscriber metrics and BANS and groups metrics",
+      "type": "Functional",
+      "user_story": "As a user, I want to view key wireless management insights and actions, including subscriber metrics and BANS and groups metrics, so that I can easily manage my wireless services",
       "acceptance_criteria": [
-        "Dashboard displays key metrics such as number of active subscribers, suspended subscribers, and cancelled subscribers",
-        "Dashboard shows total number of BANS and groups",
-        "Usage summary is available and can toggle between data, voice, long distance, and text messaging"
+        "The dashboard displays key wireless management insights and actions",
+        "The dashboard displays subscriber metrics",
+        "The dashboard displays BANS and groups metrics"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Login to the dashboard",
-          "expected_result": "Dashboard loads with key metrics and usage summary",
-          "test_data": "Valid user credentials"
-        }
-      ],
-      "test_scenarios": [
-        "Dashboard load test",
-        "Usage summary toggle test"
-      ],
-      "assumptions": [
-        "Kafka and Analance integrations are available"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-002"
     },
     {
-      "title": "Detailed Table for Plans and Subscribers",
-      "description": "A detailed table for shareplans and individual plans, including billing account, plan name, number of subscribers, allowance, used, and overage data.",
+      "title": "Order and Shopping Management",
+      "description": "Manage orders and shopping, including displaying latest orders and providing ability to view all orders",
       "type": "Functional",
-      "user_story": "As a customer, I want to see a detailed breakdown of my plans and subscribers, so that I can understand my usage patterns.",
+      "user_story": "As a user, I want to manage orders and shopping, including displaying latest orders and providing ability to view all orders, so that I can easily track my orders",
       "acceptance_criteria": [
-        "Selection of plan group brings customer to separate table with listed details",
-        "Data is sorted based by billing account's alphabetical order"
+        "The system displays latest orders",
+        "The system provides ability to view all orders"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Select a plan group",
-          "expected_result": "The detailed table is displayed",
-          "test_data": "Plan group with multiple billing accounts"
-        }
-      ],
-      "test_scenarios": [
-        "Plan group with multiple billing accounts"
-      ],
-      "assumptions": [
-        "The customer has multiple plan groups"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-003"
     },
     {
-      "title": "User Management and Access Control",
-      "description": "Manage users and their access to the dashboard, including role-based access and permissions.",
+      "title": "System Integration and Infrastructure",
+      "description": "Integrate with Kafka to receive unbilled usages and provide system infrastructure",
       "type": "Functional",
-      "user_story": "As a customer, I want to manage my users and their access to the dashboard, so that I can control who can access my services.",
+      "user_story": "As a user, I want the system to integrate with Kafka and provide system infrastructure, so that I can receive unbilled usages and have a stable system",
       "acceptance_criteria": [
-        "The user can create a new user",
-        "The user can manage existing users"
+        "The system integrates with Kafka to receive unbilled usages",
+        "The system provides system infrastructure"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Create a new user",
-          "expected_result": "The new user is created successfully",
-          "test_data": "Valid user credentials"
-        }
-      ],
-      "test_scenarios": [
-        "Valid user credentials",
-        "Invalid user credentials"
-      ],
-      "assumptions": [
-        "The user has the necessary permissions to manage users"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "medium",
       "requirement_id": "INUTS-004"
     },
     {
-      "title": "Export Feature Implementation",
-      "description": "Implementation of export feature within each corresponding widget - CSV, PDF, EXCEL, PNG, and JPEG files.",
+      "title": "Warranty Expiration Date Display",
+      "description": "Display warranty expiration date",
       "type": "Functional",
-      "user_story": "As a user, I want to export data in various formats, so that I can analyze and share it easily.",
+      "user_story": "As a customer, I want to see my warranty expiration date, so that I can manage my account effectively",
       "acceptance_criteria": [
-        "Export feature is implemented within each corresponding widget",
-        "Billed data is exposed to dashboard for export"
+        "Providing standard manufacturer warranty expiration details of device from the date of activation"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Login to the dashboard",
-          "expected_result": "User is logged in successfully",
-          "test_data": "Valid credentials"
-        }
-      ],
-      "test_scenarios": [
-        "Export data in CSV format",
-        "Export data in PDF format"
-      ],
-      "assumptions": [
-        "User has valid credentials",
-        "Dashboard is accessible"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-005"
     },
     {
-      "title": "Grey Market Device Requirements",
-      "description": "Grey market device requirements, including BYOD and dealer devices, with specific warranty displays within subscriber pages based on scenarios.",
+      "title": "Selectable Data Groupings",
+      "description": "Provide selectable data groupings to switch the dashboard's view between Data, Voice, Long Distance, and SMS",
       "type": "Functional",
-      "user_story": "As a subscriber, I want to see the warranty information for my device, so that I can understand my warranty coverage.",
+      "user_story": "As a user, I want to select data groupings to switch the dashboard's view, so that I can view the relevant data",
       "acceptance_criteria": [
-        "Warranty information is displayed within subscriber pages",
-        "Warranty information is accurate and up-to-date"
+        "The system provides selectable data groupings that switch the dashboard's view between Data, Voice, Long Distance, and SMS"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Log in to subscriber page",
-          "expected_result": "Warranty information is displayed",
-          "test_data": "Subscriber credentials"
-        }
-      ],
-      "test_scenarios": [
-        "Warranty information display for BYOD devices",
-        "Warranty information display for dealer devices"
-      ],
-      "assumptions": [
-        "Warranty information is available for all devices"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "medium",
       "requirement_id": "INUTS-006"
     },
     {
-      "title": "Data Units and Colour Coding",
-      "description": "The dashboard should display data units and colour coding for usage types, such as minutes, messages, and MB/GB.",
+      "title": "Monthly Bar Chart Display",
+      "description": "Display a monthly Bar Chart reflecting data usage for the last 14 months",
       "type": "Functional",
-      "user_story": "As a user, I want to view usage data in a clear and understandable format, so that I can make informed decisions.",
+      "user_story": "As a user, I want to see a monthly Bar Chart reflecting data usage, so that I can view the relevant data",
       "acceptance_criteria": [
-        "The dashboard displays data units and colour coding for usage types",
-        "The dashboard uses a consistent and intuitive colour coding scheme"
+        "The system displays a monthly Bar Chart reflecting data usage for the last 14 months"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "View the dashboard with sample usage data",
-          "expected_result": "The dashboard displays data units and colour coding for usage types",
-          "test_data": "Sample usage data"
-        }
-      ],
-      "test_scenarios": [
-        "Valid usage data",
-        "Invalid or missing usage data"
-      ],
-      "assumptions": [
-        "The usage data is correctly formatted and available for display"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "medium",
       "requirement_id": "INUTS-007"
     },
     {
-      "title": "Back Button Navigation",
-      "description": "Back button implementation for easy navigation.",
+      "title": "Drilldown View",
+      "description": "Provide a drilldown view reflecting data when a Bar Graph is selected",
       "type": "Functional",
-      "user_story": "As a customer, I want to navigate back to previous views, so that I can easily continue using the dashboard.",
+      "user_story": "As a user, I want to see a drilldown view when I select a Bar Graph, so that I can view the relevant data",
       "acceptance_criteria": [
-        "Clicking back button brings user back to previous view with interaction prompt visible"
+        "The system provides a drilldown view reflecting data when a Bar Graph is selected"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click the back button",
-          "expected_result": "User is brought back to the previous view",
-          "test_data": "Back button functionality"
-        }
-      ],
-      "test_scenarios": [
-        "Back button test"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-008"
     },
     {
-      "title": "Quick Links Area",
-      "description": "Provide quick links area to provide customers easier opportunity to connect to other Bell tools.",
+      "title": "Shared Plans Usage Breakdown",
+      "description": "Provide a table summarizing roaming, overage, and in-plan usage for shared plans",
       "type": "Functional",
-      "user_story": "As a BBM wireless subscriber, I want to access other Bell tools quickly, so that I can manage my account and services effectively.",
+      "user_story": "As a user, I want to see a table summarizing roaming, overage, and in-plan usage for shared plans, so that I can view the relevant data",
       "acceptance_criteria": [
-        "Provide quick links area",
-        "Link to other Bell tools"
+        "The system provides a table summarizing roaming, overage, and in-plan usage for shared plans"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "View quick links area",
-          "expected_result": "The dashboard displays quick links area",
-          "test_data": "Valid quick links data"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing quick links area",
-        "Accessing other Bell tools"
-      ],
-      "assumptions": [
-        "The dashboard will have access to other Bell tools",
-        "The dashboard will be able to handle redirects to other Bell tools"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-009"
     },
     {
-      "title": "Show Button",
-      "description": "Display a show button to view additional information.",
+      "title": "In-plan Usage Threshold Donut Wheel",
+      "description": "Display a donut wheel visual reflecting the corresponding data for only the current month's selection",
       "type": "Functional",
-      "user_story": "As a user, I want to view additional information by clicking a show button, so that I can easily access more details.",
+      "user_story": "As a customer, I want to see a donut wheel visual reflecting the corresponding data for only the current month's selection, so that I can understand my usage",
       "acceptance_criteria": [
-        "Display a show button",
-        "Allow users to view additional information by clicking the show button"
+        "\"Donut Wheel\" renders accordingly to page - (Under 75%, 75\u201395%, Over 95%)"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Navigate to the page with the show button",
-          "expected_result": "The show button is displayed and functional",
-          "test_data": "Sample data"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing additional information",
-        "Clicking the show button"
-      ],
-      "assumptions": [
-        "Additional information is available",
-        "User has necessary permissions"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-010"
     },
     {
-      "title": "User Roles and Permissions",
-      "description": "The system should provide role-based access to the dashboard, with different levels of permission for viewing and managing usage.",
+      "title": "Breakdown Table Back Button",
+      "description": "Implement a back button to bring customer back to 14-month bar chart view",
       "type": "Functional",
-      "user_story": "As a user, I want to access the dashboard based on my role, so that I can perform my job functions.",
+      "user_story": "As a customer, I want to use a back button to return to the 14-month bar chart view, so that I can navigate easily",
       "acceptance_criteria": [
-        "The system checks the user's role and permissions before granting access to the dashboard",
-        "The system displays the correct level of usage information based on the user's role and permissions"
+        "Clicking back button within each Table brings user back to previous view with interaction prompt visible"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Log in to the dashboard with a valid user role",
-          "expected_result": "The dashboard displays the correct level of usage information",
-          "test_data": "Sample user credentials"
-        }
-      ],
-      "test_scenarios": [
-        "Valid user credentials with correct role and permissions",
-        "Invalid user credentials or incorrect role and permissions"
-      ],
-      "assumptions": [
-        "The user roles and permissions are correctly configured in the system"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "medium",
       "requirement_id": "INUTS-011"
     },
     {
-      "title": "Prevent Regression of Defect SADRSTRANG-13583",
-      "description": "Prevent regression of defect SADRSTRANG-13583.",
-      "type": "Non-Functional",
-      "user_story": "As a BBM wireless subscriber, I want the system to prevent regression of known defects, so that I can use the system reliably.",
+      "title": "Individual Plans Detail Table Display",
+      "description": "Display detailed information about individual plans",
+      "type": "Functional",
+      "user_story": "As a customer, I want to see detailed information about my individual plans, so that I can better manage my usage",
       "acceptance_criteria": [
-        "Prevent regression of defect SADRSTRANG-13583"
+        "Selecting # of individual plan subscribers corresponding to the Data Usage type brings customer to separate table with listed details"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Test the system with defect SADRSTRANG-13583",
-          "expected_result": "The system does not exhibit the defect",
-          "test_data": "Valid test data for defect SADRSTRANG-13583"
-        }
-      ],
-      "test_scenarios": [
-        "Testing for defect SADRSTRANG-13583"
-      ],
-      "assumptions": [
-        "The system has been updated to prevent regression of defect SADRSTRANG-13583"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-012"
     },
     {
-      "title": "Billed Month Drilldown",
-      "description": "A feature to drill down into billed month data.",
-      "type": "Non-Functional",
-      "user_story": "As a user, I want to drill down into my billed month data.",
+      "title": "Shop now Button Functionality",
+      "description": "Implement a shop now button on the top right of the Shopping and orders box",
+      "type": "Functional",
+      "user_story": "As a customer, I want to access the shop from the Shopping and Orders box, so that I can place new orders easily",
       "acceptance_criteria": [
-        "Drilldown displays correct billed month data"
+        "Button correctly brings user to https://shop.enterprisecentre.bell.ca/devices"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click on billed month drilldown",
-          "expected_result": "Correct billed month data is displayed",
-          "test_data": "Sample billed month data"
-        }
-      ],
-      "test_scenarios": [
-        "Billed month drilldown test"
-      ],
-      "assumptions": [
-        "User has necessary permissions to view billed month data"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [],
       "ambiguities": [],
-      "confidence": "medium",
       "requirement_id": "INUTS-013"
     },
     {
-      "title": "Unified Dashboard for Wireless Management Insights",
-      "description": "A single dashboard to display data, voice, SMS, and LD usages through graphical design, with breakdown of roaming, overage, and in-plan usages for each insight.",
-      "type": "UI",
-      "user_story": "As a customer, I want to view my wireless management insights in a single dashboard, so that I can easily manage my account.",
+      "title": "Export Feature",
+      "description": "Provide ability for customer to export dashboard details",
+      "type": "Functional",
+      "user_story": "As a user, I want to be able to export my dashboard details, so that I can save and review my data",
       "acceptance_criteria": [
-        "Display data, voice, SMS, and LD usages through graphical design",
-        "Breakdown of roaming, overage, and in-plan usages for each insight"
+        "Ability to export dashboard details is available"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Open the wireless management insights dashboard",
-          "expected_result": "The dashboard displays data, voice, SMS, and LD usages through graphical design"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing data usage",
-        "Viewing voice usage"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-014"
     },
     {
-      "title": "Shopping and Orders Management",
-      "description": "A feature displaying shopping and orders insights, including in-progress, completed, and cancelled orders.",
-      "type": "UI",
-      "user_story": "As a customer, I want to view my shopping and orders insights, so that I can track my orders and make informed decisions.",
+      "title": "NAG Filter",
+      "description": "Provide ability to filter dashboard and information by filtering to appropriate NAG",
+      "type": "Functional",
+      "user_story": "As a user, I want to be able to filter my dashboard and information by NAG, so that I can view the data that is relevant to me",
       "acceptance_criteria": [
-        "The shopping and orders insights are displayed",
-        "The insights include in-progress, completed, and cancelled orders"
+        "Ability to filter dashboard and information by NAG is available"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click on the shopping and orders tab",
-          "expected_result": "The shopping and orders insights are displayed"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing shopping and orders insights"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-015"
     },
     {
-      "title": "NAG Favoriting",
-      "description": "Ability to favorite specific NAG for default view, allowing customers to see favorited NAG when first logging into My Dashboard.",
-      "type": "UI",
-      "user_story": "As a customer, I want to favorite a specific NAG, so that I can easily view it when I log in.",
+      "title": "Quick Links Area",
+      "description": "Provide quick links area to provide customers easier opportunity to connect to other Bell tools",
+      "type": "Functional",
+      "user_story": "As a user, I want to have easy access to quick links that connect me to other Bell tools, so that I can quickly access the tools I need",
       "acceptance_criteria": [
-        "Ability to select NAG as favorite",
-        "Favorited NAG to be shown as default upon Admin log in"
+        "Quick links area is provided to connect to other Bell tools"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click on the favorite button",
-          "expected_result": "The NAG is marked as favorite"
-        }
-      ],
-      "test_scenarios": [
-        "Favoriting a NAG",
-        "Viewing favorited NAG"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-016"
     },
     {
-      "title": "Usage and Metric Visualization",
-      "description": "Features for visualizing and interacting with usage data, including metric tiles, usage summary tabs, interaction prompts, shared and individual plans usage breakdowns, and in-plan usage threshold visualizations.",
-      "type": "UI",
-      "user_story": "As a customer, I want to visualize my usage data in various formats, so that I can easily understand and manage my account.",
+      "title": "Bill Cycle Information Display",
+      "description": "Display the customer's Open date and Close date for their billing cycle",
+      "type": "Functional",
+      "user_story": "As a user, I want to see my billing cycle information, so that I can view the relevant data",
       "acceptance_criteria": [
-        "Accurate data is reflected in all visualizations",
-        "All visualizations are interactive and update in real-time"
+        "The system displays the customer's Open date and Close date for their billing cycle"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "View the metric tiles",
-          "expected_result": "The tiles display accurate data"
-        },
-        {
-          "step_num": 2,
-          "action": "Interact with the usage summary tabs",
-          "expected_result": "The tabs update the display accordingly"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing metric tiles",
-        "Interacting with usage summary tabs"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-017"
     },
     {
-      "title": "Customer Dashboard",
-      "description": "A personalized dashboard for customers to view their account and usage information.",
-      "type": "UI",
-      "user_story": "As a customer, I want a personalized dashboard, so that I can view my account and usage information in one place.",
+      "title": "Redirection to Filtered View",
+      "description": "Redirect the user to a filtered view within My Inventory once a metric tile is selected",
+      "type": "Functional",
+      "user_story": "As a user, I want to be redirected to a filtered view within My Inventory when I select a metric tile, so that I can view the relevant data",
       "acceptance_criteria": [
-        "The dashboard displays all relevant customer information",
-        "The dashboard is personalized to each customer"
+        "The system redirects the user to a filtered view within My Inventory once a metric tile is selected"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Log in to the dashboard",
-          "expected_result": "The dashboard displays the customer's information"
-        }
-      ],
-      "test_scenarios": [
-        "Logging in to the dashboard"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-018"
     },
     {
-      "title": "NAG (Group) Filter",
-      "description": "A filtering mechanism to view information by NAG.",
-      "type": "UI",
-      "user_story": "As a customer, I want to filter my view by NAG, so that I can easily manage my account.",
+      "title": "Ability to Drill Down on Details of Billed and Unbilled Usages",
+      "description": "Ability to drill down on details of both billed and unbilled usages of the Customer's NAG",
+      "type": "Functional",
+      "user_story": "As a user, I want to be able to drill down on the details of my billed and unbilled usages, so that I can understand my usage patterns in more detail",
       "acceptance_criteria": [
-        "The filter is functional",
-        "The filter updates the display in real-time"
+        "Ability to drill down on details of billed and unbilled usages is available"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Apply the NAG filter",
-          "expected_result": "The display updates to reflect the filtered information"
-        }
-      ],
-      "test_scenarios": [
-        "Applying the NAG filter"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-019"
     },
     {
-      "title": "Latest Orders Table",
-      "description": "A table displaying the latest orders.",
-      "type": "UI",
-      "user_story": "As a customer, I want to view my latest orders, so that I can track my orders.",
+      "title": "Dashboard Navigation",
+      "description": "The system navigates through dashboard widgets to show drill-down/toggle scenarios for data, voice, LD, and SMS usages",
+      "type": "Functional",
+      "source_quote": "Navigation through dashboard widgets to show drill down/toggle scenarios for Data, Voice, LD and SMS usages",
+      "extraction_type": "direct_mandate",
+      "confidence": "high",
+      "user_story": "As a user, I want the system to navigate through dashboard widgets, so that I can view drill-down/toggle scenarios for data, voice, LD, and SMS usages",
       "acceptance_criteria": [
-        "The table displays the correct latest orders",
-        "The table has columns for Order ID, Date, and Status Badge"
+        "The system navigates through dashboard widgets to show drill-down/toggle scenarios for data, voice, LD, and SMS usages"
       ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Navigate to the Latest Orders Table",
-          "expected_result": "The table is displayed with the correct orders"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing the latest orders"
-      ],
+      "test_steps": [],
+      "test_scenarios": [],
       "assumptions": [],
       "ambiguities": [],
-      "confidence": "high",
       "requirement_id": "INUTS-020"
-    },
-    {
-      "title": "Permissions - Dashboard View",
-      "description": "The system displays permissions on the dashboard.",
-      "type": "UI",
-      "user_story": "As a user, I want to view permissions on the dashboard, so that I can see the existing base of customers and capture new permissions.",
-      "acceptance_criteria": [
-        "Permissions are displayed on the dashboard",
-        "New permissions are captured successfully"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "View permissions on dashboard",
-          "expected_result": "Permissions are displayed"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing permissions on the dashboard"
-      ],
-      "assumptions": [
-        "Existing base of customers is available"
-      ],
-      "ambiguities": [
-        "Definition of valid permission"
-      ],
-      "confidence": "medium",
-      "requirement_id": "INUTS-021"
-    },
-    {
-      "title": "SSC Link Creation",
-      "description": "The system allows for the creation of SSC links.",
-      "type": "Workflow",
-      "user_story": "As a developer, I want to create SSC links, so that I can provide them to the Analance team for widget creation.",
-      "acceptance_criteria": [
-        "SSC links are created successfully",
-        "SSC links are provided to the Analance team"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Create SSC link",
-          "expected_result": "SSC link is created"
-        }
-      ],
-      "test_scenarios": [
-        "Creating an SSC link"
-      ],
-      "assumptions": [
-        "SSC Development team is available to provide SSC links"
-      ],
-      "ambiguities": [
-        "Definition of valid SSC link"
-      ],
-      "confidence": "medium",
-      "requirement_id": "INUTS-022"
-    },
-    {
-      "title": "PTW Self Serve CS",
-      "description": "The PTW Self Serve CS sequence outlines interactions between the customer, BBSSC, ESIDE, NM1, BCIM, Kafka, IDD, and Analance.",
-      "type": "Workflow",
-      "user_story": "As a user, I want to navigate through the PTW Self Serve CS sequence, so that I can understand the interactions between different systems and components.",
-      "acceptance_criteria": [
-        "The PTW Self Serve CS sequence is displayed",
-        "The sequence includes all necessary interactions"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Start the PTW Self Serve CS sequence",
-          "expected_result": "The sequence is initiated"
-        }
-      ],
-      "test_scenarios": [
-        "Navigating through the PTW Self Serve CS sequence"
-      ],
-      "assumptions": [],
-      "ambiguities": [],
-      "confidence": "high",
-      "requirement_id": "INUTS-023"
-    },
-    {
-      "title": "Usage Details Drilldown",
-      "description": "A feature allowing customers to drill down on details of both billed and unbilled usages.",
-      "type": "Workflow",
-      "user_story": "As a customer, I want to drill down on my usage details, so that I can understand my usage patterns and make informed decisions.",
-      "acceptance_criteria": [
-        "The drilldown feature is available for both billed and unbilled usages",
-        "The drilldown feature displays detailed usage data"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click on the drilldown button",
-          "expected_result": "Detailed usage data is displayed"
-        }
-      ],
-      "test_scenarios": [
-        "Drilling down on billed usage",
-        "Drilling down on unbilled usage"
-      ],
-      "assumptions": [],
-      "ambiguities": [],
-      "confidence": "high",
-      "requirement_id": "INUTS-024"
-    },
-    {
-      "title": "Link to Manage My Access",
-      "description": "The link to manage my access takes the user to the manage my access page.",
-      "type": "Workflow",
-      "user_story": "As a customer, I want to manage my access, so that I can update my account information.",
-      "acceptance_criteria": [
-        "The link to manage my access is displayed on the dashboard",
-        "The link takes the user to the manage my access page"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Click on the link to manage my access",
-          "expected_result": "The manage my access page is displayed"
-        }
-      ],
-      "test_scenarios": [
-        "Clicking on the link to manage my access"
-      ],
-      "assumptions": [],
-      "ambiguities": [],
-      "confidence": "high",
-      "requirement_id": "INUTS-025"
-    },
-    {
-      "title": "UI Widget Creation",
-      "description": "The system allows for UI widget creation, which involves the Analance team creating UI widgets.",
-      "type": "Workflow",
-      "user_story": "As a developer, I want to create UI widgets, so that I can provide them to the users.",
-      "acceptance_criteria": [
-        "UI widgets are created successfully",
-        "UI widgets are provided to the users"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "Create UI widget",
-          "expected_result": "UI widget is created"
-        }
-      ],
-      "test_scenarios": [
-        "Creating a UI widget"
-      ],
-      "assumptions": [
-        "Analance team is available to create UI widgets"
-      ],
-      "ambiguities": [
-        "Definition of valid UI widget"
-      ],
-      "confidence": "medium",
-      "requirement_id": "INUTS-026"
-    },
-    {
-      "title": "IDR/IDD Billed Data",
-      "description": "The system provides IDR/IDD billed data.",
-      "type": "Workflow",
-      "user_story": "As a user, I want to view IDR/IDD billed data, so that I can understand the billed data.",
-      "acceptance_criteria": [
-        "IDR/IDD billed data is provided",
-        "IDR/IDD billed data is accurate"
-      ],
-      "test_steps": [
-        {
-          "step_num": 1,
-          "action": "View IDR/IDD billed data",
-          "expected_result": "IDR/IDD billed data is displayed"
-        }
-      ],
-      "test_scenarios": [
-        "Viewing IDR/IDD billed data"
-      ],
-      "assumptions": [
-        "IDR/IDD team is available to provide billed data"
-      ],
-      "ambiguities": [
-        "Definition of valid IDR/IDD billed data"
-      ],
-      "confidence": "medium",
-      "requirement_id": "INUTS-027"
     }
   ],
   "model_state": {

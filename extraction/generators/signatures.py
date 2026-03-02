@@ -74,8 +74,12 @@ class BusinessFeatureExtraction(dspy.Signature):
     - Title should be descriptive (3-8 words) and include domain identifiers where applicable
     - Description must preserve specific details from the document
     - Focus on WHAT users can do, not HOW it works
-    - Extract at the RIGHT level of granularity: one requirement per DISTINCT FEATURE AREA,
-      not one requirement per bullet point inside a feature
+    - Extract at FINE granularity: each NAMED FEATURE, WIDGET, or SECTION is its OWN requirement.
+      Do NOT group multiple named features under one broad category.
+      WRONG: "Dashboard and Metrics" (groups NAG Filter + Metric Tiles + Usage Tabs into one)
+      RIGHT: "NAG (Group) Filter", "NAG Metric Tiles", "Usage Summary Tabs" — three separate requirements
+    - If a document section contains 3 named sub-features (e.g., NAG Filter, Metric Tiles, Bar Chart),
+      extract ALL 3 as separate requirements — not one combined requirement
     """
     document_text = dspy.InputField()
     requirements_json = dspy.OutputField(desc="""JSON array of business feature requirements:

@@ -44,6 +44,37 @@ You ALWAYS write from the END-USER's perspective. Never say \
 
 You return ONLY valid JSON. No markdown. No commentary."""
 
+# Precision mode system prompt — focuses on core business assertions, not generic setup
+PRECISION_SYSTEM_PROMPT = """\
+You are a senior QA engineer generating focused, behaviour-centric test cases.
+
+Your test cases must DIRECTLY verify the specific behaviour described in the \
+requirement — nothing more, nothing less.
+
+STRICT RULES FOR PRECISION MODE:
+1. DO NOT add generic setup steps (login, open browser, enter password) unless \
+   the requirement explicitly tests authentication.
+2. ASSUME the tester is already logged in and on the correct page when the test starts.
+3. Focus ONLY on the CORE BEHAVIOUR being tested — the specific feature/action/result \
+   stated in the requirement.
+4. Write 3-7 steps per test case. Quality over quantity.
+5. Every step must directly verify a stated acceptance criterion or the core behaviour.
+6. Use EXACT terminology from the requirement (exact field names, page names, feature names).
+7. Step format: "<action or verification> <specific UI element/data> <expected outcome>"
+8. Generate 1-3 test cases per requirement (positive + key negative + boundary, if applicable).
+
+GOOD step examples:
+  ✅ "Navigate to the Warranty section and verify the expiry notification is displayed"
+  ✅ "Verify the notification shows the correct expiry date matching the device activation date"
+  ✅ "Verify the notification appears 30 days before the warranty expiry date"
+
+BAD step examples:
+  ❌ "Navigate to the Login page"          ← Generic, not testing this requirement
+  ❌ "Enter 'john.doe@company.com'"        ← Authentication is not being tested
+  ❌ "Click Sign In button"               ← Out of scope for this requirement
+
+You return ONLY valid JSON. No markdown. No commentary."""
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # USER PROMPT — The detailed instruction for each requirement
@@ -88,7 +119,7 @@ TEST CASE GENERATION RULES
   If the requirement says "Warranty Dashboard" — write "Warranty Dashboard", 
   NOT "warranty page" or "the dashboard".
 
-▸ RULE 3 — STEP GRANULARITY (8-15 steps per test case)
+▸ RULE 3 — STEP GRANULARITY ({step_count_rule})
   Each step = ONE atomic action. Never combine two actions.
   ✅ Step 1: "Navigate to the Login page"
   ✅ Step 2: "Enter valid username in the 'Email' field"
@@ -190,6 +221,7 @@ class TestCasePlanner:
         project_name: str = "Project",
         source_texts: Optional[Dict[str, str]] = None,
         status_callback: Optional[callable] = None,
+        precision_mode: bool = False,
     ) -> Dict[str, Any]:
         """
         Generate test cases for a list of requirements.
@@ -202,6 +234,10 @@ class TestCasePlanner:
                          relevant document context into each test case prompt
                          for richer, more detailed test steps.
             status_callback: Optional fn(message) for progress updates
+            precision_mode: If True, use the precision system prompt that generates
+                            3-7 business-assertion-focused steps per TC (no generic
+                            login/navigate steps). Produces fewer but more accurate
+                            test cases that align better with ground truth.
 
         Returns:
             Test plan dict with test_plans, total_requirements, total_test_cases
@@ -210,14 +246,17 @@ class TestCasePlanner:
         total_test_cases = 0
         source_texts = source_texts or {}
 
+        mode_label = "PRECISION" if precision_mode else "STANDARD"
         print(f"\n{'='*60}")
-        print(f"TEST CASE GENERATION — {project_name.upper()}")
+        print(f"TEST CASE GENERATION [{mode_label}] — {project_name.upper()}")
         print(f"{'='*60}")
         print(f"  Requirements to process: {len(requirements)}")
         if source_texts:
             print(f"  Document context: {len(source_texts)} source document(s) loaded")
         else:
             print(f"  Document context: None (requirements-only mode)")
+        if precision_mode:
+            print(f"  Precision mode: ON (3-7 steps, business assertions only)")
         print()
 
         for idx, req in enumerate(requirements, 1):
@@ -230,7 +269,7 @@ class TestCasePlanner:
             print(f"  [{idx}/{len(requirements)}] {req_id}: {title}...", end=" ")
 
             try:
-                plan = self._generate_for_requirement(req, idx, source_texts)
+                plan = self._generate_for_requirement(req, idx, source_texts, precision_mode=precision_mode)
                 tc_count = len(plan.get("test_cases", []))
                 total_test_cases += tc_count
                 test_plans.append(plan)
@@ -263,12 +302,13 @@ class TestCasePlanner:
 
     # ─── Private Methods ──────────────────────────────────────────────────
 
-    def _generate_for_requirement(self, req: Dict, index: int, source_texts: Dict[str, str] = None) -> Dict:
+    def _generate_for_requirement(self, req: Dict, index: int, source_texts: Dict[str, str] = None,
+                                   precision_mode: bool = False) -> Dict:
         """Generate test cases for a single requirement."""
         source_texts = source_texts or {}
 
         # Build the prompt with all available context
-        prompt = self._build_prompt(req, index)
+        prompt = self._build_prompt(req, index, precision_mode=precision_mode)
 
         # Inject original document context if available
         if source_texts:
@@ -295,11 +335,14 @@ MINE this text for VERBATIM details to use in your test steps:
 IMPORTANT: Use the EXACT terminology from this document context in your test steps.
 """
 
+        # Select system prompt based on mode
+        active_system_prompt = PRECISION_SYSTEM_PROMPT if precision_mode else SYSTEM_PROMPT
+
         # Call Groq
         response = self.client.chat.completions.create(
             model=self.model,
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": active_system_prompt},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.15,
@@ -402,7 +445,7 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
         # Strategy 3: Fallback — return first chunk
         return doc_text[:max_chars]
 
-    def _build_prompt(self, req: Dict, index: int) -> str:
+    def _build_prompt(self, req: Dict, index: int, precision_mode: bool = False) -> str:
         """Build the user prompt from requirement fields."""
 
         req_id = req.get("requirement_id", f"REQ-{index:03d}")
@@ -451,6 +494,14 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
                 [f"  • {s}" for s in test_scenarios]
             )
 
+        # Precision mode: tighter step count, no generic setup steps
+        step_count_rule = (
+            "3-7 steps per test case — focus ONLY on the core behaviour, "
+            "DO NOT add login/navigation steps"
+            if precision_mode
+            else "8-15 steps per test case"
+        )
+
         return USER_PROMPT_TEMPLATE.format(
             requirement_id=req_id,
             title=title,
@@ -461,6 +512,7 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
             existing_test_steps_text=existing_test_steps_text,
             assumptions_text=assumptions_text,
             dependency_text=dependency_text,
+            step_count_rule=step_count_rule,
         )
 
     def _parse_response(self, raw: str) -> Dict:

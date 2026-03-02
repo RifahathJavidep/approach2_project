@@ -44,6 +44,8 @@ from .generators.trained_extractor import (
 from .generators.training import train_extractor
 from .generators.postprocessing import deduplicate_requirements, deduplicate_multi_layer_requirements, deduplicate_cross_layer, deduplicate_by_topic, consolidate_requirements, merge_semantic_siblings
 from .generators.validation import validate_requirement
+from .generators.precision_signatures import PrecisionRequirementExtractorModule
+from .generators.evidence_validator import filter_by_evidence
 from .utils import chunk_document
 
 import re
@@ -538,12 +540,71 @@ class ExtractionPipeline:
 
         return all_reqs, all_filtered
 
+    def _generate_requirements_precision(self, text: str) -> tuple:
+        """
+        PRECISION MODE — Source-grounded requirement extraction.
+
+        Uses PrecisionRequirementExtractorModule which requires each
+        requirement to cite a verbatim source_quote from the document.
+        All candidates then pass through the EvidenceValidator gate which
+        rejects any requirement whose quote cannot be found in the source.
+
+        Much lower recall than the standard 3-pass mode, but near-zero
+        hallucinations and much higher alignment with ground truth.
+
+        Returns:
+            (validated_requirements, filtered_out)
+        """
+        if not text:
+            return [], []
+
+        chunks = chunk_document(text)
+        print(f"  [PRECISION] Split into {len(chunks)} chunks")
+
+        precision_extractor = PrecisionRequirementExtractorModule()
+
+        all_candidates = []
+        all_filtered = []
+
+        for i, chunk in enumerate(chunks, 1):
+            print(f"    Chunk {i}/{len(chunks)}...", end="")
+            try:
+                result = precision_extractor(document_text=chunk)
+                chunk_reqs = result.get("requirements", [])
+                chunk_filtered = result.get("filtered_out", [])
+
+                # Evidence validation gate — runs per chunk against chunk text
+                valid, rejected = filter_by_evidence(
+                    chunk_reqs, document_text=chunk, verbose=False
+                )
+                all_candidates.extend(valid)
+                all_filtered.extend(chunk_filtered + rejected)
+                print(
+                    f" {len(valid)} accepted, "
+                    f"{len(chunk_filtered) + len(rejected)} filtered"
+                )
+            except Exception as e:
+                print(f" ERROR: {e}")
+
+        print(f"  [PRECISION] Raw accepted: {len(all_candidates)}")
+
+        # Second-pass evidence check against full document
+        # (catches any quotes that matched a chunk but not the full doc)
+        valid_final, rejected_final = filter_by_evidence(
+            all_candidates, document_text=text, verbose=True
+        )
+        all_filtered.extend(rejected_final)
+
+        print(f"  [PRECISION] After full-doc evidence gate: {len(valid_final)}")
+        return valid_final, all_filtered
+
     # =========================================================================
     # MAIN ENTRY POINTS
     # =========================================================================
 
     def run(self, file_paths: List[str], project_name: str, output_dir: str = None,
-            status_callback: Callable[[str, str], None] = None) -> Dict:
+            status_callback: Callable[[str, str], None] = None,
+            precision_mode: bool = False) -> Dict:
         """
         Run the complete extraction pipeline on a list of files.
 
@@ -556,12 +617,17 @@ class ExtractionPipeline:
             output_dir: Optional directory to save results locally
             status_callback: Optional callback(file_path, status) called per file.
                              status is "IN_PROGRESS", "COMPLETED", or "FAILED".
+            precision_mode: If True, use source-grounded precision extraction
+                            instead of the standard 3-pass multi-layer mode.
+                            Higher precision, lower recall — best when ground
+                            truth alignment matters more than coverage.
 
         Returns:
             Dict with 'project', 'requirements', and 'model_state'
         """
+        mode_label = "PRECISION" if precision_mode else "STANDARD"
         print("=" * 80)
-        print(f"REQUIREMENTS EXTRACTION - {str(project_name).upper()}")
+        print(f"REQUIREMENTS EXTRACTION [{mode_label} MODE] - {str(project_name).upper()}")
         print("=" * 80)
 
         all_reqs = []
@@ -596,7 +662,10 @@ class ExtractionPipeline:
                 all_source_texts.append(combined_text)
 
                 # Stage 3: Generate requirements
-                reqs, filtered = self._generate_requirements(combined_text)
+                if precision_mode:
+                    reqs, filtered = self._generate_requirements_precision(combined_text)
+                else:
+                    reqs, filtered = self._generate_requirements(combined_text)
                 all_reqs.extend(reqs)
                 all_filtered.extend(filtered)
 
@@ -657,16 +726,21 @@ class ExtractionPipeline:
             unique = ground_check(unique, full_source_text, min_grounding=0.25)
             print(f"  After source grounding: {before_ground} -> {len(unique)} grounded")
 
-        unique = consolidate_requirements(unique)
-        print(f"  After consolidation: {len(unique)} requirements")
+        if not precision_mode:
+            # In precision mode we skip consolidation — it targets ≤25 items
+            # which would collapse the fine-grained requirements we want
+            unique = consolidate_requirements(unique)
+            print(f"  After consolidation: {len(unique)} requirements")
 
-        # Post-consolidation: merge remaining semantic siblings
-        # (catches sub-features the LLM consolidation missed, e.g.,
-        #  "Packing Slip" + "Certificate of Origin" → keep best one)
-        before_sibling = len(unique)
-        unique = merge_semantic_siblings(unique)
-        if len(unique) < before_sibling:
-            print(f"  After sibling merge: {before_sibling} → {len(unique)} requirements")
+            # Post-consolidation: merge remaining semantic siblings
+            # (catches sub-features the LLM consolidation missed, e.g.,
+            #  "Packing Slip" + "Certificate of Origin" → keep best one)
+            before_sibling = len(unique)
+            unique = merge_semantic_siblings(unique)
+            if len(unique) < before_sibling:
+                print(f"  After sibling merge: {before_sibling} → {len(unique)} requirements")
+        else:
+            print(f"  [PRECISION] Skipping consolidation/sibling-merge to preserve granularity")
 
         # Second grounding check after consolidation — catches any items injected by LLM consolidation
         if full_source_text:
@@ -712,15 +786,26 @@ def extract_from_files(
     model_state: Dict = None,
     config: Dict = None,
     status_callback: Callable[[str, str], None] = None,
+    precision_mode: bool = False,
 ) -> Dict:
     """
     Extract requirements from a list of local file paths.
     Called by FastAPI after downloading files from S3.
 
     Backward-compatible wrapper around ExtractionPipeline.
+
+    Args:
+        precision_mode: If True, use source-grounded precision extraction.
+                        Higher precision, lower recall. Recommended when
+                        ground truth alignment matters more than coverage.
     """
     pipeline = ExtractionPipeline(config=config, model_state=model_state)
-    return pipeline.run(file_paths=file_paths, project_name=project_name, output_dir=output_dir,
-                        status_callback=status_callback)
+    return pipeline.run(
+        file_paths=file_paths,
+        project_name=project_name,
+        output_dir=output_dir,
+        status_callback=status_callback,
+        precision_mode=precision_mode,
+    )
 
 

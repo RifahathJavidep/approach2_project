@@ -3,80 +3,59 @@
   "test_plans": [
     {
       "requirement_id": "INUTS-001",
-      "requirement_title": "Warranty Information Management",
+      "requirement_title": "Usage Display and Breakdown",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Verify Warranty Information Display",
-          "description": "Verify that the user is able to view their device warranty information",
+          "title": "Verify Data, Voice, SMS, and LD Usages Display",
+          "description": "Verify that the user is able to view their data, voice, SMS, and LD usages",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "User has a valid account and is logged in, ESIDE integration is available",
+          "prerequisites": "User has a valid account with usage data",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber page",
-            "Step 2: Click on the Device Information page area within BBSSC",
-            "Step 3: Verify the Warranty expiration date is displayed",
-            "Step 4: Verify the Warranty expiration date corresponds to the date of activation",
-            "Step 5: Verify the standard manufacturer warranty expiration details of the device are displayed",
-            "Step 6: Verify all OEM devices are included for warranty information",
-            "Step 7: Enter a valid device serial number in the search field",
-            "Step 8: Click the Search button",
-            "Step 9: Verify the warranty information for the searched device is displayed",
-            "Step 10: Verify the warranty expiration date is displayed in the correct format (MM/DD/YYYY)",
-            "Step 11: Verify the user can view the warranty information without any errors",
-            "Step 12: Verify the user can navigate back to the Subscriber page without any issues",
-            "Step 13: Log out of the application",
-            "Step 14: Verify the user is logged out successfully"
+            "Verify Data usage is displayed",
+            "Verify Voice usage is displayed",
+            "Verify SMS usage is displayed",
+            "Verify LD usage is displayed"
           ],
-          "expected_result": "The user is able to view their device warranty information, including the warranty expiration date and standard manufacturer warranty expiration details",
-          "test_data": "Valid device serial number, valid account credentials",
+          "expected_result": "All usage types are displayed correctly",
+          "test_data": "Sample usage data for data, voice, SMS, and LD",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Verify Warranty Information for Invalid Device",
-          "description": "Verify that the user is unable to view warranty information for an invalid device",
+          "title": "Verify Breakdown of Roaming, Overage, and In-plan Usages",
+          "description": "Verify that the user is able to view the breakdown of roaming, overage, and in-plan usages",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "User has a valid account and is logged in, ESIDE integration is available",
+          "prerequisites": "User has a valid account with usage data",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber page",
-            "Step 2: Click on the Device Information page area within BBSSC",
-            "Step 3: Enter an invalid device serial number in the search field",
-            "Step 4: Click the Search button",
-            "Step 5: Verify an error message is displayed indicating that the device is not found",
-            "Step 6: Verify the user is unable to view warranty information for the invalid device",
-            "Step 7: Verify the user can navigate back to the Subscriber page without any issues",
-            "Step 8: Log out of the application",
-            "Step 9: Verify the user is logged out successfully"
+            "Verify Roaming usage breakdown is displayed",
+            "Verify Overage usage breakdown is displayed",
+            "Verify In-plan usage breakdown is displayed"
           ],
-          "expected_result": "The user is unable to view warranty information for an invalid device and an error message is displayed",
-          "test_data": "Invalid device serial number, valid account credentials",
+          "expected_result": "All usage breakdowns are displayed correctly",
+          "test_data": "Sample usage data for roaming, overage, and in-plan",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Verify Warranty Information for Multiple Devices",
-          "description": "Verify that the user is able to view warranty information for multiple devices",
+          "title": "Verify Error Handling for Empty Usage Data",
+          "description": "Verify that the system handles empty usage data correctly",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "User has a valid account and is logged in, ESIDE integration is available, multiple devices are associated with the user's account",
+          "prerequisites": "User has a valid account with no usage data",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber page",
-            "Step 2: Click on the Device Information page area within BBSSC",
-            "Step 3: Verify the warranty information for each device is displayed",
-            "Step 4: Verify the warranty expiration date for each device corresponds to the date of activation",
-            "Step 5: Verify the standard manufacturer warranty expiration details for each device are displayed",
-            "Step 6: Verify the user can view the warranty information for each device without any errors",
-            "Step 7: Verify the user can navigate back to the Subscriber page without any issues",
-            "Step 8: Log out of the application",
-            "Step 9: Verify the user is logged out successfully"
+            "Verify error message is displayed for empty data usage",
+            "Verify error message is displayed for empty voice usage",
+            "Verify error message is displayed for empty SMS usage",
+            "Verify error message is displayed for empty LD usage"
           ],
-          "expected_result": "The user is able to view warranty information for multiple devices, including the warranty expiration date and standard manufacturer warranty expiration details",
-          "test_data": "Multiple valid device serial numbers, valid account credentials",
+          "expected_result": "Error messages are displayed correctly for empty usage data",
+          "test_data": "No usage data",
           "status": "Not Executed"
         }
       ],
@@ -84,74 +63,57 @@
     },
     {
       "requirement_id": "INUTS-002",
-      "requirement_title": "Dashboard Integration",
+      "requirement_title": "Dashboard and Metrics",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Dashboard Load Test",
-          "description": "Verify that the user is able to view key metrics and usage summary on the dashboard",
+          "title": "Verify Dashboard Displays Key Wireless Management Insights and Actions",
+          "description": "Verify that the user is able to view key wireless management insights and actions on the dashboard",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "User has valid login credentials and Kafka and Analance integrations are available",
+          "prerequisites": "User has access to the dashboard",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'john.doe@company.com' in the 'Email' field",
-            "Enter 'password123' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify the dashboard loads with key metrics",
-            "Verify the key metrics include 'Number of active subscribers', 'Number of Suspended subscribers', and 'Number of Cancelled Subscribers'",
-            "Verify the total number of BANS and groups are displayed",
-            "Verify the usage summary is available and can toggle between 'data', 'voice', 'long distance', and 'text messaging'",
-            "Toggle between each type of usage and verify the correct data is displayed",
-            "Verify plans in overage by thresholds (100%, 85%, 75%, <75%) are displayed"
+            "Verify the dashboard displays key wireless management insights and actions",
+            "Verify the dashboard displays subscriber metrics",
+            "Verify the dashboard displays BANS and groups metrics"
           ],
-          "expected_result": "The user is able to view key metrics and usage summary on the dashboard",
-          "test_data": "john.doe@company.com, password123",
+          "expected_result": "The dashboard displays key wireless management insights and actions, including subscriber metrics and BANS and groups metrics",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Usage Summary Toggle Test",
-          "description": "Verify that the user is able to toggle between each type of usage",
+          "title": "Verify Metric Tiles Display Accurate Data",
+          "description": "Verify that the metric tiles display accurate data based on NAG in context",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "User has valid login credentials and Kafka and Analance integrations are available",
+          "prerequisites": "User has access to the dashboard and NAG is in context",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'john.doe@company.com' in the 'Email' field",
-            "Enter 'password123' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify the dashboard loads with key metrics",
-            "Click on the 'Usage at a glance' section",
-            "Verify the usage summary is available and can toggle between 'data', 'voice', 'long distance', and 'text messaging'",
-            "Toggle to 'data' and verify the correct data is displayed",
-            "Toggle to 'voice' and verify the correct data is displayed",
-            "Toggle to 'long distance' and verify the correct data is displayed",
-            "Toggle to 'text messaging' and verify the correct data is displayed"
+            "Verify the metric tiles display accurate data for each type (Groups, Billing Accounts, Active, Suspended and Canceled subscribers)",
+            "Verify the metric tiles link to the correct view within BBSSC upon selection",
+            "Verify the Canceled subscribers tile displays data for the past 30 days"
           ],
-          "expected_result": "The user is able to toggle between each type of usage and view the correct data",
-          "test_data": "john.doe@company.com, password123",
+          "expected_result": "The metric tiles display accurate data and link to the correct view within BBSSC",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Dashboard Load Test with Invalid Credentials",
-          "description": "Verify that the user is unable to view the dashboard with invalid login credentials",
+          "title": "Verify Usage Summary Tabs Display Correct Data",
+          "description": "Verify that the usage summary tabs display the correct data based on the selected grouping",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "User has invalid login credentials",
+          "prerequisites": "User has access to the dashboard",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'invalid.email@company.com' in the 'Email' field",
-            "Enter 'invalidpassword' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify an error message is displayed indicating invalid credentials"
+            "Verify the 'Data' grouping is the default view upon login",
+            "Verify selecting a different grouping (Voice, Long Distance, SMS) displays the correct data",
+            "Verify the selected grouping persists across reloads"
           ],
-          "expected_result": "The user is unable to view the dashboard and an error message is displayed",
-          "test_data": "invalid.email@company.com, invalidpassword",
+          "expected_result": "The usage summary tabs display the correct data based on the selected grouping",
+          "test_data": "None",
           "status": "Not Executed"
         }
       ],
@@ -159,176 +121,118 @@
     },
     {
       "requirement_id": "INUTS-003",
-      "requirement_title": "Detailed Table for Plans and Subscribers",
+      "requirement_title": "Order and Shopping Management",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Selection of Shareplan group brings customer to separate table with listed details",
-          "description": "Verify that the user is able to view a detailed breakdown of their plans and subscribers after selecting a Shareplan group",
+          "title": "Display Latest Orders",
+          "description": "Verify that the system displays the latest orders",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The customer has multiple Shareplan groups and the user has the necessary permissions to view the Shareplans Detail Table",
+          "priority": "High",
+          "prerequisites": "User has placed at least one order",
           "test_steps": [
-            "Navigate to the Usage Drilldown Table page",
-            "Select a Shareplan group corresponding to the Data Usage Type (In-plan, Roaming and Overage)",
-            "Click on the selected Shareplan group to view the detailed table",
-            "Verify that the detailed table is displayed with the listed details: Billing account, Plan Name, # of subscribers, Allowance (MB), Used (MB), and Overage (MB)",
-            "Verify that the data is sorted based on the billing account's alphabetical order",
-            "Verify that the data is accurately representing the correct allowance, used, and overage",
-            "Verify that the Plan name grouping data is accurate and displays appropriate information according to the Billing Account Number (BAN)",
-            "Verify that the columns display numerical values in MB for allowance, used data, and overage within the same row",
-            "Verify that the Back Button is implemented to bring the user back to the standard Usage Bar Chart Drilldown View"
+            "Navigate to the Shopping and Orders Widget",
+            "Verify the Latest Orders Table is displayed",
+            "Verify the latest orders are listed in the Latest Orders Table"
           ],
-          "expected_result": "The user is able to view a detailed breakdown of their plans and subscribers after selecting a Shareplan group",
-          "test_data": "Shareplan group: 'In-plan', Billing account: '12345', Plan Name: 'Plan A', # of subscribers: 5, Allowance (MB): 1000, Used (MB): 500, Overage (MB): 200",
+          "expected_result": "The latest orders are displayed in the Latest Orders Table",
+          "test_data": "At least one order has been placed by the user",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Selection of Individual Plans brings customer to separate table with listed details",
-          "description": "Verify that the user is able to view a detailed breakdown of their individual plans after selecting an Individual Plan",
+          "title": "View All Orders",
+          "description": "Verify that the system provides the ability to view all orders",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The customer has multiple Individual Plans and the user has the necessary permissions to view the Individual Plans Detail Table",
+          "priority": "High",
+          "prerequisites": "User has placed at least one order",
           "test_steps": [
-            "Navigate to the Usage Drilldown Table page",
-            "Select an Individual Plan",
-            "Click on the selected Individual Plan to view the detailed table",
-            "Verify that the detailed table is displayed with the listed details: Number (MDN), Name, Billing account, Allowance (MB), Used (MB), and Overage (MB)",
-            "Verify that the data is accurately representing the correct allowance, used, and overage",
-            "Verify that the columns display numerical values in MB for allowance, used data, and overage within the same row",
-            "Verify that the Back Button is implemented to bring the user back to the standard Usage Bar Chart Drilldown View"
+            "Navigate to the Shopping and Orders Widget",
+            "Click the View All Orders link",
+            "Verify all orders are displayed, including In Progress, Completed, and Cancelled orders"
           ],
-          "expected_result": "The user is able to view a detailed breakdown of their individual plans after selecting an Individual Plan",
-          "test_data": "Individual Plan: 'Plan B', Number (MDN): '1234567890', Name: 'John Doe', Billing account: '12345', Allowance (MB): 500, Used (MB): 200, Overage (MB): 100",
+          "expected_result": "All orders are displayed, including In Progress, Completed, and Cancelled orders",
+          "test_data": "At least one order has been placed by the user",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Data is sorted based on billing account's alphabetical order",
-          "description": "Verify that the data is sorted based on the billing account's alphabetical order",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The customer has multiple billing accounts and the user has the necessary permissions to view the Shareplans Detail Table",
-          "test_steps": [
-            "Navigate to the Shareplans Detail Table page",
-            "Verify that the data is sorted based on the billing account's alphabetical order",
-            "Verify that the billing accounts are displayed in alphabetical order: '12345', '23456', '34567', etc.",
-            "Verify that the data is accurately representing the correct allowance, used, and overage for each billing account"
-          ],
-          "expected_result": "The data is sorted based on the billing account's alphabetical order",
-          "test_data": "Billing accounts: '12345', '23456', '34567', Allowance (MB): 1000, Used (MB): 500, Overage (MB): 200",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-004",
-          "title": "Maximum of 10 Billing accounts displayed with pagination if more than 10 are in view",
-          "description": "Verify that a maximum of 10 billing accounts are displayed with pagination if more than 10 are in view",
+          "title": "Negative Test - No Orders",
+          "description": "Verify that the system handles the case where no orders have been placed",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "The customer has more than 10 billing accounts and the user has the necessary permissions to view the Shareplans Detail Table",
+          "prerequisites": "User has not placed any orders",
           "test_steps": [
-            "Navigate to the Shareplans Detail Table page",
-            "Verify that a maximum of 10 billing accounts are displayed",
-            "Verify that pagination is implemented to display more than 10 billing accounts",
-            "Verify that the user can navigate to the next page to view the remaining billing accounts"
+            "Navigate to the Shopping and Orders Widget",
+            "Verify the Latest Orders Table is empty",
+            "Click the View All Orders link",
+            "Verify a message is displayed indicating no orders have been placed"
           ],
-          "expected_result": "A maximum of 10 billing accounts are displayed with pagination if more than 10 are in view",
-          "test_data": "Billing accounts: '12345', '23456', '34567', '45678', '56789', '67890', '78901', '89012', '90123', '01234', '12345'",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-005",
-          "title": "Billing account is selectable link and brings customer to preexisting my inventory section to display Billing account usage details page",
-          "description": "Verify that the billing account is a selectable link and brings the customer to the preexisting my inventory section to display the Billing account usage details page",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The customer has multiple billing accounts and the user has the necessary permissions to view the Shareplans Detail Table",
-          "test_steps": [
-            "Navigate to the Shareplans Detail Table page",
-            "Click on a billing account to view the Billing account usage details page",
-            "Verify that the Billing account usage details page is displayed",
-            "Verify that the page displays the usage details for the selected billing account"
-          ],
-          "expected_result": "The billing account is a selectable link and brings the customer to the preexisting my inventory section to display the Billing account usage details page",
-          "test_data": "Billing account: '12345', Usage details: 'Allowance (MB): 1000, Used (MB): 500, Overage (MB): 200'",
+          "expected_result": "A message is displayed indicating no orders have been placed",
+          "test_data": "No orders have been placed by the user",
           "status": "Not Executed"
         }
       ],
-      "total_count": 5
+      "total_count": 3
     },
     {
       "requirement_id": "INUTS-004",
-      "requirement_title": "User Management and Access Control",
+      "requirement_title": "System Integration and Infrastructure",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Create a new user",
-          "description": "Verify that the user is able to create a new user",
-          "test_type": "Functional",
+          "title": "Verify System Integration with Kafka",
+          "description": "Verify that the system integrates with Kafka to receive unbilled usages",
+          "test_type": "Integration",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "The user has the necessary permissions to manage users",
+          "prerequisites": "Kafka integration is enabled, IDD system is available",
           "test_steps": [
-            "Navigate to the User Management page",
-            "Click the 'Create New User' button",
-            "Enter 'john.doe@company.com' in the 'Email' field",
-            "Enter 'John Doe' in the 'Full Name' field",
-            "Select 'Active' from the 'Status' dropdown",
-            "Click the 'Save' button",
-            "Verify the new user is created successfully and visible in the user list",
-            "Verify the confirmation message displays: 'User created successfully'"
+            "Verify the system is connected to Kafka",
+            "Send unbilled usages data from Kafka to the system",
+            "Verify the system receives the unbilled usages data from Kafka",
+            "Verify the system stores the unbilled usages data"
           ],
-          "expected_result": "The new user is created successfully and visible in the user list",
-          "test_data": "john.doe@company.com, John Doe, Active",
+          "expected_result": "The system successfully integrates with Kafka and receives unbilled usages data",
+          "test_data": "Unbilled usages data from Kafka",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Manage existing users",
-          "description": "Verify that the user is able to manage existing users",
+          "title": "Verify System Provides System Infrastructure",
+          "description": "Verify that the system provides system infrastructure",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "The user has the necessary permissions to manage users and at least one existing user",
+          "prerequisites": "System infrastructure is enabled",
           "test_steps": [
-            "Navigate to the User Management page",
-            "Select an existing user from the user list",
-            "Click the 'Edit' button",
-            "Update the 'Full Name' field to 'Jane Doe'",
-            "Select 'Inactive' from the 'Status' dropdown",
-            "Click the 'Save' button",
-            "Verify the user details are updated successfully",
-            "Verify the confirmation message displays: 'User updated successfully'"
+            "Verify the system provides key wireless management insights and actions in a single dashboard",
+            "Verify the dashboard displays key metrics such as number of active subscribers, number of suspended subscribers, and total number of BANS",
+            "Verify the dashboard displays usage at a glance, including plans in overage by thresholds"
           ],
-          "expected_result": "The user details are updated successfully",
-          "test_data": "john.doe@company.com, Jane Doe, Inactive",
+          "expected_result": "The system provides system infrastructure and displays key metrics and usage at a glance",
+          "test_data": "Sample subscriber data",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Create a new user with invalid credentials",
-          "description": "Verify that the user is unable to create a new user with invalid credentials",
-          "test_type": "Functional",
+          "title": "Verify Error Handling for Kafka Integration",
+          "description": "Verify that the system handles errors when integrating with Kafka",
+          "test_type": "Integration",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "The user has the necessary permissions to manage users",
+          "prerequisites": "Kafka integration is enabled, IDD system is available",
           "test_steps": [
-            "Navigate to the User Management page",
-            "Click the 'Create New User' button",
-            "Enter 'invalid_email' in the 'Email' field",
-            "Enter 'John Doe' in the 'Full Name' field",
-            "Select 'Active' from the 'Status' dropdown",
-            "Click the 'Save' button",
-            "Verify an error message displays: 'Invalid email address'"
+            "Simulate a Kafka connection error",
+            "Verify the system displays an error message",
+            "Verify the system retries the Kafka connection",
+            "Verify the system logs the error"
           ],
-          "expected_result": "An error message displays: 'Invalid email address'",
-          "test_data": "invalid_email, John Doe, Active",
+          "expected_result": "The system handles Kafka connection errors and retries the connection",
+          "test_data": "Error simulation data",
           "status": "Not Executed"
         }
       ],
@@ -336,79 +240,57 @@
     },
     {
       "requirement_id": "INUTS-005",
-      "requirement_title": "Export Feature Implementation",
+      "requirement_title": "Warranty Expiration Date Display",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Export Data in CSV Format",
-          "description": "Verify that the user is able to export data in CSV format",
+          "title": "Display Warranty Expiration Date on Subscriber Page",
+          "description": "Verify that the warranty expiration date is displayed on the Subscriber page",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User has valid credentials and dashboard is accessible",
+          "priority": "Critical",
+          "prerequisites": "The user has a valid account and is logged in, with a device that has a warranty expiration date",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field",
-            "Enter valid password in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Navigate to the dashboard",
-            "Click on the 'Export Feature' option",
-            "Select 'CSV' as the export file format",
-            "Verify the CSV file is downloaded successfully",
-            "Open the downloaded CSV file and verify it contains the expected data",
-            "Verify the CSV file includes the Bar Graph data, Voice, SMS, and LD Usages",
-            "Verify the CSV file includes the grouped data upon Graph selection"
+            "Navigate to the Subscriber page",
+            "Verify the Warranty expiration date is displayed in the Device Information page area",
+            "Verify the Warranty expiration date corresponds to the date of activation",
+            "Verify the Warranty expiration date is displayed for an OEM device"
           ],
-          "expected_result": "The user is able to export data in CSV format and the file contains the expected data",
-          "test_data": "Valid username: john.doe@company.com, Valid password: password123",
+          "expected_result": "The warranty expiration date is displayed correctly on the Subscriber page",
+          "test_data": "A valid device with a warranty expiration date",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Export Data in PDF Format",
-          "description": "Verify that the user is able to export data in PDF format",
+          "title": "Negative Test - No Warranty Expiration Date",
+          "description": "Verify that no warranty expiration date is displayed when there is no warranty",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User has valid credentials and dashboard is accessible",
+          "priority": "Medium",
+          "prerequisites": "The user has a valid account and is logged in, with a device that does not have a warranty expiration date",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field",
-            "Enter valid password in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Navigate to the dashboard",
-            "Click on the 'Export Feature' option",
-            "Select 'PDF' as the export file format",
-            "Verify the PDF file is downloaded successfully",
-            "Open the downloaded PDF file and verify it contains the expected data",
-            "Verify the PDF file includes the Bar Graph data, Voice, SMS, and LD Usages",
-            "Verify the PDF file includes the tabled data"
+            "Navigate to the Subscriber page",
+            "Verify that no Warranty expiration date is displayed in the Device Information page area"
           ],
-          "expected_result": "The user is able to export data in PDF format and the file contains the expected data",
-          "test_data": "Valid username: john.doe@company.com, Valid password: password123",
+          "expected_result": "No warranty expiration date is displayed",
+          "test_data": "A device without a warranty expiration date",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Export Data in Invalid Format",
-          "description": "Verify that the user is not able to export data in an invalid format",
+          "title": "Boundary Test - Warranty Expiration Date in the Past",
+          "description": "Verify that the warranty expiration date is displayed correctly when it is in the past",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "User has valid credentials and dashboard is accessible",
+          "priority": "Low",
+          "prerequisites": "The user has a valid account and is logged in, with a device that has a warranty expiration date in the past",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field",
-            "Enter valid password in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Navigate to the dashboard",
-            "Click on the 'Export Feature' option",
-            "Select an invalid file format",
-            "Verify an error message is displayed",
-            "Verify the error message indicates that the selected format is not supported"
+            "Navigate to the Subscriber page",
+            "Verify the Warranty expiration date is displayed in the Device Information page area",
+            "Verify the Warranty expiration date is in the past"
           ],
-          "expected_result": "The user is not able to export data in an invalid format and an error message is displayed",
-          "test_data": "Valid username: john.doe@company.com, Valid password: password123, Invalid file format: TXT",
+          "expected_result": "The warranty expiration date is displayed correctly",
+          "test_data": "A device with a warranty expiration date in the past",
           "status": "Not Executed"
         }
       ],
@@ -416,75 +298,60 @@
     },
     {
       "requirement_id": "INUTS-006",
-      "requirement_title": "Grey Market Device Requirements",
+      "requirement_title": "Selectable Data Groupings",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Warranty Information Display for BYOD Devices",
-          "description": "Verify that the user is able to view accurate warranty information for their BYOD device",
+          "title": "Selectable Data Groupings Default View",
+          "description": "Verify that the default grouping is 'Data' and the dashboard view switches between Data, Voice, Long Distance, and SMS",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "The user has a BYOD device registered in their profile and has the necessary permissions to view warranty information",
+          "prerequisites": "User is logged in and has access to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber Information page",
-            "Step 2: Locate the Warranty Information section within the Subscriber Information page",
-            "Step 3: Verify that the Warranty Date is displayed and is accurate towards the customer's activation date associated with the device currently on their profile",
-            "Step 4: Verify that the Warranty Date is displayed within the specific line as per the visuals attached as reference",
-            "Step 5: Verify that the warranty information is up-to-date and reflects the current warranty status of the device",
-            "Step 6: Test with a device that has no active warranty and verify that the correct message is displayed (e.g. 'No active warranty')",
-            "Step 7: Test with a device that has an expired warranty and verify that the correct message is displayed (e.g. 'Warranty expired')",
-            "Step 8: Test with a device that has a valid warranty and verify that the correct warranty information is displayed",
-            "Step 9: Verify that the warranty information is displayed in the correct format and is easy to read",
-            "Step 10: Log out of the system and verify that the warranty information is no longer accessible"
+            "Verify the 'Data' grouping is selected by default",
+            "Click on the 'Voice' grouping and verify the dashboard view changes to display Voice data",
+            "Click on the 'Long Distance' grouping and verify the dashboard view changes to display Long Distance data",
+            "Click on the 'SMS' grouping and verify the dashboard view changes to display SMS data",
+            "Verify the grouping state persists across reloads"
           ],
-          "expected_result": "The user is able to view accurate and up-to-date warranty information for their BYOD device",
-          "test_data": "Test data: BYOD device with a valid warranty, BYOD device with no active warranty, BYOD device with an expired warranty",
+          "expected_result": "The dashboard view switches between Data, Voice, Long Distance, and SMS groupings, and the state persists across reloads",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Warranty Information Display for Dealer Devices",
-          "description": "Verify that the user is able to view accurate warranty information for their dealer device",
+          "title": "Selectable Data Groupings Navigation",
+          "description": "Verify that the grouping state persists when navigating from group to group",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a dealer device registered in their profile and has the necessary permissions to view warranty information",
+          "priority": "High",
+          "prerequisites": "User is logged in and has access to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber Information page",
-            "Step 2: Locate the Warranty Information section within the Subscriber Information page",
-            "Step 3: Verify that the Warranty Date is displayed and is accurate towards the customer's activation date associated with the device currently on their profile",
-            "Step 4: Verify that the Warranty Date is displayed within the specific line as per the visuals attached as reference",
-            "Step 5: Verify that the warranty information is up-to-date and reflects the current warranty status of the device",
-            "Step 6: Test with a device that has no active warranty and verify that the correct message is displayed (e.g. 'No active warranty')",
-            "Step 7: Test with a device that has an expired warranty and verify that the correct message is displayed (e.g. 'Warranty expired')",
-            "Step 8: Test with a device that has a valid warranty and verify that the correct warranty information is displayed",
-            "Step 9: Verify that the warranty information is displayed in the correct format and is easy to read",
-            "Step 10: Log out of the system and verify that the warranty information is no longer accessible"
+            "Select the 'Voice' grouping and verify the dashboard view changes to display Voice data",
+            "Navigate to the 'My Inventory' menu item and then return to the dashboard",
+            "Verify the 'Voice' grouping is still selected",
+            "Repeat steps 1-3 for 'Long Distance' and 'SMS' groupings"
           ],
-          "expected_result": "The user is able to view accurate and up-to-date warranty information for their dealer device",
-          "test_data": "Test data: Dealer device with a valid warranty, Dealer device with no active warranty, Dealer device with an expired warranty",
+          "expected_result": "The grouping state persists when navigating from group to group",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Negative Testing - Invalid Device",
-          "description": "Verify that the system handles invalid devices correctly",
+          "title": "Selectable Data Groupings Error Handling",
+          "description": "Verify that an error message is displayed when an invalid grouping is selected",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user has an invalid device registered in their profile",
+          "priority": "Medium",
+          "prerequisites": "User is logged in and has access to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the Subscriber Information page",
-            "Step 2: Locate the Warranty Information section within the Subscriber Information page",
-            "Step 3: Verify that an error message is displayed indicating that the device is invalid",
-            "Step 4: Verify that the warranty information is not displayed for the invalid device",
-            "Step 5: Test with different types of invalid devices (e.g. device not registered, device not activated)",
-            "Step 6: Verify that the system handles each type of invalid device correctly",
-            "Step 7: Log out of the system and verify that the warranty information is no longer accessible"
+            "Attempt to select an invalid grouping (e.g. a non-existent grouping)",
+            "Verify an error message is displayed",
+            "Verify the dashboard view does not change"
           ],
-          "expected_result": "The system handles invalid devices correctly and does not display warranty information for them",
-          "test_data": "Test data: Invalid device, Device not registered, Device not activated",
+          "expected_result": "An error message is displayed and the dashboard view does not change",
+          "test_data": "None",
           "status": "Not Executed"
         }
       ],
@@ -492,125 +359,125 @@
     },
     {
       "requirement_id": "INUTS-007",
-      "requirement_title": "Data Units and Colour Coding",
+      "requirement_title": "Monthly Bar Chart Display",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "View Data Units and Colour Coding for Usage Types",
-          "description": "Verify that the user is able to view data units and colour coding for usage types such as minutes, messages, and MB/GB",
+          "title": "Verify Monthly Bar Chart Display",
+          "description": "Verify that the system displays a monthly Bar Chart reflecting data usage for the last 14 months",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "The user has mydashboard-view or mydashboard-manage permissions and has usage access",
+          "prerequisites": "User has access to the Play to Win Solutions Page",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Verify the dashboard displays data units for usage types such as minutes, messages, and MB/GB",
-            "Step 3: Verify the dashboard displays colour coding for usage types",
-            "Step 4: Verify the colour coding scheme is consistent and intuitive",
-            "Step 5: Verify the user can view unbilled usage for the current month",
-            "Step 6: Verify the user can view billed usage for previous months",
-            "Step 7: Verify the user can drill down to specific customers from the dashboard",
-            "Step 8: Verify the dashboard does not display daily or weekly separate capture of unbilled usage",
-            "Step 9: Verify the dashboard only displays monthly view of unbilled usage",
-            "Step 10: Verify the user can view usage data in a clear and understandable format"
+            "Navigate to the Play to Win Solutions Page",
+            "Verify the monthly Bar Chart is displayed",
+            "Verify the Bar Chart reflects data usage for the last 14 months",
+            "Verify the Bar Chart displays Data, Voice, SMS and LD usages",
+            "Verify the Bar Chart displays breakdown of Roaming, Overage and In-plan usages"
           ],
-          "expected_result": "The dashboard displays data units and colour coding for usage types, and the user can view usage data in a clear and understandable format",
-          "test_data": "Sample usage data for minutes, messages, and MB/GB",
+          "expected_result": "The system displays a monthly Bar Chart reflecting data usage for the last 14 months",
+          "test_data": "Last 14 months of data usage",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Invalid or Missing Usage Data",
-          "description": "Verify that the user is unable to view data units and colour coding for usage types when usage data is invalid or missing",
+          "title": "Verify Bar Chart Drill-Down Functionality",
+          "description": "Verify that the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "The user has mydashboard-view or mydashboard-manage permissions but does not have usage access",
+          "prerequisites": "User has access to the Play to Win Solutions Page and has a NAG with billed and unbilled usages",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Verify the dashboard does not display data units for usage types",
-            "Step 3: Verify the dashboard does not display colour coding for usage types",
-            "Step 4: Verify the user is unable to view unbilled usage for the current month",
-            "Step 5: Verify the user is unable to view billed usage for previous months",
-            "Step 6: Verify the user is unable to drill down to specific customers from the dashboard",
-            "Step 7: Verify the dashboard displays an error message or notification when usage data is invalid or missing",
-            "Step 8: Verify the user can navigate away from the dashboard and return to the login page"
+            "Navigate to the Play to Win Solutions Page",
+            "Click on the Bar Chart to drill down on details",
+            "Verify the details of both billed and unbilled usages of the Customer's NAG are displayed",
+            "Verify the user can view the breakdown of Roaming, Overage and In-plan usages"
           ],
-          "expected_result": "The dashboard does not display data units and colour coding for usage types, and the user is unable to view usage data",
-          "test_data": "Invalid or missing usage data for minutes, messages, and MB/GB",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 2
-    },
-    {
-      "requirement_id": "INUTS-008",
-      "requirement_title": "Back Button Navigation",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Back Button Navigation to Previous View",
-          "description": "Verify that the user is able to navigate back to the previous view using the Back Button",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user is logged in and has navigated to a view with a Back Button",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Summary Tabs",
-            "Step 2: Click on the Data Usage Bar Chart to drill down",
-            "Step 3: Verify the Interaction Prompt is visible",
-            "Step 4: Click on the Back Button to navigate back to the previous view",
-            "Step 5: Verify the user is brought back to the previous view with the Interaction Prompt visible",
-            "Step 6: Repeat steps 2-5 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
-            "Step 7: Verify the Back Button works correctly for each view",
-            "Step 8: Test the Back Button with different NAG (Group) Filter selections"
-          ],
-          "expected_result": "The user is able to navigate back to the previous view with the Interaction Prompt visible",
-          "test_data": "Usage Summary Tabs, Data Usage Bar Chart, Interaction Prompt, Shared Plans Usage Breakdown, Individual Plans Usage Breakdown, NAG (Group) Filter",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Back Button Navigation with Empty Input",
-          "description": "Verify that the user is able to navigate back to the previous view using the Back Button with empty input",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user is logged in and has navigated to a view with a Back Button",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Summary Tabs",
-            "Step 2: Clear any input fields, such as the NAG (Group) Filter",
-            "Step 3: Click on the Data Usage Bar Chart to drill down",
-            "Step 4: Verify the Interaction Prompt is visible",
-            "Step 5: Click on the Back Button to navigate back to the previous view",
-            "Step 6: Verify the user is brought back to the previous view with the Interaction Prompt visible",
-            "Step 7: Repeat steps 2-6 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
-            "Step 8: Verify the Back Button works correctly for each view with empty input"
-          ],
-          "expected_result": "The user is able to navigate back to the previous view with the Interaction Prompt visible, even with empty input",
-          "test_data": "Usage Summary Tabs, Data Usage Bar Chart, Interaction Prompt, Shared Plans Usage Breakdown, Individual Plans Usage Breakdown, NAG (Group) Filter",
+          "expected_result": "The user can drill down on details of both billed and unbilled usages of the Customer's NAG",
+          "test_data": "NAG with billed and unbilled usages",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Back Button Navigation with Invalid Input",
-          "description": "Verify that the user is able to navigate back to the previous view using the Back Button with invalid input",
+          "title": "Verify Bar Chart Error Handling",
+          "description": "Verify that the system handles errors when displaying the monthly Bar Chart",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "The user is logged in and has navigated to a view with a Back Button",
+          "prerequisites": "User has access to the Play to Win Solutions Page",
           "test_steps": [
-            "Step 1: Navigate to the Usage Summary Tabs",
-            "Step 2: Enter invalid input, such as a non-existent NAG (Group) Filter value",
-            "Step 3: Click on the Data Usage Bar Chart to drill down",
-            "Step 4: Verify the Interaction Prompt is visible",
-            "Step 5: Click on the Back Button to navigate back to the previous view",
-            "Step 6: Verify the user is brought back to the previous view with the Interaction Prompt visible",
-            "Step 7: Repeat steps 2-6 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
-            "Step 8: Verify the Back Button works correctly for each view with invalid input"
+            "Navigate to the Play to Win Solutions Page",
+            "Simulate an error when displaying the Bar Chart",
+            "Verify an error message is displayed to the user",
+            "Verify the error message is descriptive and helpful"
           ],
-          "expected_result": "The user is able to navigate back to the previous view with the Interaction Prompt visible, even with invalid input",
-          "test_data": "Usage Summary Tabs, Data Usage Bar Chart, Interaction Prompt, Shared Plans Usage Breakdown, Individual Plans Usage Breakdown, NAG (Group) Filter",
+          "expected_result": "The system handles errors when displaying the monthly Bar Chart",
+          "test_data": "Error simulation",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 3
+    },
+    {
+      "requirement_id": "INUTS-008",
+      "requirement_title": "Drilldown View",
+      "test_cases": [
+        {
+          "test_case_id": "TC-001",
+          "title": "Drilldown View for Bar Graph Selection",
+          "description": "Verify that the user is able to view a drilldown reflecting data when a Bar Graph is selected",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Critical",
+          "prerequisites": "The user has access to the Usage Bar Chart and can view the graph bars",
+          "test_steps": [
+            "Click on a graph bar to show details",
+            "Verify the drilldown view loads data corresponding to the specific month selected",
+            "Verify the heading reflects the month selected, e.g., 'March 2025 data usage'",
+            "Verify the data is accurate towards the specific month selected",
+            "Verify the billed usage provides a user usage summary table"
+          ],
+          "expected_result": "The drilldown view displays the correct data for the selected month and provides a usage summary table",
+          "test_data": "Select a specific month, e.g., March 2025, and verify the data",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-002",
+          "title": "Shared Plans Usage Breakdown in Drilldown View",
+          "description": "Verify that the user can view a breakdown of shared plans within each category in the drilldown view",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "The user has access to the Usage Bar Chart and can view the graph bars",
+          "test_steps": [
+            "Click on a graph bar to show details",
+            "Verify the Shared Plans table is displayed with a breakdown of roaming, overage, and in-plan usage",
+            "Verify the share group for plans is broken down accurately, e.g., 'Small/Medium/Large business share plan'",
+            "Verify the data is accurate towards usage for each group",
+            "Verify the links are clickable for each group's corresponding Data Usage category"
+          ],
+          "expected_result": "The Shared Plans table displays the correct breakdown of shared plans within each category",
+          "test_data": "Select a specific shared plan, e.g., 'Small business share plan', and verify the data",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Individual Plans Usage Breakdown in Drilldown View",
+          "description": "Verify that the user can view a breakdown of individual plans in the drilldown view",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "The user has access to the Usage Bar Chart and can view the graph bars",
+          "test_steps": [
+            "Click on a graph bar to show details",
+            "Verify the Individual Plans table is displayed with a breakdown of roaming, overage, and in-plan usage",
+            "Verify the individual plans for the number of subscribers are broken down accurately",
+            "Verify the data is accurate towards usage for each group",
+            "Verify the data reflects MB, Voice and Long Distance reflects Minutes, and Text Messaging reflects Numbers"
+          ],
+          "expected_result": "The Individual Plans table displays the correct breakdown of individual plans",
+          "test_data": "Select a specific individual plan, e.g., 'Plan A', and verify the data",
           "status": "Not Executed"
         }
       ],
@@ -618,78 +485,58 @@
     },
     {
       "requirement_id": "INUTS-009",
-      "requirement_title": "Quick Links Area",
+      "requirement_title": "Shared Plans Usage Breakdown",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "View Quick Links Area",
-          "description": "Verify that the user is able to view the quick links area",
+          "title": "Verify Shared Plans Usage Breakdown Table",
+          "description": "Verify that the user is able to view a table summarizing roaming, overage, and in-plan usage for shared plans",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "The user must be logged in as a BBM wireless subscriber",
+          "prerequisites": "User has a shared plan and is logged in to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Verify the quick links area is displayed",
-            "Step 3: Verify the quick links area contains links to other Bell tools",
-            "Step 4: Click on a link in the quick links area",
-            "Step 5: Verify the user is redirected to the corresponding Bell tool",
-            "Step 6: Verify the user can access the Bell tool without any errors",
-            "Step 7: Click on the back button to return to the dashboard",
-            "Step 8: Verify the user is returned to the dashboard",
-            "Step 9: Verify the quick links area is still displayed",
-            "Step 10: Verify the links in the quick links area are still functional"
+            "Navigate to the Shared Plans Usage Breakdown section",
+            "Verify the table displays columns for roaming, overage, and in-plan usage",
+            "Verify the table shows the correct usage data for the shared plan",
+            "Verify the table is sortable and filterable by usage type"
           ],
-          "expected_result": "The user is able to view the quick links area and access other Bell tools",
-          "test_data": "Test data: BBM wireless subscriber credentials",
+          "expected_result": "The table displays the correct usage data for the shared plan, and is sortable and filterable by usage type",
+          "test_data": "Shared plan with roaming, overage, and in-plan usage data",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Access Other Bell Tools",
-          "description": "Verify that the user is able to access other Bell tools from the quick links area",
+          "title": "Verify Shared Plans Usage Breakdown Table with No Data",
+          "description": "Verify that the user is able to view a table summarizing roaming, overage, and in-plan usage for shared plans with no data",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user must be logged in as a BBM wireless subscriber and have access to other Bell tools",
+          "priority": "Medium",
+          "prerequisites": "User has a shared plan with no usage data and is logged in to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Verify the quick links area is displayed",
-            "Step 3: Click on a link in the quick links area",
-            "Step 4: Verify the user is redirected to the corresponding Bell tool",
-            "Step 5: Verify the user can access the Bell tool without any errors",
-            "Step 6: Perform an action in the Bell tool (e.g. view account information)",
-            "Step 7: Verify the action is successful",
-            "Step 8: Click on the back button to return to the dashboard",
-            "Step 9: Verify the user is returned to the dashboard",
-            "Step 10: Verify the quick links area is still displayed"
+            "Navigate to the Shared Plans Usage Breakdown section",
+            "Verify the table displays a message indicating no data is available",
+            "Verify the table does not display any usage data"
           ],
-          "expected_result": "The user is able to access other Bell tools from the quick links area",
-          "test_data": "Test data: BBM wireless subscriber credentials and access to other Bell tools",
+          "expected_result": "The table displays a message indicating no data is available, and does not display any usage data",
+          "test_data": "Shared plan with no usage data",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Invalid Access to Other Bell Tools",
-          "description": "Verify that the user is not able to access other Bell tools without proper authorization",
+          "title": "Verify Shared Plans Usage Breakdown Table with Invalid Data",
+          "description": "Verify that the user is able to view a table summarizing roaming, overage, and in-plan usage for shared plans with invalid data",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user must be logged in as a BBM wireless subscriber without access to other Bell tools",
+          "priority": "Low",
+          "prerequisites": "User has a shared plan with invalid usage data and is logged in to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Verify the quick links area is displayed",
-            "Step 3: Click on a link in the quick links area",
-            "Step 4: Verify the user is not redirected to the corresponding Bell tool",
-            "Step 5: Verify an error message is displayed indicating that the user does not have access to the Bell tool",
-            "Step 6: Verify the user is returned to the dashboard",
-            "Step 7: Verify the quick links area is still displayed",
-            "Step 8: Verify the links in the quick links area are still functional",
-            "Step 9: Verify the user cannot access the Bell tool without proper authorization",
-            "Step 10: Verify the error message is still displayed"
+            "Navigate to the Shared Plans Usage Breakdown section",
+            "Verify the table displays an error message indicating invalid data",
+            "Verify the table does not display any usage data"
           ],
-          "expected_result": "The user is not able to access other Bell tools without proper authorization",
-          "test_data": "Test data: BBM wireless subscriber credentials without access to other Bell tools",
+          "expected_result": "The table displays an error message indicating invalid data, and does not display any usage data",
+          "test_data": "Shared plan with invalid usage data",
           "status": "Not Executed"
         }
       ],
@@ -697,102 +544,98 @@
     },
     {
       "requirement_id": "INUTS-010",
-      "requirement_title": "Show Button",
+      "requirement_title": "In-plan Usage Threshold Donut Wheel",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "View Additional Information Using Show Button",
-          "description": "Verify that the user is able to view additional information by clicking the show button",
+          "title": "Donut Wheel Rendering for Under 75% Usage",
+          "description": "Verify that the Donut Wheel renders accordingly for under 75% usage",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "User has necessary permissions and additional information is available",
+          "prerequisites": "User has a valid account with current month's usage data",
           "test_steps": [
-            "Navigate to the page with the show button",
-            "Verify the show button is displayed",
-            "Click the show button",
-            "Verify additional information is displayed",
-            "Verify the user can view the additional information without any errors",
-            "Click the show button again to hide the additional information",
-            "Verify the additional information is hidden",
-            "Enter invalid input to test error handling",
-            "Verify an error message is displayed"
+            "Verify the Donut Wheel is displayed on the page",
+            "Verify the Donut Wheel shows usage under 75%",
+            "Verify the Donut Wheel color corresponds to the under 75% threshold"
           ],
-          "expected_result": "The user is able to view additional information by clicking the show button and the information is displayed correctly",
-          "test_data": "Sample additional information",
+          "expected_result": "The Donut Wheel is displayed and shows usage under 75% with the correct color",
+          "test_data": "Current month's usage data with 50% usage",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Show Button Error Handling",
-          "description": "Verify that the show button handles errors correctly",
+          "title": "Donut Wheel Rendering for 75-95% Usage",
+          "description": "Verify that the Donut Wheel renders accordingly for 75-95% usage",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "User has necessary permissions and additional information is available",
+          "priority": "High",
+          "prerequisites": "User has a valid account with current month's usage data",
           "test_steps": [
-            "Navigate to the page with the show button",
-            "Verify the show button is displayed",
-            "Click the show button without necessary permissions",
-            "Verify an error message is displayed",
-            "Click the show button with invalid input",
-            "Verify an error message is displayed",
-            "Click the show button with missing required fields",
-            "Verify an error message is displayed"
+            "Verify the Donut Wheel is displayed on the page",
+            "Verify the Donut Wheel shows usage between 75% and 95%",
+            "Verify the Donut Wheel color corresponds to the 75-95% threshold"
           ],
-          "expected_result": "The show button handles errors correctly and displays an error message",
-          "test_data": "Sample invalid input",
+          "expected_result": "The Donut Wheel is displayed and shows usage between 75% and 95% with the correct color",
+          "test_data": "Current month's usage data with 85% usage",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Donut Wheel Rendering for Over 95% Usage",
+          "description": "Verify that the Donut Wheel renders accordingly for over 95% usage",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "User has a valid account with current month's usage data",
+          "test_steps": [
+            "Verify the Donut Wheel is displayed on the page",
+            "Verify the Donut Wheel shows usage over 95%",
+            "Verify the Donut Wheel color corresponds to the over 95% threshold"
+          ],
+          "expected_result": "The Donut Wheel is displayed and shows usage over 95% with the correct color",
+          "test_data": "Current month's usage data with 100% usage",
           "status": "Not Executed"
         }
       ],
-      "total_count": 2
+      "total_count": 3
     },
     {
       "requirement_id": "INUTS-011",
-      "requirement_title": "User Roles and Permissions",
+      "requirement_title": "Breakdown Table Back Button",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Valid User Credentials with Correct Role and Permissions",
-          "description": "Verify that the user is able to access the dashboard based on their role and permissions",
+          "title": "Back Button Navigation to 14-Month Bar Chart View",
+          "description": "Verify that the user is able to navigate back to the 14-month bar chart view using the back button within the Breakdown Table",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user roles and permissions are correctly configured in the system",
+          "priority": "High",
+          "prerequisites": "The user is currently viewing the Breakdown Table",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'john.doe@company.com' in the 'Email' field",
-            "Enter 'password123' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify the dashboard displays the correct level of usage information based on the user's role and permissions",
-            "Verify the user is able to view the 'Latest Orders Table'",
-            "Verify the user is able to view the 'Shopping and Orders Widget'",
-            "Click the 'Back Button to Drill down table' and verify the user is able to navigate back to the previous page",
-            "Logout from the dashboard"
+            "Click the Back Button within the Breakdown Table",
+            "Verify the 14-month bar chart view is displayed",
+            "Verify the Interaction Prompt is visible"
           ],
-          "expected_result": "The dashboard displays the correct level of usage information based on the user's role and permissions",
-          "test_data": "john.doe@company.com, password123",
+          "expected_result": "The user is navigated back to the 14-month bar chart view with the Interaction Prompt visible",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Invalid User Credentials or Incorrect Role and Permissions",
-          "description": "Verify that the user is not able to access the dashboard with invalid credentials or incorrect role and permissions",
+          "title": "Back Button Navigation with No Interaction Prompt",
+          "description": "Verify that the user is able to navigate back to the 14-month bar chart view using the back button within the Breakdown Table when there is no Interaction Prompt",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user roles and permissions are correctly configured in the system",
+          "priority": "Medium",
+          "prerequisites": "The user is currently viewing the Breakdown Table and there is no Interaction Prompt",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'invalid.user@company.com' in the 'Email' field",
-            "Enter 'wrongpassword' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify an error message displays: 'Invalid username or password'",
-            "Verify the user is not able to access the dashboard",
-            "Logout from the login page"
+            "Click the Back Button within the Breakdown Table",
+            "Verify the 14-month bar chart view is displayed",
+            "Verify there is no Interaction Prompt visible"
           ],
-          "expected_result": "An error message displays: 'Invalid username or password'",
-          "test_data": "invalid.user@company.com, wrongpassword",
+          "expected_result": "The user is navigated back to the 14-month bar chart view with no Interaction Prompt visible",
+          "test_data": "None",
           "status": "Not Executed"
         }
       ],
@@ -800,100 +643,100 @@
     },
     {
       "requirement_id": "INUTS-012",
-      "requirement_title": "Prevent Regression of Defect SADRSTRANG-13583",
+      "requirement_title": "Individual Plans Detail Table Display",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Prevent Regression of Defect SADRSTRANG-13583",
-          "description": "Verify that the user is able to use the system reliably without exhibiting the defect SADRSTRANG-13583",
-          "test_type": "Non-Functional",
+          "title": "Verify Individual Plans Detail Table Display",
+          "description": "Verify that the user is able to view detailed information about individual plans",
+          "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The system has been updated to prevent regression of defect SADRSTRANG-13583, and the user has a valid BBM wireless subscription",
+          "priority": "High",
+          "prerequisites": "User has access to the Individual Plans Detail Table",
           "test_steps": [
-            "Navigate to the BBSSC dashboard",
-            "Verify the display of Data, Voice, SMS and LD usages in a clear display",
-            "Click on the NAG Metric Tiles to view usage summary",
-            "Verify the breakdown of Roaming, Overage and In-plan usages for each insight",
-            "Drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the display of Shopping and orders insights - In progress, completed and cancelled",
-            "Click on the quick links area to connect to other Bell tools",
-            "Verify that the system does not exhibit the defect SADRSTRANG-13583"
+            "Select the Data Usage type from the dropdown filter",
+            "Verify the # of individual plan subscribers is displayed",
+            "Click on the # of individual plan subscribers",
+            "Verify a separate table with listed details is displayed",
+            "Verify the table includes columns for individual plan details"
           ],
-          "expected_result": "The user is able to use the system reliably without exhibiting the defect SADRSTRANG-13583",
-          "test_data": "Valid BBM wireless subscription credentials",
+          "expected_result": "The user is able to view detailed information about individual plans in a separate table",
+          "test_data": "Sample data for individual plans",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Negative Test - Invalid Input",
-          "description": "Verify that the user is unable to use the system with invalid input",
-          "test_type": "Non-Functional",
+          "title": "Verify Error Handling for Invalid Input",
+          "description": "Verify that the system handles invalid input for individual plans detail table display",
+          "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The system has been updated to prevent regression of defect SADRSTRANG-13583, and the user has a valid BBM wireless subscription",
+          "priority": "Medium",
+          "prerequisites": "User has access to the Individual Plans Detail Table",
           "test_steps": [
-            "Navigate to the BBSSC dashboard",
-            "Enter invalid credentials",
-            "Click on the NAG Metric Tiles to view usage summary",
-            "Verify that the system displays an error message",
-            "Verify that the system does not exhibit the defect SADRSTRANG-13583"
+            "Enter an invalid Data Usage type",
+            "Verify an error message is displayed",
+            "Verify the error message indicates the invalid input",
+            "Verify the system does not crash or become unresponsive"
           ],
-          "expected_result": "The user is unable to use the system with invalid input, and the system does not exhibit the defect SADRSTRANG-13583",
-          "test_data": "Invalid BBM wireless subscription credentials",
+          "expected_result": "The system handles invalid input and displays an error message",
+          "test_data": "Invalid data for individual plans",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Verify Boundary Case for Large Number of Individual Plans",
+          "description": "Verify that the system handles a large number of individual plans",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Low",
+          "prerequisites": "User has access to the Individual Plans Detail Table with a large number of plans",
+          "test_steps": [
+            "Select a large number of individual plans",
+            "Verify the system displays all plans in the table",
+            "Verify the system does not become unresponsive or crash",
+            "Verify the table is scrollable and sortable"
+          ],
+          "expected_result": "The system handles a large number of individual plans and displays them in the table",
+          "test_data": "Large number of individual plans",
           "status": "Not Executed"
         }
       ],
-      "total_count": 2
+      "total_count": 3
     },
     {
       "requirement_id": "INUTS-013",
-      "requirement_title": "Billed Month Drilldown",
+      "requirement_title": "Shop now Button Functionality",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Billed Month Drilldown Test",
-          "description": "Verify that the user is able to drill down into their billed month data",
-          "test_type": "Non-Functional",
+          "title": "Shop now Button Click",
+          "description": "Verify that the user is able to click the Shop now button and navigate to the correct URL",
+          "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "User has necessary permissions to view billed month data",
+          "prerequisites": "User is on the Shopping and orders box page",
           "test_steps": [
-            "Navigate to the 14-month bar chart view",
-            "Select the current unbilled month",
-            "Click on the Usage Bar Chart Drilldown",
-            "Verify the In-Plan Usage Thresholds table is displayed with title and thresholds (75%, 75%-95%, 95%+)",
-            "Verify the donut wheel showcases the number of individual plans within each threshold",
-            "Click on a specific threshold (e.g. 75%)",
-            "Verify the corresponding number of individual plans within that threshold is displayed",
-            "Verify the color delineation between Usage types (In-plan, Overage, and Roaming) is according to agreed standards",
-            "Click on the Shareplans Detail Table link for a specific usage type",
-            "Verify the detailed table is displayed with columns for Billing Account, Plan Name, # of subscribers, Allowance (MB), Used (MB), and Overage (MB)",
-            "Verify the data is sorted by billing account's alphabetical order",
-            "Verify the data accurately represents the correct allowance, used, and overage values"
+            "Click the Shop now button on the top right of the Shopping and orders box",
+            "Verify the URL in the new browser tab is https://shop.enterprisecentre.bell.ca/devices"
           ],
-          "expected_result": "The user is able to drill down into their billed month data and view the correct usage thresholds and shareplan details",
-          "test_data": "Sample test data: select the current unbilled month, click on the 75% threshold, verify the corresponding number of individual plans is displayed",
+          "expected_result": "The user is navigated to the correct URL in a new browser tab",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Billed Month Drilldown Error Handling Test",
-          "description": "Verify that the user is unable to drill down into their billed month data without necessary permissions",
-          "test_type": "Non-Functional",
+          "title": "Shop now Button Placement",
+          "description": "Verify that the Shop now button is placed correctly on the Shopping and orders box page",
+          "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User does not have necessary permissions to view billed month data",
+          "priority": "Medium",
+          "prerequisites": "User is on the Shopping and orders box page",
           "test_steps": [
-            "Navigate to the 14-month bar chart view",
-            "Select the current unbilled month",
-            "Attempt to click on the Usage Bar Chart Drilldown",
-            "Verify an error message is displayed indicating that the user does not have necessary permissions",
-            "Verify the In-Plan Usage Thresholds table is not displayed",
-            "Verify the donut wheel is not displayed"
+            "Verify the Shop now button is displayed on the top right of the Shopping and orders box",
+            "Verify the button is clickable"
           ],
-          "expected_result": "The user is unable to drill down into their billed month data and an error message is displayed",
-          "test_data": "Sample test data: attempt to drill down without necessary permissions",
+          "expected_result": "The Shop now button is displayed and clickable on the top right of the Shopping and orders box",
+          "test_data": "None",
           "status": "Not Executed"
         }
       ],
@@ -901,188 +744,117 @@
     },
     {
       "requirement_id": "INUTS-014",
-      "requirement_title": "Unified Dashboard for Wireless Management Insights",
+      "requirement_title": "Export Feature",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Viewing Data Usage in Unified Dashboard",
-          "description": "Verify that the user is able to view data usage through graphical design in the Unified Dashboard for Wireless Management Insights",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has access to the Unified Dashboard for Wireless Management Insights",
-          "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field, e.g., 'john.doe@company.com'",
-            "Enter valid password in the 'Password' field, e.g., 'password123'",
-            "Click the 'Sign In' button",
-            "Click on the 'Unified Dashboard for Wireless Management Insights' link",
-            "Verify the 'Data' usage is displayed through graphical design",
-            "Verify the breakdown of 'Roaming', 'Overage', and 'In-plan' usages for 'Data' insight is displayed",
-            "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the 'Data' usage graph updates when the user selects a different time period from the dropdown"
-          ],
-          "expected_result": "The user is able to view data usage through graphical design in the Unified Dashboard for Wireless Management Insights, with breakdown of roaming, overage, and in-plan usages",
-          "test_data": "john.doe@company.com, password123",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Viewing Voice Usage in Unified Dashboard",
-          "description": "Verify that the user is able to view voice usage through graphical design in the Unified Dashboard for Wireless Management Insights",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has access to the Unified Dashboard for Wireless Management Insights",
-          "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field, e.g., 'john.doe@company.com'",
-            "Enter valid password in the 'Password' field, e.g., 'password123'",
-            "Click the 'Sign In' button",
-            "Click on the 'Unified Dashboard for Wireless Management Insights' link",
-            "Verify the 'Voice' usage is displayed through graphical design",
-            "Verify the breakdown of 'Roaming', 'Overage', and 'In-plan' usages for 'Voice' insight is displayed",
-            "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the 'Voice' usage graph updates when the user selects a different time period from the dropdown"
-          ],
-          "expected_result": "The user is able to view voice usage through graphical design in the Unified Dashboard for Wireless Management Insights, with breakdown of roaming, overage, and in-plan usages",
-          "test_data": "john.doe@company.com, password123",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "Viewing SMS Usage in Unified Dashboard",
-          "description": "Verify that the user is able to view SMS usage through graphical design in the Unified Dashboard for Wireless Management Insights",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has access to the Unified Dashboard for Wireless Management Insights",
-          "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field, e.g., 'john.doe@company.com'",
-            "Enter valid password in the 'Password' field, e.g., 'password123'",
-            "Click the 'Sign In' button",
-            "Click on the 'Unified Dashboard for Wireless Management Insights' link",
-            "Verify the 'SMS' usage is displayed through graphical design",
-            "Verify the breakdown of 'Roaming', 'Overage', and 'In-plan' usages for 'SMS' insight is displayed",
-            "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the 'SMS' usage graph updates when the user selects a different time period from the dropdown"
-          ],
-          "expected_result": "The user is able to view SMS usage through graphical design in the Unified Dashboard for Wireless Management Insights, with breakdown of roaming, overage, and in-plan usages",
-          "test_data": "john.doe@company.com, password123",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-004",
-          "title": "Viewing LD Usage in Unified Dashboard",
-          "description": "Verify that the user is able to view LD usage through graphical design in the Unified Dashboard for Wireless Management Insights",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has access to the Unified Dashboard for Wireless Management Insights",
-          "test_steps": [
-            "Navigate to the Login page",
-            "Enter valid username in the 'Email' field, e.g., 'john.doe@company.com'",
-            "Enter valid password in the 'Password' field, e.g., 'password123'",
-            "Click the 'Sign In' button",
-            "Click on the 'Unified Dashboard for Wireless Management Insights' link",
-            "Verify the 'LD' usage is displayed through graphical design",
-            "Verify the breakdown of 'Roaming', 'Overage', and 'In-plan' usages for 'LD' insight is displayed",
-            "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the 'LD' usage graph updates when the user selects a different time period from the dropdown"
-          ],
-          "expected_result": "The user is able to view LD usage through graphical design in the Unified Dashboard for Wireless Management Insights, with breakdown of roaming, overage, and in-plan usages",
-          "test_data": "john.doe@company.com, password123",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-005",
-          "title": "Invalid Login Credentials",
-          "description": "Verify that the user is unable to access the Unified Dashboard for Wireless Management Insights with invalid login credentials",
+          "title": "Export Dashboard Details in CSV Format",
+          "description": "Verify that the user is able to export dashboard details in CSV format",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "The user has invalid login credentials",
+          "prerequisites": "User has access to the dashboard and has permission to export data",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter invalid username in the 'Email' field, e.g., 'invaliduser@company.com'",
-            "Enter invalid password in the 'Password' field, e.g., 'invalidpassword'",
-            "Click the 'Sign In' button",
-            "Verify an error message is displayed, e.g., 'Invalid username or password'"
+            "Click the 'Export' button on the dashboard",
+            "Select 'CSV' as the export file type from the dropdown menu",
+            "Verify that the exported CSV file includes the Bar Graph's Data, Voice, SMS, and LD Usages",
+            "Verify that the exported CSV file includes both Share Plan and individual plans data"
           ],
-          "expected_result": "The user is unable to access the Unified Dashboard for Wireless Management Insights with invalid login credentials",
-          "test_data": "invaliduser@company.com, invalidpassword",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 5
-    },
-    {
-      "requirement_id": "INUTS-015",
-      "requirement_title": "Shopping and Orders Management",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "View Shopping and Orders Insights",
-          "description": "Verify that the user is able to view their shopping and orders insights, including in-progress, completed, and cancelled orders",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user must be logged in and have access to the Shopping and Orders Widget",
-          "test_steps": [
-            "Step 1: Navigate to the Shopping and Orders Widget",
-            "Step 2: Click on the Shopping and Orders tab",
-            "Step 3: Verify that the shopping and orders insights are displayed, including in-progress, completed, and cancelled orders",
-            "Step 4: Verify that the Latest Orders Table is displayed with the most recent orders",
-            "Step 5: Verify that the user can view the details of each order by clicking on the order",
-            "Step 6: Verify that the user can view all orders by clicking on the View All Orders link",
-            "Step 7: Verify that the user can view the status of each order, including in-progress, completed, and cancelled",
-            "Step 8: Verify that the user can view the details of each order, including the order date, order total, and order status",
-            "Step 9: Verify that the user can navigate back to the Shopping and Orders Widget by clicking on the Back Button to Drill down table",
-            "Step 10: Verify that the user can log out and log back in to verify that the shopping and orders insights are still displayed correctly"
-          ],
-          "expected_result": "The user is able to view their shopping and orders insights, including in-progress, completed, and cancelled orders, and can navigate through the different orders and view their details",
-          "test_data": "Test data includes a minimum of 5 orders with different statuses (in-progress, completed, and cancelled) and different order dates and totals",
+          "expected_result": "The exported CSV file is downloaded successfully and includes the required data",
+          "test_data": "Sample dashboard data with Bar Graph's Data, Voice, SMS, and LD Usages",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Negative Test - No Orders",
-          "description": "Verify that the user is able to view a message indicating that there are no orders when there are no orders",
+          "title": "Export Dashboard Details in PDF Format",
+          "description": "Verify that the user is able to export dashboard details in PDF format",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user must be logged in and have access to the Shopping and Orders Widget, and there must be no orders in the system",
+          "priority": "High",
+          "prerequisites": "User has access to the dashboard and has permission to export data",
           "test_steps": [
-            "Step 1: Navigate to the Shopping and Orders Widget",
-            "Step 2: Click on the Shopping and Orders tab",
-            "Step 3: Verify that a message is displayed indicating that there are no orders",
-            "Step 4: Verify that the Latest Orders Table is empty",
-            "Step 5: Verify that the user can navigate back to the Shopping and Orders Widget by clicking on the Back Button to Drill down table",
-            "Step 6: Verify that the user can log out and log back in to verify that the message indicating that there are no orders is still displayed correctly"
+            "Click the 'Export' button on the dashboard",
+            "Select 'PDF' as the export file type from the dropdown menu",
+            "Verify that the exported PDF file includes the Bar Graph's Data, Voice, SMS, and LD Usages",
+            "Verify that the exported PDF file includes both visual and tabled data"
           ],
-          "expected_result": "The user is able to view a message indicating that there are no orders when there are no orders",
-          "test_data": "Test data includes an empty orders table",
+          "expected_result": "The exported PDF file is downloaded successfully and includes the required data",
+          "test_data": "Sample dashboard data with Bar Graph's Data, Voice, SMS, and LD Usages",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Negative Test - Invalid User",
-          "description": "Verify that the user is unable to view their shopping and orders insights when they do not have access to the Shopping and Orders Widget",
+          "title": "Export Dashboard Details in Invalid Format",
+          "description": "Verify that the user is unable to export dashboard details in an invalid format",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "The user must not have access to the Shopping and Orders Widget",
+          "prerequisites": "User has access to the dashboard and has permission to export data",
           "test_steps": [
-            "Step 1: Navigate to the Shopping and Orders Widget",
-            "Step 2: Verify that an error message is displayed indicating that the user does not have access to the Shopping and Orders Widget",
-            "Step 3: Verify that the user is unable to view their shopping and orders insights",
-            "Step 4: Verify that the user can navigate back to the login page",
-            "Step 5: Verify that the user can log in with a different user account that has access to the Shopping and Orders Widget",
-            "Step 6: Verify that the user can view their shopping and orders insights with the new user account"
+            "Click the 'Export' button on the dashboard",
+            "Select an invalid file type (e.g. 'TXT') from the dropdown menu",
+            "Verify that an error message is displayed indicating that the selected file type is not supported"
           ],
-          "expected_result": "The user is unable to view their shopping and orders insights when they do not have access to the Shopping and Orders Widget",
-          "test_data": "Test data includes a user account that does not have access to the Shopping and Orders Widget",
+          "expected_result": "An error message is displayed indicating that the selected file type is not supported",
+          "test_data": "Invalid file type (e.g. 'TXT')",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 3
+    },
+    {
+      "requirement_id": "INUTS-015",
+      "requirement_title": "NAG Filter",
+      "test_cases": [
+        {
+          "test_case_id": "TC-001",
+          "title": "Filter Dashboard by NAG",
+          "description": "Verify that the user is able to filter the dashboard by NAG",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "User has access to the dashboard and NAG filter feature",
+          "test_steps": [
+            "Select a NAG from the NAG (Group) Filter dropdown",
+            "Verify that the dashboard is updated to show only data relevant to the selected NAG",
+            "Verify that the dashboard visualizations, such as Bar Graphs, are updated to reflect the filtered data"
+          ],
+          "expected_result": "The dashboard is filtered to show only data relevant to the selected NAG",
+          "test_data": "NAG (Group) Filter dropdown values",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-002",
+          "title": "Filter Information by NAG",
+          "description": "Verify that the user is able to filter information by NAG",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "prerequisites": "User has access to the information and NAG filter feature",
+          "test_steps": [
+            "Select a NAG from the NAG (Group) Filter dropdown",
+            "Verify that the information is updated to show only data relevant to the selected NAG",
+            "Verify that the information details, such as Share Plan vs individual plans, are updated to reflect the filtered data"
+          ],
+          "expected_result": "The information is filtered to show only data relevant to the selected NAG",
+          "test_data": "NAG (Group) Filter dropdown values",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-003",
+          "title": "Invalid NAG Filter Selection",
+          "description": "Verify that the user is unable to filter by an invalid NAG",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "Medium",
+          "prerequisites": "User has access to the dashboard and NAG filter feature",
+          "test_steps": [
+            "Select an invalid NAG from the NAG (Group) Filter dropdown",
+            "Verify that an error message is displayed indicating that the NAG is invalid",
+            "Verify that the dashboard is not updated to reflect the invalid NAG filter"
+          ],
+          "expected_result": "An error message is displayed indicating that the NAG is invalid",
+          "test_data": "Invalid NAG (Group) Filter dropdown value",
           "status": "Not Executed"
         }
       ],
@@ -1090,180 +862,114 @@
     },
     {
       "requirement_id": "INUTS-016",
-      "requirement_title": "NAG Favoriting",
+      "requirement_title": "Quick Links Area",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Favoriting a NAG",
-          "description": "Verify that the user is able to favorite a specific NAG",
+          "title": "Quick Links Area Visibility",
+          "description": "Verify that the Quick Links Area is visible to the user",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user must be logged in to My Dashboard with a valid username and password, and have at least one NAG available",
+          "priority": "High",
+          "prerequisites": "User has access to the dashboard",
           "test_steps": [
-            "Step 1: Navigate to the My Dashboard page",
-            "Step 2: Click on the NAG (Group) Filter dropdown and select a NAG",
-            "Step 3: Click on the favorite button next to the selected NAG",
-            "Step 4: Verify the NAG is marked as favorite",
-            "Step 5: Log out of My Dashboard",
-            "Step 6: Log back in to My Dashboard",
-            "Step 7: Verify the favorited NAG is shown as default",
-            "Step 8: Click on a different NAG and verify it is not marked as favorite",
-            "Step 9: Click on the favorite button next to the different NAG",
-            "Step 10: Verify the different NAG is marked as favorite",
-            "Step 11: Log out of My Dashboard",
-            "Step 12: Log back in to My Dashboard",
-            "Step 13: Verify the newly favorited NAG is shown as default"
+            "Verify the Quick Links Area is displayed on the dashboard",
+            "Verify the Quick Links Area contains links to other Bell tools",
+            "Verify the links in the Quick Links Area are clickable"
           ],
-          "expected_result": "The user is able to favorite a specific NAG and it is shown as default when logging in to My Dashboard",
-          "test_data": "Valid username: 'john.doe@company.com', valid password: 'password123', NAG name: 'NAG-001'",
+          "expected_result": "The Quick Links Area is visible and contains clickable links to other Bell tools",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Viewing favorited NAG",
-          "description": "Verify that the user is able to view the favorited NAG",
+          "title": "Quick Links Area Link Functionality",
+          "description": "Verify that the links in the Quick Links Area redirect to the correct pages",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "The user must be logged in to My Dashboard with a valid username and password, and have at least one favorited NAG",
+          "prerequisites": "User has access to the dashboard and the Quick Links Area",
           "test_steps": [
-            "Step 1: Navigate to the My Dashboard page",
-            "Step 2: Verify the favorited NAG is shown as default",
-            "Step 3: Click on the favorited NAG",
-            "Step 4: Verify the NAG details are displayed",
-            "Step 5: Verify the favorite button next to the NAG is highlighted",
-            "Step 6: Click on a different NAG",
-            "Step 7: Verify the different NAG details are displayed",
-            "Step 8: Verify the favorite button next to the different NAG is not highlighted"
+            "Click on a link in the Quick Links Area",
+            "Verify the user is redirected to the correct page",
+            "Verify the page contains the expected content"
           ],
-          "expected_result": "The user is able to view the favorited NAG and its details",
-          "test_data": "Valid username: 'john.doe@company.com', valid password: 'password123', favorited NAG name: 'NAG-001'",
+          "expected_result": "The user is redirected to the correct page and the page contains the expected content",
+          "test_data": "None",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Favoriting multiple NAGs",
-          "description": "Verify that the user is able to favorite multiple NAGs",
+          "title": "Quick Links Area Error Handling",
+          "description": "Verify that the Quick Links Area handles errors correctly",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Medium",
-          "prerequisites": "The user must be logged in to My Dashboard with a valid username and password, and have at least two NAGs available",
+          "prerequisites": "User has access to the dashboard and the Quick Links Area",
           "test_steps": [
-            "Step 1: Navigate to the My Dashboard page",
-            "Step 2: Click on the NAG (Group) Filter dropdown and select a NAG",
-            "Step 3: Click on the favorite button next to the selected NAG",
-            "Step 4: Verify the NAG is marked as favorite",
-            "Step 5: Click on a different NAG",
-            "Step 6: Click on the favorite button next to the different NAG",
-            "Step 7: Verify the different NAG is marked as favorite",
-            "Step 8: Log out of My Dashboard",
-            "Step 9: Log back in to My Dashboard",
-            "Step 10: Verify both favorited NAGs are shown as default"
+            "Simulate a network error while clicking on a link in the Quick Links Area",
+            "Verify an error message is displayed to the user",
+            "Verify the error message contains instructions on how to resolve the issue"
           ],
-          "expected_result": "The user is able to favorite multiple NAGs and they are shown as default when logging in to My Dashboard",
-          "test_data": "Valid username: 'john.doe@company.com', valid password: 'password123', NAG names: 'NAG-001', 'NAG-002'",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-004",
-          "title": "Unfavoriting a NAG",
-          "description": "Verify that the user is able to unfavorite a NAG",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Low",
-          "prerequisites": "The user must be logged in to My Dashboard with a valid username and password, and have at least one favorited NAG",
-          "test_steps": [
-            "Step 1: Navigate to the My Dashboard page",
-            "Step 2: Verify the favorited NAG is shown as default",
-            "Step 3: Click on the favorited NAG",
-            "Step 4: Click on the favorite button next to the NAG",
-            "Step 5: Verify the NAG is no longer marked as favorite",
-            "Step 6: Log out of My Dashboard",
-            "Step 7: Log back in to My Dashboard",
-            "Step 8: Verify the NAG is no longer shown as default"
-          ],
-          "expected_result": "The user is able to unfavorite a NAG and it is no longer shown as default when logging in to My Dashboard",
-          "test_data": "Valid username: 'john.doe@company.com', valid password: 'password123', favorited NAG name: 'NAG-001'",
+          "expected_result": "An error message is displayed to the user with instructions on how to resolve the issue",
+          "test_data": "None",
           "status": "Not Executed"
         }
       ],
-      "total_count": 4
+      "total_count": 3
     },
     {
       "requirement_id": "INUTS-017",
-      "requirement_title": "Usage and Metric Visualization",
+      "requirement_title": "Bill Cycle Information Display",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Viewing Metric Tiles",
-          "description": "Verify that the user is able to view metric tiles and see accurate data",
+          "title": "Verify Bill Cycle Information Display",
+          "description": "Verify that the user is able to view their billing cycle information",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user must be logged in and have access to the Usage and Metric Visualization feature",
+          "priority": "High",
+          "prerequisites": "User has mydashboard-view or mydashboard-manage permissions",
           "test_steps": [
-            "Step 1: Navigate to the Usage and Metric Visualization page",
-            "Step 2: Click on the Metric Tiles section",
-            "Step 3: Verify that the metric tiles display accurate data, including Data Usage, Voice, SMS, and LD Usages",
-            "Step 4: Interact with the metric tiles by hovering over or clicking on them",
-            "Step 5: Verify that the metric tiles update in real-time and display the correct information",
-            "Step 6: Test with different types of data, such as shared plans and individual plans",
-            "Step 7: Verify that the metric tiles display the correct data for each type of plan",
-            "Step 8: Test with different time periods, such as daily, weekly, or monthly",
-            "Step 9: Verify that the metric tiles display the correct data for each time period",
-            "Step 10: Click on the Back Button to return to the previous page",
-            "Step 11: Verify that the page returns to the previous state"
+            "Verify the Bill Cycle Information section is displayed",
+            "Verify the Open date field displays the start of the bill cycle",
+            "Verify the Close date field displays the end of the bill cycle"
           ],
-          "expected_result": "The user is able to view metric tiles and see accurate data, and the metric tiles update in real-time",
-          "test_data": "Test data includes different types of plans (shared and individual) and different time periods (daily, weekly, monthly)",
+          "expected_result": "The user can view their billing cycle information, including Open date and Close date",
+          "test_data": "Sample bill cycle data with Open date and Close date",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Interacting with Usage Summary Tabs",
-          "description": "Verify that the user is able to interact with usage summary tabs and see accurate data",
+          "title": "Verify Bill Cycle Information Display for Unbilled Usage",
+          "description": "Verify that the user is able to view their unbilled usage bill cycle information",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user must be logged in and have access to the Usage and Metric Visualization feature",
+          "priority": "Medium",
+          "prerequisites": "User has mydashboard-view or mydashboard-manage permissions and has unbilled usage",
           "test_steps": [
-            "Step 1: Navigate to the Usage and Metric Visualization page",
-            "Step 2: Click on the Usage Summary Tabs section",
-            "Step 3: Verify that the usage summary tabs display accurate data, including Data Usage, Voice, SMS, and LD Usages",
-            "Step 4: Interact with the usage summary tabs by clicking on them",
-            "Step 5: Verify that the usage summary tabs update in real-time and display the correct information",
-            "Step 6: Test with different types of data, such as shared plans and individual plans",
-            "Step 7: Verify that the usage summary tabs display the correct data for each type of plan",
-            "Step 8: Test with different time periods, such as daily, weekly, or monthly",
-            "Step 9: Verify that the usage summary tabs display the correct data for each time period",
-            "Step 10: Click on the Back Button to return to the previous page",
-            "Step 11: Verify that the page returns to the previous state"
+            "Verify the Unbilled usage section is displayed",
+            "Verify the Start of bill cycle to login period is displayed as the unbilled usage period",
+            "Verify the Previous month(s) capture of customer's billed usage is displayed"
           ],
-          "expected_result": "The user is able to interact with usage summary tabs and see accurate data, and the usage summary tabs update in real-time",
-          "test_data": "Test data includes different types of plans (shared and individual) and different time periods (daily, weekly, monthly)",
+          "expected_result": "The user can view their unbilled usage bill cycle information",
+          "test_data": "Sample unbilled usage data",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Negative Testing - Invalid Input",
-          "description": "Verify that the user is unable to enter invalid input and sees an error message",
+          "title": "Verify Bill Cycle Information Display for User without Permissions",
+          "description": "Verify that the user without permissions cannot view their bill cycle information",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user must be logged in and have access to the Usage and Metric Visualization feature",
+          "priority": "Low",
+          "prerequisites": "User does not have mydashboard-view or mydashboard-manage permissions",
           "test_steps": [
-            "Step 1: Navigate to the Usage and Metric Visualization page",
-            "Step 2: Enter invalid input, such as a non-numeric value, in the Data Usage field",
-            "Step 3: Verify that an error message is displayed",
-            "Step 4: Verify that the user is unable to submit the form with invalid input",
-            "Step 5: Test with different types of invalid input, such as special characters or empty fields",
-            "Step 6: Verify that an error message is displayed for each type of invalid input",
-            "Step 7: Click on the Back Button to return to the previous page",
-            "Step 8: Verify that the page returns to the previous state"
+            "Verify the Bill Cycle Information section is not displayed",
+            "Verify an error message is displayed indicating the user does not have permissions"
           ],
-          "expected_result": "The user is unable to enter invalid input and sees an error message",
-          "test_data": "Test data includes different types of invalid input, such as non-numeric values, special characters, and empty fields",
+          "expected_result": "The user without permissions cannot view their bill cycle information",
+          "test_data": "Sample user without permissions",
           "status": "Not Executed"
         }
       ],
@@ -1271,70 +977,57 @@
     },
     {
       "requirement_id": "INUTS-018",
-      "requirement_title": "Customer Dashboard",
+      "requirement_title": "Redirection to Filtered View",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "Login and View Customer Dashboard",
-          "description": "Verify that the user is able to view their account and usage information on the Customer Dashboard",
+          "title": "Redirection to Filtered View within My Inventory",
+          "description": "Verify that the user is redirected to a filtered view within My Inventory when a metric tile is selected",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "Critical",
-          "prerequisites": "The user has a valid username and password, and is a registered customer",
+          "prerequisites": "User has access to My Inventory and metric tiles are available",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'john.doe@company.com' in the 'Email' field",
-            "Enter 'password123' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify the Customer Dashboard page is displayed",
-            "Verify the dashboard displays the customer's account details, including Number of Billing accounts, Active subscribers, Suspended and Cancelled subscribers",
-            "Verify the dashboard displays key wireless management insights and actions, including Data, Voice, SMS and LD usages",
-            "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Verify the dashboard displays Shopping and orders insights, including In progress, completed and cancelled orders",
-            "Verify the user can access quick links to provide easier opportunities for self-serve management"
+            "Select a metric tile within My Inventory",
+            "Verify the system redirects to a filtered view within My Inventory",
+            "Verify the filtered view displays relevant data based on the selected metric tile"
           ],
-          "expected_result": "The Customer Dashboard page is displayed with the customer's account and usage information",
-          "test_data": "john.doe@company.com, password123",
+          "expected_result": "The user is redirected to a filtered view within My Inventory with relevant data",
+          "test_data": "Metric tile selection",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "Invalid Login Credentials",
-          "description": "Verify that the user is unable to access the Customer Dashboard with invalid login credentials",
+          "title": "Redirection to Filtered View with Cancelled Subscribers",
+          "description": "Verify that the user is redirected to a filtered view with cancelled subscribers when the Cancelled Subscribers metric tile is selected",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "The user has an invalid username or password",
+          "prerequisites": "User has access to My Inventory and Cancelled Subscribers metric tile is available",
           "test_steps": [
-            "Navigate to the Login page",
-            "Enter 'invaliduser@company.com' in the 'Email' field",
-            "Enter 'wrongpassword' in the 'Password' field",
-            "Click the 'Sign In' button",
-            "Verify an error message is displayed indicating that the login credentials are invalid",
-            "Verify the user is not able to access the Customer Dashboard"
+            "Select the Cancelled Subscribers metric tile within My Inventory",
+            "Verify the system redirects to a filtered view with a list of subscribers filtered to 'Cancelled'",
+            "Verify the filtered view displays relevant data for cancelled subscribers"
           ],
-          "expected_result": "An error message is displayed indicating that the login credentials are invalid",
-          "test_data": "invaliduser@company.com, wrongpassword",
+          "expected_result": "The user is redirected to a filtered view with a list of cancelled subscribers",
+          "test_data": "Cancelled Subscribers metric tile selection",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "Empty Login Fields",
-          "description": "Verify that the user is unable to access the Customer Dashboard with empty login fields",
+          "title": "Redirection to Filtered View with Suspended Subscribers",
+          "description": "Verify that the user is redirected to a filtered view with suspended subscribers when the Suspended Subscribers metric tile is selected",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user has not entered any login credentials",
+          "priority": "High",
+          "prerequisites": "User has access to My Inventory and Suspended Subscribers metric tile is available",
           "test_steps": [
-            "Navigate to the Login page",
-            "Leave the 'Email' field empty",
-            "Leave the 'Password' field empty",
-            "Click the 'Sign In' button",
-            "Verify an error message is displayed indicating that the login fields are required",
-            "Verify the user is not able to access the Customer Dashboard"
+            "Select the Suspended Subscribers metric tile within My Inventory",
+            "Verify the system redirects to a filtered view with a list of subscribers filtered to 'Suspended'",
+            "Verify the filtered view displays relevant data for suspended subscribers"
           ],
-          "expected_result": "An error message is displayed indicating that the login fields are required",
-          "test_data": "",
+          "expected_result": "The user is redirected to a filtered view with a list of suspended subscribers",
+          "test_data": "Suspended Subscribers metric tile selection",
           "status": "Not Executed"
         }
       ],
@@ -1342,630 +1035,73 @@
     },
     {
       "requirement_id": "INUTS-019",
-      "requirement_title": "NAG (Group) Filter",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Apply NAG Filter",
-          "description": "Verify that the user is able to filter information by NAG",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User has access to the dashboard with NAG filter feature",
-          "test_steps": [
-            "Navigate to the dashboard page",
-            "Click on the NAG filter dropdown",
-            "Select a NAG group from the dropdown options",
-            "Verify the display updates to reflect the filtered information",
-            "Enter a valid NAG group name in the search field",
-            "Verify the display updates to reflect the filtered information",
-            "Clear the search field and verify the display updates to reflect all NAG groups",
-            "Apply an invalid NAG group filter and verify an error message is displayed",
-            "Verify the error message is 'No results found for the selected NAG group'"
-          ],
-          "expected_result": "The display updates to reflect the filtered information",
-          "test_data": "NAG group name: 'Example NAG Group'",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "NAG Filter Real-Time Update",
-          "description": "Verify that the user is able to see real-time updates when applying the NAG filter",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User has access to the dashboard with NAG filter feature",
-          "test_steps": [
-            "Navigate to the dashboard page",
-            "Click on the NAG filter dropdown",
-            "Select a NAG group from the dropdown options",
-            "Verify the display updates to reflect the filtered information",
-            "Make changes to the NAG group data",
-            "Verify the display updates in real-time to reflect the changes",
-            "Verify the updated information is accurate and consistent"
-          ],
-          "expected_result": "The display updates in real-time to reflect the changes",
-          "test_data": "NAG group name: 'Example NAG Group'",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "NAG Filter Edge Case",
-          "description": "Verify that the user is able to apply the NAG filter with edge case scenarios",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "User has access to the dashboard with NAG filter feature",
-          "test_steps": [
-            "Navigate to the dashboard page",
-            "Click on the NAG filter dropdown",
-            "Select a NAG group with a large amount of data from the dropdown options",
-            "Verify the display updates to reflect the filtered information",
-            "Verify the display does not timeout or become unresponsive",
-            "Apply a NAG filter with special characters and verify the display updates correctly",
-            "Verify the display does not display any error messages"
-          ],
-          "expected_result": "The display updates correctly and does not display any error messages",
-          "test_data": "NAG group name: 'Example NAG Group with Special Characters'",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 3
+      "requirement_title": "Ability to Drill Down on Details of Billed and Unbilled Usages",
+      "test_cases": [],
+      "total_count": 0,
+      "error": "Failed to parse LLM response as JSON: Expecting ',' delimiter: line 16 column 47 (char 711)\nRaw: {\n  \"requirement_id\": \"INUTS-019\",\n  \"requirement_title\": \"Ability to Drill Down on Details of Billed and Unbilled Usages\",\n  \"test_cases\": [\n    {\n      \"test_case_id\": \"TC-001\",\n      \"title\": \"Drill Down on Billed Usages\",\n      \"description\": \"Verify that the user is able to drill down on detail"
     },
     {
       "requirement_id": "INUTS-020",
-      "requirement_title": "Latest Orders Table",
+      "requirement_title": "Dashboard Navigation",
       "test_cases": [
         {
           "test_case_id": "TC-001",
-          "title": "View Latest Orders",
-          "description": "Verify that the user is able to view their latest orders",
+          "title": "Verify Dashboard Navigation for Data Usage",
+          "description": "Verify that the user is able to navigate through dashboard widgets to show drill-down/toggle scenarios for data usages",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user must be logged in and have at least one order in their history",
+          "priority": "High",
+          "prerequisites": "User has access to the dashboard and has a valid billing account",
           "test_steps": [
-            "Step 1: Navigate to the Latest Orders Table",
-            "Step 2: Verify the Latest Orders Table is displayed with the correct orders",
-            "Step 3: Verify the table has columns for Order ID, Date, and Status Badge",
-            "Step 4: Verify the user can view their latest orders in the table",
-            "Step 5: Verify the user can see the Order ID, Date, and Status Badge for each order",
-            "Step 6: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
-            "Step 7: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
-            "Step 8: Verify the user can return to the Latest Orders Table from the View All Orders page",
-            "Step 9: Verify the Latest Orders Table is updated with the latest orders after returning from the View All Orders page",
-            "Step 10: Verify the user can view their latest orders in the table after updating",
-            "Step 11: Verify the table still has columns for Order ID, Date, and Status Badge after updating",
-            "Step 12: Verify the user can log out and log back in and still view their latest orders",
-            "Step 13: Verify the Latest Orders Table is still displayed with the correct orders after logging back in"
+            "Click on the Data Usage Type link in the Usage Bar Chart Drilldown",
+            "Verify that the Shareplans Detail Table is displayed with listed details, including Billing Account, Plan Name, # of subscribers, Allowance (MB), Used (MB), and Overage (MB)",
+            "Verify that the data is sorted based on billing account's alphabetical order",
+            "Verify that the data accurately represents correct allowance, used, and overage values in MB"
           ],
-          "expected_result": "The user is able to view their latest orders in the Latest Orders Table with the correct columns and data",
-          "test_data": "Test data: Order ID, Date, and Status Badge for each order",
+          "expected_result": "The Shareplans Detail Table is displayed with accurate data, and the user can navigate back to the standard Usage Bar Chart view using the Back Button",
+          "test_data": "Valid billing account with data usage",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-002",
-          "title": "View Latest Orders with No Orders",
-          "description": "Verify that the user is able to view a message when they have no orders",
+          "title": "Verify Dashboard Navigation for Voice and Long Distance Usage",
+          "description": "Verify that the user is able to navigate through dashboard widgets to show drill-down/toggle scenarios for voice and long distance usages",
           "test_type": "Functional",
           "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user must be logged in and have no orders in their history",
+          "priority": "High",
+          "prerequisites": "User has access to the dashboard and has a valid billing account",
           "test_steps": [
-            "Step 1: Navigate to the Latest Orders Table",
-            "Step 2: Verify the Latest Orders Table is displayed with a message indicating no orders",
-            "Step 3: Verify the message is clear and concise",
-            "Step 4: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
-            "Step 5: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
-            "Step 6: Verify the user can return to the Latest Orders Table from the View All Orders page",
-            "Step 7: Verify the Latest Orders Table is still displayed with the message indicating no orders",
-            "Step 8: Verify the user can log out and log back in and still view the message",
-            "Step 9: Verify the Latest Orders Table is still displayed with the message indicating no orders after logging back in"
+            "Click on the Voice or Long Distance link in the Usage Bar Chart Drilldown",
+            "Verify that the Shareplans Detail Table is displayed with listed details, including Billing Account, Plan Name, # of subscribers, Allowance (Minutes), Used (Minutes), and Overage (Minutes)",
+            "Verify that the data is sorted based on billing account's alphabetical order",
+            "Verify that the data accurately represents correct allowance, used, and overage values in Minutes"
           ],
-          "expected_result": "The user is able to view a message indicating no orders in the Latest Orders Table",
-          "test_data": "Test data: No orders in the user's history",
+          "expected_result": "The Shareplans Detail Table is displayed with accurate data, and the user can navigate back to the standard Usage Bar Chart view using the Back Button",
+          "test_data": "Valid billing account with voice or long distance usage",
           "status": "Not Executed"
         },
         {
           "test_case_id": "TC-003",
-          "title": "View Latest Orders with Invalid Data",
-          "description": "Verify that the user is able to view an error message when the data is invalid",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Low",
-          "prerequisites": "The user must be logged in and have invalid data in their orders",
-          "test_steps": [
-            "Step 1: Navigate to the Latest Orders Table",
-            "Step 2: Verify the Latest Orders Table is displayed with an error message",
-            "Step 3: Verify the error message is clear and concise",
-            "Step 4: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
-            "Step 5: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
-            "Step 6: Verify the user can return to the Latest Orders Table from the View All Orders page",
-            "Step 7: Verify the Latest Orders Table is still displayed with the error message",
-            "Step 8: Verify the user can log out and log back in and still view the error message",
-            "Step 9: Verify the Latest Orders Table is still displayed with the error message after logging back in"
-          ],
-          "expected_result": "The user is able to view an error message in the Latest Orders Table",
-          "test_data": "Test data: Invalid data in the user's orders",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 3
-    },
-    {
-      "requirement_id": "INUTS-021",
-      "requirement_title": "Permissions - Dashboard View",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Viewing Permissions on the Dashboard",
-          "description": "Verify that the user is able to view permissions on the dashboard",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "Existing base of customers is available, user has the required role and permissions to view the dashboard",
-          "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Click on the 'Permissions' section",
-            "Step 3: Verify that the permissions are displayed on the dashboard",
-            "Step 4: Verify that the permissions are correctly aligned with the existing base of customers",
-            "Step 5: Attempt to capture new permissions",
-            "Step 6: Verify that new permissions are captured successfully",
-            "Step 7: Verify that the new permissions are displayed on the dashboard",
-            "Step 8: Attempt to view permissions with an empty dataset",
-            "Step 9: Verify that the dashboard handles the empty dataset correctly",
-            "Step 10: Log out of the dashboard",
-            "Step 11: Log back in with a different user role",
-            "Step 12: Verify that the permissions are not visible to the user without the required role",
-            "Step 13: Log out of the dashboard",
-            "Step 14: Log back in with the original user role",
-            "Step 15: Verify that the permissions are still visible on the dashboard"
-          ],
-          "expected_result": "The user is able to view permissions on the dashboard, and new permissions are captured successfully",
-          "test_data": "Existing base of customers, new permissions data",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Viewing Permissions on the Dashboard with Invalid Input",
-          "description": "Verify that the user is unable to view permissions on the dashboard with invalid input",
+          "title": "Verify Dashboard Navigation for SMS Usage",
+          "description": "Verify that the user is able to navigate through dashboard widgets to show drill-down/toggle scenarios for SMS usages",
           "test_type": "Functional",
           "test_phase": "E2E",
           "priority": "High",
-          "prerequisites": "Existing base of customers is available, user has the required role and permissions to view the dashboard",
+          "prerequisites": "User has access to the dashboard and has a valid billing account",
           "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Enter invalid input in the 'Permissions' section",
-            "Step 3: Verify that an error message is displayed",
-            "Step 4: Verify that the permissions are not displayed on the dashboard",
-            "Step 5: Attempt to capture new permissions with invalid input",
-            "Step 6: Verify that an error message is displayed",
-            "Step 7: Verify that new permissions are not captured",
-            "Step 8: Log out of the dashboard",
-            "Step 9: Log back in with the original user role",
-            "Step 10: Verify that the permissions are still visible on the dashboard"
+            "Click on the SMS link in the Usage Bar Chart Drilldown",
+            "Verify that the Shareplans Detail Table is displayed with listed details, including Billing Account, Plan Name, # of subscribers, Allowance (# of Text Messages), Used (# of Text Messages), and Overage (# of Text Messages)",
+            "Verify that the data is sorted based on billing account's alphabetical order",
+            "Verify that the data accurately represents correct allowance, used, and overage values in # of Text Messages"
           ],
-          "expected_result": "The user is unable to view permissions on the dashboard with invalid input, and an error message is displayed",
-          "test_data": "Invalid input data",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "Viewing Permissions on the Dashboard with Missing Required Field",
-          "description": "Verify that the user is unable to view permissions on the dashboard with a missing required field",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "Existing base of customers is available, user has the required role and permissions to view the dashboard",
-          "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Leave a required field blank in the 'Permissions' section",
-            "Step 3: Verify that a validation error message is displayed",
-            "Step 4: Verify that the permissions are not displayed on the dashboard",
-            "Step 5: Attempt to capture new permissions with a missing required field",
-            "Step 6: Verify that a validation error message is displayed",
-            "Step 7: Verify that new permissions are not captured",
-            "Step 8: Log out of the dashboard",
-            "Step 9: Log back in with the original user role",
-            "Step 10: Verify that the permissions are still visible on the dashboard"
-          ],
-          "expected_result": "The user is unable to view permissions on the dashboard with a missing required field, and a validation error message is displayed",
-          "test_data": "Missing required field data",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 3
-    },
-    {
-      "requirement_id": "INUTS-022",
-      "requirement_title": "SSC Link Creation",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Create SSC Link",
-          "description": "Verify that the user is able to create an SSC link",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has the required permissions to create SSC links and the SSC Development team is available to provide SSC links to the Analance team",
-          "test_steps": [
-            "Step 1: Navigate to the SSC Link Creation page",
-            "Step 2: Enter a valid SSC link name in the 'SSC Link Name' field",
-            "Step 3: Enter a valid SSC link description in the 'SSC Link Description' field",
-            "Step 4: Click the 'Create SSC Link' button",
-            "Step 5: Verify that the SSC link is created successfully and the 'SSC Link Created Successfully' message is displayed",
-            "Step 6: Enter an empty SSC link name in the 'SSC Link Name' field and click the 'Create SSC Link' button to test for invalid input",
-            "Step 7: Verify that an error message is displayed indicating that the SSC link name is required",
-            "Step 8: Navigate back to the SSC Link Creation page and verify that the state is reset"
-          ],
-          "expected_result": "The SSC link is created successfully and the 'SSC Link Created Successfully' message is displayed",
-          "test_data": "SSC link name: 'Test SSC Link', SSC link description: 'This is a test SSC link'",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Provide SSC Link to Analance Team",
-          "description": "Verify that the user is able to provide the created SSC link to the Analance team",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user has the required permissions to create SSC links and the SSC Development team is available to provide SSC links to the Analance team",
-          "test_steps": [
-            "Step 1: Navigate to the SSC Link Creation page",
-            "Step 2: Enter a valid SSC link name in the 'SSC Link Name' field",
-            "Step 3: Enter a valid SSC link description in the 'SSC Link Description' field",
-            "Step 4: Click the 'Create SSC Link' button",
-            "Step 5: Verify that the SSC link is created successfully and the 'SSC Link Created Successfully' message is displayed",
-            "Step 6: Click the 'Share SSC Link' button",
-            "Step 7: Select the Analance team from the 'Share With' dropdown",
-            "Step 8: Verify that the SSC link is shared successfully with the Analance team and a confirmation message is displayed"
-          ],
-          "expected_result": "The SSC link is shared successfully with the Analance team and a confirmation message is displayed",
-          "test_data": "SSC link name: 'Test SSC Link', SSC link description: 'This is a test SSC link', Analance team: 'Analance Team'",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 2
-    },
-    {
-      "requirement_id": "INUTS-023",
-      "requirement_title": "PTW Self Serve CS",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Navigating through the PTW Self Serve CS sequence",
-          "description": "Verify that the user is able to navigate through the PTW Self Serve CS sequence and view the interactions between different systems and components",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has the necessary permissions to access the PTW Self Serve CS sequence",
-          "test_steps": [
-            "Step 1: Navigate to the Play to Win Solutions Page",
-            "Step 2: Click on the link to access the PTW Self Serve CS sequence",
-            "Step 3: Verify that the PTW Self Serve CS sequence is displayed",
-            "Step 4: Verify that the sequence includes all necessary interactions between the customer, BBSSC, ESIDE, NM1, BCIM, Kafka, IDD, and Analance",
-            "Step 5: Drill down on details of both billed and unbilled usages of the Customer's NAG",
-            "Step 6: Verify that the breakdown of Roaming, Overage, and In-plan usages for each insight is displayed",
-            "Step 7: Verify that the Shopping and orders insights are displayed, including In progress, completed, and cancelled",
-            "Step 8: Verify that the quick links area provides customers with easier access to other Bell tools",
-            "Step 9: Verify that the user can view summarized tiles regarding account details, including Number of Billing accounts, Active subscribers, Suspended and Cancelled subscribers",
-            "Step 10: Verify that the user can view key wireless management insights and actions in a single dashboard",
-            "Step 11: Verify that the user can view Data, Voice, SMS, and LD usages through graphical design",
-            "Step 12: Verify that the user can proactively manage self-serve their overage"
-          ],
-          "expected_result": "The user is able to navigate through the PTW Self Serve CS sequence and view the interactions between different systems and components",
-          "test_data": "Test data includes a valid user account with the necessary permissions to access the PTW Self Serve CS sequence",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Invalid access to PTW Self Serve CS sequence",
-          "description": "Verify that the user is unable to access the PTW Self Serve CS sequence without the necessary permissions",
-          "test_type": "Security",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user does not have the necessary permissions to access the PTW Self Serve CS sequence",
-          "test_steps": [
-            "Step 1: Navigate to the Play to Win Solutions Page",
-            "Step 2: Attempt to access the PTW Self Serve CS sequence without the necessary permissions",
-            "Step 3: Verify that an error message is displayed indicating that the user does not have the necessary permissions",
-            "Step 4: Verify that the user is unable to view the PTW Self Serve CS sequence"
-          ],
-          "expected_result": "The user is unable to access the PTW Self Serve CS sequence without the necessary permissions",
-          "test_data": "Test data includes a valid user account without the necessary permissions to access the PTW Self Serve CS sequence",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 2
-    },
-    {
-      "requirement_id": "INUTS-024",
-      "requirement_title": "Usage Details Drilldown",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Drilldown on Billed Usage",
-          "description": "Verify that the user is able to drill down on billed usage details",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has at least one billed usage account",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Bar Chart Drilldown View",
-            "Step 2: Select a billed usage account from the list of available accounts",
-            "Step 3: Click on the drilldown button for the selected billed usage account",
-            "Step 4: Verify that the detailed usage data is displayed, including allowance, used data, and overage",
-            "Step 5: Verify that the data is accurately represented in numerical values in MB for Data, Minutes for Voice and Long Distance, and # of Text Messages for Text Messaging",
-            "Step 6: Verify that the Subscriber # is a selectable link and brings the customer to the preexisting My Inventory page - Individual Subscriber Page",
-            "Step 7: Verify that the Billing account is a selectable link and brings the customer to the preexisting my inventory section to display Billing account usage details page",
-            "Step 8: Click on the Back Button and verify that the user is brought back to the standard Usage Bar Chart Drilldown View"
-          ],
-          "expected_result": "The user is able to drill down on billed usage details and view the detailed usage data",
-          "test_data": "Billed usage account with valid data",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Drilldown on Unbilled Usage",
-          "description": "Verify that the user is able to drill down on unbilled usage details",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has a valid login credentials and has at least one unbilled usage account",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Bar Chart Drilldown View",
-            "Step 2: Select an unbilled usage account from the list of available accounts",
-            "Step 3: Click on the drilldown button for the selected unbilled usage account",
-            "Step 4: Verify that the detailed usage data is displayed, including allowance, used data, and overage",
-            "Step 5: Verify that the data is accurately represented in numerical values in MB for Data, Minutes for Voice and Long Distance, and # of Text Messages for Text Messaging",
-            "Step 6: Verify that the Subscriber # is a selectable link and brings the customer to the preexisting My Inventory page - Individual Subscriber Page",
-            "Step 7: Verify that the Billing account is a selectable link and brings the customer to the preexisting my inventory section to display Billing account usage details page",
-            "Step 8: Click on the Back Button and verify that the user is brought back to the standard Usage Bar Chart Drilldown View"
-          ],
-          "expected_result": "The user is able to drill down on unbilled usage details and view the detailed usage data",
-          "test_data": "Unbilled usage account with valid data",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "Drilldown on Billed Usage with No Data",
-          "description": "Verify that the user is able to drill down on billed usage details with no data",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user has a valid login credentials and has at least one billed usage account with no data",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Bar Chart Drilldown View",
-            "Step 2: Select a billed usage account with no data from the list of available accounts",
-            "Step 3: Click on the drilldown button for the selected billed usage account",
-            "Step 4: Verify that a message is displayed indicating that there is no data available",
-            "Step 5: Verify that the user is able to navigate back to the standard Usage Bar Chart Drilldown View"
-          ],
-          "expected_result": "The user is able to drill down on billed usage details with no data and view a message indicating that there is no data available",
-          "test_data": "Billed usage account with no data",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-004",
-          "title": "Drilldown on Unbilled Usage with No Data",
-          "description": "Verify that the user is able to drill down on unbilled usage details with no data",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user has a valid login credentials and has at least one unbilled usage account with no data",
-          "test_steps": [
-            "Step 1: Navigate to the Usage Bar Chart Drilldown View",
-            "Step 2: Select an unbilled usage account with no data from the list of available accounts",
-            "Step 3: Click on the drilldown button for the selected unbilled usage account",
-            "Step 4: Verify that a message is displayed indicating that there is no data available",
-            "Step 5: Verify that the user is able to navigate back to the standard Usage Bar Chart Drilldown View"
-          ],
-          "expected_result": "The user is able to drill down on unbilled usage details with no data and view a message indicating that there is no data available",
-          "test_data": "Unbilled usage account with no data",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 4
-    },
-    {
-      "requirement_id": "INUTS-025",
-      "requirement_title": "Link to Manage My Access",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Link to Manage My Access",
-          "description": "Verify that the user is able to manage their access by clicking on the link to manage my access",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user must be logged in to the dashboard",
-          "test_steps": [
-            "Step 1: Navigate to the dashboard",
-            "Step 2: Locate the link to manage my access on the dashboard",
-            "Step 3: Click on the link to manage my access",
-            "Step 4: Verify the user is taken to the manage my access page",
-            "Step 5: Verify the manage my access page displays the user's account information",
-            "Step 6: Verify the user can update their account information on the manage my access page",
-            "Step 7: Enter updated account information and save changes",
-            "Step 8: Verify the updated account information is reflected on the manage my access page"
-          ],
-          "expected_result": "The user is able to manage their access by clicking on the link to manage my access and updating their account information",
-          "test_data": "Valid user credentials and updated account information",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Invalid Access to Manage My Access",
-          "description": "Verify that the user is unable to access the manage my access page without proper permissions",
-          "test_type": "Security",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user must not have permissions to access the manage my access page",
-          "test_steps": [
-            "Step 1: Navigate to the dashboard as a user without permissions to access the manage my access page",
-            "Step 2: Attempt to click on the link to manage my access",
-            "Step 3: Verify an error message is displayed indicating the user does not have permission to access the manage my access page",
-            "Step 4: Verify the user is not taken to the manage my access page"
-          ],
-          "expected_result": "The user is unable to access the manage my access page without proper permissions",
-          "test_data": "Invalid user credentials",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 2
-    },
-    {
-      "requirement_id": "INUTS-026",
-      "requirement_title": "UI Widget Creation",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "Create UI Widget",
-          "description": "Verify that the user is able to create a UI widget",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "The user has the necessary permissions to create UI widgets and is a member of the Analance team",
-          "test_steps": [
-            "Step 1: Navigate to the UI Widget Creation page",
-            "Step 2: Click the 'Create UI Widget' button",
-            "Step 3: Enter 'Test UI Widget' in the 'UI Widget Name' field",
-            "Step 4: Select 'Active' from the 'UI Widget Status' dropdown",
-            "Step 5: Click the 'Save UI Widget' button",
-            "Step 6: Verify the 'UI Widget Created Successfully' message is displayed",
-            "Step 7: Verify the created UI widget is listed on the UI Widget Creation page",
-            "Step 8: Enter an empty string in the 'UI Widget Name' field and click the 'Save UI Widget' button",
-            "Step 9: Verify the 'UI Widget Name is required' error message is displayed",
-            "Step 10: Enter a UI widget name with more than 50 characters and click the 'Save UI Widget' button",
-            "Step 11: Verify the 'UI Widget Name must be less than 50 characters' error message is displayed",
-            "Step 12: Logout and verify that the created UI widget is still listed on the UI Widget Creation page"
-          ],
-          "expected_result": "The user is able to create a UI widget and it is listed on the UI Widget Creation page",
-          "test_data": "UI Widget Name: Test UI Widget, UI Widget Status: Active",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "Create UI Widget with Invalid Input",
-          "description": "Verify that the user is unable to create a UI widget with invalid input",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "The user has the necessary permissions to create UI widgets and is a member of the Analance team",
-          "test_steps": [
-            "Step 1: Navigate to the UI Widget Creation page",
-            "Step 2: Click the 'Create UI Widget' button",
-            "Step 3: Enter an empty string in the 'UI Widget Name' field",
-            "Step 4: Click the 'Save UI Widget' button",
-            "Step 5: Verify the 'UI Widget Name is required' error message is displayed",
-            "Step 6: Enter a UI widget name with more than 50 characters",
-            "Step 7: Click the 'Save UI Widget' button",
-            "Step 8: Verify the 'UI Widget Name must be less than 50 characters' error message is displayed",
-            "Step 9: Enter a UI widget name with special characters",
-            "Step 10: Click the 'Save UI Widget' button",
-            "Step 11: Verify the 'UI Widget Name must only contain alphanumeric characters' error message is displayed",
-            "Step 12: Logout and verify that no UI widget is created"
-          ],
-          "expected_result": "The user is unable to create a UI widget with invalid input",
-          "test_data": "UI Widget Name: , UI Widget Status: Active",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "Create UI Widget without Permissions",
-          "description": "Verify that the user is unable to create a UI widget without the necessary permissions",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "The user does not have the necessary permissions to create UI widgets",
-          "test_steps": [
-            "Step 1: Navigate to the UI Widget Creation page",
-            "Step 2: Click the 'Create UI Widget' button",
-            "Step 3: Verify the 'Access Denied' error message is displayed",
-            "Step 4: Verify that the user is unable to create a UI widget",
-            "Step 5: Logout and verify that no UI widget is created"
-          ],
-          "expected_result": "The user is unable to create a UI widget without the necessary permissions",
-          "test_data": "",
-          "status": "Not Executed"
-        }
-      ],
-      "total_count": 3
-    },
-    {
-      "requirement_id": "INUTS-027",
-      "requirement_title": "IDR/IDD Billed Data",
-      "test_cases": [
-        {
-          "test_case_id": "TC-001",
-          "title": "View IDR/IDD Billed Data",
-          "description": "Verify that the user is able to view IDR/IDD billed data",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Critical",
-          "prerequisites": "User has the necessary role/permissions to access IDR/IDD billed data",
-          "test_steps": [
-            "Step 1: Navigate to the IDR/IDD Billed Data page",
-            "Step 2: Verify the IDR/IDD billed data is displayed",
-            "Step 3: Verify the IDR/IDD billed data is accurate",
-            "Step 4: Verify the user can view the billed data for a specific billing period",
-            "Step 5: Verify the user can view the billed data for a specific IDR/IDD team",
-            "Step 6: Enter invalid input in the search field and verify an error message is displayed",
-            "Step 7: Leave the search field blank and verify a validation message is displayed",
-            "Step 8: Verify the user can navigate back to the previous page",
-            "Step 9: Verify the user can log out of the system",
-            "Step 10: Verify the system resets to its original state after logout"
-          ],
-          "expected_result": "The user is able to view IDR/IDD billed data and verify its accuracy",
-          "test_data": "Valid IDR/IDD team name, valid billing period",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-002",
-          "title": "View IDR/IDD Billed Data with Invalid Input",
-          "description": "Verify that the user is unable to view IDR/IDD billed data with invalid input",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "High",
-          "prerequisites": "User has the necessary role/permissions to access IDR/IDD billed data",
-          "test_steps": [
-            "Step 1: Navigate to the IDR/IDD Billed Data page",
-            "Step 2: Enter invalid input in the search field",
-            "Step 3: Verify an error message is displayed",
-            "Step 4: Verify the user cannot view the billed data",
-            "Step 5: Verify the user can navigate back to the previous page",
-            "Step 6: Verify the user can log out of the system",
-            "Step 7: Verify the system resets to its original state after logout"
-          ],
-          "expected_result": "The user is unable to view IDR/IDD billed data with invalid input and an error message is displayed",
-          "test_data": "Invalid IDR/IDD team name, invalid billing period",
-          "status": "Not Executed"
-        },
-        {
-          "test_case_id": "TC-003",
-          "title": "View IDR/IDD Billed Data with Missing Required Field",
-          "description": "Verify that the user is unable to view IDR/IDD billed data with a missing required field",
-          "test_type": "Functional",
-          "test_phase": "E2E",
-          "priority": "Medium",
-          "prerequisites": "User has the necessary role/permissions to access IDR/IDD billed data",
-          "test_steps": [
-            "Step 1: Navigate to the IDR/IDD Billed Data page",
-            "Step 2: Leave the required field blank",
-            "Step 3: Verify a validation message is displayed",
-            "Step 4: Verify the user cannot view the billed data",
-            "Step 5: Verify the user can navigate back to the previous page",
-            "Step 6: Verify the user can log out of the system",
-            "Step 7: Verify the system resets to its original state after logout"
-          ],
-          "expected_result": "The user is unable to view IDR/IDD billed data with a missing required field and a validation message is displayed",
-          "test_data": "Blank required field",
+          "expected_result": "The Shareplans Detail Table is displayed with accurate data, and the user can navigate back to the standard Usage Bar Chart view using the Back Button",
+          "test_data": "Valid billing account with SMS usage",
           "status": "Not Executed"
         }
       ],
       "total_count": 3
     }
   ],
-  "total_requirements": 27,
-  "total_test_cases": 79
+  "total_requirements": 20,
+  "total_test_cases": 55
 }

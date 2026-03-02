@@ -1,0 +1,724 @@
+{
+  "test_case_evaluation": {
+    "tc_precision": 0.0127,
+    "tc_recall": 0.0052,
+    "tc_f1": 0.0074,
+    "avg_step_accuracy": 0.25,
+    "n_generated": 79,
+    "n_gt": 191,
+    "n_matched": 1,
+    "comparisons": [
+      {
+        "generated_title": "Verify Warranty Information Display",
+        "matched": false,
+        "similarity": 0.2757,
+        "gt_match_title": "User Profile Information Display",
+        "step_accuracy": null,
+        "n_generated_steps": 14,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Warranty Information for Invalid Device",
+        "matched": false,
+        "similarity": 0.1115,
+        "gt_match_title": "User Profile Information Display",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Warranty Information for Multiple Devices",
+        "matched": false,
+        "similarity": 0.1131,
+        "gt_match_title": "Drill-Down View Displays Correct Data When User Has Multiple Roles",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Dashboard Load Test",
+        "matched": false,
+        "similarity": 0.175,
+        "gt_match_title": "Usage Metrics Display",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Usage Summary Toggle Test",
+        "matched": false,
+        "similarity": 0.0799,
+        "gt_match_title": "Drill-Down View Displays Two Summary Tables",
+        "step_accuracy": null,
+        "n_generated_steps": 11,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Dashboard Load Test with Invalid Credentials",
+        "matched": false,
+        "similarity": 0.2827,
+        "gt_match_title": "Secure Login Process - Invalid Credentials",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Selection of Shareplan group brings customer to separate table with listed details",
+        "matched": false,
+        "similarity": 0.091,
+        "gt_match_title": "Shared Plans Usage Breakdown Table Click Test",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Selection of Individual Plans brings customer to separate table with listed details",
+        "matched": false,
+        "similarity": 0.3024,
+        "gt_match_title": "Individual Plans Detail Table Display on Click",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Data is sorted based on billing account's alphabetical order",
+        "matched": false,
+        "similarity": 0.2713,
+        "gt_match_title": "Billing Account Details Display",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Maximum of 10 Billing accounts displayed with pagination if more than 10 are in view",
+        "matched": false,
+        "similarity": 0.1082,
+        "gt_match_title": "Verify No Other Links Are Displayed",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Billing account is selectable link and brings customer to preexisting my inventory section to display Billing account usage details page",
+        "matched": false,
+        "similarity": 0.3489,
+        "gt_match_title": "Billing Account Details Display",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create a new user",
+        "matched": true,
+        "similarity": 0.5008,
+        "gt_match_title": "Create New User Link Opens Correct URL in New Tab",
+        "step_accuracy": 0.25,
+        "n_generated_steps": 8,
+        "n_gt_steps": 4
+      },
+      {
+        "generated_title": "Manage existing users",
+        "matched": false,
+        "similarity": 0.1705,
+        "gt_match_title": "Manage my users link opens correct URL in new tab",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create a new user with invalid credentials",
+        "matched": false,
+        "similarity": 0.3752,
+        "gt_match_title": "Create New User Link Opens Correct URL in New Tab",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Data in CSV Format",
+        "matched": false,
+        "similarity": 0.1327,
+        "gt_match_title": "Fetch Warranty Expiry Data in Batch (Invalid Data Format)",
+        "step_accuracy": null,
+        "n_generated_steps": 11,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Data in PDF Format",
+        "matched": false,
+        "similarity": 0.1327,
+        "gt_match_title": "Fetch Warranty Expiry Data in Batch (Invalid Data Format)",
+        "step_accuracy": null,
+        "n_generated_steps": 11,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Data in Invalid Format",
+        "matched": false,
+        "similarity": 0.1783,
+        "gt_match_title": "Fetch Warranty Expiry Data in Batch (Invalid Data Format)",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Warranty Information Display for BYOD Devices",
+        "matched": false,
+        "similarity": 0.2195,
+        "gt_match_title": "User Profile Information Display",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Warranty Information Display for Dealer Devices",
+        "matched": false,
+        "similarity": 0.2195,
+        "gt_match_title": "User Profile Information Display",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Testing - Invalid Device",
+        "matched": false,
+        "similarity": 0.1317,
+        "gt_match_title": "Negative Scenario: Invalid Data",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Data Units and Colour Coding for Usage Types",
+        "matched": false,
+        "similarity": 0.0628,
+        "gt_match_title": "Latest Orders Table Status Badges Edge Case: Multiple Status Types",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid or Missing Usage Data",
+        "matched": false,
+        "similarity": 0.1669,
+        "gt_match_title": "Chart Displays Last 14 Months of Usage Data",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Back Button Navigation to Previous View",
+        "matched": false,
+        "similarity": 0.1225,
+        "gt_match_title": "Back Button Display in Level 1 Drill-Down View",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Back Button Navigation with Empty Input",
+        "matched": false,
+        "similarity": 0.1477,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Back Button Navigation with Invalid Input",
+        "matched": false,
+        "similarity": 0.1362,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Quick Links Area",
+        "matched": false,
+        "similarity": 0.2588,
+        "gt_match_title": "Display Permission Quick Links widget for BBP Administrators",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Access Other Bell Tools",
+        "matched": false,
+        "similarity": 0.1456,
+        "gt_match_title": "Display Permission Quick Links widget for user with 'My dashboard' permission",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid Access to Other Bell Tools",
+        "matched": false,
+        "similarity": 0.1291,
+        "gt_match_title": "View All Orders Redirects to My Request Page with Invalid Access",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Additional Information Using Show Button",
+        "matched": false,
+        "similarity": 0.1077,
+        "gt_match_title": "Back Button Display in Level 1 Drill-Down View",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Show Button Error Handling",
+        "matched": false,
+        "similarity": 0.2914,
+        "gt_match_title": "No Data Error Handling",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Valid User Credentials with Correct Role and Permissions",
+        "matched": false,
+        "similarity": 0.2201,
+        "gt_match_title": "Valid User Authentication",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid User Credentials or Incorrect Role and Permissions",
+        "matched": false,
+        "similarity": 0.18,
+        "gt_match_title": "Secure Login Process - Invalid Credentials",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Prevent Regression of Defect SADRSTRANG-13583",
+        "matched": false,
+        "similarity": 0.0447,
+        "gt_match_title": "Latest Orders Table Status Badges Use Standardized Colors",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Test - Invalid Input",
+        "matched": false,
+        "similarity": 0.2316,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Billed Month Drilldown Test",
+        "matched": false,
+        "similarity": 0.104,
+        "gt_match_title": "Positive Scenario: Wireless Dashboard Displays 14-Month Historical Bar Chart",
+        "step_accuracy": null,
+        "n_generated_steps": 12,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Billed Month Drilldown Error Handling Test",
+        "matched": false,
+        "similarity": 0.2424,
+        "gt_match_title": "No Data Error Handling",
+        "step_accuracy": null,
+        "n_generated_steps": 6,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Data Usage in Unified Dashboard",
+        "matched": false,
+        "similarity": 0.1244,
+        "gt_match_title": "Edge Case: Wireless Dashboard Displays 14 Months of Usage Data with No Data",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Voice Usage in Unified Dashboard",
+        "matched": false,
+        "similarity": 0.0899,
+        "gt_match_title": "Wireless Dashboard Initialization",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing SMS Usage in Unified Dashboard",
+        "matched": false,
+        "similarity": 0.0899,
+        "gt_match_title": "Wireless Dashboard Initialization",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing LD Usage in Unified Dashboard",
+        "matched": false,
+        "similarity": 0.0899,
+        "gt_match_title": "Wireless Dashboard Initialization",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid Login Credentials",
+        "matched": false,
+        "similarity": 0.199,
+        "gt_match_title": "Secure Login Process - Invalid Credentials",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Shopping and Orders Insights",
+        "matched": false,
+        "similarity": 0.2299,
+        "gt_match_title": "Shopping and Orders Widget Visibility with Access to Dashboard but no 'shopping' Permission",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Test - No Orders",
+        "matched": false,
+        "similarity": 0.1136,
+        "gt_match_title": "Latest Orders Table Displays Correctly with No Orders",
+        "step_accuracy": null,
+        "n_generated_steps": 6,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Test - Invalid User",
+        "matched": false,
+        "similarity": 0.3783,
+        "gt_match_title": "Shopping and Orders Widget Visibility with Access to Dashboard but no 'shopping' Permission",
+        "step_accuracy": null,
+        "n_generated_steps": 6,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Favoriting a NAG",
+        "matched": false,
+        "similarity": 0.1235,
+        "gt_match_title": "Error Handling for Invalid NAG Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 13,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing favorited NAG",
+        "matched": false,
+        "similarity": 0.1117,
+        "gt_match_title": "Error Handling for Invalid NAG Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Favoriting multiple NAGs",
+        "matched": false,
+        "similarity": 0.1119,
+        "gt_match_title": "Latest Orders Table Displays Correctly with Multiple Orders",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Unfavoriting a NAG",
+        "matched": false,
+        "similarity": 0.1351,
+        "gt_match_title": "Error Handling for Invalid NAG Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Metric Tiles",
+        "matched": false,
+        "similarity": 0.4177,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Display",
+        "step_accuracy": null,
+        "n_generated_steps": 11,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Interacting with Usage Summary Tabs",
+        "matched": false,
+        "similarity": 0.1084,
+        "gt_match_title": "Drill-Down View Displays Two Summary Tables",
+        "step_accuracy": null,
+        "n_generated_steps": 11,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Testing - Invalid Input",
+        "matched": false,
+        "similarity": 0.1659,
+        "gt_match_title": "Drill-Down View Displays Error Message When Data Is Missing",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Login and View Customer Dashboard",
+        "matched": false,
+        "similarity": 0.1276,
+        "gt_match_title": "My Dashboard Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid Login Credentials",
+        "matched": false,
+        "similarity": 0.2257,
+        "gt_match_title": "Secure Login Process - Invalid Credentials",
+        "step_accuracy": null,
+        "n_generated_steps": 6,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Empty Login Fields",
+        "matched": false,
+        "similarity": 0.3043,
+        "gt_match_title": "My Dashboard Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 6,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Apply NAG Filter",
+        "matched": false,
+        "similarity": 0.2613,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "NAG Filter Real-Time Update",
+        "matched": false,
+        "similarity": 0.3772,
+        "gt_match_title": "Latest Orders Table Updates in Real-Time",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "NAG Filter Edge Case",
+        "matched": false,
+        "similarity": 0.2426,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Latest Orders",
+        "matched": false,
+        "similarity": 0.294,
+        "gt_match_title": "Latest Orders Table Displays Correctly with No Orders",
+        "step_accuracy": null,
+        "n_generated_steps": 13,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Latest Orders with No Orders",
+        "matched": false,
+        "similarity": 0.2305,
+        "gt_match_title": "Latest Orders Table Displays Correctly with No Orders",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View Latest Orders with Invalid Data",
+        "matched": false,
+        "similarity": 0.3631,
+        "gt_match_title": "Drill-Down View Displays Error Message When Data Is Missing",
+        "step_accuracy": null,
+        "n_generated_steps": 9,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Permissions on the Dashboard",
+        "matched": false,
+        "similarity": 0.171,
+        "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+        "step_accuracy": null,
+        "n_generated_steps": 15,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Permissions on the Dashboard with Invalid Input",
+        "matched": false,
+        "similarity": 0.1426,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Viewing Permissions on the Dashboard with Missing Required Field",
+        "matched": false,
+        "similarity": 0.1077,
+        "gt_match_title": "Drill-Down View Displays Error Message When Data Is Missing",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create SSC Link",
+        "matched": false,
+        "similarity": 0.1449,
+        "gt_match_title": "Create New User Link Opens Correct URL in New Tab",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Provide SSC Link to Analance Team",
+        "matched": false,
+        "similarity": 0.0594,
+        "gt_match_title": "View All Orders Link Visibility",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Navigating through the PTW Self Serve CS sequence",
+        "matched": false,
+        "similarity": 0.0777,
+        "gt_match_title": "Edge Case: No PTW Data",
+        "step_accuracy": null,
+        "n_generated_steps": 12,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid access to PTW Self Serve CS sequence",
+        "matched": false,
+        "similarity": 0.0971,
+        "gt_match_title": "View All Orders Redirects to My Request Page with Invalid Access",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Drilldown on Billed Usage",
+        "matched": false,
+        "similarity": 0.1035,
+        "gt_match_title": "Drill-Down View - Edge Case: Zero Usage",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Drilldown on Unbilled Usage",
+        "matched": false,
+        "similarity": 0.4373,
+        "gt_match_title": "Summarize Unbilled Usage",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Drilldown on Billed Usage with No Data",
+        "matched": false,
+        "similarity": 0.1568,
+        "gt_match_title": "Chart Displays Last 14 Months of Usage Data",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Drilldown on Unbilled Usage with No Data",
+        "matched": false,
+        "similarity": 0.4063,
+        "gt_match_title": "Summarize Unbilled Usage",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Link to Manage My Access",
+        "matched": false,
+        "similarity": 0.4171,
+        "gt_match_title": "Verify 'Manage my access' Link Behavior",
+        "step_accuracy": null,
+        "n_generated_steps": 8,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid Access to Manage My Access",
+        "matched": false,
+        "similarity": 0.3109,
+        "gt_match_title": "Verify 'Manage my access' Link Behavior",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create UI Widget",
+        "matched": false,
+        "similarity": 0.127,
+        "gt_match_title": "Dashboard UI Displays User Information Correctly",
+        "step_accuracy": null,
+        "n_generated_steps": 12,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create UI Widget with Invalid Input",
+        "matched": false,
+        "similarity": 0.1294,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 12,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Create UI Widget without Permissions",
+        "matched": false,
+        "similarity": 0.1781,
+        "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View IDR/IDD Billed Data",
+        "matched": false,
+        "similarity": 0.0755,
+        "gt_match_title": "Drill-Down View Displays Correct Data",
+        "step_accuracy": null,
+        "n_generated_steps": 10,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View IDR/IDD Billed Data with Invalid Input",
+        "matched": false,
+        "similarity": 0.1113,
+        "gt_match_title": "No Input Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "View IDR/IDD Billed Data with Missing Required Field",
+        "matched": false,
+        "similarity": 0.2155,
+        "gt_match_title": "Drill-Down View Displays Error Message When Data Is Missing",
+        "step_accuracy": null,
+        "n_generated_steps": 7,
+        "n_gt_steps": null
+      }
+    ]
+  }
+}

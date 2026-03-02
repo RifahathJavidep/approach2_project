@@ -96,6 +96,7 @@ class TestGenPipeline:
         document_paths: Optional[List[str]] = None,
         source_texts: Optional[Dict[str, str]] = None,
         status_callback: Optional[callable] = None,
+        precision_mode: bool = False,
     ) -> Dict[str, Any]:
         """
         Run the full test generation pipeline.
@@ -137,6 +138,7 @@ class TestGenPipeline:
             project_name=project_name,
             source_texts=source_texts,
             status_callback=status_callback,
+            precision_mode=precision_mode,
         )
 
         # ── Step 2: Save JSON ───────────────────────────────────────────
@@ -163,6 +165,7 @@ class TestGenPipeline:
         project_name: str = None,
         output_dir: str = "output",
         document_paths: Optional[List[str]] = None,
+        precision_mode: bool = False,
     ) -> Dict[str, Any]:
         """
         Convenience method: load requirements from a JSON file and run.
@@ -190,4 +193,5 @@ class TestGenPipeline:
         return self.run(
             requirements, project_name, output_dir,
             document_paths=document_paths,
+            precision_mode=precision_mode,
         )

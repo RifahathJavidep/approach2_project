@@ -1,0 +1,617 @@
+{
+  "requirement_evaluation": {
+    "precision": 0.25,
+    "recall": 0.0833,
+    "f1": 0.125,
+    "n_extracted": 20,
+    "n_gt": 60,
+    "n_matched": 5,
+    "matched_pairs": [
+      {
+        "extracted_title": "Individual Plans Detail Table Display",
+        "gt_title": "Individual Plans Detail",
+        "similarity": 0.575
+      },
+      {
+        "extracted_title": "Shop now Button Functionality",
+        "gt_title": "Shop Now Button",
+        "similarity": 0.5674
+      },
+      {
+        "extracted_title": "Shared Plans Usage Breakdown",
+        "gt_title": "Shared Plans Usage Breakdown",
+        "similarity": 0.4466
+      },
+      {
+        "extracted_title": "In-plan Usage Threshold Donut Wheel",
+        "gt_title": "Usage Threshold Donut",
+        "similarity": 0.4022
+      },
+      {
+        "extracted_title": "Export Feature",
+        "gt_title": "Export Dashboard Data",
+        "similarity": 0.3853
+      }
+    ],
+    "unmatched_extracted": [
+      "Usage Display and Breakdown",
+      "Dashboard and Metrics",
+      "Order and Shopping Management",
+      "System Integration and Infrastructure",
+      "Warranty Expiration Date Display",
+      "Selectable Data Groupings",
+      "Monthly Bar Chart Display",
+      "Drilldown View",
+      "Breakdown Table Back Button",
+      "NAG Filter",
+      "Quick Links Area",
+      "Bill Cycle Information Display",
+      "Redirection to Filtered View",
+      "Ability to Drill Down on Details of Billed and Unbilled Usages",
+      "Dashboard Navigation"
+    ],
+    "unmatched_gt": [
+      "Export Feature",
+      "NAG (Group) Filter",
+      "NAG Favoriting",
+      "NAG Metric Tiles",
+      "Usage Summary Tabs",
+      "Data Usage Bar Chart",
+      "Interaction Prompt",
+      "Usage Bar Chart Drilldown",
+      "Individual Plans Usage Breakdown",
+      "In-plan Usage Threshold Donut",
+      "Breakdown Table Back Button",
+      "Shareplans Detail Table",
+      "Individual Plans Detail Table",
+      "Back Button to Drilldown",
+      "Shopping and Orders Widget",
+      "Shop Now Button",
+      "Latest Orders Table",
+      "View All Orders Link",
+      "Permissions Quick Links",
+      "Warranty - Subscriber Info",
+      "Warranty - BAN Info",
+      "Dashboard Access",
+      "NAG Selection",
+      "NAG Favoriting",
+      "Metric Tiles Display",
+      "Usage Summary Tabs",
+      "Data Usage Chart",
+      "Open/Close Dates",
+      "Chart Interaction Prompt",
+      "Usage Drilldown",
+      "Shared Plans Breakdown",
+      "Individual Plans Breakdown",
+      "Navigation - Back Button",
+      "Shared Plans Detail Table",
+      "Shopping Widget",
+      "Orders Table Columns",
+      "View All Orders",
+      "Permission Links",
+      "Warranty Display - Subscriber",
+      "Warranty Display - BAN",
+      "Stream unbilled usage from NM1 to Kafka",
+      "IDD to consume unbilled usage from Kafka",
+      "BBSSC to Analance integration",
+      "Analance to IDD integration",
+      "BBSSC to BCIM integration",
+      "Real-time warranty lookup",
+      "Batch warranty update",
+      "Display orders from multiple sources",
+      "SSO to eOrdering platform",
+      "Analance dashboard widgets",
+      "Multi-format export",
+      "Filter logic implementation",
+      "Unbilled usage storage",
+      "Continuous data flow",
+      "External link integration"
+    ]
+  },
+  "test_case_evaluation": {
+    "tc_precision": 0.1273,
+    "tc_recall": 0.0366,
+    "tc_f1": 0.0569,
+    "avg_step_accuracy": 0.331,
+    "n_generated": 55,
+    "n_gt": 191,
+    "n_matched": 7,
+    "comparisons": [
+      {
+        "generated_title": "Verify Data, Voice, SMS, and LD Usages Display",
+        "matched": false,
+        "similarity": 0.0945,
+        "gt_match_title": "Verify Data Consistency Across BCIM and Physical Device",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Breakdown of Roaming, Overage, and In-plan Usages",
+        "matched": false,
+        "similarity": 0.0875,
+        "gt_match_title": "No 'In-plan Usage Threshold' Section Display",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Error Handling for Empty Usage Data",
+        "matched": false,
+        "similarity": 0.3217,
+        "gt_match_title": "No Data Error Handling",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Dashboard Displays Key Wireless Management Insights and Actions",
+        "matched": false,
+        "similarity": 0.121,
+        "gt_match_title": "Positive Scenario: Wireless Dashboard Displays 14 Months of Usage Data",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Metric Tiles Display Accurate Data",
+        "matched": true,
+        "similarity": 0.4329,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Display",
+        "step_accuracy": 0.3333,
+        "n_generated_steps": 3,
+        "n_gt_steps": 3
+      },
+      {
+        "generated_title": "Verify Usage Summary Tabs Display Correct Data",
+        "matched": false,
+        "similarity": 0.1885,
+        "gt_match_title": "Drill-Down View Displays Correct Data",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Display Latest Orders",
+        "matched": true,
+        "similarity": 0.3558,
+        "gt_match_title": "Latest Orders Table Displays Correctly with No Orders",
+        "step_accuracy": 0.3333,
+        "n_generated_steps": 3,
+        "n_gt_steps": 3
+      },
+      {
+        "generated_title": "View All Orders",
+        "matched": false,
+        "similarity": 0.3172,
+        "gt_match_title": "View All Orders Link Visibility",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Test - No Orders",
+        "matched": false,
+        "similarity": 0.1148,
+        "gt_match_title": "Edge Case: Payment Processing for Negative Amount",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify System Integration with Kafka",
+        "matched": false,
+        "similarity": 0.2174,
+        "gt_match_title": "Send Unbilled Usage to Kafka",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify System Provides System Infrastructure",
+        "matched": false,
+        "similarity": 0.0452,
+        "gt_match_title": "Verify No Other Links Are Displayed",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Error Handling for Kafka Integration",
+        "matched": false,
+        "similarity": 0.2283,
+        "gt_match_title": "No Data Error Handling",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Display Warranty Expiration Date on Subscriber Page",
+        "matched": false,
+        "similarity": 0.1893,
+        "gt_match_title": "Subscriber Info Page Login Test",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Negative Test - No Warranty Expiration Date",
+        "matched": false,
+        "similarity": 0.1846,
+        "gt_match_title": "Edge Case: Warranty with No Activation Date",
+        "step_accuracy": null,
+        "n_generated_steps": 2,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Boundary Test - Warranty Expiration Date in the Past",
+        "matched": false,
+        "similarity": 0.324,
+        "gt_match_title": "Edge Case: Warranty Expiry Date in the Past",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Selectable Data Groupings Default View",
+        "matched": false,
+        "similarity": 0.1688,
+        "gt_match_title": "Default Selected Tab is 'Data'",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Selectable Data Groupings Navigation",
+        "matched": false,
+        "similarity": 0.0531,
+        "gt_match_title": "Selected Tab Remains Selected After Navigation",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Selectable Data Groupings Error Handling",
+        "matched": false,
+        "similarity": 0.3013,
+        "gt_match_title": "Error Handling - Invalid Data",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Monthly Bar Chart Display",
+        "matched": true,
+        "similarity": 0.4006,
+        "gt_match_title": "Bar Chart Displays Last 14 Months of Usage Data",
+        "step_accuracy": 0.3333,
+        "n_generated_steps": 5,
+        "n_gt_steps": 3
+      },
+      {
+        "generated_title": "Verify Bar Chart Drill-Down Functionality",
+        "matched": false,
+        "similarity": 0.1421,
+        "gt_match_title": "Display Bar Chart with Legend",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Bar Chart Error Handling",
+        "matched": false,
+        "similarity": 0.2654,
+        "gt_match_title": "Display Bar Chart with Legend",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Drilldown View for Bar Graph Selection",
+        "matched": false,
+        "similarity": 0.0755,
+        "gt_match_title": "Bar Chart Displays Last 14 Months of Usage Data",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Shared Plans Usage Breakdown in Drilldown View",
+        "matched": false,
+        "similarity": 0.4214,
+        "gt_match_title": "Shared Plans Usage Breakdown Table Click Test",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Individual Plans Usage Breakdown in Drilldown View",
+        "matched": false,
+        "similarity": 0.2778,
+        "gt_match_title": "Individual Plans Detail Table Display on Click",
+        "step_accuracy": null,
+        "n_generated_steps": 5,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Shared Plans Usage Breakdown Table",
+        "matched": true,
+        "similarity": 0.4949,
+        "gt_match_title": "Shared Plans Usage Breakdown Table Click Test",
+        "step_accuracy": 0.4,
+        "n_generated_steps": 4,
+        "n_gt_steps": 5
+      },
+      {
+        "generated_title": "Verify Shared Plans Usage Breakdown Table with No Data",
+        "matched": false,
+        "similarity": 0.4707,
+        "gt_match_title": "Shared Plans Usage Breakdown Table Click Test",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Shared Plans Usage Breakdown Table with Invalid Data",
+        "matched": false,
+        "similarity": 0.4459,
+        "gt_match_title": "Shared Plans Usage Breakdown Table Click Test",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Donut Wheel Rendering for Under 75% Usage",
+        "matched": false,
+        "similarity": 0.3068,
+        "gt_match_title": "Donut Wheel Visual and Table Display",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Donut Wheel Rendering for 75-95% Usage",
+        "matched": false,
+        "similarity": 0.2733,
+        "gt_match_title": "Donut Wheel Visual and Table Display",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Donut Wheel Rendering for Over 95% Usage",
+        "matched": false,
+        "similarity": 0.3077,
+        "gt_match_title": "Donut Wheel Visual and Table Display",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Back Button Navigation to 14-Month Bar Chart View",
+        "matched": false,
+        "similarity": 0.3201,
+        "gt_match_title": "Positive Scenario: Wireless Dashboard Displays 14-Month Historical Bar Chart",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Back Button Navigation with No Interaction Prompt",
+        "matched": false,
+        "similarity": 0.192,
+        "gt_match_title": "Positive Scenario: Wireless Dashboard Displays 14-Month Historical Bar Chart",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Individual Plans Detail Table Display",
+        "matched": true,
+        "similarity": 0.5156,
+        "gt_match_title": "Individual Plans Detail Table Display on Click",
+        "step_accuracy": 0.0,
+        "n_generated_steps": 5,
+        "n_gt_steps": 3
+      },
+      {
+        "generated_title": "Verify Error Handling for Invalid Input",
+        "matched": true,
+        "similarity": 0.3595,
+        "gt_match_title": "Error Handling - Invalid Data",
+        "step_accuracy": 0.6667,
+        "n_generated_steps": 4,
+        "n_gt_steps": 3
+      },
+      {
+        "generated_title": "Verify Boundary Case for Large Number of Individual Plans",
+        "matched": false,
+        "similarity": 0.251,
+        "gt_match_title": "Individual Plans Detail Table Display on Click",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Shop now Button Click",
+        "matched": false,
+        "similarity": 0.2859,
+        "gt_match_title": "Shop Now Button Redirects to Incorrect Page",
+        "step_accuracy": null,
+        "n_generated_steps": 2,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Shop now Button Placement",
+        "matched": false,
+        "similarity": 0.3089,
+        "gt_match_title": "Shop Now Button Redirects to Incorrect Page",
+        "step_accuracy": null,
+        "n_generated_steps": 2,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Dashboard Details in CSV Format",
+        "matched": false,
+        "similarity": 0.0973,
+        "gt_match_title": "Billing Account Details Display",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Dashboard Details in PDF Format",
+        "matched": false,
+        "similarity": 0.0973,
+        "gt_match_title": "Billing Account Details Display",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Export Dashboard Details in Invalid Format",
+        "matched": false,
+        "similarity": 0.1236,
+        "gt_match_title": "Edge Case: Invalid Billing Account Details",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Filter Dashboard by NAG",
+        "matched": false,
+        "similarity": 0.2179,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Filter Information by NAG",
+        "matched": false,
+        "similarity": 0.1767,
+        "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Invalid NAG Filter Selection",
+        "matched": true,
+        "similarity": 0.4012,
+        "gt_match_title": "Error Handling for Invalid NAG Selection",
+        "step_accuracy": 0.25,
+        "n_generated_steps": 3,
+        "n_gt_steps": 4
+      },
+      {
+        "generated_title": "Quick Links Area Visibility",
+        "matched": false,
+        "similarity": 0.2488,
+        "gt_match_title": "Display Permission Quick Links widget for user with 'My dashboard' permission",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Quick Links Area Link Functionality",
+        "matched": false,
+        "similarity": 0.2622,
+        "gt_match_title": "Verify No Other Links Are Displayed",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Quick Links Area Error Handling",
+        "matched": false,
+        "similarity": 0.2286,
+        "gt_match_title": "Display Permission Quick Links widget for BBP Administrators",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Bill Cycle Information Display",
+        "matched": false,
+        "similarity": 0.2684,
+        "gt_match_title": "User Profile Information Display",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Bill Cycle Information Display for Unbilled Usage",
+        "matched": false,
+        "similarity": 0.3355,
+        "gt_match_title": "Summarize Unbilled Usage",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Bill Cycle Information Display for User without Permissions",
+        "matched": false,
+        "similarity": 0.2702,
+        "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+        "step_accuracy": null,
+        "n_generated_steps": 2,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Redirection to Filtered View within My Inventory",
+        "matched": false,
+        "similarity": 0.0815,
+        "gt_match_title": "Edge Case: Redirected from 'View all orders' Link with Invalid Filter",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Redirection to Filtered View with Cancelled Subscribers",
+        "matched": false,
+        "similarity": 0.0663,
+        "gt_match_title": "Edge Case: Redirected from 'View all orders' Link with Invalid Filter",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Redirection to Filtered View with Suspended Subscribers",
+        "matched": false,
+        "similarity": 0.0663,
+        "gt_match_title": "Edge Case: Redirected from 'View all orders' Link with Invalid Filter",
+        "step_accuracy": null,
+        "n_generated_steps": 3,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Dashboard Navigation for Data Usage",
+        "matched": false,
+        "similarity": 0.0981,
+        "gt_match_title": "Dashboard Data Display with No BCIM Data",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Dashboard Navigation for Voice and Long Distance Usage",
+        "matched": false,
+        "similarity": 0.0554,
+        "gt_match_title": "Drill-Down View - Wireless Dashboard Summary Tables",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      },
+      {
+        "generated_title": "Verify Dashboard Navigation for SMS Usage",
+        "matched": false,
+        "similarity": 0.0678,
+        "gt_match_title": "Drill-Down View - Wireless Dashboard Summary Tables",
+        "step_accuracy": null,
+        "n_generated_steps": 4,
+        "n_gt_steps": null
+      }
+    ]
+  }
+}
