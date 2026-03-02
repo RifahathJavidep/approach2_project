@@ -1,0 +1,2948 @@
+{
+  "generated_file": "output/inuts/testcases/inuts_test_plan.json",
+  "ground_truth_file": "groundtruth/Untitled spreadsheet (6).xlsx",
+  "comparisons": [
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Verify Warranty Information Display",
+      "generated_description": "Verify that the user is able to view their device warranty information",
+      "n_generated_steps": 14,
+      "matched": true,
+      "similarity_score": 0.258,
+      "gt_match_title": "PTW Warranty Expiry Notification",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Subscriber page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the Device Information page area within BBSSC",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the Warranty expiration date is displayed",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.2258,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the Warranty expiration date corresponds to the date of activation",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify the standard manufacturer warranty expiration details of the device are displayed",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.1708,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify all OEM devices are included for warranty information",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.202,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Enter a valid device serial number in the search field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Click the Search button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Verify the warranty information for the searched device is displayed",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.202,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 10: Verify the warranty expiration date is displayed in the correct format (MM/DD/YYYY)",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.1506,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 11: Verify the user can view the warranty information without any errors",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.3361,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 12: Verify the user can navigate back to the Subscriber page without any issues",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.202,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 13: Log out of the application",
+          "best_gt_step": "Log in as the user associated with the warranty.",
+          "similarity": 0.2203,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 14: Verify the user is logged out successfully",
+          "best_gt_step": "Verify that the user receives a notification about the warranty expiry.",
+          "similarity": 0.2606,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Verify Warranty Information for Invalid Device",
+      "generated_description": "Verify that the user is unable to view warranty information for an invalid device",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.2122,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Verify Warranty Information for Multiple Devices",
+      "generated_description": "Verify that the user is able to view warranty information for multiple devices",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.2122,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Dashboard Load Test",
+      "generated_description": "Verify that the user is able to view key metrics and usage summary on the dashboard",
+      "n_generated_steps": 10,
+      "matched": true,
+      "similarity_score": 0.3589,
+      "gt_match_title": "Usage Metrics Display",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'john.doe@company.com' in the 'Email' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'password123' in the 'Password' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the dashboard loads with key metrics",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.2953,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the key metrics include 'Number of active subscribers', 'Number of Suspended subscribers', and 'Number of Cancelled Subscribers'",
+          "best_gt_step": "Verify that the usage metrics are up-to-date and accurate",
+          "similarity": 0.1031,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the total number of BANS and groups are displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the usage summary is available and can toggle between 'data', 'voice', 'long distance', and 'text messaging'",
+          "best_gt_step": "Verify that the usage metrics are up-to-date and accurate",
+          "similarity": 0.1597,
+          "is_match": false
+        },
+        {
+          "generated_step": "Toggle between each type of usage and verify the correct data is displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.2358,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify plans in overage by thresholds (100%, 85%, 75%, <75%) are displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.113,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Usage Summary Toggle Test",
+      "generated_description": "Verify that the user is able to toggle between each type of usage",
+      "n_generated_steps": 11,
+      "matched": true,
+      "similarity_score": 0.2591,
+      "gt_match_title": "Usage Metrics Display",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'john.doe@company.com' in the 'Email' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'password123' in the 'Password' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the dashboard loads with key metrics",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.2953,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the 'Usage at a glance' section",
+          "best_gt_step": "Verify that the usage metrics are up-to-date and accurate",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the usage summary is available and can toggle between 'data', 'voice', 'long distance', and 'text messaging'",
+          "best_gt_step": "Verify that the usage metrics are up-to-date and accurate",
+          "similarity": 0.1597,
+          "is_match": false
+        },
+        {
+          "generated_step": "Toggle to 'data' and verify the correct data is displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.1351,
+          "is_match": false
+        },
+        {
+          "generated_step": "Toggle to 'voice' and verify the correct data is displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Toggle to 'long distance' and verify the correct data is displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.1459,
+          "is_match": false
+        },
+        {
+          "generated_step": "Toggle to 'text messaging' and verify the correct data is displayed",
+          "best_gt_step": "Verify that the usage metrics for the current billing cycle are displayed correctly on the dashboard",
+          "similarity": 0.1459,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Dashboard Load Test with Invalid Credentials",
+      "generated_description": "Verify that the user is unable to view the dashboard with invalid login credentials",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.2689,
+      "gt_match_title": "Secure Login Process - Valid Credentials",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 20.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": "Navigate to the login page and enter valid username and password",
+          "similarity": 0.5246,
+          "is_match": true
+        },
+        {
+          "generated_step": "Enter 'invalid.email@company.com' in the 'Email' field",
+          "best_gt_step": "Navigate to the login page and enter valid username and password",
+          "similarity": 0.068,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'invalidpassword' in the 'Password' field",
+          "best_gt_step": "Navigate to the login page and enter valid username and password",
+          "similarity": 0.2379,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed indicating invalid credentials",
+          "best_gt_step": "Verify that the system redirects the user to the dashboard",
+          "similarity": 0.106,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Selection of Shareplan group brings customer to separate table with listed details",
+      "generated_description": "Verify that the user is able to view a detailed breakdown of their plans and subscribers after selecting a Shareplan group",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.166,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Selection of Individual Plans brings customer to separate table with listed details",
+      "generated_description": "Verify that the user is able to view a detailed breakdown of their individual plans after selecting an Individual Plan",
+      "n_generated_steps": 7,
+      "matched": true,
+      "similarity_score": 0.4042,
+      "gt_match_title": "Individual Plans Detail Table Display on Click",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Usage Drilldown Table page",
+          "best_gt_step": "Click on a link in the 'Individual Plans Usage Breakdown' table.",
+          "similarity": 0.2061,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select an Individual Plan",
+          "best_gt_step": "Click on a link in the 'Individual Plans Usage Breakdown' table.",
+          "similarity": 0.1254,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the selected Individual Plan to view the detailed table",
+          "best_gt_step": "Click on a link in the 'Individual Plans Usage Breakdown' table.",
+          "similarity": 0.2752,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the detailed table is displayed with the listed details: Number (MDN), Name, Billing account, Allowance (MB), Used (MB), and Overage (MB)",
+          "best_gt_step": "Verify that a detailed 'Individual Plans Detail Table' is displayed with the correct data and formatting.",
+          "similarity": 0.1707,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the data is accurately representing the correct allowance, used, and overage",
+          "best_gt_step": "Verify that a detailed 'Individual Plans Detail Table' is displayed with the correct data and formatting.",
+          "similarity": 0.2169,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the columns display numerical values in MB for allowance, used data, and overage within the same row",
+          "best_gt_step": "Verify that a detailed 'Individual Plans Detail Table' is displayed with the correct data and formatting.",
+          "similarity": 0.113,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the Back Button is implemented to bring the user back to the standard Usage Bar Chart Drilldown View",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.0612,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Data is sorted based on billing account's alphabetical order",
+      "generated_description": "Verify that the data is sorted based on the billing account's alphabetical order",
+      "n_generated_steps": 4,
+      "matched": true,
+      "similarity_score": 0.272,
+      "gt_match_title": "Billing Account Details Display",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Shareplans Detail Table page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the data is sorted based on the billing account's alphabetical order",
+          "best_gt_step": "Verify that the billing account details are up-to-date and accurate",
+          "similarity": 0.2798,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the billing accounts are displayed in alphabetical order: '12345', '23456', '34567', etc.",
+          "best_gt_step": "Verify that the billing account number is displayed correctly on the dashboard",
+          "similarity": 0.2358,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the data is accurately representing the correct allowance, used, and overage for each billing account",
+          "best_gt_step": "Verify that the billing account details are up-to-date and accurate",
+          "similarity": 0.2448,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-004",
+      "generated_title": "Maximum of 10 Billing accounts displayed with pagination if more than 10 are in view",
+      "generated_description": "Verify that a maximum of 10 billing accounts are displayed with pagination if more than 10 are in view",
+      "n_generated_steps": 4,
+      "matched": false,
+      "similarity_score": 0.1218,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-005",
+      "generated_title": "Billing account is selectable link and brings customer to preexisting my inventory section to display Billing account usage details page",
+      "generated_description": "Verify that the billing account is a selectable link and brings the customer to the preexisting my inventory section to display the Billing account usage details page",
+      "n_generated_steps": 4,
+      "matched": true,
+      "similarity_score": 0.4525,
+      "gt_match_title": "Billing Account Details Display",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 25.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Shareplans Detail Table page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on a billing account to view the Billing account usage details page",
+          "best_gt_step": "Verify that the billing account details are up-to-date and accurate",
+          "similarity": 0.4071,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the Billing account usage details page is displayed",
+          "best_gt_step": "Verify that the billing account details are up-to-date and accurate",
+          "similarity": 0.4503,
+          "is_match": true
+        },
+        {
+          "generated_step": "Verify that the page displays the usage details for the selected billing account",
+          "best_gt_step": "Verify that the billing account details are up-to-date and accurate",
+          "similarity": 0.4112,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Create a new user",
+      "generated_description": "Verify that the user is able to create a new user",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.3206,
+      "gt_match_title": "Create New User Link Opens Correct URL in New Tab with Invalid BBP API",
+      "n_gt_steps": 4,
+      "step_matches": 1,
+      "step_accuracy_pct": 12.5,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the User Management page",
+          "best_gt_step": "Log in as a user with proper permissions to access the system.",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Create New User' button",
+          "best_gt_step": "Click on the 'Create a new user' link on the system's dashboard.",
+          "similarity": 0.5803,
+          "is_match": true
+        },
+        {
+          "generated_step": "Enter 'john.doe@company.com' in the 'Email' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'John Doe' in the 'Full Name' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select 'Active' from the 'Status' dropdown",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Save' button",
+          "best_gt_step": "Click on the 'Create a new user' link on the system's dashboard.",
+          "similarity": 0.1363,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the new user is created successfully and visible in the user list",
+          "best_gt_step": "Click on the 'Create a new user' link on the system's dashboard.",
+          "similarity": 0.2472,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the confirmation message displays: 'User created successfully'",
+          "best_gt_step": "Check that the system handles the API error correctly and displays an error message.",
+          "similarity": 0.1375,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Manage existing users",
+      "generated_description": "Verify that the user is able to manage existing users",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.2141,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Create a new user with invalid credentials",
+      "generated_description": "Verify that the user is unable to create a new user with invalid credentials",
+      "n_generated_steps": 7,
+      "matched": true,
+      "similarity_score": 0.3171,
+      "gt_match_title": "Create New User Link Opens Correct URL in New Tab with Invalid BBP API",
+      "n_gt_steps": 4,
+      "step_matches": 1,
+      "step_accuracy_pct": 14.29,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the User Management page",
+          "best_gt_step": "Log in as a user with proper permissions to access the system.",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Create New User' button",
+          "best_gt_step": "Click on the 'Create a new user' link on the system's dashboard.",
+          "similarity": 0.5803,
+          "is_match": true
+        },
+        {
+          "generated_step": "Enter 'invalid_email' in the 'Email' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'John Doe' in the 'Full Name' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select 'Active' from the 'Status' dropdown",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Save' button",
+          "best_gt_step": "Click on the 'Create a new user' link on the system's dashboard.",
+          "similarity": 0.1363,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message displays: 'Invalid email address'",
+          "best_gt_step": "Check that the system handles the API error correctly and displays an error message.",
+          "similarity": 0.3249,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Export Data in CSV Format",
+      "generated_description": "Verify that the user is able to export data in CSV format",
+      "n_generated_steps": 11,
+      "matched": false,
+      "similarity_score": 0.2149,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Export Data in PDF Format",
+      "generated_description": "Verify that the user is able to export data in PDF format",
+      "n_generated_steps": 11,
+      "matched": false,
+      "similarity_score": 0.2149,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Export Data in Invalid Format",
+      "generated_description": "Verify that the user is not able to export data in an invalid format",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.3222,
+      "gt_match_title": "Fetch Warranty Expiry Data in Batch (Invalid Data Format)",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter valid username in the 'Email' field",
+          "best_gt_step": "Set up a test environment with a valid BCIM CR and a sample warranty expiry record with an invalid data format.",
+          "similarity": 0.0674,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter valid password in the 'Password' field",
+          "best_gt_step": "Set up a test environment with a valid BCIM CR and a sample warranty expiry record with an invalid data format.",
+          "similarity": 0.0561,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Navigate to the dashboard",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the 'Export Feature' option",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select an invalid file format",
+          "best_gt_step": "Set up a test environment with a valid BCIM CR and a sample warranty expiry record with an invalid data format.",
+          "similarity": 0.1683,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed",
+          "best_gt_step": "Verify that the system displays an error message to the user and does not crash or become unresponsive.",
+          "similarity": 0.3748,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the error message indicates that the selected format is not supported",
+          "best_gt_step": "Verify that the system displays an error message to the user and does not crash or become unresponsive.",
+          "similarity": 0.2532,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Warranty Information Display for BYOD Devices",
+      "generated_description": "Verify that the user is able to view accurate warranty information for their BYOD device",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2481,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Warranty Information Display for Dealer Devices",
+      "generated_description": "Verify that the user is able to view accurate warranty information for their dealer device",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2481,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Negative Testing - Invalid Device",
+      "generated_description": "Verify that the system handles invalid devices correctly",
+      "n_generated_steps": 7,
+      "matched": true,
+      "similarity_score": 0.2825,
+      "gt_match_title": "Error Handling for Invalid NAG Selection",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Subscriber Information page",
+          "best_gt_step": "Navigate to the Wireless Dashboard",
+          "similarity": 0.1708,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Locate the Warranty Information section within the Subscriber Information page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that an error message is displayed indicating that the device is invalid",
+          "best_gt_step": "Verify that the report counts do not update",
+          "similarity": 0.106,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the warranty information is not displayed for the invalid device",
+          "best_gt_step": "Verify that the report counts do not update",
+          "similarity": 0.1152,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Test with different types of invalid devices (e.g. device not registered, device not activated)",
+          "best_gt_step": "Select an invalid NAG from the header filter",
+          "similarity": 0.0736,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that the system handles each type of invalid device correctly",
+          "best_gt_step": "Verify that the report counts do not update",
+          "similarity": 0.1152,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Log out of the system and verify that the warranty information is no longer accessible",
+          "best_gt_step": "Verify that the report counts do not update",
+          "similarity": 0.1152,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View Data Units and Colour Coding for Usage Types",
+      "generated_description": "Verify that the user is able to view data units and colour coding for usage types such as minutes, messages, and MB/GB",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2254,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Invalid or Missing Usage Data",
+      "generated_description": "Verify that the user is unable to view data units and colour coding for usage types when usage data is invalid or missing",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.4352,
+      "gt_match_title": "Negative Scenario: Invalid Data",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the dashboard",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Verify the dashboard does not display data units for usage types",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.2532,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the dashboard does not display colour coding for usage types",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the user is unable to view unbilled usage for the current month",
+          "best_gt_step": "Generate invalid unbilled usage data for the test customer for a given time period.",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify the user is unable to view billed usage for previous months",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.0724,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user is unable to drill down to specific customers from the dashboard",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.0778,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify the dashboard displays an error message or notification when usage data is invalid or missing",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.2215,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify the user can navigate away from the dashboard and return to the login page",
+          "best_gt_step": "Verify that the system does not attempt to send invalid data to Kafka.",
+          "similarity": 0.0724,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Back Button Navigation to Previous View",
+      "generated_description": "Verify that the user is able to navigate back to the previous view using the Back Button",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.424,
+      "gt_match_title": "Back Button Visibility in Drill-Down View with Insufficient Permissions",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Summary Tabs",
+          "best_gt_step": "Log in as a user with insufficient permissions and navigate to the Wireless Dashboard",
+          "similarity": 0.106,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the Data Usage Bar Chart to drill down",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the Interaction Prompt is visible",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Click on the Back Button to navigate back to the previous view",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.3446,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify the user is brought back to the previous view with the Interaction Prompt visible",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.368,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Repeat steps 2-5 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify the Back Button works correctly for each view",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.4316,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Test the Back Button with different NAG (Group) Filter selections",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.0935,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Back Button Navigation with Empty Input",
+      "generated_description": "Verify that the user is able to navigate back to the previous view using the Back Button with empty input",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.3111,
+      "gt_match_title": "Back Button Visibility in Drill-Down View with Insufficient Permissions",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Summary Tabs",
+          "best_gt_step": "Log in as a user with insufficient permissions and navigate to the Wireless Dashboard",
+          "similarity": 0.106,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Clear any input fields, such as the NAG (Group) Filter",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the Data Usage Bar Chart to drill down",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the Interaction Prompt is visible",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Click on the Back Button to navigate back to the previous view",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.3446,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user is brought back to the previous view with the Interaction Prompt visible",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.368,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Repeat steps 2-6 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify the Back Button works correctly for each view with empty input",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.3809,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Back Button Navigation with Invalid Input",
+      "generated_description": "Verify that the user is able to navigate back to the previous view using the Back Button with invalid input",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.2695,
+      "gt_match_title": "Back Button Visibility in Drill-Down View with Insufficient Permissions",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Summary Tabs",
+          "best_gt_step": "Log in as a user with insufficient permissions and navigate to the Wireless Dashboard",
+          "similarity": 0.106,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Enter invalid input, such as a non-existent NAG (Group) Filter value",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the Data Usage Bar Chart to drill down",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the Interaction Prompt is visible",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Click on the Back Button to navigate back to the previous view",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.3446,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user is brought back to the previous view with the Interaction Prompt visible",
+          "best_gt_step": "Attempt to navigate back to the previous view and verify that the user is unable to do so",
+          "similarity": 0.368,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Repeat steps 2-6 with different views, such as the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify the Back Button works correctly for each view with invalid input",
+          "best_gt_step": "Drill down to a view and verify that the 'Back' button is not visible",
+          "similarity": 0.3446,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View Quick Links Area",
+      "generated_description": "Verify that the user is able to view the quick links area",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2031,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Access Other Bell Tools",
+      "generated_description": "Verify that the user is able to access other Bell tools from the quick links area",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.1912,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Invalid Access to Other Bell Tools",
+      "generated_description": "Verify that the user is not able to access other Bell tools without proper authorization",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.1912,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View Additional Information Using Show Button",
+      "generated_description": "Verify that the user is able to view additional information by clicking the show button",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.2841,
+      "gt_match_title": "Back Button Functionality in Drill-Down View with Multiple Levels",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the page with the show button",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard",
+          "similarity": 0.1254,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the show button is displayed",
+          "best_gt_step": "Drill down to a view with multiple levels and verify that the 'Back' button is visible and functional",
+          "similarity": 0.2695,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the show button",
+          "best_gt_step": "Click the 'Back' button multiple times and verify that the user is returned to the correct view",
+          "similarity": 0.3555,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify additional information is displayed",
+          "best_gt_step": "Drill down to a view with multiple levels and verify that the 'Back' button is visible and functional",
+          "similarity": 0.0987,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the user can view the additional information without any errors",
+          "best_gt_step": "Click the 'Back' button multiple times and verify that the user is returned to the correct view",
+          "similarity": 0.2606,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the show button again to hide the additional information",
+          "best_gt_step": "Click the 'Back' button multiple times and verify that the user is returned to the correct view",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the additional information is hidden",
+          "best_gt_step": "Drill down to a view with multiple levels and verify that the 'Back' button is visible and functional",
+          "similarity": 0.0987,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter invalid input to test error handling",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed",
+          "best_gt_step": "Drill down to a view with multiple levels and verify that the 'Back' button is visible and functional",
+          "similarity": 0.0987,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Show Button Error Handling",
+      "generated_description": "Verify that the show button handles errors correctly",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.3068,
+      "gt_match_title": "PTW Error Handling During Data Refresh",
+      "n_gt_steps": 3,
+      "step_matches": 3,
+      "step_accuracy_pct": 37.5,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the page with the show button",
+          "best_gt_step": "Trigger the data refresh process (e.g., by navigating to a different page or performing an action that triggers the refresh).",
+          "similarity": 0.0904,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the show button is displayed",
+          "best_gt_step": "Verify that the system displays an error message to the user and logs the error correctly.",
+          "similarity": 0.1037,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the show button without necessary permissions",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed",
+          "best_gt_step": "Verify that the system displays an error message to the user and logs the error correctly.",
+          "similarity": 0.481,
+          "is_match": true
+        },
+        {
+          "generated_step": "Click the show button with invalid input",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed",
+          "best_gt_step": "Verify that the system displays an error message to the user and logs the error correctly.",
+          "similarity": 0.481,
+          "is_match": true
+        },
+        {
+          "generated_step": "Click the show button with missing required fields",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed",
+          "best_gt_step": "Verify that the system displays an error message to the user and logs the error correctly.",
+          "similarity": 0.481,
+          "is_match": true
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Valid User Credentials with Correct Role and Permissions",
+      "generated_description": "Verify that the user is able to access the dashboard based on their role and permissions",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.2628,
+      "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 11.11,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'john.doe@company.com' in the 'Email' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'password123' in the 'Password' field",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the dashboard displays the correct level of usage information based on the user's role and permissions",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.6053,
+          "is_match": true
+        },
+        {
+          "generated_step": "Verify the user is able to view the 'Latest Orders Table'",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the user is able to view the 'Shopping and Orders Widget'",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Back Button to Drill down table' and verify the user is able to navigate back to the previous page",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Logout from the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1943,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Invalid User Credentials or Incorrect Role and Permissions",
+      "generated_description": "Verify that the user is not able to access the dashboard with invalid credentials or incorrect role and permissions",
+      "n_generated_steps": 7,
+      "matched": false,
+      "similarity_score": 0.2136,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Prevent Regression of Defect SADRSTRANG-13583",
+      "generated_description": "Verify that the user is able to use the system reliably without exhibiting the defect SADRSTRANG-13583",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.079,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Negative Test - Invalid Input",
+      "generated_description": "Verify that the user is unable to use the system with invalid input",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.2986,
+      "gt_match_title": "Negative Scenario: Invalid 'Request ID' Link",
+      "n_gt_steps": 5,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the BBSSC dashboard",
+          "best_gt_step": "Navigate to the Latest Orders Table page",
+          "similarity": 0.1506,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter invalid credentials",
+          "best_gt_step": "Click on an invalid or non-existent 'Request ID' link in the table",
+          "similarity": 0.1167,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the NAG Metric Tiles to view usage summary",
+          "best_gt_step": "Click on an invalid or non-existent 'Request ID' link in the table",
+          "similarity": 0.0724,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the system displays an error message",
+          "best_gt_step": "Verify that an error message is displayed indicating that the 'Request ID' is invalid or non-existent",
+          "similarity": 0.3279,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify that the system does not exhibit the defect SADRSTRANG-13583",
+          "best_gt_step": "Verify that the system does not redirect to an order detail page",
+          "similarity": 0.2258,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Billed Month Drilldown Test",
+      "generated_description": "Verify that the user is able to drill down into their billed month data",
+      "n_generated_steps": 12,
+      "matched": false,
+      "similarity_score": 0.1913,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Billed Month Drilldown Error Handling Test",
+      "generated_description": "Verify that the user is unable to drill down into their billed month data without necessary permissions",
+      "n_generated_steps": 6,
+      "matched": false,
+      "similarity_score": 0.2071,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Viewing Data Usage in Unified Dashboard",
+      "generated_description": "Verify that the user is able to view data usage through graphical design in the Unified Dashboard for Wireless Management Insights",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.3492,
+      "gt_match_title": "Chart Displays Last 14 Months of Usage Data",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter valid username in the 'Email' field, e.g., 'john.doe@company.com'",
+          "best_gt_step": "Log in as a user with a valid account and select a tab in the Wireless Dashboard.",
+          "similarity": 0.0634,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter valid password in the 'Password' field, e.g., 'password123'",
+          "best_gt_step": "Log in as a user with a valid account and select a tab in the Wireless Dashboard.",
+          "similarity": 0.0674,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the 'Unified Dashboard for Wireless Management Insights' link",
+          "best_gt_step": "Log in as a user with a valid account and select a tab in the Wireless Dashboard.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the 'Data' usage is displayed through graphical design",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.3041,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the breakdown of 'Roaming', 'Overage', and 'In-plan' usages for 'Data' insight is displayed",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.1459,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the user can drill down on details of both billed and unbilled usages of the Customer's NAG",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.068,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the 'Data' usage graph updates when the user selects a different time period from the dropdown",
+          "best_gt_step": "Verify that the chart displays the correct usage data for the specified time period.",
+          "similarity": 0.3391,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Viewing Voice Usage in Unified Dashboard",
+      "generated_description": "Verify that the user is able to view voice usage through graphical design in the Unified Dashboard for Wireless Management Insights",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.2032,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Viewing SMS Usage in Unified Dashboard",
+      "generated_description": "Verify that the user is able to view SMS usage through graphical design in the Unified Dashboard for Wireless Management Insights",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.2032,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-004",
+      "generated_title": "Viewing LD Usage in Unified Dashboard",
+      "generated_description": "Verify that the user is able to view LD usage through graphical design in the Unified Dashboard for Wireless Management Insights",
+      "n_generated_steps": 9,
+      "matched": false,
+      "similarity_score": 0.2032,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-005",
+      "generated_title": "Invalid Login Credentials",
+      "generated_description": "Verify that the user is unable to access the Unified Dashboard for Wireless Management Insights with invalid login credentials",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.2927,
+      "gt_match_title": "Secure Login Process - Invalid Credentials",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 20.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.5246,
+          "is_match": true
+        },
+        {
+          "generated_step": "Enter invalid username in the 'Email' field, e.g., 'invaliduser@company.com'",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.2532,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter invalid password in the 'Password' field, e.g., 'invalidpassword'",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.3841,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed, e.g., 'Invalid username or password'",
+          "best_gt_step": "Verify that the system displays an error message indicating invalid credentials",
+          "similarity": 0.403,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View Shopping and Orders Insights",
+      "generated_description": "Verify that the user is able to view their shopping and orders insights, including in-progress, completed, and cancelled orders",
+      "n_generated_steps": 10,
+      "matched": true,
+      "similarity_score": 0.2628,
+      "gt_match_title": "View All Orders Link Visibility",
+      "n_gt_steps": 4,
+      "step_matches": 1,
+      "step_accuracy_pct": 10.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Shopping and Orders Widget",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.2606,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the Shopping and Orders tab",
+          "best_gt_step": "Click on the 'View all orders' link and verify that it redirects to the expected page",
+          "similarity": 0.2203,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that the shopping and orders insights are displayed, including in-progress, completed, and cancelled orders",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.2197,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the Latest Orders Table is displayed with the most recent orders",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.3877,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify that the user can view the details of each order by clicking on the order",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that the user can view all orders by clicking on the View All Orders link",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.5697,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 7: Verify that the user can view the status of each order, including in-progress, completed, and cancelled",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify that the user can view the details of each order, including the order date, order total, and order status",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.0943,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Verify that the user can navigate back to the Shopping and Orders Widget by clicking on the Back Button to Drill down table",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.2448,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 10: Verify that the user can log out and log back in to verify that the shopping and orders insights are still displayed correctly",
+          "best_gt_step": "Log in with a user account that has access to the 'My Request' section",
+          "similarity": 0.1998,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Negative Test - No Orders",
+      "generated_description": "Verify that the user is able to view a message indicating that there are no orders when there are no orders",
+      "n_generated_steps": 6,
+      "matched": true,
+      "similarity_score": 0.3962,
+      "gt_match_title": "Latest Orders Table Displays Correct Orders When User Has Access to 'My Request' Section and There Are Existing Orders",
+      "n_gt_steps": 4,
+      "step_matches": 1,
+      "step_accuracy_pct": 16.67,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Shopping and Orders Widget",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.3361,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the Shopping and Orders tab",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.1444,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that a message is displayed indicating that there are no orders",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.4316,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the Latest Orders Table is empty",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.603,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 5: Verify that the user can navigate back to the Shopping and Orders Widget by clicking on the Back Button to Drill down table",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.3279,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that the user can log out and log back in to verify that the message indicating that there are no orders is still displayed correctly",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.3249,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Negative Test - Invalid User",
+      "generated_description": "Verify that the user is unable to view their shopping and orders insights when they do not have access to the Shopping and Orders Widget",
+      "n_generated_steps": 6,
+      "matched": true,
+      "similarity_score": 0.3422,
+      "gt_match_title": "Shopping and Orders Widget Visibility with Access to Dashboard but no 'shopping' Permission",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 16.67,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Shopping and Orders Widget",
+          "best_gt_step": "Navigate to the Dashboard and verify that the 'Shopping and Orders' widget is not visible.",
+          "similarity": 0.6348,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 2: Verify that an error message is displayed indicating that the user does not have access to the Shopping and Orders Widget",
+          "best_gt_step": "Navigate to the Dashboard and verify that the 'Shopping and Orders' widget is not visible.",
+          "similarity": 0.3007,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that the user is unable to view their shopping and orders insights",
+          "best_gt_step": "Navigate to the Dashboard and verify that the 'Shopping and Orders' widget is not visible.",
+          "similarity": 0.2752,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the user can navigate back to the login page",
+          "best_gt_step": "Navigate to the Dashboard and verify that the 'Shopping and Orders' widget is not visible.",
+          "similarity": 0.2061,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify that the user can log in with a different user account that has access to the Shopping and Orders Widget",
+          "best_gt_step": "Log in as a user with access to the Dashboard but without the 'shopping' permission.",
+          "similarity": 0.4316,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that the user can view their shopping and orders insights with the new user account",
+          "best_gt_step": "Log in as a user with access to the Dashboard but without the 'shopping' permission.",
+          "similarity": 0.2322,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Favoriting a NAG",
+      "generated_description": "Verify that the user is able to favorite a specific NAG",
+      "n_generated_steps": 13,
+      "matched": true,
+      "similarity_score": 0.2713,
+      "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the My Dashboard page",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.2911,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the NAG (Group) Filter dropdown and select a NAG",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.4393,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the favorite button next to the selected NAG",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the NAG is marked as favorite",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.2061,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Log out of My Dashboard",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.4104,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Log back in to My Dashboard",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.4104,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify the favorited NAG is shown as default",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Click on a different NAG and verify it is not marked as favorite",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Click on the favorite button next to the different NAG",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.1123,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 10: Verify the different NAG is marked as favorite",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 11: Log out of My Dashboard",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.4104,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 12: Log back in to My Dashboard",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.4104,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 13: Verify the newly favorited NAG is shown as default",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1598,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Viewing favorited NAG",
+      "generated_description": "Verify that the user is able to view the favorited NAG",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.1959,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Favoriting multiple NAGs",
+      "generated_description": "Verify that the user is able to favorite multiple NAGs",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.1478,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-004",
+      "generated_title": "Unfavoriting a NAG",
+      "generated_description": "Verify that the user is able to unfavorite a NAG",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.2488,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Viewing Metric Tiles",
+      "generated_description": "Verify that the user is able to view metric tiles and see accurate data",
+      "n_generated_steps": 11,
+      "matched": false,
+      "similarity_score": 0.2386,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Interacting with Usage Summary Tabs",
+      "generated_description": "Verify that the user is able to interact with usage summary tabs and see accurate data",
+      "n_generated_steps": 11,
+      "matched": false,
+      "similarity_score": 0.2061,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Negative Testing - Invalid Input",
+      "generated_description": "Verify that the user is unable to enter invalid input and sees an error message",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.2274,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Login and View Customer Dashboard",
+      "generated_description": "Verify that the user is able to view their account and usage information on the Customer Dashboard",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2187,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Invalid Login Credentials",
+      "generated_description": "Verify that the user is unable to access the Customer Dashboard with invalid login credentials",
+      "n_generated_steps": 6,
+      "matched": true,
+      "similarity_score": 0.33,
+      "gt_match_title": "Secure Login Process - Invalid Credentials",
+      "n_gt_steps": 3,
+      "step_matches": 2,
+      "step_accuracy_pct": 33.33,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the Login page",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.5246,
+          "is_match": true
+        },
+        {
+          "generated_step": "Enter 'invaliduser@company.com' in the 'Email' field",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.0846,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter 'wrongpassword' in the 'Password' field",
+          "best_gt_step": "Navigate to the login page and enter invalid username and password",
+          "similarity": 0.2379,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click the 'Sign In' button",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify an error message is displayed indicating that the login credentials are invalid",
+          "best_gt_step": "Verify that the system displays an error message indicating invalid credentials",
+          "similarity": 0.6735,
+          "is_match": true
+        },
+        {
+          "generated_step": "Verify the user is not able to access the Customer Dashboard",
+          "best_gt_step": "Confirm that the user's account is not unlocked and not locked out",
+          "similarity": 0.1016,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Empty Login Fields",
+      "generated_description": "Verify that the user is unable to access the Customer Dashboard with empty login fields",
+      "n_generated_steps": 6,
+      "matched": false,
+      "similarity_score": 0.2233,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Apply NAG Filter",
+      "generated_description": "Verify that the user is able to filter information by NAG",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.3343,
+      "gt_match_title": "Wireless Dashboard Metric Tiles Update on NAG Filter Selection",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the dashboard page",
+          "best_gt_step": "Log in as a user with proper permissions and navigate to the Wireless Dashboard.",
+          "similarity": 0.2911,
+          "is_match": false
+        },
+        {
+          "generated_step": "Click on the NAG filter dropdown",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select a NAG group from the dropdown options",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.2523,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the display updates to reflect the filtered information",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Enter a valid NAG group name in the search field",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the display updates to reflect the filtered information",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Clear the search field and verify the display updates to reflect all NAG groups",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.202,
+          "is_match": false
+        },
+        {
+          "generated_step": "Apply an invalid NAG group filter and verify an error message is displayed",
+          "best_gt_step": "Select a specific NAG from the header filter.",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the error message is 'No results found for the selected NAG group'",
+          "best_gt_step": "Verify that all four tile counts update dynamically to reflect only the data for the selected NAG.",
+          "similarity": 0.2358,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "NAG Filter Real-Time Update",
+      "generated_description": "Verify that the user is able to see real-time updates when applying the NAG filter",
+      "n_generated_steps": 7,
+      "matched": true,
+      "similarity_score": 0.3803,
+      "gt_match_title": "Real-Time Data Refresh for PTW Reports",
+      "n_gt_steps": 4,
+      "step_matches": 1,
+      "step_accuracy_pct": 14.29,
+      "matched_step_details": [
+        {
+          "generated_step": "Navigate to the dashboard page",
+          "best_gt_step": "Navigate to the Wireless Dashboard",
+          "similarity": 0.5031,
+          "is_match": true
+        },
+        {
+          "generated_step": "Click on the NAG filter dropdown",
+          "best_gt_step": "Select a specific NAG from the header filter",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Select a NAG group from the dropdown options",
+          "best_gt_step": "Select a specific NAG from the header filter",
+          "similarity": 0.2523,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the display updates to reflect the filtered information",
+          "best_gt_step": "Verify that the report counts update dynamically to reflect only the data for that selected NAG",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Make changes to the NAG group data",
+          "best_gt_step": "Verify that the report counts update dynamically to reflect only the data for that selected NAG",
+          "similarity": 0.1786,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the display updates in real-time to reflect the changes",
+          "best_gt_step": "Verify that the report counts update dynamically to reflect only the data for that selected NAG",
+          "similarity": 0.1459,
+          "is_match": false
+        },
+        {
+          "generated_step": "Verify the updated information is accurate and consistent",
+          "best_gt_step": "Verify that the report counts update dynamically to reflect only the data for that selected NAG",
+          "similarity": 0.0818,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "NAG Filter Edge Case",
+      "generated_description": "Verify that the user is able to apply the NAG filter with edge case scenarios",
+      "n_generated_steps": 7,
+      "matched": false,
+      "similarity_score": 0.2403,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View Latest Orders",
+      "generated_description": "Verify that the user is able to view their latest orders",
+      "n_generated_steps": 13,
+      "matched": true,
+      "similarity_score": 0.3869,
+      "gt_match_title": "View All Orders Link Visibility",
+      "n_gt_steps": 4,
+      "step_matches": 7,
+      "step_accuracy_pct": 53.85,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Latest Orders Table",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.7093,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 2: Verify the Latest Orders Table is displayed with the correct orders",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.3877,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the table has columns for Order ID, Date, and Status Badge",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.1708,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the user can view their latest orders in the table",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.5031,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 5: Verify the user can see the Order ID, Date, and Status Badge for each order",
+          "best_gt_step": "Log in with a user account that has access to the 'My Request' section",
+          "similarity": 0.07,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.6088,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 7: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
+          "best_gt_step": "Click on the 'View all orders' link and verify that it redirects to the expected page",
+          "similarity": 0.5147,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 8: Verify the user can return to the Latest Orders Table from the View All Orders page",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.4594,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 9: Verify the Latest Orders Table is updated with the latest orders after returning from the View All Orders page",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.5188,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 10: Verify the user can view their latest orders in the table after updating",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.4503,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 11: Verify the table still has columns for Order ID, Date, and Status Badge after updating",
+          "best_gt_step": "Verify that the 'View all orders' link is visible below the table",
+          "similarity": 0.1598,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 12: Verify the user can log out and log back in and still view their latest orders",
+          "best_gt_step": "Log in with a user account that has access to the 'My Request' section",
+          "similarity": 0.2654,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 13: Verify the Latest Orders Table is still displayed with the correct orders after logging back in",
+          "best_gt_step": "Navigate to the page displaying the 'Latest Orders' table",
+          "similarity": 0.3591,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "View Latest Orders with No Orders",
+      "generated_description": "Verify that the user is able to view a message when they have no orders",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.4,
+      "gt_match_title": "Latest Orders Table Displays Correct Orders When User Has Access to 'My Request' Section and There Are Existing Orders",
+      "n_gt_steps": 4,
+      "step_matches": 6,
+      "step_accuracy_pct": 66.67,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Latest Orders Table",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 1.0,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 2: Verify the Latest Orders Table is displayed with a message indicating no orders",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.5689,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 3: Verify the message is clear and concise",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.6476,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 5: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.2233,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user can return to the Latest Orders Table from the View All Orders page",
+          "best_gt_step": "Navigate to the 'Latest Orders' table.",
+          "similarity": 0.4501,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 7: Verify the Latest Orders Table is still displayed with the message indicating no orders",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.5689,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 8: Verify the user can log out and log back in and still view the message",
+          "best_gt_step": "Log in as a user with access to the 'My Request' section.",
+          "similarity": 0.3224,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Verify the Latest Orders Table is still displayed with the message indicating no orders after logging back in",
+          "best_gt_step": "Verify that the correct orders are displayed in the table.",
+          "similarity": 0.5299,
+          "is_match": true
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "View Latest Orders with Invalid Data",
+      "generated_description": "Verify that the user is able to view an error message when the data is invalid",
+      "n_generated_steps": 9,
+      "matched": true,
+      "similarity_score": 0.3613,
+      "gt_match_title": "Dashboard Data Display with Invalid BCIM Data",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Latest Orders Table",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Verify the Latest Orders Table is displayed with an error message",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.2215,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the error message is clear and concise",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.2774,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the user can navigate to the View All Orders link from the Latest Orders Table",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.0507,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify the user is redirected to the View All Orders page when clicking the View All Orders link",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.0447,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user can return to the Latest Orders Table from the View All Orders page",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.0507,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify the Latest Orders Table is still displayed with the error message",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.2215,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify the user can log out and log back in and still view the error message",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.1898,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Verify the Latest Orders Table is still displayed with the error message after logging back in",
+          "best_gt_step": "Verify that the system detects the invalid data and displays a suitable error message or UI element.",
+          "similarity": 0.2038,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Viewing Permissions on the Dashboard",
+      "generated_description": "Verify that the user is able to view permissions on the dashboard",
+      "n_generated_steps": 15,
+      "matched": true,
+      "similarity_score": 0.3544,
+      "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+      "n_gt_steps": 3,
+      "step_matches": 2,
+      "step_accuracy_pct": 13.33,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1943,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click on the 'Permissions' section",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1506,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that the permissions are displayed on the dashboard",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.3748,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the permissions are correctly aligned with the existing base of customers",
+          "best_gt_step": "Verify that the UI elements are correctly aligned and the text is readable even when a user with no permissions is logged in",
+          "similarity": 0.3189,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Attempt to capture new permissions",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that new permissions are captured successfully",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1909,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify that the new permissions are displayed on the dashboard",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.3171,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Attempt to view permissions with an empty dataset",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1274,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 9: Verify that the dashboard handles the empty dataset correctly",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1909,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 10: Log out of the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.5023,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 11: Log back in with a different user role",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 12: Verify that the permissions are not visible to the user without the required role",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.2798,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 13: Log out of the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.5023,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 14: Log back in with the original user role",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 15: Verify that the permissions are still visible on the dashboard",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.3748,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Viewing Permissions on the Dashboard with Invalid Input",
+      "generated_description": "Verify that the user is unable to view permissions on the dashboard with invalid input",
+      "n_generated_steps": 10,
+      "matched": true,
+      "similarity_score": 0.2547,
+      "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+      "n_gt_steps": 3,
+      "step_matches": 1,
+      "step_accuracy_pct": 10.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1943,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Enter invalid input in the 'Permissions' section",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1123,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify that an error message is displayed",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.0987,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the permissions are not displayed on the dashboard",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.3748,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Attempt to capture new permissions with invalid input",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that an error message is displayed",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.0987,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify that new permissions are not captured",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.2203,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Log out of the dashboard",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.5023,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 9: Log back in with the original user role",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 10: Verify that the permissions are still visible on the dashboard",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.3748,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Viewing Permissions on the Dashboard with Missing Required Field",
+      "generated_description": "Verify that the user is unable to view permissions on the dashboard with a missing required field",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2286,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Create SSC Link",
+      "generated_description": "Verify that the user is able to create an SSC link",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.2468,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Provide SSC Link to Analance Team",
+      "generated_description": "Verify that the user is able to provide the created SSC link to the Analance team",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.1418,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Navigating through the PTW Self Serve CS sequence",
+      "generated_description": "Verify that the user is able to navigate through the PTW Self Serve CS sequence and view the interactions between different systems and components",
+      "n_generated_steps": 12,
+      "matched": false,
+      "similarity_score": 0.0877,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Invalid access to PTW Self Serve CS sequence",
+      "generated_description": "Verify that the user is unable to access the PTW Self Serve CS sequence without the necessary permissions",
+      "n_generated_steps": 4,
+      "matched": false,
+      "similarity_score": 0.1436,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Drilldown on Billed Usage",
+      "generated_description": "Verify that the user is able to drill down on billed usage details",
+      "n_generated_steps": 8,
+      "matched": false,
+      "similarity_score": 0.2072,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Drilldown on Unbilled Usage",
+      "generated_description": "Verify that the user is able to drill down on unbilled usage details",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.3104,
+      "gt_match_title": "Summarize Unbilled Usage",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.0787,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Select an unbilled usage account from the list of available accounts",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the drilldown button for the selected unbilled usage account",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the detailed usage data is displayed, including allowance, used data, and overage",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.2638,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify that the data is accurately represented in numerical values in MB for Data, Minutes for Voice and Long Distance, and # of Text Messages for Text Messaging",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.137,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify that the Subscriber # is a selectable link and brings the customer to the preexisting My Inventory page - Individual Subscriber Page",
+          "best_gt_step": "Create a test customer with an activation date in the past.",
+          "similarity": 0.0548,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Verify that the Billing account is a selectable link and brings the customer to the preexisting my inventory section to display Billing account usage details page",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.0877,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Click on the Back Button and verify that the user is brought back to the standard Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1208,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Drilldown on Billed Usage with No Data",
+      "generated_description": "Verify that the user is able to drill down on billed usage details with no data",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.2897,
+      "gt_match_title": "Chart Displays Last 14 Months of Usage Data",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.1844,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Select a billed usage account with no data from the list of available accounts",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the drilldown button for the selected billed usage account",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.0778,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that a message is displayed indicating that there is no data available",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.1844,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify that the user is able to navigate back to the standard Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the chart displays the last 14 months of usage data.",
+          "similarity": 0.2215,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-004",
+      "generated_title": "Drilldown on Unbilled Usage with No Data",
+      "generated_description": "Verify that the user is able to drill down on unbilled usage details with no data",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.4519,
+      "gt_match_title": "Summarize Unbilled Usage",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.0787,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Select an unbilled usage account with no data from the list of available accounts",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.233,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the drilldown button for the selected unbilled usage account",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1559,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that a message is displayed indicating that there is no data available",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1708,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Verify that the user is able to navigate back to the standard Usage Bar Chart Drilldown View",
+          "best_gt_step": "Verify that the system correctly summarizes the unbilled usage data and sends it to Kafka.",
+          "similarity": 0.1274,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Link to Manage My Access",
+      "generated_description": "Verify that the user is able to manage their access by clicking on the link to manage my access",
+      "n_generated_steps": 8,
+      "matched": true,
+      "similarity_score": 0.4511,
+      "gt_match_title": "Verify 'Manage my access' Link Behavior",
+      "n_gt_steps": 4,
+      "step_matches": 3,
+      "step_accuracy_pct": 37.5,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the dashboard",
+          "best_gt_step": "Navigate to the Wireless Dashboard.",
+          "similarity": 0.7093,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 2: Locate the link to manage my access on the dashboard",
+          "best_gt_step": "Click the 'Manage my access' link in the Permission Quick Links widget.",
+          "similarity": 0.3171,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Click on the link to manage my access",
+          "best_gt_step": "Click the 'Manage my access' link in the Permission Quick Links widget.",
+          "similarity": 0.5797,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 4: Verify the user is taken to the manage my access page",
+          "best_gt_step": "Verify that the user is taken to the correct page.",
+          "similarity": 0.5803,
+          "is_match": true
+        },
+        {
+          "generated_step": "Step 5: Verify the manage my access page displays the user's account information",
+          "best_gt_step": "Verify that the user is taken to the correct page.",
+          "similarity": 0.3171,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 6: Verify the user can update their account information on the manage my access page",
+          "best_gt_step": "Verify that the user is taken to the correct page.",
+          "similarity": 0.3171,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 7: Enter updated account information and save changes",
+          "best_gt_step": null,
+          "similarity": 0,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 8: Verify the updated account information is reflected on the manage my access page",
+          "best_gt_step": "Verify that the user is taken to the correct page.",
+          "similarity": 0.1909,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Invalid Access to Manage My Access",
+      "generated_description": "Verify that the user is unable to access the manage my access page without proper permissions",
+      "n_generated_steps": 4,
+      "matched": true,
+      "similarity_score": 0.3383,
+      "gt_match_title": "Negative Scenario: No Access to 'My Request' Section",
+      "n_gt_steps": 4,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the dashboard as a user without permissions to access the manage my access page",
+          "best_gt_step": "Log in as a user without access to the 'My Request' section",
+          "similarity": 0.2763,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Attempt to click on the link to manage my access",
+          "best_gt_step": "Click on the 'View all orders' link",
+          "similarity": 0.2912,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify an error message is displayed indicating the user does not have permission to access the manage my access page",
+          "best_gt_step": "Log in as a user without access to the 'My Request' section",
+          "similarity": 0.2233,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify the user is not taken to the manage my access page",
+          "best_gt_step": "Log in as a user without access to the 'My Request' section",
+          "similarity": 0.2258,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "Create UI Widget",
+      "generated_description": "Verify that the user is able to create a UI widget",
+      "n_generated_steps": 12,
+      "matched": false,
+      "similarity_score": 0.2175,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "Create UI Widget with Invalid Input",
+      "generated_description": "Verify that the user is unable to create a UI widget with invalid input",
+      "n_generated_steps": 12,
+      "matched": false,
+      "similarity_score": 0.1662,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "Create UI Widget without Permissions",
+      "generated_description": "Verify that the user is unable to create a UI widget without the necessary permissions",
+      "n_generated_steps": 5,
+      "matched": true,
+      "similarity_score": 0.3079,
+      "gt_match_title": "Dashboard UI Handles User with No Permissions Correctly",
+      "n_gt_steps": 3,
+      "step_matches": 0,
+      "step_accuracy_pct": 0.0,
+      "matched_step_details": [
+        {
+          "generated_step": "Step 1: Navigate to the UI Widget Creation page",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.087,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 2: Click the 'Create UI Widget' button",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.087,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 3: Verify the 'Access Denied' error message is displayed",
+          "best_gt_step": "Log in as a user with no permissions and access the dashboard",
+          "similarity": 0.1016,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 4: Verify that the user is unable to create a UI widget",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.2798,
+          "is_match": false
+        },
+        {
+          "generated_step": "Step 5: Logout and verify that no UI widget is created",
+          "best_gt_step": "Verify that the dashboard UI displays the correct information for a user with no permissions",
+          "similarity": 0.1909,
+          "is_match": false
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-001",
+      "generated_title": "View IDR/IDD Billed Data",
+      "generated_description": "Verify that the user is able to view IDR/IDD billed data",
+      "n_generated_steps": 10,
+      "matched": false,
+      "similarity_score": 0.2028,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-002",
+      "generated_title": "View IDR/IDD Billed Data with Invalid Input",
+      "generated_description": "Verify that the user is unable to view IDR/IDD billed data with invalid input",
+      "n_generated_steps": 7,
+      "matched": false,
+      "similarity_score": 0.2291,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    },
+    {
+      "test_case_id": "TC-003",
+      "generated_title": "View IDR/IDD Billed Data with Missing Required Field",
+      "generated_description": "Verify that the user is unable to view IDR/IDD billed data with a missing required field",
+      "n_generated_steps": 7,
+      "matched": false,
+      "similarity_score": 0.1905,
+      "gt_match_title": null,
+      "n_gt_steps": null,
+      "step_matches": null,
+      "step_accuracy_pct": null,
+      "matched_step_details": []
+    }
+  ],
+  "summary": {
+    "total_generated_test_cases": 79,
+    "matched_test_cases": 39,
+    "unmatched_test_cases": 40,
+    "match_threshold": 0.25,
+    "step_similarity_threshold": 0.45,
+    "total_generated_steps": 311,
+    "total_matched_steps": 34,
+    "overall_step_accuracy_pct": 10.93
+  }
+}
