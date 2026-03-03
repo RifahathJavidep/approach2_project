@@ -44,6 +44,7 @@ from .generators.trained_extractor import (
 from .generators.training import train_extractor
 from .generators.postprocessing import deduplicate_requirements, deduplicate_multi_layer_requirements, deduplicate_cross_layer, deduplicate_by_topic, consolidate_requirements, merge_semantic_siblings
 from .generators.validation import validate_requirement
+from .generators.v4_br_extractor import extract_requirements as v4_extract_requirements
 from .utils import chunk_document
 
 import re
@@ -291,6 +292,30 @@ class ExtractionPipeline:
         except Exception as e:
             print(f"  ⚠ Could not save model state: {e}")
             return {}
+
+    def _convert_v4_requirements(self, br_list, project_name):
+        """Convert v4.0 BusinessRequirement objects to the approach2_project dict format."""
+        result = []
+        for i, br in enumerate(br_list, 1):
+            conf = br.confidence if isinstance(br.confidence, str) else (
+                "high" if br.confidence >= 0.7 else "medium" if br.confidence >= 0.4 else "low"
+            )
+            result.append({
+                "title": br.feature_name,
+                "description": br.description,
+                "type": br.category or "Functional",
+                "user_story": br.user_story,
+                "acceptance_criteria": br.acceptance_criteria,
+                "test_steps": [{"step_num": s.step_num, "action": s.action,
+                                "expected_result": s.expected_result, "test_data": s.test_data}
+                               for s in br.test_steps],
+                "test_scenarios": br.test_scenarios,
+                "assumptions": [],
+                "ambiguities": [],
+                "confidence": conf,
+                "requirement_id": f"{str(project_name).upper().replace(' ', '_')}-{i:03d}"
+            })
+        return result
 
     # =========================================================================
     # STAGE 2: CONTENT EXTRACTION
@@ -563,6 +588,33 @@ class ExtractionPipeline:
         print("=" * 80)
         print(f"REQUIREMENTS EXTRACTION - {str(project_name).upper()}")
         print("=" * 80)
+
+        # Check v4.0 Enrichment-Pass flag
+        use_v4 = os.getenv('USE_V4_BR_EXTRACTION', 'false').lower() == 'true'
+
+        if use_v4:
+            import tempfile
+            import shutil
+            print("  Using v4.0 Enrichment-Pass BR Extraction (Document-Tier)")
+            with tempfile.TemporaryDirectory() as tmp_dir:
+                for fp in file_paths:
+                    shutil.copy2(fp, tmp_dir)
+                br_list = v4_extract_requirements(input_dir=tmp_dir)
+            unique = self._convert_v4_requirements(br_list, project_name)
+            new_model_state = self.save_model_state()
+            result_data = {
+                'project': project_name,
+                'requirements': unique,
+                'model_state': new_model_state,
+            }
+            if output_dir:
+                os.makedirs(output_dir, exist_ok=True)
+                output_file = Path(output_dir) / f"{project_name}_requirements.json"
+                with open(output_file, 'w') as f:
+                    json.dump(result_data, f, indent=2)
+                print(f"  Saved locally to: {output_file}")
+            print(f"\nDone! {len(unique)} requirements extracted (v4.0 mode)")
+            return result_data
 
         all_reqs = []
         all_filtered = []

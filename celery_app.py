@@ -13,6 +13,12 @@ if BASE_DIR not in sys.path:
 
 load_dotenv()
 
+# Logging
+import logging
+from logging_config import setup_logging
+setup_logging("INFO")
+logger = logging.getLogger(__name__)
+
 # Initialize Celery
 app = Celery('prism',
              broker=os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
