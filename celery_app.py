@@ -125,8 +125,8 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 
                 try:
                     java_backend_url = f"http://localhost:8080/api/requirements/project/{project_id}"
-                    logger.info("Storing %d requirements in Java backend for project %s...", len(requirements), project_id)
-                    
+                    logger.info("Storing %d requirements in Java backend for project %s...", requirements, project_id)
+                    print("Storing %d requirements in Java backend for project %s...", requirements, project_id)
                     mapped_requirements = []
                     for req in requirements:
                         mapped_requirements.append({
@@ -148,7 +148,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                                 "extraction_timestamp": datetime.utcnow().isoformat()
                             }
                         })
-
+                    logger.info("Mapped requirements: %s", mapped_requirements)
                     java_response = requests.post(
                         java_backend_url, 
                         json=mapped_requirements,
