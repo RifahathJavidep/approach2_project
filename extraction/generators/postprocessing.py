@@ -9,8 +9,11 @@ Moved from: extract_requirements.py lines 496–675
 """
 
 import json
+import logging
 import re
 from typing import List, Dict
+
+logger = logging.getLogger("prism.postprocessing")
 
 import dspy
 
@@ -182,9 +185,9 @@ def deduplicate_multi_layer_requirements(reqs: List[Dict]) -> List[Dict]:
     # Deduplicate within each type
     unique = []
     for req_type, type_reqs in by_type.items():
-        print(f"    Deduplicating {req_type}: {len(type_reqs)} items", end='')
+        logger.info("Deduplicating %s: %d items", req_type, len(type_reqs))
         deduped = deduplicate_requirements(type_reqs, similarity_threshold=0.65)
-        print(f" → {len(deduped)} unique")
+        logger.info("  %s: %d → %d unique", req_type, len(type_reqs), len(deduped))
         unique.extend(deduped)
 
     return unique
@@ -265,7 +268,7 @@ def deduplicate_cross_layer(reqs: List[Dict], title_threshold: float = 0.40, des
             unique.append(req)
 
     if removed_count > 0:
-        print(f"    Cross-layer dedup: removed {removed_count} duplicates")
+        logger.info("Cross-layer dedup: removed %d duplicates", removed_count)
 
     return unique
 
@@ -331,7 +334,7 @@ def deduplicate_by_topic(reqs: list, min_shared_terms: int = 3) -> list:
             unique.append(req)
 
     if removed_count > 0:
-        print(f"    Topic-based dedup: removed {removed_count} topic duplicates")
+        logger.info("Topic-based dedup: removed %d topic duplicates", removed_count)
 
     return unique
 
@@ -385,7 +388,7 @@ def _run_consolidation_pass(reqs: List[Dict], consolidator, target_count: int) -
             consolidated = _parse_json_safe(raw, fallback=sorted_reqs)
             return consolidated
         except Exception as e:
-            print(f"    ERROR: {e} — keeping original")
+            logger.error("Consolidation ERROR: %s — keeping original", e, exc_info=True)
             return sorted_reqs
     else:
         batches = [sorted_reqs[i:i + MAX_BATCH] for i in range(0, len(sorted_reqs), MAX_BATCH)]
@@ -395,15 +398,15 @@ def _run_consolidation_pass(reqs: List[Dict], consolidator, target_count: int) -
             types_in_batch = set(r.get('type', '?') for r in batch)
             # Calculate per-batch target proportionally
             batch_target = max(3, int(target_count * len(batch) / len(sorted_reqs)))
-            print(f"    Batch {i}/{len(batches)} ({len(batch)} items → target ~{batch_target}, types: {', '.join(types_in_batch)})...")
+            logger.info("Batch %d/%d (%d items → target ~%d, types: %s)...", i, len(batches), len(batch), batch_target, ', '.join(types_in_batch))
             try:
                 result = consolidator(requirements_json=json.dumps(batch), target_count=str(batch_target))
                 raw = _clean_llm_json(result.consolidated_json)
                 batch_consolidated = _parse_json_safe(raw, fallback=batch)
                 intermediate.extend(batch_consolidated)
-                print(f"      → {len(batch_consolidated)} items")
+                logger.info("  → %d items", len(batch_consolidated))
             except Exception as e:
-                print(f"      ERROR: {e} — using dedup fallback for this batch")
+                logger.error("  Batch ERROR: %s — using dedup fallback", e, exc_info=True)
                 batch_dedup = deduplicate_requirements(batch, similarity_threshold=0.7)
                 intermediate.extend(batch_dedup)
 
@@ -422,7 +425,7 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
     3. Dedup after each round catches near-duplicates created by LLM phrasing
     """
     if len(reqs) <= 25:
-        print(f"  Consolidation: {len(reqs)} items — within target range, skipping")
+        logger.info("Consolidation: %d items — within target range, skipping", len(reqs))
         return reqs
 
     consolidator = dspy.ChainOfThought(RequirementConsolidation)
@@ -432,7 +435,7 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
         prev_count = len(current)
         # Calculate target: aim for 60% of current count each round
         target = max(15, int(prev_count * 0.6))
-        print(f"\n  Consolidation round {round_num}: {prev_count} items → target ~{target}...")
+        logger.info("Consolidation round %d: %d items → target ~%d...", round_num, prev_count, target)
 
         # Run LLM consolidation pass
         current = _run_consolidation_pass(current, consolidator, target_count=target)
@@ -441,14 +444,14 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
         current = deduplicate_requirements(current, similarity_threshold=0.45)
 
         reduction = (prev_count - len(current)) / prev_count if prev_count > 0 else 0
-        print(f"  Round {round_num} result: {prev_count} → {len(current)} ({reduction:.0%} reduction)")
+        logger.info("Round %d result: %d → %d (%.0f%% reduction)", round_num, prev_count, len(current), reduction * 100)
 
         # Stop if we reached target range or reduction stalled
         if len(current) <= 25:
-            print(f"  ✓ Reached target range (≤25)")
+            logger.info("✓ Reached target range (≤25)")
             break
         if reduction < 0.15:
-            print(f"  ⚠ Reduction stalled (<15%), stopping consolidation")
+            logger.info("⚠ Reduction stalled (<15%%), stopping consolidation")
             break
 
     return current
@@ -505,7 +508,7 @@ def merge_semantic_siblings(reqs: List[Dict], threshold: float = 0.40) -> List[D
             unique.append(req)
 
     if merged_count > 0:
-        print(f"  Semantic sibling merge: {len(reqs)} → {len(unique)} ({merged_count} merged)")
+        logger.info("Semantic sibling merge: %d → %d (%d merged)", len(reqs), len(unique), merged_count)
 
     return unique
 
@@ -515,7 +518,7 @@ def split_composite_requirements(reqs: List[Dict]) -> List[Dict]:
     de_merger = dspy.ChainOfThought(RequirementDeMerger)
     
     final = []
-    print(f"  De-merging composite requirements...")
+    logger.info("De-merging composite requirements...")
     for req in reqs:
         title = req.get('title', '')
         # Detect composites: "and", "&", "/", multiple CAPITALIZED domain terms
@@ -536,7 +539,7 @@ def split_composite_requirements(reqs: List[Dict]) -> List[Dict]:
                 split_data = _parse_json_safe(raw)
                 
                 if isinstance(split_data, list) and len(split_data) > 1:
-                    print(f"    Split '{title}' → {len(split_data)} items")
+                    logger.info("Split '%s' → %d items", title, len(split_data))
                     for s in split_data:
                         new_req = req.copy()
                         new_req['title'] = s.get('title', title)
@@ -544,11 +547,11 @@ def split_composite_requirements(reqs: List[Dict]) -> List[Dict]:
                         final.append(new_req)
                     continue
             except Exception as e:
-                print(f"    Error de-merging '{title}': {e}")
+                logger.error("Error de-merging '%s': %s", title, e)
                 
         final.append(req)
     
     if len(final) != len(reqs):
-        print(f"  De-merger: {len(reqs)} → {len(final)} requirements")
+        logger.info("De-merger: %d → %d requirements", len(reqs), len(final))
     return final
 

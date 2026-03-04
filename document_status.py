@@ -3,8 +3,11 @@ Utility for posting document processing status updates to the Java backend.
 """
 
 import os
+import logging
 import requests
 from typing import List, Optional, Dict, Any
+
+logger = logging.getLogger("prism.document_status")
 
 JAVA_BACKEND_BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
 
@@ -13,13 +16,22 @@ def update_document_statuses(project_id: str, file_urls: List[str], status: str)
     POST initial PENDING status (batch). Returns list of records with IDs.
     """
     url = f"{JAVA_BACKEND_BASE_URL}/api/document-statuses/projects/{project_id}"
-    payload = [{"documentUrl": url, "status": status} for url in file_urls]
+    payload = [{"documentUrl": u, "status": status} for u in file_urls]
+    
+    logger.info("Sending batch status update (%s) for %d documents to %s", status, len(file_urls), url)
+    logger.debug("Payload: %s", payload)
     
     try:
         response = requests.post(url, json=payload, timeout=10)
-        return response.json() if response.status_code in [200, 201] else []
+        if response.status_code in [200, 201]:
+            result = response.json()
+            logger.info("Batch status update SUCCESS: %s", result)
+            return result
+        else:
+            logger.warning("Batch status update FAILED: Java returned %s — %s", response.status_code, response.text)
+            return []
     except Exception as e:
-        print(f"  [DocumentStatus] ERROR: {e}")
+        logger.error("Batch status update EXCEPTION: %s", e, exc_info=True)
         return []
 
 def update_status_by_id(project_id: str, doc_status_id: int, document_url: str, status: str) -> Optional[Dict[str, Any]]:
@@ -40,15 +52,15 @@ def update_status_by_id(project_id: str, doc_status_id: int, document_url: str, 
     ]
 
     try:
-        print(f"  [DocumentStatus] Sending ID-based update: {payload}")
+        logger.info("Sending ID-based update: id=%s url=%s status=%s", doc_status_id, document_url, status)
         response = requests.post(url, json=payload, timeout=10)
         if response.status_code in [200, 201]:
-            print(f"  [DocumentStatus] SUCCESS: ID {doc_status_id} updated to {status}")
+            logger.info("SUCCESS: ID %s updated to %s", doc_status_id, status)
             data = response.json()
             return data[0] if isinstance(data, list) and data else data
         else:
-            print(f"  [DocumentStatus] FAILED: Java returned {response.status_code}")
+            logger.warning("FAILED: Java returned %s for ID %s", response.status_code, doc_status_id)
             return None
     except Exception as e:
-        print(f"  [DocumentStatus] EXCEPTION: {e}")
+        logger.error("EXCEPTION updating ID %s: %s", doc_status_id, e, exc_info=True)
         return None

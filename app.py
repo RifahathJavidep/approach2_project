@@ -7,32 +7,36 @@ Docs:  http://localhost:8000/docs
 import json
 import os
 import sys
+import time
 import tempfile
 import shutil
 from pathlib import Path
 from typing import List, Optional, Union
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from celery.result import AsyncResult
 from celery_app import extract_requirements_task, generate_testcases_task
 
 from datetime import datetime
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 import uvicorn
 from dotenv import load_dotenv
 from document_status import update_document_statuses
+import requests
+import logging
+from logging_config import setup_logging
 
 # Load environment
 load_dotenv()
 
+# ── Logging ─────────────────────────────────────────────────────
+setup_logging("DEBUG")
+logger = logging.getLogger("prism.api")
+
 # Ensure project directory is in path
 sys.path.insert(0, str(Path(__file__).parent))
-
-# Logging
-import logging
-from logging_config import setup_logging
-setup_logging("INFO")
-logger = logging.getLogger(__name__)
 
 # ============================================================================
 # FASTAPI APP
@@ -52,6 +56,40 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ============================================================================
+# REQUEST / RESPONSE LOGGING MIDDLEWARE
+# ============================================================================
+
+class APILoggingMiddleware(BaseHTTPMiddleware):
+    """Log every incoming request and outgoing response."""
+
+    async def dispatch(self, request: Request, call_next):
+        start = time.time()
+        method = request.method
+        path = request.url.path
+        query = str(request.query_params) if request.query_params else ""
+        client = request.client.host if request.client else "unknown"
+
+        logger.info("⟶  %s %s%s  (client=%s)", method, path,
+                    f"?{query}" if query else "", client)
+
+        try:
+            response = await call_next(request)
+        except Exception as exc:
+            elapsed = time.time() - start
+            logger.error("⟵  %s %s — 500 UNHANDLED in %.3fs — %s",
+                         method, path, elapsed, exc, exc_info=True)
+            raise
+
+        elapsed = time.time() - start
+        logger.info("⟵  %s %s — %s in %.3fs", method, path,
+                    response.status_code, elapsed)
+        return response
+
+
+app.add_middleware(APILoggingMiddleware)
 
 # ============================================================================
 # REQUEST / RESPONSE MODELS
@@ -143,6 +181,65 @@ async def generate_upload_url_endpoint(request: UploadUrlRequest):
         )
 
 
+@app.post("/upload-document")
+async def upload_document_endpoint(
+    project_id: str = Form("general"),
+    file: UploadFile = File(...)
+):
+    """
+    Directly upload a file to S3. Default path is uploads/general/{filename}.
+    """
+    tmp_path = None
+    try:
+        from s3_utils import upload_to_s3
+        
+        # Save to a temporary local file
+        fd, tmp_path = tempfile.mkstemp()
+        try:
+            with os.fdopen(fd, 'wb') as tmp:
+                content = await file.read()
+                tmp.write(content)
+        finally:
+            pass
+
+        # Define S3 key
+        s3_key = f"uploads/{project_id}/{file.filename}"
+        
+        # Upload to S3
+        s3_url = upload_to_s3(tmp_path, s3_key)
+        
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "filename": file.filename,
+            "s3_url": s3_url,
+            "s3_key": s3_key
+        }
+    except Exception as e:
+        logger.error("Upload failed: %s", e, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
+            os.remove(tmp_path)
+
+
+@app.get("/documents/general")
+async def list_general_documents():
+    """
+    List all documents in the 'uploads/general' S3 folder.
+    """
+    try:
+        from s3_utils import list_files_in_s3
+        files = list_files_in_s3("uploads/general/")
+        return {
+            "status": "success",
+            "count": len(files),
+            "documents": files
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to list documents: {str(e)}")
+
+
 @app.get("/requirements/project/{project_id}")
 async def get_requirements(project_id: str):
     """
@@ -197,7 +294,7 @@ def _is_document_already_processed(project_id: str, file_urls: List[str]) -> boo
                     return True
         return False
     except Exception as e:
-        print(f"  [App] Check duplicate document failed: {e}")
+        logger.error("Check duplicate document failed: %s", e, exc_info=True)
         return False
 
 
@@ -214,7 +311,9 @@ async def extract_requirements_async(request: ExtractionRequest):
     """
     project_id = str(request.project_id)
     file_urls = request.file_urls
-    
+
+    logger.info("━━━ /extract-async  project=%s  files=%s ━━━", project_id, file_urls)
+
     if not project_id:
         raise HTTPException(status_code=400, detail="No project_id provided")
 
@@ -222,6 +321,7 @@ async def extract_requirements_async(request: ExtractionRequest):
     # NEW LOGIC: Document Duplication Check
     # =============================================================
     if _is_document_already_processed(project_id, file_urls):
+        logger.warning("Document already processed for project %s — returning conflict", project_id)
         return {
             "status": "conflict",
             "message": "This document has already been uploaded and processed for this project.",
@@ -235,21 +335,32 @@ async def extract_requirements_async(request: ExtractionRequest):
     os.makedirs(input_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
-    # Download files
+    # Download files in PARALLEL
     from s3_utils import download_from_s3
     local_files = []
-    for url in file_urls:
-        try:
-            local_path = download_from_s3(url, input_dir)
-            local_files.append(local_path)
-        except Exception:
-            pass
+
+    def _download_one(url):
+        return download_from_s3(url, input_dir)
+
+    with ThreadPoolExecutor(max_workers=min(len(file_urls), 5)) as executor:
+        future_to_url = {executor.submit(_download_one, url): url for url in file_urls}
+        for future in as_completed(future_to_url):
+            url = future_to_url[future]
+            try:
+                local_path = future.result()
+                local_files.append(local_path)
+                logger.info("Downloaded %s → %s", url, local_path)
+            except Exception as e:
+                logger.error("Failed to download %s: %s", url, e, exc_info=True)
 
     if not local_files:
+        logger.error("No files downloaded — aborting extraction")
         raise HTTPException(status_code=400, detail="Failed to download any files from S3")
 
     # POST initial PENDING status to Java backend
+    logger.info("Setting PENDING status for %d documents", len(file_urls))
     document_statuses = update_document_statuses(project_id, file_urls, "PENDING")
+    logger.info("Document statuses: %s", document_statuses)
 
     # Dispatch to the NEW Duplication-Aware Task
     from celery_app import extract_and_filter_duplicates_task
@@ -260,6 +371,8 @@ async def extract_requirements_async(request: ExtractionRequest):
         file_urls=file_urls,
         document_statuses=document_statuses,
     )
+
+    logger.info("Task queued  task_id=%s  for project=%s", task.id, project_id)
 
     return {
         "status": "accepted",
@@ -493,11 +606,12 @@ def _store_manual_requirements(
 
         response = req_lib.post(java_url, json=mapped, timeout=30)
         if response.status_code in [200, 201]:
-            print(f"  ✓ Stored {len(mapped)} requirements in Java backend (project {project_id})")
+            logger.info("✓ Stored %d manual requirements in Java backend (project %s) — response: %s",
+                        len(mapped), project_id, response.text[:500])
         else:
-            print(f"  ⚠ Java backend returned {response.status_code}: {response.text}")
+            logger.warning("⚠ Java backend returned %s: %s", response.status_code, response.text)
     except Exception as e:
-        print(f"  ⚠ Failed to store requirements: {e}")
+        logger.error("⚠ Failed to store requirements: %s", e, exc_info=True)
 
 
 # ============================================================================
@@ -681,6 +795,7 @@ async def get_testcases(project_id: str):
 
 
 if __name__ == "__main__":
-    print("Starting PRISM AI Service...")
-    print("Docs: http://localhost:8000/docs")
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
+    logger.info("Starting PRISM AI Service...")
+    logger.info("Docs: http://localhost:8000/docs")
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False,
+                log_level="info")

@@ -5,6 +5,7 @@ Download files from S3, upload results and models back to S3.
 
 import boto3
 import json
+import logging
 import os
 import tempfile
 from pathlib import Path
@@ -13,6 +14,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+logger = logging.getLogger("prism.s3")
 
 from botocore.config import Config
 
@@ -76,9 +78,9 @@ def download_from_s3(s3_url: str, local_dir: str) -> str:
     # Ensure local directory exists
     os.makedirs(local_dir, exist_ok=True)
 
-    print(f"  Downloading: s3://{bucket}/{key} -> {local_path}")
+    logger.info("Downloading: s3://%s/%s -> %s", bucket, key, local_path)
     s3.download_file(bucket, key, local_path)
-    print(f"  Downloaded: {filename} ({os.path.getsize(local_path)} bytes)")
+    logger.info("Downloaded: %s (%d bytes)", filename, os.path.getsize(local_path))
 
     return local_path
 
@@ -95,11 +97,11 @@ def upload_to_s3(local_path: str, s3_key: str, content_type: str = None) -> str:
     if content_type:
         extra_args["ContentType"] = content_type
 
-    print(f"  Uploading: {local_path} -> s3://{bucket}/{s3_key}")
+    logger.info("Uploading: %s -> s3://%s/%s", local_path, bucket, s3_key)
     s3.upload_file(local_path, bucket, s3_key, ExtraArgs=extra_args)
 
     s3_url = f"s3://{bucket}/{s3_key}"
-    print(f"  Uploaded: {s3_url}")
+    logger.info("Uploaded: %s", s3_url)
     return s3_url
 
 
@@ -111,7 +113,7 @@ def upload_json_to_s3(data: dict, s3_key: str) -> str:
     s3 = get_s3_client()
     bucket = get_bucket_name()
 
-    print(f"  Uploading JSON -> s3://{bucket}/{s3_key}")
+    logger.info("Uploading JSON -> s3://%s/%s", bucket, s3_key)
     s3.put_object(
         Bucket=bucket,
         Key=s3_key,
@@ -120,7 +122,7 @@ def upload_json_to_s3(data: dict, s3_key: str) -> str:
     )
 
     s3_url = f"s3://{bucket}/{s3_key}"
-    print(f"  Uploaded: {s3_url}")
+    logger.info("Uploaded JSON: %s", s3_url)
     return s3_url
 
 
@@ -145,7 +147,7 @@ def generate_presigned_upload_url(s3_key: str, expiration: int = 3600) -> dict:
     s3 = get_s3_client()
     bucket = get_bucket_name()
 
-    print(f"  Generating pre-signed POST URL for: s3://{bucket}/{s3_key}")
+    logger.info("Generating pre-signed POST URL for: s3://%s/%s", bucket, s3_key)
     
     # Generate the pre-signed POST data
     # Note: Conditions can be added here (e.g., content-length-range)
@@ -167,6 +169,23 @@ def file_exists_in_s3(s3_key: str) -> bool:
         return True
     except s3.exceptions.ClientError:
         return False
+def list_files_in_s3(prefix: str) -> list:
+    """List all files in S3 with a given prefix."""
+    s3 = get_s3_client()
+    bucket = get_bucket_name()
+    
+    response = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
+    files = []
+    for obj in response.get("Contents", []):
+        if not obj["Key"].endswith("/"):  # Skip "folders"
+            files.append({
+                "key": obj["Key"],
+                "filename": Path(obj["Key"]).name,
+                "size": obj["Size"],
+                "last_modified": obj["LastModified"].isoformat(),
+                "url": f"s3://{bucket}/{obj['Key']}"
+            })
+    return files
 
 
 # ============================================================================

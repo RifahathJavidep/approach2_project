@@ -17,7 +17,9 @@ Example:
     result = pipeline.run(file_paths=["doc.pdf", "pres.pptx"], project_name="my_project")
 """
 
+import re
 import json
+import logging
 import os
 from pathlib import Path
 from typing import List, Dict, Optional, Callable
@@ -47,10 +49,10 @@ from .generators.validation import validate_requirement
 from .generators.v4_br_extractor import extract_requirements as v4_extract_requirements
 from .utils import chunk_document
 
-import re
-
 # Load environment
 load_dotenv()
+
+logger = logging.getLogger("prism.pipeline")
 
 # Global LM instance to avoid re-configuring in async tasks
 _global_lm = None
@@ -109,10 +111,10 @@ def ground_check(requirements: list, source_text: str, min_grounding: float = 0.
             grounded.append(req)
         else:
             removed += 1
-            print(f"    ✗ Ungrounded: {title[:50]}... (score: {grounding_score:.0%})")
+            logger.warning("✗ Ungrounded: %s (score: %.0f%%)", title[:50], grounding_score * 100)
 
     if removed > 0:
-        print(f"    Source grounding: removed {removed} hallucinated requirements")
+        logger.info("Source grounding: removed %d hallucinated requirements", removed)
 
     return grounded
 
@@ -168,12 +170,12 @@ def _consolidate_defect_items(reqs: List[Dict]) -> List[Dict]:
             # Keep only the first extracted item per prefix (most likely the primary TP)
             consolidated.append(items[0])
             removed += len(items) - 1
-            print(f"  Defect prefix consolidation: {prefix}-* {len(items)} items → 1 (kept: {items[0].get('title', '')})")
+            logger.info("Defect prefix consolidation: %s-* %d items → 1 (kept: %s)", prefix, len(items), items[0].get('title', ''))
         else:
             consolidated.extend(items)
 
     if removed > 0:
-        print(f"  Defect consolidation: {len(defect_items)} → {len(consolidated)} defect items ({removed} merged)")
+        logger.info("Defect consolidation: %d → %d defect items (%d merged)", len(defect_items), len(consolidated), removed)
 
     return non_defect_items + consolidated
 
@@ -268,16 +270,16 @@ class ExtractionPipeline:
         except Exception:
             pass  # Already configured
 
-        print("DSPy settings checked")
+        logger.debug("DSPy settings checked")
 
         extractor = TrainedExtractor()
 
         if model_state:
-            print("  ✓ Loading existing model state (skipping training)")
+            logger.info("✓ Loading existing model state (skipping training)")
             try:
                 extractor.classifier.load_state(model_state)
             except Exception as e:
-                print(f"  ⚠ Failed to load model state: {e}. Falling back to training.")
+                logger.warning("Failed to load model state: %s. Falling back to training.", e)
                 extractor = train_extractor(extractor, config=self.config)
         else:
             extractor = train_extractor(extractor, config=self.config)
@@ -290,7 +292,7 @@ class ExtractionPipeline:
             state = self.extractor.classifier.dump_state()
             return state
         except Exception as e:
-            print(f"  ⚠ Could not save model state: {e}")
+            logger.warning("Could not save model state: %s", e)
             return {}
 
     def _convert_v4_requirements(self, br_list, project_name):
@@ -325,7 +327,7 @@ class ExtractionPipeline:
         """
         Extract text + image content from a file based on its type.
         """
-        print(f"\n  Processing: {file_path}")
+        logger.info("Processing: %s", file_path)
 
         # Determine which extractor to use
         if file_type in (FileType.PDF, FileType.SCANNED_PDF):
@@ -341,7 +343,7 @@ class ExtractionPipeline:
             # Standalone image — directly process
             return self._process_standalone_image(file_path)
         else:
-            print(f"  ⚠ Unsupported file type: {file_type}")
+            logger.warning("Unsupported file type: %s", file_type)
             return ""
 
         # Process embedded images through the pipeline
@@ -359,7 +361,7 @@ class ExtractionPipeline:
             combined_parts.append(image_text)
 
         combined = "\n".join(combined_parts)
-        print(f"  ✓ Combined text: {len(combined)} chars")
+        logger.info("✓ Combined text: %d chars", len(combined))
         return combined
 
     def _process_standalone_image(self, file_path: str) -> str:
@@ -398,12 +400,12 @@ class ExtractionPipeline:
         if not images:
             return ""
 
-        print(f"  Processing {len(images)} embedded images...")
+        logger.info("Processing %d embedded images...", len(images))
         text_parts = []
 
         for idx, img in enumerate(images, 1):
             source = img.get("source", f"image_{idx}")
-            print(f"\n   [{idx}/{len(images)}] {source}")
+            logger.info("[%d/%d] %s", idx, len(images), source)
 
             # Step 1: OCR
             if img.get("bytes"):
@@ -414,12 +416,12 @@ class ExtractionPipeline:
             elif img.get("base64"):
                 ocr_result = self.ocr_extractor.extract_text_from_base64(img["base64"])
             else:
-                print(f"      ⚠ No image data available")
+                logger.warning("No image data available for %s", source)
                 continue
 
             ocr_text = ocr_result.get("text", "") if ocr_result.get("success") else ""
             ocr_confidence = ocr_result.get("confidence", 0)
-            print(f"      OCR: {len(ocr_text)} chars (confidence: {ocr_confidence:.2%})")
+            logger.debug("OCR: %d chars (confidence: %.2f%%)", len(ocr_text), ocr_confidence * 100)
 
             # Step 2: Verify OCR with Vision LLM
             image_base64 = img.get("base64", "")
@@ -428,7 +430,7 @@ class ExtractionPipeline:
                 if verified["success"]:
                     ocr_text = verified["verified_text"]
                     if verified["was_corrected"]:
-                        print(f"      ✓ OCR corrected by Vision LLM")
+                        logger.info("✓ OCR corrected by Vision LLM")
 
             # Step 3: Classify image
             if self.image_classifier.is_available and image_base64:
@@ -436,7 +438,7 @@ class ExtractionPipeline:
 
                 if classification.get("is_workflow") and self.diagram_analyzer.is_available:
                     # Step 4a: Workflow diagram → extract structure
-                    print(f"      → WORKFLOW detected: {classification.get('description', '')}")
+                    logger.info("→ WORKFLOW detected: %s", classification.get('description', ''))
                     graph = self.diagram_analyzer.extract_graph_json(image_base64, source=source)
                     narrative = self.diagram_analyzer.convert_to_narrative(graph)
 
@@ -447,7 +449,7 @@ class ExtractionPipeline:
                         continue
                 else:
                     # Step 4b: Informational image → use OCR text
-                    print(f"      → INFORMATIONAL: {classification.get('description', '')}")
+                    logger.info("→ INFORMATIONAL: %s", classification.get('description', ''))
 
             # Default: use OCR text
             if ocr_text.strip():
@@ -471,30 +473,29 @@ class ExtractionPipeline:
             return [], []
 
         chunks = chunk_document(text)
-        print(f"  Split into {len(chunks)} chunks")
+        logger.info("Split into %d chunks", len(chunks))
 
         all_reqs = []
         all_filtered = []
 
         # Pass 1: Business Features
-        print(f"\n  Pass 1/3: Extracting Business Features...")
+        logger.info("Pass 1/3: Extracting Business Features...")
         business_extractor = BusinessFeatureExtractor()
         pass1_reqs = []
         pass1_filtered = []
 
         for i, chunk in enumerate(chunks, 1):
-            print(f"    Chunk {i}/{len(chunks)}...", end='')
             try:
                 result = business_extractor(document_text=chunk)
                 pass1_reqs.extend(result['requirements'])
                 pass1_filtered.extend(result['filtered_out'])
-                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+                logger.info("    Chunk %d/%d: %d accepted, %d filtered", i, len(chunks), len(result['requirements']), len(result['filtered_out']))
             except Exception as e:
-                print(f" ERROR: {e}")
+                logger.error("    Chunk %d/%d ERROR: %s", i, len(chunks), e, exc_info=True)
 
         all_reqs.extend(pass1_reqs)
         all_filtered.extend(pass1_filtered)
-        print(f"  Business Features total: {len(pass1_reqs)} requirements")
+        logger.info("Business Features total: %d requirements", len(pass1_reqs))
 
         # Build context header for Pass 2 — prevents re-extraction of Pass 1 items
         if pass1_reqs:
@@ -508,28 +509,27 @@ class ExtractionPipeline:
             context_header = ""
 
         # Pass 2: Functional Details (UI & Workflows)
-        print(f"\n  Pass 2/3: Extracting Functional Details (UI & Workflows)...")
+        logger.info("Pass 2/3: Extracting Functional Details (UI & Workflows)...")
         functional_extractor = FunctionalDetailExtractor()
         pass2_reqs = []
         pass2_filtered = []
 
         for i, chunk in enumerate(chunks, 1):
-            print(f"    Chunk {i}/{len(chunks)}...", end='')
             try:
                 contextual_chunk = context_header + chunk if context_header else chunk
                 result = functional_extractor(document_text=contextual_chunk)
                 pass2_reqs.extend(result['requirements'])
                 pass2_filtered.extend(result['filtered_out'])
-                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+                logger.info("    Chunk %d/%d: %d accepted, %d filtered", i, len(chunks), len(result['requirements']), len(result['filtered_out']))
             except Exception as e:
-                print(f" ERROR: {e}")
+                logger.error("    Chunk %d/%d ERROR: %s", i, len(chunks), e, exc_info=True)
 
         all_reqs.extend(pass2_reqs)
         all_filtered.extend(pass2_filtered)
-        print(f"  Functional Details total: {len(pass2_reqs)} requirements")
+        logger.info("Functional Details total: %d requirements", len(pass2_reqs))
 
         # Pass 3: Technical Requirements (Data Models, APIs, Compliance, SLAs)
-        print(f"\n  Pass 3/3: Extracting Technical Requirements...")
+        logger.info("Pass 3/3: Extracting Technical Requirements...")
         technical_extractor = TechnicalRequirementExtractor()
         pass3_reqs = []
         pass3_filtered = []
@@ -547,19 +547,18 @@ class ExtractionPipeline:
             tech_context_header = ""
 
         for i, chunk in enumerate(chunks, 1):
-            print(f"    Chunk {i}/{len(chunks)}...", end='')
             try:
                 contextual_chunk = tech_context_header + chunk if tech_context_header else chunk
                 result = technical_extractor(document_text=contextual_chunk)
                 pass3_reqs.extend(result['requirements'])
                 pass3_filtered.extend(result['filtered_out'])
-                print(f" {len(result['requirements'])} accepted, {len(result['filtered_out'])} filtered")
+                logger.info("    Chunk %d/%d: %d accepted, %d filtered", i, len(chunks), len(result['requirements']), len(result['filtered_out']))
             except Exception as e:
-                print(f" ERROR: {e}")
+                logger.error("    Chunk %d/%d ERROR: %s", i, len(chunks), e, exc_info=True)
 
         all_reqs.extend(pass3_reqs)
         all_filtered.extend(pass3_filtered)
-        print(f"  Technical Requirements total: {len(pass3_reqs)} requirements")
+        logger.info("Technical Requirements total: %d requirements", len(pass3_reqs))
 
         return all_reqs, all_filtered
 
@@ -585,9 +584,9 @@ class ExtractionPipeline:
         Returns:
             Dict with 'project', 'requirements', and 'model_state'
         """
-        print("=" * 80)
-        print(f"REQUIREMENTS EXTRACTION - {str(project_name).upper()}")
-        print("=" * 80)
+        logger.info("=" * 80)
+        logger.info("REQUIREMENTS EXTRACTION - %s", str(project_name).upper())
+        logger.info("=" * 80)
 
         # Check v4.0 Enrichment-Pass flag
         use_v4 = os.getenv('USE_V4_BR_EXTRACTION', 'false').lower() == 'true'
@@ -595,7 +594,7 @@ class ExtractionPipeline:
         if use_v4:
             import tempfile
             import shutil
-            print("  Using v4.0 Enrichment-Pass BR Extraction (Document-Tier)")
+            logger.info("Using v4.0 Enrichment-Pass BR Extraction (Document-Tier)")
             with tempfile.TemporaryDirectory() as tmp_dir:
                 for fp in file_paths:
                     shutil.copy2(fp, tmp_dir)
@@ -612,8 +611,8 @@ class ExtractionPipeline:
                 output_file = Path(output_dir) / f"{project_name}_requirements.json"
                 with open(output_file, 'w') as f:
                     json.dump(result_data, f, indent=2)
-                print(f"  Saved locally to: {output_file}")
-            print(f"\nDone! {len(unique)} requirements extracted (v4.0 mode)")
+                logger.info("Saved locally to: %s", output_file)
+            logger.info("Done! %d requirements extracted (v4.0 mode)", len(unique))
             return result_data
 
         all_reqs = []
@@ -628,10 +627,10 @@ class ExtractionPipeline:
             try:
                 # Stage 1: Classify
                 file_type, description = FileRouter.route(file_path)
-                print(f"\n  {description}")
+                logger.info("Classified: %s", description)
 
                 if file_type == FileType.UNKNOWN:
-                    print(f"  ⚠ Skipping unsupported file: {file_path}")
+                    logger.warning("Skipping unsupported file: %s", file_path)
                     if status_callback:
                         status_callback(file_path, "COMPLETED")
                     continue
@@ -640,7 +639,7 @@ class ExtractionPipeline:
                 combined_text = self._extract_content(file_path, file_type)
 
                 if not combined_text:
-                    print(f"  ⚠ No text extracted from {file_path}")
+                    logger.warning("No text extracted from %s", file_path)
                     if status_callback:
                         status_callback(file_path, "COMPLETED")
                     continue
@@ -657,14 +656,14 @@ class ExtractionPipeline:
                     status_callback(file_path, "COMPLETED")
 
             except Exception as e:
-                print(f"  ✗ Error processing {file_path}: {e}")
+                logger.error("Error processing %s: %s", file_path, e, exc_info=True)
                 if status_callback:
                     status_callback(file_path, "FAILED")
 
-        print(f"\n  Total raw: {len(all_reqs)} accepted, {len(all_filtered)} filtered out")
+        logger.info("Total raw: %d accepted, %d filtered out", len(all_reqs), len(all_filtered))
 
         # Validation: Filter out vague/generic requirements
-        print(f"\n  Validation (specificity check):")
+        logger.info("Validation (specificity check):")
         validated_reqs = []
         rejected = []
         for req in all_reqs:
@@ -673,19 +672,19 @@ class ExtractionPipeline:
                 validated_reqs.append(req)
             else:
                 rejected.append({'req': req, 'reason': reason})
-                print(f"    ✗ Rejected: {req.get('title', 'N/A')[:50]} — {reason}")
+                logger.info("  ✗ Rejected: %s — %s", req.get('title', 'N/A')[:50], reason)
 
-        print(f"  After validation: {len(all_reqs)} -> {len(validated_reqs)} valid ({len(rejected)} rejected)")
+        logger.info("After validation: %d -> %d valid (%d rejected)", len(all_reqs), len(validated_reqs), len(rejected))
 
         # Consolidate over-extracted defect prevention items before dedup
         # (groups 'Prevent Regression of X-NNN' by prefix X, keeps only the first per prefix)
-        print(f"\n  Defect consolidation:")
+        logger.info("Defect consolidation:")
         validated_reqs = _consolidate_defect_items(validated_reqs)
 
         # Postprocessing with layer-aware deduplication
-        print(f"\n  Deduplication (layer-aware):")
+        logger.info("Deduplication (layer-aware):")
         unique = deduplicate_multi_layer_requirements(validated_reqs)
-        print(f"  After within-type dedup: {len(validated_reqs)} -> {len(unique)} unique")
+        logger.info("After within-type dedup: %d -> %d unique", len(validated_reqs), len(unique))
 
         # Cross-layer deduplication: catches UI/Workflow variants of already-extracted Functional items
         # (safety net for context-aware Pass 2 — e.g., "Technical Details Page" [UI] vs
@@ -693,7 +692,7 @@ class ExtractionPipeline:
         before_cross = len(unique)
         unique = deduplicate_cross_layer(unique)
         if len(unique) < before_cross:
-            print(f"  After cross-layer dedup: {before_cross} -> {len(unique)} unique")
+            logger.info("After cross-layer dedup: %d -> %d unique", before_cross, len(unique))
 
 
         # Topic-based dedup disabled — was removing valid distinct requirements
@@ -707,10 +706,10 @@ class ExtractionPipeline:
         if full_source_text:
             before_ground = len(unique)
             unique = ground_check(unique, full_source_text, min_grounding=0.25)
-            print(f"  After source grounding: {before_ground} -> {len(unique)} grounded")
+            logger.info("After source grounding: %d -> %d grounded", before_ground, len(unique))
 
         unique = consolidate_requirements(unique)
-        print(f"  After consolidation: {len(unique)} requirements")
+        logger.info("After consolidation: %d requirements", len(unique))
 
         # Post-consolidation: merge remaining semantic siblings
         # (catches sub-features the LLM consolidation missed, e.g.,
@@ -718,14 +717,14 @@ class ExtractionPipeline:
         before_sibling = len(unique)
         unique = merge_semantic_siblings(unique)
         if len(unique) < before_sibling:
-            print(f"  After sibling merge: {before_sibling} → {len(unique)} requirements")
+            logger.info("After sibling merge: %d → %d requirements", before_sibling, len(unique))
 
         # Second grounding check after consolidation — catches any items injected by LLM consolidation
         if full_source_text:
             before_post_ground = len(unique)
             unique = ground_check(unique, full_source_text, min_grounding=0.25)
             if len(unique) < before_post_ground:
-                print(f"  After post-consolidation grounding: {before_post_ground} -> {len(unique)} (removed {before_post_ground - len(unique)} hallucinated)")
+                logger.info("After post-consolidation grounding: %d -> %d (removed %d hallucinated)", before_post_ground, len(unique), before_post_ground - len(unique))
 
         # Add IDs
         for i, req in enumerate(unique, 1):
@@ -747,9 +746,9 @@ class ExtractionPipeline:
             output_file = Path(output_dir) / f"{project_name}_requirements.json"
             with open(output_file, 'w') as f:
                 json.dump(result_data, f, indent=2)
-            print(f"  Saved locally to: {output_file}")
+            logger.info("Saved locally to: %s", output_file)
 
-        print(f"\nDone! {len(unique)} requirements extracted")
+        logger.info("Done! %d requirements extracted", len(unique))
         return result_data
 
 

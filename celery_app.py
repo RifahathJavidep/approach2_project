@@ -47,7 +47,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
         from extraction.pipeline import extract_from_files, _get_lm
         from document_status import update_status_by_id, update_document_statuses
     except ImportError as e:
-        print(f"  [Celery] CRITICAL: Path error. sys.path: {sys.path}")
+        logger.critical("Path error. sys.path: %s", sys.path)
         raise ImportError(f"Cannot find modules in {BASE_DIR}. Error: {e}")
 
     import dspy
@@ -58,7 +58,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
     # ---------------------------------------------------------
     filename_to_id = {}
     if document_statuses:
-        print(f"  [Celery] Received {len(document_statuses)} IDs from FastAPI")
+        logger.info("Received %d IDs from FastAPI", len(document_statuses))
         for record in document_statuses:
             url = record.get('documentUrl', '')
             doc_id = record.get('id')
@@ -67,9 +67,9 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 clean_url = urllib.parse.unquote(url)
                 fname = clean_url.split('/')[-1]
                 filename_to_id[fname] = doc_id
-        print(f"  [Celery] Mapped IDs for files: {list(filename_to_id.keys())}")
+        logger.info("Mapped IDs for files: %s", list(filename_to_id.keys()))
     else:
-        print("  [Celery] WARNING: No IDs received from FastAPI. Status updates will create DUPLICATE rows!")
+        logger.warning("No IDs received from FastAPI. Status updates will create DUPLICATE rows!")
 
     def status_callback(file_path, status):
         fname = Path(file_path).name # Already has spaces, not %20
@@ -85,13 +85,13 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                     break
 
         if doc_id and s3_url:
-            print(f"  [Celery] Updating ID {doc_id} ({fname}) to {status}")
+            logger.info("Updating ID %s (%s) to %s", doc_id, fname, status)
             update_status_by_id(project_id, doc_id, s3_url, status)
         elif s3_url:
-            print(f"  [Celery] Fallback: Creating new row for {fname} (ID match failed)")
+            logger.warning("Fallback: Creating new row for %s (ID match failed)", fname)
             update_document_statuses(project_id, [s3_url], status)
         else:
-            print(f"  [Celery] ERROR: Could not find matching URL for local file: {fname}")
+            logger.error("Could not find matching URL for local file: %s", fname)
 
     try:
         with dspy.context(lm=_get_lm()):
@@ -125,7 +125,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 
                 try:
                     java_backend_url = f"http://localhost:8080/api/requirements/project/{project_id}"
-                    print(f"\n  [Celery] Storing {len(requirements)} requirements in Java backend...")
+                    logger.info("Storing %d requirements in Java backend for project %s...", len(requirements), project_id)
                     
                     mapped_requirements = []
                     for req in requirements:
@@ -155,16 +155,17 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                         timeout=30.0
                     )
                     if java_response.status_code in [200, 201]:
-                        print(f"  ✓ Successfully stored in Java backend (Postgres)")
+                        logger.info("✓ Successfully stored %d requirements in Java backend (Postgres). Response: %s",
+                                    len(requirements), java_response.text[:500])
                     else:
-                        print(f"  ⚠ Java backend returned error: {java_response.status_code} - {java_response.text}")
+                        logger.warning("⚠ Java backend returned error: %s - %s", java_response.status_code, java_response.text)
                 except Exception as e:
-                    print(f"  ⚠ Failed to store in Java backend: {e}")
+                    logger.error("⚠ Failed to store in Java backend: %s", e, exc_info=True)
 
             return {"status": "success", "total": len(requirements)}
 
     except Exception as e:
-        print(f"  [Celery] FAILED: {str(e)}")
+        logger.error("Extraction FAILED: %s", e, exc_info=True)
         # Mark all as FAILED in Java
         if file_urls:
             for url in file_urls:
@@ -266,11 +267,12 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
         if mapped_testcases:
             resp = requests.post(java_url, json=mapped_testcases, timeout=30.0)
             if resp.status_code in [200, 201]:
-                print(f"  ✓ Stored {len(mapped_testcases)} test cases in Java backend")
+                logger.info("✓ Stored %d test cases in Java backend. Response: %s",
+                            len(mapped_testcases), resp.text[:500])
             else:
-                print(f"  ⚠ Java backend error: {resp.status_code}")
+                logger.warning("⚠ Java backend error: %s - %s", resp.status_code, resp.text)
     except Exception as e:
-        print(f"  ⚠ Failed to store in Java backend: {e}")
+        logger.error("⚠ Failed to store test cases in Java backend: %s", e, exc_info=True)
 
     return {
         "status": "success",
@@ -382,7 +384,8 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                 })
 
             resp = requests.post(java_url, json=mapped, timeout=30)
-            print(f"  [Celery] Filtered {len(extracted_reqs)} -> {len(unique_reqs)}. Saved clean records.")
+            logger.info("Filtered %d → %d unique. Stored in Java backend (project %s). Response: %s",
+                        len(extracted_reqs), len(unique_reqs), project_id, resp.text[:500])
 
         # Step 4: Finalize Document Status
         if file_urls:
@@ -400,7 +403,7 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
         }
 
     except Exception as e:
-        print(f"  [Celery] Clean Async Extraction Failed: {e}")
+        logger.error("Clean Async Extraction Failed: %s", e, exc_info=True)
         if file_urls:
             for url in file_urls:
                 fname = urllib.parse.unquote(url).split('/')[-1]

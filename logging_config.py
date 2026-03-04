@@ -32,8 +32,9 @@ def setup_logging(level: str = "INFO") -> None:
 
     root = logging.getLogger()
 
-    # Don't add handlers twice (e.g. if called from both app.py and celery_app.py)
-    if root.handlers:
+    # Don't add OUR handlers twice (e.g. if called from both app.py and celery_app.py)
+    # but don't skip if only third-party handlers exist
+    if any(getattr(h, '_prism_handler', False) for h in root.handlers):
         return
 
     root.setLevel(logging.DEBUG)  # let handlers decide their own floor
@@ -42,6 +43,7 @@ def setup_logging(level: str = "INFO") -> None:
     console = logging.StreamHandler()
     console.setLevel(getattr(logging, level.upper(), logging.INFO))
     console.setFormatter(logging.Formatter(CONSOLE_FORMAT, datefmt=DATE_FORMAT))
+    console._prism_handler = True
     root.addHandler(console)
 
     # ── Rotating file handler (10 MB × 5 backups) ─────────────────
@@ -50,6 +52,7 @@ def setup_logging(level: str = "INFO") -> None:
     )
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(logging.Formatter(FILE_FORMAT, datefmt=DATE_FORMAT))
+    file_handler._prism_handler = True
     root.addHandler(file_handler)
 
     # Silence noisy third-party loggers

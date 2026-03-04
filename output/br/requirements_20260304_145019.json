@@ -1,0 +1,1544 @@
+{
+  "project_name": "Extracted Requirements",
+  "extraction_date": "20260304_145019",
+  "total_count": 24,
+  "gt_count": 22,
+  "document_classification": {
+    "primary": [
+      "Play to Win SS Ph1 - Dashboard_Features.pdf"
+    ],
+    "supporting": [
+      "BBMOMNI-5113.pdf",
+      "BBMOMNI-5114.pdf",
+      "BBMSA-13025.pdf",
+      "PTW Self Serve Phase 1 Solution.pdf",
+      "Requirements Traceability Matrix.pdf"
+    ]
+  },
+  "token_usage": {
+    "total_input_tokens": 37232,
+    "total_output_tokens": 9761,
+    "total_tokens": 46993,
+    "llm_calls": 25
+  },
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "feature_name": "Export Feature",
+      "description": "Ability for customer to export dashboard details.",
+      "system": "Dashboard, Export feature",
+      "requirements_text": "Ability for customer to export dashboard details.",
+      "user_story": "As a customer, I want to export dashboard details in various file formats so that I can have personal records of my account(s)",
+      "acceptance_criteria": [
+        "Export files include CSV, PDF, EXCEL, PNG and JPEG files",
+        "Files have the ability to provide visual of Bar Graph and the other included details i.e Share Plan vs individual plans.",
+        "Files have the ability to provide visual of Bar Graph and the other included details i.e Share Plan vs individual plans"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: CSV Export"
+        },
+        {
+          "step_num": 2,
+          "action": "Select the CSV export option",
+          "expected_result": "",
+          "test_data": "Scenario: CSV Export"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the file is downloaded in CSV format",
+          "expected_result": "",
+          "test_data": "Scenario: CSV Export"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the file contains the expected data and visual details",
+          "expected_result": "",
+          "test_data": "Scenario: CSV Export"
+        },
+        {
+          "step_num": 5,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: PDF Export"
+        },
+        {
+          "step_num": 6,
+          "action": "Select the PDF export option",
+          "expected_result": "",
+          "test_data": "Scenario: PDF Export"
+        },
+        {
+          "step_num": 7,
+          "action": "Verify that the file is downloaded in PDF format",
+          "expected_result": "",
+          "test_data": "Scenario: PDF Export"
+        },
+        {
+          "step_num": 8,
+          "action": "Verify that the file contains the expected data and visual details",
+          "expected_result": "",
+          "test_data": "Scenario: PDF Export"
+        },
+        {
+          "step_num": 9,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: EXCEL Export"
+        },
+        {
+          "step_num": 10,
+          "action": "Select the EXCEL export option",
+          "expected_result": "",
+          "test_data": "Scenario: EXCEL Export"
+        },
+        {
+          "step_num": 11,
+          "action": "Verify that the file is downloaded in EXCEL format",
+          "expected_result": "",
+          "test_data": "Scenario: EXCEL Export"
+        },
+        {
+          "step_num": 12,
+          "action": "Verify that the file contains the expected data and visual details",
+          "expected_result": "",
+          "test_data": "Scenario: EXCEL Export"
+        },
+        {
+          "step_num": 13,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: PNG Export"
+        },
+        {
+          "step_num": 14,
+          "action": "Select the PNG export option",
+          "expected_result": "",
+          "test_data": "Scenario: PNG Export"
+        },
+        {
+          "step_num": 15,
+          "action": "Verify that the file is downloaded in PNG format",
+          "expected_result": "",
+          "test_data": "Scenario: PNG Export"
+        },
+        {
+          "step_num": 16,
+          "action": "Verify that the file contains the expected visual details",
+          "expected_result": "",
+          "test_data": "Scenario: PNG Export"
+        },
+        {
+          "step_num": 17,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: JPEG Export"
+        },
+        {
+          "step_num": 18,
+          "action": "Select the JPEG export option",
+          "expected_result": "",
+          "test_data": "Scenario: JPEG Export"
+        },
+        {
+          "step_num": 19,
+          "action": "Verify that the file is downloaded in JPEG format",
+          "expected_result": "",
+          "test_data": "Scenario: JPEG Export"
+        },
+        {
+          "step_num": 20,
+          "action": "Verify that the file contains the expected visual details",
+          "expected_result": "",
+          "test_data": "Scenario: JPEG Export"
+        }
+      ],
+      "test_scenarios": [
+        "CSV Export",
+        "PDF Export",
+        "EXCEL Export",
+        "PNG Export",
+        "JPEG Export"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 60,
+      "line_end": 150,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-002",
+      "feature_name": "NAG (Group) Filter",
+      "description": "Ability to filter dashboard and information by filtering to appropriate NAG",
+      "system": "",
+      "requirements_text": "Ability to filter dashboard and information by filtering to appropriate NAG",
+      "user_story": "As an Admin, I want to filter the dashboard and information by selecting the appropriate NAG, so that I can view and manage specific NAGs.",
+      "acceptance_criteria": [
+        "Dropdown filter that represents all NAGs associated to logged in Admin",
+        "Default view will be a single NAG based on numerical/alphabetical order"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login as Admin",
+          "expected_result": "",
+          "test_data": "Scenario: Default View"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the default view is a single NAG based on numerical/alphabetical order",
+          "expected_result": "",
+          "test_data": "Scenario: Default View"
+        },
+        {
+          "step_num": 3,
+          "action": "Login as Admin",
+          "expected_result": "",
+          "test_data": "Scenario: Dropdown Filter"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the dropdown filter represents all NAGs associated with the logged-in Admin",
+          "expected_result": "",
+          "test_data": "Scenario: Dropdown Filter"
+        },
+        {
+          "step_num": 5,
+          "action": "Select a different NAG from the dropdown filter",
+          "expected_result": "",
+          "test_data": "Scenario: Dropdown Filter"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the dashboard and information are updated to reflect the selected NAG",
+          "expected_result": "",
+          "test_data": "Scenario: Dropdown Filter"
+        }
+      ],
+      "test_scenarios": [
+        "Default View",
+        "Dropdown Filter"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 3,
+      "line_start": 161,
+      "line_end": 224,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-003",
+      "feature_name": "NAG favoriting",
+      "description": "Ability to favorite specific NAG for default view",
+      "system": "",
+      "requirements_text": "Ability to favorite specific NAG for default view",
+      "user_story": "As an Admin, I want to favorite specific NAG for default view",
+      "acceptance_criteria": [
+        "Ability to select NAG as favorite",
+        "Favorited NAG to be shown as default upon Admin log in"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in as Admin",
+          "expected_result": "",
+          "test_data": "Scenario: Select NAG as favorite"
+        },
+        {
+          "step_num": 2,
+          "action": "Select a NAG to favorite",
+          "expected_result": "",
+          "test_data": "Scenario: Select NAG as favorite"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the NAG is marked as favorite",
+          "expected_result": "",
+          "test_data": "Scenario: Select NAG as favorite"
+        },
+        {
+          "step_num": 4,
+          "action": "Log in as Admin",
+          "expected_result": "",
+          "test_data": "Scenario: Favorited NAG shown as default"
+        },
+        {
+          "step_num": 5,
+          "action": "Verify that the favorited NAG is shown as default",
+          "expected_result": "",
+          "test_data": "Scenario: Favorited NAG shown as default"
+        }
+      ],
+      "test_scenarios": [
+        "Select NAG as favorite",
+        "Favorited NAG shown as default"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 3,
+      "line_start": 162,
+      "line_end": 224,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-004",
+      "feature_name": "NAG Metric Tiles",
+      "description": "Tiles above dashboard representing specific details based on NAG in context.",
+      "system": "BBSSC, Mobile Devices and Plans",
+      "requirements_text": "Tiles above dashboard representing specific details based on NAG in context.",
+      "user_story": "As a user, I want to view key metrics towards NAG, providing insight and support towards account management.",
+      "acceptance_criteria": [
+        "Accurate data is reflected towards metric tiles for each based on",
+        "Each tiles links towards specific view within BBSSC upon selection - ",
+        "Each tiles links towards specific view within BBSSC upon selection"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select the Active Subscribers tile",
+          "expected_result": "",
+          "test_data": "Scenario: Active Subscribers Tile"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the user is taken to the Mobile Devices and Plans - Subscriber Page with the list of subscribers filtered to 'Active'",
+          "expected_result": "",
+          "test_data": "Scenario: Active Subscribers Tile"
+        },
+        {
+          "step_num": 3,
+          "action": "Select the Suspended Subscribers tile",
+          "expected_result": "",
+          "test_data": "Scenario: Suspended Subscribers Tile"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the user is taken to the Mobile Devices and Plans - Subscriber Page with the list of subscribers filtered to 'Suspended'",
+          "expected_result": "",
+          "test_data": "Scenario: Suspended Subscribers Tile"
+        },
+        {
+          "step_num": 5,
+          "action": "Select the Cancelled Subscribers tile",
+          "expected_result": "",
+          "test_data": "Scenario: Cancelled Subscribers Tile"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the user is taken to the Mobile Devices and Plans - Subscriber Page with the list of subscribers filtered to 'Cancelled' and the view is based on the past 30 days",
+          "expected_result": "",
+          "test_data": "Scenario: Cancelled Subscribers Tile"
+        },
+        {
+          "step_num": 7,
+          "action": "Select the Billing Accounts tile",
+          "expected_result": "",
+          "test_data": "Scenario: Billing Accounts Tile"
+        },
+        {
+          "step_num": 8,
+          "action": "Verify that the user is taken to the Mobile Devices and Plans - BAN Page where the user can see a list of all BANS they have access to",
+          "expected_result": "",
+          "test_data": "Scenario: Billing Accounts Tile"
+        }
+      ],
+      "test_scenarios": [],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 3,
+      "line_start": 162,
+      "line_end": 224,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-005",
+      "feature_name": "Usage Summary Tabs",
+      "description": "Selectable data groupings that switch dashboard's view between Data, Voice, Long Distance and SMS",
+      "system": "",
+      "requirements_text": "Selectable data groupings that switch dashboard's view between Data, Voice, Long Distance and SMS",
+      "user_story": "As a user, I want to be able to switch between different data groupings (Data, Voice, Long Distance, and SMS) on the dashboard, so that I can view the data that is most relevant to me.",
+      "acceptance_criteria": [
+        "\"Data\" is default grouping that is viewed upon login",
+        "Selection represents the appropriate and accurate data that corresponds to grouping.",
+        "Data is the default grouping that is viewed upon login"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Data Grouping"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the Data grouping is selected by default",
+          "expected_result": "",
+          "test_data": "Scenario: Data Grouping"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the data displayed corresponds to the Data grouping",
+          "expected_result": "",
+          "test_data": "Scenario: Data Grouping"
+        },
+        {
+          "step_num": 4,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Voice Grouping"
+        },
+        {
+          "step_num": 5,
+          "action": "Select the Voice grouping",
+          "expected_result": "",
+          "test_data": "Scenario: Voice Grouping"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the data displayed corresponds to the Voice grouping",
+          "expected_result": "",
+          "test_data": "Scenario: Voice Grouping"
+        },
+        {
+          "step_num": 7,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Long Distance Grouping"
+        },
+        {
+          "step_num": 8,
+          "action": "Select the Long Distance grouping",
+          "expected_result": "",
+          "test_data": "Scenario: Long Distance Grouping"
+        },
+        {
+          "step_num": 9,
+          "action": "Verify that the data displayed corresponds to the Long Distance grouping",
+          "expected_result": "",
+          "test_data": "Scenario: Long Distance Grouping"
+        },
+        {
+          "step_num": 10,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: SMS Grouping"
+        },
+        {
+          "step_num": 11,
+          "action": "Select the SMS grouping",
+          "expected_result": "",
+          "test_data": "Scenario: SMS Grouping"
+        },
+        {
+          "step_num": 12,
+          "action": "Verify that the data displayed corresponds to the SMS grouping",
+          "expected_result": "",
+          "test_data": "Scenario: SMS Grouping"
+        }
+      ],
+      "test_scenarios": [
+        "Data Grouping",
+        "Voice Grouping",
+        "Long Distance Grouping",
+        "SMS Grouping"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 4,
+      "line_start": 237,
+      "line_end": 303,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-006",
+      "feature_name": "Billing Period Information",
+      "description": "Static Text displayed within dashboard.",
+      "system": "Customer profile data",
+      "requirements_text": "Static Text displayed within dashboard.",
+      "user_story": "As a customer, I want to view my billing period information on the dashboard.",
+      "acceptance_criteria": [
+        "Open cycle date is accurate as based on the customer profile",
+        "Closed cycle date is accurate as based on the customer profile"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Open cycle date accuracy"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the billing period information section",
+          "expected_result": "",
+          "test_data": "Scenario: Open cycle date accuracy"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the open cycle date is accurate based on the customer profile",
+          "expected_result": "",
+          "test_data": "Scenario: Open cycle date accuracy"
+        },
+        {
+          "step_num": 4,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Closed cycle date accuracy"
+        },
+        {
+          "step_num": 5,
+          "action": "Navigate to the billing period information section",
+          "expected_result": "",
+          "test_data": "Scenario: Closed cycle date accuracy"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the closed cycle date is accurate based on the customer profile",
+          "expected_result": "",
+          "test_data": "Scenario: Closed cycle date accuracy"
+        }
+      ],
+      "test_scenarios": [
+        "Open cycle date accuracy",
+        "Closed cycle date accuracy"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 2,
+      "page_end": 4,
+      "line_start": 237,
+      "line_end": 303,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-007",
+      "feature_name": "Data Usage Bar Chart",
+      "description": "Monthly Bar Chart reflecting data usage for last 14 months.",
+      "system": "",
+      "requirements_text": "Monthly Bar Chart reflecting data usage for last 14 months.",
+      "user_story": "As a customer, I want to view my data usage for the last 14 months so that I can make informed decisions about my account.",
+      "acceptance_criteria": [
+        "Ability to hover for tooltip and view relevant information of In-plan, Overage, Roaming Usage.",
+        "Visuals- Heading is reflecting current grouping (Data, Voice, LD, SMS) and the unit of usage.",
+        "Ability to hover for tooltip and view relevant information of In-plan, Overage, Roaming Usage",
+        "Visuals- Heading is reflecting current grouping (Data, Voice, LD, SMS) and the unit of usage"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Hover over the bar chart",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage view"
+        },
+        {
+          "step_num": 2,
+          "action": "View In-plan usage information",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage view"
+        },
+        {
+          "step_num": 3,
+          "action": "Hover over the bar chart",
+          "expected_result": "",
+          "test_data": "Scenario: Overage usage view"
+        },
+        {
+          "step_num": 4,
+          "action": "View Overage usage information",
+          "expected_result": "",
+          "test_data": "Scenario: Overage usage view"
+        },
+        {
+          "step_num": 5,
+          "action": "Hover over the bar chart",
+          "expected_result": "",
+          "test_data": "Scenario: Roaming usage view"
+        },
+        {
+          "step_num": 6,
+          "action": "View Roaming usage information",
+          "expected_result": "",
+          "test_data": "Scenario: Roaming usage view"
+        },
+        {
+          "step_num": 7,
+          "action": "Select Data usage",
+          "expected_result": "",
+          "test_data": "Scenario: Data usage view"
+        },
+        {
+          "step_num": 8,
+          "action": "View bar chart for Data usage",
+          "expected_result": "",
+          "test_data": "Scenario: Data usage view"
+        },
+        {
+          "step_num": 9,
+          "action": "Select Voice usage",
+          "expected_result": "",
+          "test_data": "Scenario: Voice usage view"
+        },
+        {
+          "step_num": 10,
+          "action": "View bar chart for Voice usage",
+          "expected_result": "",
+          "test_data": "Scenario: Voice usage view"
+        },
+        {
+          "step_num": 11,
+          "action": "Select Long Distance (LD) usage",
+          "expected_result": "",
+          "test_data": "Scenario: Long Distance (LD) usage view"
+        },
+        {
+          "step_num": 12,
+          "action": "View bar chart for Long Distance (LD) usage",
+          "expected_result": "",
+          "test_data": "Scenario: Long Distance (LD) usage view"
+        },
+        {
+          "step_num": 13,
+          "action": "Select SMS usage",
+          "expected_result": "",
+          "test_data": "Scenario: SMS usage view"
+        },
+        {
+          "step_num": 14,
+          "action": "View bar chart for SMS usage",
+          "expected_result": "",
+          "test_data": "Scenario: SMS usage view"
+        }
+      ],
+      "test_scenarios": [
+        "In-plan usage view",
+        "Overage usage view",
+        "Roaming usage view",
+        "Data usage view",
+        "Voice usage view",
+        "Long Distance (LD) usage view",
+        "SMS usage view"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 5,
+      "page_end": 5,
+      "line_start": 334,
+      "line_end": 374,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-008",
+      "feature_name": "Interaction Prompt",
+      "description": "Static prompt below Dashboard Graphs to prompt customers to selectable fields",
+      "system": "Dashboard graphs",
+      "requirements_text": "Static prompt below Dashboard Graphs to prompt customers to selectable fields",
+      "user_story": "As a customer, I want to see a static prompt below the dashboard graphs to guide me in selecting and retrieving data.",
+      "acceptance_criteria": [
+        "Static instruction text below charts: \"Click on graph bar to show details\"",
+        "Static instruction text below charts: 'Click on graph bar to show details'"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on a graph bar",
+          "expected_result": "",
+          "test_data": "Scenario: Click on graph bar to show details"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the details are displayed",
+          "expected_result": "",
+          "test_data": "Scenario: Click on graph bar to show details"
+        }
+      ],
+      "test_scenarios": [
+        "Click on graph bar to show details"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 5,
+      "page_end": 7,
+      "line_start": 320,
+      "line_end": 527,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-009",
+      "feature_name": "Usage Bar Chart Drilldown",
+      "description": "Ability to select Bar Graphs individually for a drilldown view reflecting data.",
+      "system": "Bar graph selection functionality, Drilldown data loading functionality, Back button functionality",
+      "requirements_text": "Ability to select Bar Graphs individually for a drilldown view reflecting data.",
+      "user_story": "As a user, I want to be able to select bar graphs individually for a drilldown view reflecting data, so that I can analyze the data in more detail.",
+      "acceptance_criteria": [
+        "Drill down loads data corresponding to specific month selected.",
+        "Heading reflects month selected."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a specific month from the bar graph",
+          "expected_result": "",
+          "test_data": "Scenario: Selecting a specific month"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the drilldown loads the corresponding data",
+          "expected_result": "",
+          "test_data": "Scenario: Selecting a specific month"
+        },
+        {
+          "step_num": 3,
+          "action": "Select a specific month from the bar graph",
+          "expected_result": "",
+          "test_data": "Scenario: Verifying heading reflects month selected"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the heading reflects the selected month",
+          "expected_result": "",
+          "test_data": "Scenario: Verifying heading reflects month selected"
+        },
+        {
+          "step_num": 5,
+          "action": "Select a specific month from the bar graph",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        },
+        {
+          "step_num": 6,
+          "action": "Click the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        },
+        {
+          "step_num": 7,
+          "action": "Verify that the user is brought back to the default state",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        }
+      ],
+      "test_scenarios": [
+        "Selecting a specific month",
+        "Verifying heading reflects month selected",
+        "Back button functionality"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 6,
+      "page_end": 8,
+      "line_start": 397,
+      "line_end": 632,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-010",
+      "feature_name": "Shared Plans Usage Breakdown",
+      "description": "Table summarizing roaming, overage, and in-plan. Representing the number of shared plans across all billing accounts within each category.",
+      "system": "Shared plans and data usage are available",
+      "requirements_text": "Table summarizing roaming, overage, and in-plan. Representing the number of shared plans across all billing accounts within each category.",
+      "user_story": "As a customer, I want to see a breakdown of shared plans and data usage so that I can manage my plans effectively",
+      "acceptance_criteria": [
+        "Share group for plans is broken-down accurately",
+        "Data is accurate towards usage for each group"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a shared plan",
+          "expected_result": "",
+          "test_data": "Scenario: Share group for plans is broken-down accurately"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the plan is broken down accurately",
+          "expected_result": "",
+          "test_data": "Scenario: Share group for plans is broken-down accurately"
+        },
+        {
+          "step_num": 3,
+          "action": "Select a shared plan",
+          "expected_result": "",
+          "test_data": "Scenario: Data is accurate towards usage for each group"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the data usage is accurate for each group",
+          "expected_result": "",
+          "test_data": "Scenario: Data is accurate towards usage for each group"
+        },
+        {
+          "step_num": 5,
+          "action": "Click on the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the user is taken back to the default state",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        }
+      ],
+      "test_scenarios": [
+        "Share group for plans is broken-down accurately",
+        "Data is accurate towards usage for each group",
+        "Back button functionality"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 6,
+      "page_end": 6,
+      "line_start": 399,
+      "line_end": 458,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-011",
+      "feature_name": "Individual Plans Usage Breakdown",
+      "description": "Table summarizing roaming, overage, and in-plan usage for individual plans grouped for their corresponding subscribers.",
+      "system": "",
+      "requirements_text": "Table summarizing roaming, overage, and in-plan usage for individual plans grouped for their corresponding subscribers.",
+      "user_story": "Individual plans usage breakdown",
+      "acceptance_criteria": [
+        "Individual plans for number of subscribers broken-down accurately",
+        "Data is accurate towards usage for each group"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify individual plans are broken down accurately for the number of subscribers",
+          "expected_result": "",
+          "test_data": "Scenario: Individual plans breakdown"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify data is accurate towards usage for each group",
+          "expected_result": "",
+          "test_data": "Scenario: Individual plans breakdown"
+        },
+        {
+          "step_num": 3,
+          "action": "Click the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify the user is brought back to the default state",
+          "expected_result": "",
+          "test_data": "Scenario: Back button functionality"
+        }
+      ],
+      "test_scenarios": [
+        "Individual plans breakdown",
+        "Back button functionality"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 6,
+      "page_end": 6,
+      "line_start": 399,
+      "line_end": 458,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-012",
+      "feature_name": "In-plan Usage Threshold \"Donut Wheel\"",
+      "description": "Unbilled usage Bar selection provides customer usage summary table (Shared plans & Individual plans table) + \"Donut wheel\" visual reflecting the corresponding data for only the current month's selection.",
+      "system": "",
+      "requirements_text": "Unbilled usage Bar selection provides customer usage summary table (Shared plans & Individual plans table) + \"Donut wheel\" visual reflecting the corresponding data for only the current month's selection.",
+      "user_story": "As a customer, I want to see a 'Donut Wheel' visual representation of my in-plan usage thresholds so that I can easily understand my usage.",
+      "acceptance_criteria": [
+        "\"Donut Wheel\" renders accordingly to page - (Under 75%, 75\u201395%, Over 95%).",
+        "Shared Plans Section: Donut wheel showcases the number of shareplans within each thresholds (75%, 75%-95%. 95%+).",
+        "'Donut Wheel' renders accordingly to page - (Under 75%, 75\u201395%, Over 95%)",
+        "Shared Plans Section: Donut wheel showcases the number of shareplans within each thresholds (75%, 75%-95%. 95%+)"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select the current month",
+          "expected_result": "",
+          "test_data": "Scenario: Under 75% Threshold"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the 'Donut Wheel' renders with the Under 75% threshold",
+          "expected_result": "",
+          "test_data": "Scenario: Under 75% Threshold"
+        },
+        {
+          "step_num": 3,
+          "action": "Select the current month",
+          "expected_result": "",
+          "test_data": "Scenario: 75-95% Threshold"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the 'Donut Wheel' renders with the 75-95% threshold",
+          "expected_result": "",
+          "test_data": "Scenario: 75-95% Threshold"
+        },
+        {
+          "step_num": 5,
+          "action": "Select the current month",
+          "expected_result": "",
+          "test_data": "Scenario: Over 95% Threshold"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the 'Donut Wheel' renders with the Over 95% threshold",
+          "expected_result": "",
+          "test_data": "Scenario: Over 95% Threshold"
+        },
+        {
+          "step_num": 7,
+          "action": "Select the current month",
+          "expected_result": "",
+          "test_data": "Scenario: Donut Wheel Rendering"
+        },
+        {
+          "step_num": 8,
+          "action": "Verify that the 'Donut Wheel' renders on the page",
+          "expected_result": "",
+          "test_data": "Scenario: Donut Wheel Rendering"
+        }
+      ],
+      "test_scenarios": [
+        "Under 75% Threshold",
+        "75-95% Threshold",
+        "Over 95% Threshold",
+        "Donut Wheel Rendering"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 7,
+      "page_end": 7,
+      "line_start": 471,
+      "line_end": 527,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-013",
+      "feature_name": "Breakdown Table Back Button",
+      "description": "Back button implementation to bring customer back to 14-month bar chart view.",
+      "system": "",
+      "requirements_text": "Back button implementation to bring customer back to 14-month bar chart view.",
+      "user_story": "As a customer, I want to be able to navigate back to the 14-month bar chart view from the breakdown table so that I can easily continue utilizing the dashboard.",
+      "acceptance_criteria": [
+        "Clicking back button within each Table brings user back to previous view with interaction prompt visible",
+        "Clicking back button returns customer to previous view with all existing filters remaining"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click the back button within the breakdown table",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the user is brought back to the previous view with the interaction prompt visible",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation"
+        },
+        {
+          "step_num": 3,
+          "action": "Apply filters to the breakdown table",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation with filters"
+        },
+        {
+          "step_num": 4,
+          "action": "Click the back button within the breakdown table",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation with filters"
+        },
+        {
+          "step_num": 5,
+          "action": "Verify that the user is brought back to the previous view with all existing filters remaining",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation with filters"
+        }
+      ],
+      "test_scenarios": [
+        "Back button navigation",
+        "Back button navigation with filters"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 7,
+      "page_end": 7,
+      "line_start": 475,
+      "line_end": 527,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-014",
+      "feature_name": "Shareplans Detail Table",
+      "description": "Further breakdown for customer to visualize tabled data reflecting their account views.",
+      "system": "Shareplan group selection functionality, Data sorting functionality, Back button functionality",
+      "requirements_text": "Further breakdown for customer to visualize tabled data reflecting their account views.",
+      "user_story": "As a customer, I want to visualize tabled data reflecting my account views, so I can gain more insight into my usage.",
+      "acceptance_criteria": [
+        "Selection of Shareplan group corresponding the Data Usage Type (In-plan, Roaming and Overage) brings customer to separate table with listed details as a replacement of Usage Drilldown tables first view.",
+        "Data is sorted based by billing account's alphabetical order",
+        "Selection of Shareplan group corresponding to Data Usage Type brings customer to separate table with listed details",
+        "Data is sorted based on billing account's alphabetical order"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a Shareplan group",
+          "expected_result": "",
+          "test_data": "Scenario: Sorting by Billing Account"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the data is sorted based on the billing account's alphabetical order",
+          "expected_result": "",
+          "test_data": "Scenario: Sorting by Billing Account"
+        },
+        {
+          "step_num": 3,
+          "action": "Select a Shareplan group",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button Functionality"
+        },
+        {
+          "step_num": 4,
+          "action": "Click the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button Functionality"
+        },
+        {
+          "step_num": 5,
+          "action": "Verify that the customer is brought back to the previous view",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button Functionality"
+        }
+      ],
+      "test_scenarios": [
+        "Sorting by Billing Account",
+        "Back Button Functionality"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 7,
+      "page_end": 9,
+      "line_start": 475,
+      "line_end": 705,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-015",
+      "feature_name": "Individual Plans Detail Table",
+      "description": "Further breakdown for customer to visualize tabled data reflecting to account views.",
+      "system": "Data Usage type selection, Subscriber #s display",
+      "requirements_text": "Further breakdown for customer to visualize tabled data reflecting to account views.",
+      "user_story": "As a customer, I want to view the Individual Plans Detail Table to visualize tabled data reflecting account views.",
+      "acceptance_criteria": [
+        "Selecting # of individual plan subscribers corresponding to the Data Usage type (In-plan, Roaming and Overage) brings customer to separate table with listed details. Replacing Usage Drilldown tables first view.",
+        "Reflection of 10 Subscriber #s with accurate details corresponding to the specific line",
+        "Selecting # of individual plan subscribers corresponding to the Data Usage type (In-plan, Roaming and Overage) brings customer to separate table with listed details."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify 10 Subscriber #s with accurate details are displayed",
+          "expected_result": "",
+          "test_data": "Scenario: General Scenario"
+        }
+      ],
+      "test_scenarios": [
+        "General Scenario"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 8,
+      "page_end": 9,
+      "line_start": 573,
+      "line_end": 705,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-016",
+      "feature_name": "Back Button to Drill down table",
+      "description": "Back button implementation for Shareplans Detail Table and Individual Plans Detail Table",
+      "system": "",
+      "requirements_text": "Back button implementation for Shareplans Detail Table and Individual Plans Detail Table",
+      "user_story": "As a user, I want to navigate back to the standard Usage Bar Chart Drilldown View from the Shareplans Detail Table and Individual Plans Detail Table using a back button, so that I can easily return to the previous view.",
+      "acceptance_criteria": [
+        "Back Button implemented to bring User back to standard Usage Bar Chart Drilldown View (Shared Plans + Individual Plans usage tables)"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Navigate to Shareplans Detail Table",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Shareplans Detail Table"
+        },
+        {
+          "step_num": 2,
+          "action": "Click on the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Shareplans Detail Table"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the user is taken back to the standard Usage Bar Chart Drilldown View",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Shareplans Detail Table"
+        },
+        {
+          "step_num": 4,
+          "action": "Navigate to Individual Plans Detail Table",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Individual Plans Detail Table"
+        },
+        {
+          "step_num": 5,
+          "action": "Click on the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Individual Plans Detail Table"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the user is taken back to the standard Usage Bar Chart Drilldown View",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button from Individual Plans Detail Table"
+        }
+      ],
+      "test_scenarios": [
+        "Back Button from Shareplans Detail Table",
+        "Back Button from Individual Plans Detail Table"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 8,
+      "page_end": 8,
+      "line_start": 573,
+      "line_end": 632,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-017",
+      "feature_name": "Shopping and Orders Widget",
+      "description": "Display of submitted, in-progress and completed orders with the list containing latest orders.",
+      "system": "",
+      "requirements_text": "Display of submitted, in-progress and completed orders with the list containing latest orders.",
+      "user_story": "As a customer, I want to view my submitted, in-progress, and completed orders in the Shopping and Orders Widget, so I can manage my account effectively.",
+      "acceptance_criteria": [
+        "Order details are accurate",
+        "Visuals align with mock-ups to display submitted, in-progress and completed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify order details are accurate",
+          "expected_result": "",
+          "test_data": "Scenario: Order Details Accuracy"
+        },
+        {
+          "step_num": 2,
+          "action": "Check order status is correctly displayed",
+          "expected_result": "",
+          "test_data": "Scenario: Order Details Accuracy"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify visuals align with mock-ups",
+          "expected_result": "",
+          "test_data": "Scenario: Visual Alignment"
+        },
+        {
+          "step_num": 4,
+          "action": "Check submitted, in-progress, and completed orders are displayed correctly",
+          "expected_result": "",
+          "test_data": "Scenario: Visual Alignment"
+        },
+        {
+          "step_num": 5,
+          "action": "Click the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button Implementation"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify the user is taken back to the standard Usage Bar Chart Drilldown View",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button Implementation"
+        }
+      ],
+      "test_scenarios": [
+        "Order Details Accuracy",
+        "Visual Alignment",
+        "Back Button Implementation"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 9,
+      "page_end": 9,
+      "line_start": 656,
+      "line_end": 705,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-018",
+      "feature_name": "Shop now Button",
+      "description": "Shop now button on the top right of the Shopping and orders (Latest Orders Table) box below dashboard.",
+      "system": "",
+      "requirements_text": "Shop now button on the top right of the Shopping and orders (Latest Orders Table) box below dashboard.",
+      "user_story": "As a user, I want to be able to click on the 'Shop now' button and be taken to the devices shop page in a new browser tab, so I can easily access the shopping area for further orders.",
+      "acceptance_criteria": [
+        "Button correctly brings user to https://shop.enterprisecentre.bell.ca/devices within new browser tab"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click the 'Shop now' button",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking Shop now button opens correct URL in new tab"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that a new browser tab opens with the URL https://shop.enterprisecentre.bell.ca/devices",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking Shop now button opens correct URL in new tab"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking Shop now button opens correct URL in new tab"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 9,
+      "page_end": 9,
+      "line_start": 643,
+      "line_end": 705,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-019",
+      "feature_name": "Latest Orders Table",
+      "description": "Display of up to 5 most recent orders by create date and descending.",
+      "system": "NAG context, Order detail page functionality",
+      "requirements_text": "Display of up to 5 most recent orders by create date and descending.",
+      "user_story": "As a user, I want to see the latest orders table so that I can view my recent orders.",
+      "acceptance_criteria": [
+        "Table accurately populates latest 5 orders associated to the NAG in context",
+        "Order IDs are clickable by user and opens separate tab with the order's detail page"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Load the latest orders table",
+          "expected_result": "",
+          "test_data": "Scenario: Table Population"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the table shows the 5 most recent orders",
+          "expected_result": "",
+          "test_data": "Scenario: Table Population"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that each order is associated with the correct NAG in context",
+          "expected_result": "",
+          "test_data": "Scenario: Table Population"
+        },
+        {
+          "step_num": 4,
+          "action": "Load the latest orders table",
+          "expected_result": "",
+          "test_data": "Scenario: Order ID Clickability"
+        },
+        {
+          "step_num": 5,
+          "action": "Click on an order ID",
+          "expected_result": "",
+          "test_data": "Scenario: Order ID Clickability"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that a new tab opens with the order's detail page",
+          "expected_result": "",
+          "test_data": "Scenario: Order ID Clickability"
+        }
+      ],
+      "test_scenarios": [
+        "Table Population",
+        "Order ID Clickability"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 9,
+      "page_end": 9,
+      "line_start": 656,
+      "line_end": 705,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-020",
+      "feature_name": "Submitted Orders link",
+      "description": "Submitted Orders visual is clickable link bringing customer My Request page",
+      "system": "SSC Development team to provide SSC links",
+      "requirements_text": "Submitted Orders visual is clickable link bringing customer My Request page",
+      "user_story": "As a customer, I want to be able to click on the Submitted Orders link to view my submitted orders for Mobile devices and plans from the last 30 days.",
+      "acceptance_criteria": [
+        "Selection brings user to https://enterprisecentre.bell.ca/service-requests/my-requests within new browser",
+        "View is filtered based on Mobile devices and plans, only and for last 30 days"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the Submitted Orders link",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking on Submitted Orders link"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the user is redirected to https://enterprisecentre.bell.ca/service-requests/my-requests in a new browser",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking on Submitted Orders link"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the view is filtered to show only orders related to Mobile devices and plans for the last 30 days",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking on Submitted Orders link"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking on Submitted Orders link"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 10,
+      "page_end": 10,
+      "line_start": 717,
+      "line_end": 798,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-021",
+      "feature_name": "In-Progress Orders link",
+      "description": "In-Progress Orders visual is clickable link bringing customer My Request page",
+      "system": "https://enterprisecentre.bell.ca/service-requests/my-requests",
+      "requirements_text": "In-Progress Orders visual is clickable link bringing customer My Request page",
+      "user_story": "As a customer, I want to be able to click on the In-Progress Orders link to view my in-progress orders for the last 30 days related to Mobile devices and plans, so I can quickly access and manage my orders.",
+      "acceptance_criteria": [
+        "Selection brings user to https://enterprisecentre.bell.ca/service-requests/my-requests within new browser",
+        "View is filtered based on Mobile devices and plans, only and for last 30 days",
+        "Selection brings user to https://enterprisecentre.bell.ca/service-requests/my-requests within a new browser window"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the In-Progress Orders link",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking In-Progress Orders Link"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the user is directed to https://enterprisecentre.bell.ca/service-requests/my-requests in a new browser window",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking In-Progress Orders Link"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the view is filtered to show only in-progress orders for Mobile devices and plans for the last 30 days",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking In-Progress Orders Link"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking In-Progress Orders Link"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 10,
+      "page_end": 10,
+      "line_start": 717,
+      "line_end": 798,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-022",
+      "feature_name": "Completed Orders link",
+      "description": "Completed Orders visual is clickable link bringing customer My Request page",
+      "system": "Internet connection, Browser compatibility",
+      "requirements_text": "Completed Orders visual is clickable link bringing customer My Request page",
+      "user_story": "As a customer, I want to click on the Completed Orders link to view my completed orders.",
+      "acceptance_criteria": [
+        "Selection brings user to https://enterprisecentre.bell.ca/service-requests/my-requests within new browser",
+        "View is filtered based on Mobile devices and plans, only and for last 30 days"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the Completed Orders link",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking Completed Orders link"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify the URL is https://enterprisecentre.bell.ca/service-requests/my-requests",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking Completed Orders link"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify the view is filtered to show only Mobile devices and plans for the last 30 days",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking Completed Orders link"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking Completed Orders link"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 10,
+      "page_end": 10,
+      "line_start": 717,
+      "line_end": 798,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-023",
+      "feature_name": "View All Orders link",
+      "description": "View All Orders link situated at the bottom of Latest Order Table, opens full Orders list in My Requests table.",
+      "system": "Latest Order Table, My Requests table",
+      "requirements_text": "View All Orders link situated at the bottom of Latest Order Table, opens full Orders list in My Requests table.",
+      "user_story": "As a customer, I want to view all my orders in a detailed list, so that I can manage my orders efficiently.",
+      "acceptance_criteria": [
+        "Link brings customer to full orders detailed list with filtered by product - only showing Mobile Devices and plans",
+        "Order data is accurate. Latest 5 orders within Shopping and Orders table align with latest 5 orders in My Request table."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the View All Orders link",
+          "expected_result": "",
+          "test_data": "Scenario: Link brings customer to full orders detailed list"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the customer is brought to the full orders detailed list",
+          "expected_result": "",
+          "test_data": "Scenario: Link brings customer to full orders detailed list"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the list is filtered by product to show only Mobile Devices and plans",
+          "expected_result": "",
+          "test_data": "Scenario: Link brings customer to full orders detailed list"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the latest 5 orders in the Shopping and Orders table are accurate",
+          "expected_result": "",
+          "test_data": "Scenario: Order data accuracy"
+        },
+        {
+          "step_num": 5,
+          "action": "Verify that the latest 5 orders in the My Request table are accurate",
+          "expected_result": "",
+          "test_data": "Scenario: Order data accuracy"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the orders in both tables align",
+          "expected_result": "",
+          "test_data": "Scenario: Order data accuracy"
+        }
+      ],
+      "test_scenarios": [
+        "Link brings customer to full orders detailed list",
+        "Order data accuracy"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 11,
+      "page_end": 11,
+      "line_start": 813,
+      "line_end": 853,
+      "confidence": 0.8
+    },
+    {
+      "requirement_id": "REQ-024",
+      "feature_name": "Permissions Quick Links",
+      "description": "Set of links for user and access management - bringing customer to appropriate section",
+      "system": "Bell Business Portal (BBP), Master Entitlements Feature (BBMOMNI-4840)",
+      "requirements_text": "Set of links for user and access management - bringing customer to appropriate section",
+      "user_story": "As a user, I want to be able to quickly access links for user and access management, so that I can easily manage my account.",
+      "acceptance_criteria": [
+        "All links are selectable and bring user to specific area",
+        "Selection of Manage my access brings user to https://www.app1.businessportal.bell.ca/cis/view/manageAccessBBP.xhtml?identityKey=196634",
+        "Selection of Manage my users brings user to https://www.app1.businessportal.bell.ca/cis/view/manageUsers.xhtml?reset=true",
+        "Selection of Create a new user brings user to https://www.app1.businessportal.bell.ca/cis/view/newidentity.xhtml?faces-redirect=true"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on Manage my access link",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my access link"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the link brings the user to https://www.app1.businessportal.bell.ca/cis/view/manageAccessBBP.xhtml?identityKey=196634",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my access link"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on Manage my users link",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my users link"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the link brings the user to https://www.app1.businessportal.bell.ca/cis/view/manageUsers.xhtml?reset=true",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my users link"
+        },
+        {
+          "step_num": 5,
+          "action": "Click on Create a new user link",
+          "expected_result": "",
+          "test_data": "Scenario: Create a new user link"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the link brings the user to https://www.app1.businessportal.bell.ca/cis/view/newidentity.xhtml?faces-redirect=true",
+          "expected_result": "",
+          "test_data": "Scenario: Create a new user link"
+        }
+      ],
+      "test_scenarios": [
+        "Manage my access link",
+        "Manage my users link",
+        "Create a new user link"
+      ],
+      "category": "Dashboard",
+      "source_file": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "page_start": 11,
+      "page_end": 11,
+      "line_start": 818,
+      "line_end": 853,
+      "confidence": 0.8
+    }
+  ]
+}

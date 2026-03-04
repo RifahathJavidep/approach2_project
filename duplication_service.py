@@ -14,12 +14,15 @@ Returns:
 
 import os
 import re
+import logging
 import requests
 from typing import List, Dict, Tuple, Optional
 
 from dotenv import load_dotenv
 
 load_dotenv()
+
+logger = logging.getLogger("prism.duplication")
 
 JAVA_BACKEND_BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
 
@@ -58,7 +61,7 @@ def find_duplicate_requirements(
     existing_requirements = _fetch_existing_requirements(project_id)
 
     if not existing_requirements:
-        print(f"  [Duplication] No existing requirements for project {project_id}. All are unique.")
+        logger.info("No existing requirements for project %s. All are unique.", project_id)
         for req in new_requirements:
             req["is_duplicate"] = False
             req["duplicate_of"] = None
@@ -81,18 +84,17 @@ def find_duplicate_requirements(
 
             new_title = new_req.get('title') or new_req.get('short_title') or ''
             existing_title = existing_req.get('short_title') or existing_req.get('title') or ''
-            print(
-                f"  [Duplication] DUPLICATE ({score:.0%}): "
-                f"'{new_title}' \u2248 '{existing_title}'"
+            logger.info(
+                "DUPLICATE (%.0f%%): '%s' ≈ '%s'",
+                score * 100, new_title, existing_title
             )
         else:
             new_req["is_duplicate"] = False
             new_req["duplicate_of"] = None
 
-    print(
-        f"  [Duplication] Results: {duplicates_count} duplicates, "
-        f"{len(new_requirements) - duplicates_count} unique "
-        f"(threshold={threshold})"
+    logger.info(
+        "Duplication results: %d duplicates, %d unique (threshold=%.2f)",
+        duplicates_count, len(new_requirements) - duplicates_count, threshold
     )
 
     return new_requirements, duplicates_count
@@ -125,7 +127,7 @@ def filter_unique_requirements(
             existing_req, score = best_match
             new_title = new_req.get('title') or new_req.get('short_title') or ''
             existing_title = existing_req.get('short_title') or existing_req.get('title') or ''
-            print(f"  [Filter] REMOVING DUPLICATE ({score:.0%}): '{new_title}' \u2248 '{existing_title}'")
+            logger.info("REMOVING DUPLICATE (%.0f%%): '%s' ≈ '%s'", score * 100, new_title, existing_title)
             
     return unique_requirements
 
@@ -152,13 +154,13 @@ def _fetch_existing_requirements(project_id: str) -> List[Dict]:
                 reqs = data.get("requirements", data.get("content", []))
             else:
                 reqs = []
-            print(f"  [Duplication] Fetched {len(reqs)} existing requirements for project {project_id}")
+            logger.info("Fetched %d existing requirements for project %s", len(reqs), project_id)
             return reqs
         else:
-            print(f"  [Duplication] Backend returned {response.status_code} for existing requirements")
+            logger.warning("Backend returned %s for existing requirements", response.status_code)
             return []
     except Exception as e:
-        print(f"  [Duplication] ERROR fetching existing requirements: {e}")
+        logger.error("ERROR fetching existing requirements: %s", e, exc_info=True)
         return []
 
 
@@ -182,7 +184,7 @@ def _find_best_match(
         from sklearn.feature_extraction.text import TfidfVectorizer
         from sklearn.metrics.pairwise import cosine_similarity
     except ImportError:
-        print("  [Duplication] WARNING: scikit-learn not installed. Falling back to keyword matching.")
+        logger.warning("scikit-learn not installed. Falling back to keyword matching.")
         return _find_best_match_keyword(new_req, existing_reqs, threshold)
 
     new_text = _requirement_to_text(new_req)
@@ -213,7 +215,7 @@ def _find_best_match(
             return existing_reqs[best_idx], best_score
 
     except Exception as e:
-        print(f"  [Duplication] TF-IDF error: {e}")
+        logger.error("TF-IDF error: %s", e, exc_info=True)
 
     return None
 
