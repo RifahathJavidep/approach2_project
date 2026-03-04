@@ -1,0 +1,1253 @@
+{
+  "project_name": "Extracted Requirements",
+  "extraction_date": "20260304_194551",
+  "total_count": 21,
+  "gt_count": 22,
+  "document_classification": {
+    "primary": [
+      "Requirements Traceability Matrix.pdf"
+    ],
+    "supporting": []
+  },
+  "token_usage": {
+    "total_input_tokens": 20097,
+    "total_output_tokens": 7813,
+    "total_tokens": 27910,
+    "llm_calls": 22
+  },
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "feature_name": "Export Feature",
+      "description": "Implementation of export feature within each corresponding widget - CSV, PDF, EXCEL, PNG and JPEG files",
+      "system": "",
+      "requirements_text": "Implementation of export feature within each corresponding widget - CSV, PDF, EXCEL, PNG and JPEG files",
+      "user_story": "As a user, I want to export data in various file formats so that I can analyze and use the data as needed.",
+      "acceptance_criteria": [
+        "Implementation of export feature within each corresponding widget",
+        "Export data in CSV format",
+        "Export data in PDF format",
+        "Export data in EXCEL format",
+        "Export data in PNG format",
+        "Export data in JPEG format"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select CSV as the export file format",
+          "expected_result": "",
+          "test_data": "Scenario: Export data in CSV format"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the data is exported correctly in CSV format",
+          "expected_result": "",
+          "test_data": "Scenario: Export data in CSV format"
+        },
+        {
+          "step_num": 3,
+          "action": "Select PDF as the export file format",
+          "expected_result": "",
+          "test_data": "Scenario: Export data in PDF format"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the data is exported correctly in PDF format",
+          "expected_result": "",
+          "test_data": "Scenario: Export data in PDF format"
+        }
+      ],
+      "test_scenarios": [
+        "Export data in CSV format",
+        "Export data in PDF format"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 1,
+      "line_start": 50,
+      "line_end": 172,
+      "confidence": 0.8,
+      "assumptions": [],
+      "ambiguities": []
+    },
+    {
+      "requirement_id": "REQ-002",
+      "feature_name": "NAG (Group) Filter",
+      "description": "Implementation of NAG (Group) Filter within Dashboard screen. Required to capture appropriate NAGs passed from SSC.",
+      "system": "SSC",
+      "requirements_text": "Implementation of NAG (Group) Filter within Dashboard screen. Required to capture appropriate NAGs passed from SSC.",
+      "user_story": "As a user, I want to be able to filter NAGs within the Dashboard screen, so that I can capture appropriate NAGs passed from SSC.",
+      "acceptance_criteria": [
+        "Implementation of NAG (Group) Filter within Dashboard screen",
+        "Capture appropriate NAGs passed from SSC"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the Dashboard screen",
+          "expected_result": "",
+          "test_data": "Scenario: NAG Filter Implementation"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the NAG (Group) Filter is available",
+          "expected_result": "",
+          "test_data": "Scenario: NAG Filter Implementation"
+        },
+        {
+          "step_num": 3,
+          "action": "Apply the NAG (Group) Filter",
+          "expected_result": "",
+          "test_data": "Scenario: NAG Filter Implementation"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the filter captures the appropriate NAGs passed from SSC",
+          "expected_result": "",
+          "test_data": "Scenario: NAG Filter Implementation"
+        }
+      ],
+      "test_scenarios": [
+        "NAG Filter Implementation"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 1,
+      "line_start": 82,
+      "line_end": 172,
+      "confidence": 0.8,
+      "assumptions": [
+        "The SSC is functioning correctly and passing NAGs to the Dashboard screen"
+      ],
+      "ambiguities": [
+        "The acceptance criteria does not explicitly state the requirements for the NAG (Group) Filter"
+      ]
+    },
+    {
+      "requirement_id": "REQ-003",
+      "feature_name": "NAG favoriting",
+      "description": "",
+      "system": "",
+      "requirements_text": "",
+      "user_story": "As a user, I want to be able to favorite NAGs so that I can easily access them later.",
+      "acceptance_criteria": [
+        "The user can favorite a NAG",
+        "The user can unfavorite a NAG"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "User logs in to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Favorite NAG"
+        },
+        {
+          "step_num": 2,
+          "action": "User navigates to the NAG section",
+          "expected_result": "",
+          "test_data": "Scenario: Favorite NAG"
+        },
+        {
+          "step_num": 3,
+          "action": "User favorites a NAG",
+          "expected_result": "",
+          "test_data": "Scenario: Favorite NAG"
+        },
+        {
+          "step_num": 4,
+          "action": "User logs in to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Unfavorite NAG"
+        },
+        {
+          "step_num": 5,
+          "action": "User navigates to the NAG section",
+          "expected_result": "",
+          "test_data": "Scenario: Unfavorite NAG"
+        },
+        {
+          "step_num": 6,
+          "action": "User unfavorites a previously favored NAG",
+          "expected_result": "",
+          "test_data": "Scenario: Unfavorite NAG"
+        }
+      ],
+      "test_scenarios": [
+        "Favorite NAG",
+        "Unfavorite NAG"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 1,
+      "line_start": 16,
+      "line_end": 172,
+      "confidence": 0.8,
+      "assumptions": [],
+      "ambiguities": []
+    },
+    {
+      "requirement_id": "REQ-004",
+      "feature_name": "NAG Metric Tiles",
+      "description": "",
+      "system": "Dashboard, NAG Metric Tiles API",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view NAG metric tiles on the dashboard so that I can monitor unbilled accumulated data.",
+      "acceptance_criteria": [
+        "NAG Metric Tiles",
+        "unbilled accumulated data",
+        "export"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: View NAG Metric Tiles"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the NAG Metric Tiles section",
+          "expected_result": "",
+          "test_data": "Scenario: View NAG Metric Tiles"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the metric tiles are displayed correctly",
+          "expected_result": "",
+          "test_data": "Scenario: View NAG Metric Tiles"
+        },
+        {
+          "step_num": 4,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Export NAG Metric Data"
+        },
+        {
+          "step_num": 5,
+          "action": "Navigate to the NAG Metric Tiles section",
+          "expected_result": "",
+          "test_data": "Scenario: Export NAG Metric Data"
+        },
+        {
+          "step_num": 6,
+          "action": "Click on the export button",
+          "expected_result": "",
+          "test_data": "Scenario: Export NAG Metric Data"
+        },
+        {
+          "step_num": 7,
+          "action": "Verify that the data is exported correctly",
+          "expected_result": "",
+          "test_data": "Scenario: Export NAG Metric Data"
+        }
+      ],
+      "test_scenarios": [
+        "View NAG Metric Tiles",
+        "Export NAG Metric Data"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 1,
+      "line_start": 16,
+      "line_end": 172,
+      "confidence": 0.8,
+      "assumptions": [
+        "The user has the necessary permissions to view the NAG Metric Tiles"
+      ],
+      "ambiguities": [
+        "The exact format of the exported data is not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-005",
+      "feature_name": "Usage Summary Tabs",
+      "description": "",
+      "system": "Analance, Kafka, Bigquery",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view usage summary tabs to track my data, voice, long distance, and text messaging usage.",
+      "acceptance_criteria": [
+        "Data usage bar chart",
+        "Interaction prompt",
+        "Breakdown table for shared plans",
+        "Breakdown table for individual plans",
+        "Display of data, voice, long distance, and text messaging data"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a bar graph to open a separate widget",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the data gathered for the bar graph is represented within the shared and individual plans tables",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart"
+        },
+        {
+          "step_num": 3,
+          "action": "Select a shared plan",
+          "expected_result": "",
+          "test_data": "Scenario: Shared Plans Usage Breakdown"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the usage breakdown is displayed correctly",
+          "expected_result": "",
+          "test_data": "Scenario: Shared Plans Usage Breakdown"
+        }
+      ],
+      "test_scenarios": [
+        "Data Usage Bar Chart",
+        "Shared Plans Usage Breakdown"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 1,
+      "line_start": 141,
+      "line_end": 172,
+      "confidence": 0.8,
+      "assumptions": [
+        "User has a basic understanding of data usage and plans",
+        "User has the necessary permissions to access the usage summary tabs"
+      ],
+      "ambiguities": [
+        "The exact functionality of the back button on the breakdown table is not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-006",
+      "feature_name": "Data Usage Bar Chart",
+      "description": "Widget creation through Analance Unbilled Data brought to visuals (13 month unbilled capture)",
+      "system": "Analance, NM1 Billing",
+      "requirements_text": "Widget creation through Analance Unbilled Data brought to visuals (13 month unbilled capture)",
+      "user_story": "As a user, I want to visualize my data usage through a bar chart to understand my consumption better.",
+      "acceptance_criteria": [
+        "Data usage is displayed in a bar chart format",
+        "The chart includes data for Data, Voice, Long Distance, and Text Messaging"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Data"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the data usage section",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Data"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the bar chart displays data usage",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Data"
+        },
+        {
+          "step_num": 4,
+          "action": "Login to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Voice"
+        },
+        {
+          "step_num": 5,
+          "action": "Navigate to the data usage section",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Voice"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the bar chart displays voice usage",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage Bar Chart for Voice"
+        }
+      ],
+      "test_scenarios": [
+        "Data Usage Bar Chart for Data",
+        "Data Usage Bar Chart for Voice"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 2,
+      "line_start": 76,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The user has the necessary permissions to view the data usage chart"
+      ],
+      "ambiguities": [
+        "The exact layout and design of the bar chart are not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-007",
+      "feature_name": "Interaction Prompt",
+      "description": "Addition of prompt verbiage within Dashboard.",
+      "system": "Dashboard functionality, Prompt display mechanism",
+      "requirements_text": "Addition of prompt verbiage within Dashboard.",
+      "user_story": "As a user, I want to interact with prompts within the dashboard to have a better user experience.",
+      "acceptance_criteria": [
+        "Prompt verbiage is clear and concise",
+        "Prompts are appropriately placed within the dashboard",
+        "Interaction with prompts does not hinder dashboard functionality"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "User navigates to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Interaction"
+        },
+        {
+          "step_num": 2,
+          "action": "User encounters a prompt",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Interaction"
+        },
+        {
+          "step_num": 3,
+          "action": "User interacts with the prompt",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Interaction"
+        },
+        {
+          "step_num": 4,
+          "action": "System responds appropriately to the user's interaction",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Interaction"
+        },
+        {
+          "step_num": 5,
+          "action": "User accesses the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Prompt Display"
+        },
+        {
+          "step_num": 6,
+          "action": "Prompt is displayed as expected",
+          "expected_result": "",
+          "test_data": "Scenario: Prompt Display"
+        },
+        {
+          "step_num": 7,
+          "action": "User can read and understand the prompt",
+          "expected_result": "",
+          "test_data": "Scenario: Prompt Display"
+        }
+      ],
+      "test_scenarios": [
+        "Successful Interaction",
+        "Prompt Display"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 184,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "Prompts are designed to enhance user experience",
+        "Users are familiar with interacting with prompts in a dashboard context"
+      ],
+      "ambiguities": [
+        "Clarification on the nature and purpose of the prompts is needed",
+        "Definition of 'better user experience' in the context of interaction prompts"
+      ]
+    },
+    {
+      "requirement_id": "REQ-008",
+      "feature_name": "Usage Bar Chart Drilldown",
+      "description": "Ability for selection of BAR Graphs to open separate widget Data gathered for BAR graph visual to be represented within Shared + Individual Plans tables.",
+      "system": "Analance system",
+      "requirements_text": "Ability for selection of BAR Graphs to open separate widget Data gathered for BAR graph visual to be represented within Shared + Individual Plans tables.",
+      "user_story": "As a user, I want to be able to drill down into usage bar charts to view detailed data in separate widgets, so that I can better understand my usage patterns.",
+      "acceptance_criteria": [
+        "Selecting a bar graph opens a separate widget.",
+        "The widget displays data gathered for the bar graph visual.",
+        "Data is represented within Shared and Individual Plans tables."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a bar graph.",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Drilldown"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify a separate widget opens.",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Drilldown"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify the widget displays the correct data.",
+          "expected_result": "",
+          "test_data": "Scenario: Successful Drilldown"
+        },
+        {
+          "step_num": 4,
+          "action": "Open a separate widget from a bar graph.",
+          "expected_result": "",
+          "test_data": "Scenario: Data Representation"
+        },
+        {
+          "step_num": 5,
+          "action": "Verify data is correctly represented in Shared Plans tables.",
+          "expected_result": "",
+          "test_data": "Scenario: Data Representation"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify data is correctly represented in Individual Plans tables.",
+          "expected_result": "",
+          "test_data": "Scenario: Data Representation"
+        }
+      ],
+      "test_scenarios": [
+        "Successful Drilldown",
+        "Data Representation"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 2,
+      "line_start": 224,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "Data is correctly sourced and available.",
+        "User has access to the necessary dashboard."
+      ],
+      "ambiguities": [
+        "Precise nature of the 'separate widget'.",
+        "Specific data included in 'shared and individual plans tables'."
+      ]
+    },
+    {
+      "requirement_id": "REQ-009",
+      "feature_name": "Shared Plans Usage Breakdown",
+      "description": "",
+      "system": "Dashboard login functionality, Shared plans usage breakdown data",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view the shared plans usage breakdown so that I can understand the usage details.",
+      "acceptance_criteria": [],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: View Shared Plans Usage Breakdown"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the shared plans usage breakdown page",
+          "expected_result": "",
+          "test_data": "Scenario: View Shared Plans Usage Breakdown"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the usage breakdown is displayed",
+          "expected_result": "",
+          "test_data": "Scenario: View Shared Plans Usage Breakdown"
+        },
+        {
+          "step_num": 4,
+          "action": "Log in to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button"
+        },
+        {
+          "step_num": 5,
+          "action": "Navigate to the shared plans usage breakdown page",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button"
+        },
+        {
+          "step_num": 6,
+          "action": "Click the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button"
+        },
+        {
+          "step_num": 7,
+          "action": "Verify that the user is redirected to the previous page",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button"
+        }
+      ],
+      "test_scenarios": [
+        "View Shared Plans Usage Breakdown",
+        "Back Button"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 227,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The user has the necessary permissions to view the shared plans usage breakdown"
+      ],
+      "ambiguities": [
+        "The exact requirements for the shared plans usage breakdown feature are unclear"
+      ]
+    },
+    {
+      "requirement_id": "REQ-010",
+      "feature_name": "Individual Plans Usage Breakdown",
+      "description": "",
+      "system": "PTW, PH1, Analance",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view the individual plans usage breakdown",
+      "acceptance_criteria": [
+        "See document context"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select data usage option",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify data usage details are displayed",
+          "expected_result": "",
+          "test_data": "Scenario: Data Usage"
+        },
+        {
+          "step_num": 3,
+          "action": "Select voice usage option",
+          "expected_result": "",
+          "test_data": "Scenario: Voice Usage"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify voice usage details are displayed",
+          "expected_result": "",
+          "test_data": "Scenario: Voice Usage"
+        }
+      ],
+      "test_scenarios": [
+        "Data Usage",
+        "Voice Usage"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 227,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "User has a stable internet connection"
+      ],
+      "ambiguities": [
+        "Definition of individual plans"
+      ]
+    },
+    {
+      "requirement_id": "REQ-011",
+      "feature_name": "In-plan Usage Threshold \"Donut Wheel\" - (Current Month)",
+      "description": "",
+      "system": "",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view the in-plan usage threshold 'donut wheel' for the current month, so that I can easily track my usage.",
+      "acceptance_criteria": [
+        "In-plan usage threshold 'donut wheel' is displayed for the current month"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage threshold 'donut wheel' display"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the usage summary page",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage threshold 'donut wheel' display"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the 'donut wheel' is displayed",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage threshold 'donut wheel' display"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the 'donut wheel' represents the in-plan usage threshold for the current month",
+          "expected_result": "",
+          "test_data": "Scenario: In-plan usage threshold 'donut wheel' display"
+        }
+      ],
+      "test_scenarios": [
+        "In-plan usage threshold 'donut wheel' display"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 176,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [],
+      "ambiguities": []
+    },
+    {
+      "requirement_id": "REQ-012",
+      "feature_name": "Breakdown Table Back Button",
+      "description": "",
+      "system": "",
+      "requirements_text": "",
+      "user_story": "As a user, I want to be able to navigate back from the breakdown table using the back button.",
+      "acceptance_criteria": [
+        "Breakdown Table Back Button functions correctly",
+        "Back Button to Drill down table functions correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the Breakdown Table Back Button",
+          "expected_result": "",
+          "test_data": "Scenario: Breakdown Table Back Button"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the user is navigated back to the previous page",
+          "expected_result": "",
+          "test_data": "Scenario: Breakdown Table Back Button"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on the Back Button to Drill down table",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button to Drill down table"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the user is navigated back to the previous page",
+          "expected_result": "",
+          "test_data": "Scenario: Back Button to Drill down table"
+        }
+      ],
+      "test_scenarios": [
+        "Breakdown Table Back Button",
+        "Back Button to Drill down table"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 258,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [],
+      "ambiguities": []
+    },
+    {
+      "requirement_id": "REQ-013",
+      "feature_name": "Shareplans Detail Table",
+      "description": "Tabling of appropriate Shareplan details under Dashboard visual",
+      "system": "Dashboard visual, Shareplan details database",
+      "requirements_text": "Tabling of appropriate Shareplan details under Dashboard visual",
+      "user_story": "As a user, I want to view the Shareplan details in a table format under the Dashboard visual so that I can easily access and understand my Shareplan information.",
+      "acceptance_criteria": [
+        "The table displays the correct Shareplan details",
+        "The table is properly formatted and easy to read",
+        "The table is accessible under the Dashboard visual"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the Dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: View Shareplan details in table format"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the Shareplan section",
+          "expected_result": "",
+          "test_data": "Scenario: View Shareplan details in table format"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the table displays the correct Shareplan details",
+          "expected_result": "",
+          "test_data": "Scenario: View Shareplan details in table format"
+        },
+        {
+          "step_num": 4,
+          "action": "Login to the Dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Verify table formatting and readability"
+        },
+        {
+          "step_num": 5,
+          "action": "Navigate to the Shareplan section",
+          "expected_result": "",
+          "test_data": "Scenario: Verify table formatting and readability"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify that the table is properly formatted and easy to read",
+          "expected_result": "",
+          "test_data": "Scenario: Verify table formatting and readability"
+        }
+      ],
+      "test_scenarios": [
+        "View Shareplan details in table format",
+        "Verify table formatting and readability"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 184,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The Dashboard visual is properly configured",
+        "The Shareplan details database is up-to-date and accurate"
+      ],
+      "ambiguities": [
+        "The exact layout and design of the table",
+        "The specific Shareplan details to be displayed"
+      ]
+    },
+    {
+      "requirement_id": "REQ-014",
+      "feature_name": "Individual Plans Detail Table",
+      "description": "Tabling of appropriate Shareplan details under Dashboard visual",
+      "system": "Dashboard visual interface, Data sourcing for individual plans",
+      "requirements_text": "Tabling of appropriate Shareplan details under Dashboard visual",
+      "user_story": "As a user, I want to view the details of my individual plans in a table under the dashboard visual, so I can easily access and understand my plan details.",
+      "acceptance_criteria": [
+        "The table displays accurate and up-to-date information.",
+        "The user can view detailed information about their individual plans.",
+        "The user can navigate through the dashboard to access the individual plans detail table."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the dashboard.",
+          "expected_result": "",
+          "test_data": "Scenario: View Individual Plans Detail Table"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the individual plans section.",
+          "expected_result": "",
+          "test_data": "Scenario: View Individual Plans Detail Table"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify the detail table is displayed with correct information.",
+          "expected_result": "",
+          "test_data": "Scenario: View Individual Plans Detail Table"
+        },
+        {
+          "step_num": 4,
+          "action": "Access the individual plans detail table.",
+          "expected_result": "",
+          "test_data": "Scenario: Export Individual Plans Data"
+        },
+        {
+          "step_num": 5,
+          "action": "Select an export option (e.g., CSV, PDF).",
+          "expected_result": "",
+          "test_data": "Scenario: Export Individual Plans Data"
+        },
+        {
+          "step_num": 6,
+          "action": "Verify the data is exported correctly.",
+          "expected_result": "",
+          "test_data": "Scenario: Export Individual Plans Data"
+        }
+      ],
+      "test_scenarios": [
+        "View Individual Plans Detail Table",
+        "Export Individual Plans Data"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 1,
+      "page_end": 2,
+      "line_start": 184,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The data for individual plans is correctly sourced and updated.",
+        "The user has the necessary permissions to view individual plan details."
+      ],
+      "ambiguities": [
+        "The exact export formats supported by the system.",
+        "The specific data points to be included in the individual plans detail table."
+      ]
+    },
+    {
+      "requirement_id": "REQ-015",
+      "feature_name": "Back Button to Drill down table",
+      "description": "",
+      "system": "Table drill-down functionality",
+      "requirements_text": "",
+      "user_story": "As a user, I want to be able to navigate back from a drill-down table using a back button",
+      "acceptance_criteria": [
+        "Back button to drill down table"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "User navigates to a drill-down table",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation"
+        },
+        {
+          "step_num": 2,
+          "action": "User clicks the back button",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation"
+        },
+        {
+          "step_num": 3,
+          "action": "User is returned to the previous page",
+          "expected_result": "",
+          "test_data": "Scenario: Back button navigation"
+        }
+      ],
+      "test_scenarios": [
+        "Back button navigation"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 219,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The back button is visible and clickable"
+      ],
+      "ambiguities": [
+        "The exact behavior of the back button is not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-016",
+      "feature_name": "Shopping and Orders Widget",
+      "description": "Creation of Shopping and Orders Widget below Dashboard visuals",
+      "system": "Dashboard visuals, Shopping and orders data",
+      "requirements_text": "Creation of Shopping and Orders Widget below Dashboard visuals",
+      "user_story": "As a user, I want to view my shopping and orders information in a widget below the Dashboard visuals.",
+      "acceptance_criteria": [
+        "Widget is displayed below Dashboard visuals",
+        "Widget displays shopping and orders information"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the Dashboard",
+          "expected_result": "",
+          "test_data": "Scenario: Widget Display"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the Shopping and Orders Widget is displayed below the visuals",
+          "expected_result": "",
+          "test_data": "Scenario: Widget Display"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on the Shopping and Orders Widget",
+          "expected_result": "",
+          "test_data": "Scenario: Shopping and Orders Information"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the widget displays the correct shopping and orders information",
+          "expected_result": "",
+          "test_data": "Scenario: Shopping and Orders Information"
+        }
+      ],
+      "test_scenarios": [
+        "Widget Display",
+        "Shopping and Orders Information"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 381,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "Shopping and orders data is available and up-to-date"
+      ],
+      "ambiguities": [
+        "The exact design and layout of the widget are not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-017",
+      "feature_name": "Shop now Button",
+      "description": "",
+      "system": "Shopping and Orders Widget",
+      "requirements_text": "",
+      "user_story": "Shop now Button",
+      "acceptance_criteria": [
+        "See document context"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "The user clicks the Shop now Button",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking the Shop now Button"
+        },
+        {
+          "step_num": 2,
+          "action": "The user is taken to the shopping page",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking the Shop now Button"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking the Shop now Button"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 302,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The user has a stable internet connection"
+      ],
+      "ambiguities": [
+        "The exact functionality of the shop now button is not specified"
+      ]
+    },
+    {
+      "requirement_id": "REQ-018",
+      "feature_name": "Latest Orders Table",
+      "description": "",
+      "system": "",
+      "requirements_text": "",
+      "user_story": "As a user, I want to view my latest orders in a table format",
+      "acceptance_criteria": [
+        "View All Orders link"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the View All Orders link",
+          "expected_result": "",
+          "test_data": "Scenario: View Latest Orders"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the latest orders are displayed in a table format",
+          "expected_result": "",
+          "test_data": "Scenario: View Latest Orders"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the table contains the expected columns and data",
+          "expected_result": "",
+          "test_data": "Scenario: Verify Table Contents"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the table is sortable and searchable",
+          "expected_result": "",
+          "test_data": "Scenario: Verify Table Contents"
+        }
+      ],
+      "test_scenarios": [
+        "View Latest Orders",
+        "Verify Table Contents"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 228,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [],
+      "ambiguities": []
+    },
+    {
+      "requirement_id": "REQ-019",
+      "feature_name": "View All Orders link",
+      "description": "",
+      "system": "The orders page is functional and can display all orders.",
+      "requirements_text": "",
+      "user_story": "As a user, I want to be able to view all my orders by clicking on a link.",
+      "acceptance_criteria": [
+        "The link is visible and clickable.",
+        "The link takes the user to a page where they can view all their orders."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "The user clicks on the View All Orders link.",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking the View All Orders link"
+        },
+        {
+          "step_num": 2,
+          "action": "The user is taken to a page where they can view all their orders.",
+          "expected_result": "",
+          "test_data": "Scenario: Clicking the View All Orders link"
+        },
+        {
+          "step_num": 3,
+          "action": "The user is on the page where the View All Orders link is located.",
+          "expected_result": "",
+          "test_data": "Scenario: Verifying the link is visible and clickable"
+        },
+        {
+          "step_num": 4,
+          "action": "The link is visible and clickable.",
+          "expected_result": "",
+          "test_data": "Scenario: Verifying the link is visible and clickable"
+        }
+      ],
+      "test_scenarios": [
+        "Clicking the View All Orders link",
+        "Verifying the link is visible and clickable"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 2,
+      "page_end": 2,
+      "line_start": 381,
+      "line_end": 432,
+      "confidence": 0.8,
+      "assumptions": [
+        "The orders page can handle a large number of orders."
+      ],
+      "ambiguities": [
+        "What happens if the user has no orders to view?"
+      ]
+    },
+    {
+      "requirement_id": "REQ-020",
+      "feature_name": "Permissions Quick Links",
+      "description": "Require accurate links towards links in Quick Links Box",
+      "system": "Business portal",
+      "requirements_text": "Require accurate links towards links in Quick Links Box",
+      "user_story": "As a user, I want to access the Permissions Quick Links box with accurate links so that I can manage my access and users efficiently.",
+      "acceptance_criteria": [
+        "Manage my access link is accurate",
+        "Manage my users link is accurate",
+        "Create a new user link is accurate"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the Manage my access link",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my access link"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify that the link redirects to the correct page",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my access link"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on the Manage my users link",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my users link"
+        },
+        {
+          "step_num": 4,
+          "action": "Verify that the link redirects to the correct page",
+          "expected_result": "",
+          "test_data": "Scenario: Manage my users link"
+        }
+      ],
+      "test_scenarios": [
+        "Manage my access link",
+        "Manage my users link"
+      ],
+      "category": "Dashboard",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 3,
+      "page_end": 3,
+      "line_start": 436,
+      "line_end": 479,
+      "confidence": 0.8,
+      "assumptions": [
+        "The links are correctly configured"
+      ],
+      "ambiguities": [
+        "What happens if the user is not authorized to access the Permissions Quick Links box?"
+      ]
+    },
+    {
+      "requirement_id": "REQ-021",
+      "feature_name": "Warranty Expiry Display",
+      "description": "Display of Subscriber recent activation date.",
+      "system": "BCIM system",
+      "requirements_text": "Display of Subscriber recent activation date.",
+      "user_story": "As a user, I want to see the display of the subscriber's recent activation date for warranty purposes.",
+      "acceptance_criteria": [
+        "Display of Subscriber recent activation date"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the system",
+          "expected_result": "",
+          "test_data": "Scenario: Display Activation Date"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the account information page",
+          "expected_result": "",
+          "test_data": "Scenario: Display Activation Date"
+        },
+        {
+          "step_num": 3,
+          "action": "Verify that the activation date is displayed",
+          "expected_result": "",
+          "test_data": "Scenario: Display Activation Date"
+        }
+      ],
+      "test_scenarios": [
+        "Display Activation Date"
+      ],
+      "category": "Warranty",
+      "source_file": "Requirements Traceability Matrix.pdf",
+      "page_start": 3,
+      "page_end": 3,
+      "line_start": 468,
+      "line_end": 479,
+      "confidence": 0.8,
+      "assumptions": [
+        "Activation date is available in the system"
+      ],
+      "ambiguities": [
+        "Clarification needed on the format of the activation date display"
+      ]
+    }
+  ]
+}

@@ -49,6 +49,8 @@ class BusinessRequirement:
     line_start: int = 0
     line_end: int = 0
     confidence: float = 0.0
+    assumptions: List[str] = field(default_factory=list)
+    ambiguities: List[str] = field(default_factory=list)
 
 @dataclass
 class TestCase:
@@ -702,7 +704,9 @@ class ExcelWriter:
                 'Category': req.category, 'Source File': req.source_file,
                 'Page Start': req.page_start, 'Page End': req.page_end,
                 'Line Start': req.line_start, 'Line End': req.line_end,
-                'Confidence': req.confidence
+                'Confidence': req.confidence,
+                'Assumptions': "; ".join(safe_str_list(req.assumptions)),
+                'Ambiguities': "; ".join(safe_str_list(req.ambiguities))
             })
         pd.DataFrame(rows).to_excel(str(output_path), index=False, sheet_name='Extracted Requirements')
         logger.info(f"Written {len(requirements)} requirements to {output_path}")

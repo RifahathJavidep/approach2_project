@@ -54,7 +54,7 @@ class RequirementExtractorSignature(dspy.Signature):
     extraction_guidance: str = dspy.InputField(desc="Hints about expected feature patterns")
 
     requirements_json: str = dspy.OutputField(
-        desc='JSON array: [{"title":"specific feature name","description":"what user sees/does","type":"UI|Functional|Navigation","category":"Dashboard|Warranty|Navigation|Export|Usage|Orders","acceptance_criteria":["AC1","AC2"],"page_hint":"page number where found"}]'
+        desc='JSON array: [{"title":"specific feature name","description":"what user sees/does","type":"UI|Functional|Navigation","category":"Dashboard|Warranty|Navigation|Export|Usage|Orders","acceptance_criteria":["AC1","AC2"],"page_hint":"page number where found","assumptions":["str1"],"ambiguities":["str2"]}]'
     )
 
 
@@ -80,7 +80,7 @@ class MetadataEnricherSignature(dspy.Signature):
     document_context: str = dspy.InputField(desc="Relevant document text (for detail only, NOT for scenario discovery)")
 
     enriched_json: str = dspy.OutputField(
-        desc='JSON: {"user_story":"...","acceptance_criteria":["str1","str2"],"test_scenarios":[{"scenario_name":"name from AC","scenario_steps":["step1","step2"]}],"system_dependencies":["str1"],"preconditions":["str1"],"business_rules":["str1"]}'
+        desc='JSON: {"user_story":"...","acceptance_criteria":["str1","str2"],"test_scenarios":[{"scenario_name":"name from AC","scenario_steps":["step1","step2"]}],"system_dependencies":["str1"],"preconditions":["str1"],"business_rules":["str1"],"assumptions":["str1"],"ambiguities":["str2"]}'
     )
 
 
@@ -305,6 +305,8 @@ def extract_requirements(input_dir=None, br_gt_dir=None, output_dir=None, model_
                             'type': item.get('type', 'Functional'),
                             'category': item.get('category', ''),
                             'acceptance_criteria': item.get('acceptance_criteria', []),
+                            'assumptions': item.get('assumptions', []),
+                            'ambiguities': item.get('ambiguities', []),
                             'source_file': doc_name,
                             'page_start': loc['page_start'], 'page_end': loc['page_end'],
                             'line_start': loc['line_start'], 'line_end': loc['line_end'],
@@ -424,7 +426,9 @@ def extract_requirements(input_dir=None, br_gt_dir=None, output_dir=None, model_
             category=raw['category'], source_file=raw['source_file'],
             page_start=raw['page_start'], page_end=raw['page_end'],
             line_start=raw['line_start'], line_end=raw['line_end'],
-            confidence=0.8
+            confidence=0.8,
+            assumptions=sorted(list(set(safe_str_list(raw.get('assumptions', [])) + safe_str_list(enriched.get('assumptions', []))))),
+            ambiguities=sorted(list(set(safe_str_list(raw.get('ambiguities', [])) + safe_str_list(enriched.get('ambiguities', [])))))
         )
         requirements.append(br)
         logger.info(f"    -> {len(validated_scenarios)} scenarios, {len(test_steps)} steps, {len(unique_ac)} ACs")
@@ -455,7 +459,8 @@ def extract_requirements(input_dir=None, br_gt_dir=None, output_dir=None, model_
             "test_scenarios": req.test_scenarios, "category": req.category,
             "source_file": req.source_file, "page_start": req.page_start,
             "page_end": req.page_end, "line_start": req.line_start,
-            "line_end": req.line_end, "confidence": req.confidence
+            "line_end": req.line_end, "confidence": req.confidence,
+            "assumptions": req.assumptions, "ambiguities": req.ambiguities
         })
     with open(json_path, 'w') as f:
         json.dump(output_data, f, indent=2)

@@ -312,8 +312,8 @@ class ExtractionPipeline:
                                 "expected_result": s.expected_result, "test_data": s.test_data}
                                for s in br.test_steps],
                 "test_scenarios": br.test_scenarios,
-                "assumptions": [],
-                "ambiguities": [],
+                "assumptions": br.assumptions,
+                "ambiguities": br.ambiguities,
                 "confidence": conf,
                 "requirement_id": f"{str(project_name).upper().replace(' ', '_')}-{i:03d}"
             })
