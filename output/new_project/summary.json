@@ -1,0 +1,46 @@
+{
+  "total_brs": 118,
+  "total_test_cases": 36,
+  "test_cases_with_detailed_steps": 24,
+  "by_source": {
+    "Committed Feature List (.doc)": {
+      "brs": 40,
+      "test_cases": 18
+    },
+    "Uncommitted Feature List (.doc)": {
+      "brs": 40,
+      "test_cases": 18
+    },
+    "Happy Town Reports (.xlsx)": {
+      "brs": 21,
+      "test_cases": 0
+    },
+    "Incident Tickets (.xlsx)": {
+      "brs": 6,
+      "test_cases": 0
+    },
+    "POS Upgrade (.pptx)": {
+      "brs": 8,
+      "test_cases": 0
+    },
+    "Project Objective (.docx)": {
+      "brs": 3,
+      "test_cases": 0
+    }
+  },
+  "br_types": {
+    "Business Feature": 82,
+    "Report Requirement": 24,
+    "Security Requirement": 1,
+    "System Requirement": 1,
+    "UI/System Design Requirement": 2,
+    "Workflow Requirement": 1,
+    "Notification Requirement": 1,
+    "Technical Requirement": 4,
+    "Scope Definition": 2
+  },
+  "output_files": {
+    "brs": "/Users/javid/Documents/prism/approach2_project/output/new_project/separated_brs.json",
+    "test_cases": "/Users/javid/Documents/prism/approach2_project/output/new_project/separated_testcases.json"
+  }
+}

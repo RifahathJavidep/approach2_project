@@ -1,0 +1,2244 @@
+{
+  "PTWPH1-1": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "source_page": "3",
+      "match_status": "Accurate",
+      "notes": "The test case description matches the hypothesis for Feature # PTWPH1-1 in the PDF, which is about exporting dashboard details in PDF format."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the PDF, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the ability to filter dashboard and information by selecting a NAG, which matches this step."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab on Usage summary",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the Usage Summary Tabs feature, which includes a Data tab."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Click download button on corner right side of data usage, Verify Export file options include the below CSV, PDF, EXCEL, PNG and JPEG files",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the export file options for the Export Feature, which matches this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Click on Export data usage PDF",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the ability to export data usage in PDF format, which matches this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Open the PDF file and Verify the Visual bar graph of Data Usage is included in the file",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions that the PDF file will include the visual bar graph of Data Usage, which matches this step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Compare the details in the PDF file with the details on the dashboard bar graph",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF implies that the data in the PDF file should match the data on the dashboard, which matches this step."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Access NM1 system, Open the NAG from step 2",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the PDF and seems to be a separate system or process."
+      }
+    ]
+  },
+  "PTWPH1-2": {
+    "description": {
+      "source_doc": "Not Found",
+      "source_page": "N/A",
+      "match_status": "Not Found",
+      "notes": "The description in the test case does not match any content in the provided PDF files. The test case is about verifying NAG filter on My dashboard page, but the PDF files are about Wireless Dashboard: Usage Summary and Details Widget."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step to login into the portal is a generic prerequisite and is not explicitly mentioned in the PDF files, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "Similar to step 1, navigating to the My dashboard page is a necessary step but is not explicitly mentioned in the PDF files."
+      },
+      {
+        "step_num": 3,
+        "step_text": "On my dashboard page,  Navigate to NAG box and verify the default value in the box (numerical/alphbetical order)",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The PDF files do not mention NAG box or its default value."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Verify  Default view of  NAGs in the dropdown based on numerical/alphabetical order",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The PDF files do not mention NAGs or their default view in a dropdown."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Click on the dropdown and  Confirm with NM1 that the displayed NAGS in the drop down represents all NAGs associated to logged in Admin accpunt",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The PDF files do not mention NAGs, NM1, or associating NAGs with a logged-in admin account."
+      }
+    ]
+  },
+  "PTWPH1-3": {
+    "description": {
+      "source_doc": "Not Found",
+      "source_page": "N/A",
+      "match_status": "Not Found",
+      "notes": "The test case description does not match any content in the provided source PDFs. The test case appears to be related to favoriting a NAG for default view on the My dashboard page, which is not mentioned in the source PDFs."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "While the source PDFs do not explicitly mention this step, it can be considered an implied prerequisite for accessing the My dashboard page."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The source PDF mentions the 'My dashboard' permission, but does not explicitly describe navigating to the My dashboard page."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to NAG box on the top right and click on the drop down",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDFs do not mention a NAG box or dropdown."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Select a NAG as favorite from the drop down",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDFs do not mention selecting a NAG as favorite or a dropdown list of NAGs."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Logout from the BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "While the source PDFs do not explicitly mention this step, it can be considered an implied action for ending a session."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Relogin into BBSSC portal, Navigate to the dashboard",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "Similar to step 1, this step is an implied prerequisite for accessing the dashboard, but is not explicitly mentioned in the source PDFs."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Navigate to NAG box and verify the value is same as favorite NAG selected in step 4",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDFs do not mention a NAG box or verifying a favorite NAG selection."
+      }
+    ]
+  },
+  "PTWPH1-4": {
+    "description": {
+      "source_doc": "BBMOMNI-5101.pdf",
+      "source_page": "1",
+      "match_status": "Accurate",
+      "notes": "The description in the test case matches the benefit hypothesis in the source PDF, which describes the feature as providing customers with the ability to view key metrics for their selected NAG."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic login step and is not explicitly mentioned in the source PDF, but it is an implied prerequisite for the test case."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5101.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The source PDF mentions the Wireless Dashboard and the ability to select a NAG from the header filter, which matches this step."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Verify the below metric tiles are displayed based on NAG",
+        "source_doc": "BBMOMNI-5101.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The source PDF lists the four metric tiles (Billing Accounts, Active Subscribers, Suspended Subscribers, and Cancelled Subscribers) that should be displayed on the dashboard, which matches this step."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Open the Billing accounts tile",
+        "source_doc": "BBMOMNI-5101.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF mentions that clicking on the Billing Accounts tile should redirect the user to the 'advanced search' view of the 'Mobile Devices and Plans - BAN Page', which matches this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Billing Accounts tab and confirm all the listed BANS are displayed",
+        "source_doc": "BBMOMNI-5101.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF mentions that the 'advanced search' view of the 'Mobile Devices and Plans - BAN Page' should display the corresponding results, which matches this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Access NM1 system, Open the NAG from step 2",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the source PDF and appears to be a separate system or process."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm the Billing Accounts are associated to this NAG in NM1",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the source PDF and appears to be a separate system or process."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Compare the Billing Accounts in NM1 with BANS in BBSSC",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the source PDF and appears to be a separate system or process."
+      },
+      {
+        "step_num": 31,
+        "step_text": "Verify the Cancelled subscribers displayed are filtered by last 30 days",
+        "source_doc": "BBMOMNI-5101.pdf",
+        "source_page": "5",
+        "match_status": "Not Found",
+        "notes": "The source PDF actually mentions that the Cancelled Subscribers tile should display cancelled subscribers from the last 12 months, not 30 days."
+      }
+    ]
+  },
+  "PTWPH1-5": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "source_page": "4",
+      "match_status": "Accurate",
+      "notes": "The test case description matches the feature PTWPH1-5 in the PDF, which describes the Usage Summary Tabs feature."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic login step and is not explicitly mentioned in the PDF, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the NAG filter feature, but it does not explicitly mention the dropdown on the right corner."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Confirm the following Usage summary tabs are displayed in below order: Data, Voice, Long Distance, Text messaging",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF lists the Usage Summary Tabs feature with the same order: Data, Voice, LD, SMS."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Confirm upon logging in, On dashboard Data tab is default view",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF states that 'Data' is the default grouping that is viewed upon login."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Voice tab and reload the page",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic navigation step and is not explicitly mentioned in the PDF, but it is related to the Usage Summary Tabs feature."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confrim the tabs are in correct order after the reload",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF lists the Usage Summary Tabs feature with the same order: Data, Voice, LD, SMS."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Select Voice tab, then navigate to My Inventory menu",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic navigation step and is not explicitly mentioned in the PDF, but it is related to the Usage Summary Tabs feature."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Navigate back to dashboard and confirm Voice grouping is still selected",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF states that the grouping state should persist across reloads, but it is unclear if this includes navigating to a different menu and back."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Confrim the tabs are in correct order after the switcting back from My inventory menu",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "4",
+        "match_status": "Accurate",
+        "notes": "The PDF lists the Usage Summary Tabs feature with the same order: Data, Voice, LD, SMS."
+      }
+    ]
+  },
+  "PTWPH1-6": {
+    "description": {
+      "source_doc": "Not Found",
+      "source_page": "N/A",
+      "match_status": "Not Found",
+      "notes": "The test case description does not directly match any content in the provided PDFs. It appears to be related to the 'Usage Summary and Details' widget, but the specific description is not found in the PDFs."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "While the PDFs mention BBSSC, they do not explicitly describe the login process as a test case step. This is an implied prerequisite."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'My dashboard' permission and the ability to view the Wireless Dashboard, but the specific step of selecting a NAG is not detailed."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'Usage Summary and Details' widget, which includes a 'Data' tab, but the specific navigation step is not detailed."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On Bar graph X-axis, confrim the Open date and close date are displaying for each month",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the bar chart and its functionality, but does not explicitly mention the display of Open and Close dates on the X-axis."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Hover over the graph on any month, confirm open and close date is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the tooltip functionality when hovering over a bar, but does not explicitly mention the display of Open and Close dates."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 1 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 2 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Navigate to Voice tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'Usage Summary and Details' widget, which includes a 'Voice' tab, but the specific navigation step is not detailed."
+      },
+      {
+        "step_num": 9,
+        "step_text": "On Bar graph X-axis, confrim the Open date and close date are displaying for each month",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the bar chart and its functionality, but does not explicitly mention the display of Open and Close dates on the X-axis for the Voice tab."
+      },
+      {
+        "step_num": 10,
+        "step_text": "Hover over the graph on any month, confirm open and close date is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the tooltip functionality when hovering over a bar, but does not explicitly mention the display of Open and Close dates for the Voice tab."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 1 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 2 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Navigate to Long distnace tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'Usage Summary and Details' widget, which includes a 'Long Distance' tab, but the specific navigation step is not detailed."
+      },
+      {
+        "step_num": 14,
+        "step_text": "On Bar graph X-axis, confrim the Open date and close date are displaying for each month",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the bar chart and its functionality, but does not explicitly mention the display of Open and Close dates on the X-axis for the Long Distance tab."
+      },
+      {
+        "step_num": 15,
+        "step_text": "Hover over the graph on any month, confirm open and close date is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the tooltip functionality when hovering over a bar, but does not explicitly mention the display of Open and Close dates for the Long Distance tab."
+      },
+      {
+        "step_num": 16,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 1 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "This step is a repetition of Step 2 and is not explicitly described in the PDFs."
+      },
+      {
+        "step_num": 18,
+        "step_text": "Navigate to Text Messaging tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'Usage Summary and Details' widget, which includes a 'SMS' tab, but the specific navigation step is not detailed."
+      },
+      {
+        "step_num": 19,
+        "step_text": "On Bar graph X-axis, confrim the Open date and close date are displaying for each month",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the bar chart and its functionality, but does not explicitly mention the display of Open and Close dates on the X-axis for the Text Messaging tab."
+      },
+      {
+        "step_num": 20,
+        "step_text": "Hover over the graph on any month, confirm open and close date is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Not Found",
+        "notes": "The PDF describes the tooltip functionality when hovering over a bar, but does not explicitly mention the display of Open and Close dates for the Text Messaging tab."
+      }
+    ]
+  },
+  "PTWPH1-8": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "source_page": "5",
+      "match_status": "Accurate",
+      "notes": "The description in the test case matches the feature description for PTWPH1-8 in the PDF, which describes a static prompt below the dashboard graphs to prompt customers to select fields."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step is a generic login step and not explicitly mentioned in the PDF, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the ability to filter dashboard information by NAG, but it does not explicitly describe the steps to navigate to the My dashboard page and select a NAG. However, Feature PTWPH1-2 describes the NAG filter functionality."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Usage summary section and verify the Static text under the Bar graph is as follows \"Click on graph bar to show details\"",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "5",
+        "match_status": "Accurate",
+        "notes": "The PDF describes the static prompt below the dashboard graphs, which matches the expected result in the test case. This is described in Feature PTWPH1-8."
+      }
+    ]
+  },
+  "PTWPH1-9": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The description of the test case matches the acceptance criteria for the 'Usage Summary and Details' widget in the BBMOMNI-5111.pdf document, specifically the drill-down view for the Data tab."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the source PDF content, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The source PDF content mentions the Wireless Dashboard, but it does not explicitly describe the steps to navigate to the dashboard or select a NAG."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the Data tab under the Usage Summary section, which matches this step."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down capability by clicking on a bar in the chart, which matches this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Confirm the Shared plans table is displayed with below tabs and values",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the Shared Plans Usage Breakdown table, which matches this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm the Indivdual plans table is displayed with below tabs and values",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the Individual Plans Usage Breakdown table, which matches this step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm the color coding matches as per the mock up on Roaming, Overage, In-plan categories",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the color coding for the chart, which matches this step."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Verify the data displayed is accurate and corresponds to selected month",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view, which includes the accurate display of data for the selected month, matching this step."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Click on Back button and verify the user is navigated back to dashboard main page",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the Back button functionality, which matches this step."
+      }
+    ]
+  },
+  "PTWPH1-10": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The test case description matches the acceptance criteria for the 'Usage Summary and Details' widget in the BBMOMNI-5111.pdf document, specifically the drill-down view for shared plans usage breakdown."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the source PDF content, but it is implied as a necessary step to access the BBSSC portal."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The source PDF content mentions the 'My dashboard' page, but does not explicitly describe the step of selecting a NAG in the dropdown."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Usage Summary and Details' widget, which includes a 'Data' tab."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down capability of the 'Usage Summary and Details' widget, which includes hovering over and clicking on a bar graph."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to shared plans table, click on the shareplans related to Roaming on data usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to Roaming."
+      },
+      {
+        "step_num": 6,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 7,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Click on the shareplans related to Overage on data usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to Overage."
+      },
+      {
+        "step_num": 10,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 11,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Click on the shareplans related to In-plan on data usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to In-plan."
+      },
+      {
+        "step_num": 14,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 15,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan, in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 16,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Clcik on back button again",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the default state of the dashboard."
+      },
+      {
+        "step_num": 18,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the source PDF content, but it is implied as a necessary step to access the BBSSC portal."
+      },
+      {
+        "step_num": 19,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The source PDF content mentions the 'My dashboard' page, but does not explicitly describe the step of selecting a NAG in the dropdown."
+      },
+      {
+        "step_num": 20,
+        "step_text": "Navigate to Voice tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Usage Summary and Details' widget, which includes a 'Voice' tab."
+      },
+      {
+        "step_num": 21,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down capability of the 'Usage Summary and Details' widget, which includes hovering over and clicking on a bar graph."
+      },
+      {
+        "step_num": 22,
+        "step_text": "Navigate to shared plans table, click on the shareplans related to Roaming on Voice usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to Roaming."
+      },
+      {
+        "step_num": 23,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 24,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 25,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 26,
+        "step_text": "Click on the shareplans related to Overage on voice usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to Overage."
+      },
+      {
+        "step_num": 27,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 28,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 29,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 30,
+        "step_text": "Click on the shareplans related to In-plan on voice usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes a table with shared plans related to In-plan."
+      },
+      {
+        "step_num": 31,
+        "step_text": "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share plan in the Plan name column",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The source PDF content does not explicitly describe the shareplans being split into Small/Medium/Large business share plans in the Plan name column."
+      },
+      {
+        "step_num": 32,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan, in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the drill-down view for shared plans usage breakdown, which includes verifying the data accuracy of Allowance, Used, and Overage."
+      },
+      {
+        "step_num": 33,
+        "step_text": "Click on back button, navigate back to shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the shared plans table."
+      },
+      {
+        "step_num": 34,
+        "step_text": "Clcik on back button again",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Back' button functionality, which navigates the user back to the default state of the dashboard."
+      }
+    ]
+  },
+  "PTWPH1-11": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The description matches the acceptance criteria for the 'Individual plans usage breakdown' in the BBMOMNI-5111.pdf document on page 2, specifically the section 'Drill-Down View - Level 1' and 'Drill-Down View - Level 2'."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and not explicitly mentioned in the provided PDFs, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'My dashboard' page and the requirement for the user to have the 'My dashboard' permission, but it does not explicitly mention the NAG selection."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Long distance tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Long Distance' tab in the 'Main View & Bar Chart' section."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the hover and click functionality for the bar graph in the 'Main View & Bar Chart' section."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Individual plans table, click on the subscribers related to Roaming on Long distance usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 6,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Click on the Subscribers related to Overage on Long distance usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 9,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 10,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Click on the Subscribers related to In-plan on Long distance usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 12,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 14,
+        "step_text": "Clcik on back button again",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 15,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and not explicitly mentioned in the provided PDFs, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 16,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'My dashboard' page and the requirement for the user to have the 'My dashboard' permission, but it does not explicitly mention the NAG selection."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Navigate to Text messaging tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions the 'SMS' tab in the 'Main View & Bar Chart' section, which is equivalent to the 'Text messaging' tab."
+      },
+      {
+        "step_num": 18,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the hover and click functionality for the bar graph in the 'Main View & Bar Chart' section."
+      },
+      {
+        "step_num": 19,
+        "step_text": "Navigate to Individual plans table, click on the subscribers related to Roaming on Text messaging usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 20,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 21,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 22,
+        "step_text": "Click on the Subscribers related to Overage on Text messaging usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 23,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 24,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 25,
+        "step_text": "Click on the Subscribers related to In-plan on Text messaging usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Individual Plans Usage Breakdown' table and the drill-down capability in the 'Drill-Down View - Level 1' section."
+      },
+      {
+        "step_num": 26,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan in Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the columns that should be displayed in the 'Individual Plans Detail Table' in the 'Drill-Down View - Level 2' section."
+      },
+      {
+        "step_num": 27,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      },
+      {
+        "step_num": 28,
+        "step_text": "Clcik on back button again",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the 'Back' button functionality in the 'Global Functionality' section."
+      }
+    ]
+  },
+  "PTWPH1-12": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The description in the test case 'E2E-PTWPH1-12-  Verify the In-plan Usage threshold Donut wheel on data usage drilldown - Data tab' accurately matches the 'Drill-Down View - Unbilled Month & Donut Wheels' section in BBMOMNI-5111.pdf on page 2."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step is an implied prerequisite and not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step is an implied prerequisite and not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'Data' tab is mentioned as one of the four usage tabs in the 'Main View & Bar Chart' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to unbilled month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The action of clicking on the bar graph to view the drill-down is mentioned in the 'Drill-Down View - Level 1' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Confirm the Shared plans table is displayed with below tabs and values",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'Shared Plans Usage Breakdown' table is mentioned in the 'Drill-Down View - Level 1' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm the Indivdual plans table is displayed with below tabs and values",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'Individual Plans Usage Breakdown' table is mentioned in the 'Drill-Down View - Level 1' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm two  Donut wheels are displayed for In-plan usage of the current unbilled month under both shared plans and individual plans tables",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'Donut Wheel' visual is mentioned in the 'Drill-Down View - Unbilled Month & Donut Wheels' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Navigate to shared plans Donut wheel and Confirm the following",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'In-plan Usage Threshold' sections with 'Donut Wheel' visual are mentioned in the 'Drill-Down View - Unbilled Month & Donut Wheels' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Click on the shareplans link next to  the threshold value",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The action of clicking on the link in the 'Shared Plans Usage Breakdown' table is mentioned in the 'Drill-Down View - Level 2' section of BBMOMNI-5111.pdf on page 2, but the exact link name 'shareplans' is not explicitly mentioned."
+      },
+      {
+        "step_num": 10,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan in shared plans table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The data accuracy verification is implied in the 'Drill-Down View - Level 2' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Navigate to Individual plans Donut wheel and Confirm the following",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The 'In-plan Usage Threshold' sections with 'Donut Wheel' visual are mentioned in the 'Drill-Down View - Unbilled Month & Donut Wheels' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Click on the Subscribers link next to  the threshold value",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The action of clicking on the link in the 'Individual Plans Usage Breakdown' table is mentioned in the 'Drill-Down View - Level 2' section of BBMOMNI-5111.pdf on page 2, but the exact link name 'Subscribers' is not explicitly mentioned."
+      },
+      {
+        "step_num": 13,
+        "step_text": "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan in subscriber table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The data accuracy verification is implied in the 'Drill-Down View - Level 2' section of BBMOMNI-5111.pdf on page 2."
+      },
+      {
+        "step_num": 14,
+        "step_text": "Confirm the color for each threshold on the wheel and In-plan table",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The specific color coding for each threshold is not mentioned in the source PDF content."
+      }
+    ]
+  },
+  "PTWPH1-14": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "1",
+      "match_status": "Accurate",
+      "notes": "The description of the test case matches with the Benefit Hypothesis section of the BBMOMNI-5111.pdf, which describes the feature as a 'powerful visual tool to understand their wireless usage, from a high-level 14-month trend down to individual subscriber details'."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step of logging into the BBSSC portal is not explicitly mentioned in the source PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The Acceptance Criteria section of the BBMOMNI-5111.pdf mentions that the 'Usage Summary and Details' widget is visible when the user has the required 'My dashboard' permission."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Long distance tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Main View & Bar Chart section of the BBMOMNI-5111.pdf mentions that four usage tabs are displayed: 'Data', 'Voice', 'Long Distance', and 'SMS'."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 1 section of the BBMOMNI-5111.pdf mentions that when a user clicks on a month's bar, the bar chart view collapses and is replaced by a drill-down view."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Shared plans table, click on shared plans related to Roaming on Long distance usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 1 section of the BBMOMNI-5111.pdf mentions that the drill-down view contains two summary tables: 'Shared Plans Usage Breakdown' and 'Individual Plans Usage Breakdown'."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm the following columns are available with values on shared plans details table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' displays the correct columns (Billing Account, Plan Name, # of Subscribers, Allowance, Used, Overage)."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Verify the Billing account column values are sorted based on Alphabetical order",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The sorting of the Billing account column values is not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Verify the Plan names for the displayed billing accounts is populating by categories",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The categorization of Plan names is not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Verify correct data is populating Accurately on Allowance, Used & Overage columns",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' displays the correct columns (Billing Account, Plan Name, # of Subscribers, Allowance, Used, Overage)."
+      },
+      {
+        "step_num": 10,
+        "step_text": "Verify the table consists of 10 Billing Accounts per page",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' is paginated if there are more than 10 entries."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Click on any existing Billing account",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The navigation to the 'My inventory section account details page' is not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step of logging into the BBSSC portal is not explicitly mentioned in the source PDF content, but it is an implied prerequisite for accessing the dashboard. This step seems to be a repeat of Step 1."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The Acceptance Criteria section of the BBMOMNI-5111.pdf mentions that the 'Usage Summary and Details' widget is visible when the user has the required 'My dashboard' permission. This step seems to be a repeat of Step 2."
+      },
+      {
+        "step_num": 14,
+        "step_text": "Navigate to Text messaging tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Main View & Bar Chart section of the BBMOMNI-5111.pdf mentions that four usage tabs are displayed: 'Data', 'Voice', 'Long Distance', and 'SMS'."
+      },
+      {
+        "step_num": 15,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 1 section of the BBMOMNI-5111.pdf mentions that when a user clicks on a month's bar, the bar chart view collapses and is replaced by a drill-down view."
+      },
+      {
+        "step_num": 16,
+        "step_text": "Navigate to Shared plans table, click on shared plans related to In-plan on Text messaging usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 1 section of the BBMOMNI-5111.pdf mentions that the drill-down view contains two summary tables: 'Shared Plans Usage Breakdown' and 'Individual Plans Usage Breakdown'."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Confirm the following columns are available with values on shared plans details table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' displays the correct columns (Billing Account, Plan Name, # of Subscribers, Allowance, Used, Overage)."
+      },
+      {
+        "step_num": 18,
+        "step_text": "Verify the Billing account column values are sorted based on Alphabetical order",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The sorting of the Billing account column values is not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 19,
+        "step_text": "Verify the Plan name is populating according to billing account information",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The population of the Plan name is not explicitly mentioned in the source PDF content."
+      },
+      {
+        "step_num": 20,
+        "step_text": "Verify correct data is populating Accurately on Allowance, Used & Overage columns",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' displays the correct columns (Billing Account, Plan Name, # of Subscribers, Allowance, Used, Overage)."
+      },
+      {
+        "step_num": 21,
+        "step_text": "Verify the table consists of 10 Billing Accounts per page",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The Drill-Down View - Level 2 section of the BBMOMNI-5111.pdf mentions that the 'Shareplans Detail Table' is paginated if there are more than 10 entries."
+      },
+      {
+        "step_num": 22,
+        "step_text": "Click on any existing Billing account",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The navigation to the 'My inventory section account details page' is not explicitly mentioned in the source PDF content."
+      }
+    ]
+  },
+  "PTWPH1-15": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The test case description is related to the 'PTW - BBSSC - Wireless Dashboard: Usage Summary and Details Widget' feature described in BBMOMNI-5111.pdf, specifically 'Drill-Down View - Level 2' which mentions individual plans detail table with columns for Number, Name, Billing Account, Allowance, Used, Overage."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the source PDF content, but it is implied as a necessary step to access the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The source PDF content mentions 'My dashboard' permission, but it does not explicitly describe the navigation or the dropdown on the right corner."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Data' tab under the 'Usage Summary and Details' widget, which matches this step."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the bar graph and the drill-down view when a user clicks on a month's bar, which matches this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Individual plans table, click on Subscribers related to Overage on Data usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Individual Plans Usage Breakdown' table, which matches this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm the following columns are available with values on Individual plans details table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the columns for the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Verify the correct data is populating for each subscriber in columns Number, Name, BAN",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The source PDF content does not explicitly describe the verification of data for each subscriber, but it does describe the columns and their expected values."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Verify Name column values are populating and sorted based on Alphabetical order",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the source PDF content."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Verify correct data is populating on Allowance, Used & Overage columns",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the columns for Allowance, Used, and Overage, which matches this step."
+      },
+      {
+        "step_num": 10,
+        "step_text": "Verify the table consists of 10 subscribers per page max",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the pagination of the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Click on any existing number from Number column",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the clickability of the links in the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Navigate back to individual plans details table and click on any existing Billing account",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the clickability of the links in the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic prerequisite and is not explicitly mentioned in the source PDF content, but it is implied as a necessary step to access the dashboard. However, it seems to be a duplicate of step 1."
+      },
+      {
+        "step_num": 14,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 2."
+      },
+      {
+        "step_num": 15,
+        "step_text": "Navigate to Voice tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the 'Voice' tab under the 'Usage Summary and Details' widget, which matches this step."
+      },
+      {
+        "step_num": 16,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "This step is similar to step 4, but for the 'Voice' tab instead of the 'Data' tab."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Navigate to Individual plans table, click on Subscribers related to Overage on Data usage",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step seems to be related to the 'Data' tab, but it is described under the 'Voice' tab. The source PDF content does not explicitly describe this step."
+      },
+      {
+        "step_num": 18,
+        "step_text": "Confirm the following columns are available with values on Individual plans details table",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "This step is similar to step 6, but for the 'Voice' tab instead of the 'Data' tab."
+      },
+      {
+        "step_num": 19,
+        "step_text": "Verify the correct data is populating for each subscriber in columns Number, Name, BAN",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The source PDF content does not explicitly describe the verification of data for each subscriber, but it does describe the columns and their expected values."
+      },
+      {
+        "step_num": 20,
+        "step_text": "Verify Name column values are populating and sorted based on Alphabetical order",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not mentioned in the source PDF content."
+      },
+      {
+        "step_num": 21,
+        "step_text": "Verify correct data is populating on Allowance, Used & Overage columns",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the columns for Allowance, Used, and Overage, which matches this step."
+      },
+      {
+        "step_num": 22,
+        "step_text": "Verify the table consists of 10 subscribers per page max",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the pagination of the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 23,
+        "step_text": "Click on any existing number from Number column",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the clickability of the links in the 'Individual Plans Detail Table', which matches this step."
+      },
+      {
+        "step_num": 24,
+        "step_text": "Navigate back to individual plans details table and click on any existing Billing account",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The source PDF content describes the clickability of the links in the 'Individual Plans Detail Table', which matches this step."
+      }
+    ]
+  },
+  "PTWPH1-13 & 16": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+      "source_page": "6",
+      "match_status": "Accurate",
+      "notes": "The test case description matches the acceptance criteria for Feature # PTWPH1 - 9, Usage Bar Chart Drilldown, which mentions the ability to drill down and view visualized data for specific breakdown."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step is a generic login step and not explicitly mentioned in the PDF, but it is an implied prerequisite for accessing the My Dashboard page."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the ability to filter dashboard and information by filtering to appropriate NAG, which matches this step."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Long distance tab under Usage summary section",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the Usage Summary Tabs feature, which includes selectable data groupings that switch dashboard's view between Data, Voice, Long Distance and SMS, matching this step."
+      },
+      {
+        "step_num": 4,
+        "step_text": "On the bar graph hover over to any billed month and click on it",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "5",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the Data Usage Bar Chart feature, which includes the ability to hover for tooltip and view relevant information, matching this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Individual plans table, click on the subscribers related to Roaming on Long distance usage",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "6",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the Usage Bar Chart Drilldown feature, which includes the ability to drill down and view visualized data for specific breakdown, matching this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Click on back button, navigate back to Individual plans table",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "6",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the back button functionality in the Usage Bar Chart Drilldown feature, matching this step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Clcik on back button again",
+        "source_doc": "Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "source_page": "6",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions the back button functionality in the Usage Bar Chart Drilldown feature, matching this step."
+      }
+    ]
+  },
+  "PTWPH1-1W": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The description in the test case matches the feature description in the PDF, which is 'Ability for customer to visualize Warranty Expiration Date within Subscriber Information Page in SSC'"
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic login step and is implied as a prerequisite, but it is not explicitly mentioned in the PDF"
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My Inventory page, Open Mobile plans and services",
+        "source_doc": "PTW Self Serve Phase 1 Solution.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions 'My Dashboard' which may be related to 'My Inventory', but the exact navigation is not specified"
+      },
+      {
+        "step_num": 3,
+        "step_text": "On  Mobile plans and services, open an account from the table",
+        "source_doc": "PTW Self Serve Phase 1 Solution.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions 'BANS' and 'groups', but the exact navigation is not specified"
+      },
+      {
+        "step_num": 4,
+        "step_text": "On Account navigate to Subcribers in this account  section and open a subscriber from the table",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions 'Subscriber page' and 'Device Information page area', but the exact navigation is not specified"
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Subscriber information section and confirm all the details of the  Subscriber are displayed",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions 'Subscriber page' and 'Information available in Subscriber page / Device Information page area'"
+      },
+      {
+        "step_num": 6,
+        "step_text": "Navigate to Device and plan infromation section and Confrim the warranty date field is displayed with value",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions 'Warranty expiration date will correspond to the date of activation' and 'Display warranty expiration date only in the Subscriber page Information page area'"
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm the Warranty Date is displayed within specific line below the Sim card field as per the mock up",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions 'Warranty Date is displayed within specific line (Visuals have been attached as reference)', but the exact mock up is not specified"
+      },
+      {
+        "step_num": 8,
+        "step_text": "Confirm the Warranty Date is accurate towards customers activation date associated to device currently on profile",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions 'Warranty Date is accurate towards customers activation date associated to device currently on profile'"
+      }
+    ]
+  },
+  "PTWPH1-2W": {
+    "description": {
+      "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+      "source_page": "2",
+      "match_status": "Accurate",
+      "notes": "The test case description matches with the feature description in the PDF, specifically with Feature # PTWPH1 - 2W, which is about displaying warranty expiration date within BAN Information Page in SSC."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "The step is a generic login step and is not explicitly mentioned in the PDF, but it is an implied prerequisite for the test case."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My Inventory page, Open Mobile plans and services",
+        "source_doc": "PTW Self Serve Phase 1 Solution.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions My Dashboard and Key Metrics, but not exactly My Inventory page. However, it is related to the high-level CS flow described in the PDF."
+      },
+      {
+        "step_num": 3,
+        "step_text": "On  Mobile plans and services, open an account from the table",
+        "source_doc": "PTW Self Serve Phase 1 Solution.pdf",
+        "source_page": "1",
+        "match_status": "Partial",
+        "notes": "The PDF mentions Key Metrics, but not exactly opening an account from a table. However, it is related to the high-level CS flow described in the PDF."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Navigate to Account information section and confirm all the details of the  Account are displayed",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Partial",
+        "notes": "The PDF mentions displaying warranty expiration date in the Subscriber page / Device Information page area, but not exactly Account information section."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Navigate to Subscribers in this account section and Confrim the warranty date field column is added to the table",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions displaying warranty expiration date in the Subscriber page / Device Information page area, which matches with the step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm the Warranty Date is displayed within specific line  as per the mock up",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "3",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions displaying warranty expiration date within a specific line, which matches with the step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm the Warranty Date is accurate towards customers activation date associated to device currently on profile",
+        "source_doc": "Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF mentions displaying warranty expiration date corresponding to the date of activation, which matches with the step."
+      }
+    ]
+  },
+  "PTWPH1-7": {
+    "description": {
+      "source_doc": "BBMOMNI-5111.pdf",
+      "source_page": "1",
+      "match_status": "Accurate",
+      "notes": "The description in the test case matches the benefit hypothesis in the BBMOMNI-5111.pdf document, which describes the feature as providing a powerful visual tool to understand wireless usage."
+    },
+    "steps": [
+      {
+        "step_num": 1,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic login step and is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 2,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a generic navigation step and is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 3,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions the Data tab under the Usage summary section, which matches this step."
+      },
+      {
+        "step_num": 4,
+        "step_text": "Verify the Date field value is set to Last 14 months",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays usage data for the last 14 months, which matches this step."
+      },
+      {
+        "step_num": 5,
+        "step_text": "Verify the Bar graph on Data usage, contains the following details X-axis - Months Y-axis- TB (data)",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the bar chart displays usage data for the last 14 months, with the x-axis representing months and the y-axis representing usage, which matches this step."
+      },
+      {
+        "step_num": 6,
+        "step_text": "Confirm on X-axis all 14 months are displayed 13 months billed usage data and 1 month unbilled usage data",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays 13 billed months and 1 unbilled month, which matches this step."
+      },
+      {
+        "step_num": 7,
+        "step_text": "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays in-plan, overage, and roaming usage, which matches this step."
+      },
+      {
+        "step_num": 8,
+        "step_text": "Hover over the Bar graph on months and confirm the data with relevant information of In-plan, Overage, Roaming Usage is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that a tooltip appears when hovering over the bar chart, displaying relevant information, which matches this step."
+      },
+      {
+        "step_num": 9,
+        "step_text": "Confirm the below the static text is displayed under the graph",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not explicitly mentioned in the PDF content."
+      },
+      {
+        "step_num": 10,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 1 and is a generic login step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 11,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 2 and is a generic navigation step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 12,
+        "step_text": "Navigate to Voice tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions the Voice tab under the Usage summary section, which matches this step."
+      },
+      {
+        "step_num": 13,
+        "step_text": "Verify the Date field value is set to Last 14 months",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays usage data for the last 14 months, which matches this step."
+      },
+      {
+        "step_num": 14,
+        "step_text": "Verify the Bar graph on Data usage, contains the following details X-axis - Months Y-axis- Minutes",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the bar chart displays usage data for the last 14 months, with the x-axis representing months and the y-axis representing usage, which matches this step."
+      },
+      {
+        "step_num": 15,
+        "step_text": "Confirm on X-axis all 14 months are displayed 13 months billed usage data and 1 month unbilled usage",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays 13 billed months and 1 unbilled month, which matches this step."
+      },
+      {
+        "step_num": 16,
+        "step_text": "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays in-plan, overage, and roaming usage, which matches this step."
+      },
+      {
+        "step_num": 17,
+        "step_text": "Hover over the Bar graph on months and confirm the data with relevant information of In-plan, Overage, Roaming Usage is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that a tooltip appears when hovering over the bar chart, displaying relevant information, which matches this step."
+      },
+      {
+        "step_num": 18,
+        "step_text": "Confirm the below the static text is displayed under the graph",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not explicitly mentioned in the PDF content."
+      },
+      {
+        "step_num": 19,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 1 and is a generic login step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 20,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 2 and is a generic navigation step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 21,
+        "step_text": "Navigate to Long disatnce tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions the Long Distance tab under the Usage summary section, which matches this step."
+      },
+      {
+        "step_num": 22,
+        "step_text": "Verify the Date field value is set to Last 14 months",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays usage data for the last 14 months, which matches this step."
+      },
+      {
+        "step_num": 23,
+        "step_text": "Verify the Bar graph on Data usage, contains the following details X-axis - Months Y-axis- Minutes",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the bar chart displays usage data for the last 14 months, with the x-axis representing months and the y-axis representing usage, which matches this step."
+      },
+      {
+        "step_num": 24,
+        "step_text": "Confirm on X-axis all 6 months are displayed 5 months billed usage data and 1 month unbilled usage",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The PDF content mentions that the chart displays 13 billed months and 1 unbilled month, which does not match this step."
+      },
+      {
+        "step_num": 25,
+        "step_text": "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays in-plan, overage, and roaming usage, which matches this step."
+      },
+      {
+        "step_num": 26,
+        "step_text": "Hover over the Bar graph on months and confirm the data with relevant information of In-plan, Overage, Roaming Usage is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that a tooltip appears when hovering over the bar chart, displaying relevant information, which matches this step."
+      },
+      {
+        "step_num": 27,
+        "step_text": "Confirm the below the static text is displayed under the graph",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not explicitly mentioned in the PDF content."
+      },
+      {
+        "step_num": 28,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 1 and is a generic login step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 29,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 2 and is a generic navigation step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 30,
+        "step_text": "Navigate to Text messaging tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions the SMS tab under the Usage summary section, which matches this step."
+      },
+      {
+        "step_num": 31,
+        "step_text": "Verify the Date field value is set to Last 14 months",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays usage data for the last 14 months, which matches this step."
+      },
+      {
+        "step_num": 32,
+        "step_text": "Verify the Bar graph on Data usage, contains the following details X-axis - Months Y-axis- Number of Text messages",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the bar chart displays usage data for the last 14 months, with the x-axis representing months and the y-axis representing usage, which matches this step."
+      },
+      {
+        "step_num": 33,
+        "step_text": "Confirm on X-axis all 3 months are displayed 2 months billed usage data and 1 month unbilled usage",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "The PDF content mentions that the chart displays 13 billed months and 1 unbilled month, which does not match this step."
+      },
+      {
+        "step_num": 34,
+        "step_text": "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays in-plan, overage, and roaming usage, which matches this step."
+      },
+      {
+        "step_num": 35,
+        "step_text": "Hover over the Bar graph on months and confirm the data with relevant information of In-plan, Overage, Roaming Usage is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that a tooltip appears when hovering over the bar chart, displaying relevant information, which matches this step."
+      },
+      {
+        "step_num": 36,
+        "step_text": "Confirm the below the static text is displayed under the graph",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not explicitly mentioned in the PDF content."
+      },
+      {
+        "step_num": 37,
+        "step_text": "Login into BBSSC portal",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 1 and is a generic login step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 38,
+        "step_text": "Navigate to My dashboard page and select a NAG in the dropdown on the right corner",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Partial",
+        "notes": "This step is a duplicate of step 2 and is a generic navigation step, which is not explicitly mentioned in the PDF content, but it is an implied prerequisite for accessing the dashboard."
+      },
+      {
+        "step_num": 39,
+        "step_text": "Navigate to Data tab under Usage summary section",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions the Data tab under the Usage summary section, which matches this step."
+      },
+      {
+        "step_num": 40,
+        "step_text": "Verify the Date field value is set to Last 14 months",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "1",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays usage data for the last 14 months, which matches this step."
+      },
+      {
+        "step_num": 41,
+        "step_text": "Verify the Bar graph on Data usage, contains the following details X-axis - Months Y-axis- TB (data)",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the bar chart displays usage data for the last 14 months, with the x-axis representing months and the y-axis representing usage, which matches this step."
+      },
+      {
+        "step_num": 42,
+        "step_text": "Confirm on X-axis 1 month unbilled usage data is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays 1 unbilled month, which matches this step."
+      },
+      {
+        "step_num": 43,
+        "step_text": "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that the chart displays in-plan, overage, and roaming usage, which matches this step."
+      },
+      {
+        "step_num": 44,
+        "step_text": "Hover over the Bar graph on months and confirm the data with relevant information of In-plan, Overage, Roaming Usage is displayed",
+        "source_doc": "BBMOMNI-5111.pdf",
+        "source_page": "2",
+        "match_status": "Accurate",
+        "notes": "The PDF content mentions that a tooltip appears when hovering over the bar chart, displaying relevant information, which matches this step."
+      },
+      {
+        "step_num": 45,
+        "step_text": "Confirm the below the static text is displayed under the graph",
+        "source_doc": "Not Found",
+        "source_page": "N/A",
+        "match_status": "Not Found",
+        "notes": "This step is not explicitly mentioned in the PDF content."
+      }
+    ]
+  }
+}

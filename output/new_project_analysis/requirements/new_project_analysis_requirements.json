@@ -1,0 +1,3905 @@
+{
+  "project": "new_project_analysis",
+  "requirements": [
+    {
+      "title": "Security and Compliance Infrastructure",
+      "description": "Infrastructure for security, compliance, and audit, including ThousandEyes integration, BMO DNAC security events, and rogue threat monitoring.",
+      "type": "Functional",
+      "user_story": "As a security operator, I want to ensure the security and compliance of our infrastructure, so that I can protect against threats and maintain regulatory compliance.",
+      "acceptance_criteria": [
+        "ThousandEyes webhooks are received and mapped to VES",
+        "BMO DNAC security events cause ticket opening",
+        "Rogue threats are monitored and handled"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Send a test ThousandEyes webhook",
+          "expected_result": "The webhook is successfully received and mapped to VES",
+          "test_data": "Sample ThousandEyes webhook data"
+        },
+        {
+          "step_num": 2,
+          "action": "Configure BMO DNAC security events",
+          "expected_result": "Tickets are opened correctly for security events",
+          "test_data": "Sample BMO DNAC security event data"
+        }
+      ],
+      "test_scenarios": [
+        "ThousandEyes webhook reception and mapping",
+        "BMO DNAC security event ticket opening"
+      ],
+      "assumptions": [
+        "Maximo CI information is correctly configured for mapping",
+        "BMO DNAC security events are correctly configured"
+      ],
+      "ambiguities": [
+        "Specific logic required for UCA filters",
+        "Unclear BMO DNAC security event configuration process"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-001"
+    },
+    {
+      "title": "System Performance and Scalability",
+      "description": "System performance and scalability, including near real-time Meraki VPN connection status monitoring and historical trend analysis.",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to ensure the system's performance and scalability, so that I can handle increased loads and provide reliable service.",
+      "acceptance_criteria": [
+        "Near real-time Meraki VPN connection status is monitored",
+        "Historical trend analysis is available for VPN connection data"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure near real-time Meraki VPN connection status monitoring",
+          "expected_result": "VPN connection status is monitored in near real-time",
+          "test_data": "Sample Meraki VPN connection status data"
+        },
+        {
+          "step_num": 2,
+          "action": "Access historical trend analysis for VPN connection data",
+          "expected_result": "Historical trend analysis is available and accurate",
+          "test_data": "Sample historical VPN connection data"
+        }
+      ],
+      "test_scenarios": [
+        "Near real-time VPN connection status monitoring",
+        "Historical trend analysis for VPN connection data"
+      ],
+      "assumptions": [
+        "Meraki VPN connection status data is available",
+        "Historical VPN connection data is accurate"
+      ],
+      "ambiguities": [
+        "Definition of 'near real-time' in the context of VPN connection status monitoring",
+        "Definition of historical trends"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-002"
+    },
+    {
+      "title": "Incident Management",
+      "description": "Manage incidents, including creation, assignment, and resolution, with features like automatic activity creation for reactive and proactive incidents.",
+      "type": "Feature",
+      "user_story": "As a user, I want to manage incidents effectively, so that I can resolve them efficiently.",
+      "acceptance_criteria": [
+        "Incidents are created and assigned correctly",
+        "Automatic activity creation for reactive and proactive incidents",
+        "Incident status updates are accurate"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an incident",
+          "expected_result": "Incident is created and assigned correctly",
+          "test_data": "Incident details"
+        }
+      ],
+      "test_scenarios": [
+        "Incident creation and management"
+      ],
+      "assumptions": [
+        "Incident management system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-003"
+    },
+    {
+      "title": "Configuration Item Management",
+      "description": "Manage configuration items, including creation, update, and deletion, with correct assignment of ownership and CI updates.",
+      "type": "Feature",
+      "user_story": "As a user, I want to manage configuration items, so that I can track and update them accurately.",
+      "acceptance_criteria": [
+        "Configuration items are created, updated, and deleted correctly",
+        "Correct assignment of configuration item ownership",
+        "CI updates are accurate"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a configuration item",
+          "expected_result": "Configuration item is created correctly",
+          "test_data": "Configuration item details"
+        }
+      ],
+      "test_scenarios": [
+        "Configuration item management"
+      ],
+      "assumptions": [
+        "Configuration management system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-004"
+    },
+    {
+      "title": "Event/Alarm Management and Enrichment",
+      "description": "Receive, process, and enrich events/alarms from various sources.",
+      "type": "Feature",
+      "user_story": "As a system administrator, I want to manage events/alarms, so that I can monitor and analyze them in real-time.",
+      "acceptance_criteria": [
+        "Events/alarms are received and processed correctly",
+        "Events/alarms are enriched with relevant information"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify event/alarm reception and processing",
+          "expected_result": "Events/alarms are received and processed correctly",
+          "test_data": "Event/alarm data"
+        }
+      ],
+      "test_scenarios": [
+        "Event/alarm management test"
+      ],
+      "assumptions": [
+        "Event/alarm system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-005"
+    },
+    {
+      "title": "Change Creation and Management",
+      "description": "Create a new variation of the Maximo Incident management system to allow users to create changes from incidents.",
+      "type": "Functional",
+      "user_story": "As a user, I want to create a change from an incident, so that I can manage changes effectively.",
+      "acceptance_criteria": [
+        "System allows users to create changes from incidents",
+        "Change description, summary, and impact are populated with default values"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new incident in the Maximo system",
+          "expected_result": "System creates a new incident with a unique ID",
+          "test_data": "Incident description, category, and priority"
+        }
+      ],
+      "test_scenarios": [
+        "Creating a change from an incident"
+      ],
+      "assumptions": [
+        "Maximo system is integrated with BMO's Service Now"
+      ],
+      "ambiguities": [
+        "Exact fields to be sent from the change to the incident"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-006"
+    },
+    {
+      "title": "CI Search and Management",
+      "description": "The CI search list only displays CIs for the Incident company and managed by the selected partner.",
+      "type": "Functional",
+      "user_story": "As a user, I want to search for CIs by Incident company and partner, so that I can find relevant CIs.",
+      "acceptance_criteria": [
+        "CI search list displays only relevant CIs",
+        "CI search list is filtered by Incident company and partner"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Select a partner",
+          "expected_result": "CI search list is filtered by partner",
+          "test_data": "Partner name"
+        }
+      ],
+      "test_scenarios": [
+        "CI search with valid partner"
+      ],
+      "assumptions": [
+        "Partner is selected before searching for CIs"
+      ],
+      "ambiguities": [
+        "What happens if no CIs are found?"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-007"
+    },
+    {
+      "title": "GenAI and Catalina Integration",
+      "description": "Integrate GenAI with Catalina for analysis worklog generation.",
+      "type": "AI Integration",
+      "user_story": "As an analyst, I want GenAI to integrate with Catalina, so that I can automate worklog generation.",
+      "acceptance_criteria": [
+        "GenAI can launch Catalina's analysis"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure GenAI and Catalina integration",
+          "expected_result": "Integration is successful",
+          "test_data": "GenAI and Catalina documentation"
+        }
+      ],
+      "test_scenarios": [
+        "AI integration testing"
+      ],
+      "assumptions": [
+        "GenAI and Catalina are accessible"
+      ],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-008"
+    },
+    {
+      "title": "Request Detail Field Persistence",
+      "description": "Make the Request Detail field persistent and available in the consolidator for sharing details with partners via the Maximo-consolidator-ServiceNow flow.",
+      "type": "Data Model",
+      "user_story": "As a developer, I want the Request Detail field to be persistent and available in the consolidator, so that partners can access the information from the SR to complete the work.",
+      "acceptance_criteria": [
+        "Field needs to be available in DB so that consolidator can send it to ServiceNow"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify request detail field persistence",
+          "expected_result": "Request detail field is persistent and available",
+          "test_data": "Request detail field persistence data"
+        }
+      ],
+      "test_scenarios": [
+        "Request detail field persistence test"
+      ],
+      "assumptions": [
+        "Request detail field persistence system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-009"
+    },
+    {
+      "title": "Customized Catalog for McDonald's",
+      "description": "Create a customized catalog for McDonald's combining offerings from Datavalet, Managed LAN, Managed WAN, and MIS.",
+      "type": "Data Model",
+      "user_story": "As a McDonald's administrator, I want a customized catalog, so that I can manage my offerings effectively.",
+      "acceptance_criteria": [
+        "Customized catalog is properly configured"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure customized catalog",
+          "expected_result": "Catalog is configured as expected",
+          "test_data": "Catalog configuration settings"
+        }
+      ],
+      "test_scenarios": [
+        "Customized catalog testing"
+      ],
+      "assumptions": [
+        "Datavalet, Managed LAN, Managed WAN, and MIS offerings are properly configured"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-010"
+    },
+    {
+      "title": "Prevent Regression of Defect SADRSTRANG-14463",
+      "description": "Prevent the regression of defect SADRSTRANG-14463, which is related to the dynamically associating Maximo tickets to changes feature.",
+      "type": "Defect Prevention",
+      "user_story": "As a developer, I want to prevent the regression of defect SADRSTRANG-14463, so that the dynamically associating Maximo tickets to changes feature works as expected.",
+      "acceptance_criteria": [
+        "Defect SADRSTRANG-14463 is not reproduced",
+        "Dynamically associating Maximo tickets to changes feature works as expected"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify defect SADRSTRANG-14463 prevention",
+          "expected_result": "Defect SADRSTRANG-14463 is not reproduced",
+          "test_data": "Defect SADRSTRANG-14463 prevention data"
+        }
+      ],
+      "test_scenarios": [
+        "Defect SADRSTRANG-14463 prevention test"
+      ],
+      "assumptions": [
+        "Defect SADRSTRANG-14463 prevention system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-011"
+    },
+    {
+      "title": "Worklog Management",
+      "description": "Implement worklog management feature with endpoints for worklog creation, editing, and deletion.",
+      "type": "Data Model",
+      "user_story": "As a user, I want to manage worklogs, so that I can track my work effectively.",
+      "acceptance_criteria": [
+        "Worklog creation endpoint returns success response"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new worklog",
+          "expected_result": "Worklog creation endpoint returns success",
+          "test_data": "Worklog creation data"
+        }
+      ],
+      "test_scenarios": [
+        "Worklog creation testing"
+      ],
+      "assumptions": [
+        "Worklog management feature is accessed through a web browser"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-012"
+    },
+    {
+      "title": "Alarm and Incident Automation Flow Updates",
+      "description": "Update alarm and incident automation flows to match alarm properties.",
+      "type": "Automation",
+      "user_story": "As a system administrator, I want to update automation flows, so that the system can process incidents correctly.",
+      "acceptance_criteria": [
+        "Updates match both Spectrum and BATS alarms"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update automation flows",
+          "expected_result": "Flows are updated correctly",
+          "test_data": "Automation flow documentation"
+        }
+      ],
+      "test_scenarios": [
+        "Automation flow testing"
+      ],
+      "assumptions": [
+        "Spectrum and BATS are integrated"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-013"
+    },
+    {
+      "title": "Meraki Device Monitoring",
+      "description": "Monitor Meraki devices using API getOrganizationDevicesAvailabilities.",
+      "type": "Data Model",
+      "user_story": "As a system administrator, I want to monitor Meraki devices, so that I can ensure their status and uplink statuses are up-to-date.",
+      "acceptance_criteria": [
+        "Device status is retrieved using API"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Call API getOrganizationDevicesAvailabilities",
+          "expected_result": "Device status is retrieved successfully",
+          "test_data": "Meraki API credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Meraki device monitoring testing"
+      ],
+      "assumptions": [
+        "Meraki API is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-014"
+    },
+    {
+      "title": "Device Identification",
+      "description": "Identify the CI matching the source CI using the unique IPv6 address.",
+      "type": "Data Model",
+      "user_story": "As a system administrator, I want to identify the CI matching the source CI using the unique IPv6 address, so that we can associate the device with the correct customer.",
+      "acceptance_criteria": [
+        "CI is identified using the unique IPv6 address",
+        "Device is associated with the correct customer"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify device identification",
+          "expected_result": "Device is identified correctly",
+          "test_data": "Device identification data"
+        }
+      ],
+      "test_scenarios": [
+        "Device identification test"
+      ],
+      "assumptions": [
+        "Device identification system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-015"
+    },
+    {
+      "title": "ITSM Form Field Mappings",
+      "description": "Map incident ticket fields to ITSM form fields.",
+      "type": "Data Model",
+      "user_story": "As a system administrator, I want to map incident ticket fields, so that I can ensure accurate data exchange.",
+      "acceptance_criteria": [
+        "Field mappings are correctly configured"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure field mappings",
+          "expected_result": "Field mappings are correct",
+          "test_data": "Field mapping documentation"
+        }
+      ],
+      "test_scenarios": [
+        "Field mapping testing"
+      ],
+      "assumptions": [
+        "ITSM form fields are correctly configured"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-016"
+    },
+    {
+      "title": "Consolidator updates for ServiceNow sync",
+      "description": "Consolidator updates for missing attributes for ServiceNow sync.",
+      "type": "Data Model",
+      "user_story": "As a system administrator, I want to update consolidator attributes, so that I can ensure data consistency for ServiceNow sync.",
+      "acceptance_criteria": [
+        "Consolidator attributes are updated"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify consolidator updates",
+          "expected_result": "Consolidator attributes are updated correctly",
+          "test_data": "Consolidator update data"
+        }
+      ],
+      "test_scenarios": [
+        "Consolidator updates test"
+      ],
+      "assumptions": [
+        "Consolidator update system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-017"
+    },
+    {
+      "title": "Maximo Updates",
+      "description": "Update Maximo logic, CI spec, and attributes to match new BATS rules and improve data consistency.",
+      "type": "Data Model",
+      "user_story": "As a system administrator, I want to update Maximo logic, CI spec, and attributes, so that I can maintain data consistency and ensure Maximo logic matches new BATS rules.",
+      "acceptance_criteria": [
+        "Maximo logic is properly updated",
+        "Maximo CI spec is populated correctly",
+        "Maximo attributes are updated correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Maximo logic update",
+          "expected_result": "Maximo logic is updated correctly",
+          "test_data": "Maximo logic update data"
+        }
+      ],
+      "test_scenarios": [
+        "Maximo logic update test"
+      ],
+      "assumptions": [
+        "Maximo logic update system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-018"
+    },
+    {
+      "title": "Happy Town High Severity Incidents Report Data Model",
+      "description": "The report includes tracking and follow-up of outstanding items for high severity incidents.",
+      "type": "Data Model",
+      "user_story": "As a contractor, I want to provide an ad-hoc report to Estatic inc that includes tracking and follow-up of outstanding items for high severity incidents, so that they can monitor the incidents.",
+      "acceptance_criteria": [
+        "The report includes the required incident information",
+        "The report is generated within 5 FGWDs of a request by Canada"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify happy town high severity incidents report",
+          "expected_result": "Report is generated correctly",
+          "test_data": "Happy town high severity incidents report data"
+        }
+      ],
+      "test_scenarios": [
+        "Happy town high severity incidents report test"
+      ],
+      "assumptions": [
+        "Happy town high severity incidents report system is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-019"
+    },
+    {
+      "title": "Taxonomy Management",
+      "description": "Modify profile/templates, add new managed elements, and manage taxonomy for Meraki Wi-Fi and MIS Battery.",
+      "type": "Functional",
+      "user_story": "As a customer, I want to modify profiles/templates and navigate through the taxonomy, so that I can find relevant offerings.",
+      "acceptance_criteria": [
+        "New offering: Modify profile/template",
+        "Rate categorie: 1",
+        "SLA: depends on rate categorie",
+        "Meraki Wi-Fi offers are under 'Managed Services' 'Bell Managed Services for Cisco Meraki' 'Wi-fi'"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the platform",
+          "expected_result": "User is logged in",
+          "test_data": "Valid credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Modifying profiles/templates and navigating taxonomy"
+      ],
+      "assumptions": [
+        "Customized catalog MCD is already set up"
+      ],
+      "ambiguities": [
+        "Exact process for modifying profiles/templates"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-020"
+    },
+    {
+      "title": "System Integration",
+      "description": "Configure DEDOPS, assign offering IDs, and integrate systems.",
+      "type": "Functional",
+      "user_story": "As a DEDOPS user, I want to send the correct security clearance level to ESIDE, so that incidents are assigned correctly.",
+      "acceptance_criteria": [
+        "DEDOPS sends correct security clearance level to ESIDE",
+        "Offering ID is assigned correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test DEDOPS API call",
+          "expected_result": "ESIDE receives correct security clearance level",
+          "test_data": "API call payload: {securityClearance: Reliability}"
+        }
+      ],
+      "test_scenarios": [
+        "E2E/UAT testing for DEDOPS configuration"
+      ],
+      "assumptions": [
+        "DEDOPS API call is correctly implemented"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-021"
+    },
+    {
+      "title": "Technical Updates",
+      "description": "This feature includes all technical enhancements such as HTML handling, audit features, and error handling, as well as UI/UX improvements and system and infrastructure updates.",
+      "type": "Functional",
+      "user_story": "As a user, I want the system to handle technical aspects correctly, so that I can use the system efficiently.",
+      "acceptance_criteria": [
+        "Technical enhancements are implemented successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test HTML handling",
+          "expected_result": "HTML is handled correctly",
+          "test_data": "Sample HTML data"
+        }
+      ],
+      "test_scenarios": [
+        "Technical enhancements scenario"
+      ],
+      "assumptions": [
+        "Technical enhancements can be implemented"
+      ],
+      "ambiguities": [
+        "Technical enhancements implementation"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-022"
+    },
+    {
+      "title": "Process Automation and Integration",
+      "description": "This feature includes all process automation and integration such as dynamically associating Maximo tickets to changes, SPACE MOP Maximo change association, and modifying SPACE MOP naming convention.",
+      "type": "Functional",
+      "user_story": "As a user, I want the system to automate processes and integrate with other systems, so that I can use the system efficiently.",
+      "acceptance_criteria": [
+        "Process automation and integration are implemented successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test dynamic association of Maximo tickets to changes",
+          "expected_result": "Association is successful",
+          "test_data": "Sample association data"
+        }
+      ],
+      "test_scenarios": [
+        "Process automation and integration scenario"
+      ],
+      "assumptions": [
+        "Process automation and integration can be implemented"
+      ],
+      "ambiguities": [
+        "Process automation and integration implementation"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-023"
+    },
+    {
+      "title": "Customer Service and Operational Efficiency",
+      "description": "This feature includes all customer service and operational efficiency such as MACD catalog setup, smartpath routing rules, customer request tracking, SPOG incident list enhancement, and E2E test planning and test case creation.",
+      "type": "Functional",
+      "user_story": "As a user, I want the system to provide good customer service and operational efficiency, so that I can use the system efficiently.",
+      "acceptance_criteria": [
+        "Customer service and operational efficiency are implemented successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test MACD catalog setup",
+          "expected_result": "Setup is successful",
+          "test_data": "Sample setup data"
+        }
+      ],
+      "test_scenarios": [
+        "Customer service and operational efficiency scenario"
+      ],
+      "assumptions": [
+        "Customer service and operational efficiency can be implemented"
+      ],
+      "ambiguities": [
+        "Customer service and operational efficiency implementation"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-024"
+    },
+    {
+      "title": "Alarm Management and Monitoring",
+      "description": "Manage and monitor alarms, including temporary suppression, customer and service group restrictions, access control, and BATS rules and UCA filters configuration.",
+      "type": "Functional",
+      "user_story": "As an operations user, I want to manage and monitor alarms, so that I can prevent unnecessary maximo tickets and ensure correct alarm processing.",
+      "acceptance_criteria": [
+        "The system allows users to create a temporary block for a specific alarm type",
+        "The system prevents the creation of overlapping blocks for the same alarm type",
+        "The system allows users to modify and delete blocks",
+        "BATS rules are configured to raise alarms for specific conditions",
+        "UCA filters are configured to cut tickets based on specified logic"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a temporary block for a specific alarm type",
+          "expected_result": "The system creates the block and prevents the alarm type from generating a maximo ticket",
+          "test_data": "Alarm type: BATS, Block duration: 84 hours"
+        }
+      ],
+      "test_scenarios": [
+        "Creating a block for a specific alarm type",
+        "Modifying a block",
+        "Deleting a block",
+        "BATS rule configuration testing",
+        "UCA filter configuration testing"
+      ],
+      "assumptions": [
+        "The system has the necessary integration with the monitoring tool",
+        "The system has the necessary access control"
+      ],
+      "ambiguities": [
+        "The scope of the monitoring tool",
+        "The definition of the customer and service group"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-025"
+    },
+    {
+      "title": "CI Update",
+      "description": "Copy the Related CI from the Primary CI to the Multi CI section of the change.",
+      "type": "Functional",
+      "user_story": "As a change manager, I want to automatically copy the Related CI from the Primary CI to the Multi CI section of the change, so that CI updates are accurate.",
+      "acceptance_criteria": [
+        "Related CI is copied to Multi CI section",
+        "CI updates are accurate"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new change request",
+          "expected_result": "Related CI is copied to Multi CI section",
+          "test_data": "Primary CI with related CI"
+        }
+      ],
+      "test_scenarios": [
+        "Update CI with related CI"
+      ],
+      "assumptions": [
+        "Primary CI has related CI"
+      ],
+      "ambiguities": [
+        "What is the exact process for copying CI"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-026"
+    },
+    {
+      "title": "Via Rail Integration",
+      "description": "Feature related to the Cap&Perf (Bali) evolution for Via Rail integration, including data collection and dashboard creation for new devices.",
+      "type": "Functional",
+      "user_story": "As a user, I want to view metrics for new devices, so that I can monitor their performance.",
+      "acceptance_criteria": [
+        "The dashboard shows metrics for new devices",
+        "The data collection is accurate"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the Bali dashboard",
+          "expected_result": "The dashboard is displayed",
+          "test_data": "Valid login credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Valid login credentials"
+      ],
+      "assumptions": [
+        "The user has valid login credentials"
+      ],
+      "ambiguities": [
+        "The definition of 'new devices'"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-027"
+    },
+    {
+      "title": "AI-Assisted Command Comparison",
+      "description": "Provide a system capability for comparing pre and post commands using AI assistance for efficient analysis and reporting.",
+      "type": "Functional",
+      "user_story": "As a system user, I want to compare pre and post commands using AI assistance, so that I can efficiently analyze and report on command comparisons.",
+      "acceptance_criteria": [
+        "The system must be able to analyze commands",
+        "The system must provide comparison reports",
+        "The system must utilize AI for efficient processing"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Input commands for comparison",
+          "expected_result": "The system analyzes and compares the commands",
+          "test_data": "Sample commands for testing"
+        }
+      ],
+      "test_scenarios": [
+        "Comparing commands with varying parameters"
+      ],
+      "assumptions": [
+        "AI capabilities are integrated and functional"
+      ],
+      "ambiguities": [
+        "Definition of efficient analysis and reporting"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-028"
+    },
+    {
+      "title": "SLA Compliance and Performance",
+      "description": "Ensure SLA details are met and modify SLA conditions as necessary.",
+      "type": "Functional",
+      "user_story": "As a BMO incident manager, I want to ensure SLA details are met, so that I can provide timely updates to customers.",
+      "acceptance_criteria": [
+        "MTTN is met within 15 minutes",
+        "MTTRespond is met within 30 minutes",
+        "SLA conditions are modified to include OffNormals&Expedited"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an incident and verify MTTN is met within 15 minutes",
+          "expected_result": "MTTN is met within 15 minutes",
+          "test_data": "MTTN timer"
+        }
+      ],
+      "test_scenarios": [
+        "Testing MTTN and MTTRespond"
+      ],
+      "assumptions": [
+        "Incident management system is properly configured"
+      ],
+      "ambiguities": [
+        "Exact configuration of the incident management system"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-029"
+    },
+    {
+      "title": "Include 3 Free Expedite/Urgent per Month on Managed Devices",
+      "description": "Include 3 free expedite/urgent per month on managed devices.",
+      "type": "Functional",
+      "user_story": "As a user, I want to have 3 free expedite/urgent per month on managed devices, so that I can manage my devices efficiently.",
+      "acceptance_criteria": [
+        "3 free expedite/urgent per month are included on managed devices"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify that 3 free expedite/urgent per month are included on managed devices",
+          "expected_result": "3 free expedite/urgent per month are included on managed devices",
+          "test_data": "Managed devices"
+        }
+      ],
+      "test_scenarios": [
+        "Verify that 3 free expedite/urgent per month are included on managed devices"
+      ],
+      "assumptions": [
+        "The current expedite/urgent policy is not effective"
+      ],
+      "ambiguities": [
+        "The definition of managed devices"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-030"
+    },
+    {
+      "title": "Setup Thresholds on MACD Type 1 & Type 2",
+      "description": "Setup thresholds on MACD type 1 & type 2.",
+      "type": "Functional",
+      "user_story": "As a user, I want to have thresholds set up on MACD type 1 & type 2, so that I can monitor and analyze them.",
+      "acceptance_criteria": [
+        "Thresholds are set up on MACD type 1 & type 2"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify that thresholds are set up on MACD type 1 & type 2",
+          "expected_result": "Thresholds are set up on MACD type 1 & type 2",
+          "test_data": "MACD type 1 & type 2"
+        }
+      ],
+      "test_scenarios": [
+        "Verify that thresholds are set up on MACD type 1 & type 2"
+      ],
+      "assumptions": [
+        "The current thresholds are not effective"
+      ],
+      "ambiguities": [
+        "The definition of MACD type 1 & type 2"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-031"
+    },
+    {
+      "title": "Rename Stratejm Partner Name",
+      "description": "Rename the Stratejm partner name to Bell Cyber in Maximo and BBM SNOW.",
+      "type": "Functional",
+      "user_story": "As a user, I want to see the partner name as Bell Cyber, so that I can identify the partner correctly.",
+      "acceptance_criteria": [
+        "Partner name is updated to Bell Cyber"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Check partner name in Maximo",
+          "expected_result": "Partner name is Bell Cyber",
+          "test_data": "Partner name"
+        }
+      ],
+      "test_scenarios": [
+        "Check partner name in Maximo"
+      ],
+      "assumptions": [
+        "Partner name is currently Stratejm"
+      ],
+      "ambiguities": [
+        "What if the partner name is not updated?"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-032"
+    },
+    {
+      "title": "Variation List and Field Requirements",
+      "description": "The system should provide a variation list with specific fields, such as BLCHANGETMPLT and BL_CHGWINDOWSTART, and the fields should have specific requirements, such as data type and field length.",
+      "type": "Functional",
+      "user_story": "As a user, I want to access a variation list with specific fields and requirements, so that I can manage variations correctly.",
+      "acceptance_criteria": [
+        "The variation list is available",
+        "The fields have specific requirements, such as data type and field length"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the variation list",
+          "expected_result": "The variation list is available and includes fields with specific requirements",
+          "test_data": "Variation list: 'Create a Change', Fields: BLCHANGETMPLT, BL_CHGWINDOWSTART"
+        }
+      ],
+      "test_scenarios": [
+        "Test with required fields"
+      ],
+      "assumptions": [
+        "The variation list is properly implemented"
+      ],
+      "ambiguities": [
+        "The field requirements are not clearly defined"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-033"
+    },
+    {
+      "title": "Use Correct BLCHANGETMPLT Value",
+      "description": "The BLCHANGETMPLT value should be set to a correct value, such as 'Hardware replacement with Serial #', instead of '123'.",
+      "type": "Functional",
+      "user_story": "As a user, I want to use the correct BLCHANGETMPLT value, so that the payload request is successful.",
+      "acceptance_criteria": [
+        "The BLCHANGETMPLT value is set to a correct value",
+        "The payload request is successful"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set the BLCHANGETMPLT value to 'Hardware replacement with Serial #'",
+          "expected_result": "The payload request is successful",
+          "test_data": "BLCHANGETMPLT value: 'Hardware replacement with Serial #'"
+        }
+      ],
+      "test_scenarios": [
+        "Test with correct BLCHANGETMPLT value"
+      ],
+      "assumptions": [
+        "The correct BLCHANGETMPLT value is known"
+      ],
+      "ambiguities": [
+        "The correct BLCHANGETMPLT value is not clearly defined"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-034"
+    },
+    {
+      "title": "Update Resource Inventory API",
+      "description": "Update the Resource Inventory API to include 7 new device types in the Bell QA environment.",
+      "type": "Functional",
+      "user_story": "As a user, I want to update the Resource Inventory API to include new device types, so that I can manage resources more effectively.",
+      "acceptance_criteria": [
+        "Successful update of API",
+        "Inclusion of 7 new device types"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update the Resource Inventory API",
+          "expected_result": "API updated successfully",
+          "test_data": "7 new device types"
+        }
+      ],
+      "test_scenarios": [
+        "Testing with new device types"
+      ],
+      "assumptions": [
+        "API update does not affect existing functionality"
+      ],
+      "ambiguities": [
+        "Confirmation of exact device types to be included"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-035"
+    },
+    {
+      "title": "Feature Enablement and Management",
+      "description": "This feature includes all requirements related to enabling, managing, and removing specific functionalities or offerings.",
+      "type": "Functional",
+      "user_story": "As a user, I want to enable, manage, and remove features, so that I can customize the system to my needs.",
+      "acceptance_criteria": [
+        "Features can be enabled, managed, and removed successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Enable a feature",
+          "expected_result": "The feature is enabled successfully",
+          "test_data": "Sample feature data"
+        }
+      ],
+      "test_scenarios": [
+        "Feature enablement and management scenario"
+      ],
+      "assumptions": [
+        "Features can be enabled, managed, and removed"
+      ],
+      "ambiguities": [
+        "Feature enablement and management process"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-036"
+    },
+    {
+      "title": "Datavalet Version Configuration",
+      "description": "Configure Datavalet Version (MCDO-04) for BBMSA-13025.",
+      "type": "Functional",
+      "user_story": "As a developer, I want to configure Datavalet Version (MCDO-04), so that it works correctly.",
+      "acceptance_criteria": [
+        "Datavalet Version (MCDO-04) is properly configured"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the configuration of Datavalet Version (MCDO-04)",
+          "expected_result": "The configuration is correct",
+          "test_data": "BBMSA-13025"
+        }
+      ],
+      "test_scenarios": [
+        "Test scenario for Datavalet Version (MCDO-04)"
+      ],
+      "assumptions": [
+        "The system is properly configured"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-037"
+    },
+    {
+      "title": "Add New Managed Element - New Location",
+      "description": "Add a new managed element - new location: DV-046.",
+      "type": "Functional",
+      "user_story": "As an administrator, I want to add a new managed element - new location, so that I can manage new locations.",
+      "acceptance_criteria": [
+        "Add a new managed element - new location: DV-046"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the platform",
+          "expected_result": "User is logged in",
+          "test_data": "Valid credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Administrator logs in and navigates to the 'Add new managed element - new location' offering"
+      ],
+      "assumptions": [
+        "The customized catalog MCD is already set up"
+      ],
+      "ambiguities": [
+        "What is the exact process for adding a new managed element - new location"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-038"
+    },
+    {
+      "title": "Change Offering MERAKI_113",
+      "description": "Change offering MERAKI_113 to remove 'an URL' 'un URL'.",
+      "type": "Functional",
+      "user_story": "As an administrator, I want to change the offering MERAKI_113, so that it is updated correctly.",
+      "acceptance_criteria": [
+        "Change offering MERAKI_113 to remove 'an URL' 'un URL'"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the platform",
+          "expected_result": "User is logged in",
+          "test_data": "Valid credentials"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Administrator logs in and navigates to the 'MERAKI_113' offering"
+      ],
+      "assumptions": [
+        "The customized catalog MCD is already set up"
+      ],
+      "ambiguities": [
+        "What is the exact process for changing the offering MERAKI_113"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-039"
+    },
+    {
+      "title": "Inventory Management",
+      "description": "Manage inventory using Maximo and AAI data, including merged inventory creation and BDC configuration.",
+      "type": "Functional",
+      "user_story": "As a user, I want to manage inventory, so that I can track and update inventory levels.",
+      "acceptance_criteria": [
+        "Inventory is managed using Maximo and AAI data",
+        "Inventory levels are updated correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a merged inventory in BigQuery",
+          "expected_result": "Merged inventory is created successfully",
+          "test_data": "Maximo and AAI data"
+        },
+        {
+          "step_num": 2,
+          "action": "Configure BDC to consume from the merged inventory",
+          "expected_result": "BDC can consume from the merged inventory successfully",
+          "test_data": "BDC configuration data"
+        }
+      ],
+      "test_scenarios": [
+        "Test merged inventory creation",
+        "Test BDC consumption from merged inventory"
+      ],
+      "assumptions": [
+        "Maximo and AAI data are available",
+        "BDC is configured correctly"
+      ],
+      "ambiguities": [
+        "Definition of 'merged inventory'"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-040"
+    },
+    {
+      "title": "Service Request Management",
+      "description": "Manage service requests, including attribute consolidation and attachment sections for ServiceNow.",
+      "type": "Functional",
+      "user_story": "As a ServiceNow user, I want to manage service requests, so that I can have a comprehensive view of service request data.",
+      "acceptance_criteria": [
+        "Service request attributes are consolidated",
+        "Attachment sections are available for service requests"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Consolidate service request attributes",
+          "expected_result": "Service request attributes are consolidated correctly",
+          "test_data": "Sample service request attribute data"
+        },
+        {
+          "step_num": 2,
+          "action": "Configure attachment sections for service requests",
+          "expected_result": "Attachment sections are available and functional",
+          "test_data": "Sample attachment data"
+        }
+      ],
+      "test_scenarios": [
+        "Test service request attribute consolidation",
+        "Test attachment section functionality"
+      ],
+      "assumptions": [
+        "Service request attribute data is available",
+        "Attachment data is available"
+      ],
+      "ambiguities": [
+        "Mapping of service request attributes in ServiceNow",
+        "Format of attachment data in ServiceNow"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-041"
+    },
+    {
+      "title": "DDoS Evolution: EDGE DDoS Catalog Update and Job Plan Update for EDGE-DISC",
+      "description": "Update the MACD catalog to include only the specified offerings for EDGE DDoS and update the job plan for offering EDGEDDOS-1 to include the sequence: Confirm Customer termination details, Perform Decommission Activities, Decommission Edge DDoS Service, Inform Stratejm",
+      "type": "Functional",
+      "user_story": "As a user, I want to access the updated EDGE DDoS catalog and job plan, so that I can efficiently manage DDoS services",
+      "acceptance_criteria": [
+        "The EDGE DDoS catalog includes only the specified offerings",
+        "The job plan includes the specified sequence"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the EDGE DDoS catalog",
+          "expected_result": "The catalog includes only the specified offerings",
+          "test_data": "EDGE DDoS catalog"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify the job plan update",
+          "expected_result": "The job plan is updated to reflect the new sequence",
+          "test_data": "EDGE-DISC job plan update"
+        }
+      ],
+      "test_scenarios": [
+        "Valid user access",
+        "Invalid user access"
+      ],
+      "assumptions": [
+        "The user has the necessary permissions to access the catalog and job plan"
+      ],
+      "ambiguities": [
+        "The catalog update process",
+        "The job plan update process"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-042"
+    },
+    {
+      "title": "MCS JVN SLA Hold Implementation",
+      "description": "Ensure correct implementation of SLA requirements for MCS (JVN) customer, as defined in CR 17, by making only the contractually specified 'SLA Hold - Per JVN Contract: Starting after 30 Min Grace' initially available for MCS (JVN) tickets",
+      "type": "Functional",
+      "user_story": "As a user, I want to apply the correct SLA hold option for MCS (JVN) tickets, so that I can ensure compliance with the JVN contract",
+      "acceptance_criteria": [
+        "Initial State - Never SLA held Ticket: only 'SLA Hold - Per JVN Contract: Starting after 30 Min Grace' option is available",
+        "First Application of JVN Contractual Hold: system records the hold event, sends email notification to JVN ticket initiator, and initiates a 2-hour timer for a subsequent email to the JVN SPOC"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an MCS (JVN) ticket",
+          "expected_result": "Only 'SLA Hold - Per JVN Contract: Starting after 30 Min Grace' option is available",
+          "test_data": "MCS (JVN) ticket"
+        },
+        {
+          "step_num": 2,
+          "action": "Apply 'SLA Hold - Per JVN Contract: Starting after 30 Min Grace' option",
+          "expected_result": "System records the hold event, sends email notification to JVN ticket initiator, and initiates a 2-hour timer for a subsequent email to the JVN SPOC",
+          "test_data": "MCS (JVN) ticket"
+        }
+      ],
+      "test_scenarios": [
+        "Initial State - Never SLA held Ticket",
+        "First Application of JVN Contractual Hold"
+      ],
+      "assumptions": [
+        "The system is configured to recognize MCS (JVN) tickets"
+      ],
+      "ambiguities": [
+        "The exact wording of the email notifications"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-043"
+    },
+    {
+      "title": "Utility Power Validation",
+      "description": "Integrate with Poweroutage.com to validate utility power outages for incidents",
+      "type": "Functional",
+      "user_story": "As a system user, I want to automatically detect utility power outages, so that incident tickets can be updated accurately",
+      "acceptance_criteria": [
+        "Poweroutage.com API is successfully integrated",
+        "Incident tickets are updated with power outage information"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Trigger a test incident",
+          "expected_result": "Incident ticket is created and power outage detection is initiated",
+          "test_data": "Sample incident data"
+        },
+        {
+          "step_num": 2,
+          "action": "Simulate a power outage scenario",
+          "expected_result": "Poweroutage.com API returns a positive outage detection",
+          "test_data": "Simulated power outage data"
+        }
+      ],
+      "test_scenarios": [
+        "B2B customer scenario",
+        "Standard customer scenario"
+      ],
+      "assumptions": [
+        "Poweroutage.com API is reliable and accessible"
+      ],
+      "ambiguities": [
+        "Handling API request failures or timeouts"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-044"
+    },
+    {
+      "title": "SLA Corrections - CR003",
+      "description": "Disable all custom SLA rules built in feature BBMSA-12797 and apply standard SLA rules with specified priorities, resolution times, and notification settings",
+      "type": "Functional",
+      "user_story": "As a user, I want to ensure that SLA rules are corrected to standard SLA's, so that reporting is accurate",
+      "acceptance_criteria": [
+        "All custom SLA rules delivered in feature BBMSA-12797 are disabled",
+        "New SLA's applied are standard as per the table in the feature description"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Disable custom SLA rules",
+          "expected_result": "Custom SLA rules are disabled",
+          "test_data": "Feature BBMSA-12797"
+        },
+        {
+          "step_num": 2,
+          "action": "Apply standard SLA rules",
+          "expected_result": "Standard SLA rules are applied",
+          "test_data": "Standard SLA rules table"
+        }
+      ],
+      "test_scenarios": [
+        "UAT testing",
+        "DVT testing"
+      ],
+      "assumptions": [
+        "Pre-production environment is available",
+        "Development environment is available"
+      ],
+      "ambiguities": [
+        "Clarification on SLAs is required"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-045"
+    },
+    {
+      "title": "Auto Audit CMDB evo CR 3",
+      "description": "Implement new audit business rules for Auto Audit CMDB evo CR 3",
+      "type": "Functional",
+      "user_story": "As a user, I want to audit Maximo CI against its active OBA baseline, so that I can ensure compliance with the baseline",
+      "acceptance_criteria": [
+        "The Audit must pass even if the CI contains CI Specification (Spec) that are not defined in the OBA baseline",
+        "The Audit must validate CI Specs that are present in both the Maximo CI and the OBA baseline against their respective baseline values"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Enable the 'Allow Adding More' toggle on OBA baseline Specification section",
+          "expected_result": "The Audit must pass even if the CI contains CI Specification (Spec) that are not defined in the OBA baseline",
+          "test_data": "Maximo CI with CI Specification (Spec) that are not defined in the OBA baseline"
+        },
+        {
+          "step_num": 2,
+          "action": "Disable the 'Allow Adding More' toggle on OBA baseline Specification section",
+          "expected_result": "The Audit must fail and flag an individual error for any Spec found in the Maximo CI that is not defined in the OBA baseline",
+          "test_data": "Maximo CI with CI Specification (Spec) that are not defined in the OBA baseline"
+        }
+      ],
+      "test_scenarios": [
+        "Enabling the 'Allow Adding More' toggle on OBA baseline Specification section",
+        "Disabling the 'Allow Adding More' toggle on OBA baseline Specification section"
+      ],
+      "assumptions": [
+        "The Maximo CI and OBA baseline are properly configured"
+      ],
+      "ambiguities": [
+        "The behavior of the Audit when the 'Allow Adding More' toggle is enabled or disabled is not clearly defined"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-046"
+    },
+    {
+      "title": "Audit Rule Update for Numeric and Table Specifications",
+      "description": "Update audit rules to compare CI Spec Attribute value vs Baseline Spec attribute Value, honoring 'Value' field, 'Mandatory', 'editable' toggle options, and 'Available option' values",
+      "type": "Functional",
+      "user_story": "As a user, I want the system to accurately audit specifications with numeric and table values, so that I can ensure data consistency and integrity",
+      "acceptance_criteria": [
+        "Audit rules compare CI Spec Attribute value vs Baseline Spec attribute Value",
+        "Audit rules honor 'Value' field, 'Mandatory', 'editable' toggle options, and 'Available option' values"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Add two specifications (one Numeric and one Table) to the baseline",
+          "expected_result": "Audit should not show any errors",
+          "test_data": "Default values, available options, and mandatory settings"
+        },
+        {
+          "step_num": 2,
+          "action": "Create a CI and add values from the available options to both specifications",
+          "expected_result": "Audit should not show any errors",
+          "test_data": "Default values, available options, and mandatory settings"
+        }
+      ],
+      "test_scenarios": [
+        "Default Value",
+        "Available Options",
+        "Missing Specifications",
+        "Missing Value or Wrong Value"
+      ],
+      "assumptions": [
+        "The system has the necessary baseline and CI data"
+      ],
+      "ambiguities": [
+        "The exact implementation details of the audit rules"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-047"
+    },
+    {
+      "title": "Send/Publish a CLEAR to UCA",
+      "description": "Send/publish a CLEAR to UCA to force a CLEAR to any alarms suppressed that remain in NOT_CLEARED in the Related Records of the Change module of Maximo",
+      "type": "Functional",
+      "user_story": "As a user, I want to send/publish a CLEAR to UCA to force a CLEAR to any alarms suppressed that remain in NOT_CLEARED, so that I can ensure that all alarms are properly cleared",
+      "acceptance_criteria": [
+        "A CLEAR is sent/published to UCA to force a CLEAR to any alarms suppressed that remain in NOT_CLEARED"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the send/publish CLEAR to UCA functionality",
+          "expected_result": "A CLEAR is sent/published to UCA to force a CLEAR to any alarms suppressed that remain in NOT_CLEARED",
+          "test_data": "Test data for send/publish CLEAR to UCA"
+        }
+      ],
+      "test_scenarios": [
+        "Test scenario for send/publish CLEAR to UCA"
+      ],
+      "assumptions": [
+        "The UCA system is properly configured to receive CLEAR messages"
+      ],
+      "ambiguities": [
+        "The exact format of the CLEAR message is not clearly defined"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-048"
+    },
+    {
+      "title": "Modify Device Affecting CI Logic",
+      "description": "Modify the Device Affecting logic rules to continue suppression of CI alarms, however to release CIs from suppression when Implementation activity goes from INPROG to COMP",
+      "type": "Functional",
+      "user_story": "As a user, I want to modify the Device Affecting CI logic to suppress CI alarms during maintenance mode and release them when the implementation activity is completed, so that I can effectively manage CI alarms",
+      "acceptance_criteria": [
+        "CIs suppressed via Device Affecting CI logic release at the completion of Implementation activity"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the Device Affecting CI logic",
+          "expected_result": "CIs are suppressed during maintenance mode and released when the implementation activity is completed",
+          "test_data": "Test data for Device Affecting CI logic"
+        }
+      ],
+      "test_scenarios": [
+        "Test scenario for Device Affecting CI logic"
+      ],
+      "assumptions": [
+        "The Device Affecting CI logic is currently working as expected"
+      ],
+      "ambiguities": [
+        "The exact rules for suppressing CI alarms are not clearly defined"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-049"
+    },
+    {
+      "title": "Power Outage Update Polling",
+      "description": "Poll for power outage updates and add flags to stop polling",
+      "type": "Functional",
+      "user_story": "As a user, I want the system to poll for power outage updates, so that I can receive the latest information",
+      "acceptance_criteria": [
+        "Polling for power outage updates",
+        "Flag to stop polling"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Simulate a power outage update",
+          "expected_result": "The system polls for the update and adds a flag to stop polling",
+          "test_data": "Power outage update information"
+        }
+      ],
+      "test_scenarios": [
+        "Power outage update polling and flagging"
+      ],
+      "assumptions": [
+        "Poweroutage.com API is available and functional"
+      ],
+      "ambiguities": [
+        "Definition of 'polling' and 'flag to stop polling'"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-050"
+    },
+    {
+      "title": "Assign Task to NDDOSMAC-7 Offering",
+      "description": "Assign the task to the NDDOSMAC-7 offering",
+      "type": "Functional",
+      "user_story": "As a project manager, I want to assign the task to the NDDOSMAC-7 offering, so that it is properly executed",
+      "acceptance_criteria": [
+        "Task is assigned successfully",
+        "Offering is correctly configured"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Assign task to NDDOSMAC-7 offering",
+          "expected_result": "Task is assigned and configured correctly",
+          "test_data": "Sample task assignment data"
+        }
+      ],
+      "test_scenarios": [
+        "Normal task assignment scenario",
+        "Error handling scenario"
+      ],
+      "assumptions": [
+        "Access to task management system",
+        "Required permissions and credentials"
+      ],
+      "ambiguities": [
+        "Clarification on specific task requirements"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-051"
+    },
+    {
+      "title": "Exclude Security Related Service Groups",
+      "description": "Exclude Security related service groups (i.e., BSURE, etc.)",
+      "type": "Functional",
+      "user_story": "As a user, I want to exclude security-related service groups, so that I can ensure the security of my projects",
+      "acceptance_criteria": [
+        "Security-related service groups are excluded",
+        "No security-related service groups are included"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Try to include a security-related service group",
+          "expected_result": "The inclusion is prevented",
+          "test_data": "BSURE"
+        }
+      ],
+      "test_scenarios": [
+        "Valid exclusion",
+        "Invalid exclusion"
+      ],
+      "assumptions": [
+        "The user has the necessary permissions",
+        "The security-related service group exists"
+      ],
+      "ambiguities": [
+        "What happens if the user tries to include a security-related service group?",
+        "What if the security-related service group does not exist?"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-052"
+    },
+    {
+      "title": "IT Service Catalogue Management",
+      "description": "Update IT service catalog to add or modify new IT services and components.",
+      "type": "Functional",
+      "user_story": "As a user, I want to update the IT service catalog, so that I can manage IT services effectively.",
+      "acceptance_criteria": [
+        "New IT services are added or modified",
+        "New IT components are added or modified",
+        "Services are related to components correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update IT service catalog",
+          "expected_result": "IT service catalog is updated correctly",
+          "test_data": "New IT service and component data"
+        }
+      ],
+      "test_scenarios": [
+        "Update IT service catalog"
+      ],
+      "assumptions": [
+        "IT service catalog is available"
+      ],
+      "ambiguities": [
+        "None"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-053"
+    },
+    {
+      "title": "Unique IPv6 Address Assignment",
+      "description": "Assign unique IPv6 addresses to each managed services device using NAT46.",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to assign unique IPv6 addresses to each managed services device, so that I can identify the source CI.",
+      "acceptance_criteria": [
+        "Each device has a unique IPv6 address assigned",
+        "The IPv6 addresses are correctly NATed from the incoming IPv4 addresses"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure the NAT46 solution to assign unique IPv6 addresses",
+          "expected_result": "The devices are assigned unique IPv6 addresses",
+          "test_data": "Sample device configurations"
+        }
+      ],
+      "test_scenarios": [
+        "Assigning unique IPv6 addresses to multiple devices"
+      ],
+      "assumptions": [
+        "The NAT46 solution is correctly implemented"
+      ],
+      "ambiguities": [
+        "The exact implementation details of the NAT46 solution"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-054"
+    },
+    {
+      "title": "Incident Automation and RHPAM Decommissioning",
+      "description": "Move incident automation from RHPAM to Stackstorm and decommission RHPAM.",
+      "type": "Functional",
+      "user_story": "As a user, I want to automate incident responses and decommission RHPAM, so that I can improve efficiency and reduce costs.",
+      "acceptance_criteria": [
+        "Incident automation is moved to Stackstorm",
+        "RHPAM is decommissioned"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Move incident automation to Stackstorm",
+          "expected_result": "Incident automation is moved to Stackstorm",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Decommission RHPAM",
+          "expected_result": "RHPAM is decommissioned",
+          "test_data": "None"
+        }
+      ],
+      "test_scenarios": [
+        "E2E testing"
+      ],
+      "assumptions": [
+        "RHPAM is currently being used"
+      ],
+      "ambiguities": [
+        "None"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-055"
+    },
+    {
+      "title": "Spectrum Decomposition and SNMP Trap Rules Transposition",
+      "description": "Decompose Spectrum to collect and populate new attributes, and transpose SNMP trap rules from Spectrum to BATS.",
+      "type": "Functional",
+      "user_story": "As a system administrator, I want to decompose Spectrum and transpose SNMP trap rules, so that I can improve system functionality and ensure seamless monitoring and alerting.",
+      "acceptance_criteria": [
+        "The Maximo CIs' attributes are populated by the BDC",
+        "The attributes are regularly updated/refreshed",
+        "All Spectrum SNMP trap rules are configured in BATS"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Decompose Spectrum to collect and populate new attributes",
+          "expected_result": "The Maximo CIs' attributes are populated by the BDC",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Configure BATS with transposed SNMP trap rules",
+          "expected_result": "BATS raises alarms for the same Syslog events as Spectrum",
+          "test_data": "Sample SNMP trap rules from Spectrum"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Decompose Spectrum and populate new attributes",
+        "Scenario 2: Configure BATS with transposed SNMP trap rules"
+      ],
+      "assumptions": [
+        "The BATS system is compatible with the transposed SNMP trap rules"
+      ],
+      "ambiguities": [
+        "The exact mapping of Spectrum alarm properties to BATS alarm properties"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-056"
+    },
+    {
+      "title": "Catalina Testing and Air Canada Standard Change Request",
+      "description": "Add pre-BDPA ACA 2 tests in Catalina, and send standard change requests to Air Canada via the Change API.",
+      "type": "Functional",
+      "user_story": "As a user, I want to ensure the quality of the feature and automate the process of sending standard change requests, so that I can reduce manual errors and improve efficiency.",
+      "acceptance_criteria": [
+        "Pre-BDPA ACA 2 tests are added in Catalina",
+        "Updated mapping is applied by Maximo and ESIDE to send to Air Canada"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Add pre-BDPA ACA 2 tests in Catalina",
+          "expected_result": "Pre-BDPA ACA 2 tests are added in Catalina",
+          "test_data": "None"
+        },
+        {
+          "step_num": 2,
+          "action": "Send a standard change request from Maximo to Air Canada via the Change API",
+          "expected_result": "The request is successfully sent and processed by Air Canada's ServiceNow",
+          "test_data": "Air Canada standard change template"
+        }
+      ],
+      "test_scenarios": [
+        "E2E testing with Air Canada's ServiceNow",
+        "UAT testing with Maximo users"
+      ],
+      "assumptions": [
+        "Air Canada will review and accept Bell standard changes via the Change API",
+        "ESIDE will not need to make a separate API call to Air Canada"
+      ],
+      "ambiguities": [
+        "Additional Air Canada templates may be created, requiring a new project to include the additional template name"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-057"
+    },
+    {
+      "title": "Rocket Team Relation Update Requests and Bulk Change Process Fix",
+      "description": "Configure Rocket team relation update requests to only send requests for CIs that exist in both DNAC and Maximo, and fix the bulk change process to not reject the whole batch when a CI does not exist in the CMDB.",
+      "type": "Functional",
+      "user_story": "As a developer, I want to configure Rocket team relation update requests and fix the bulk change process, so that I can ensure correct relation updates and efficient bulk changes.",
+      "acceptance_criteria": [
+        "Rocket team relation update requests are configured correctly",
+        "The bulk change process is fixed to not reject the whole batch when a CI does not exist in the CMDB"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure Rocket team relation update requests",
+          "expected_result": "Requests are configured correctly",
+          "test_data": "Sample CIs in DNAC and Maximo"
+        },
+        {
+          "step_num": 2,
+          "action": "Test the bulk change process with CIs that do not exist in the CMDB",
+          "expected_result": "The bulk change process completes successfully without rejecting the whole batch",
+          "test_data": "CIs that do not exist in the CMDB"
+        }
+      ],
+      "test_scenarios": [
+        "Rocket team relation update request testing",
+        "Bulk change process testing with CIs that do not exist in the CMDB"
+      ],
+      "assumptions": [
+        "Rocket team relation update requests can be configured",
+        "The bulk change process can be fixed to correctly handle CIs that do not exist in the CMDB"
+      ],
+      "ambiguities": [
+        "Unclear Rocket team relation update request configuration process",
+        "Exact requirements for the fix of the bulk change process are not clearly defined"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-058"
+    },
+    {
+      "title": "ServiceNow Integration",
+      "description": "Attach documents to an Activity in OCSA, and integrate ServiceNow with Maximo for worklog consolidation and service request attribute consolidation.",
+      "type": "Functional",
+      "user_story": "As a user, I want to attach documents to an Activity in OCSA, and integrate ServiceNow with Maximo, so that I can share information with clients or internal teams and have a comprehensive view of service request data.",
+      "acceptance_criteria": [
+        "The attachment is successfully added to the Activity",
+        "The attachment is viewable by the client or internal teams as intended",
+        "Worklogs are consolidated and sent to ServiceNow",
+        "Service request attributes are consolidated and sent to ServiceNow"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Attach a document to an Activity in OCSA",
+          "expected_result": "The document is successfully attached and viewable",
+          "test_data": "Sample document for attachment"
+        },
+        {
+          "step_num": 2,
+          "action": "Consolidate worklogs and send to ServiceNow",
+          "expected_result": "Worklogs are consolidated and sent to ServiceNow",
+          "test_data": "Sample worklog data"
+        },
+        {
+          "step_num": 3,
+          "action": "Consolidate service request attributes and send to ServiceNow",
+          "expected_result": "Service request attributes are consolidated and sent to ServiceNow",
+          "test_data": "Sample service request attribute data"
+        }
+      ],
+      "test_scenarios": [
+        "Attachment is viewable by client",
+        "Worklog consolidation and sending to ServiceNow",
+        "Service request attribute consolidation and sending to ServiceNow"
+      ],
+      "assumptions": [
+        "The user has the necessary permissions to attach documents",
+        "ServiceNow is configured to receive worklogs and service request attributes"
+      ],
+      "ambiguities": [
+        "What happens if the attachment exceeds a certain file size limit?",
+        "Mapping of service request attributes in ServiceNow"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-059"
+    },
+    {
+      "title": "Proactive Monitoring of Rogue Threat Events",
+      "description": "Proactively monitor and raise incident tickets on rogue threat events to reduce security vulnerabilities and downtime.",
+      "type": "Functional",
+      "user_story": "As a security operator, I want to proactively monitor and raise incident tickets on rogue threat events, so that I can reduce security vulnerabilities and downtime.",
+      "acceptance_criteria": [
+        "Rogue threat events are monitored and incident tickets are raised"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure proactive monitoring of rogue threat events",
+          "expected_result": "Rogue threat events are monitored and incident tickets are raised",
+          "test_data": "Sample rogue threat event data"
+        }
+      ],
+      "test_scenarios": [
+        "Proactive monitoring of rogue threat events"
+      ],
+      "assumptions": [
+        "Rogue threat events can be monitored and incident tickets can be raised"
+      ],
+      "ambiguities": [
+        "Definition of 'rogue threat events'"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-060"
+    },
+    {
+      "title": "Enrich Maximo CIs with VPN Mode",
+      "description": "Enrich Maximo CIs with VPN mode using the collected VPN peer data.",
+      "type": "Functional",
+      "user_story": "As a network administrator, I want to enrich Maximo CIs with VPN mode, so that I can monitor network latency.",
+      "acceptance_criteria": [
+        "Maximo CIs are updated with VPN mode",
+        "VPN mode is correctly populated in Maximo CIs"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update Maximo CIs with VPN mode",
+          "expected_result": "Maximo CIs are updated with VPN mode",
+          "test_data": "Maximo CI data"
+        }
+      ],
+      "test_scenarios": [
+        "Test scenario 1: Enrich Maximo CIs with VPN mode"
+      ],
+      "assumptions": [
+        "Maximo CI data is available"
+      ],
+      "ambiguities": [
+        "Ambiguity 1: Definition of VPN mode"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-061"
+    },
+    {
+      "title": "Create New Route in DB",
+      "description": "Create a new route in the database for historical data storage.",
+      "type": "Functional",
+      "user_story": "As a database administrator, I want to create a new route in the DB for historical data, so that I can efficiently store and manage backup data.",
+      "acceptance_criteria": [
+        "New route is successfully created in the DB",
+        "Route supports historical data storage"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Attempt to create a new route",
+          "expected_result": "Route is created successfully",
+          "test_data": "Sample route configuration"
+        }
+      ],
+      "test_scenarios": [
+        "Historical data storage and retrieval"
+      ],
+      "assumptions": [
+        "DB schema supports new route creation"
+      ],
+      "ambiguities": [
+        "Specific DB schema details"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-062"
+    },
+    {
+      "title": "Automated Email Communication for Voice Analysts and Incident Managers",
+      "description": "Automated email communication from Maximo to Voice Analysts and Incident Managers for BMO of the centralized Edgemarcs.",
+      "type": "Functional",
+      "user_story": "As a Voice Analyst or Incident Manager, I want to receive automated email communications from Maximo, so that I can stay informed about Edgemarcs.",
+      "acceptance_criteria": [
+        "Automated email communication is functional",
+        "Emails are successfully sent to Voice Analysts and Incident Managers"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure automated email communication in Maximo",
+          "expected_result": "Automated email communication is functional",
+          "test_data": "Email addresses of Voice Analysts and Incident Managers"
+        }
+      ],
+      "test_scenarios": [
+        "Send automated email to Voice Analysts and Incident Managers"
+      ],
+      "assumptions": [
+        "Maximo is configured for automated email communication"
+      ],
+      "ambiguities": [
+        "None"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-063"
+    },
+    {
+      "title": "Customized SLAs for Centralized Edgemarcs",
+      "description": "Customized SLAs for the centralized Edgemarcs, specifically SLs 23 & 24.",
+      "type": "Functional",
+      "user_story": "As a user, I want to have customized SLAs for centralized Edgemarcs, so that I can effectively manage service level agreements.",
+      "acceptance_criteria": [
+        "Customized SLAs are implemented",
+        "SLs 23 & 24 are functional"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Implement customized SLAs in Maximo",
+          "expected_result": "Customized SLAs are implemented",
+          "test_data": "SLs 23 & 24"
+        }
+      ],
+      "test_scenarios": [
+        "Implement customized SLAs for centralized Edgemarcs"
+      ],
+      "assumptions": [
+        "Maximo supports customized SLAs"
+      ],
+      "ambiguities": [
+        "None"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-064"
+    },
+    {
+      "title": "Data Architecture",
+      "description": "Requirement for data storage, retrieval, and analysis.",
+      "type": "Non-Functional",
+      "user_story": "As a data analyst, I want efficient data architecture for analysis and reporting.",
+      "acceptance_criteria": [
+        "Data is stored and retrieved efficiently",
+        "Analysis tools are integrated and functional"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test data retrieval with sample queries",
+          "expected_result": "Data is retrieved efficiently",
+          "test_data": "Sample queries"
+        }
+      ],
+      "test_scenarios": [
+        "Data retrieval testing"
+      ],
+      "assumptions": [
+        "Data architecture is designed for efficiency"
+      ],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-065"
+    },
+    {
+      "title": "Carrier Integration",
+      "description": "Integrate carrier services into the system.",
+      "type": "Infrastructure",
+      "user_story": "As a system administrator, I want to integrate carrier services.",
+      "acceptance_criteria": [
+        "The carrier services are integrated."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the carrier integration.",
+          "expected_result": "The carrier services are integrated."
+        }
+      ],
+      "test_scenarios": [
+        "Testing carrier integration."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-066"
+    },
+    {
+      "title": "Warehouse Operations",
+      "description": "Optimization of warehouse operations including picking, packing, and shipping",
+      "type": "Operations",
+      "user_story": "As a warehouse manager, I want to optimize our operations, so that we can fulfill orders efficiently",
+      "acceptance_criteria": [
+        "Orders are fulfilled within 24 hours",
+        "Inventory accuracy is above 99%"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Implement warehouse management system",
+          "expected_result": "Orders are fulfilled within 24 hours"
+        }
+      ],
+      "test_scenarios": [
+        "Warehouse efficiency testing"
+      ],
+      "assumptions": [
+        "Warehousing software is implemented"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-067"
+    },
+    {
+      "title": "Customs Documentation",
+      "description": "Manage customs documentation efficiently.",
+      "type": "Infrastructure",
+      "user_story": "As a system administrator, I want to manage customs documentation efficiently.",
+      "acceptance_criteria": [
+        "The customs documentation is managed efficiently."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the customs documentation management features.",
+          "expected_result": "The features function as expected."
+        }
+      ],
+      "test_scenarios": [
+        "Testing customs documentation management features."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-068"
+    },
+    {
+      "title": "Route Optimization",
+      "description": "Optimize routes across the system.",
+      "type": "Infrastructure",
+      "user_story": "As a system administrator, I want to optimize routes.",
+      "acceptance_criteria": [
+        "The routes are optimized."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the route optimization features.",
+          "expected_result": "The features function as expected."
+        }
+      ],
+      "test_scenarios": [
+        "Testing route optimization features."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-069"
+    },
+    {
+      "title": "GPS Tracking",
+      "description": "Track GPS locations across the system.",
+      "type": "Infrastructure",
+      "user_story": "As a system administrator, I want to track GPS locations.",
+      "acceptance_criteria": [
+        "The GPS locations are tracked."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the GPS tracking features.",
+          "expected_result": "The features function as expected."
+        }
+      ],
+      "test_scenarios": [
+        "Testing GPS tracking features."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-070"
+    },
+    {
+      "title": "Syslog-NG Configuration",
+      "description": "Configure Syslog-NG to filter logs based on customer and CI name.",
+      "type": "Logging",
+      "user_story": "As a system administrator, I want to filter logs, so that I can manage log data efficiently.",
+      "acceptance_criteria": [
+        "Filters are applied correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure Syslog-NG filters",
+          "expected_result": "Filters are applied as expected",
+          "test_data": "Syslog-NG configuration settings"
+        }
+      ],
+      "test_scenarios": [
+        "Syslog-NG filter testing"
+      ],
+      "assumptions": [
+        "Syslog-NG is installed"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-071"
+    },
+    {
+      "title": "Alerting and Notification for VPN Connection Issues",
+      "description": "Implement alerting and notification for VPN connection issues.",
+      "type": "Networking",
+      "user_story": "As a network administrator, I want to receive alerts for VPN issues, so that I can ensure connectivity.",
+      "acceptance_criteria": [
+        "Alerts are sent within 5 minutes of issue detection"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure VPN alerting",
+          "expected_result": "Alerts are sent as expected",
+          "test_data": "VPN configuration settings"
+        }
+      ],
+      "test_scenarios": [
+        "VPN alert testing"
+      ],
+      "assumptions": [
+        "VPN software is installed"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-072"
+    },
+    {
+      "title": "Email Notification",
+      "description": "Merged requirement for email notifications.",
+      "type": "Integration",
+      "user_story": "As a user, I want to receive email notifications, so that I can stay informed about system events.",
+      "acceptance_criteria": [
+        "Email notifications are sent as expected"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test email notifications",
+          "expected_result": "Email notifications are sent as expected",
+          "test_data": "Sample email notification data"
+        }
+      ],
+      "test_scenarios": [
+        "Email notification testing"
+      ],
+      "assumptions": [
+        "Email notification system is configured"
+      ],
+      "ambiguities": [
+        "Email notification implementation"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-073"
+    },
+    {
+      "title": "Integration Framework",
+      "description": "Consolidated requirement for integrating various systems and services.",
+      "type": "Integration",
+      "user_story": "As a system administrator, I want to integrate multiple systems and services to enhance functionality and efficiency.",
+      "acceptance_criteria": [
+        "Successful integration of multiple systems",
+        "Improved efficiency and functionality"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test integration with sample data",
+          "expected_result": "Integration works as expected",
+          "test_data": "Sample integration data"
+        }
+      ],
+      "test_scenarios": [
+        "Integration testing with multiple systems"
+      ],
+      "assumptions": [
+        "All systems are compatible and accessible"
+      ],
+      "ambiguities": [
+        "Potential integration complexities"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-074"
+    },
+    {
+      "title": "Worklog Consolidation for ServiceNow",
+      "description": "Worklogs from all record types should be available and sent to ServiceNow.",
+      "type": "Functional",
+      "user_story": "As a ServiceNow user, I want to view worklogs from all record types, so that I can have a comprehensive view of all worklogs.",
+      "acceptance_criteria": [
+        "Worklogs from all record types are available in ServiceNow",
+        "Worklogs are sent to ServiceNow from Maximo"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to ServiceNow",
+          "expected_result": "Worklogs from all record types are visible",
+          "test_data": "Test worklog data from Maximo"
+        }
+      ],
+      "test_scenarios": [
+        "Test worklog visibility for different record types"
+      ],
+      "assumptions": [
+        "Maximo worklog data is available for consolidation"
+      ],
+      "ambiguities": [
+        "Do we want to split SA and SP in 2 queues?"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-075"
+    },
+    {
+      "title": "Global and Table Search",
+      "description": "Fix the global and table search functions to work correctly.",
+      "type": "Functional",
+      "user_story": "As a user, I want the global and table search functions to work correctly, so that I can find the data I need.",
+      "acceptance_criteria": [
+        "The global search function works correctly.",
+        "The table search function works correctly."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Go to the global search page.",
+          "expected_result": "The global search function is visible.",
+          "test_data": "A known search term."
+        },
+        {
+          "step_num": 2,
+          "action": "Enter a search term in the global search bar.",
+          "expected_result": "The search results are displayed correctly.",
+          "test_data": "A known search term."
+        }
+      ],
+      "test_scenarios": [
+        "Global search",
+        "Table search"
+      ],
+      "assumptions": [
+        "The search functions are currently not working correctly."
+      ],
+      "ambiguities": [
+        "What are the exact search terms to use for testing?"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-076"
+    },
+    {
+      "title": "Graph Type Selector",
+      "description": "Improve the behavior of the graph type selector to work correctly.",
+      "type": "Functional",
+      "user_story": "As a user, I want the graph type selector to work correctly, so that I can easily switch between different graph types.",
+      "acceptance_criteria": [
+        "The graph type selector works correctly."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Go to a graph with a type selector.",
+          "expected_result": "The graph type selector is visible.",
+          "test_data": "A graph with a type selector."
+        },
+        {
+          "step_num": 2,
+          "action": "Select a different graph type.",
+          "expected_result": "The graph type is changed correctly.",
+          "test_data": "A graph with a type selector."
+        }
+      ],
+      "test_scenarios": [
+        "Graph type selector"
+      ],
+      "assumptions": [
+        "The graph type selector is currently not working correctly."
+      ],
+      "ambiguities": [
+        "What are the exact graph types to test?"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-077"
+    },
+    {
+      "title": "BQ Used Dataset/Table",
+      "description": "Retrieve BQ used dataset/table on core-data response.",
+      "type": "Functional",
+      "user_story": "As a user, I want to retrieve BQ used dataset/table on core-data response, so that I can access the necessary data.",
+      "acceptance_criteria": [
+        "BQ used dataset/table is retrieved."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Send core-data request.",
+          "expected_result": "BQ used dataset/table is retrieved.",
+          "test_data": "Sample core-data request."
+        }
+      ],
+      "test_scenarios": [
+        "Core-data request"
+      ],
+      "assumptions": [
+        "Core-data request is valid."
+      ],
+      "ambiguities": [
+        "Core-data response format may vary."
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-078"
+    },
+    {
+      "title": "Multi-Device Command Output Export",
+      "description": "Export all outputs from multi-device commands into a single text file.",
+      "type": "Functional",
+      "user_story": "As a user, I want to export all outputs from multi-device commands into a single text file, so that I can easily compare outputs across devices using a comparison tool.",
+      "acceptance_criteria": [
+        "The exported file is easily readable and compatible with common comparison tools.",
+        "The feature can consolidate outputs from multi-device commands into a single text file."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Execute multi-device commands.",
+          "expected_result": "The output is consolidated into a single text file.",
+          "test_data": "Sample multi-device commands."
+        },
+        {
+          "step_num": 2,
+          "action": "Export the output to a text file.",
+          "expected_result": "The exported file is easily readable and compatible with common comparison tools.",
+          "test_data": "Sample output file."
+        }
+      ],
+      "test_scenarios": [
+        "Exporting output from multiple devices",
+        "Comparing output files using a comparison tool"
+      ],
+      "assumptions": [
+        "The user has access to the SPACE system and command execution functionality."
+      ],
+      "ambiguities": [
+        "The format of the exported text file."
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-079"
+    },
+    {
+      "title": "Activity Logging and Search Functionality",
+      "description": "Add an activity log to an existing incident record and search for incident records based on various criteria.",
+      "type": "Functional",
+      "user_story": "As a user, I want to add an activity log to an incident record and search for incident records, so that I can track the history of actions taken on the incident and find specific incident records quickly and easily.",
+      "acceptance_criteria": [
+        "Activity log is added to the incident record",
+        "Search results are returned based on the search criteria"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Click on the 'Add Activity Log' button",
+          "expected_result": "A new activity log is added to the incident record",
+          "test_data": "Type: Activity Log, Notes: Test activity log"
+        },
+        {
+          "step_num": 2,
+          "action": "Enter search criteria in the search field",
+          "expected_result": "Search results are returned based on the search criteria",
+          "test_data": "Search criteria: Ticket Number = INC12345"
+        }
+      ],
+      "test_scenarios": [
+        "Add an activity log to an existing incident record",
+        "Search for incident records based on Ticket Number"
+      ],
+      "assumptions": [
+        "The user has the necessary permissions to add an activity log and search for incident records"
+      ],
+      "ambiguities": [
+        "The definition of 'activity log'"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-080"
+    },
+    {
+      "title": "DNAC Configuration",
+      "description": "Configure DNAC for proactive monitoring.",
+      "type": "Networking",
+      "user_story": "As a network administrator, I want to configure DNAC, so that I can monitor the network proactively.",
+      "acceptance_criteria": [
+        "DNAC is configured for proactive monitoring"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Set up DNAC configuration",
+          "expected_result": "DNAC is configured correctly",
+          "test_data": "DNAC configuration guide"
+        }
+      ],
+      "test_scenarios": [
+        "DNAC configuration testing"
+      ],
+      "assumptions": [
+        "DNAC is installed"
+      ],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-081"
+    },
+    {
+      "title": "Automation and Efficiency",
+      "description": "Consolidated requirement for automating processes and improving efficiency.",
+      "type": "Non-Functional",
+      "user_story": "As a user, I want automated processes to improve efficiency and reduce manual effort.",
+      "acceptance_criteria": [
+        "Automation of power outage process for P4 incidents",
+        "Efficient generation of resolution comments"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a P4 incident with alarm type ColdStart or deviceDown",
+          "expected_result": "Power outage process triggers",
+          "test_data": "P4 incident data with alarm type"
+        }
+      ],
+      "test_scenarios": [
+        "Power outage automation test for P4 incidents"
+      ],
+      "assumptions": [
+        "Automation configuration available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-082"
+    },
+    {
+      "title": "UI/UX Enhancements",
+      "description": "Requirement for improving user interface and experience.",
+      "type": "Non-Functional",
+      "user_story": "As a user, I want an intuitive and efficient user interface to enhance my experience.",
+      "acceptance_criteria": [
+        "Add 'first page / last page' option on tables",
+        "Allow searching for dashboards by ID"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test table navigation with 'first page / last page' option",
+          "expected_result": "Navigation works as expected",
+          "test_data": "Sample table data"
+        }
+      ],
+      "test_scenarios": [
+        "Table navigation testing"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-083"
+    },
+    {
+      "title": "Custom IPVPN SLA and Analance Reporting",
+      "description": "Deliver custom SLA as per the contract for site availability per CI in Zone 1 and a Global site availability for each of the Zones 2 to 4.",
+      "type": "Non-Functional",
+      "user_story": "As a customer, I want custom SLA and Analance reporting for site availability.",
+      "acceptance_criteria": [
+        "All of the Zones have the proper SLA and SLO targets for MTTN and MTTR",
+        "Analance reporting has the proper Site Availability per Zone"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify SLA and SLO targets",
+          "expected_result": "Targets are correctly set",
+          "test_data": "SLA and SLO targets data"
+        }
+      ],
+      "test_scenarios": [
+        "SLA and SLO targets testing"
+      ],
+      "assumptions": [
+        "Maximo and Analance are properly configured"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-084"
+    },
+    {
+      "title": "Meraki API Congestion Mitigation",
+      "description": "Mitigate Meraki API congestion issues by consolidating API calls into a single managed channel.",
+      "type": "Non-Functional",
+      "user_story": "As a system administrator, I want to reduce Meraki API congestion issues.",
+      "acceptance_criteria": [
+        "The standardized platform reduces Meraki API congestion issues"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify Meraki API congestion reduction",
+          "expected_result": "Congestion is reduced",
+          "test_data": "Meraki API congestion metrics"
+        }
+      ],
+      "test_scenarios": [
+        "Meraki API congestion test case"
+      ],
+      "assumptions": [
+        "Meraki API congestion metrics are properly collected"
+      ],
+      "ambiguities": [
+        "The exact implementation details of the Meraki API congestion mitigation"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-085"
+    },
+    {
+      "title": "Defect Prevention",
+      "description": "The system should prevent regression of defects.",
+      "type": "Non-Functional",
+      "user_story": "As a user, I want the system to prevent regression of defects.",
+      "acceptance_criteria": [
+        "The system prevents regression of defects."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test the system with defect IDs and descriptions",
+          "expected_result": "The system prevents regression of defects.",
+          "test_data": "Defect IDs and descriptions."
+        }
+      ],
+      "test_scenarios": [
+        "Test the system with valid defect IDs and descriptions."
+      ],
+      "assumptions": [
+        "The system has a list of valid defect IDs and descriptions."
+      ],
+      "ambiguities": [
+        "The system does not specify how to handle duplicate defect IDs."
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-086"
+    },
+    {
+      "title": "Dynatrace Monitoring and ELK Metrics",
+      "description": "Implement Dynatrace Monitoring and ELK Metrics for the migrated SPOG application.",
+      "type": "Non-Functional",
+      "user_story": "As a developer, I want to monitor the application's performance.",
+      "acceptance_criteria": [
+        "Dynatrace Monitoring and ELK Metrics implemented"
+      ],
+      "test_steps": [],
+      "test_scenarios": [],
+      "assumptions": [
+        "Dynatrace and ELK are compatible with the migrated application"
+      ],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-087"
+    },
+    {
+      "title": "Notification System",
+      "description": "Implement a notification system for incident updates and alerts",
+      "type": "Notification",
+      "user_story": "As a system administrator, I want a notification system, so that stakeholders are informed about incidents",
+      "acceptance_criteria": [
+        "Notifications are sent within 15 minutes of incident update"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure notification system",
+          "expected_result": "Notifications are sent as expected",
+          "test_data": "Notification system settings"
+        }
+      ],
+      "test_scenarios": [
+        "Notification testing"
+      ],
+      "assumptions": [
+        "Notification system software is available"
+      ],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-088"
+    },
+    {
+      "title": "Incident Details Page",
+      "description": "Display 'Last completed change' and 'Change in implement' fields from Maximo in the Incident Details page under the CI Location",
+      "type": "UI",
+      "user_story": "As a technician, I want to see the last completed change and change in implement fields in the Incident Details page, so that I can determine if the incident could have been caused by a change",
+      "acceptance_criteria": [
+        "The 'Last completed change' and 'Change in implement' fields are displayed in the Incident Details page under the CI Location",
+        "The fields are only displayed if they have a value",
+        "The fields are hyperlinked and open the corresponding change in Maximo",
+        "The fields are read-only"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Open the Incident Details page",
+          "expected_result": "The 'Last completed change' and 'Change in implement' fields are displayed under the CI Location"
+        },
+        {
+          "step_num": 2,
+          "action": "Click on the 'Last completed change' field",
+          "expected_result": "The corresponding change in Maximo is opened"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on the 'Change in implement' field",
+          "expected_result": "The corresponding change in Maximo is opened"
+        }
+      ],
+      "test_scenarios": [
+        "Test with a valid incident",
+        "Test with an incident that has no 'Last completed change' or 'Change in implement' fields"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-089"
+    },
+    {
+      "title": "Device Installation Height Specification",
+      "description": "Create a specification in Maximo to identify devices installed at heights and trigger email notifications to the control center when necessary",
+      "type": "UI",
+      "user_story": "As a Maximo user, I want to be able to identify devices installed at heights and trigger email notifications to the control center when necessary, so that I can ensure timely and efficient maintenance and repair of devices",
+      "acceptance_criteria": [
+        "The specification is created in Maximo",
+        "The LOV dropdown is functional with the required options",
+        "Email notifications are triggered correctly based on the selected option"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new incident in Maximo",
+          "expected_result": "The specification is available in the incident form"
+        },
+        {
+          "step_num": 2,
+          "action": "Select an option from the LOV dropdown",
+          "expected_result": "The corresponding email notification is triggered"
+        }
+      ],
+      "test_scenarios": [
+        "Test with option 1 (0-10 feet)",
+        "Test with option 2 (11-15 feet)",
+        "Test with option 3 (16+ feet)"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-090"
+    },
+    {
+      "title": "Patching Workflow",
+      "description": "Automated patching reduces manual effort and time spent on patching.",
+      "type": "Non-Functional",
+      "user_story": "As a system administrator, I want automated patching.",
+      "acceptance_criteria": [
+        "Patching is automated"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Trigger automated patching",
+          "expected_result": "Patching is successful",
+          "test_data": "Sample patching data"
+        }
+      ],
+      "test_scenarios": [
+        "Automated patching test"
+      ],
+      "assumptions": [
+        "Patching system is available"
+      ],
+      "ambiguities": [
+        "Definition of automation"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-091"
+    },
+    {
+      "title": "Testing and Validation",
+      "description": "The feature should be tested to ensure that the Notification Due date is not updated when an automated worklog is added.",
+      "type": "Non-Functional",
+      "user_story": "As a tester, I want to verify that the feature works correctly.",
+      "acceptance_criteria": [
+        "The feature is tested with different scenarios"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create test cases for the feature",
+          "expected_result": "Test cases are created successfully",
+          "test_data": "Test data for the feature"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Testing with automated worklog addition"
+      ],
+      "assumptions": [
+        "The testing environment is set up correctly"
+      ],
+      "ambiguities": [
+        "How to handle test failures"
+      ],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-092"
+    },
+    {
+      "title": "Catalog Management",
+      "description": "Creation, management, and customization of catalogs",
+      "type": "UI",
+      "user_story": "As a user, I want to manage catalogs efficiently",
+      "acceptance_criteria": [
+        "Custom SLA details screen displays correct information",
+        "MCD catalog reorganization is successful",
+        "ADM catalog offerings are correctly displayed",
+        "Customized catalog creation is possible"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the catalog management system",
+          "expected_result": "The user is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the custom SLA details screen",
+          "expected_result": "The screen displays the correct custom SLA details"
+        }
+      ],
+      "test_scenarios": [
+        "Successful navigation to the custom SLA details screen"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-093"
+    },
+    {
+      "title": "SASE Product Management",
+      "description": "Management of SASE products, including catalog and portal access.",
+      "type": "UI",
+      "user_story": "As a customer, I want to use the BBSSC portal to manage my SASE product.",
+      "acceptance_criteria": [
+        "Customer can log in to the BBSSC portal.",
+        "Customer can navigate to the MACD catalog."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the BBSSC portal.",
+          "expected_result": "The user is logged in successfully."
+        }
+      ],
+      "test_scenarios": [
+        "Happy path: customer logs in and navigates to MACD catalog."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-094"
+    },
+    {
+      "title": "Unified Dashboard System",
+      "description": "A dashboard system providing operational, management, and queue oversight.",
+      "type": "UI",
+      "user_story": "As a user, I want to view operational and management data in a unified dashboard.",
+      "acceptance_criteria": [
+        "Dashboard displays real-time data.",
+        "Dashboard provides filtering and search capabilities."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the dashboard.",
+          "expected_result": "The dashboard displays real-time data."
+        }
+      ],
+      "test_scenarios": [
+        "Accessing the dashboard."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-095"
+    },
+    {
+      "title": "Enhanced User Experience",
+      "description": "Enhancements to the user interface and experience, including description field enhancement and data visualization.",
+      "type": "UI",
+      "user_story": "As a user, I want a user-friendly interface to manage my tasks and incidents efficiently.",
+      "acceptance_criteria": [
+        "The UI is intuitive and easy to use.",
+        "Description field enhancement is implemented."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the system.",
+          "expected_result": "The user is logged in and can access the UI."
+        }
+      ],
+      "test_scenarios": [
+        "Logging in and accessing the UI."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-096"
+    },
+    {
+      "title": "Audit Report",
+      "description": "Display the results of the Auto Audit.",
+      "type": "UI",
+      "user_story": "As a user, I want to view the results of the Auto Audit.",
+      "acceptance_criteria": [
+        "The audit report displays the results of the Auto Audit."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Run the Auto Audit and generate the audit report.",
+          "expected_result": "The audit report is generated and displays the results of the Auto Audit."
+        }
+      ],
+      "test_scenarios": [
+        "Verifying the accuracy of the audit report with numeric values."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-097"
+    },
+    {
+      "title": "UAT Test Planning",
+      "description": "The system should allow users to plan and execute UAT tests for features.",
+      "type": "UI",
+      "user_story": "As a tester, I want to plan and execute UAT tests for features.",
+      "acceptance_criteria": [
+        "The system allows users to plan and execute UAT tests."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the system as a tester.",
+          "expected_result": "The system displays the UAT test planning page."
+        }
+      ],
+      "test_scenarios": [
+        "UAT test planning for a feature."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-098"
+    },
+    {
+      "title": "Transfert Site to Another Template",
+      "description": "Create a new offering for transferring a site to another template.",
+      "type": "UI",
+      "user_story": "As a user, I want to create a new offering for transferring a site to another template.",
+      "acceptance_criteria": [
+        "The technical details page contains the required fields.",
+        "The offering ID is updated correctly."
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new offering.",
+          "expected_result": "The offering is created successfully."
+        }
+      ],
+      "test_scenarios": [
+        "Creating a new offering with valid data."
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-099"
+    },
+    {
+      "title": "Add Daily Access Hours",
+      "description": "Add a feature to input daily access hours for contacts, with a summary of access hours in the incident and activity modules.",
+      "type": "UI",
+      "user_story": "As a user, I want to add daily access hours for contacts, so that I can manage access hours efficiently",
+      "acceptance_criteria": [
+        "The daily access hours feature is available in the incident and activity modules",
+        "The feature allows input of daily access hours for contacts",
+        "The feature displays a summary of access hours"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Open the incident or activity module",
+          "expected_result": "The daily access hours feature is visible"
+        },
+        {
+          "step_num": 2,
+          "action": "Input daily access hours for a contact",
+          "expected_result": "The access hours are saved and displayed in the summary"
+        }
+      ],
+      "test_scenarios": [
+        "Adding daily access hours for a contact",
+        "Displaying the summary of access hours in the incident and activity modules"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-100"
+    },
+    {
+      "title": "GenAI Analysis Worklog",
+      "description": "The GenAI analysis will be structured into a standardized worklog format within Maximo/OC, including key findings, identified root causes, and suggested next steps for L2",
+      "type": "UI",
+      "user_story": "As a user, I want to view GenAI analysis in a standardized worklog format, so that I can easily review and act on the analysis",
+      "acceptance_criteria": [
+        "The worklog format includes key findings, identified root causes, and suggested next steps"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "View GenAI analysis in Maximo/OC",
+          "expected_result": "The analysis is displayed in a standardized worklog format"
+        }
+      ],
+      "test_scenarios": [
+        "Viewing GenAI analysis in Maximo/OC"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-101"
+    },
+    {
+      "title": "Multiple Fault Alarms Identification",
+      "description": "Display [MF] as prefix in the summary of an incident in Maximo if the total number of active alarms and cleared alarms is greater than 1",
+      "type": "UI",
+      "user_story": "As an operator, I want to quickly identify incidents with multiple alarms, so that I can prioritize and respond to critical incidents effectively",
+      "acceptance_criteria": [
+        "The [MF] prefix is displayed in the summary of an incident in Maximo if the total number of active alarms and cleared alarms is greater than 1"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create an incident with multiple alarms in Maximo",
+          "expected_result": "The [MF] prefix is displayed in the summary of the incident"
+        }
+      ],
+      "test_scenarios": [
+        "Incident with multiple active alarms",
+        "Incident with multiple cleared alarms",
+        "Incident with both active and cleared alarms"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-102"
+    },
+    {
+      "title": "Add first page / last page option on tables",
+      "description": "Add a feature to allow users to navigate to the first or last page of a table",
+      "type": "UI",
+      "user_story": "As a user, I want to be able to navigate to the first or last page of a table, so that I can easily access the information I need",
+      "acceptance_criteria": [
+        "The feature is available on all tables",
+        "The feature works correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Go to a table with multiple pages",
+          "expected_result": "The first and last page options are available"
+        },
+        {
+          "step_num": 2,
+          "action": "Click on the first page option",
+          "expected_result": "The user is taken to the first page of the table"
+        },
+        {
+          "step_num": 3,
+          "action": "Click on the last page option",
+          "expected_result": "The user is taken to the last page of the table"
+        }
+      ],
+      "test_scenarios": [
+        "Table with multiple pages",
+        "Table with only one page"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-103"
+    },
+    {
+      "title": "Allow users to search for dashboards by ID",
+      "description": "Add a feature to allow users to search for dashboards by ID",
+      "type": "UI",
+      "user_story": "As a user, I want to be able to search for dashboards by ID, so that I can quickly find the dashboard I need",
+      "acceptance_criteria": [
+        "The feature is available on the dashboard page",
+        "The feature works correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Go to the dashboard page",
+          "expected_result": "The search by ID feature is available"
+        },
+        {
+          "step_num": 2,
+          "action": "Enter a valid dashboard ID",
+          "expected_result": "The user is taken to the correct dashboard"
+        },
+        {
+          "step_num": 3,
+          "action": "Enter an invalid dashboard ID",
+          "expected_result": "An error message is displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Valid dashboard ID",
+        "Invalid dashboard ID"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-104"
+    },
+    {
+      "title": "Syslog Message Formatting",
+      "description": "Format the syslog messages according to the specified pattern, including prepending the date and time of receipt and the source_host",
+      "type": "UI",
+      "user_story": "As a system administrator, I want to format the syslog messages according to the specified pattern, so that I can ensure the syslogs are delivered to the correct systems",
+      "acceptance_criteria": [
+        "Syslog messages are formatted according to the specified pattern",
+        "Date and time of receipt are prepended to the syslog message"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify the syslog message format",
+          "expected_result": "Syslog messages are formatted according to the specified pattern"
+        },
+        {
+          "step_num": 2,
+          "action": "Verify the date and time of receipt are prepended to the syslog message",
+          "expected_result": "Date and time of receipt are prepended to the syslog message"
+        }
+      ],
+      "test_scenarios": [
+        "Test with different syslog message formats",
+        "Test with different date and time formats"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-105"
+    },
+    {
+      "title": "Auto-Populate Customer Category and Subcategory SPECS",
+      "description": "The functionality to auto-populate the Customer Category and Subcategory SPECS for Air Canada change tickets",
+      "type": "UI",
+      "user_story": "As a user, I want the Customer Category and Subcategory SPECS to be auto-populated for Air Canada change tickets, so that I can save time and reduce errors",
+      "acceptance_criteria": [
+        "The Customer Category and Subcategory SPECS are auto-populated for Air Canada change tickets"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a new change ticket for Air Canada",
+          "expected_result": "The Customer Category and Subcategory SPECS are auto-populated"
+        }
+      ],
+      "test_scenarios": [
+        "Creating a new change ticket for Air Canada"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-106"
+    },
+    {
+      "title": "Update Default Work Log Type",
+      "description": "The functionality to update the default work log type from CLIENTNOTE to UPDATE",
+      "type": "UI",
+      "user_story": "As a user, I want to update the default work log type from CLIENTNOTE to UPDATE, so that I can use the correct work log type for updates",
+      "acceptance_criteria": [
+        "The default work log type is updated from CLIENTNOTE to UPDATE"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to Maximo",
+          "expected_result": "The user is logged in to Maximo"
+        },
+        {
+          "step_num": 2,
+          "action": "Update the default work log type",
+          "expected_result": "The default work log type is updated"
+        }
+      ],
+      "test_scenarios": [
+        "Updating the default work log type"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-107"
+    },
+    {
+      "title": "Happy Town Monthly Gate Accounts Access Report",
+      "description": "A monthly report to Estatic inc that provides information for all User accounts and access by the User, including User id, department, group within department, Happy Town Gate id, total bytes/packets in/out, successful/failed connection attempts, and more",
+      "type": "UI",
+      "user_story": "As a report generator, I want to create a monthly gate accounts access report, so that I can provide detailed information about User accounts and access to Estatic inc",
+      "acceptance_criteria": [
+        "The report includes User id",
+        "The report includes department",
+        "The report includes Happy Town Gate id",
+        "The report includes total bytes/packets in/out"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Generate the report",
+          "expected_result": "The report is generated correctly"
+        }
+      ],
+      "test_scenarios": [
+        "Report generation with sample data"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-108"
+    },
+    {
+      "title": "Menu Screen",
+      "description": "The menu screen has been updated to handle batch creation, recreation, and reporting, with new options for handling these processes",
+      "type": "UI",
+      "user_story": "As a user, I want to access the updated menu screen to handle batch creation, recreation, and reporting, so that I can efficiently manage my tasks",
+      "acceptance_criteria": [
+        "The menu screen displays the new options for batch creation, recreation, and reporting"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to the system and navigate to the menu screen",
+          "expected_result": "The menu screen is displayed with the new options for batch creation, recreation, and reporting"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Successful login and navigation to the menu screen"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-109"
+    },
+    {
+      "title": "Maximo Enhancements",
+      "description": "Enhancements to Maximo functionality, including reporting, notification, and work order management",
+      "type": "UI",
+      "user_story": "As a user, I want to utilize enhanced Maximo features for efficient incident management",
+      "acceptance_criteria": [
+        "Error transactions report is displayed",
+        "Notification due field is visible",
+        "Change module UI allows modification of device affecting logic rules",
+        "Maximo work order screen includes a 'Send to Snow' flag"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log in to Maximo",
+          "expected_result": "The user is logged in successfully"
+        },
+        {
+          "step_num": 2,
+          "action": "Navigate to the error transactions report",
+          "expected_result": "The report is displayed with failed transactions"
+        }
+      ],
+      "test_scenarios": [
+        "Successful navigation to the error transactions report"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-110"
+    },
+    {
+      "title": "Notification Mechanism",
+      "description": "Send notifications to authorized users",
+      "type": "Workflow",
+      "user_story": "As a user, I want to receive relevant notifications.",
+      "acceptance_criteria": [
+        "Notifications are sent correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test notification sending",
+          "expected_result": "Notifications are sent correctly"
+        }
+      ],
+      "test_scenarios": [
+        "Notification sending testing"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-111"
+    },
+    {
+      "title": "Monitoring and Health Checks",
+      "description": "Monitor system health and perform health checks",
+      "type": "Workflow",
+      "user_story": "As a user, I want to monitor system health and perform checks.",
+      "acceptance_criteria": [
+        "System health is monitored",
+        "Health checks are performed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test monitoring and health checks",
+          "expected_result": "Monitoring and health checks are performed"
+        }
+      ],
+      "test_scenarios": [
+        "Monitoring and health check testing"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-112"
+    },
+    {
+      "title": "BMO Tower MS - SDA & LAN",
+      "description": "Create a Maximo attribute for BMO Tower MS - SDA & LAN",
+      "type": "UI",
+      "user_story": "As a user, I want to create a Maximo attribute for BMO Tower MS - SDA & LAN.",
+      "acceptance_criteria": [
+        "The Maximo attribute is created successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create the Maximo attribute",
+          "expected_result": "Attribute is created successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Create a new Maximo attribute"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-113"
+    },
+    {
+      "title": "Change Template Selection",
+      "description": "Select a BMO standard change template",
+      "type": "UI",
+      "user_story": "As a user, I want to select a BMO standard change template.",
+      "acceptance_criteria": [
+        "The system displays a list of available BMO standard change templates"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Access the change creation page",
+          "expected_result": "List of templates is displayed"
+        }
+      ],
+      "test_scenarios": [
+        "Template list display and selection functionality"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-114"
+    },
+    {
+      "title": "Temperature Polling",
+      "description": "Monitor temperature for device health",
+      "type": "Workflow",
+      "user_story": "As a user, I want to monitor temperature for device health.",
+      "acceptance_criteria": [
+        "Temperature polling is functional"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure temperature polling",
+          "expected_result": "Temperature polling is functional"
+        }
+      ],
+      "test_scenarios": [
+        "Temperature polling for various device types"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-115"
+    },
+    {
+      "title": "Audit Logic Feature",
+      "description": "Validate the 'validator' field in the payload",
+      "type": "Workflow",
+      "user_story": "As a developer, I want the system to validate the 'validator' field.",
+      "acceptance_criteria": [
+        "The system validates the 'validator' field"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Send a payload with a 'validator' field",
+          "expected_result": "The system updates the BL_FIELDNAME"
+        }
+      ],
+      "test_scenarios": [
+        "Validation of 'validator' field with 'number' value"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-116"
+    },
+    {
+      "title": "Automated Worklog Entry",
+      "description": "Add an automated worklog entry when an incident's status changes",
+      "type": "Workflow",
+      "user_story": "As a L1 technician, I want an automated worklog entry.",
+      "acceptance_criteria": [
+        "An automated worklog entry is added when an incident's status changes"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Change an incident's status",
+          "expected_result": "An automated worklog entry is added"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: An automated worklog entry is added when an incident's status changes"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-117"
+    },
+    {
+      "title": "B2B Triggering",
+      "description": "Auto-trigger the B2B to the client when an incident is created",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want the system to automatically trigger the B2B.",
+      "acceptance_criteria": [
+        "B2B is triggered with correct incident details"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Create a Maximo incident",
+          "expected_result": "B2B is triggered to the client"
+        }
+      ],
+      "test_scenarios": [
+        "Incident creation for Honeypot event"
+      ],
+      "assumptions": [
+        "B2B system is integrated with Maximo"
+      ],
+      "ambiguities": [
+        "Definition of B2B triggering"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-118"
+    },
+    {
+      "title": "Job Coordination Optimization",
+      "description": "Optimize job coordination using historical data",
+      "type": "Workflow",
+      "user_story": "As a dispatcher, I want to optimize job coordination.",
+      "acceptance_criteria": [
+        "The system considers a 90-day history of job and tests"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Enter a new job with a re-occurring customer issue",
+          "expected_result": "The system suggests the next best action based on historical data"
+        }
+      ],
+      "test_scenarios": [
+        "Re-occurring customer issue"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-119"
+    },
+    {
+      "title": "POS Data Creation Process",
+      "description": "Create POS data from T LOG with encrypted credit card information",
+      "type": "Workflow",
+      "user_story": "As a user, I want to create POS data from T LOG.",
+      "acceptance_criteria": [
+        "The POS data is created successfully from T LOG"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate the POS data creation process",
+          "expected_result": "The POS data is created successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Scenario 1: Successful creation of POS data"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-120"
+    },
+    {
+      "title": "Impact Data Ingestion Workflow",
+      "description": "Ingest impact data from NETS Kafka into SPOG Elasticsearch",
+      "type": "Workflow",
+      "user_story": "As a developer, I want to ingest impact data.",
+      "acceptance_criteria": [
+        "Impact data is ingested from NETS Kafka into SPOG Elasticsearch"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify that impact data is ingested",
+          "expected_result": "Impact data is successfully ingested"
+        }
+      ],
+      "test_scenarios": [
+        "Verify that impact data is ingested"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-121"
+    },
+    {
+      "title": "Map Existing Alarms to New Event Types",
+      "description": "Map existing alarms to new event types",
+      "type": "Workflow",
+      "user_story": "As a user, I want to map existing alarms to new event types.",
+      "acceptance_criteria": [
+        "The tool displays the list of existing rules"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Login to the BATS system",
+          "expected_result": "The user is logged in successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Valid incoming events"
+      ],
+      "assumptions": [
+        "The BATS system is available and functional"
+      ],
+      "ambiguities": [
+        "The scope of the NDAC events"
+      ],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-122"
+    },
+    {
+      "title": "UCA CLEAR Signal Workflow",
+      "description": "Send a CLEAR signal to the UCA when the implementation is complete",
+      "type": "Workflow",
+      "user_story": "As a user, I want the system to send a CLEAR signal to the UCA.",
+      "acceptance_criteria": [
+        "A CLEAR signal is sent to the UCA when the implementation is complete"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Complete the implementation of a change",
+          "expected_result": "A CLEAR signal is sent to the UCA"
+        }
+      ],
+      "test_scenarios": [
+        "Sending a CLEAR signal to the UCA with valid inputs"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-123"
+    },
+    {
+      "title": "New Job Plan Creation",
+      "description": "Create new job plans and assign them to the appropriate offerings",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to create new job plans.",
+      "acceptance_criteria": [
+        "The new job plans are created correctly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Verify the creation of the new job plans",
+          "expected_result": "The new job plans are created correctly"
+        }
+      ],
+      "test_scenarios": [
+        "Create a new job plan for NDDOSMAC-10"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-124"
+    },
+    {
+      "title": "Fortinet Day 1 Bell Owned SR Process",
+      "description": "Complete the Fortinet Day 1 Bell Owned SR process",
+      "type": "Workflow",
+      "user_story": "As a user, I want to complete the Fortinet Day 1 Bell Owned SR process.",
+      "acceptance_criteria": [
+        "The process sends communication templates to the correct owner groups"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Initiate the Fortinet Day 1 Bell Owned SR process",
+          "expected_result": "The process starts and sends the communication template"
+        }
+      ],
+      "test_scenarios": [
+        "Complete the Fortinet Day 1 Bell Owned SR process with multiple activities"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-125"
+    },
+    {
+      "title": "BBM SNOW Goldenkey Update",
+      "description": "Update Goldenkey to include customers who can have ITEL as a partner",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to update BBM SNOW Goldenkey.",
+      "acceptance_criteria": [
+        "Goldenkey updated successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Update Goldenkey in BBM SNOW",
+          "expected_result": "Goldenkey updated successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Valid Goldenkey update"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-126"
+    },
+    {
+      "title": "Default Maximo Flapping Handling",
+      "description": "Automate the handling of chronic issues",
+      "type": "Workflow",
+      "user_story": "As a NOC operator, I want to automate the handling of chronic issues.",
+      "acceptance_criteria": [
+        "Automation of chronic issue handling"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure Default Maximo Flapping handling",
+          "expected_result": "Chronic issues are handled automatically"
+        }
+      ],
+      "test_scenarios": [
+        "Chronic issue handling"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-127"
+    },
+    {
+      "title": "Monitoring Rule Configuration",
+      "description": "Configure monitoring rules to trigger alerts when the average latency exceeds a threshold",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to configure monitoring rules.",
+      "acceptance_criteria": [
+        "Monitoring rules are configured successfully"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure the monitoring rules",
+          "expected_result": "Monitoring rules are configured successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Configuring monitoring rules for multiple Meraki devices"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-128"
+    },
+    {
+      "title": "Syslog Forwarding Configuration",
+      "description": "Configure syslog-ng to forward received syslogs to multiple destinations",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to configure syslog-ng.",
+      "acceptance_criteria": [
+        "Syslogs are forwarded to the correct destinations"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Configure syslog-ng with the specified filters and notes",
+          "expected_result": "Syslogs are forwarded to the correct destinations"
+        }
+      ],
+      "test_scenarios": [
+        "Test with multiple destinations"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-129"
+    },
+    {
+      "title": "SLA Management",
+      "description": "Manage SLA rules and hold options to ensure compliance and efficient customer service.",
+      "type": "Workflow",
+      "user_story": "As a system user, I want the system to manage SLAs effectively, so that customer service is efficient and compliant.",
+      "acceptance_criteria": [
+        "SLA rules are correctly applied",
+        "SLA hold options are appropriately managed"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Apply an SLA rule",
+          "expected_result": "The rule is correctly applied"
+        }
+      ],
+      "test_scenarios": [
+        "Applying an SLA rule",
+        "Managing SLA hold options"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-130"
+    },
+    {
+      "title": "L2 Engagement and Feedback",
+      "description": "Engage L2 technicians based on analysis and collect feedback for continuous improvement.",
+      "type": "Workflow",
+      "user_story": "As an L2 technician, I want to be engaged based on analysis, so that I can provide feedback and improve the system.",
+      "acceptance_criteria": [
+        "L2 engagement is triggered based on analysis",
+        "Feedback is collected"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Trigger L2 engagement",
+          "expected_result": "L2 technician is engaged"
+        }
+      ],
+      "test_scenarios": [
+        "Triggering L2 engagement",
+        "Collecting feedback"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-131"
+    },
+    {
+      "title": "System Operations and Maintenance",
+      "description": "Perform system operations and maintenance tasks to ensure system efficiency and reliability.",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to perform system operations and maintenance, so that the system is efficient and reliable.",
+      "acceptance_criteria": [
+        "System operations are performed",
+        "System maintenance is conducted"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Perform system operations",
+          "expected_result": "System operations are completed successfully"
+        }
+      ],
+      "test_scenarios": [
+        "Performing system operations",
+        "Conducting system maintenance"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-132"
+    },
+    {
+      "title": "API and Integration Management",
+      "description": "Manage APIs and integrations to ensure seamless data exchange and system interoperability.",
+      "type": "Workflow",
+      "user_story": "As a developer, I want to manage APIs and integrations, so that data exchange is seamless and systems are interoperable.",
+      "acceptance_criteria": [
+        "APIs are managed",
+        "Integrations are conducted smoothly"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Test an API",
+          "expected_result": "API functions as expected"
+        }
+      ],
+      "test_scenarios": [
+        "Testing an API",
+        "Conducting integration testing"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "high",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-133"
+    },
+    {
+      "title": "Logging and Auditing",
+      "description": "Log and audit system activities to ensure transparency and compliance.",
+      "type": "Workflow",
+      "user_story": "As a system administrator, I want to log and audit system activities, so that I can ensure transparency and compliance.",
+      "acceptance_criteria": [
+        "System activities are logged",
+        "Auditing is conducted"
+      ],
+      "test_steps": [
+        {
+          "step_num": 1,
+          "action": "Log system activities",
+          "expected_result": "System activities are logged accurately"
+        }
+      ],
+      "test_scenarios": [
+        "Logging system activities",
+        "Conducting auditing"
+      ],
+      "assumptions": [],
+      "ambiguities": [],
+      "confidence": "medium",
+      "requirement_id": "NEW_PROJECT_ANALYSIS-134"
+    }
+  ],
+  "model_state": {
+    "predict": {
+      "traces": [],
+      "train": [],
+      "demos": [
+        {
+          "augmented": true,
+          "text": "Contact management with 360-degree profile views and relationship mapping",
+          "title": "Contact Management",
+          "description": "Unified view of contact interactions, account hierarchy, and enriched data",
+          "reasoning": "The text describes a feature for managing contacts, which includes a 360-degree profile view and relationship mapping, indicating a specific functionality that can be seen or interacted with by the user.",
+          "is_requirement": "yes",
+          "reason": "Valid feature with specific functionality (user can see or interact with it), indicating a clear requirement for the system to provide a unified view of contact information and relationships."
+        },
+        {
+          "augmented": true,
+          "text": "Lead management with scoring, assignment, and qualification workflows",
+          "title": "Lead Management",
+          "description": "Capture, qualify, and convert leads with automated routing and prioritization",
+          "reasoning": "The text describes a business process for managing leads, which involves scoring, assignment, and qualification workflows. This suggests a specific workflow or end-to-end process flow.",
+          "is_requirement": "yes",
+          "reason": "Valid workflow pattern (business process layer), as it describes a specific process for managing leads, including automated routing and prioritization."
+        },
+        {
+          "augmented": true,
+          "text": "Inventory tracking with stock levels, reorder alerts, and supplier management",
+          "title": "Inventory Management",
+          "description": "Real-time tracking of inventory levels with automated reorder points and supplier coordination",
+          "reasoning": "The text describes a specific functionality for managing inventory, including tracking stock levels, generating reorder alerts, and coordinating with suppliers. This suggests a concrete requirement for an inventory management system.",
+          "is_requirement": "yes",
+          "reason": "Valid functional requirement for inventory management, including specific features such as stock level tracking, reorder alerts, and supplier management."
+        },
+        {
+          "augmented": true,
+          "text": "Deal pipeline tracking with stage progression and win/loss analysis",
+          "title": "Pipeline Management",
+          "description": "Visual tracking of sales opportunities through lifecycle stages with forecasting",
+          "reasoning": "The given text describes a specific feature for tracking and managing sales opportunities, including stage progression and win/loss analysis, which implies a functional requirement for a sales pipeline management system.",
+          "is_requirement": "yes",
+          "reason": "Valid workflow and data analysis pattern, describing a specific business process (sales pipeline tracking) that can be implemented in a software system."
+        },
+        {
+          "augmented": true,
+          "text": "Payment processing with multiple gateways and refund handling",
+          "title": "Payment Processing",
+          "description": "Secure transaction processing supporting credit cards, ACH, and digital wallets with reconciliation",
+          "reasoning": "The text describes a specific functionality of payment processing, including multiple gateways and refund handling, which suggests a concrete requirement for a system or application.",
+          "is_requirement": "yes",
+          "reason": "Valid functionality description with specific details (multiple gateways, refund handling) that implies a requirement for a system to perform payment processing securely and efficiently."
+        },
+        {
+          "augmented": true,
+          "text": "Order fulfillment with picking, packing, and shipping coordination",
+          "title": "Order Fulfillment",
+          "description": "End-to-end order processing from warehouse picking to carrier shipment tracking",
+          "reasoning": "The text describes a specific business process, which is order fulfillment, and outlines the key steps involved in it, such as picking, packing, and shipping coordination.",
+          "is_requirement": "yes",
+          "reason": "Valid end-to-end process flow pattern, describing how orders are fulfilled from start to finish, which is a specific and actionable requirement."
+        },
+        {
+          "augmented": true,
+          "text": "Analytics and reporting with custom dashboards and scheduled exports",
+          "title": "Analytics Platform",
+          "description": "Business intelligence with drag-and-drop report builder and automated delivery",
+          "reasoning": "The text describes a feature for analytics and reporting, which includes custom dashboards and scheduled exports. This feature is related to business intelligence and data analysis.",
+          "is_requirement": "yes",
+          "reason": "Valid feature pattern (business_features layer), as it describes a specific functionality that can be seen or interacted with by the user, and it implies a specific workflow or end-to-end process flow."
+        },
+        {
+          "augmented": true,
+          "text": "Email integration with Gmail and Outlook sync, tracking, and templates",
+          "title": "Email Integration",
+          "description": "Bidirectional email sync with open/click tracking and template library",
+          "reasoning": "The text describes a specific integration with email services, including synchronization, tracking, and template features, which implies a functional requirement for how the system interacts with external email systems.",
+          "is_requirement": "yes",
+          "reason": "Valid system integration pattern, as it describes how the system will interact with external services (Gmail and Outlook) and includes specific features such as sync, tracking, and templates."
+        }
+      ],
+      "signature": {
+        "instructions": "Classify if this is a genuine software requirement of ANY type.\n\nAnswer 'yes' if ANY of these are true:\n1. User can SEE it on screen or DO/interact with it (functional/UI)\n2. It describes a workflow or end-to-end process flow\n3. It specifies architecture, API design, or system integration\n4. It defines a data model, entity relationship, or schema\n5. It sets a performance target, SLA, or scalability requirement\n6. It defines security, compliance, or data protection standards\n7. It describes a configuration change (rename, reclassify, update display name)\n8. It describes defect prevention or regression test coverage requirements\n9. It defines visibility/filtering rules (what users can see under what conditions)\n\nAnswer 'no' if it is:\n- Document noise (executive summary, project objectives, scope statements)\n- A project management item (go-live checklist, verification checklist, sign-off)\n- Vague/generic with no specifics (e.g., 'ensure security', 'optimize performance')\n- An isolated UI micro-detail without page context (just a tooltip or color)\n\nCRITICAL: Prioritize business features (the 'What') over technical implementation (the 'How').\nConfiguration changes, naming changes, and defect prevention ARE valid requirements.",
+        "fields": [
+          {
+            "prefix": "Text:",
+            "description": "${text}"
+          },
+          {
+            "prefix": "Title:",
+            "description": "${title}"
+          },
+          {
+            "prefix": "Description:",
+            "description": "${description}"
+          },
+          {
+            "prefix": "Reasoning: Let's think step by step in order to",
+            "description": "${reasoning}"
+          },
+          {
+            "prefix": "Is Requirement:",
+            "description": "'yes' if this is a specific, actionable requirement of any type, 'no' if document noise or vague"
+          },
+          {
+            "prefix": "Reason:",
+            "description": "Brief explanation of why this is or isn't a valid requirement"
+          }
+        ]
+      },
+      "lm": null
+    }
+  }
+}

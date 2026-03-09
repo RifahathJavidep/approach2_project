@@ -1,0 +1,489 @@
+{
+  "analysis_date": "2026-03-06",
+  "total_documents": 6,
+  "summary": {
+    "documents_with_BRs": 6,
+    "documents_with_test_cases": 0,
+    "conclusion": "All 6 files contain Business Requirements in various formats. The JIRA .doc files also have 'How Will We Test the Feature?' sections with high-level test strategy info (E2E/UAT/DVT) and linked JIRA test tasks, but NO structured test cases (step-by-step format). No standalone test case document is present."
+  },
+  "documents": [
+    {
+      "file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+      "label": "Committed",
+      "format": ".doc (Legacy Word)",
+      "total_characters": 440174,
+      "classification": "BUSINESS REQUIREMENTS",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "total_features": 40,
+        "feature_ids": [
+          "[BBMSA-12252]",
+          "[BBMSA-12255]",
+          "[BBMSA-13025]",
+          "[BBMSA-13274]",
+          "[BBMSA-13511]",
+          "[BBMSA-13590]",
+          "[BBMSA-13592]",
+          "[BBMSA-13733]",
+          "[BBMSA-13945]",
+          "[BBMSA-14131]",
+          "[BBMSA-14134]",
+          "[BBMSA-14272]",
+          "[BBMSA-14306]",
+          "[BBMSA-14324]",
+          "[BBMSA-14379]",
+          "[BBMSA-14384]",
+          "[BBMSA-14395]",
+          "[BBMSA-14461]",
+          "[BBMSA-14512]",
+          "[BBMSA-14538]",
+          "[BBMSA-14660]",
+          "[BBMSA-14676]",
+          "[BBMSA-14703]",
+          "[BBMSA-14717]",
+          "[BBMSA-14727]",
+          "[BBMSA-14752]",
+          "[BBMSA-14779]",
+          "[BBMSA-14784]",
+          "[BBMSA-14881]",
+          "[BBMSA-14984]",
+          "[BBMSA-15035]",
+          "[BBMSA-15037]",
+          "[BBMSA-15041]",
+          "[BBMSA-15069]",
+          "[BBMSA-15129]",
+          "[BBMSA-15133]",
+          "[BBMSA-15205]",
+          "[BBMSA-15224]",
+          "[BBMSA-5899]",
+          "[BBMSA-7252]"
+        ],
+        "features_with_acceptance_criteria": 29,
+        "features_without_acceptance_criteria": 11,
+        "test_section_note": "Has 'How Will We Test the Feature?' sections — but these contain HIGH-LEVEL test strategy info (e.g., 'E2E, UAT, DVT'), NOT structured test cases (no step-by-step test procedures).",
+        "linked_test_jira_tasks": 222,
+        "linked_test_jira_note": "References 222 linked test JIRA tasks (E2E/UAT/DVT tickets) but the ACTUAL test case content is NOT in this file — it lives in JIRA.",
+        "sample_acceptance_criteria": [
+          {
+            "feature": "[BBMSA-14676]",
+            "title": "Optimize Maximo Notification Due Clearing Rules",
+            "acceptance_criteria_excerpt": "•\tThe following Notification Due clearing rules are disabled:\n\t◦\tWhen the \"Actual Contact Date\" field in Maximo is modified, unless triggered by the existing BMR rule.\n\t◦\tWhen the \"ETR (Estimated Time to Restore)\" field in Maximo is modified.\n\t◦\tWhen an incident's status in Maximo is changed to \"Pending Resolution Update\".\n\t◦\tWhen a \"VALIDATESITE\" worklog is added to an incident in Maximo.\n\t◦\tWhen a duplicate alarm is detected (based on NBC and EMAIL combination) and processed in Maximo.\n\t•\tWhen"
+          },
+          {
+            "feature": "[BBMSA-13511]",
+            "title": "Maximo configuration for BMO WIPS (Phase 1)",
+            "acceptance_criteria_excerpt": "1\tWIPS wireless intrusion prevention system generate 2 new events for Honeypot and Rogue which creates a Maximo incident\n\t2\tL1 Assignee will be blank\n\t3\tAuto inpgroress and create a auto Activity to MIS L2\n\t4\tAuto create an activity to IM\n\t5\tAuto trigger the B2B to the client\n \nFrom the BMO Utility Agreement\nSLO\nMTTN 15 MINS\nMTTRespond 30 MINS\nMTTResolved 4 Hours\nUncommitted Objective?:\nNo\nExclude From Release Notes:\nNo\nIs MVP Feature:\nNo\nDevelopment Started:\n12/Sep/25\nRequirement Status:\nUNCOVE"
+          }
+        ],
+        "sample_test_sections": [
+          {
+            "feature": "[BBMSA-14676]",
+            "title": "Optimize Maximo Notification Due Clearing Rules",
+            "test_section_excerpt": "UAT / ORT\n\t•\tUnit Testing: Developers will perform unit tests on individual code components to ensure the logic for disabling clearing rules and adding worklogs functions correctly.\n\t•\tIntegration Testing: Test cases will be executed to verify that the changes integrate seamlessly with Maximo and OC, and that data flows correctly between systems without unintended side effects.\n\t•\tScenario-Based Testing: Comprehensive test scenarios will be developed and executed, covering each acceptance criter"
+          },
+          {
+            "feature": "[BBMSA-13511]",
+            "title": "Maximo configuration for BMO WIPS (Phase 1)",
+            "test_section_excerpt": "E2E, UAT / DVT\nDo We Have a Pre-Prod Environment to Test Against?\n✅ \nDo the Developers Have a Development Environment?\n✅\nPotential Risks That Could Impede Delivery:\nCustomer Readiness\nLead BA / E2E Solution Owner:\nEmily Crawford\nPaul Wilson\nStakeholder involvement:\nBellemare, Mathieu \nNjoku, Ugochukwu Babajide \nWhy It Needs to Be Done in the Next PI:\nSelf explanatory \nAdditional details:\nSelf explanatory\nOut of Scope:\nSelf explanatory\n \nUpdate from testing Nov 27th:\n1) L2 assignment update, shou"
+          }
+        ]
+      }
+    },
+    {
+      "file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+      "label": "Uncommitted",
+      "format": ".doc (Legacy Word)",
+      "total_characters": 355603,
+      "classification": "BUSINESS REQUIREMENTS",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "total_features": 41,
+        "feature_ids": [
+          "[BBMSA-10195]",
+          "[BBMSA-10955]",
+          "[BBMSA-11693]",
+          "[BBMSA-11700]",
+          "[BBMSA-12781]",
+          "[BBMSA-12902]",
+          "[BBMSA-13265]",
+          "[BBMSA-13300]",
+          "[BBMSA-13461]",
+          "[BBMSA-13491]",
+          "[BBMSA-13558]",
+          "[BBMSA-13594]",
+          "[BBMSA-13683]",
+          "[BBMSA-13747]",
+          "[BBMSA-13797]",
+          "[BBMSA-14017]",
+          "[BBMSA-14122]",
+          "[BBMSA-14218]",
+          "[BBMSA-14455]",
+          "[BBMSA-14603]",
+          "[BBMSA-14613]",
+          "[BBMSA-14638]",
+          "[BBMSA-14696]",
+          "[BBMSA-14724]",
+          "[BBMSA-14749]",
+          "[BBMSA-14770]",
+          "[BBMSA-14786]",
+          "[BBMSA-14791]",
+          "[BBMSA-14856]",
+          "[BBMSA-14909]",
+          "[BBMSA-14976]",
+          "[BBMSA-15029]",
+          "[BBMSA-15067]",
+          "[BBMSA-15081]",
+          "[BBMSA-15108]",
+          "[BBMSA-15212]",
+          "[BBMSA-15476]",
+          "[BBMSA-3523]",
+          "[BBMSA-7428]",
+          "[BBMSA-7478]",
+          "[BBMSA-9917]"
+        ],
+        "features_with_acceptance_criteria": 27,
+        "features_without_acceptance_criteria": 14,
+        "test_section_note": "Has 'How Will We Test the Feature?' sections — but these contain HIGH-LEVEL test strategy info (e.g., 'E2E, UAT, DVT'), NOT structured test cases (no step-by-step test procedures).",
+        "linked_test_jira_tasks": 233,
+        "linked_test_jira_note": "References 233 linked test JIRA tasks (E2E/UAT/DVT tickets) but the ACTUAL test case content is NOT in this file — it lives in JIRA.",
+        "sample_acceptance_criteria": [
+          {
+            "feature": "[BBMSA-15108]",
+            "title": "UCAAS - Incident Milestone email template sent by SNOW",
+            "acceptance_criteria_excerpt": "1\tTest all templates are sent in french with correct format\n\t2\tTest all templates are sent in english with the correct format\n\t3\tThe correct template is sent when the proper trigger is initiated\nSeed Stories:\nTesting\nUncommitted Objective?:\nYes\nExclude From Release Notes:\nNo\nIs MVP Feature:\nNo\nRequirement Status:\nUNCOVERED\nRank (Manual):\n14\nCost Of Delay:\n0\nWSJF:\n0\nWSJF Summary:\nUBV: null TC: null Risk: null Job Size: null WSJF: 0.0\nProgram Increment:\nBBMSA 2026 PI1, BBMSA 2026 PI2\nEAP PI:\nBBMSA"
+          },
+          {
+            "feature": "[BBMSA-15081]",
+            "title": "AGB - Site Contact access hours in OC - PH 1 Create New Incident",
+            "acceptance_criteria_excerpt": "When creating a new ticket, the ability to add access hours per day on contact card for on site contacts (ad hoc contacts in Maximo), as per figma mockups\nDisplay of the access hours for a specific contact should all be displayed in the contact card (no more multiple contact cards for same person)\nWorklog 'including special instructions' added to OC/Maximo when dispatching and MUST appear in Click (click/TM+ team dependency to be accountable)\nAbility to add special instructions \n \n \nUncommitted "
+          }
+        ],
+        "sample_test_sections": [
+          {
+            "feature": "[BBMSA-15476]",
+            "title": "SPOG-Emergency: Ability to display affected Client connections from Ticket impacts",
+            "test_section_excerpt": "Please specify testing required (SFT, E2E, UAT, DVT/ORT)\nDo We Have a Pre-Prod Environment to Test Against?\n✅ / ❌\nDo the Developers Have a Development Environment?\n✅ / ❌\nPotential Risks That Could Impede Delivery:\nDetails that could impact delivery\nLead BA / E2E Solution Owner:\nThe name of the E2E Solution Owner\nStakeholder involvement:\nThis is the people or group of people involved on the creation of the feature. This is the group of people involved on the refinement of the feature. This is not"
+          },
+          {
+            "feature": "[BBMSA-15212]",
+            "title": "SPOG/NED- Support and Service Requests PI 1 2026",
+            "test_section_excerpt": "Please specify testing required (SFT, E2E, UAT, DVT/ORT)\nDo We Have a Pre-Prod Environment to Test Against?\n✅ / ❌\nDo the Developers Have a Development Environment?\n✅ / ❌\nPotential Risks That Could Impede Delivery:\nDetails that could impact delivery\nLead BA / E2E Solution Owner:\nThe name of the E2E Solution Owner\nStakeholder involvement:\nThis is the people or group of people involved on the creation of the feature. This is the group of people involved on the refinement of the feature. This is not"
+          }
+        ]
+      }
+    },
+    {
+      "file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+      "format": ".xlsx (Excel)",
+      "classification": "BUSINESS REQUIREMENTS",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "sheets": {
+          "Report Req layout": {
+            "rows": 134,
+            "columns": 33
+          },
+          "Secure Rpt Req ": {
+            "rows": 41,
+            "columns": 1
+          }
+        },
+        "total_report_specifications": 20,
+        "unique_reports": [
+          "Happy Town Daily Gate Info Report",
+          "Happy Town Daily Gate Performance Report",
+          "Happy Town Daily User Access Report",
+          "Happy Town Daily VPN Tunnel Info Report",
+          "Happy Town High Severity Incidents Report",
+          "Happy Town Inventory Report",
+          "Happy Town Monthly Chronic Problem Report",
+          "Happy Town Monthly Contract Status Report",
+          "Happy Town Monthly Gate Accounts Access Report",
+          "Happy Town Monthly Gate Accounts Report",
+          "Happy Town Monthly Gate Info Report",
+          "Happy Town Monthly Gate Performance Report",
+          "Happy Town Monthly Operational Status Report",
+          "Happy Town Monthly Risk Register Report",
+          "Happy Town Monthly SLA Report",
+          "Happy Town Monthly Service Desk Activity Report",
+          "Happy Town Monthly VPN Tunnel Info Report",
+          "Happy Town Privacy Breaches Report",
+          "Happy Town Security Breaches Report",
+          "Happy Town Weekly Change Management Report"
+        ],
+        "columns_tracked": 33,
+        "column_types": [
+          "Report Description",
+          "Where Delivered",
+          "Report Timing/Frequency",
+          "Security Requirements",
+          "Data Source",
+          "Report Format",
+          "Reporting Engine",
+          "Delivery Method"
+        ],
+        "sample_requirements": [
+          {
+            "report_description": "Happy Town Monthly Chronic Problem Report",
+            "requirement_text": "(222) The Contractor must provide a monthly report to Happy Inc for chronic problems that:",
+            "timing": "Monthly"
+          },
+          {
+            "report_description": "Happy Town Monthly Operational Status Report",
+            "requirement_text": "(223) The Contractor must provide a monthly management report  on operations status that includes:",
+            "timing": "Monthly"
+          }
+        ],
+        "note": "Pure requirements document — specifies WHAT reports are needed, HOW they should be delivered, security levels, and data sources. No test cases present."
+      }
+    },
+    {
+      "file": "Incident Tickets ORD Town .xlsx",
+      "format": ".xlsx (Excel)",
+      "classification": "BUSINESS REQUIREMENTS (System Design Specs)",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "sheets": {
+          "Notes": {
+            "rows": 42,
+            "columns": 1
+          },
+          "Menu Items": {
+            "rows": 5,
+            "columns": 3
+          },
+          "Incident Record": {
+            "rows": 41,
+            "columns": 7
+          },
+          "Search Form": {
+            "rows": 32,
+            "columns": 7
+          },
+          "Workflow": {
+            "rows": 5,
+            "columns": 7
+          },
+          "Notifications": {
+            "rows": 3,
+            "columns": 1
+          },
+          "Search Field types (general)": {
+            "rows": 10,
+            "columns": 5
+          }
+        },
+        "requirement_types": [
+          "UI Field Specifications (Incident Record form)",
+          "Search Form Requirements",
+          "Workflow Requirements",
+          "Notification Requirements",
+          "Search Field Type Definitions",
+          "Bilingual (EN/FR) Field Mappings"
+        ],
+        "sample_field_specs": [
+          {
+            "field_EN": "Details (Détails) <TAB 1 start here>",
+            "field_FR": "",
+            "notes": ""
+          },
+          {
+            "field_EN": "Ticket Number",
+            "field_FR": "No du billet",
+            "notes": "<custom> (L= 16 always prefaced by INC))"
+          },
+          {
+            "field_EN": "Canada Ticket Number",
+            "field_FR": "No du billet Canada",
+            "notes": "textbox (L= 50)"
+          },
+          {
+            "field_EN": "Status",
+            "field_FR": "Statut",
+            "notes": "drop down (values from ITSM) (L= L=20)"
+          },
+          {
+            "field_EN": "Severity",
+            "field_FR": "Sévérité",
+            "notes": "drop down values from ITSM (L= 20)"
+          },
+          {
+            "field_EN": "Priority",
+            "field_FR": "Priorité",
+            "notes": "drop down (L= values from ITSM) (L= 20)"
+          },
+          {
+            "field_EN": "Type",
+            "field_FR": "Type",
+            "notes": "drop down values from ITSM (L= 20)"
+          },
+          {
+            "field_EN": "Summary",
+            "field_FR": "Sommaire",
+            "notes": "textbox (L= 100)"
+          },
+          {
+            "field_EN": "Description",
+            "field_FR": "Description",
+            "notes": "textbox (L= unlimited) use scroll bars past 100"
+          },
+          {
+            "field_EN": "Resolution",
+            "field_FR": "Résolution",
+            "notes": "textbox (L= unlimited) use scroll bars past 100"
+          },
+          {
+            "field_EN": "Service Affected",
+            "field_FR": "Service touché",
+            "notes": "drop down (values from ITSM)"
+          }
+        ],
+        "note": "System design requirements — specifies incident management UI fields, search forms, workflows, and field types. This is an ITSM portal design spec document. No test cases present."
+      }
+    },
+    {
+      "file": "POS upgrade Requirement sample.pptx",
+      "format": ".pptx (PowerPoint)",
+      "classification": "BUSINESS REQUIREMENTS (Technical/Process Flow)",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "total_slides": 9,
+        "slides": [
+          {
+            "slide_number": 1,
+            "content_preview": "(diagram/image only)",
+            "has_text": false
+          },
+          {
+            "slide_number": 2,
+            "content_preview": "Highlights of the Project",
+            "has_text": true
+          },
+          {
+            "slide_number": 3,
+            "content_preview": "POS Data created from T LOG with 97 String for encrypted credit card information",
+            "has_text": true
+          },
+          {
+            "slide_number": 4,
+            "content_preview": "Host IFS (Nu bridge decryption) Used by EODBPOPCC!,EODBPOPCC2, POSB305, POSB310,  POSB317, POSB321 and POSB350",
+            "has_text": true
+          },
+          {
+            "slide_number": 5,
+            "content_preview": "Modified  Report for .... Access / Visa Transactions",
+            "has_text": true
+          },
+          {
+            "slide_number": 6,
+            "content_preview": "Modified  Report for .... Switch Transactions",
+            "has_text": true
+          },
+          {
+            "slide_number": 7,
+            "content_preview": "New report of Error transactions failed for Swipe indication Translation.",
+            "has_text": true
+          },
+          {
+            "slide_number": 8,
+            "content_preview": "Settlement file",
+            "has_text": true
+          },
+          {
+            "slide_number": 9,
+            "content_preview": "New / Modified Objects",
+            "has_text": true
+          }
+        ],
+        "content_types": [
+          "POS system upgrade process flows",
+          "Credit card transaction processing diagrams",
+          "Settlement file specifications",
+          "New/Modified program listings",
+          "Card type translation requirements"
+        ],
+        "note": "Technical requirements in diagram/flow format showing POS upgrade changes. Contains WHAT needs to change but no test cases."
+      }
+    },
+    {
+      "file": "Project Objective Sample 3 snippet .docx",
+      "format": ".docx (Modern Word)",
+      "classification": "BUSINESS REQUIREMENTS (Project Scope)",
+      "contains_BRs": true,
+      "contains_test_cases": false,
+      "evidence": {
+        "sections": [
+          "Project Objective",
+          "Solution will address jobs on entry and use test result, test result history, and job history to bet",
+          "90 day history of job and tests will be taken into account to determine the next best action, job du"
+        ],
+        "tables_found": 2,
+        "tables": [
+          {
+            "table_number": 1,
+            "total_rows": 14,
+            "header": [
+              "ID",
+              "In-Scope "
+            ],
+            "sample_rows": [
+              [
+                "IS1",
+                "Jobs from ACUT and TIM with originating systems; DSI-ACUT-FA, DSI-TIM-BTC FTTX, DSI-TIM-BUS, DSI-TIM"
+              ],
+              [
+                "IS2",
+                "JARE will be used to create the NBA business rules:\nAdditional Coordinated job creations for multipl"
+              ],
+              [
+                "IS3",
+                "Current service assurance customer data received from source systems"
+              ],
+              [
+                "IS4",
+                "90 day historical service assurance customer data received from source systems including data from p"
+              ]
+            ]
+          },
+          {
+            "table_number": 2,
+            "total_rows": 19,
+            "header": [
+              "ID",
+              "Out of  Scope – Business Activities "
+            ],
+            "sample_rows": [
+              [
+                "OS1",
+                "Atlantic\nSmall Company Corp West\nSmall Company Corp MTS\nNorthern Telephone\nORS (Out Right Sales)\nDat"
+              ],
+              [
+                "OS2",
+                "CO tickets (maintenance tickets)"
+              ],
+              [
+                "OS3",
+                "Service Assurance - Category 8"
+              ],
+              [
+                "OS4",
+                "Service Provisioning Job Details (not available from the WOM)"
+              ]
+            ]
+          }
+        ],
+        "content_types": [
+          "Project Objective statement",
+          "In-Scope items (14 items: IS1-IS14)",
+          "Out-of-Scope items (18 items: OS1-OS18)"
+        ],
+        "note": "Scope definition document — defines what is IN and OUT of scope. Pure requirements/scope doc. No test cases."
+      }
+    }
+  ]
+}

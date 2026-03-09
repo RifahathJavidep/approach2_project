@@ -1,0 +1,1101 @@
+[
+  {
+    "requirement_id": "BBMSA-14676",
+    "title": "Optimize Maximo Notification Due Clearing Rules",
+    "description": "• Improved L1 Technician Efficiency: By reducing unnecessary \"Notification Due\" clearings, L1 technicians will spend less time manually re-setting or re-evaluating incidents, allowing them to focus on critical tasks. \n\n• Reduced Manual Effort: Automating the worklog entry for HOLD to INPROG status changes eliminates a manual step, saving time and reducing the potential for human error. \n\n• Better Data Integrity: More precise control over the \"Notification Due\" field ensures that the data accurately reflects the state of an incident and the need for action.",
+    "acceptance_criteria": "•\tThe following Notification Due clearing rules are disabled:\n\t◦\tWhen the \"Actual Contact Date\" field in Maximo is modified, unless triggered by the existing BMR rule.\n\t◦\tWhen the \"ETR (Estimated Time to Restore)\" field in Maximo is modified.\n\t◦\tWhen an incident's status in Maximo is changed to \"Pending Resolution Update\".\n\t◦\tWhen a \"VALIDATESITE\" worklog is added to an incident in Maximo.\n\t◦\tWhen a duplicate alarm is detected (based on NBC and EMAIL combination) and processed in Maximo.\n\t•\tWhen an incident's status in Maximo changes from \"HOLD\" to \"INPROG\", an automated worklog entry must be added to the incident.\n\t◦\tSee description for details of this rule\n\t•\tAll existing and desired \"Notification Due\" clearing rules (e.g., the BMR rule for Actual Contact Date) that are not explicitly disabled by this feature must continue to function as expected.\n\t•\tThe changes must not negatively impact the performance or stability of OC or Maximo.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13511",
+    "title": "Maximo configuration for BMO WIPS (Phase 1)",
+    "description": "Bell will meet contractual requirements by enabling the monitoring of Intrusion attempts on wireless access points.",
+    "acceptance_criteria": "1\tWIPS wireless intrusion prevention system generate 2 new events for Honeypot and Rogue which creates a Maximo incident\n\t2\tL1 Assignee will be blank\n\t3\tAuto inpgroress and create a auto Activity to MIS L2\n\t4\tAuto create an activity to IM\n\t5\tAuto trigger the B2B to the client\n \nFrom the BMO Utility Agreement\nSLO\nMTTN 15 MINS\nMTTRespond 30 MINS\nMTTResolved 4 Hours",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13592",
+    "title": "BMO Incidents variation to create BMO Change - CR01",
+    "description": "Reduce touch time - Currently L2 need to manually generate all those changes outside of their incident ticket. FMO they'll be able to fill out a simplied form directly from their L2 activity .",
+    "acceptance_criteria": "•\tL2 should have the ability to \n\t•\tthe created change should automaticall Refer to B2B \n\t•\tstandard change notification should apply",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13274",
+    "title": "CR008 - Part 1:add offer in ADM catalog",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-12255",
+    "title": "AGB - OC - Display \"Last completed change\" and \"Change in implement\" fields from Maximo",
+    "description": "This will allow technicians to see if the Incident could have been caused by a change",
+    "acceptance_criteria": "•\tThe 2 fields \"last completed change\" and \"Change in implement\"  are displayed in OC's Incident Details page, under the CI Location.\n\t•\tThe fields will only display if they have a value.\n\t•\tThe fields are hyperlinked and open a the corresponding change in Maximo.\n\t•\tFields are read-only",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14717",
+    "title": "66293 CR001 Via Rail Emergency changes and change management fees impacts to Maximo EC MBS",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "SLA’s for the service groups and the Change management fee table needs to be aligned for MISN and Meraki service groups as there are different classifications (Type 1, Type 2A, 2B, etc.).",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14395",
+    "title": "ITEL Partner B2B",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13025",
+    "title": "McDonalds - CR8 Custom McDonald Catalog",
+    "description": "This is required as a pre-requisite to Go Live with the Service Provisioning API (as completed in the 3rd party API project). \n\nAllow Mcdonald to use BBSSC as a single plateforme to submit request",
+    "acceptance_criteria": "1\tReorganisation of offering following file all will under existing customized catalog MCD\n\t1\tShow offers datavalet tagged as “Meraki Wi-FI” only under “Managed Services” “Bell Managed Services for Cisco Meraki” “Wi-fi” \n\t2\tShow offers Datavalet tagged as “MIS Battery (NSMIS)” only under “Managed Services” “Managed Infrastructure Services” “Power supplies or battery backup” (best naming to define ATS / UPS by UX for customer)\n\t3\tDo not show the other existing offers anywhere else\n\t4\tRespect filter that Datavalet offering will only show on CI page device managed by DATAVALET\n\t5\tAny existing structured form will work as is\n\t6\tNew offering  : Modify profile / template\n\t1\tTaxonomie dispatcher\n\t1\t“Managed Services” “Bell Managed Services for Cisco Meraki”\n\t2\t“Wi-fi”\n\t3\tAction “Modify”\n\t2\tForm\n\t1\tCI selection must show only CI managed by Datavalet\n\t2\tAdmin page\n\t3\tCI section page\n\t4\tStandard page with hove offer text to identify expected details - TBD\n\t5\tDue date selection page\n\t3\tRate categorie : waiting for Datavalet\n\t4\tSLA : depends on rate categorie\n\t5\tClassification : new to be created by maximo\n\t6\tProcess with BBSSC and API : MACD same as DV-002\n\t7\tType : minor\n\t2\tNew offering : Create new profile / template\n\t1\tTaxonomie dispatcher\n\t1\t“Managed Services” “Bell Managed Services for Cisco Meraki”\n\t2\t“Wi-fi”\n\t3\tAction “Add”\n\t2\tForm\n\t1\tCI selection must show only CI managed by Datavalet\n\t2\tAdmin page\n\t3\tCI section page\n\t4\tStandard page with hove offer text to identify expected details - TBD\n\t5\tDue date selection page\n\t3\tRate categorie : waiting for Datavalet\n\t4\tSLA : depends on rate categorie\n\t5\tClassification : new to be created by maximo\n\t6\tProcess with BBSSC and API : waiting for Datavalet\n\t7\tType : minor\n\t3\tAdjust offering name for Mcdo and all on DV-047 to show “Ad Hoc report or dashboard customization”\n\t4\tInternal use offer (must not show in BBSSC)\n\t1\tWAN Site/Hardware decommission (with Physical Removal from Bell) : DV-043\n\t2\tAdd a new managed element - new location : DV-046\n\t1\tBell Managed Services for Cisco Meraki - Customer need to see all the MANAGED LAN and MANAGED WAN offering. in addition of the following requirement\n\t1\tRespect filter that Bell offering will {}{}NOT{}{} show on CI page device managed by DATAVALET\n\t2\tNew offering  : Modify profile / template\n\t1\tTaxonomie dispatcher\n\t1\t“Managed Services” “Bell Managed Services for Cisco Meraki”\n\t2\t“Bell Managed WAN” and “Bell Managed LAN”\n\t3\tAction “Modify”\n\t2\tForm\n\t1\tCI selection must NOT show CI managed by Datavalet\n\t2\tAdmin page\n\t3\tCI section page\n\t4\tStandard page with hove offer text to identify expected details - TBD\n\t5\tDue date selection page\n\t3\tRate categorie : waiting for L3 management\n\t4\tSLA : depends on rate categorie\n\t5\tClassification : new if required to be created by maximo \n\t1\tAuto create change / flowthrought\n\t2\tuse existing functionality with BBSSC like 41200340\n\t6\tType : minor\n\t3\tChange offering MERAKI_113 to remove “an URL” “un URL”\n\t2\tManaged Infrastructure Services « Network »\n\t1\tRespect filter that Bell offering will {}{}NOT{}{} show on CI page device managed by DATAVALET\n\t2\tRemove SD-Wan offering\n\t3\tMaintain the other MISN offering that are already there",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13733",
+    "title": "GCNS SD-WAN - CR4: Security Clearance dispatch",
+    "description": "******Example****** \n\nBenefits profile: Cost Reduction \nQuantitative value: 15h/mth L2/L3 UCSI \n\nBenefits Profile: Improved dispatch handling. Adding rules based on the security level will help remove potential of dispatching a technician who does not meet the customer's security clearance based on location or service. \nQuality Enhancement: Minimize truck roles due to insufficient clearance levels and manual ticket handling by the control centre. \nTime Savings: Automated patching reduces manual effort and time spent on patching. \nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities. \nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14703",
+    "title": "SPACE – AI-Assisted Pre/Post Command Comparison",
+    "description": "This feature introduces an AI-powered comparison engine within SPACE to analyze pre- and post-command outputs. It will:\n\t•\tFlag any configuration removal as critical.\n\t•\tDepend on Linked Nodes to ensure valid comparisons using a unified command set.\n\t•\tRequire a generated MOP Summary for meaningful interpretation and context. The AI agent will provide actionable insights and highlight discrepancies, enabling technicians to take corrective action before closing the change.\n\nRequirements:\n\t•\tImplement AI logic to compare pre- and post-command outputs.\n\t•\tIntegrate with Linked Nodes for consistent command sets.\n\t•\tEnsure dependency on MOP Summary for contextual interpretation.\n\t•\tDevelop UI enhancements to display flagged discrepancies and severity indicators.\n\nHigh-Level Design Plan:\n\t1\tData Preparation: Collect pre- and post-command outputs linked via Linked Nodes.\n\t2\tAI Comparison Engine: Train and deploy models to detect discrepancies and classify severity (e.g., config removal = critical).\n\t3\tUI Integration: Display flagged differences and recommendations in SPACE.\n\t4\tTesting: Validate comparison accuracy, severity classification, and usability.\n\t5\tDeployment: Roll out in phases with technician training.\n\nPre-requisites:\n\t•\tLinked Nodes functionality implemented.\n\t•\tMOP Summary generation capability available.\n\t•\tAccess to historical command outputs for model training.\n\nOut of Scope:\n\t•\tAutomated remediation of detected discrepancies.\n\t•\tIntegration with external compliance or audit platforms.\n\nTesting Plan:\n\t•\tValidate AI comparison accuracy and severity classification.\n\t•\tTest UI display and user experience.\n\t•\tConduct pilot with representative MOPs to measure impact.\n\nPotential Risks:\n\t•\tIncomplete or inconsistent command outputs affecting comparison accuracy.\n\t•\tAI misclassification of critical changes.\n\t•\tResistance to AI-driven validation.\nMitigation:\n\t•\tStandardize command sets via Linked Nodes.\n\t•\tUse explainable AI techniques for transparency.\n\t•\tEngage stakeholders early for trust-building and feedback.\n\nLead BA / E2E Owner:\nJulien Eric\n\nStakeholder Involvement:\n\t•\tDevelopers: AI comparison engine, UI integration, testing.\n\t•\tProduct Owner: Requirements, prioritization, acceptance.\n\t•\tChange Managers & Analysts: Feedback, validation, and adoption.\n\nJustification (PI):\nBy automating pre/post comparison and flagging critical discrepancies, this feature reduces preventable errors, improves compliance, and accelerates validation. These outcomes directly contribute to LFC by lowering operational costs and enhancing deployment reliability.\n\nPost-Launch Metrics:\n\t•\tNumber of discrepancies detected and resolved.\n\t•\tReduction in validation-related errors.\n\t•\tTime saved in pre/post comparison processes.\n\t•\tUser adoption and satisfaction.\n\nPotential Benefits:\n\t•\tLower operational costs through early detection of critical changes.\n\t•\tImproved compliance and validation accuracy.\n\t•\tFaster deployment cycles and enhanced reliability.\n\n\n Comments \n \nComment by Sherriff, Mark [ 14/Jan/26 ]\nTester for this feature is Rajakumar, Rajalakshmi please assign any stories ready for testing to her\nComment by Bobier-Boisvert, Florian [ 07/Jan/26 ]\nFeature added to BBMSA-2026-PI1, in progress.\nComment by Mouaffo, Gilberte [ 05/Jan/26 ]\nBobier-Boisvert, Florian Feature still in Funnel. Removing the rank manual 2, removing the feature from 2026PI1 and sending it to backlog. Thank you\nComment by Mouaffo, Gilberte [ 05/Jan/26 ]\nBobier-Boisvert, Florian Can you please review the status of this feature? It is in Funnel however there are stories already completed for the feature. Thanks\nComment by Bergeron, Melanie [ 08/Dec/25 ]\nDeFreitas, Lisa yes, this is the AI Change work TS and Baptiste are working together\nComment by DeFreitas, Lisa [ 07/Dec/25 ]\nBergeron, Melanie Checking with you to see if this should be linked to my Epic?\nComment by Lapierre, Marc-Andre [ 06/Nov/25 ]\nReported by: Benoit Durand",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14512",
+    "title": "Via Rail Canada Inc. | Cap & perf impacts",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "A new dedicated dashboard is available in Bali for the Via Rail company (in Managed Services -> Metric Family Views). The dashboard is showing metrics for new devices (DIGI, F5 BigIP)",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14324",
+    "title": "AGB - Stop NNT from getting pushed by CIBC automatic updates",
+    "description": "This will allow L1 technicians to keep the value they set in the Notification Due (Next Notification Time) so they can follow-up on the Incident when needed.",
+    "acceptance_criteria": "The Notification Due value is not modified when the automated worklog gets added to the Incident.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-12252",
+    "title": "AGB - OC - Ability to filter on empty Owner/Next notification for Incidents",
+    "description": "This will allow us to create filtered lists with empty owners, enabling us to filter on tickets not being worked by anyone.",
+    "acceptance_criteria": "Ability to filter on empty Owner for Shared and Personal lists. (Incidents only, not on the Activities Module)",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14384",
+    "title": "02A - Auto Audit CMDB evo CR 3 - CI Specs audit with right data type(ALNVALUE, NUMVALUE, TABLEVALUE)",
+    "description": "Audit results must be accurate to justify benefits of Auto Audit and Auto Correction. AGB UC5 / Auto Correction BBMPORT-1137 will automatically correct data based on the audit results \n\nDuring end-to-end regression testing for CMDB Auto Audit/CR02, several issues have been identified. All issues identified outside of CR02 will be created as separate features under CR03.",
+    "acceptance_criteria": "Business requirement for Specification section >> TOTPCCLIENT or spec with data type other than ALN:\n \nAC #1: On OBA Baseline screen user must be allowed to add a value for a Spec attribute that support data type - Table value to align with CI creation in Maximo that is today supporting spec value with data type of Table value \n \n \nAC #2: In Maximo w.r.t the Specification section CI spec attributes, Auto Audit must consider all the CI spec attributes values to be audited correctly irrespective of the data type used for the spec attribute's Value Field (Alphanumeric, Numeric, Table value) &  honoring  the  \"Mandatory\" and \"Editable\" toggles, and \"Available option\" values.\nAs an Example  \"TOTPCCLIENT\" is Spec attribute that uses Numeric data type value \"2\" & \"POLLMECH\" is spec attribute using Alpha numeric data type value \"comment1\" in below image of the Baseline view\nBaseline view :\n\n \nexamples :\n\nAudit report :",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14272",
+    "title": "PMN IM new service classification + mapping",
+    "description": "•",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14779",
+    "title": "AGB - Modify Device affecting CI mechanism to release CIs when Implementation activity COMP",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "•\tCIs suppressed via Device Affecting CI logic release at the completion of Implementation activity",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14784",
+    "title": "BMO Tower MS - SDA & LAN - Maximo Attribute",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14727",
+    "title": "DDoS Evolution - MACD catalog and Job plan updates post Bell Cyber pivot",
+    "description": "By updating the MACD catalog and job plans to align with the Bell Cyber Pivot, the NPI project will achieve the following benefits: \n\nIncreased Efficiency: Streamlined processes and updated documentation will reduce rework \nReduced Risk: Clearly defined and accurate MACD catalog and job plans will minimize errors, thereby lowering the risk of customer experience delays or failures. \nImproved Scalability: A well-defined and adaptable catalog will support the future growth and evolution of services stemming from the Bell Cyber pivot. \nEnhanced Cross-Functional Collaboration: Standardized and accessible documentation will foster better communication and understanding between Bell and Bell Cyber.",
+    "acceptance_criteria": "Catalogs for EDGE DDoS and PNDDoS contain ONLY the offerings as listed below: \nEDGEDDOS Catalog\nOffering \nDescription\nBBSSC Offerings\n \nNDDOSIA-7\nTechnical Requests\nNDDOSIA-5\nCustomer Maintenance Notification \nDDOS-001\nAdd, modify or delete Bell Business Self Serve Center User\nNDDOSIA-1\nBilling, Contract, General Inquiries\nNON BBSSC - Maximo Catalog offerings only\n \nEDGE-Day1\nDay 1 EDGE DDoS\nEDGEDDOS-1\nDisconnect Edge DDoS\nNDDOSMAC-7\nChange IP Range\nNDDOSMAC-10\nAdd/Modify DDOS protection\nPNDDOS Catalog\nOffering \nDescription\nBBSSC Offerings\n \nNDDOSIA-7\nTechnical Requests\nNDDOSIA-5\nCustomer Maintenance Notification \nDDOS-001\nAdd, modify or delete Bell Business Self Serve Center User\nNDDOSIA-1\nBilling, Contract, General Inquiries\nNON BBSSC - Maximo Catalog offerings only\n \nPNDDOS-DAY1\nDay 1 PNDDoS\nPNDDOS-DISC\nDisconnect PNDDoS\nNDDOSMAC-7\nChange IP Range\nNDDOSMAC-10\nAdd/Modify DDOS protection\nDescriptions on the following Offerings have been updated:\nOffering\nDescription\nNDDOSIA-7\nTechnical Requests\nEDGE-DAY1\nDay 1 Edge DDoS\nNDDOSMAC-7\nChange IP RANGE\nNDDOSMAC-10\nAdd/Modify DDoS Protection\nPNDDOS-DAY1\nDay 1 PNDDOS\nThe following job plans have been updated and assigned as below:\nAll activities associated with summary = Inform Stratejm or Bell Cyber remove autocomplete and follow standard flow through \nJob plan: EDGE-DISC\nAssigned to Offering EDGEDDOS-1 Disconnect Edge DDoS\nFlow through to implement\nSR owner: VMSCCOR\nAuto generated email to teams assigned to activity\nSequence\nSummary\nAssignee\nPredecessor\n10\nConfirm Customer termination details\nVMSCCOR\n \n20\nPerform Decommission Activities\nVMSCCOR\n10\n30\nDecommission Edge DDoS Service\nDDoS_IPS\n10\n40\nInform Stratejm\nVMSCCOR\n10\n \nJob plan: 1-E\nAssigned Offering: NDDOSIA-7  Technical Requests\nFlow through to implement\nSR owner: DDOS_IPS\nAuto generated email to teams assigned to activity\nSequence\nSummary\nAssignee\nPredecessor\n10\nTechnical Inquiries\nDDOS_IPS\n \n \nJob plan:  2-M\nAssigned Offering: NDDOSIA-5:  Customer Maintenance Notification\nFlow through to implement\nSR owner: NDDOS_IPS\nAuto generated email to teams assigned to activity\nSequence\nSummary\nAssignee\nPredecessor\n10\nChange Implementation\nDDoS_IPS\n \n20\nInform Stratejm\nVMSCCOR\n \n \nJob plan:  PNDDOS-DISC\nAssigned Offering: PNDDOS-DISC: __ Disconnect PNDDoS  \nFlow through to implement\nSR owner: VMSCCOR\nAuto generated email to teams assigned to activity\n \nSequence\nSummary\nAssignee\nPredecessor\n10\nConfirm Customer termination details\nVMSCCOR\n \n20\nPerform Decommission Activities\nVMSCCOR\n10\n30\nDecommission Edge DDoS Service\nDDoS_IPS\n10\n40\nInform Stratejm\nVMSCCOR\n10\nNEW job plans have been created and assigned as below:\nJob plan: NEW - please give appropriate name\nAssign to offering NDDOSMAC-10\nFlow through to implement\nSR owner: VMSCCOR\nAuto generated email to teams assigned to activity\nSequence\nSummary\nAssignee\nPredecessor\n10\nUpdate CI Features\nVMSCCOR\n \n20\nUpdate DDoS Protection\nDDoS_IPS\n \n30\nInform Stratejm\nVMSCCOR\n10\n \nJob plan: NEW - please give appropriate name\nAssign to offering NDDOSMAC-7\nFlow through to implement\nSR owner: VMSCCOR\nAuto generated email to teams assigned to activity\nSequence\nSummary\nAssignee\nPredecessor\n10\nUpdate CI Features\nVMSCCOR\n \n20\nUpdate DDoS Protection\nDDoS_IPS\n \n30\nInform Stratejm\nVMSCCOR\n10",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14306",
+    "title": "CR008 part 2 - add requirement for ADM catalog",
+    "description": "Deliver a custom catalog with the right business rule to support this customer",
+    "acceptance_criteria": "1\tOffer will be availabe under the right product for the right device selection and create the request in maximo with the right condition with the structure answer when applicable\n\t2\tcustomer can reject and this is compatible with BBSSC\n\t3\tCustomer must provide reference number always\n\t4\tCustomer must provide techncical contact always and this will automatically send update to of the order as an adhoc contact\n\t5\tCustomer can add file on any offering\n\t6\tRequest will Auto create change\n\t1\tPush directly to ASSESS for jobplan with MOP task\n\t2\tPush directly to IMPLEMENT for task with no jobplan or only 1 implement activity\n\t3\tFlow through\n\t4\tAllow HCUSTINFO for CR and ACT : request info / reply from customer and automatically change status\n\t5\tAllow CUSTREJECT from BBSSC to reopen SR / CR with IMPLEM activity\n\t6\tUse the date mapping as BNC see below due date page\n\t7\tIf the date is modified on the change window finish and we check \"update CCDD\" also update the CCDD on the change to allow a synch from SR to CR (allow this for all customer)\n\t7\tDate will map properly in maximo with the right due date page\n\t8\tContact will asked to fill in with email to keep the technical ADM person in touch of progress\n\t9\tSLO will apply as requires\n\t10\tjobplan will apply as required\n\t11\tprimary contact will receive all email for SR create, hcustinfo and completed as an adhock contact",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14660",
+    "title": "Fortinet SDWAN - Modify job plans - Bell Cyber",
+    "description": "Updating job plans to align with Bell Cyber changes by ensuring our workforce is equipped with the necessary work flows and procedures to effectively navigate and engage Bell Cyber.",
+    "acceptance_criteria": "AC 1:  MACD's job plans are accurately reflected to align with Bell Cyber changes (see attachment)\nAC 2 : All updated job plans owner groups where 'inform stratejm' are changed from System to VMSCCOR (see attachment)\nAC 3 : Day 1 onboarding SR job plan FTNBOSR reflects changes (Description)\nAC 4: Communication template for NET-L3 owner group sent to VNS-MISN-L3@bell.ca (description)\nAC 5: Where summary description is 'Inform Stratejm' changed to 'Inform Bell Cyber'",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-7252",
+    "title": "Cascading Node Status Updates in SPACE",
+    "description": "This feature implements cascading node status updates in SPACE. When a parent node's status is updated, the status of its child nodes will automatically update to match. A single backend call will handle selecting all or unselecting all child nodes from the parent node. The implementation will address the behavior when a parent node is unchecked (whether child nodes should also be unchecked). The use of hotkeys or alternative selection methods will be considered.\nRequirements:\n\t•\tImplement automatic cascading updates for child nodes when a parent node's status changes.\n\t•\tImplement a single backend call to select/unselect all child nodes from the parent node.\n\t•\tDefine the behavior when a parent node is unchecked (whether child nodes are also unchecked).\n\t•\tConsider the implementation of hotkeys or alternative selection methods (to be determined).\nHigh-Level Design Plan:\n\t•\tPhase 1: Cascading Logic: Develop the logic for cascading status updates.\n\t•\tPhase 2: Backend Call Implementation: Implement the single backend call for bulk selection/unselection.\n\t•\tPhase 3: UI Updates: Update the UI to reflect the cascading behavior.\n\t•\tPhase 4: Hotkey/Alternative Selection (optional): Implement hotkeys or alternative selection methods if deemed necessary.\n\t•\tPhase 5: Testing: Thoroughly test the new functionality.\nPre-requisites:\n\t•\tAccess to the SPACE codebase.\nOut of Scope: Cascading updates across non-hierarchical structures; Integration with other systems; Automated status updates based on external events.\nTesting Plan:\n\t•\tTesting of cascading status updates in various scenarios.\n\t•\tVerification of the bulk selection/unselection functionality.\n\t•\tTesting of the defined behavior when a parent node is unchecked.\n\t•\tTesting of hotkeys or alternative selection methods (if implemented).\nPotential Risks:\n\t•\tUnexpected behavior due to cascading updates.\n\t•\tPerformance issues with large hierarchical structures.\n\t•\tMitigation: Thorough testing and efficient algorithm design will mitigate these risks.\nLead BA / E2E Owner: Refer to JIRA Feature's assignee for responsible Product Owner\nStakeholder Involvement:\n\t•\tDevelopers: Design, development, and testing.\n\t•\tAlexandre Dumouchel-Charron: Requirements validation and feedback.\nJustification (PI): This feature improves the accuracy and efficiency of managing multiple nodes in SPACE, reducing manual effort and the risk of human error in updating change request statuses, ultimately leading to fewer failed changes.\nPost-Launch Metrics:\n\t•\tFrequency of use of cascading updates.\n\t•\tReduction in manual updates.\n\t•\tReduction in inconsistencies in change request status updates.\nPotential Benefits:\n\t•\tImproved accuracy of change request status updates.\n\t•\tReduced manual effort.\n\t•\tReduced risk of failed changes.\nRequestor: More information in the comments section of this JIRA card\nThe objective alignment now reflects the stronger alignment with the LFC objective.\n\n\n Comments \n \nComment by Sherriff, Mark [ 14/Jan/26 ]\nTester for this feature is Rajakumar, Rajalakshmi please assign stories ready for testing to her\nComment by Lapierre, Marc-Andre [ 21/Jul/25 ]\nEric, Julien 18 SP looks a lot to me for this feature, for the value it brings, if it goes higher than 6 SP, we will have to drop this feature as it shift the WSJF score too much. I am lowering back FSP down to 6 until we have seed stories, but consider it dropped from PI4 if we have to move this back up.\nBoulay, Alexandre  Jawhar, Abdel Rahman  Please assist team on staying with reasonnable estimates on this one. Anything we are missing for a cascading checkbox feature to eventually cost $64k to our business?\nComment by fidjanet [ 13/Jun/24 ]\nMarc-Andre Lapierre:\nComment by fidjanet [ 13/Jun/24 ]\nMarc-Andre Lapierre: Alexandre Dumouchel-Charron\nComment by fidjanet [ 13/Jun/24 ]\nReported by: Alexandre Dumouchel-Charron",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14984",
+    "title": "Sûreté Du Québec CR002 - Custom IPVPN SLA and Analance reporting",
+    "description": "This feature will deliver custom SLA as per the contact which will all for site availability per CI in Zone 1 and a Global site availability for each of the Zones 2 to 4.",
+    "acceptance_criteria": "•\tAll of the Zones have the proper SLA and SLO targets for MTTN and MTTR\n\t•\tAnalance reporting has the proper Site Availability per Zone.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15069",
+    "title": "ARTM - SDWAN SLA Corrections - CR003",
+    "description": "SLA rules are corrected to standard SLA's thus reporting is accurate.",
+    "acceptance_criteria": "1\tAll custom SLA rules delivered in feature BBMSA-12797 are disabled\n\t2\tNew SLA's applied are standard as per the table in the feature description",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15037",
+    "title": "JVN - CR033 -Streamlined SLA Hold Management for MCS (JVN) Tickets",
+    "description": "Meet customer contractual expectations.",
+    "acceptance_criteria": "1\tInitial State – Never SLA held Ticket:* Given a ticket is created or is currently active in any state for the MCS (JVN) customer. * When a user attempts to apply an SLA Hold at the Incident level (e.g., by L1) or the Activity level (e.g., by L2 or others). * Then the list of available SLA Hold options shall only include:  SLA Hold - Per JVN Contract: Starting after 30 Min Grace  on “top (Incident update features) : in OC And the following options shall not be visible or selectable:  Awaiting customer authorization (SLA Hold)  Missing customer information (SLA Hold) * SLA Hold.\n\t2\tFirst Application of JVN Contractual Hold:* Given a ticket is active for the MCS (JVN) customer and the SLA Hold - Per JVN Contract: Starting after 30 Min Grace option is available. * When a user selects and applies SLA Hold - Per JVN Contract: Starting after 30 Min Grace. * Then the system shall record this hold event. * And an email notification shall be sent to the JVN ticket initiator. * And the system shall initiate a 2-hour timer for a subsequent email to the JVN SPOC. * And the SLA Hold - Per JVN Contract: Starting after 30 Min Grace option shall become unavailable for selection on this ticket for the remainder of its lifecycle. * And the general SLA Hold option shall become available for selection on this ticket. * And the options Awaiting customer authorization (SLA Hold) and Missing customer information (SLA Hold) shall remain unavailable.\n\t3\tSubsequent SLA Holds:* Given an MCS (JVN) ticket where SLA Hold - Per JVN Contract: Starting after 30 Min Grace has already been applied once. * When a user attempts to apply an SLA Hold. * Then the list of available SLA Hold options shall only include: * SLA Hold * (for remainder life of that ticket at any time regardless of how many times it was used on it) And the following options shall not be visible or selectable:  Awaiting customer authorization (SLA Hold)  Missing customer information (SLA Hold) * SLA Hold - Per JVN Contract: Starting after 30 Min Grace\n\t4\tEmail Trigger Verification (General SLA Hold):* Given an MCS (JVN) ticket where the general SLA Hold option has been applied. * When the SLA Hold is applied. * Then no email notification shall be sent to any JVN contact (initiator or SPOC).\n\t5\tStrict Customer Exclusivity:* Given a ticket belonging to any customer other than MCS (JVN).  This feature's implementation shall not affect the available SLA Hold options or their associated behaviors in any way for this customer. * And the SLA Hold functionality for non-JVN customers must remain exactly as it was prior to the delivery of this feature.\n\t6\tUAT & ORT:* All defined scenarios must pass User Acceptance Testing (UAT) and Operational Readiness Testing (ORT). * MIIPE is not required for this feature.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15224",
+    "title": "Air Canada Inventory API Update CR10",
+    "description": "******Example****** \n\nBenefits profile: Cost Reduction \nQuantitative value: 15h/mth L2/L3 UCSI \n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency \nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture. \nTime Savings: Automated patching reduces manual effort and time spent on patching. \nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities. \nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14752",
+    "title": "AGB - Auto Dispatch Guardrails (Power, HCLEARED, Global/Child)",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15035",
+    "title": "Request Details persistent",
+    "description": "Allowing partners to access the information from the SR to complete the work",
+    "acceptance_criteria": "field needs to be available in DB so that consolidator mais send it to ServiceNow",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15041",
+    "title": "AGB - A/D Data Direct Dispatch",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13945",
+    "title": "AGB - Utility Power validation",
+    "description": "•",
+    "acceptance_criteria": "•\tMockups: NA\n\t•\tFeature Story Points (from the seed feature): \n\t•\tAssignee specified: \n\t•\tSIA: NA\n\t•\tETA for Dataset (if needed for Dev, SFT, E2E, UAT): NA\n\t•\tImpacted ART Team (Prime team & Teams with Sig Dep): \n\t•\tAdd SA-DrStrange team (MIIPE team) as 'Team with SigDep' when Feature testing needed: NA - Testing using MIIPE not required.\n\t•\tSpecify the required testing in the \"Description\": SFT, E2E, DVT, and/or UAT: NA\n\t•\tPrime team estimation (field on the feature: Prime Team Level Estimation): \n\t•\tSig dep Team estimation (field on Sig Dep: Team level estimation): \n\t•\tFeature kick off call (set by PMs): Prime Team + Sig Dep teams + PMs + POs + Tech Lead + System Architect+ any stakeholder as required (Goal: feature review and high level User stories estimation) \nWhen the feature is under \"Analysis Completed\":\n\t•\tUser stories: \n\t•\tStory points estimation: \n\t•\tFeature content final review by Prime POs \n\n Description \n \nFeature details:\nPrerequisite:\n\t•\tSee document latest API document in BBMSA-11807\nNTS & Field requirements\nInput\n\t•\tProvide Lat and Long for request to BBM API \n\t◦\tcould be an address\n\t◦\tcould be a list of addresses or Lat/Longs\n\t•\tReference number (Unique Identifier for alarm)\n\t◦\tAPI request every five 5 mins until response (either yes or No)\nResponse\n\t•\tIf outage, data for outage, including Utility = Use UtilityId to find UtilityName (see attachment)\n \nUpdates\n\t•\tprovide updates for existing power outages every 60 mins until a \"no outage response\" is provided\n \nBBSSC requirements\nInput and Response\n\t•\t Same as NTS (see above)\nUpdates\n\t•\tNo requirement for updates\n \nBBM requirements\nInput:\n\t•\tAll service groups\n\t•\tAll alarms that call \"BBM router down\" Catalina workflow. List of alarm type would be (DEVICE HAS STOPPED RESPONDING TO POLLS, EDGEMARC IS DOWN, Device Status is OFFLINE, APs went down, router name is no longer responding to poll)\n\t•\tPoweroutage API check should be done on a failed test\n\t•\tCatalina workflow should not be impacted by API call to PowerOutage.com\n\t•\tpower outage call should be separate from autotest\n\t•\tMaximo CI address (if error message from API) stop the job\n\t•\tPolling for incident will be every minute for the first 20 mins, then poll every 5 mins upto 1hr after ticket creation\n \nOutput:\n\t•\tSave output of API calls to Poweroutage.com into a database (leverage Grafana from POC)\n\t•\tIncident number, Address (or Lat and Long), CI name, payload (in postgress database)\n\t•\tPower outage detection time (time between incident creation and confirmation of a power outage)\n \nCustomers with B2B (BMO & CIBC, to be extendable in the future so make it configurable) \n\t•\tMaximo\n\t•\tRun autotest (as per current process)\n\t•\tIf autotest fails, activate B2B on the incident (INCIDENT.GLOBALTICKETID = NULL)\n\t•\tDelay in order for Maximo to establish B2B\n\t•\tAdd worklog A (below) to B2B asking client to validate power and provide site contact\n\t•\tPut ticket ONHOLD (HCUSTINFO) waiting for customer info\n\t•\tSLA hold time = system date + 24hours\n\t•\tAuto Resume = false\n\t•\tLock assignee = false\n\t•\tWorkflow (Click, Catalina, etc)\n\t•\tFor all incidents, If Poweroutage.com outage workflow = Yes then add automatic worklog B (below) about the detection of a utility power outage\nStandard Customers without B2B\n\t•\tWorkflow (Click, Catalina, etc)\n\t•\tRun autotest (as per current process)\n\t•\tIf autotest fails, then check Poweroutage.com\n\t•\tFor all incidents, If Poweroutage.com outage workflow = Yes then add automatic worklog C (below) about the detection of a utility power outage\n\t•\tnote:  Status of incident should remain even if there is a utility power outage\n \nGeneral Maximo rules for all worklogs below: Worklogs must be in French when\nLanguage Flag = Legal Obligation\nOR\nNotification Language = FR\nIf the above is not “true” worklogs can be in english\n \nWorklog A asking client to validate power and provide site contact\nLOG TYPE:  CLIENTSTATUS (customer viewable)\n“We have observed that this device is currently unreachable.  Please confirm power to the equipment and provide a site contact to enable us to continue our investigation.”\nWorkLog A:  French version\nSummary:  Veuillez confirmer l'alimentation de l'équipement et contact sur place\nDescription: « Nous avons observé que cet appareil est actuellement inaccessible. Veuillez confirmer l'alimentation de l'équipement et fournir un contact sur place pour nous permettre de poursuivre notre enquête. »\nWorklog B1 (B2B customer) if PowerOutage.com outage = Yes\nLOG TYPE:  CLIENTSTATUS (customer viewable)\n“We have detected a commercial power outage occurring in this geographical area.  Please advise us if issue persists once power has restored so we can perform further validation.”\n\"We have detected a commercial power outage in the service area.  If the issue persists after power is restored, please notify us and we will conduct further validation\"\nWorklog B1:french version\nSummary: Panne de courant détecté Description:  \"Nous avons détecté une panne de courant dans ce secteur géographique. Veuillez nous aviser si le problème persiste une fois le courant rétabli afin que nous puissions effectuer une validation supplémentaire.\"\nNous avons détecté une panne de courant commerciale dans la zone de service. Si le problème persiste une fois le courant rétabli, veuillez nous en informer et nous procéderons à des vérifications supplémentaires.\n \nWorklog B2 (B2B customer) if PowerOutage.com outage = Yes\nLOG TYPE:  UPDATE (not customer viewable)\nUtility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Estimated Utility Restoration Time = EstimatedRestoration Utility reported time = DateTimeRecorded\nWorklog B2:french version Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure de rétablissement estimée par le service public d'énergie  = EstimatedRestoration Temps déclaré par le service public d'énergie = DateTimeRecorded\nWorklog C1 (non B2B customer) if PowerOutage.com outage = Yes\nLOG TYPE:  UPDATE (customer viewable)  (!)changed from CLIENTSTATUS to UPDATE  CLIENTSTATUS (customer viewable)\n“We have detected a commercial power outage occurring in this geographical area.”\n\"We have detected a commercial power outage in the service area.  If the issue persists after power is restored, please notify us and we will conduct further validation\"\nWorklog C1:french version\nSummary:  Panne de courant détecté\nDescription: \n\"Nous avons détecté une panne de courant dans ce secteur géographique.\"\nNous avons détecté une panne de courant commerciale dans la zone de service. Si le problème persiste une fois le courant rétabli, veuillez nous en informer et nous procéderons à des vérifications supplémentaires.\n \nWorklog C2 (non B2B customer) if PowerOutage.com outage = Yes\nLOG TYPE:  UPDATE (not customer viewable)\nUtility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Estimated Utility Restoration Time = EstimatedRestoration Utility reported time = DateTimeRecorded\nWorklog C2:french version Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure de rétablissement estimée par le service public d'énergie  = EstimatedRestoration Temps déclaré par le service public d'énergie = DateTimeRecorded\nWorklog D if PowerOutage.com outage = Yes & ETR changed\nLOG TYPE:  UPDATE (customer viewable)  (!)changed from CLIENTSTATUS to UPDATE  UPDATE (not customer viewable)\n“Commercial power outage restoration time has changed.”\nUtility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Revised Estimated Utility Restoration Time = EstimatedRestoration\nWorklog D:french version{}\nSummary:  Mis à jour de la panne de courant\nDescription:\n“Le temps pour le rétablissement de la panne de courant a changé.” Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure révisé de rétablissement estimée par le service public d'énergie = EstimatedRestoration\nNOTE:  ONLY for worklog D If Incident status is ONHOLD then change NNT to = EstimatedRestoration (from PowerOutage.com) from this worklog\n \nUpdates\n\t•\tIf power outage is found keep polling once per hour up to a maximum of 1 week, to update power ETR, if it changes\n\t•\tAdd flag to be able to stop polling before the week is over on updates (to help avoid resource overload)\n\t•\tIf the ETR changes then add worklog D for ETR update\n\t•\tDoes Poweroutage.com provide updated ETR?  If so, how is the update provided?  Laflamme, Michel to ask PowerOutage.com\n\t•\tReply from PowerOutage.com:  If the utility updates the ETR metadata from the original estimate associated with the GeoJSON shapes that will subsequently be updated in our API\nOut of scope:\n\n\n Comments \n \nComment by Mouaffo, Gilberte [ 10/Feb/26 ]\nSherriff, Mark Can we please have the Story and Defects testing process document ready so we can share to all POs? Thanks.\nGrossi, David Once ready, the document will be shared with all the POs so you can follow the guidelines. Thanks\n \nComment by Sherriff, Mark [ 10/Feb/26 ]\nHi Grossi, David i see this feature was moved to feature testing today but i also see several AVENGER stories that were completed in this PI and went right from Dev to complete the test team should be testing all of these stories before they are closed. please make sure for any other AVENGERS stories that they go to testing and are assigned to the tester on the feature they will then move it to Ready to Deploy when they are done.\n \nthanks, Mark\n \nCC:Ivanov, Diana , Mouaffo, Gilberte \nComment by Grise, Maxim [ 06/Jan/26 ]\nPayloads available at https://confluence.bell.corp.bce.ca/spaces/SAMEGATRON/pages/1582978469/Spectrum\nComment by San Roman Sanchez, David [ 24/Dec/25 ]\nUtility Power Validation Testing – Missing Data & Information\nI spoke with Anitha regarding the CIs required for testing in the QA-UAT environment. She recommended reaching out to the Maximo team for assistance in identifying or creating the necessary CIs for testing.\nAdditionally, for the Alarms payloads that are also required, Maxim suggested creating a separate Jira task to handle payload creation.\nDevelopment of this feature is scheduled to be completed by the end of PI5. Could you please confirm if testing is expected to start in PI1-2026, or if there is an alternative timeline?\nComment by Laflamme, Michel [ 10/Dec/25 ]\nWorklog A to be added by Maximo.\nWorklogs B, C & D to be added by Catalina.  Worklog should be added to the incident (not the activity).  Transfer 6 points from Maximo to Catalina.\nB2B Flag = (comes from consolidator) characteristic.['name='bl_isRefb2b'].value See the following for mapping in consolidator INCIDENTS - Detailed mapping - Overall Systems Integration - DOQ Confluence\n\nFor Worklog D, Catalina will add worklog and Maximo will take the revised date and update the NNT (INCIDENT.CG_CUSTNOTIFDUE) Format will be:  2025/12/10 15:34:52 (yyyy/mm/dd hh:mm:ss)\nComment by Laflamme, Michel [ 28/Nov/25 ]\nWorklog B:english version Summary:  Power outage detected Description:\n“We have detected a commercial power outage occurring in this geographical area.  Please advise us if issue persists once power has restored so we can perform further validation.” Utility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Estimated Utility Restoration Time = EstimatedRestoration Utility reported time = DateTimeRecorded\n \nWorklog B1:french version\nSummary: Panne de courant détecté Description:  \"Nous avons détecté une panne de courant dans ce secteur géographique. Veuillez nous aviser si le problème persiste une fois le courant rétabli afin que nous puissions effectuer une validation supplémentaire.\"\nNous avons détecté une panne de courant commerciale dans la zone de service. Si le problème persiste une fois le courant rétabli, veuillez nous en informer et nous procéderons à des vérifications supplémentaires.\nWorklog B2:french version {}Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure de rétablissement estimée par le service public d'énergie  = EstimatedRestoration Temps déclaré par le service public d'énergie = DateTimeRecorded\nWorklog C:english version\nSummary:  Power outage detected\nDescription: \n“We have detected a commercial power outage occurring in this geographical area.” Utility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Estimated Utility Restoration Time = EstimatedRestoration Utility reported time = DateTimeRecorded\n \nWorklog C1:french version\nSummary:  Panne de courant détecté\nDescription: \n\"Nous avons détecté une panne de courant dans ce secteur géographique.\"\nNous avons détecté une panne de courant commerciale dans la zone de service. Si le problème persiste une fois le courant rétabli, veuillez nous en informer et nous procéderons à des vérifications supplémentaires.\nWorklog C2:french version Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure de rétablissement estimée par le service public d'énergie  = EstimatedRestoration Temps déclaré par le service public d'énergie = DateTimeRecorded\n \nWorklog D:english version\nSummary:  Power outage update\nDescription:\n“Commercial power outage restoration time has changed.”\nUtility = Use UtilityId to find UtilityName (see attachment) Power Outage Cause = OutageCause Revised Estimated Utility Restoration Time = EstimatedRestoration\n \nWorklog D:french version{}\nSummary:  Mis à jour de la panne de courant\nDescription:\n“Le temps pour le rétablissement de la panne de courant a changé.” Service public d'énergie = Use UtilityId to find UtilityName (see attachment) Cause de la panne = OutageCause Heure révisé de rétablissement estimée par le service public d'énergie = EstimatedRestoration\nComment by Laflamme, Michel [ 24/Nov/25 ]\nWorkLog A: english version Summary:  Please confirm power to the equipment and site contact Description: “We have observed that this device is currently unreachable.  Please confirm power to the equipment and provide a site contact to enable us to continue our investigation.”\n \nWorkLog A:  French version\nSummary:  Veuillez confirmer l'alimentation de l'équipement et contact sur place\nDescription: « Nous avons observé que cet appareil est actuellement inaccessible. Veuillez confirmer l'alimentation de l'équipement et fournir un contact sur place pour nous permettre de poursuivre notre enquête. »\nMandavilli, Swetha FYI\nComment by Grossi, David [ 15/Oct/25 ]\nChanging the status to REFINED as we received the latest prerequisites today . The number of SP will need to be revised in the next 24h before moving forward .",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14538",
+    "title": "02A - Auto Audit CMDB evo CR 3 - New Audit Business Rules ALN, NUM type attributes for Spec",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "SPECIFICATION MODULE \n \n\n \n \n \n AC 1\n\t•\tGiven the \"Allow Adding More\" toggle is enabled on OBA baseline Specification section,\n\t•\tAnd When a Maximo CI is audited against its active OBA baseline,\n\t•\tThen the Audit must pass even if the CI contains CI Specification (Spec) that are not defined in the OBA baseline. The Audit must not validate the values of these additional CI Specs found in the CI, as there is no corresponding OBA baseline value for comparison.\n\t•\tAnd the Audit must still validate CI Specs that are present in both the Maximo CI and the OBA baseline against their respective baseline values by following the rules defined in attached XLS file \"V3.0_CI_SPEC_Num_ALN_New Audit rule for CR03 \"\nAC 2\n\t•\tGiven the \"Allow Adding More\" toggle is disabled on OBA baseline Specification section,\n\t•\tAnd When a Maximo CI is audited, against its active OBA baseline,\n\t•\tThen the Audit fails &  Audit report must flag an individual error for any Spec found in the Maximo CI that is not defined in the OBA baseline. The Audit report error message should indicate \"non-compliant to Baseline\" or a TBD equivalent msg\n\t•\tAnd the Audit must still validate CI Specs that are present in both the Maximo CI and the OBA baseline against their respective baseline values by following the rules defined in attached XLS file \"V3.0_CI_SPEC_Num_ALN_New Audit rule for CR03 \"\nAC 3 : the below CI Specs to use BBMSA-15604\n\t•\tManagement IP address \n\t•\tMAC address \n\t•\tSerial Number \n\t•\tNatted ip address \nService info section CI specs \n\t•\tSNMP Read \n\t•\tSNMP Write \n\t•\tSNMP Version \n*Added  on Jan 21 - 3 CI specs on OBA baselines are part of the MAIN INFO section while Maximo treats these 3 CI Spec as part of Specification section . Discussed with - Thamer, Mahmoud, Ines, Peter, Dawn\n \n\n{}For the 3 CI spec which appear on Main Info section of the OBA baseline  –{-}\n\t•\tManagement IP address - yes\n\t•\tMAC address - yes\n\t•\tSerial Number - yes \n\t•\tNatted ip address - yes\nService info section CI specs \n\t•\tSNMP Read not recv \n\t•\tSNMP Write  y\n\t•\tSNMP Version  y\nMaximo Audit system will apply CI Spec audit rules defined in attached XLS file \"V3.0_CI_SPEC_Num_ALN_New Audit rule for CR03 \"\nMaximo will use Level 1 Mandatory & Level 2 Mandatory values for these 3 CI spec as same values defined by the Level Mandatory option selected in OBA \nTBD - OBA looking if it can prevent users to redefine these 3 specs in OBA specification section. doing so will align with Maximo not having redundant information of the same spec 2 times. since current payloads received from OBA --> Maximo uses the spec details to be shared as part of specification payload to Maximo. Having the same spec defined in 2 places will have redundant info sent to maximo with different spec details",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15133",
+    "title": "BMO CR022 55150 BMO API Integration - Status Update on MACD on Change API",
+    "description": "Benefits Profile:  Increased Efficiency \nQuality Enhancement: Minimized human errors and delays in order. \nTime Savings: Avoids cancelling an order and having to recreated one. \nOpportunity Enablement: Avoids cancelling an ongoing change, due to a date being rescheduled or a CI needing to be modified.",
+    "acceptance_criteria": "We need to be able to bring back the following statuses to ASSESS in CR's that have been created via SR:\nWAPPR\nAPPROVED\nIMPLEMENT\nWe need to replicate what was developped in the feature for SA; Maximo BRE BL_RESCHG and BL_RESCHGCHG",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14131",
+    "title": "New \"Send To Service Now\" flag",
+    "description": "Load and risk reduction for both tool. More manageable data volume for daily sync of Snow and reduce refetch risk for Mx",
+    "acceptance_criteria": "For CI field, can we make it editable from Maximo ui\nfor all other objects can we display the flag in UI but make it read only (somwhere near the refer B2B flag would be good)\nfor all object make the field tracked in Audit",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14461",
+    "title": "CR02_Add/Change/Remove Bell Business Self Serve Centre User ID's for MISx service group including Fortinet",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "1\t\"Add/Change/Remove Bell Business Self Serve Centre User ID\" offering is visible in BBSSC for MIS services (MISN, MISW, MISV and VMS)\n\t2\t\"Add/Change/Remove Bell Business Self Serve Centre User ID\" remains CMO in Maximo for all MIS services as per existing (MISN, MISW, MISV and VMS)\nNote: existing BMCSG-user offering ID will be reused in BBSSC",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14134",
+    "title": "CR01_Customer Performed Change Offering + Disconnect Status Change",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "Regarding offering \"Customer-performed change\"\n \nOffering ID\nRequest Type\nDescription \nMaximo Catalog\nSSC Catalog\nSLA Std (mon - fri 8-5)\nJob plan\nFortinet SDWAN-055\nChange \n \n(Type 5)\nCustomer performed change\nManaged SDWAN BO?? TBD Maxime is this right name\nManaged SDWAN BO ? TBD Maxime is this right name\nNA\nSee attachment\nFortinet-CUST- SDWAN-055\nChange \n \n(Type 5)\nCustomer performed change\nFortinet CO \nManaged SDWAN CO\nNA\nSee attachment\n    1. \"Notify Bell of a customer-performed change\" offering (Meraki_76) is NOT visible in BBSSC and in Maximo for both BO and CO catalog for Fortinet\n  2. \"Customer-performed change\" new offering is visible in BBSSC and Maximo Fortinet bell-owned service catalog\n  3. \"Customer-performed change\" new offering is visible in BBSSC and Maximo Fortinet customer-owned service catalog\n  4. \"Customer-performed change\" form displays a message \"please provide the start and end time and date of the change\" \n  5.  \"Customer performed change\" new classification is visible in Maximo Fortinet BO\n  6. \"Customer performed change\" new classification is visible in Maximo Fortinet CO\n  7.  The same new job plan is used for both Fortinet BO and Fortinet CO\n \nRegarding existing offering \"Disconnect service at a site\" in BO\nOffering ID\nRequest Type\nDescription\nMaximo Catalog\nSLA Standard (mon-fri 8-5)\nJob plan\nFortinet-SDWAN-002   \nRemove\n \n(type 2)\nDisconnect service at a site\nFORTINET BO\n5 days \nFNTDCSITE\n\t1\tMaximo SR status is \"Closed\" when all activities are completed \n\t2\tBBSSC SR status is \"Completed\", no approval or reject is required",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15129",
+    "title": "Via Rail - CR007 Incident Service Bridge Auto ticket closure",
+    "description": "Meeting Customer requirements for the values of Category and Sub Category for the Service Bridge integration from Maximo to BBM SNOW to the client instance of SNOW",
+    "acceptance_criteria": "1\tThe mapping between Maximo and BBM Service now is accurate based on requirements\n\t2\tThe mapping between BBM Service Now via Service Bridge to the client instance of Service Now is accurate based on the requirements\n\t3\tMaximo tickets are auto closed after 7 business days as per the requirement\n\t4\tMaximo incident Description field is consuming HTML but will not be displayed in HTML format\n\t5\tExisting functionality between Maximo and BBM SNOW is still functional\n\t6\tAll integration between BBM Service Now Via the Service Bridge to the client Service Now is functional.  Not only the items from the CR.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14379",
+    "title": "02A - Auto Audit CMDB evo CR 3 -Service Feature / CI Service",
+    "description": "Audit results must be accurate to justify benefits of Auto Audit and Auto Correction. AGB UC5 / Auto Correction BBMPORT-1137 will automatically correct data based on the audit results \n\nDuring end-to-end regression testing for CMDB Auto Audit/CR02, several issues have been identified. All issues identified outside of CR02 will be created as separate features under CR03.",
+    "acceptance_criteria": "Feature review done & aligned Oct 16, 2025 with Stakeholder list mentioned below\nRequirement to audit CI SERVICE field:\nAs an Audit report user, I need the \"CI SERVICE\" field to be an auditable item respecting the New Audit business rules BBMSA-14538 for all Service Feature's (eg- Lifecycle Management, Server Management), so that I can be able to view the audited CI discrepancies relating to the CI SERVICE field value\nBaseline view example:\n\n \nValid Scenarios example :",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-14881",
+    "title": "BBMSA 2026 PI1 Defects / Support",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-13590",
+    "title": "Dynamically associate Maximo tickets to Change directly",
+    "description": "This feature aims to eliminate the need for the intermediate \"SPACE change\" by directly associating SPACE MOPs with Maximo changes using a regex-based approach to extract the change number from the MOP name.\nRequirements:\n\t•\tModify the SPACE MOP naming convention to include a change number in the format C######.\n\t•\tImplement regex-based matching to extract the change number from the SPACE MOP name.\n\t•\tDirectly associate the SPACE MOP with the Maximo change using the extracted change number.\nHigh-Level Design Plan:\n\t•\tPhase1: Analysis of Current Association Process - Investigate the current manual association process and identify areas for improvement.\n\t•\tPhase2: Implementation of Regex-Based Matching - Develop and implement the regex-based approach to extract the change number from the SPACE MOP name.\n\t•\tPhase3: Integration with Maximo - Integrate the extracted change number with Maximo to directly associate SPACE MOPs with Maximo changes.\n\t•\tPhase4: Testing - Thoroughly test the new functionality.\nPre-requisites:\n\t•\tAccess to the SPACE codebase.\n\t•\tKnowledge of regex-based matching.\nOut of Scope:\n\t•\tChanges to existing change management processes.\n\t•\tIntegration with other systems.\nTesting Plan:\n\t•\tTesting of the regex-based matching approach.\n\t•\tVerification of direct association between SPACE MOPs and Maximo changes.\nPotential Risks:\n\t•\tErrors in regex-based matching.\n\t•\tCompatibility issues with existing systems.\nMitigation: Thorough testing and careful implementation will mitigate these risks.\nLead BA / E2E Owner: Refer to JIRA Feature's assignee for responsible Product Owner\nStakeholder Involvement:\n\t•\tDevelopers: Design, development, and testing.\n\t•\tRequestor: Owen Yuen\nJustification (PI): This feature improves the efficiency and accuracy of associating SPACE MOPs with Maximo changes, reducing manual effort and the risk of human error.\nPost-Launch Metrics:\n\t•\tReduction in manual effort for association.\n\t•\tIncrease in accuracy of associations.\nPotential Benefits:\n\t•\tImproved efficiency of change management.\n\t•\tReduced risk of errors.\n\t•\tIncreased productivity.\n\t•\tEstimated time savings per year: 52 hours per year for MS OPS L3/CSE in Cost Savings (based on 6,240 volume of MOPs/changes per year and 0.5 mins savings per MOP/change).\nRequestor: Owen Yuen\n\n\n Comments \n \nComment by Rajakumar, Rajalakshmi [ 17/Feb/26 ]\nThe DVT for this feature is done and sign off is done as well!\nComment by Sherriff, Mark [ 14/Jan/26 ]\nTester for this feature is Rajakumar, Rajalakshmi please assign stories ready for testing to her\nComment by fidjanet [ 24/Jul/25 ]\nOwen Yuen: Hi Abed, thanks for looking into this. I think even if Maximo was not in the picture, the ability to extract the change number from the MOP title would be a nice feature. It would also eliminate the requirement to create a \"SPACE change\" and then manually associate the SPACE MOP. The \"SPACE change\" can be automated.\nOnce this is in place and SPACE has the capability of identifying the change number from a SPACE MOP, for clients that use Maximo, we can then create that link as well.\nComment by fidjanet [ 24/Jul/25 ]\nAbed Jawhar: Owen Yuen This would work if Maximo is the only ticketing system and all Space users are using Maximo. However, the reality is that not all Space users use Maximo as a ticketing system more importantly, Space is not built to just work with Maximo... SO we can't add a limitation and an enforcement on MOP names to just be compatible with Maximo.\nComment by fidjanet [ 24/Jul/25 ]\nReported by: Owen Yuen",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15205",
+    "title": "Automatic Cable referral",
+    "description": "Reduce touch time for L2CBL, unecessary manual steps can be automated",
+    "acceptance_criteria": "•\tDispatch should sucessfully be created in clic automatically upon cable referral\n\t•\tThere should no longer be anl2cbl activity created\n\t•\tticket should auto resolve when cable dispatch is completed (same as today)",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-5899",
+    "title": "SASE(Palo Alto) - Day 2 MACD - Batch 1",
+    "description": "Customer will be able to use the BBSSC self serve portal to create Admin and Technical SR's for their SASE product.",
+    "acceptance_criteria": "Customer will be able to choose actions from a MCSG MACD catalog in BBSSC\n\t•\tAddition/creation of new MACD catalog \n\t•\tCreation of agreements for MBS (Noted in MCSG10 - Billing)\n\t•\tCreation of new structured forms for MACD catalog in BBSSC\n\t•\tA customer Disconnect will need a job plan - but will follow standard\n\t•\tChange Requests are received and implemented\nCustomer will be able to choose actions from a MCSG MACD catalog in BBSSC \"Admin\"\n\t•\tCustomer will be able to create a day 2 Service request for Administrative and General inquiries\n\t•\tCustomer will be able to track status of their request via BBSSC portal\nCreation of Smartpath routing rules to correct teams (GK)\nSeed Stories:\nMaximo: \nMACD Catalog Offerings Set up \nJob Plan for Disconnect?",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Committed+Feature+List+(DOQ+JIRA)+2026-02-24T13_07_28-0500.doc",
+    "source_label": "Committed"
+  },
+  {
+    "requirement_id": "BBMSA-15476",
+    "title": "SPOG-Emergency: Ability to display affected Client connections from Ticket impacts",
+    "description": "Benefits Profile: Improved Accuracy, Restored Tool Adoption, Increased Efficiency \nQuantitative Value: Re-enables use of Emergency screen in SPOG → Estimated 10min/ticket saved (NOC) \n* Average of 10 events per year \n* Average of 1K tickets per event \n* Average of 10-20% of tickets evaluated by NOC technicians \n* Average of 10h-25h/month saved \n* Average of $12,000 - $33,000/year (based on 100$/hr) \n\nQuality Enhancement: Customer first, plus accurate real-time impacts eliminate the need to abandon SPOG \nEfficiency Gains: OPEX savings; Removes manual workarounds caused by unreliable inventory data. \nOpportunity Enablement: Enables automation and proactive incident handling. \nCost Reduction: Fewer escalations, reduced triage time.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-15212",
+    "title": "SPOG/NED- Support and Service Requests PI 1 2026",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-15108",
+    "title": "UCAAS - Incident Milestone email template sent by SNOW",
+    "description": "Clients will be receiving Incident Milestone emails from Service NOW as they would do today from Maximo to continue providing a consistent customer experience.",
+    "acceptance_criteria": "1\tTest all templates are sent in french with correct format\n\t2\tTest all templates are sent in english with the correct format\n\t3\tThe correct template is sent when the proper trigger is initiated\nSeed Stories:\nTesting",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-15081",
+    "title": "AGB - Site Contact access hours in OC - PH 1 Create New Incident",
+    "description": "- Optimized Scheduling: Knowing precise daily access hours for site and dispatch contacts upfront allows for more accurate and efficient scheduling of field technicians, reducing wasted trips and delays. \n\n- Reduced Failed Dispatches: By having confirmed availability, the likelihood of a technician arriving when no one is available to grant access is significantly decreased. \n\n- Clearer Overview: The FMO (OC) display of a summarized access hour line simplifies complex availability schedules, making it easier for users to quickly grasp the information. \n\n- Comprehensive Context: The inclusion of \"Special Instructions\" directly in the contact form ensures all critical details for a site visit are captured and easily accessible.",
+    "acceptance_criteria": "When creating a new ticket, the ability to add access hours per day on contact card for on site contacts (ad hoc contacts in Maximo), as per figma mockups\nDisplay of the access hours for a specific contact should all be displayed in the contact card (no more multiple contact cards for same person)\nWorklog 'including special instructions' added to OC/Maximo when dispatching and MUST appear in Click (click/TM+ team dependency to be accountable)\nAbility to add special instructions",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-15067",
+    "title": "PMN-MS Get Well plan BALI work",
+    "description": "Eliminate metric/fault collection outages dues to stale Azure refresh tokens. Most of the outages on the PMN-MS service are caused by this. \n\nEnsure that customer organizationId are synched with reality by relying on a single source of truth. This removes the need for OBA to manually transmit detailed information about a PMN-MS customer (ORGCODE)",
+    "acceptance_criteria": "Two aspects to test:\n\t•\tPMN-MS targets created in MongoDB are updated with the correct $.personality.organizationId (same as the corresponding CI ORGCODE in Maximo).\n\t•\tAzure refresh token is updated every 24 hours and the bdc-rest-collector uses it to get the Azure access_token.\nOverall: make sure PMN-MS data collection does not have errors caused by incorrect ORGCODE or expired Azure refresh token (not easy to test: Azure refresh token duration is 90 days -> Check that data collection still works correctly 91 days after deploying the changes in production).",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-15029",
+    "title": "Meraki Hub-and-Spoke Latency Monitoring",
+    "description": "Benefits profile: Cost Reduction \nQuantitative value: 15h/mth L2/L3 UCSI \n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency \nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture. \nTime Savings: Automated patching reduces manual effort and time spent on patching. \nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities. \nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "1. Data collection\n\t•\tCollect VPN peer status and add vpnMode in the produced payloads\n\t•\t \n2. Seeding\n\t•\tUpdate Maximo with the vpnMode using data collection\n3.Enrichment\n\t▪\tAll Meraki devices have a populated `vpnMode` field\n\t▪\tAutomatic update in case of configuration change\n4. Monitoring\n\t▪\tAlerts triggered only when the threshold is exceeded for 15 consecutive minutes\n\t▪\tCorrect calculation of the average hub → all its spokes\n\t▪\tAlert associated with the correct hub device\n5. Performance\n\t▪\tReal-time or near real-time enrichment\n\t▪\tMinimal impact on BALI performance\nSeed Stories:\nRocket: \n* Collect new endpoint to get vpnStatus and vpnMode \n* Update Maximo with the VpnMode of each CI \n* Successfully integrate with Meraki getOrganizationApplianceVpnStatuses API \n* Enrich VPN status data with corresponding Maximo CI information (name, customer, service group) \n* Produce enriched data as standard VES measurements to the default REST output Kafka topic \n* Ensure data collection occurs at intervals that support near real-time monitoring (≤5 minutes) \n* Handle API rate limits and error conditions gracefully \n* Validate data quality and completeness before publishing to Kafka \n\nGroot: \n\n* Successfully consume VPN status data from Rocket's Kafka topic \n* Implement reliable data ingestion pipeline to BigQuery \n* Ensure data schema supports historical analysis and dashboard requirements \n* Maintain data retention policies appropriate for operational and analytical needs \n* Provide data quality monitoring and error handling \n\nDefender: \n* Provide the CI Spec to use for vpnMode (either new or existing) \n\nLegion: \n* Create a new monitoring rule to raise alarms on hub VPN connections that have their sum(latency) > 100",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14976",
+    "title": "AGB - GenAI Analysis Worklog & L2 Engagement",
+    "description": "- Accelerated L2 Investigation: L2 teams receive pre-analyzed incident information, reducing manual investigation time. \n- Reduced L3 engagement: L2 teams will need to engage L3 less often in order to fix an issue. \n- Improved Incident Resolution: Enhanced insights from GenAI lead to more accurate and quicker resolution of issues. \n- Reduced Manual Effort: Automating the creation of analysis worklogs reduces the burden on L1. \n- Enhanced Operational Efficiency: Streamlined workflow from alarm to L2 engagement with intelligent analysis.",
+    "acceptance_criteria": "•\tGenAI successfully generates a structured analysis worklog in Maximo/OC for BGP state change on CISCO for BMO\n\t•\tThe GenAI worklog content is clear, concise, and provides actionable insights for L2.\n\t•\tAutomatic L2 engagement is triggered based on Catalina's analysis\n\t•\tDedicated L2 technicians from BMO confirm the utility and accuracy of the GenAI worklogs.\n\t•\tThe integration does not introduce new errors or delays in the existing incident management process.\n\t•\tMetrics are collected to demonstrate a reduction in L2 investigation time, L3 engagement or improved resolution rates for incidents with GenAI worklogs. (in collaboration with DEAI)\n\t•\tThe data from GenAI and Catalina will continue getting captured in the existing Grafana dashboard (https://dashboard-grafana.apps.prod-ucsi-ocp.ms.bell.ca/d/kXvxYkmvz/genai-workflow?orgId=1&refresh=1m)\n\t•\tPrompt/logic adjustments:\n\t◦\tGenAI analysis not launched if there is no connectivity to the device\n\t◦\tConsider the feedback from L2 to adjust the logic (up to the number of points assigned to this feature)\n\t◦\tThe prompt should be using a templated structure to consider exceptions or specific situations for customers/devices/technologies",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14909",
+    "title": "[BALI] Via Rail Canada Inc.- Strata Cloud API Solution for events polling and SLA/Site availability reporting (CR03)",
+    "description": "Meeting contractual obligation. SLA is on the site service availability and needs to be tracked at Event not at Incident due to the 99.999% availability.",
+    "acceptance_criteria": "1\tCollecting all the Specific events from the Strata Cloud\n\t2\tValidate the analance reporting based on the collection of the Stata event data\n\t3\tIf there is no event on the site, the report should be showing 100%",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14856",
+    "title": "Integration between Basic and Analance for Backup Success Reporting - Desjardins MC-EEE [ Placeholder ]",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "Basic successfully transmits backup success/failure data to Analance\nData includes required fields: timestamps, client identifiers, backup job IDs, success status.\nML 2026/02/11: 'BI team will generate a report using Analance' with daily backup success rates  \nSeed Stories:\nCreate new route in DB ( historical ) : \n\nModify gathering code to store to new table - 4 sp \nCreate API for analance to retrieve data - 1 sp",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14791",
+    "title": "PMN RTB - MS Alert Optimization: Rule Pausing",
+    "description": "Increased Customer Satisfaction: By proactively addressing issues, customer frustration will be reduced. \nOptimized Resource Allocation: TAC teams will spend less time on reactive complaint management and more time on proactive improvements. \nEnhanced Network Reliability: All events will be managed, leading to a more stable and dependable PMN. \nOperational Efficiency: Automation and self-service capabilities will streamline event management processes.\nSeed Stories:\n  *scope is restricted to 'BATS' \n\nGoose Team \n\n* inside the \"view details\" popup, create new Action button \"block/unblock\" in subcomponent Dashboard \n      * all power users (AD group users) are able to initiate the block/ unblock; once user select alarm, he can display alarm rule in a popup, and inside that popup there's an action button to block/unblock the alarm \n     \n            \n* Form \n      * Will trigger request to extract any active or upcoming pause time blocks for selected subcomponent \n      * Each time block has option to activate/deactivate \n           * Only creator of block has ability to deactivate/activate block \n                  ***This was the request but concerned scheduled support team cannot activate/deactivate \n                       and may require a call out to legions/goose for support recommend we remove this requirement \n       * Form as option to create a new time block \n           * Time block cannot be longer than 84 hours \n                *** 84 hours to so they can cover long weekends for example 6pm Friday night to \n                      6am Tuesday morning \n            * Do not allow overlapping time blocks for the same subcomponent \n\n\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\nLegions: \n      * Expose 4 endpoints in alarm-enricher (create block, pause block, unpause block, list all blocks) \n      * Add new redis side-deployment, to be stateless and restart resilient \n      * create block crud service used by endpoints, connected to data source \n\n++++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\nE2E: \n\nGoose will enforce block logic \n    * which subcomponent qualifies for pausing \n    * 84 block limitation \n    * Access to tool via SCT access restriction \n    * If only creator can modify activate/deactivate block control needs to be done \n\nLegions will currently restrict creation of block to specific customer and service group(s) \n  - MPV customer is \"AGNICO\" for all service groups",
+    "acceptance_criteria": "•\tMockups: NA\n\t•\tFeature Story Points (from the seed feature): \n\t•\tAssignee specified: \n\t•\tSIA: NA\n\t•\tETA for Dataset (if needed for Dev, SFT, E2E, UAT): NA\n\t•\tImpacted ART Team (Prime team & Teams with Sig Dep): \n\t•\tAdd SA-DrStrange team (MIIPE team) as 'Team with SigDep' when Feature testing needed: \n\t•\tSpecify the required testing in the \"Description\": SFT, E2E, DVT, and/or UAT: \n\t•\tPrime team estimation (field on the feature: Prime Team Level Estimation): \n\t•\tSig dep Team estimation (field on Sig Dep: Team level estimation): \n\t•\tFeature kick off call (set by PMs): Prime Team + Sig Dep teams + PMs + POs + Tech Lead + System Architect+ any stakeholder as required (Goal: feature review and high level User stories estimation) \nWhen the feature is under \"Analysis Completed\":\n\t•\tUser stories: \n\t•\tStory points estimation: \n\t•\tFeature content final review by Prime POs \n\n Description \n \nTechnical Documentation: https://confluence.bell.corp.bce.ca/spaces/SAMEGATRON/pages/1638711103/BBMSA-14786+BBMSA-14791+-+PMN+RTB+MS+Alert+Optimization+Alarm+Rules+Mapping+Rule",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14786",
+    "title": "PMN RTB - MS Alert Optimization: Alarm Rules & Mapping",
+    "description": "Increased Customer Satisfaction: By proactively addressing issues, customer frustration will be reduced. \nOptimized Resource Allocation: TAC teams will spend less time on reactive complaint management and more time on proactive improvements. \nEnhanced Network Reliability: All events will be managed, leading to a more stable and dependable PMN. \nOperational Efficiency: Automation and self-service capabilities will streamline event management processes.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14770",
+    "title": "SAC-UI Improvements",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14749",
+    "title": "Resolution Comments suggestion",
+    "description": "- Reduced Mean Time To Resolution (MTTR) by streamlining the comment creation process. \n- Improved data quality for auditing, data mining, and historical analysis. \n- Enhanced knowledge sharing and cross-training for L1/L2 teams, especially with the upcoming merger. \n- Increased operational efficiency for support teams by reducing manual effort and ensuring comprehensive incident records.",
+    "acceptance_criteria": "•\tWhen a user wants to resolve an Incident or Activity, system generates a pre-written resolution comment.\n\t◦\tDEAI endpoint will provide a short and a long version of the Resolution Comments.\n\t◦\tThe short comment will be displayed to the user but not the long version.\n\t◦\tWhen the user saves the resolution form, the short comment is sent to Maximo's INCIDENT.REMARKDESC field and the long comment is sent to Maximo's Resolution Comments Long Description field.\n\t◦\tIf the short comment is modified by the user, the long comment text will be cleared.\n\t•\tGenerated comment includes:\n\t◦\tSymptom of the issue\n\t◦\tCause of the issue\n\t◦\tHow the issue was resolved\n\t•\tThe GenAI icon will be displayed after the Resolution Comments label\n\t•\tComments are written in plain, technical language, in the corresponding ticket language (French or English)\n\t•\tComments leverage information from the incident for accuracy and relevance.\n\t•\tThe solution will use pertinent incident data to craft accurate resolution comments.\n\t•\tSubject Matter Experts (SMEs) will manually validate the results by testing multiple incidents.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14724",
+    "title": "CIBC ThousandEyes CR004 -Proactive Alarming and Incidents",
+    "description": "******Example****** \n\nBenefits profile: Cost Reduction \nQuantitative value: 15h/mth L2/L3 UCSI \n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency \nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture. \nTime Savings: Automated patching reduces manual effort and time spent on patching. \nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities. \nCost Reduction: Reduced downtime and improved security reduce operational costs. \n\n\nConceptual Solution: see https://confluence.bell.corp.bce.ca/spaces/ITSDI/pages/1476609870/CIBC+-+DNA-C+sensors+replacement+with+ThousandEyes+PEATS+63963+CR004#CIBCDNACsensorsreplacementwithThousandEyes(PEATS63963CR004)-High-LevelCSforCSAPPEATS63963",
+    "acceptance_criteria": "Alerting\n\t•\tCisco ThousandEyes webhooks are received, mapped to VESf and enriched with their corresponding Maximo CI information\n\t•\tWhen a webhook is received, an alarm is raised and a Maximo ticket is created\nSeed Stories:\nLegion \n* Setup a new public URL to receive webhooks \n* Develop a mapper to map the incoming webhooks to VES and enrich them with the corresponding Maximo CI (match using the CI name) \n* Configure the new BATS rule(s) for raising alarms \n* Configure the new UCA filter(s) for cutting tickets (should not be required, unless specific logic is required)",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14696",
+    "title": "Near Real-Time Meraki VPN Connection Status Monitoring",
+    "description": "* Improved VPN Reliability Monitoring \nReduces dependency on unreliable Meraki webhook notifications by implementing proactive status polling \n\n* Faster Incident Detection \nEnables detection of VPN outages within 5 minutes, significantly improving mean time to detection (MTTD) \n\n* Enhanced Operational Visibility \nProvides real-time dashboards and alerts that give network operations teams immediate insight into VPN health across all sites \n\n* Reduced Service Impact \nFaster detection and alerting leads to quicker resolution times, minimizing business impact from VPN connectivity issues \n\n* Data-Driven Insights \nHistorical data storage in BigQuery enables trend analysis \n\n* Standardized Monitoring \nLeverages existing VES measurement standards and Kafka infrastructure for consistent data processing",
+    "acceptance_criteria": "Rocket Team\n\t•\tMoved stories to BBMSA-14816\n\t•\tMoved stories to https://jira.bell.corp.bce.ca/browse/BBMSA-15029\nLegion Team\n\t•\tSuccessfully consume VPN status data from Rocket's Kafka topic\n\t•\tImplement alerting logic that triggers when VPN connections are down for more than 5 minutes\n\t•\tEnsure alerts include relevant context (site name, customer, service group)\n\t•\tProvide alert resolution when VPN connections are restored\n\t•\tIntegrate with existing alerting infrastructure and notification channels\nGroot Team\n\t•\tMoved stories to BBMSA-14816\nGoose Team\n\t•\tCreate operational dashboards displaying real-time VPN connection status\n\t•\tImplement filtering and search capabilities (by customer, service group, site)\n\t•\tProvide historical trend analysis and reporting capabilities\n\t•\tEnsure dashboards are accessible to appropriate operational teams\n\t•\tInclude alerting status and connection duration metrics\nEnd-to-End\n\t•\tComplete data flow from Meraki API to dashboards operates within 5-minute SLA\n\t•\tSystem demonstrates improved reliability compared to webhook-only monitoring\n\t•\tAll teams can successfully access and utilize the data for their respective functions\n\t•\tPerformance testing validates system can handle expected data volumes\n\t•\tDocumentation and runbooks are complete for operational support",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14638",
+    "title": "BMO - BTC 2.0",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14613",
+    "title": "Desjardins - Device Temperature to Bali - part2",
+    "description": "Ability to monitor and report in Bali on temperature for a multitude of device types for Desjardins.",
+    "acceptance_criteria": "•\tTemperature polling for each of the devices are functional\n\t•\tTemperature results are visible in Bali GUI for each of the specified models",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14603",
+    "title": "Consolidator updates - missing attributes for ServiceNow sync",
+    "description": "required for ServiceNow Sync",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14455",
+    "title": "AGB - DevNetOps Ph2",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14218",
+    "title": "Proactively monitor and raise incident tickets on Rogue Threat events (step 2)",
+    "description": "•",
+    "acceptance_criteria": "•\tWhen updating the Maximo CI relations, missing CIs or discrepancies between the DNAC inventory and the Maximo CI inventory do not prevent the update of the relations for the CIs existing in both inventories (i.e. fix bulk update issue when inventories don't match)\n\t•\tWhen RogueThreatRogueOnWire, RogueThreatHoneypot, RogueThreatApImpersonation:\n\t◦\ton BMO CIs, raise an alarm and an incident ticket when the alarm is on a CI related to either of these Management Platform CIs:\n\t▪\tBMOMIS-DVIPBR2\n\t▪\tBMOMIS-DVIPBR0\n\t◦\ton CIBC CIs:\n\t▪\tIf the CI is in the PROD Square 1 environment, raise an alarm and a ticket\n\t▪\tIf the CI is in any other environment, raise an alarm but do not open a ticket\nSeed Stories:\nLegion: \n* Update the UCA filters so that the Rogue alarms are sent to Maximo for the BMO customer \n\nRocket: \n* Handle the bulk relation updates when the DNAC and Maximo differ",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14122",
+    "title": "AGB - [MF] identificator",
+    "description": "Benefits profile: Operation fix \nQuantitative value: NA \n\nBenefits Profile: Improve process for multiple alarms \nQuality Enhancement: Not miss critical incidents for customers \nTime Savings: NA \nOpportunity Enablement: NA \nCost Reduction: NA",
+    "acceptance_criteria": "In Maximo:  If the total number of active alarms and cleared alarms is greater than 1 then display [MF] as prefix in the summary in the beginning",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-14017",
+    "title": "CCAI Virtual Assistant BRS (primary) - CloudSE BFD state from BALI",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13797",
+    "title": "Alarming / Service-Assurance",
+    "description": "•",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13747",
+    "title": "Meraki Standardization | Move UCA Meraki Channel adapter to BDC polling",
+    "description": "Business Justification and Value: \nBy leveraging the existing BDC+BATS platform, we will prevent duplicated development efforts, delivering an estimated cost avoidance of $25,000. It also allows the team to focus on building on standard architecture rather than improving a legacy system. \nThe new solution introduces automated alarm closure, which is absent in the current system. This reduces the risk of missing subsequent alerts for a recurring incident. \nThis migration will mitigate some of the chronic Meraki API congestion issues. By consolidating API calls into a single, managed channel, we will reduce API rate-limit failures and ensure more reliable monitoring data. \nThe current system suffers from monitoring gaps, such as missed uplink statuses and false positives alarms. Migrating to the standard BDC+BATS platform provides a stable and scalable foundation, enabling us to efficiently address these issues and build future capabilities without incurring technical debt. \n\nKey Benefits: \nStandardization & Efficiency: Reducing technical debt and simplifying operations by decommission the custom toolset. \nEnhanced Alerting Capability: Gain flexibility in setting alarm conditions, allowing Bell to respond to alarms more effectively. \nImmediate Cost Avoidance: Leverage existing functionalities from standardized toolset (e.g., automated alarm closure, API payload data collection) that would cost an estimated $25K to develop in Meraki Channel Adapter.1 \nFoundation for Resolving Meraki Surveillance Issues: Lay down the backend foundation to resolve a range of Meraki alarming issues. In addition, this is a step forward to consolidate Meraki API fetching in a single toolset to mitigate current API congestion.",
+    "acceptance_criteria": "•\tNo meraki polling is done in UCA anymore.\n\t•\tUplink statuses are polled in BDC and alerts are raised using BATS or Alerting service.\n\t•\tEvery Meraki API data is enriched with the Maximo CI's corresponding Service Features so that UCA can use these values to make ticketing decisions:\n\t◦\tSurveillance Type\n\t◦\tManagement Package\nSeed Stories:\nRocket: \n* Poll the uplink statuses \n* Poll the device statuses \n* Produce the resulting measurements in the standard REST measurements kafka topic \n\nGroot: \n* Store the measurements in BigQuery so that they can be used in BALI dashboards \n\nLegion: \n* Enrich Meraki alarms from any flow with their CI's Suveillance Type and Management Package so that these can be used to cut/block tickets \n** Ensure that alarms resulting from webhooks sent to the meraki-logging URL don't raise tickets \n* Create the BATS rules that reproduce the UCA-Meraki CA monitoring logic \n* Decom the UCA-Meraki CA \n* Remove the Meraki-mapper Suveillance Type and Management Package enrichment",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13683",
+    "title": "SPOG - Migration to Vue.js3 (Ph2) - Incident Details Page Phase 5",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "Page - Incident Details\n\t•\tSection - FE Header (5 points)+ Add refresh component \n\t◦\tAdd/Edit - Task ( These are placeholders until we finish section task  pages)\n\t◦\tAdd/Edit - Impact ( These are placeholders until we finish section Impact pages)\n\t◦\tAdd/Edit - New change \n\t•\tFeature - Upload (5 points) ( Create an upload component + CSV cascade component )\n\t•\tSection - Incident Info page setup(3 points) \n\t◦\t+ and edit buttons in page ( 5 points) \n\t◦\tAssign to me feature ( 2 points )\n\t◦\tRelated ticket + – to be able to relate or remove incidents ( 5 points )\n\t◦\tEdit Attribute name and Value ( 2 story ) \n\t◦\tEdit Details + Update competed % ( 5 story point )\n\t◦\tAdd Worklog ( 2 story point )\n\t◦\tNext update feature needs patching once the date is picked ( 3 story ) \n\t◦\tRemove display local time ( 1 point ) \n\t◦\tEdit Assignment ( 2 story )\n\t◦\tAdd/Edit -  External Ticket (3 points) - remove this under 3 dots and add + in the section\n\t◦\tAdd/Edit - Contact (2 points) - remove this under 3 dots and add + in the section\n\t•\tSection - Tasks (3 points)- We need to do the endpoints for task\n\t•\tSection - Worklogs (3 points) + Include , exclude , filtering feature  \n\t◦\t+ Add a worklog ( 1 story point ) \n\t•\tSection - Impacts set up of the page (3 points)\n\t◦\tEdit and delete ( 1 point )\n\t•\tSection - Set up the table,  Related Alarms (1 points use previously build component )\n\t◦\tDelete button ( 1 story )\n\t•\tSection - Audit Log (2 points)\n\t•\tSection - Connect to NE (3 points use previously build component ).\nNone entered.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13594",
+    "title": "BALI | Improvements",
+    "description": "Quality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.",
+    "acceptance_criteria": "Some small improvements to be assessed as PI4 candidate:\n\t•\tAdd \"first page / last page\" option on tables\n\t•\tAllow to search for dashboard (left menu) by using the dashboard id\n\t•\tget the BQ used dataset/table on core-data response\n\t•\tFix the global and table search --> https://bellnetwork.slack.com/archives/C017Y2PU472/p1752252647447679\n\t•\tSAGOOSE-3044 - Persistance des shortcuts Bali\n\t•\tanonymization des données pour Bell Demo\n\t•\t[étude] Ajouter un mécanisme de détection de missing polls pour les graph --> ajouter un warning et permettre à l'utilisateur d'avoir une vue détaillée des missing polls\n\t•\t[étude] Ajouter un drop down list sur les graph pour pouvoir changer entre line / bar / stacked bars (aggregation), pie, ...\n\t•\thttps://bellnetwork.slack.com/archives/C0703C7UC22/p1757103914227509\n\t•\tUn feature que j'aimerais que l'on fasse (je suis certain que ça serait utile), c'est relié au clickableGraph d'une cellule de métrique qui ouvre la modale graph de la métrique en question lors d'une cellule, ça fonctionne bien et ça passe l'intervalle de début/fin et ça applique les override de la table comme l'index, c'est parfait. Sauf que si l'usager zoome dans le mini-graphe, ça fait juste un zoom dans l'image. Ça n'apporte rien et au final l'usager peut pas passer par exemple des données aux 1j/1h vers des données aux 5min. Selon moi, il faudrait repasser dynamiquement les dates début/fin du zoom et réappliquer au besoin les nouveaux intervalle/index. Peut-être que ça impliquerait d'ajouter les champs de date début/fin dans la modale au même niveau que les raccourcis de last Xh/jour, je ne sais pas. Tu en penses quoi?",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13558",
+    "title": "Shared Services Canada - CCaaS process documentation",
+    "description": "L1 Operations will have a process in place in order to properly support the client on Service Incidents",
+    "acceptance_criteria": "1\tCustomer file built\n\t2\tProcess posted and reviewed with OSD\n\t3\tBulletin delivered\nSeed Stories:\nProcess documentation \nBulletin \nCreate customer file with process",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13491",
+    "title": "Consolidated Output Export for Multi-Device Commands",
+    "description": "This feature proposes adding a functionality to export all outputs from multi-device commands into a single text file. This will enable users to easily compare outputs across devices using a comparison tool, streamlining the analysis and troubleshooting process.\nRequirements:\n\t1\tDevelop a feature to export all outputs from multi-device commands into a single text file.\n\t2\tEnsure the exported file is easily readable and compatible with common comparison tools.\nHigh-Level Design Plan:\nPhase1: Output Consolidation\n\t•\tDevelop the logic to consolidate outputs from multi-device commands.\nPhase2: Export Feature\n\t•\tImplement the export feature to generate a single text file.\nPhase3: Testing\n\t•\tThoroughly test the feature to ensure accuracy and usability.\nPre-requisites:\n\t•\tAccess to the SPACE system and command execution functionality.\nOut of Scope:\n\t•\tIntegration with external comparison tools;\n\t•\tSupport for non-text output formats.\nTesting Plan:\n\t•\tUnit testing of output consolidation logic.\n\t•\tIntegration testing with SPACE command execution functionality.\nPotential Risks:\n\t•\tTechnical challenges in consolidating outputs.\n\t•\tIssues with compatibility and readability of the exported file.\nMitigation:\n\t•\tRobust testing, iterative development, and collaboration with stakeholders will mitigate these risks.\nLead BA / E2E Owner: Refer to JIRA Feature's assignee for responsible Product Owner\nStakeholder Involvement:\n\t•\tDevelopers: Design, development, and testing.\n\t•\tStakeholders: Requirements definition and testing.\nJustification (PI):\n\t•\tThis feature improves the efficiency of troubleshooting and validation by streamlining the comparison of outputs across multiple devices.\nPost-Launch Metrics:\n\t•\tNumber of users utilizing the consolidated output export feature.\n\t•\tReduction in time spent on output comparison and analysis.\nPotential Benefits:\n\t•\tImproved efficiency in output comparison and analysis.\n\t•\tEnhanced troubleshooting and validation capabilities.\n\t•\tIncreased productivity for users performing multi-device commands.\n\t•\tEstimated time savings per year: 520 hours per year for MS OPS L2/L3 in Cost Savings (based on 6,240 volume per year and 5 mins savings per MOP/change).\n\n\n Comments \n \nComment by Sherriff, Mark [ 04/Feb/26 ]\nTester for this feature is: Rajakumar, Rajalakshmi \nComment by Bobier-Boisvert, Florian [ 12/Jan/26 ]\nUn-commiting as testing will extend to PI2.\nComment by fidjanet [ 15/Jul/25 ]\nReported by: Owen Yuen",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13461",
+    "title": "BASIC Integration for Enhanced Backup of Ivanti & EfficientIP with End-to-End Encryption",
+    "description": "•",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13300",
+    "title": "Forward the received syslogs to external systems",
+    "description": "* Decom Spectrum",
+    "acceptance_criteria": "•\tThe received syslogs are forwarded to the destinations listed in the description\n\t◦\tSyslogs that were not successfully enriched must also be forwarded\nSeed Stories:\nLegion \n* Forward the received syslogs to the external systems",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-13265",
+    "title": "VManage/SDWAN seeding (Phase 2 - Seeding with AAI and Maximo merge)",
+    "description": "******Example******\n\nBenefits profile: Cost Reduction\nQuantitative value: 15h/mth L2/L3 UCSI\n\nBenefits Profile: Improved Security, Reduced Errors, Increased Efficiency\nQuality Enhancement: Minimized patching errors, improved system stability, and enhanced security posture.\nTime Savings: Automated patching reduces manual effort and time spent on patching.\nOpportunity Enablement: Enables proactive patching and reduces the risk of security vulnerabilities.\nCost Reduction: Reduced downtime and improved security reduce operational costs.",
+    "acceptance_criteria": "Have a merged inventory into BigQuery for SDWAN devices (merge between Maximo and AAI data)\nBDC to consume from the merged inventory for SDWAN polling.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-12902",
+    "title": "Air Canada CR06 - Change API - Standard Changes",
+    "description": "Benefits profile: Cost Reduction and tool integration \nQuantitative value: \n\nBenefits Profile: Increased Efficiency \nQuality Enhancement: Removing the manual swivel generated between standard Maximo changes for Air Canada in Maximo and AC's ServiceNow \nTime Savings: API to simplify the communication between Bell and AC change tickets.",
+    "acceptance_criteria": "•\tUpdated mapping is applied by Maximo and ESIDE to send to Air Canada\n\t•\tE2E and UAT testing is completed",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-11700",
+    "title": "SPOG - Migration to Vue.js3 (Ph2) - Change Details+New Page",
+    "description": "",
+    "acceptance_criteria": "•\t CHANGE details      Header - Attachment (1pts)      Header - ticket icon status (ex service affecting) (1pts)      Change info - resource (1-2pts)      Change info - contacts (1-2pts)      Change info -related tickets (1-2pts)      Change info -external tickets (1-2pts)      Change info - details (1-2pts)      Change info - latest worklog (1-2pts)      Change info - timelines (1-2pts)      Changes  info -assignment (1-2pts)      Add a workload (1-2pts)      Add a task (1-2pts)      Ass an impact (1-2pts)      Link a ticket (1-2pts)      Add external ticket (1-2pts)      Tasks tab (1-2pts)      Workloads tab (1-2pts)      Audit log (1-2pts)      Impacts tab (1-2pts)",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-11693",
+    "title": "SPOG - Migration to Vue.js3 (Ph2) - Task List & Task Page",
+    "description": "•",
+    "acceptance_criteria": "As part of PHASE 2 of the VUE 2 js to Vue 3 js migration ,  the legacy Task List Page consisting of the following components will be replicated to the new SPOG\n\t•\tFE Set up page with component and columns  and table enhancements (3)\n\t•\tset up filter bar (2pts)\n\t•\tSet up list and list manager includes the create list option from the three dot header (2 pts)\n\t•\tset up filtering and filter drawer (3)\n\t•\tBE placeholder  (5)\nPage - Task Details [ON HOLD]\n\t•\tSection - Worklogs (3 points use previously build component )\n\t•\tEdit - Details (2 points)\n\t•\tEdit - Timelines (2 points)\n\t•\tEdit - Assignment (2 points)\n\t•\tBE placeholder 3 pts",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-10955",
+    "title": "[Enabler][IPv6] Ability to receive and enrich events sent from MS devices",
+    "description": "Will allow to deploy traps and syslog receivers that are common to all the customers, rather than customer-specific ones. This will immensely reduce the amount of resources needed for the receivers and will equally simplify the maintainability and scalability of the systems",
+    "acceptance_criteria": "•\tWe can receive SNMP traps sent to IPv6 destination hosts\n\t•\tWe can receive syslogs sent to IPv6 destination hosts\n\t•\tThe managed devices do not need to be reconfigured in any way, they still send their events to their dedicated IPv4\n\t•\tThe destination IPv4 is NAT46'd to the aforementioned traps and syslog receivers\n\t•\tThe receivers can easily scale to handle the incoming volume of events\n\t•\tThe received events must be produced to kafka topics, so that a mapper/enricher can then consume and enrich them with the CMDB data\n\t•\tThe received events must be enriched with the corresponding Maximo CI information, using the source packets and the CI's IPv6 address\nSeed Stories:\nLegion: \n* Receive, map and enrich SNMP traps from the same device families and model that Spectrum currently monitors \n* Receive, map and enrich Syslogs from the same device families and model that Spectrum currently monitors \n\nGroot: \n* Export the Enriched SNMP traps and Syslogs to BigQuery[or Elasticsearch] so that the data can be used in BALI dashboards \n* Export the Enriched SNMP traps and Syslogs to LogArchive",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-10195",
+    "title": "RhPam to be decommissioned (MSO2A)",
+    "description": "RhPam to be decommissioned at any point after IBM bought it (need to move all incident automation, alarm automation and MSO2A workflows to stackstorm)",
+    "acceptance_criteria": "RhPam to be decommissioned at any point after IBM bought it (need to move all incident automation, alarm automation and MSO2A workflows to stackstorm)\nSeed Stories:\n*** Remove MS02A from RHPAM *** \n\n\n*** MACD efforts : \nPoint to click Kafka instead of IOP : 0.5 sp \nTesting : 1.5 sp \n\n*** ZTT efforts : \nCreate logic / mapping for eside to call it : 8 sp \nCreate the response logic to call eside + validation for each response : 5 sp \nRemove Kafka code \\ Clean up code \\ Decom Rhpam engine \\ shut off NIFI : 5 sp \nE2E testing : 5 sp \nNimbus - no change necessary \n\n-------> 23 total SP",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-9917",
+    "title": "Discover and populate device information to the corresponding Maximo CI (Phase 2)",
+    "description": "* Decom Spectrum",
+    "acceptance_criteria": "•\tThe Maximo CIs' attributes are populated by the BDC\n\t•\tThe attributes are regularly updated/refreshed\nSeed Stories:\nRocket \n* Collect the new data from the devices \n* Regularly update the Maximo CIs' attributes so that they always contain the most recent information",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-7478",
+    "title": "Transpose SNMP traps alerting rules",
+    "description": "* Decom Spectrum",
+    "acceptance_criteria": "•\tThe Spectrum SNMP traps alerting rules must all be configured in BATS\n\t•\tThe UCA filters matching the Spectrum alarns must also match the new BATS rules\n\t•\tThe Alarm and Incident Automations matching the Spectrum alarms must also match the new BATS rules\n\t•\tAny Maximo logic matching the Spectrum alarms must also match the new BATS rules\nSeed Stories:\nLegion \n* Create the monitoring rules in the monitoring tool \n* Create the Spectrum generic (i.e. the filters that are not customer specific) UCA filters required to match the correlation and grouping behaviors of the Spectrum alarms with their corresponding alarms in the new monitoring tool \n* Update the AlarmAutomation/IncidentAutomation flows \n\nDefenders \n* Update the Maximo logic/rules",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-7428",
+    "title": "GOA Incident Management - customer notification",
+    "description": "•",
+    "acceptance_criteria": "•\tMockups: \n\t•\tFeature Story Points (from the seed feature): \n\t•\tAssignee specified: \n\t•\tSIA: \n\t•\tETA for Dataset (if needed for Dev, SFT, E2E, UAT): \n\t•\tImpacted ART Team (Prime team & Teams with Sig Dep): \n\t•\tAdd SA-DrStrange team (MIIPE team) as 'Team with SigDep' when Feature testing needed: \n\t•\tSpecify the required testing in the \"Description\": SFT, E2E, DVT, and/or UAT: \n\t•\tPrime team estimation (field on the feature: Prime Team Level Estimation): \n\t•\tSig dep Team estimation (field on Sig Dep: Team level estimation): \n\t•\tStakeholders + Team meeting for feature review or presentation \nWhen the feature is under \"Analysis Completed\":\n\t•\tUser stories: \n\t•\tStory points estimation: \n\t•\tFeature content final review \n\n Description \n \n \nScope \n\t•\tCustomer facing notification\nServices in Scope \nCode\nCount\nIPVPN\n2,867\nEI\n23\nWavelength\n14\n     \n\n Sources \nReactive: \n\t•\tCustomer Called\nProactive:\n\t•\tNSO\n \n \n \n \nPARENT CHILD \nfor both proactive & reactive ticket. issue can be reported on multiple CIs at once across different accounts (multiple device) and be grouped under the same \"global\" issue. issues don't have to be related per say they may only happen at the same time in the same area. Child incident could be worked on seperatly . Global will remain open until all the child issue are resolved\n \n \nPriority Level 1 – Critical Business Impact\nAffects 10 or more Sites; or (ii) affects one or more of the following critical Sites: 1. Legislature Building, Edmonton 2. Provincial Operation Centre, Edmonton 3. Kananaskis Emergency Services Centre, Kananaskis 4. Neil Crawford Provincial Centre, Edmonton 5. IBM Western Leadership Data Centre, Acheson 6. JJ Bowlen Building, Calgary 7. Millbourne Mall, Edmonton 8. Commerce Place, Edmonton 9. Telus Plaza North, Edmonton 10. Standard Life Building, Edmonton 11. Great West Life Building, Edmonton 12. Oxbridge Place, Edmonton 13. Petroleum Plaza, Edmonton 14. Terrace Building, Edmonton 15. Twin Atria Building, Edmonton (iii) The Province may add Sites to the preceding list using the Contract Change Control Process\nPriority Level 2 – Major Business Impact  affects between 6 and 9 Sites; or (ii) Core Network components or Facilities are unavailable.\nPriority Level 3 – Medium Business Impact  affects between 2 and 5 Sites; or\n(ii) Aggregation Network components or Facilities are unavailable; or (iii) has a time-sensitive resolution requirement. Service Alberta Contract 288PA-22559 SuperNet Network Services Schedule 03D\nPriority Level 4 – Low Business Impact  affects one Site; or (ii) has no immediate impact on the provision of Products or Services to the End User\n \nCriteria \nIncident Created\nUpdates\nResolution\nPriority 1 \nCMO \nContract condition <15 min \n2 seperate emails  : ITSM + distribution list \n \nFMO\nIncident Creation (status = WBELLACK)\nCMO \nevery 60min \nManual \ndistribution list only \n \nFMO \nManual generated with template \nNND to be set 60min\n \n \nPriority 2 \n \nCMO\n2 Hours\nemail sent to Technical Contacts of impacted account(dynamic list)\n+ sent to static email SN-Outages@gov.ab.ca\nFMO Manual from template   \n \nPriority 3\n \n4Hours\nemail sent to Technical Contacts of impacted account(dynamic list)\n+ sent to static email SN-Outages@gov.ab.ca\nFMO  has to remain 2 separate templates | |\nPriority 4\n \n1 day\nemail sent to Technical Contacts of impacted account(dynamic list)\n+ sent to static email SN-Outages@gov.ab.ca\nFMO  Auto triggered but templated has to remain 2 separate templates | |\nPower outage\n \nTicket classif ? how do we ID \nAutomatic Email upon incident creation \n \nsent to \n \n \n PI distribution list \n\t•\tSupernetP1Notifications@axia.com\n\t•\tAndrew.Compton@bell.ca\n\t•\tDavid.Joice@bell.ca\n\t•\tBellSupernet.NOC@bell.ca\n\t•\tNoReplySupernetP1@gov.ab.ca\n\t•\tNelson.Pacheco@gov.ab.ca|\n \nP2\n \n2 hours\nSN-Outages@gov.ab.ca    has to remain 2 seperate templates    Auto triggered but templated  \n2 hour\n2 emails  \nCodd, Nathan  & Magann, Kathy can we consolidate\n \n \nnotification Due reminder for the NOC team when current date is 15 / 10 / 5 /0 min from notification due  (every 5 min after as well) \nCan we consolidate the 2 templates\n \nwe might want to template it to have branding on it but will require the NOC to add the details of the investigation Codd, Nathan  & Magann, Kathy to confirm \nP3\n \n4 hours\nemail sent to Technical Contacts of impacted account. dynamic list. \nadditional: sent to static email SN-Outages@gov.ab.ca \n \n \n \nAuto triggered but templated\n4 hours\n2 emails  \nCodd, Nathan  & Magann, Kathy can we consolidate\n \n \nnotification Due reminder for the NOC team when current date is 15 / 10 / 5 /0 min from notification due  (every 5 min after as well) \n \nP4\n \n1 day\nemail sent to Technical Contacts of impacted account. dynamic list. \nadditional: sent to static email SN-Outages@gov.ab.ca \n \nhas to remain 2 seperate templates \n \nmanually triggered but templated +except for power outage alarms  automatic upon creation\npower outage : cold start & device down to be confirmed with UCA Codd, Nathan+ |24 hours|2 emails   Codd, Nathan  & Magann, Kathy can we consolidate     notification Due reminder for the NOC team when current date is 15 / 10 / 5 /0 min from notification due  (every 5 min after as well)     \n \n Incident Notification\nFrom contract \nPriority  Level\nRequired Status Update Times\nWho\nPriority 1\nInitial notification within 15 minutes, and\nGOA = 2 contact for all account : 1 desk + 1 distribution list\n1 site contact per location\n*every site contact should be notified\n \n2 seperate templates \n1) ITSM\n \n2) Hardcoded list of distribution\n \nautomated at incident creation\n \n \nStatus updates every 1 hour thereafter.\nGOA = 2 contact for all account : 1 desk + 1 distribution list\n1 site contact per location\nPriority 2\nInitial notification within 2 hours,\nmanual after NOC validation\n \n\t1\temail sent to Technical Contacts of impacted account. dynamic list. \n\t2\tadditional: sent to static email SN-Outages@gov.ab.ca \nQ4: CAN WE CONSOLIDATE THOSE 2 NOTIFICATION in 1 TEMPLATE ? Codd, Nathan |\n \nand status  updates every 2 hours thereafter.\n \nPriority 3\nInitial notification within 4 hours,\ntech contact = defined per device\nmanual after NOC validation\n \nand status  updates every 4 hours thereafter.\ntech contact = defined per device\nPriority 4\nInitial notification within 1 Business Day,\ntech contact = defined per device\nmanual after NOC validation\n \nand  status updates every 1 Business Day thereafter.\ntech contact = defined per device\n \ntech contact  : how do we retrieve ?\n1+ contact(s) per account . Should be stored as a customer type contact in Maximo - migrated from Netcracker . \nNote : in TMO those contacts would need to be maintained manually in both Netcracker and MAximo \n \n \n \nUPDATE\n\t•\tNext notification due:  update notification are all manual (p1 also)\n\t•\tResolution: OC-INC-08 standard but ensure for P1 the GOA contacts and site contact receive it too  for P2/P3/P4 tech contact + reporter \n\t•\tClosed : if it's auto closed after 3 days \n \n \nProactive\nTemplate\nDescription\nOC-INC-03\nOC Incident Tech dispatch at site\nOC-INC-04\nOC Incident Tech dispatch at CO\nOC-INC-05\nOC Incident Tech dispatch at Customer site\nOC-INC-06\nOC Incident Tech at site Central Office\nOC-INC-07\nOC Incident Missing Info SLA Hold\nOC-INC-08\nOC Incident Customer Approval\nOC-INC-11-ETR\nOC Incident Periodic Notification\nReactive\nTemplate\nDescription\n \nEC-INC-01\nEC incident confirmation\nIf source = EC \nOC-INC-02\nEC-INC-02\nIncident in Progress\n \nOC-INC-03\nEC-INC-03\nIncident Tech dispatch at site\n \nOC-INC-04\nEC-INC-04\nIncident Tech dispatch at CO\n \nOC-INC-05\nEC-INC-05\nIncident Tech dispatch at Customer site\n \nOC-INC-06\nEC-INC-06\nIncident Tech at site Central Office\n \nOC-INC-07\nEC-INC-07\nIncident Missing Info SLA Hold\n \nOC-INC-08\nIncident Customer Approval\n \nEC-INC-10\nIncident Cancelled\nsource = EC\nOC-INC-11-ETR\nIncident Periodic Notification\n \n  INCIDENT CLASSIFCATION \nTBD\n \nL1 INCIDENT ASSIGNEMENT \nCMO : Phone call to Supernet service desk (sales force) - triage - convert into Request OR a submit to Netcraker via bi-directional int. to engage NOC\nQ1 : Is this the only desk ?  Yes \nFMO : Phone call to Supernet service desk  -  open a salesforce ticket & open a Maximo/OC ticket\nCodd, Nathan  to book a review session to confirm \n\t•\tif we keep opening axia Saleforces record \n\t•\tif so how do we report the alarms\n\t•\tif so, how do we update the saleforce ticket for alarms and/or reactive  status changes\n \n \n1 dedicated Help desk for all of GOA  for all 3 product- (L1BBM_GOA) NAME TO BE D.\n\t•\twe can identify the CI based on the presence of the Axia Circuit # (Ci attribute) \n   \nProcess\nRole\nCI\nCollection \nCustomer \nClassification \nApply to children?\nService Group\nRegion\nPerson Group\nNotification?\nComment\nIncident\nLevel 1\n \nSuperNet_CIS\n \n \n \nIPVPN, EI, NGW\n \nCSD-AB-L1\nY\n \n \n \n \n \n \n \n \n \n \n \n \n \n CSD-AB-L1 : Calgary Service Desk (supernet) - \nID\nName\nGroup_default\nEmail\nNotification ?\nPhone # \nBell ID\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nL2 INCIDENT ASSIGNEMENT\n \n1 group - 5 people - share the full load \nL1 --> Axia Noc --> Maybe need to engage the Bell Field team if dispatch is required\n\t•\tQ2 : is that team working in Maximo/OC today ? how will we engage them ? \n\t•\tQ3 : do we dispatch those incident ? is it done by the Axia Noc or the other team ?\nProcess\nRole\nCI\nCollection \nCustomer \nClassification \nApply to children?\nService Group\nRegion\nPerson Group\nNotification?\nComment\nIncident\nIncident L2\n \n \n \n \n \n \n \nAXIA-NOC\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nDispatch\n\t1\tDispatch type\n\t2\tSkillset\n\t3\tautomatic dispatch\n\t4\texceptions\n \nFAILURE CODES (trouble resolution codes)\nCode\nFailure class\nIPVPN\nINCIP\nEI\nCIRCUIT\nNGW (Wavelength)\nCIRCUIT\n \n24 hour of customer acceptance window - after that it is closed manually \nwe will keep the 72h auto customer accept as a fail safe\n \nBILLING\n \n\n\n Comments \n \nComment by Sahariya, Himanshu [ 20/Feb/26 ]\nSherriff, MarkDina, Stefan Ravikumar, MageshBali, Pooja\nHi There are few updates in this feature based on the current business rules existing in Netcracker, once updates are done this will be ready for feature testing. case 1 . The auto notification reminder for NOC/agent to trigger manual notification 15 min before the SLA time will be keep continuing even after SLA is breached until unless agent trigger the manual notification. for example ; if 10.00 hrs is SLA so auto reminder notification to NOC will start by 9.45 and keep going even after passing 10.00 hrs with in 5 min of interval until NOC triggers manual notification to customer.\ncase 2. The Reset time for next notification trigger will be reset based on the last alarm SLA means 10.00hrs plus 4 hrs if the case is for p3 notifications. Note ; - For triggered notification currently templates are mapped with limited contact/distribution list as this will be part of another CR where list of all TECH and SITE contacts for GOA will be loaded to Maximo, but definitely this will not impact E2E testing.\nComment by Sherriff, Mark [ 04/Feb/26 ]\nTester for this feature is: Bali, Pooja \nComment by Mouaffo, Gilberte [ 16/Dec/25 ]\nSahariya, Himanshu  Can you please reach out to Dina, Stefan to provide update on  this feature? Thanks\nComment by Mouaffo, Gilberte [ 13/Nov/25 ]\nSahariya, Himanshu Turning this feature to committed as it is added to PI5. Thanks\nComment by Sahariya, Himanshu [ 06/Nov/25 ]\nMouaffo, Gilberte hi may be it happened due to some Click by mistake, Marking it back to last status\nComment by Mouaffo, Gilberte [ 06/Nov/25 ]\nSahariya, Himanshu Why are you closing this feature with no work completed, please? Is the feature canceled? If so, can you please out the resolution to cancelled? Thanks\nComment by Mouaffo, Gilberte [ 21/Oct/25 ]\nSahariya, Himanshu Mandavilli, Swetha Uncommitting this feature as it is in the Candidate to PI backlog. Thanks\nComment by Bergeron, Melanie [ 21/Oct/25 ]\nMandavilli, Swetha rank updated \nComment by Mandavilli, Swetha [ 20/Oct/25 ]\nLanglois, Anne-Marie or Bergeron, Melanie\nCan you please help me with the Ranking on this one.\ncc Mouaffo, Gilberte\nComment by Dina, Stefan [ 20/Oct/25 ]\nCodd, Nathan has now confirmed the business requirements for the customer notifications templates on Oct 17. Since Sahariya, Himanshu was not available for the meeting scheduled on Oct 20 to update the Jira ticket contents and status to Refined prior to PI5 Planning, this will need to be done once Sahariya, Himanshu is back so that this ticket can be included in PI5 delivery scope. \nFYI Mandavilli, Swetha Montgomery, Hugh Magann, Kathy Sullivan, Kevin C Mouaffo, Gilberte \nComment by Dina, Stefan [ 14/Oct/25 ]\nSahariya, Himanshu can you please advise if you are the new prime for this Customer Notification feature? If so, please work with Codd, Nathan to gather any outstanding requirements to ensure this scope of work is included in PI5. Thank you. \nFYI Piecken, Elisabeth Glazer, Christian Montgomery, Hugh Mouaffo, Gilberte Sullivan, Kevin C \nComment by Dina, Stefan [ 22/Sep/25 ]\nAs per the solutioning session today with Montgomery, Hugh, Mathur, Akhilesh  and Codd, Nathan, Codd, Nathan  will work with Glad and Andrew tomorrow to gather further information and document the desired functionality.\nOnce the requirements are firmed up, Mathur, Akhilesh to work with Codd, Nathan to rewrite this Feature accordingly based on the reactive (current) vs. proactive (future state) requirements and ensure that a comprehensive list of all notifications is included in the scope. \nComment by Mouaffo, Gilberte [ 19/Aug/25 ]\nDina, Stefan This feature will not be discussed on any of the ceremonies until it's tagged to a specific PI. At this point, it will not be committed to PI4 but can tagged by the team as WIP2025PI4 / Sprint PI5 once in Refined status. Thank you\nCc Mathur, Akhilesh Piecken, Elisabeth \nComment by Dina, Stefan [ 19/Aug/25 ]\nMouaffo, Gilberte please note that we can skip this Feature for today's Backlog Refinement/Grooming session, as I checked with Mathur, Akhilesh and he is targeting to have a follow up session with Piecken, Elisabeth tomorrow for further details. \nOnce the feature is ready in Refined status, will engage you so we can determine how we can potentially include it in the current PI. Thank you\nFYI Montgomery, Hugh Sullivan, Kevin C \nComment by Dina, Stefan [ 19/Aug/25 ]\nMathur, Akhilesh based on our call on Friday, could you please share an update on this item based on your discussion with Piecken, Elisabeth and advise if all the details are captured so that this Feature can be updated to refined?\nIf a session is still needed with Elisabeth and the team for further details, please let me know and I can schedule something this week? \nFYI Montgomery, Hugh Sullivan, Kevin C \nComment by Dina, Stefan [ 14/Aug/25 ]\nThanks Mouaffo, Gilberte I have added you as optional on the call tomorrow since it will mostly be a technical session with Mathur, Akhilesh to ensure all of the details are added on the Feature to confirm that it can be updated to Refined so that it can proceed to be sized and handed off to the RTE to schedule it accordingly.\nAnd sounds good, I do have the Backlog Refinement sessions for SA on Tuesdays at 3pm ET so we will join next week's call on Aug 19 if the Feature is considered to be in Refined status by then. \nFYI Montgomery, Hugh Sullivan, Kevin C \nComment by Mouaffo, Gilberte [ 14/Aug/25 ]\nDina, Stefan Please let me know if you need me on your call tomorrow. I would suggest you join our grooming sessions on Tuesdays (SA) and Thursdays (MSSP) for such features to be captured prior to PI Planning. Let me know if you need me to send you the links to these calls. Thank you\nComment by Dina, Stefan [ 14/Aug/25 ]\nThanks Glazer, Christian for the update on this. We have already committed that this Feature will be included in PI4 since it is the last piece holding up testing by the Miipe team, therefore we will need to refine it and still try to include it in PI4 if possible since pushing it to PI5 would be too late in the year. \nHave scheduled a call with Mohamed, Marcia and Mathur, Akhilesh tomorrow afternoon to clarify what is pending to get this feature refined and added you if you are able to join so we can touch base before you are off. \nFYI Piecken, Elisabeth Montgomery, Hugh Sullivan, Kevin C \nComment by Glazer, Christian [ 14/Aug/25 ]\nDina, Stefan   Hi i just learned that there was questions about this feature and why it was not put in the PI4.. that is because the feature is not ready to be consumed by the train as its not at refined status.  Now i was not involved in the feature creation but if we can have a call when i'm back in 2 weeks with me you, Mohamed, Marcia and Mathur, Akhilesh  so we can work on the feature and get it ready.  for the next PI.\nI just added Devastator and Dr. Strange as sig dep as we had no visibility to this feature and we should be part of  the testing.\nThanks\nComment by Dina, Stefan [ 14/Aug/25 ]\nBergeron, Melanie Langlois, Anne-Marie Mouaffo, Gilberte can you please advise why this Feature was not tagged to PI4? We have committed to the business that this scope of work should be included in PI4 so we need to know which sprint it can potentially be a part of, since this feature was already pushed from PI3. \nFYI Mathur, Akhilesh Piecken, Elisabeth Montgomery, Hugh Sullivan, Kevin C Codd, Nathan Razinova, Natalia Mohamed, Marcia \nComment by Dina, Stefan [ 14/Aug/25 ]\nMathur, Akhilesh Piecken, Elisabeth could you please advise which sprint this feature has been tagged to in PI4? \nFYI Montgomery, Hugh Sullivan, Kevin C \nComment by Dina, Stefan [ 12/Aug/25 ]\nMathur, Akhilesh Piecken, Elisabeth based on PI4 planning, could you please advise which sprint this feature will be delivered in? And provide a target delivery date if known? The Miipe team has a dependency on this item to complete SA testing and we are looking to plan their efforts accordingly.  \nFYI Ravikumar, Magesh Montgomery, Hugh Razinova, Natalia Mohamed, Marcia \nComment by Razinova, Natalia [ 24/Jun/25 ]\nHello Piecken, Elisabeth   Please kindly advise when this feature will be scheduled for development.  It is part of NetCracker  initiative and E2E testing has been scheduled for all other features. \ncc: Dina, Stefan , Montgomery, Hugh , Mohamed, Marcia Magann, Kathy \nComment by Razinova, Natalia [ 18/Jun/25 ]\nHello Piecken, Elisabeth   Please kindly advise when this feature will be scheduled for development.  It is part of NetCracker  initiative and E2E testing has been scheduled for all other features. \ncc: Dina, Stefan , Montgomery, Hugh , Mohamed, Marcia Magann, Kathy \nComment by Codd, Nathan [ 30/Jul/24 ]\n\t•\tDefault Maximo Flapping handling\n\t•\tChronic issues 5 in a day  14 in a week, 35 in a month 45 in 60 days and 55 in 90 days. once this hit this state automation can no longer resolve the incident and will need to be closed manually.  The team is aligned with this.\n\t•\tMaximo default auto ticket close from resolved is three days is this desired functionality. They are aligned with this as well and use their proposed process change only putting tickets into resolved when they are confident they wont need to reopen. \n\t•\tBillable support – Any billing for dispatch or breakage of Bell equipment for etc. There is a process in Maximo and is standard for Bell support today – no billable support today\n\t•\t \nComment by Codd, Nathan [ 30/Jul/24 ]\nI had my review with the business today Piecken, Elisabeth and the following is the updates on your outstanding questions for me. \n\t•\tWhen the Axia NOC refers to the Ontario NOC  do they refer on the device or the circuit? They open the tickets on the device for all Layer 3 services. \n\t•\tWhen the ON NOC puts the ticket back in the Axia queue do we want an email notification? This was a resounding yes for them. It would potentially resolve some issues where it gets reassigned to them right away and it takes them time to get back to checking on that ticket. \n\t•\tDo we need the PE included on each Maximo ticket that is created? Currently, the Supernet NOC only forwards tickets to the Ontario NOC regarding customer devices, as they lack access to Bell's Provider Edge devices. In Netcracker, a typical fault incident involving an Axia Network Provider Edge device generates two Incident Numbers (Parent tickets): one for the common fault and another related Incident Number that monitors the affected government devices, organized by edge region.\n\t•\tMaximo has a standard of auto closing a ticket that is in resolved if it sits in resolved with no action for 72 hrs. (assumption would be that communication to validate resolution has been sent to customer) Can this be adopted for GoA?  The proposed process change suggests moving a ticket to 'pending' status once it is \"resolved,\" rather than marking it as resolved. This change aims to address the issue of not being able to revert the ticket to 'in progress' after it has been marked as resolved.\n\t•\t Do we know the CLICK skill groups what are they fibre, copper, wireless? Not used for the Axia NOC dispatching is referred to the control centre and uses their processes since the control centre already uses Maximo I believe there will be no new skill groups needed to be configured here. \n\t•\tcontinues in next comment ...\nComment by Kolomiiets, Maksym [ 17/Jul/24 ]\nAs discussed on the call, I have attached all 4 samples of email we send today \n\t•\tP1-P4 emails have excel report attached to it with details – this is how its sent today (in attached P1 samples I forgot to attach xls but it should be there the same as P2-P4)\n\t•\tP1 ITSM email has macro that helps external system to parse the email body and integrate it\n\t1\tP1 ITSM email.msg\n\t2\tP1 additional email.msg\n\t3\tP2-P4 main email.msg\n\t4\tP2-P4 additional email.msg\n\n \nIf you are curious why we have this missing image – this is how its sent to the customer today\n\n \n \n \nComment by Kolomiiets, Maksym [ 15/Jul/24 ]\nfor our next working session adding some minutes to discuss so we don't forget:\n(some of them we have discussed – just summarizing it as i was not sure last time before I double checked)\n1. email Reminders for NOC: 15 mins / 5 mins / in overdue to send status update for P1-P4 INC 2. dashboard with active queue that updates in realtime and countdown\n3. monthly reporting to GOA:\n\t•\ton emails sent with timing: intial & status update emails\n\t•\ttickets staying in each status: how long did we stay In Progress, how long we stayed \"Awaiting additional info from Customer\", how log we stayed in Resolved etc\n \nsample: \nSLA Notifications:\n\t•\tP1: initial 15 min, then every 60 mins send status update\n\t•\tP2: every 2 hours\n\t•\tP3: every 4 hours\n\t•\tP4 every 24 hours\nP1: we send 2 emails immediately once INC cretaed/P1 is set\n\t1\temail sent to static contact: itsm.notify.p@gov.ab.ca\n\t2\tadditional email sent to static list of contacts:\n\t•\tSupernetP1Notifications@axia.com\n\t•\tAndrew.Compton@bell.ca\n\t•\tDavid.Joice@bell.ca\n\t•\tBellSupernet.NOC@bell.ca\n\t•\tNoReplySupernetP1@gov.ab.ca\n\t•\tNelson.Pacheco@gov.ab.ca\nP2-P4: we pre-generate 2 emails but do not send. NOC is supposed to send them manually\n\t1\temail sent to Technical Contacts of impacted account. dynamic list. HOW DO WE RETRIEVE LIST OF TECH CONTACTS TO NOTIFY?\n\t2\tadditional: sent to static email SN-Outages@gov.ab.ca \nPower Outage Automation for P4 (for alarm types ColdStart or deviceDown):\n\t1\tPower failure confirmation:\n\t2\tSend email to a customer (3 possible email templates)\n\t3\tChange status to “On Hold“\n\t4\t24 hours later send another email and change status based on the results\n \nDO WE TRACK STATUS CHANGES? \ni.e. at what time we change from \"In Progress\" to \"Resolved\" and from \"Resolved\" to \"In Progress\". Today in Netcracker we can resolve ticket multiple times. When device flapping we change it every 5 minutes. When ticket stays in \"Resolved\" or \"On Hold\" (pending customer respond) – SLA timer is paused.",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "BBMSA-3523",
+    "title": "Health Check - Enhanced Script Execution History Comparison",
+    "description": "This feature enhances the HC system by adding a functionality to compare script execution results. Users will be able to select two execution history entries and generate a diff report highlighting the differences between them. Both the individual execution results and the diff report will be downloadable as text files. This will significantly improve the efficiency of troubleshooting by allowing users to quickly identify changes and pinpoint the root causes of issues.\nRequirements:\n\t•\tImplement a mechanism to select two script execution history entries for comparison.\n\t•\tDevelop an algorithm to generate a diff report highlighting the differences between the selected entries.\n\t•\tImplement functionality to download individual execution results and the diff report as text files.\n\t•\tHandle various data formats and potential inconsistencies in execution results.\n\t•\tImplement appropriate error handling (e.g., if the selected entries cannot be compared).\nHigh-Level Design Plan:\n\t•\tPhase 1: Comparison Mechanism: Develop the algorithm to compare script execution results and generate diff reports.\n\t•\tPhase 2: Download Functionality: Implement the functionality to download execution results and diff reports as text files.\n\t•\tPhase 3: UI Integration: Integrate the comparison functionality into the UI.\n\t•\tPhase 4: Error Handling: Implement robust error handling for comparison failures.\n\t•\tPhase 5: Testing: Conduct thorough testing to validate functionality and usability.\nPre-requisites:\n\t•\tA suitable mechanism for storing and retrieving script execution history data.\nOut of Scope: Support for different file formats beyond text; Automated analysis of diff reports; Integration with other systems.\nTesting Plan:\n\t•\tUnit tests for the diff generation algorithm.\n\t•\tIntegration tests to verify interaction with the UI and data storage.\n\t•\tUser acceptance testing to validate usability and functionality.\nPotential Risks:\n\t•\tComplexity in handling various data formats and inconsistencies.\n\t•\tPerformance issues when comparing large execution results.\n\t•\tDifficulties in generating meaningful diff reports.\n\t•\tMitigation: Robust error handling, efficient algorithms, and thorough testing will mitigate these risks.\nLead BA / E2E Owner: Refer to JIRA Feature's assignee for responsible Product Owner\nStakeholder Involvement:\n\t•\tDevelopers: Design, development, and testing.\n\t•\tHC users: Requirements validation and feedback.\nJustification (PI): This feature significantly improves the efficiency of troubleshooting by providing a mechanism to compare script execution results and identify changes, reducing the time spent manually reviewing historical data.\nPost-Launch Metrics:\n\t•\tFrequency of comparison functionality usage.\n\t•\tUser satisfaction with the comparison feature.\nPotential Benefits:\n\t•\tFaster troubleshooting of HC issues.\n\t•\tImproved efficiency in analyzing script execution history.\n\t•\tEnhanced user experience.\nRequestor: More information in the comments section of this JIRA card\n\n\n Comments \n \nComment by Sherriff, Mark [ 04/Feb/26 ]\nTester for this feature is: Rajakumar, Rajalakshmi \nComment by Bobier-Boisvert, Florian [ 12/Jan/26 ]\nUn-commiting as testing will extend to PI2.\nComment by Mouaffo, Gilberte [ 27/Nov/25 ]\nEric, Julien Feature uncommitted as discussed. Thank you\nComment by Lapierre, Marc-Andre [ 21/Jul/25 ]\nDefferring to PI5.\nFeature not ready in-time for PI4.\nComment by Lapierre, Marc-Andre [ 04/Apr/25 ]\nReported by: Christopher Mask\n\n\n\n\nGenerated at Tue Feb 24 14:25:10 EST 2026 by Sherriff, Mark using Jira 10.3.8#10030008-sha1:cdaed80cecc964184c5b19b002388d56f96e274e.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "2026+PI1+Uncommitted+Feature+List+(DOQ+JIRA)+2026-02-24T14_24_46-0500.doc",
+    "source_label": "Uncommitted"
+  },
+  {
+    "requirement_id": "HT-RPT-001",
+    "title": "Happy Town Monthly Chronic Problem Report",
+    "description": "(222) The Contractor must provide a monthly report to Happy Inc for chronic problems that:",
+    "acceptance_criteria": "a) describes the chronic problems;\nb) steps taken to resolve the chronic problems; and\nc) recommendations as to how similar chronic problems may be avoided in the future.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "unclassified",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-002",
+    "title": "Happy Town Monthly Operational Status Report",
+    "description": "(223) The Contractor must provide a monthly management report  on operations status that includes:",
+    "acceptance_criteria": "a) executive overview;\nb) 13 month graphical and tabular report view of:\ni) target value, actual value, and number of exceptions for each Service Level;\nii) number of Change Requests submitted, failed, and completed;\niii) minimum, maximum, and average time between the scheduled and actual\nimplementation times to complete Change Requests;\niv) number of Incidents; and\nv) minimum, maximum, and average time to open and close Incident by severity and type;\nc) summary of security Incidents and actions taken;\nd) summary of emergency Change Requests;\ne) details of Incidents and Change Requests where the escalation process failed or was not followed; and\nf) description of the corrective actions and timeframes to implement any required changes to prevent future Service Level failures.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-003",
+    "title": "Happy Town Monthly Gate Accounts Report",
+    "description": "(224) The Contractor must provide a monthly report to Estatic inc that provides the following information for all User accounts:",
+    "acceptance_criteria": "a) User id;\nb) department;\nc) group within department;\nd) Happy Town Gate id;\ne) total bytes/packets in/out;\nf) successful/failed connection attempts;\ng) number of VPN Tunnels;\nh) average/peak duration of VPN Tunnels;\ni) average/peak bytes/packets per VPN Tunnel;\nj) connect/disconnect timestamps;\nk) number of lockouts; and\nl) account status.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-004",
+    "title": "Happy Town Monthly Gate Accounts Access Report",
+    "description": "(225) The Contractor must provide a monthly report to Estatic inc that provides the following information for all User accounts and access by the User:",
+    "acceptance_criteria": "a) User id;\nb) department;\nc) group within department;\nd) Happy Town Gate id;\ne) For each access:\ni) source IP address;\nii) device identification;\niii) authentication mechanism;\niv) date and time; and\nv) duration.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-005",
+    "title": "Happy Town Monthly Gate Info Report",
+    "description": "(226) The Contractor must provide a monthly report to Estatic inc that provides the following information for each Happy Town Gate:",
+    "acceptance_criteria": "a) total number of VPN Tunnels;\nb) average and peak duration of VPN Tunnels;\nc) total bytes/packets in/out;\nd) total successful/failed connection attempts;\ne) average/peak concurrent VPN Tunnels; and\nf) average/peak bytes/packets per VPN Tunnel.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-006",
+    "title": "Happy Town Monthly Gate Performance Report",
+    "description": "(227) The Contractor must provide a monthly report to Estatic inc that provides the following performance information for each Happy Town Gate:",
+    "acceptance_criteria": "a) number of concurrent VPN Tunnels supported;\nb) average/peak memory utilization;\nc) average/peak processor utilization;\nd) average/peak bandwidth utilization;\ne) last reboot date; and\nf) software release version.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-007",
+    "title": "Happy Town Monthly VPN Tunnel Info Report",
+    "description": "(228) The Contractor must provide a monthly report to Estatic inc that provides the following information for each VPN Tunnel:",
+    "acceptance_criteria": "a) origin Happy Town Gate id;\nb) destination Happy Town Gate id;\nc) data transferred (bytes/packets); and\nd) average/peak VPN Tunnel duration.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-008",
+    "title": "Happy Town Monthly Service Desk Activity Report",
+    "description": "(229) The Contractor must provide a monthly report to Estatic inc in tabular and graphical format on Service Desk activity that includes:",
+    "acceptance_criteria": "a) number of call received;\nb) number of calls answered;\nc) number of calls answered after 20 seconds of waiting;\nd) number of calls dropped after 20 seconds of waiting;\ne) number of calls not answered (dropped – busy signal);\nf) number of calls abandoned (user hang-up);\ng) number of Incident Tickets opened;\nh) average talk time of calls answered in seconds;\ni) average time to answer a call in seconds;\nj) average time to abandon a call in seconds;\nk) average wait time in queue before calls abandoned;\nl) maximum wait time in queue;\nm) percentage of calls answered to Incident Tickets opened;\nn) percentage of calls received to Incident Tickets opened;\no) percentage of calls not dropped to calls received; and\np) percentage of calls abandoned to call received.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "unclassified",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-009",
+    "title": "Happy Town Weekly Change Management Report",
+    "description": "(230) The Contractor must provide a weekly report to Estatic inc, which identifies all change activities to the Happy Town for the upcoming 2 weeks including a description of service impacts (logins, registrations supported).\n(231) The Contractor must provide a weekly report to Estatic inc that describes the outcome of Change Requests applied during the previous week, Change Requests scheduled for the next week, and Change Requests submitted by the Contractor for Canada's approval.",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "timing": "Weekly",
+    "security": "what is in description field?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-010",
+    "title": "Happy Town Daily User Access Report",
+    "description": "(232) The Contractor must provide a daily report to Estatic inc that provides the following information for each failed User login attempt:",
+    "acceptance_criteria": "a) User id;\nb) Certificate number;\nc) login attempt timestamp; and\nd) reason for login failure.",
+    "type": "Report Requirement",
+    "timing": "Daily",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-011",
+    "title": "Happy Town Daily Gate Info Report",
+    "description": "(233) The Contractor must provide a daily report to Estatic inc that provides the following information for each Happy Town Gate:",
+    "acceptance_criteria": "a) total number of VPN Tunnels;\nb) average and peak concurrent VPN Tunnels;\nc) average and peak duration of VPN Tunnels;\nd) total bytes/packets in/out;\ne) total successful/failed connection attempts; and\nf) average/peak bytes/packets per VPN Tunnel.",
+    "type": "Report Requirement",
+    "timing": "Daily",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-012",
+    "title": "Happy Town Daily Gate Performance Report",
+    "description": "(234) The Contractor must provide a daily report to Estatic inc that provides the following performance information for each Happy Town Gate:",
+    "acceptance_criteria": "a) number of concurrent VPN Tunnels supported;\nb) average/peak memory utilization;\nc) average/peak processor utilization;\nd) average/peak bandwidth utilization;\ne) last reboot date; and\nf) software release version.",
+    "type": "Report Requirement",
+    "timing": "Daily",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-013",
+    "title": "Happy Town Daily VPN Tunnel Info Report",
+    "description": "(235) The Contractor must provide a daily report to Estatic inc that provides the following information for each VPN Tunnel:",
+    "acceptance_criteria": "a) origin Happy Town Gate id;\nb) destination Happy Town Gate id;\nc) data transferred (bytes/packets); and\nd) average/peak VPN Tunnel duration.",
+    "type": "Report Requirement",
+    "timing": "Daily",
+    "security": "Unclassified except - contains device names is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-014",
+    "title": "Happy Town Security Breaches Report",
+    "description": "(236) The Contractor must provide an adhoc report to Estatic inc, by reporting period specified by Canada, on security breaches that includes:",
+    "acceptance_criteria": "a) number of security Incidents;\nb) number of security investigations completed;\nc) average/highest response time to security Incidents; and\nd) average/highest security investigation completion time.",
+    "type": "Report Requirement",
+    "timing": "Ad-hoc",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-015",
+    "title": "Happy Town Privacy Breaches Report",
+    "description": "(237) The Contractor must provide an adhoc report to Estatic inc, by reporting period specified by Canada, on privacy breaches that includes:",
+    "acceptance_criteria": "a) number of privacy Incidents;\nb) number of privacy investigations completed; and\nc) average/highest response time to privacy Incidents.",
+    "type": "Report Requirement",
+    "timing": "Ad-hoc",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-016",
+    "title": "Happy Town High Severity Incidents Report",
+    "description": "(238) The Contractor must provide an adhoc report for all high severity Incidents that includes tracking and follow-up of outstanding items for the Incidents.",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "timing": "Ad-hoc",
+    "security": "Unclassified except - contains device name is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-017",
+    "title": "Happy Town Inventory Report",
+    "description": "(239) The Contractor must provide to Estatic inc an adhoc inventory report of equipment implemented at Canada’s sites for the Happy Town, within 5 FGWDs of a change to the information from the previous report, that includes:",
+    "acceptance_criteria": "a) equipment owned by the Contractor;\nb) equipment owned by Canada;\nc) equipment owned by any third party (identifying that third party);\nd) the manufacturer of the equipment and country of origin;\ne) the model and serial number of the equipment;\nf) where each item of equipment is installed by integrating the information with the\ng) the date that the equipment was installed;\nh) the date on which the equipment was last serviced (whether for preventive or remedial maintenance); and\ni) the date on which the Firmware was last updated.",
+    "type": "Report Requirement",
+    "timing": "Ad-hoc",
+    "security": "Unclassified except - contains device name is this PB?",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-018",
+    "title": "Happy Town Monthly Risk Register Report",
+    "description": "(218) The Contractor must provide a monthly report on the risk treatment plan implementation\nactivities.",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "Protected B",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-019",
+    "title": "Happy Town Monthly Contract Status Report",
+    "description": "(219) The Contractor must provide a monthly report to Estatic inc on the status of the Contract that\nincludes:",
+    "acceptance_criteria": "a) accomplishments and plans;\nb) Service Level issues requiring resolution;\nc) risks including probability and mitigating actions;\nd) issues requiring resolution; and\ne) billing disputes requiring resolution.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "unclassified",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-RPT-020",
+    "title": "Happy Town Monthly SLA Report",
+    "description": "(220) The Contractor must provide a monthly report to Estatic inc for each Service Level that\nincludes:",
+    "acceptance_criteria": "a) daily aggregated Service Level data for the past 60 days, including a view of the\nhourly profile over this period;\nb) daily aggregated Service Level data for the past 13 months; and\nc) monthly aggregated Service Level data since Contract award, including a view of the\nhourly profile for each month where applicable.",
+    "type": "Report Requirement",
+    "timing": "Monthly",
+    "security": "unclassified",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Report Req layout"
+  },
+  {
+    "requirement_id": "HT-SEC-001",
+    "title": "Happy Town Secure Report Requirements",
+    "description": "Happy Town will produce a number of reports some monthly, others weekly and yet others daily . Reports identified below are those which have been identified as including, or potentially including, personal information. Only monthly and daily reports appear to include personal information - the details of which are set out below. Once compiled, the reports will be made accessible to Client Secure Portal  through a secure web portal.\n1.1      Happy Town Monthly Reports\nHappy Town Detailed Monthly User Report (227)\n·         Inclusions:\no   User id;\no   department;\no   group within department;\no   Happy Town Gate id;\no   total bytes/packets in/out;\no   successful/failed connection attempts;\no   number of VPN Tunnels;\no   average/peak duration of VPN Tunnels;\no   average/peak bytes/packets per VPN Tunnel;\no   connect/disconnect timestamps;\no   number of lockouts; and\no   account status.\nHappy Town Detailed Monthly User with Source IP Report (report 228)\n·         Inclusions:\no   User id;\no   department;\no   group within department;\no   Happy Town Gate id;\no   For each access:\n§  source IP address;\n§  device identification;\n§  authentication mechanism;\n§  date and time; and\n§  duration.\n1.2        Happy Town Daily Reports\nHappy Town Failed Login Report (report 235)\n·         Inclusions:\no   User id;\no   Certificate number;\no   login attempt timestamp; and\no   reason for login failure.\nAre there no ad hoc reports?",
+    "acceptance_criteria": "",
+    "type": "Security Requirement",
+    "source_file": "hAPPY tOWN rEPORTS REQUIREMENTS.xlsx",
+    "source_sheet": "Secure Rpt Req"
+  },
+  {
+    "requirement_id": "INC-NOTES-001",
+    "title": "Incident Ticketing System Requirements (WLAN/DLAN)",
+    "description": "WLAN\n5.4.6.1 The Contractor must utilise a computerised Trouble Ticketing System to track and provide details of each incident reported by TSPOC to include, at a minimum, the following information:\na) Ticket number;\nb) Date of the ticket;\nc) Name of the person reporting the incident;\nd) Client Department name and location of the incident;\ne) Name of the person receiving the monthly incident report;\nf) Description of the incident (minor, major or critical);\ng) Severity of the incident;\nh) Description of the incident resolution; and\ni) Time to restore.\nDLAN\n(166) The Incident Tickets must include, but not be limited to, and the Contractor must maintain, the following dedicated information fields for all Incidents:\na) Ticket number;\nb) Incident description;\nc) Incident originator (Contractor, Canada representative);\nd) related Incident Tickets;\ne) related Change Tickets;\nf) date and time stamp when Incident initiated;\ng) date and time stamp when Incident closed;\nh) Incident type (production, functional testing, performance testing, security, etc.) as\nspecified by Canada;\ni) Incident severity;\nj) Incident status (i.e., open, closed, in progress, suspended, cancelled, etc.);\nk) Canada’s ticket number;\nl) Service function impacted;\nm) Service Desk contact to initiate ticket (name, telephone number and email address);\nn) Contractor’s contact information (name, telephone number and email address);\no) Client Organization/User identifier (as specified by Canada);\np) Client Organization/User type (as specified by Canada);\nq) Client Organization/User language;\nr) Department’s contact information (name, telephone number and email address);\ns) activity log including all actions taken by third parties;\nt) resolution description and cause;\nu) outage time (for closed tickets only); and\nv) date and time stamp when ticket last updated.",
+    "acceptance_criteria": "",
+    "type": "System Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Notes"
+  },
+  {
+    "requirement_id": "INC-FIELDS-001",
+    "title": "Incident Record Field Specifications",
+    "description": "The Incident Record form must include the following fields:\n- Details (Détails) <TAB 1 start here> ()\n- Ticket Number (No du billet): <custom> (L= 16 always prefaced by INC))\n- Canada Ticket Number (No du billet Canada): textbox (L= 50)\n- Status (Statut): drop down (values from ITSM) (L= L=20)\n- Severity (Sévérité): drop down values from ITSM (L= 20)\n- Priority (Priorité): drop down (L= values from ITSM) (L= 20)\n- Type (Type): drop down values from ITSM (L= 20)\n- Summary (Sommaire): textbox (L= 100)\n- Description (Description): textbox (L= unlimited) use scroll bars past 100\n- Resolution (Résolution): textbox (L= unlimited) use scroll bars past 100\n- Service Affected (Service touché): drop down (values from ITSM)\n- Department (Département): CI has 0 to many departments? (L= 60)\n- Tracking (Surveillance) ()\n- Originator (Créateur): person originating ticket from SSC (L= 100)\n- Reported (Signalé le): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Initiated (Présenté le): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Resolved (Rétabli le): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Closed (Fermé le): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Updated (Date de modification): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Outage Start (Début de la panne): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Outage End (Fin de la panne): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- Outage Time (Durée de la panne): date:time (L= ITSM format?)  mm/dd/yyyy hh:mm:ss or possible epoch time\n- OrG Chart Contact Information ()\n- Ottawa Service Desk\nToll Free: (866) 520-4278\nOrG Charthd@OrG Chart.ca (Bureau de service Ottawa\nNuméro sans frais (866) 520-4278 \nOrG Charthd@OrG Chart.ca): hardcoded - quesiton out to validate the contact information to Bill\n- Devices (FR?) <TAB 2 start here> ()\n- Device(s) (Dispositif): zero to many devices - hyperlink device to inventory record\n(L= 254)\n- Department (Département): each device has a department \nCI has 0 to many departments? (L= 60)\n- Device Location (Location de dispositif): each device has a device site aggregate fields below ito a single field - hyperlink location to SDP record \nstreet L= 90\ncountry L= 60\nstate / prov L= 60\ncity L= 60\npostal code L= 15\n- Related Items (Billets reliés)<TAB 3 start here> ()\n- Type (Type): text 60\n- Ticket Number (No du billet OrG Chart): zero to many associated tickets - hyperlinked to record\n<custom> (L= 16)\n- Association Type (Type d'association): text 60\n- Activity Log (Registre des activités)<TAB 4 start here> ()\n- Type (Type): selection field (L= 40)\n- Notes (Détails): text (L= unlimited)\n- Created (Temps inscrit): Timestamp of the worklog entry\n- Created by (Crée par): Creator of the worklog entry\n- Attachments ()\n- Filename (Nom de fichier): files that have been attached to an incident - can be 0 or many\nfield length = 255\n- Size (Largeur): size of each attached file (L= 255)",
+    "acceptance_criteria": "",
+    "type": "UI/System Design Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Incident Record"
+  },
+  {
+    "requirement_id": "INC-SEARCH-001",
+    "title": "Incident Search Form Requirements",
+    "description": "The search form must support the following fields:\n- Ticket Number: searchable=y, in_results=y\n- Canada Ticket Number: searchable=y, in_results=y\n- Status: searchable=y, in_results=y\n- Severity: searchable=y, in_results=y\n- Priority: searchable=y, in_results=y\n- Type: searchable=y, in_results=y\n- Summary: searchable=y, in_results=y\n- Description: searchable=y, in_results=y\n- Resolution: searchable=y, in_results=y\n- Service Affected: searchable=y, in_results=y\n- Department: searchable=y, in_results=y\n- Originator: searchable=y, in_results=y\n- Reported: searchable=y, in_results=y\n- Initiated: searchable=y, in_results=y\n- Resolved: searchable=n, in_results=y\n- Closed: searchable=y, in_results=y\n- Last Updated: searchable=y, in_results=y\n- Outage Start: searchable=y, in_results=y\n- Outage End: searchable=y, in_results=y\n- Outage Time: searchable=y, in_results=y\n- Device(s): searchable=y, in_results=y\n- Department: searchable=y, in_results=y\n- Device Location: searchable=y, in_results=y",
+    "acceptance_criteria": "",
+    "type": "UI/System Design Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Search Form"
+  },
+  {
+    "requirement_id": "INC-WF-001",
+    "title": "Incident Workflow Requirements",
+    "description": "from the incident record screen a user can:\nadd an activity log\nupload a file\n<next step… develop Incident record screen to develop workflows>",
+    "acceptance_criteria": "",
+    "type": "Workflow Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Workflow"
+  },
+  {
+    "requirement_id": "INC-NOTIF-001",
+    "title": "Incident Notification Requirements",
+    "description": "Client notifications are handled by the ITSM\nis there a notification required for worklog updated or file uploaded?\nNot to the client.  However, if a client does create a worklog and the incident is open, ITSM will send an email to the Owner and Assignee of the incident.",
+    "acceptance_criteria": "",
+    "type": "Notification Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Notifications"
+  },
+  {
+    "requirement_id": "INC-SFT-001",
+    "title": "Search Field Type Definitions",
+    "description": "The search form must support the following field types:\n- boolean: widget=dropdown, operations=is equal to\n- phone number: widget=phone number masked textbox, operations=contains, begins with, exact match\n- text: widget=textbox, operations=contains, begins with, exact match\n- date: widget=calendar, operations=exact, earlier than, later than, between\n- integer: widget=textbox, operations=equal, greater than, less than, not equal to, between\n- currency: widget=currency, operations=equal, greater than, less than, not equal to, between\n- look up / cross reference / primary key: widget=dropdown, operations=equal to\n- pick list: widget=pick list, operations=includes, does not include",
+    "acceptance_criteria": "",
+    "type": "Technical Requirement",
+    "source_file": "Incident Tickets ORD Town .xlsx",
+    "source_sheet": "Search Field types"
+  },
+  {
+    "requirement_id": "POS-001",
+    "title": "POS Upgrade Project Highlights",
+    "description": "Highlights of the Project\nTransmission file format is as per CMO format and standards.\nAuthorized stores processing is controlled by pre configured control file. \nSettlement file is combined for card types 5(Switch), 7(Visa) and 8 (Access).\nCustomer instructions are translated from POS values to FMO. Translation is done with new translation table and bin range table for indicator VISA card type.\nProcessed transactions all card type reports are not combined but similar to stream line processed transactions report (Visa and Access combined in one report and switch transactions are reported separately. Reports will have the new header \nMenu screen and validations updated for new option to handle batch Create, recreate and reporting.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 2
+  },
+  {
+    "requirement_id": "POS-FLOW-003",
+    "title": "POS Current Flow — Programs and Tables",
+    "description": "POS Data created from T LOG with 97 String for encrypted credit card information\nPOSP015\nPOSP015CP\nEODCSALES\nEODCRCVFIL\nEODBPOPCC1 EZBUY (88)\nEODBPOPCC2 NON EZBUY(81)\nPOSB105 \nCopy 15 to 16\nPOSP016\nPOSP016CP\nPOSC305\nPOSB305  Validate\nEODBVOIDCC\nEODPVOIDCC\nPOSFEFT/XXXXYYYY\nEODCBANKG\nEODPTMP\nPOSC310\nPOSB310 Data format\nCRTCRDTYP=3\nPOSB317\nACCESS\nSWITCH\nEZBUY\nAMEX\nVISA\nPOSP080\nPOSC320 FTP\nPOS\nPOSP015BU\nEODPEFT\nFLEXCASH\nPOSCSETLIB\nPOSB313 Australia\nPOSC315 Germany\nPOSC317 UK  5,7 or 8\nPOSB322 UK 5,7,8 RJE\nPOSB330  Spain,France\nPOSC325 UK cc report\nPOSB320  UK cc report\nPOSP0001\npOSC105\nPOSP050\nPOSP051\nPOSP052\nPOSP053\nPOSP056\nPOSP081\nPOSP017 FLEXCASH\nPOSP040\nPOSP054\nPOSP040\nPOSP079\nPOSP084\nFTPSTRMGET\nPCISFTP\nLCLSTRCTL\nHost IFS (Nu bridge decryption) Used by EODBPOPCC!,EODBPOPCC2, POSB305, POSB310,  POSB317, POSB321 and POSB350\nExisting Job/Program\nExisting table\nCOLOR LEGEND\nCurrent Flow",
+    "acceptance_criteria": "",
+    "type": "Technical Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 3
+  },
+  {
+    "requirement_id": "POS-FLOW-004",
+    "title": "POS Proposed Flow — Programs and Tables",
+    "description": "Host IFS (Nu bridge decryption) Used by EODBPOPCC!,EODBPOPCC2, POSB305, POSB310,  POSB317, POSB321 and POSB350\nPOSP015\nPOSP015CP\nEODCSALES\nEODCRCVFIL\nEODBPOPCC1 EZBUY (88)\nEODBPOPCC2 NON EZBUY(81)\nPOSB105 \nCopy 15 to 16 and 19 to 20 for ....\nPOSP016\nPOSP016CP\nPOSC305\nPOSB305  Validate\nEODBVOIDCC\nEODPVOIDCC\nPOSFEFT/XXXXYYYY\nEODCBANKG\nEODPTMP\nPOSC310\n\nChange to copy .... store  data from POSP016 & POSP016CP to POSP019\nPOSB310 Data format\nCRTCRDTYP=3 (SL)\nPOSB317\nACCESS\nSWITCH\nEZBUY\nAMEX\nVISA\nPOSP080\nPOSC320 FTP\nPOS\nPOSP015BU\nEODPEFT\nFLEXCASH\nPOSCSETLIB\nPOSB313 Australia\nPOSC315 Germany\nPOSC317 5,7 or 8\nPOSB322 UK 5,7,8 RJE\nPOSB330  Spain,France\nPOSC325 UK cc report\nPOSB320  UK cc report\nPOSP0001\npOSC105\nPOSP050\nPOSP051\nPOSP052\nPOSP053\nPOSP056\nPOSP081\nPOSP017 FLEXCASH\nPOSP040\nPOSP054\nPOSP040\nPOSP079\nPOSP084\nFTPSTRMGET\nPCISFTP\nPOSB322 UK 5,7,8 RJE\nPOSP084H\nLCLSTRCTL\nPOSP090\nExisting Job/Program\nExisting table\nNew Table(s)\nNew Job/Program\nModified Job / Program\nCOLOR LEGEND\nProposed Flow\nPOSC327\nPOSC326\nPOSC328\nPOSP024H\nPOSB323 (....)\nPOSP0001\nPOSB314 .... Batch\nPOSP017\nPOSB323SUM\nPOSBINR\nPOSPCUSINS\n....\nPOS Data created from T LOG with 97 String for encrypted credit card information",
+    "acceptance_criteria": "",
+    "type": "Technical Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 4
+  },
+  {
+    "requirement_id": "POS-RPT-005",
+    "title": "Modified Report — Access/Visa Transactions",
+    "description": "Modified  Report for .... Access / Visa Transactions",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 5
+  },
+  {
+    "requirement_id": "POS-RPT-006",
+    "title": "Modified Report — Switch Transactions",
+    "description": "Modified  Report for .... Switch Transactions",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 6
+  },
+  {
+    "requirement_id": "POS-RPT-007",
+    "title": "New Error Report — Swipe Indication Translation Failures",
+    "description": "New report of Error transactions failed for Swipe indication Translation.",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 7
+  },
+  {
+    "requirement_id": "POS-RPT-008",
+    "title": "Settlement File Specification",
+    "description": "Settlement file",
+    "acceptance_criteria": "",
+    "type": "Report Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 8
+  },
+  {
+    "requirement_id": "POS-OBJ-001",
+    "title": "POS Upgrade — New/Modified Objects",
+    "description": "The following objects must be created or modified:\n- 1. POSC310: Validate Credit Card Data & Create Tape (Changes required to support sftp of new file after completion of credit card processing i.e. 5,7.8).\nNew parameter ‘H’ introduced for .... batch report generation with label changes on report. (Type: CLP, Change)\n- 2. POSC317: Create Streamline output files (Type: CLP, Change)\n- 3. POSC327: Send Credit card transaction file via FTP (Type: CLP, New)\n- 4. POSC328: Receiving  Statement files via SFTP (Type: CLP, New)\n- 5. POSC105: Menu Program ,allows Create and Recreate Batch\nNew parameter introduced for report generation (Type: CLP, Change)\n- 6. POSB314: To Populate Batch Header File (Type: CBL, New)\n- 7. POSB323: Create New File for CC Processing  (Write transaction records only in POSP084HWK). New flag (CCM ,FFM) added to POSPBINR Refer the file POSPBINR and load the data in array. For conversion create new customer instruction translation table (POSPCUSINS) and generate the settlement for accordingly with construction instructions field translated. (Type: CBL, New)\n- 8. POSP084H: Transmission file (Type: PF, New)\n- 9. POSP084T: Acknowledgement (Statement) File (Type: PF, New)\n- 10. POSP084HWK: Contains transaction records for Cards (Type: PF, New)\n- 11. POSB323SUM: Write Transaction records in POSP084H(Including Header ,Footer and Summary ,net claim) (Type: CBL, New)\n- 12. EODCBANKNG: Changes Required to consolidate  Credit Card (5,7,8) (Type: CL, Changes)\n- 13. POST105E: Display file for menu option (Type: DSPF, Change)\n- 14. POSPBINR: New field (CCM,FFM) added to determine where cards are based (Type: PF, Change)\n- 15. POSPCUSINS: New customer instruction conversion table (Type: PF, New)\n- 16. POSRCONERR: New program for generating customer instruction error report (Type: RPG, New)\n- 17. POSPCONERR: Customer Instruction error file (Type: PF, New)\n- 18. POSLCONERR: LF on Customer Instruction error file (Type: LF, New)\n- 19. POSTCONERR: Customer Instruction error report (Type: PRTF, New)\n- 20. POSB320: Logic added to change the description of Header part in report for .... records (Type: CBL, Change)\n- 21. POSC325: New parameter introduced for .... report generation (Type: CL, Change)\n- 22. POST320E: Indicator set to display CORE  description in the report. (Type: PRTF, Change)",
+    "acceptance_criteria": "",
+    "type": "Technical Requirement",
+    "source_file": "POS upgrade Requirement sample.pptx",
+    "source_slide": 9
+  },
+  {
+    "requirement_id": "PROJ-OBJ-001",
+    "title": "Project Objective",
+    "description": "Solution will address jobs on entry and use test result, test result history, and job history to better optimize a job and perform job coordination in a more effective manner.\n90 day history of job and tests will be taken into account to determine the next best action, job duration time and whether multiple technicians should be dispatched because the customer is having a re-occurring or persistent issue.",
+    "acceptance_criteria": "",
+    "type": "Business Feature",
+    "source_file": "Project Objective Sample 3 snippet .docx"
+  },
+  {
+    "requirement_id": "PROJ-SCOPE-001",
+    "title": "Project Scope — In-Scope Items",
+    "description": "In-Scope:\n- [IS1] Jobs from ACUT and TIM with originating systems; DSI-ACUT-FA, DSI-TIM-BTC FTTX, DSI-TIM-BUS, DSI-TIM-HSC, DSI-TIM-OTHER, DSI-TIM-WHSL:\nExamples:\nSmall Company Corp Business Service Assurance (Mass Business Markets) - Copper and/or Fibre\nSmall Company Corp Residential Service Assurance - Copper and/or Fibre\nSmall Company Corp Wholesale Service Assurance (Res and Bus) - Copper and/or Fibre\nResidential and Business Service Assurance BTS CO tickets\n- [IS2] JARE will be used to create the NBA business rules:\nAdditional Coordinated job creations for multiple technicians to be dispatched\nCustomer coded \"No Access\" multiple times\nCyclical CO and Cable referrals (Multiple Referrals)  \nCustomer has multiple jobs with Technicians unable to identify issue. \nCustomer has multiple truck rolls for same issue\nCustomer with repeated tasks\nCustomer has ongoing intermittent issues. \nCustomer line is unstable (Customer has a specific failed test result) \nPrevious Test Passed\n- [IS3] Current service assurance customer data received from source systems\n- [IS4] 90 day historical service assurance customer data received from source systems including data from previous dispatches that can be used for decision making from a historical BTS CO ticket for a current SA ticket\n- [IS5] Manual Reporting\nExposing data to BI and Horizon the NBA Audit Table\nScripts to be built to extract data\n- [IS6] All job and test results and test history within 90 days\n- [IS7] Input to business rules engine:\nTest Services \nVoice Test Data\nInternet Test Data\nVideo Test Data\nSmall Company Corp Residential Service Assurance ticket information\nSmall Company Corp Business Service Assurance ticket information\nService Assurance 90 day Job Details\n- [IS8] Service Assurance - Category 1, 2, 5, 5E, 5S, 6, 7, 9, E\n- [IS9] Updates to TMI Job Details\n- [IS11] Updates to CLICK Task List, Gantt and Task Forms\n- [IS12] ‘Auto Cancel (end of state)’ process in CLICK for jobs that are in Manual Handling for Multiple no Access \nUse existing R5 ACUT CLOSEDRET after 7 days from due date.\n- [IS13] Auto Cancel of Manual Job when Lead job is cancelled in CLICK\n- [IS14] CLICK Audit details to be sent to NBA Audit",
+    "acceptance_criteria": "",
+    "type": "Scope Definition",
+    "source_file": "Project Objective Sample 3 snippet .docx"
+  },
+  {
+    "requirement_id": "PROJ-SCOPE-002",
+    "title": "Project Scope — Out-of-Scope Items",
+    "description": "Out of  Scope – Business Activities:\n- [OS1] Atlantic\nSmall Company Corp West\nSmall Company Corp MTS\nNorthern Telephone\nORS (Out Right Sales)\nData\n- [OS2] CO tickets (maintenance tickets)\n- [OS3] Service Assurance - Category 8\n- [OS4] Service Provisioning Job Details (not available from the WOM)\n- [OS5] Technician and Manager SMS Notifications to include NBA job information\nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS6] EDW Reporting\nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS7] Creation of CST and MST in ODM\n \nODM rules to be built in FMO, JARE will be used for  the interim solution\n- [OS8] ODM Test Services via Oneside\nODM rules to be built in FMO, FWFM Gateway will be used for  the interim solution\n- [OS9] Identifying Customer with multiple truck rolls coded \"Workload too heavy\" \nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS10] Updates performed in CLICK (region/district, skill or tool CLLI) are out of scope for NBA rules \nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS11] Test measures for Voice, Internet, Video (other attributes required for FMO) that have not been specified for NBA qualification rules. \nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS12] Performance Requirements/Testing\nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS13] Manage Your Appointment business requirements \nOut of Scope for entire project\n- [OS14] Source Updates/Cancels to Lead jobs will not update Manual Jobs\nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS15] Miscellaneous tickets cannot be identified therefore can be possibly considered as NBA candidates\n- [OS16] Pre-population of the NBA Audit 90 day history table\n- [OS17] Contractor jobs (ACUT ticket for BSW) will be not considered as NBA candidates using new skills associated with contractors\nOut of scope for Release 1, in scope for Release 2 and beyond\n- [OS18] Updates to CLICK Audit (FSRC)",
+    "acceptance_criteria": "",
+    "type": "Scope Definition",
+    "source_file": "Project Objective Sample 3 snippet .docx"
+  }
+]
