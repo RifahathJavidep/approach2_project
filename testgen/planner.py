@@ -334,15 +334,27 @@ class TestCasePlanner:
                 "type": "TestCaseEditorDTO",
                 "title": f"{req.get('title', req.get('feature_name', 'Requirement'))} - {sc_name}",
                 "description": tc_data.get('description', f"Test {sc_name} Feature"),
-                "requirementId": req.get('requirement_id', ''),
+                "requirementId": req.get('requirement_id', req.get('id', 1)),
                 "status": "DRAFT",
-                "testPhases": ["END_TO_END_TESTING"],
+                "testPhases": [
+                    "FUNCTIONAL_TESTING",
+                    "END_TO_END_TESTING",
+                    "DEPLOYMENT_VERIFICATION_TESTING"
+                ],
                 "testTypes": ["UI"],
                 "prerequisites": prerequisites_str,
-                "expectedResult": "<p>Calculated per step</p>",
+                "expectedResult": f"<p>{tc_data.get('expected_result', 'Calculated per step')}</p>",
                 "testCaseSteps": tc_steps,
                 "assignedTags": [],
-                "relatedSystems": [],
+                "relatedSystems": [
+                    {
+                        "type": "SystemSummaryDTO",
+                        "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+                        "name": "Katsu Test",
+                        "description": "Katsu product testing",
+                        "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+                    }
+                ],
                 "executionConfigurations": [],
                 "attachments": [],
                 "links": [],
@@ -431,12 +443,34 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
 
             # Set required fields
             tc["type"] = "TestCaseEditorDTO"
-            tc["requirementId"] = req_id
+            tc["requirementId"] = req.get('id', req_id)
             tc["status"] = "DRAFT"
+            
+            # Use multi-phase default if not specified
+            if not tc.get("testPhases"):
+                tc["testPhases"] = [
+                    "FUNCTIONAL_TESTING",
+                    "END_TO_END_TESTING",
+                    "DEPLOYMENT_VERIFICATION_TESTING"
+                ]
+                
             tc.setdefault("prerequisites", "Valid user credentials; access to the application")
-            tc.setdefault("expectedResult", "Feature works as described in requirement")
+            
+            # Wrap overall expected result in <p> tag
+            raw_expected = tc.get("expectedResult", "Feature works as described in requirement")
+            if not raw_expected.startswith("<p>"):
+                tc["expectedResult"] = f"<p>{raw_expected}</p>"
+            
             tc.setdefault("assignedTags", [])
-            tc.setdefault("relatedSystems", [])
+            tc.setdefault("relatedSystems", [
+                {
+                    "type": "SystemSummaryDTO",
+                    "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+                    "name": "Katsu Test",
+                    "description": "Katsu product testing",
+                    "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+                }
+            ])
             tc.setdefault("executionConfigurations", [])
             tc.setdefault("attachments", [])
             tc.setdefault("links", [])
