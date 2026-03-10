@@ -26,6 +26,8 @@ logger = logging.getLogger("prism.duplication")
 
 JAVA_BACKEND_BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
 
+from auth_config import get_java_auth_headers
+
 # Similarity threshold — requirements above this score are flagged as duplicates
 DEFAULT_SIMILARITY_THRESHOLD = 0.80
 
@@ -144,7 +146,7 @@ def _fetch_existing_requirements(project_id: str) -> List[Dict]:
     url = f"{JAVA_BACKEND_BASE_URL}/api/requirements/project/{project_id}"
 
     try:
-        response = requests.get(url, timeout=15)
+        response = requests.get(url, headers=get_java_auth_headers(), timeout=15)
         if response.status_code == 200:
             data = response.json()
             # Handle both list and dict-wrapped responses

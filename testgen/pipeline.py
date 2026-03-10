@@ -85,8 +85,9 @@ class TestGenPipeline:
     Output: Test plan JSON + Excel file
     """
 
-    def __init__(self, model: str = "llama-3.3-70b-versatile"):
-        self.planner = TestCasePlanner(model=model)
+    def __init__(self, model: str = "llama-3.3-70b-versatile", mode: str = "hybrid", model_state_path: Optional[str] = None):
+        self.planner = TestCasePlanner(model=model, mode=mode, model_state_path=model_state_path)
+        self.mode = mode
 
     def run(
         self,
@@ -135,6 +136,7 @@ class TestGenPipeline:
         test_plan = self.planner.generate(
             requirements=requirements,
             project_name=project_name,
+            documents=source_texts,  # For hybrid context building
             source_texts=source_texts,
             status_callback=status_callback,
         )

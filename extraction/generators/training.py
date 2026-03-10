@@ -193,15 +193,6 @@ def _generate_training_from_projects(
     Scan other projects' PDFs to generate additional training examples.
     Uses the LLM extractor to get candidates, then labels them as
     positive/negative using the keyword skip filter.
-
-    Args:
-        current_project: Name of the current project (excluded)
-        projects: Dictionary of all project configs
-        process_pdf_fn: Function to extract text from PDF (injected from pipeline)
-        chunk_fn: Function to chunk text (injected from pipeline)
-
-    Returns:
-        List of dicts with: text, title, description, is_requirement (bool)
     """
     extra_examples = []
     extractor_sig = dspy.ChainOfThought(BusinessFeatureExtraction)
@@ -213,26 +204,19 @@ def _generate_training_from_projects(
 
     for project_name, project_config in projects.items():
         if project_name == current_project or project_name == 'bbmsa':
-            continue  # Skip target project and bbmsa as requested
-
-        input_dir = Path(project_config['input_dir'])
-        if not input_dir.exists():
-            print(f"    Skipping {project_name}: directory not found")
             continue
 
-        # Get PDF files (skip non-requirement files)
-        pdf_files = sorted(input_dir.glob('*.pdf'))
-        skip_file_patterns = ['test_strategy', 'test strategy', 'traceability', 'about']
-        pdf_files = [f for f in pdf_files if not any(p in f.name.lower() for p in skip_file_patterns)]
+        input_dir = Path(project_config.get('input_dir', ''))
+        if not input_dir or not input_dir.exists():
+            continue
 
+        # Get PDF files 
+        pdf_files = sorted(input_dir.glob('*.pdf'))
         if not pdf_files:
             continue
 
-        print(f"    {project_name}: scanning {len(pdf_files)} files...")
-
-        for pdf_file in pdf_files[:3]:  # Limit to 3 files per project for speed
+        for pdf_file in pdf_files[:2]:  # Limit to 2 files per project for speed
             try:
-                # Use injected PDF processor or import from extractors
                 if process_pdf_fn:
                     doc_text = process_pdf_fn(str(pdf_file))
                 else:
@@ -243,13 +227,9 @@ def _generate_training_from_projects(
                 if not doc_text or len(doc_text.strip()) < 100:
                     continue
 
-                # Take only first chunk to keep it fast
                 chunks = chunk_fn(doc_text)
                 chunk = chunks[0] if chunks else ""
-                if not chunk:
-                    continue
-
-                # Run LLM extraction
+                
                 result = extractor_sig(document_text=chunk)
                 raw = result.requirements_json
                 if '```' in raw:
@@ -258,7 +238,6 @@ def _generate_training_from_projects(
                         raw = raw[4:]
                 candidates = json.loads(raw.strip())
 
-                # Label each candidate using skip keywords
                 for candidate in candidates:
                     title = candidate.get('title', '')
                     desc = candidate.get('description', '')
@@ -271,11 +250,66 @@ def _generate_training_from_projects(
                         'description': desc,
                         'is_requirement': is_positive
                     })
-
             except Exception:
-                continue  # Skip files that fail
+                continue
 
     return extra_examples
+
+
+def _read_gt_file(gt_path: Path) -> List[Dict]:
+    """Read requirements from a ground truth file (JSON or Excel)."""
+    if not gt_path.exists():
+        return []
+    
+    try:
+        if gt_path.suffix.lower() == '.json':
+            with open(gt_path, 'r') as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    return data
+                return data.get('requirements', [])
+        
+        elif gt_path.suffix.lower() in ['.xlsx', '.xls']:
+            import pandas as pd
+            df = pd.read_excel(gt_path)
+            requirements = []
+            for _, row in df.iterrows():
+                requirements.append({
+                    'title': str(row.get('Title', row.get('feature_name', 'Requirement'))),
+                    'description': str(row.get('Description', row.get('description', ''))),
+                    'type': str(row.get('Type', row.get('category', 'Functional')))
+                })
+            return requirements
+    except Exception as e:
+        print(f"    ⚠ Error reading GT file {gt_path.name}: {e}")
+    
+    return []
+
+
+def _generate_training_from_ground_truth(gt_dir: str) -> List[Dict]:
+    """Scan GT directory for requirements to use as positive training examples."""
+    gt_examples = []
+    gt_path = Path(gt_dir)
+    if not gt_path.exists():
+        return []
+
+    gt_files = list(gt_path.glob('*.json')) + list(gt_path.glob('*.xlsx'))
+    
+    for gf in gt_files:
+        items = _read_gt_file(gf)
+        for item in items:
+            title = item.get('title', item.get('feature_name', ''))
+            desc = item.get('description', '')
+            if title and desc:
+                gt_examples.append({
+                    'text': f"{title} - {desc}",
+                    'title': title,
+                    'description': desc,
+                    'is_requirement': True,
+                    'is_gt': True
+                })
+    
+    return gt_examples
 
 
 # ============================================================================
@@ -334,7 +368,26 @@ def train_extractor(extractor, config: Dict = None):
             ).with_inputs('text', 'title', 'description')
         )
 
-    # 2. Multi-project examples (from other projects' PDFs)
+    # 3. Ground Truth examples (Project-specific positives)
+    if config:
+        gt_dir = config.get('gt_dir') or config.get('br_gt_dir')
+        if gt_dir:
+            print(f"  Generating training data from Ground Truth: {gt_dir}")
+            gt_examples = _generate_training_from_ground_truth(gt_dir)
+            if gt_examples:
+                print(f"  Got {len(gt_examples)} project-specific GT examples")
+                for ex in gt_examples:
+                    train_examples.append(
+                        dspy.Example(
+                            text=ex['text'],
+                            title=ex['title'],
+                            description=ex['description'],
+                            is_requirement='yes',
+                            reason="Ground Truth requirement"
+                        ).with_inputs('text', 'title', 'description')
+                    )
+
+    # 4. Multi-project examples (from other projects' PDFs)
     if config:
         current_project_name = config.get('current_project', '')
         projects = config.get('projects', {})

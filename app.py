@@ -25,6 +25,7 @@ import uvicorn
 from dotenv import load_dotenv
 from document_status import update_document_statuses
 import requests
+from auth_config import get_java_auth_headers
 import logging
 from logging_config import setup_logging
 
@@ -282,7 +283,7 @@ def _is_document_already_processed(project_id: str, file_urls: List[str]) -> boo
     try:
         java_backend_url = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
         url = f"{java_backend_url}/api/document-statuses/projects/{project_id}"
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, headers=get_java_auth_headers(), timeout=10)
         
         if response.status_code == 200:
             existing_docs = response.json()
@@ -366,6 +367,7 @@ async def extract_requirements_async(request: ExtractionRequest):
     from celery_app import extract_and_filter_duplicates_task
     task = extract_and_filter_duplicates_task.delay(
         project_id=project_id,
+        project_name=project_name,
         local_files=local_files,
         output_dir=output_dir,
         file_urls=file_urls,
@@ -604,7 +606,7 @@ def _store_manual_requirements(
                 },
             })
 
-        response = req_lib.post(java_url, json=mapped, timeout=30)
+        response = req_lib.post(java_url, json=mapped, headers=get_java_auth_headers(), timeout=30)
         if response.status_code in [200, 201]:
             logger.info("✓ Stored %d manual requirements in Java backend (project %s) — response: %s",
                         len(mapped), project_id, response.text[:500])

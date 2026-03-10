@@ -58,6 +58,93 @@ logger = logging.getLogger("prism.pipeline")
 _global_lm = None
 
 
+# CONFIDENCE STRING -> FLOAT MAPPING
+_CONFIDENCE_MAP = {'high': 0.9, 'medium': 0.6, 'low': 0.3}
+
+
+def _confidence_to_float(conf) -> float:
+    """Convert confidence value to float. Handles both string and numeric."""
+    if isinstance(conf, (int, float)):
+        return float(conf)
+    if isinstance(conf, str):
+        return _CONFIDENCE_MAP.get(conf.lower().strip(), 0.6)
+    return 0.6
+
+
+def _capture_supporting_context(req_title, req_desc, req_ac, supporting_texts, max_per_doc=2000):
+    """Scan supporting document texts for content relevant to this requirement.
+
+    Ported from Archive-01's extract_br.py to enrich requirements with
+    cross-document supporting context.
+
+    Args:
+        req_title: Requirement title/feature_name
+        req_desc: Requirement description
+        req_ac: Acceptance criteria list
+        supporting_texts: Dict[filename, full_text] of supporting documents
+        max_per_doc: Max chars to capture per supporting doc
+
+    Returns:
+        List[{doc, relevance_score, text}] sorted by relevance
+    """
+    if not supporting_texts:
+        return []
+
+    ac_text = ' '.join(req_ac) if isinstance(req_ac, list) else str(req_ac or '')
+    search_text = f"{req_title} {req_desc} {ac_text}".lower()
+
+    stop_words = {
+        'the', 'a', 'an', 'is', 'are', 'for', 'and', 'or', 'to', 'in', 'of',
+        'on', 'at', 'by', 'with', 'from', 'as', 'be', 'this', 'that', 'it',
+        'not', 'but', 'if', 'can', 'will', 'has', 'have', 'do', 'does',
+        'feature', 'verify', 'display', 'show', 'page', 'user', 'customer',
+        'based', 'should', 'must', 'able', 'when', 'each', 'provide',
+        'key', 'information', 'new', 'self', 'serve'
+    }
+    keywords = {w for w in search_text.split() if len(w) > 2} - stop_words
+
+    if not keywords:
+        return []
+
+    contexts = []
+    for fname, doc_text in supporting_texts.items():
+        doc_lower = doc_text.lower()
+
+        # Score: count keyword overlaps
+        overlap = sum(1 for kw in keywords if kw in doc_lower)
+        if overlap <= 2:
+            continue
+
+        # Extract the most relevant section (around highest keyword density)
+        # Split into ~500-char windows and score each
+        best_window = ""
+        best_score = 0
+        window_size = min(max_per_doc, len(doc_text))
+        step = max(200, window_size // 4)
+
+        for start in range(0, len(doc_text) - min(500, len(doc_text)), step):
+            end = min(start + window_size, len(doc_text))
+            window = doc_text[start:end]
+            window_lower = window.lower()
+            score = sum(1 for kw in keywords if kw in window_lower)
+            if score > best_score:
+                best_score = score
+                best_window = window
+
+        if best_window.strip() and best_score > 2:
+            contexts.append({
+                "doc": fname,
+                "relevance_score": best_score,
+                "text": best_window.strip()[:max_per_doc]
+            })
+            logger.info("    Supporting context: %s (score=%d, %d chars)",
+                        Path(fname).stem if '/' in fname or '\\' in fname else fname,
+                        best_score, len(best_window))
+
+    contexts.sort(key=lambda x: x['relevance_score'], reverse=True)
+    return contexts[:3]
+
+
 # SOURCE GROUNDING (Anti-Hallucination)
 
 _GROUNDING_STOPWORDS = frozenset({
@@ -296,26 +383,37 @@ class ExtractionPipeline:
             return {}
 
     def _convert_v4_requirements(self, br_list, project_name):
-        """Convert v4.0 BusinessRequirement objects to the approach2_project dict format."""
+        """Convert v4.0 BusinessRequirement objects to the approach2_project dict format.
+
+        Preserves ALL Archive-01 fields including source_file, page/line ranges,
+        supporting_context, system, requirements_text, and category.
+        """
         result = []
         for i, br in enumerate(br_list, 1):
-            conf = br.confidence if isinstance(br.confidence, str) else (
-                "high" if br.confidence >= 0.7 else "medium" if br.confidence >= 0.4 else "low"
-            )
             result.append({
+                "requirement_id": f"{str(project_name).upper().replace(' ', '_')}-{i:03d}",
+                "feature_name": br.feature_name,
                 "title": br.feature_name,
                 "description": br.description,
+                "system": br.system or "",
+                "requirements_text": br.requirements_text or br.description,
                 "type": br.category or "Functional",
+                "category": br.category or "",
                 "user_story": br.user_story,
                 "acceptance_criteria": br.acceptance_criteria,
                 "test_steps": [{"step_num": s.step_num, "action": s.action,
                                 "expected_result": s.expected_result, "test_data": s.test_data}
                                for s in br.test_steps],
                 "test_scenarios": br.test_scenarios,
+                "source_file": br.source_file or "",
+                "page_start": br.page_start,
+                "page_end": br.page_end,
+                "line_start": br.line_start,
+                "line_end": br.line_end,
+                "confidence": _confidence_to_float(br.confidence),
+                "supporting_context": [],
                 "assumptions": [],
                 "ambiguities": [],
-                "confidence": conf,
-                "requirement_id": f"{str(project_name).upper().replace(' ', '_')}-{i:03d}"
             })
         return result
 
@@ -567,7 +665,8 @@ class ExtractionPipeline:
     # =========================================================================
 
     def run(self, file_paths: List[str], project_name: str, output_dir: str = None,
-            status_callback: Callable[[str, str], None] = None) -> Dict:
+            status_callback: Callable[[str, str], None] = None,
+            document_tiers: Dict[str, str] = None) -> Dict:
         """
         Run the complete extraction pipeline on a list of files.
 
@@ -598,7 +697,7 @@ class ExtractionPipeline:
             with tempfile.TemporaryDirectory() as tmp_dir:
                 for fp in file_paths:
                     shutil.copy2(fp, tmp_dir)
-                br_list = v4_extract_requirements(input_dir=tmp_dir)
+                br_list = v4_extract_requirements(input_dir=tmp_dir, document_tiers=document_tiers)
             unique = self._convert_v4_requirements(br_list, project_name)
             new_model_state = self.save_model_state()
             result_data = {
@@ -618,11 +717,14 @@ class ExtractionPipeline:
         all_reqs = []
         all_filtered = []
         all_source_texts = []  # Collect source text for grounding check
+        file_source_texts = {}  # Map filename -> extracted text (for supporting context)
 
         for file_path in file_paths:
             # Notify: this file is now being processed
             if status_callback:
                 status_callback(file_path, "IN_PROGRESS")
+
+            filename = Path(file_path).name
 
             try:
                 # Stage 1: Classify
@@ -645,9 +747,16 @@ class ExtractionPipeline:
                     continue
 
                 all_source_texts.append(combined_text)
+                file_source_texts[filename] = combined_text
 
                 # Stage 3: Generate requirements
                 reqs, filtered = self._generate_requirements(combined_text)
+
+                # Tag each requirement with its source file and raw text
+                for req in reqs:
+                    req['source_file'] = filename
+                    req.setdefault('requirements_text', req.get('description', ''))
+
                 all_reqs.extend(reqs)
                 all_filtered.extend(filtered)
 
@@ -726,9 +835,63 @@ class ExtractionPipeline:
             if len(unique) < before_post_ground:
                 logger.info("After post-consolidation grounding: %d -> %d (removed %d hallucinated)", before_post_ground, len(unique), before_post_ground - len(unique))
 
-        # Add IDs
+        # Add IDs and enrich with ALL Archive-01 fields
+        logger.info("Enriching requirements with full Archive-01 field set...")
         for i, req in enumerate(unique, 1):
             req['requirement_id'] = f"{str(project_name).upper().replace(' ', '_')}-{i:03d}"
+
+            # feature_name = copy of title (Archive-01 compatibility)
+            req['feature_name'] = req.get('title', '')
+
+            # system: system dependencies (empty by default, enriched if available)
+            req.setdefault('system', '')
+
+            # requirements_text: raw text from the source chunk
+            req.setdefault('requirements_text', req.get('description', ''))
+
+            # category: domain category (e.g., "Dashboard", "Warranty")
+            # Map from type if not explicitly set
+            req.setdefault('category', req.get('type', 'Functional'))
+
+            # source_file: which document this requirement came from
+            req.setdefault('source_file', '')
+
+            # page/line ranges: default to 0 if not tracked
+            req.setdefault('page_start', 0)
+            req.setdefault('page_end', 0)
+            req.setdefault('line_start', 0)
+            req.setdefault('line_end', 0)
+
+            # confidence: convert string -> float
+            req['confidence'] = _confidence_to_float(req.get('confidence', 'medium'))
+
+            # Ensure test_scenarios exists
+            req.setdefault('test_scenarios', [])
+
+            # Ensure test_steps exists
+            req.setdefault('test_steps', [])
+
+            # Ensure assumptions and ambiguities exist
+            req.setdefault('assumptions', [])
+            req.setdefault('ambiguities', [])
+
+            # supporting_context: scan other files for relevant context
+            # Use all file texts EXCEPT the requirement's own source file
+            other_file_texts = {
+                fname: text for fname, text in file_source_texts.items()
+                if fname != req.get('source_file', '')
+            }
+            if other_file_texts:
+                req['supporting_context'] = _capture_supporting_context(
+                    req_title=req.get('title', ''),
+                    req_desc=req.get('description', ''),
+                    req_ac=req.get('acceptance_criteria', []),
+                    supporting_texts=other_file_texts,
+                )
+            else:
+                req.setdefault('supporting_context', [])
+
+        logger.info("All requirements enriched with Archive-01 fields")
 
         # Save model state
         new_model_state = self.save_model_state()
@@ -763,6 +926,7 @@ def extract_from_files(
     model_state: Dict = None,
     config: Dict = None,
     status_callback: Callable[[str, str], None] = None,
+    document_tiers: Dict[str, str] = None,
 ) -> Dict:
     """
     Extract requirements from a list of local file paths.
@@ -772,6 +936,6 @@ def extract_from_files(
     """
     pipeline = ExtractionPipeline(config=config, model_state=model_state)
     return pipeline.run(file_paths=file_paths, project_name=project_name, output_dir=output_dir,
-                        status_callback=status_callback)
+                        status_callback=status_callback, document_tiers=document_tiers)
 
 

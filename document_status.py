@@ -11,6 +11,8 @@ logger = logging.getLogger("prism.document_status")
 
 JAVA_BACKEND_BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
 
+from auth_config import get_java_auth_headers
+
 def update_document_statuses(project_id: str, file_urls: List[str], status: str) -> List[Dict[str, Any]]:
     """
     POST initial PENDING status (batch). Returns list of records with IDs.
@@ -22,7 +24,7 @@ def update_document_statuses(project_id: str, file_urls: List[str], status: str)
     logger.debug("Payload: %s", payload)
     
     try:
-        response = requests.post(url, json=payload, timeout=10)
+        response = requests.post(url, json=payload, headers=get_java_auth_headers(), timeout=10)
         if response.status_code in [200, 201]:
             result = response.json()
             logger.info("Batch status update SUCCESS: %s", result)
@@ -53,7 +55,7 @@ def update_status_by_id(project_id: str, doc_status_id: int, document_url: str, 
 
     try:
         logger.info("Sending ID-based update: id=%s url=%s status=%s", doc_status_id, document_url, status)
-        response = requests.post(url, json=payload, timeout=10)
+        response = requests.post(url, json=payload, headers=get_java_auth_headers(), timeout=10)
         if response.status_code in [200, 201]:
             logger.info("SUCCESS: ID %s updated to %s", doc_status_id, status)
             data = response.json()

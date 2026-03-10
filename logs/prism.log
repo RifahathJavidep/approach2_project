@@ -1,0 +1,1874 @@
+2026-03-09 23:07:47 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-09 23:07:47 [ERROR] fastapi (utils.py:107) — Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2026-03-09 23:08:51 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-09 23:08:51 [INFO] prism.api (app.py:798) — Starting PRISM AI Service...
+2026-03-09 23:08:51 [INFO] prism.api (app.py:799) — Docs: http://localhost:8000/docs
+2026-03-09 23:13:57 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-09 23:13:57 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-09 23:14:00 [INFO] prism.api (app.py:75) — ⟶  POST /extract-async  (client=127.0.0.1)
+2026-03-09 23:14:00 [INFO] prism.api (app.py:315) — ━━━ /extract-async  project=PTW_Phase1  files=['uploads/PTW_Phase1/BBMBT-3917.pdf', 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx'] ━━━
+2026-03-09 23:14:00 [ERROR] prism.api (app.py:297) — Check duplicate document failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 285, in _is_document_already_processed
+    response = requests.get(url, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:14:00 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:14:00 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:14:00 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:14:00 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:14:00 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:14:01 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMOMNI-5101.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:01 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:14:01 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:14:01 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMOMNI-5111.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:01 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMBT-3920.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:01 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:14:01 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:14:01 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:14:01 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMOMNI-4424.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:01 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMBT-3917.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMOMNI-5114.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMOMNI-5113.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/BBMSA-13025.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/Requirements Traceability Matrix.pdf: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:354) — Failed to download uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx: An error occurred (404) when calling the HeadObject operation: Not Found
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 350, in extract_requirements_async
+    local_path = future.result()
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 343, in _download_one
+    return download_from_s3(url, input_dir)
+  File "/Users/javid/Documents/prism/approach2_project/s3_utils.py", line 82, in download_from_s3
+    s3.download_file(bucket, key, local_path)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/inject.py", line 223, in download_file
+    return transfer.download_file(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        bucket=Bucket,
+        ^^^^^^^^^^^^^^
+    ...<3 lines>...
+        callback=Callback,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/boto3/s3/transfer.py", line 484, in download_file
+    future.result()
+    ~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 111, in result
+    return self._coordinator.result()
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/futures.py", line 287, in result
+    raise self._exception
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/tasks.py", line 272, in _main
+    self._submit(transfer_future=transfer_future, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/s3transfer/download.py", line 359, in _submit
+    response = client.head_object(
+        Bucket=transfer_future.meta.call_args.bucket,
+        Key=transfer_future.meta.call_args.key,
+        **transfer_future.meta.call_args.extra_args,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (404) when calling the HeadObject operation: Not Found
+2026-03-09 23:14:02 [ERROR] prism.api (app.py:357) — No files downloaded — aborting extraction
+2026-03-09 23:14:02 [INFO] prism.api (app.py:87) — ⟵  POST /extract-async — 400 in 2.594s
+2026-03-09 23:19:31 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:235]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[237:249]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[251:266]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[270:45619]
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:31 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:31 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmp_5okxmh5 -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf
+2026-03-09 23:19:32 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf
+2026-03-09 23:19:32 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.307s
+2026-03-09 23:19:33 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:235]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[237:249]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[251:266]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[270:14922]
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:33 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:33 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmp3xhjph5p -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf
+2026-03-09 23:19:33 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf
+2026-03-09 23:19:33 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 0.987s
+2026-03-09 23:19:34 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:237]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[239:251]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[253:268]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[272:117380]
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:34 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:34 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpxf2gxktk -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf
+2026-03-09 23:19:35 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf
+2026-03-09 23:19:35 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.692s
+2026-03-09 23:19:35 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:237]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[239:251]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[253:268]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[272:36411]
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:35 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:35 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpzdsrke7z -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf
+2026-03-09 23:19:36 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf
+2026-03-09 23:19:36 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.255s
+2026-03-09 23:19:36 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:237]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[239:251]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[253:268]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[272:31481]
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:36 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:36 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmp0o1k08qu -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf
+2026-03-09 23:19:38 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf
+2026-03-09 23:19:38 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.206s
+2026-03-09 23:19:38 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:237]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[239:251]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[253:268]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[272:26735]
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:38 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:38 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmprhuubmvo -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf
+2026-03-09 23:19:39 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf
+2026-03-09 23:19:39 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.258s
+2026-03-09 23:19:39 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:237]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[239:251]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[253:268]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[272:25818]
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:39 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:39 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmp37ghw0v4 -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf
+2026-03-09 23:19:40 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf
+2026-03-09 23:19:40 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.196s
+2026-03-09 23:19:40 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:236]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[238:250]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[252:267]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[271:229063]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:163944]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:41474]
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:40 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:40 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpwgeiw_um -> s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf
+2026-03-09 23:19:46 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf
+2026-03-09 23:19:46 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 5.967s
+2026-03-09 23:19:46 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:264]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[266:278]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[280:295]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[299:65536]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:65536]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:65536]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:196608]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:196608]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:14848]
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:46 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:46 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmph1m82jj2 -> s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:19:49 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:19:49 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 3.056s
+2026-03-09 23:19:49 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:262]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[264:276]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[278:293]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[297:321327]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:63487]
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:49 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:49 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpgd4sbhhj -> s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:19:52 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:19:52 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 2.450s
+2026-03-09 23:19:52 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:256]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[258:270]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[272:287]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[291:187187]
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:52 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:52 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpud5roi4o -> s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:19:54 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:19:54 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.923s
+2026-03-09 23:19:54 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:257]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[259:271]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[273:288]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[292:65328]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:34148]
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:54 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:54 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpp54hu9r1 -> s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf
+2026-03-09 23:19:55 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf
+2026-03-09 23:19:55 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 1.468s
+2026-03-09 23:19:55 [INFO] prism.api (app.py:75) — ⟶  POST /upload-document  (client=127.0.0.1)
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[50:69]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[71:99]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[103:113]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_begin with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[165:184]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[186:255]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_field with data[257:269]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_header_value with data[271:295]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_header_end with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_headers_finished with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[299:321327]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:256000]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:626) — Calling on_part_data with data[0:25515]
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_part_end with no data
+2026-03-09 23:19:55 [DEBUG] python_multipart.multipart (multipart.py:629) — Calling on_end with no data
+2026-03-09 23:19:55 [INFO] prism.s3 (s3_utils.py:100) — Uploading: /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/tmpu_vudtqm -> s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:20:00 [INFO] prism.s3 (s3_utils.py:104) — Uploaded: s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:20:00 [INFO] prism.api (app.py:87) — ⟵  POST /upload-document — 200 in 5.290s
+2026-03-09 23:20:34 [INFO] prism.api (app.py:75) — ⟶  POST /extract-async  (client=127.0.0.1)
+2026-03-09 23:20:34 [INFO] prism.api (app.py:315) — ━━━ /extract-async  project=PTW_Phase1  files=['uploads/PTW_Phase1/BBMBT-3917.pdf', 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx'] ━━━
+2026-03-09 23:20:34 [ERROR] prism.api (app.py:297) — Check duplicate document failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 285, in _is_document_already_processed
+    response = requests.get(url, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:20:35 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:20:35 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:20:35 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:20:35 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:20:35 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3920.pdf (14652 bytes)
+2026-03-09 23:20:36 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3920.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3917.pdf (45349 bytes)
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5111.pdf (31209 bytes)
+2026-03-09 23:20:36 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3917.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:20:36 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5111.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5101.pdf (36139 bytes)
+2026-03-09 23:20:36 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5101.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-4424.pdf (117108 bytes)
+2026-03-09 23:20:36 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-4424.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:20:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:20:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5113.pdf (26463 bytes)
+2026-03-09 23:20:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5113.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:20:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:20:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5114.pdf (25546 bytes)
+2026-03-09 23:20:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5114.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:20:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:20:38 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Warranty_Feature.pdf (384517 bytes)
+2026-03-09 23:20:38 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:20:38 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:20:38 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMSA-13025.pdf (946210 bytes)
+2026-03-09 23:20:38 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMSA-13025.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:20:38 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: PTW Self Serve Phase 1 Solution.pdf (186896 bytes)
+2026-03-09 23:20:38 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:20:39 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Requirements Traceability Matrix.pdf (99184 bytes)
+2026-03-09 23:20:39 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Requirements Traceability Matrix.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:20:39 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Dashboard_Features.pdf (2652373 bytes)
+2026-03-09 23:20:39 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:20:40 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Test Strategy_PTW SS Ph1_V0.1.pptx (858543 bytes)
+2026-03-09 23:20:40 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:20:40 [INFO] prism.api (app.py:361) — Setting PENDING status for 13 documents
+2026-03-09 23:20:40 [INFO] prism.document_status (document_status.py:21) — Sending batch status update (PENDING) for 13 documents to http://localhost:8080/api/document-statuses/projects/PTW_Phase1
+2026-03-09 23:20:40 [DEBUG] prism.document_status (document_status.py:22) — Payload: [{'documentUrl': 'uploads/PTW_Phase1/BBMBT-3917.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx', 'status': 'PENDING'}]
+2026-03-09 23:20:40 [ERROR] prism.document_status (document_status.py:34) — Batch status update EXCEPTION: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/document_status.py", line 25, in update_document_statuses
+    response = requests.post(url, json=payload, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:20:40 [INFO] prism.api (app.py:363) — Document statuses: []
+2026-03-09 23:20:40 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-09 23:20:40 [INFO] prism.api (app.py:375) — Task queued  task_id=1866ee87-bff2-453d-a987-d5cff929f6a3  for project=PTW_Phase1
+2026-03-09 23:20:40 [INFO] prism.api (app.py:87) — ⟵  POST /extract-async — 200 in 5.714s
+2026-03-09 23:23:36 [INFO] prism.api (app.py:75) — ⟶  POST /extract-async  (client=127.0.0.1)
+2026-03-09 23:23:36 [INFO] prism.api (app.py:315) — ━━━ /extract-async  project=PTW_Phase1  files=['uploads/PTW_Phase1/BBMBT-3917.pdf', 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx'] ━━━
+2026-03-09 23:23:36 [ERROR] prism.api (app.py:297) — Check duplicate document failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 285, in _is_document_already_processed
+    if tmp_path and os.path.exists(tmp_path):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:23:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:23:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:23:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:23:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:23:36 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3920.pdf (14652 bytes)
+2026-03-09 23:23:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3920.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3917.pdf (45349 bytes)
+2026-03-09 23:23:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3917.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5101.pdf (36139 bytes)
+2026-03-09 23:23:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5101.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5111.pdf (31209 bytes)
+2026-03-09 23:23:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5111.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-4424.pdf (117108 bytes)
+2026-03-09 23:23:37 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-4424.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:23:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:23:38 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5113.pdf (26463 bytes)
+2026-03-09 23:23:38 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5113.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:23:38 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:23:38 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5114.pdf (25546 bytes)
+2026-03-09 23:23:38 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5114.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:23:38 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:23:39 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Warranty_Feature.pdf (384517 bytes)
+2026-03-09 23:23:39 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:23:39 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:23:39 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMSA-13025.pdf (946210 bytes)
+2026-03-09 23:23:39 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMSA-13025.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:23:40 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Dashboard_Features.pdf (2652373 bytes)
+2026-03-09 23:23:40 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:23:40 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: PTW Self Serve Phase 1 Solution.pdf (186896 bytes)
+2026-03-09 23:23:40 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:23:40 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Requirements Traceability Matrix.pdf (99184 bytes)
+2026-03-09 23:23:40 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Requirements Traceability Matrix.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:23:42 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Test Strategy_PTW SS Ph1_V0.1.pptx (858543 bytes)
+2026-03-09 23:23:42 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:23:42 [INFO] prism.api (app.py:361) — Setting PENDING status for 13 documents
+2026-03-09 23:23:42 [INFO] prism.document_status (document_status.py:21) — Sending batch status update (PENDING) for 13 documents to http://localhost:8080/api/document-statuses/projects/PTW_Phase1
+2026-03-09 23:23:42 [DEBUG] prism.document_status (document_status.py:22) — Payload: [{'documentUrl': 'uploads/PTW_Phase1/BBMBT-3917.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx', 'status': 'PENDING'}]
+2026-03-09 23:23:42 [ERROR] prism.document_status (document_status.py:34) — Batch status update EXCEPTION: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/document_status.py", line 25, in update_document_statuses
+    response = requests.post(url, json=payload, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:23:42 [INFO] prism.api (app.py:363) — Document statuses: []
+2026-03-09 23:23:42 [INFO] prism.api (app.py:375) — Task queued  task_id=e15dc613-d2bd-45bb-947f-0820cb19d47d  for project=PTW_Phase1
+2026-03-09 23:23:42 [INFO] prism.api (app.py:87) — ⟵  POST /extract-async — 200 in 5.665s
+2026-03-09 23:25:45 [INFO] prism.api (app.py:75) — ⟶  POST /extract-async  (client=127.0.0.1)
+2026-03-09 23:25:45 [INFO] prism.api (app.py:315) — ━━━ /extract-async  project=PTW_Phase1  files=['uploads/PTW_Phase1/BBMBT-3917.pdf', 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx'] ━━━
+2026-03-09 23:25:45 [ERROR] prism.api (app.py:297) — Check duplicate document failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/app.py", line 285, in _is_document_already_processed
+    response = requests.get(url, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:25:45 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3917.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:25:45 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-4424.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:25:45 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMBT-3920.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:25:45 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5101.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:25:45 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5111.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3920.pdf (14652 bytes)
+2026-03-09 23:25:47 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3920.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3920.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5113.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5101.pdf (36139 bytes)
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5111.pdf (31209 bytes)
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMBT-3917.pdf (45349 bytes)
+2026-03-09 23:25:47 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5101.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5101.pdf
+2026-03-09 23:25:47 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5111.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5111.pdf
+2026-03-09 23:25:47 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMBT-3917.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMBT-3917.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMOMNI-5114.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/BBMSA-13025.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-4424.pdf (117108 bytes)
+2026-03-09 23:25:47 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-4424.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-4424.pdf
+2026-03-09 23:25:47 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:25:48 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5113.pdf (26463 bytes)
+2026-03-09 23:25:48 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5113.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5113.pdf
+2026-03-09 23:25:48 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:25:48 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMOMNI-5114.pdf (25546 bytes)
+2026-03-09 23:25:48 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMOMNI-5114.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMOMNI-5114.pdf
+2026-03-09 23:25:48 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Requirements Traceability Matrix.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:25:49 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Warranty_Feature.pdf (384517 bytes)
+2026-03-09 23:25:49 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:25:49 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:25:49 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: BBMSA-13025.pdf (946210 bytes)
+2026-03-09 23:25:49 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/BBMSA-13025.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/BBMSA-13025.pdf
+2026-03-09 23:25:49 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: PTW Self Serve Phase 1 Solution.pdf (186896 bytes)
+2026-03-09 23:25:49 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:25:49 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Dashboard_Features.pdf (2652373 bytes)
+2026-03-09 23:25:49 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:25:50 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Requirements Traceability Matrix.pdf (99184 bytes)
+2026-03-09 23:25:50 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Requirements Traceability Matrix.pdf → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Requirements Traceability Matrix.pdf
+2026-03-09 23:25:51 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Test Strategy_PTW SS Ph1_V0.1.pptx (858543 bytes)
+2026-03-09 23:25:51 [INFO] prism.api (app.py:352) — Downloaded uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx → /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_async_PTW_Phase1/input/Test Strategy_PTW SS Ph1_V0.1.pptx
+2026-03-09 23:25:51 [INFO] prism.api (app.py:361) — Setting PENDING status for 13 documents
+2026-03-09 23:25:51 [INFO] prism.document_status (document_status.py:21) — Sending batch status update (PENDING) for 13 documents to http://localhost:8080/api/document-statuses/projects/PTW_Phase1
+2026-03-09 23:25:51 [DEBUG] prism.document_status (document_status.py:22) — Payload: [{'documentUrl': 'uploads/PTW_Phase1/BBMBT-3917.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMBT-3920.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-4424.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5101.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5111.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5113.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMOMNI-5114.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/BBMSA-13025.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Requirements Traceability Matrix.pdf', 'status': 'PENDING'}, {'documentUrl': 'uploads/PTW_Phase1/Test Strategy_PTW SS Ph1_V0.1.pptx', 'status': 'PENDING'}]
+2026-03-09 23:25:51 [ERROR] prism.document_status (document_status.py:34) — Batch status update EXCEPTION: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/javid/.pyenv/versions/3.13.0/lib/python3.13/http/client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/javid/Documents/prism/approach2_project/document_status.py", line 25, in update_document_statuses
+    response = requests.post(url, json=payload, timeout=10)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/javid/Documents/prism/approach2_project/venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/document-statuses/projects/PTW_Phase1 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 61] Connection refused"))
+2026-03-09 23:25:51 [INFO] prism.api (app.py:363) — Document statuses: []
+2026-03-09 23:25:51 [INFO] prism.api (app.py:375) — Task queued  task_id=c8ba5d4f-2b3f-4dc5-8862-4985707b5551  for project=PTW_Phase1
+2026-03-09 23:25:51 [INFO] prism.api (app.py:87) — ⟵  POST /extract-async — 200 in 5.510s
+2026-03-09 23:35:37 [INFO] prism.api (app.py:75) — ⟶  POST /generate-testcases  (client=127.0.0.1)
+2026-03-09 23:35:37 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:35:40 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Dashboard_Features.pdf (2652373 bytes)
+2026-03-09 23:35:40 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:35:42 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Warranty_Feature.pdf (384517 bytes)
+2026-03-09 23:35:42 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:35:43 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: PTW Self Serve Phase 1 Solution.pdf (186896 bytes)
+2026-03-09 23:35:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2):
+    return 1
+
+2026-03-09 23:35:43 [INFO] prism.api (app.py:87) — ⟵  POST /generate-testcases — 200 in 5.950s
+2026-03-09 23:49:56 [INFO] prism.api (app.py:75) — ⟶  GET /status/1866ee87-bff2-453d-a987-d5cff929f6a3  (client=127.0.0.1)
+2026-03-09 23:49:56 [INFO] prism.api (app.py:87) — ⟵  GET /status/1866ee87-bff2-453d-a987-d5cff929f6a3 — 200 in 0.004s
+2026-03-09 23:50:04 [INFO] prism.api (app.py:75) — ⟶  POST /generate-testcases  (client=127.0.0.1)
+2026-03-09 23:50:04 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/Play to Win SS Ph1 - Dashboard_Features.pdf
+2026-03-09 23:50:07 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Dashboard_Features.pdf (2652373 bytes)
+2026-03-09 23:50:07 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/Play to Win SS Ph1 - Warranty_Feature.pdf
+2026-03-09 23:50:08 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: Play to Win SS Ph1 - Warranty_Feature.pdf (384517 bytes)
+2026-03-09 23:50:08 [INFO] prism.s3 (s3_utils.py:81) — Downloading: s3://katsuai-tcgen/uploads/PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf -> /var/folders/t5/5cwh3r_j5zx0vrn44y1q68340000gn/T/prism_testgen_PTW_Phase1/PTW Self Serve Phase 1 Solution.pdf
+2026-03-09 23:50:10 [INFO] prism.s3 (s3_utils.py:83) — Downloaded: PTW Self Serve Phase 1 Solution.pdf (186896 bytes)
+2026-03-09 23:50:10 [INFO] prism.api (app.py:87) — ⟵  POST /generate-testcases — 200 in 5.763s
+2026-03-09 23:50:14 [INFO] prism.api (app.py:75) — ⟶  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7  (client=127.0.0.1)
+2026-03-09 23:50:14 [INFO] prism.api (app.py:87) — ⟵  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7 — 200 in 0.001s
+2026-03-09 23:50:22 [INFO] prism.api (app.py:75) — ⟶  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7  (client=127.0.0.1)
+2026-03-09 23:50:22 [INFO] prism.api (app.py:87) — ⟵  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7 — 200 in 0.001s

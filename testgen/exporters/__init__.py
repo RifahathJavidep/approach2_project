@@ -7,17 +7,14 @@ suitable for UAT sign-off and test management.
 Columns:
     A: Requirement ID
     B: Requirement Title
-    C: Test Case ID
-    D: Test Case Title
-    E: Test Case Description
-    F: Test Type
-    G: Test Phase
-    H: Priority
-    I: Prerequisites
-    J: Test Steps
-    K: Expected Result
-    L: Test Data
-    M: Status
+    C: Test Case Title
+    D: Test Case Description
+    E: Test Phases
+    F: Test Types
+    G: Prerequisites
+    H: Test Steps
+    I: Expected Result
+    J: Status
 """
 
 import os
@@ -68,28 +65,17 @@ def export_test_plan_to_excel(
         bottom=Side(style="thin", color="D9D9D9"),
     )
 
-    # Priority color fills
-    priority_fills = {
-        "Critical": PatternFill(start_color="FFE0E0", fill_type="solid"),
-        "High": PatternFill(start_color="FFF3E0", fill_type="solid"),
-        "Medium": PatternFill(start_color="E8F5E9", fill_type="solid"),
-        "Low": PatternFill(start_color="E3F2FD", fill_type="solid"),
-    }
-
     # ── Headers ─────────────────────────────────────────────────────────
     headers = [
         "Requirement ID",
         "Requirement Title",
-        "Test Case ID",
         "Test Case Title",
         "Test Case Description",
-        "Test Type",
-        "Test Phase",
-        "Priority",
+        "Test Phases",
+        "Test Types",
         "Prerequisites",
         "Test Steps",
         "Expected Result",
-        "Test Data",
         "Status",
     ]
 
@@ -112,30 +98,39 @@ def export_test_plan_to_excel(
         req_title = plan.get("requirement_title", "Untitled")
 
         for tc in plan.get("test_cases", []):
-            tc_id = f"TC-{global_tc_counter:03d}"
             global_tc_counter += 1
 
-            # Format test steps as numbered list
-            steps = tc.get("test_steps", [])
-            if isinstance(steps, list):
-                steps_text = "\n".join([f"{i+1}. {s}" for i, s in enumerate(steps)])
+            # Format testCaseSteps as numbered list
+            tc_steps = tc.get("testCaseSteps", [])
+            if isinstance(tc_steps, list):
+                steps_lines = []
+                for s in tc_steps:
+                    order = s.get("orderNumber", 0) + 1
+                    desc = s.get("description", "")
+                    exp = s.get("expectedResult", "")
+                    line = f"{order}. {desc}"
+                    if exp:
+                        line += f"\n   → {exp}"
+                    steps_lines.append(line)
+                steps_text = "\n".join(steps_lines)
             else:
-                steps_text = str(steps)
+                steps_text = str(tc_steps)
+
+            # Format enum arrays as comma-separated strings
+            test_phases = ", ".join(tc.get("testPhases", []))
+            test_types = ", ".join(tc.get("testTypes", []))
 
             row_data = [
-                req_id,
+                to_excel_safe(tc.get("requirementId", req_id)),
                 to_excel_safe(req_title),
-                tc_id,
                 to_excel_safe(tc.get("title", "Untitled")),
                 to_excel_safe(tc.get("description", "")),
-                to_excel_safe(tc.get("test_type", "Functional")),
-                to_excel_safe(tc.get("test_phase", "E2E")),
-                to_excel_safe(tc.get("priority", "Medium")),
+                to_excel_safe(test_phases),
+                to_excel_safe(test_types),
                 to_excel_safe(tc.get("prerequisites", "")),
                 steps_text,
-                to_excel_safe(tc.get("expected_result", "")),
-                to_excel_safe(tc.get("test_data", "")),
-                to_excel_safe(tc.get("status", "Not Executed")),
+                to_excel_safe(tc.get("expectedResult", "")),
+                to_excel_safe(tc.get("status", "DRAFT")),
             ]
 
             for col_num, value in enumerate(row_data, 1):
@@ -145,24 +140,16 @@ def export_test_plan_to_excel(
                 cell.border = thin_border
 
                 # Center-align short columns
-                if col_num in [1, 3, 6, 7, 8, 13]:
+                if col_num in [1, 5, 6, 10]:
                     cell.alignment = cell_align_center
                 else:
                     cell.alignment = cell_align
-
-            # Apply priority color
-            priority = tc.get("priority", "Medium")
-            priority_cell = ws.cell(row=row_num, column=8)
-            if priority in priority_fills:
-                priority_cell.fill = priority_fills[priority]
 
             # Alternate row shading
             if row_num % 2 == 0:
                 alt_fill = PatternFill(start_color="F8F9FA", fill_type="solid")
                 for col in range(1, len(headers) + 1):
-                    cell = ws.cell(row=row_num, column=col)
-                    if col != 8:  # Don't override priority color
-                        cell.fill = alt_fill
+                    ws.cell(row=row_num, column=col).fill = alt_fill
 
             row_num += 1
 
@@ -170,17 +157,14 @@ def export_test_plan_to_excel(
     widths = {
         1: 18,   # Requirement ID
         2: 35,   # Requirement Title
-        3: 12,   # Test Case ID
-        4: 35,   # TC Title
-        5: 55,   # TC Description
-        6: 14,   # Test Type
-        7: 12,   # Test Phase
-        8: 10,   # Priority
-        9: 40,   # Prerequisites
-        10: 60,  # Test Steps
-        11: 45,  # Expected Result
-        12: 30,  # Test Data
-        13: 14,  # Status
+        3: 40,   # TC Title
+        4: 55,   # TC Description
+        5: 28,   # Test Phases
+        6: 18,   # Test Types
+        7: 45,   # Prerequisites
+        8: 65,   # Test Steps
+        9: 45,   # Expected Result
+        10: 14,  # Status
     }
 
     for col_num, width in widths.items():

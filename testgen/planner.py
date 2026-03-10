@@ -22,7 +22,31 @@ from typing import List, Dict, Any, Optional
 from groq import Groq
 from dotenv import load_dotenv
 
+from .context_builder import get_feature_context
+from .scenario_generator import ScenarioBasedTCGenerator
+
 load_dotenv()
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ENUM MAPPINGS — Current string values → TestCaseEditorDTO enum arrays
+# ─────────────────────────────────────────────────────────────────────────────
+
+TEST_PHASE_MAP = {
+    "E2E": "END_TO_END_TESTING",
+    "Regression": "REGRESSION_TESTING",
+    "Smoke": "SMOKE_TESTING",
+    "UAT": "USER_ACCEPTANCE_TESTING",
+    "Functional": "FUNCTIONAL_TESTING",
+    "DVT": "DEPLOYMENT_VERIFICATION_TESTING",
+}
+
+TEST_TYPE_MAP = {
+    "Functional": "UI",
+    "Integration": "INTEGRATION",
+    "Performance": "PERFORMANCE",
+    "Security": "SECURITY",
+    "Non-Functional": "NONFUNCTIONAL",
+}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SYSTEM PROMPT — Sets the AI's persona and methodology
@@ -144,21 +168,18 @@ Return ONLY this JSON structure. Nothing else.
   "requirement_title": "{title}",
   "test_cases": [
     {{
-      "test_case_id": "TC-001",
       "title": "Brief descriptive title of what is being tested",
       "description": "Verify that the user is able to [specific action from requirement]",
       "test_type": "Functional | Non-Functional | Integration | Security | Performance",
       "test_phase": "E2E | Regression | Smoke | UAT",
-      "priority": "Critical | High | Medium | Low",
       "prerequisites": "Specific preconditions that must be met before execution",
-      "test_steps": [
-        "Step described as a single atomic user action",
-        "Next step with specific UI elements and test data",
-        "..."
+      "testCaseSteps": [
+        {{
+          "description": "Single atomic user action with specific UI elements and test data",
+          "expectedResult": "Specific observable outcome the tester should see"
+        }}
       ],
-      "expected_result": "The specific, observable outcome the tester should verify",
-      "test_data": "Specific data values used in this test case",
-      "status": "Not Executed"
+      "expectedResult": "The overall expected outcome of the entire test case"
     }}
   ],
   "total_count": 1
@@ -177,17 +198,24 @@ class TestCasePlanner:
     professional E2E test cases using Groq LLM.
     """
 
-    def __init__(self, model: str = "llama-3.3-70b-versatile"):
+    def __init__(self, model: str = "llama-3.3-70b-versatile", mode: str = "hybrid", model_state_path: Optional[str] = None):
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key:
             raise ValueError("GROQ_API_KEY not set in environment")
         self.client = Groq(api_key=api_key)
         self.model = model
+        self.mode = mode
+        
+        if mode == "hybrid":
+            self.scenario_gen = ScenarioBasedTCGenerator(model_state_path=model_state_path)
+        else:
+            self.scenario_gen = None
 
     def generate(
         self,
         requirements: List[Dict[str, Any]],
         project_name: str = "Project",
+        documents: Optional[Dict[str, Any]] = None,
         source_texts: Optional[Dict[str, str]] = None,
         status_callback: Optional[callable] = None,
     ) -> Dict[str, Any]:
@@ -197,10 +225,9 @@ class TestCasePlanner:
         Args:
             requirements: List of requirement dicts from Phase 1
             project_name: Name of the project (for logging)
+            documents: Optional dict of document objects (for hybrid mode)
             source_texts: Optional dict mapping document filenames to their
-                         full extracted text. When provided, the planner injects
-                         relevant document context into each test case prompt
-                         for richer, more detailed test steps.
+                         full extracted text (for prompt mode fallback)
             status_callback: Optional fn(message) for progress updates
 
         Returns:
@@ -209,12 +236,16 @@ class TestCasePlanner:
         test_plans = []
         total_test_cases = 0
         source_texts = source_texts or {}
+        documents = documents or {}
 
         print(f"\n{'='*60}")
-        print(f"TEST CASE GENERATION — {project_name.upper()}")
+        print(f"TEST CASE GENERATION — {project_name.upper()} ({self.mode.upper()} MODE)")
         print(f"{'='*60}")
         print(f"  Requirements to process: {len(requirements)}")
-        if source_texts:
+        
+        if self.mode == "hybrid":
+            print(f"  Documents loaded: {len(documents)}")
+        elif source_texts:
             print(f"  Document context: {len(source_texts)} source document(s) loaded")
         else:
             print(f"  Document context: None (requirements-only mode)")
@@ -222,7 +253,7 @@ class TestCasePlanner:
 
         for idx, req in enumerate(requirements, 1):
             req_id = req.get("requirement_id", f"REQ-{idx:03d}")
-            title = req.get("title", "Untitled")
+            title = req.get("title", req.get("feature_name", "Untitled"))
 
             if status_callback:
                 status_callback(f"Generating test cases for {req_id}: {title}")
@@ -230,7 +261,13 @@ class TestCasePlanner:
             print(f"  [{idx}/{len(requirements)}] {req_id}: {title}...", end=" ")
 
             try:
-                plan = self._generate_for_requirement(req, idx, source_texts)
+                if self.mode == "hybrid":
+                    # Hybrid Archive-01 style generation
+                    plan = self._generate_hybrid(req, documents)
+                else:
+                    # Original prompt-only generation
+                    plan = self._generate_for_requirement(req, idx, source_texts)
+                
                 tc_count = len(plan.get("test_cases", []))
                 total_test_cases += tc_count
                 test_plans.append(plan)
@@ -238,6 +275,7 @@ class TestCasePlanner:
 
             except Exception as e:
                 print(f"✗ Error: {e}")
+                logger.error("Generation failed for %s: %s", req_id, e, exc_info=True)
                 test_plans.append({
                     "requirement_id": req_id,
                     "requirement_title": title,
@@ -251,6 +289,7 @@ class TestCasePlanner:
             "test_plans": test_plans,
             "total_requirements": len(requirements),
             "total_test_cases": total_test_cases,
+            "generation_mode": self.mode
         }
 
         print(f"\n{'='*60}")
@@ -260,6 +299,63 @@ class TestCasePlanner:
         print(f"{'='*60}\n")
 
         return result
+
+    def _generate_hybrid(self, req: Dict, documents: Dict) -> Dict:
+        """Ported Archive-01 logic: loop through scenarios and generate hybrid TCs."""
+        # 1. Build rich context
+        context = get_feature_context(req, documents)
+        
+        # 2. Get scenarios
+        scenarios = req.get('test_scenarios', [])
+        if not scenarios:
+            scenarios = ["Full feature functionality"]
+            
+        test_cases = []
+        for i, sc in enumerate(scenarios, 1):
+            sc_name = sc if isinstance(sc, str) else sc.get('scenario_name', f"Scenario {i}")
+            
+            # 3. Generate hybrid TC
+            tc_data = self.scenario_gen.generate_for_scenario(req, sc_name, context)
+            
+            # 4. Map to TestCaseEditorDTO
+            preconditions = tc_data.get('preconditions', [])
+            prerequisites_str = "\n".join([f"• {p}" for p in preconditions]) if preconditions else ""
+            tc_steps = [
+                {
+                    "type": "TestCaseStepDTO",
+                    "orderNumber": idx,
+                    "description": s.get("action", ""),
+                    "expectedResult": s.get("expected_result", ""),
+                    "blocked": False
+                }
+                for idx, s in enumerate(tc_data.get('steps', []))
+            ]
+            test_cases.append({
+                "type": "TestCaseEditorDTO",
+                "title": f"{req.get('title', req.get('feature_name', 'Requirement'))} - {sc_name}",
+                "description": tc_data.get('description', f"Test {sc_name} Feature"),
+                "requirementId": req.get('requirement_id', ''),
+                "status": "DRAFT",
+                "testPhases": ["END_TO_END_TESTING"],
+                "testTypes": ["UI"],
+                "prerequisites": prerequisites_str,
+                "expectedResult": "<p>Calculated per step</p>",
+                "testCaseSteps": tc_steps,
+                "assignedTags": [],
+                "relatedSystems": [],
+                "executionConfigurations": [],
+                "attachments": [],
+                "links": [],
+                "watcherIds": [],
+                "executionConfiguration": None
+            })
+            
+        return {
+            "requirement_id": req.get("requirement_id", ""),
+            "requirement_title": req.get("title", req.get("feature_name", "")),
+            "test_cases": test_cases,
+            "total_count": len(test_cases)
+        }
 
     # ─── Private Methods ──────────────────────────────────────────────────
 
@@ -311,16 +407,41 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
         # Parse JSON from response
         parsed = self._parse_response(raw)
 
-        # Validate and enrich each test case
+        # Transform each TC into TestCaseEditorDTO
+        req_id = req.get("requirement_id", f"REQ-{index:03d}")
         for tc in parsed.get("test_cases", []):
-            tc.setdefault("test_type", "Functional")
-            tc.setdefault("test_phase", "E2E")
-            tc.setdefault("priority", "High")
+            # Map phase and type to enum arrays
+            phase = tc.pop("test_phase", "E2E")
+            tc_type = tc.pop("test_type", "Functional")
+            tc["testPhases"] = [TEST_PHASE_MAP.get(phase, "END_TO_END_TESTING")]
+            tc["testTypes"] = [TEST_TYPE_MAP.get(tc_type, "UI")]
+
+            # Add orderNumber, type, blocked to each step
+            raw_steps = tc.get("testCaseSteps", [])
+            tc["testCaseSteps"] = [
+                {
+                    "type": "TestCaseStepDTO",
+                    "orderNumber": idx,
+                    "description": s.get("description", ""),
+                    "expectedResult": s.get("expectedResult", ""),
+                    "blocked": False
+                }
+                for idx, s in enumerate(raw_steps)
+            ]
+
+            # Set required fields
+            tc["type"] = "TestCaseEditorDTO"
+            tc["requirementId"] = req_id
+            tc["status"] = "DRAFT"
             tc.setdefault("prerequisites", "Valid user credentials; access to the application")
-            tc.setdefault("test_steps", ["Execute the test", "Verify the result"])
-            tc.setdefault("expected_result", "Feature works as described in requirement")
-            tc.setdefault("status", "Not Executed")
-            tc.setdefault("test_data", "")
+            tc.setdefault("expectedResult", "Feature works as described in requirement")
+            tc.setdefault("assignedTags", [])
+            tc.setdefault("relatedSystems", [])
+            tc.setdefault("executionConfigurations", [])
+            tc.setdefault("attachments", [])
+            tc.setdefault("links", [])
+            tc.setdefault("watcherIds", [])
+            tc.setdefault("executionConfiguration", None)
 
         return parsed
 

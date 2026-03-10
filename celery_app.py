@@ -24,6 +24,8 @@ app = Celery('prism',
              broker=os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
              backend=os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1'))
 
+from auth_config import get_java_auth_headers
+
 app.conf.update(
     task_serializer='json',
     accept_content=['json'],
@@ -130,7 +132,7 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                     mapped_requirements = []
                     for req in requirements:
                         mapped_requirements.append({
-                            "short_title": req.get("title") or req.get("short_title"),
+                            "short_title": req.get("title") or req.get("feature_name", ""),
                             "description": req.get("description"),
                             "is_requirement": True,
                             "user_story": req.get("user_story", ""),
@@ -139,19 +141,27 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                             "test_scenarios": req.get("test_scenarios", []),
                             "assumptions": req.get("assumptions", []),
                             "ambiguities": req.get("ambiguities", []),
-                            "confidence": req.get("confidence", "High"),
+                            "confidence": req.get("confidence", 0.95),
+                            "feature_name": req.get("feature_name", ""),
+                            "system": req.get("system", ""),
+                            "category": req.get("category", ""),
+                            "requirements_text": req.get("requirements_text", ""),
+                            "source_file": req.get("source_file", ""),
+                            "page_start": req.get("page_start", 0),
+                            "page_end": req.get("page_end", 0),
+                            "line_start": req.get("line_start", 0),
+                            "line_end": req.get("line_end", 0),
+                            "supporting_context": req.get("supporting_context", ""),
                             "extraction_model": "llama-3.3-70b-versatile",
                             "extraction_timestamp": datetime.utcnow().isoformat(),
                             "validation_confirmed": False,
-                            "metadata": {
-                                "source_file": (file_urls[0].split("/")[-1]) if file_urls else "unknown",
-                                "extraction_timestamp": datetime.utcnow().isoformat()
-                            }
+                            "metadata": req.get("metadata", {})
                         })
                     logger.info("Mapped requirements: %s", mapped_requirements)
                     java_response = requests.post(
                         java_backend_url, 
                         json=mapped_requirements,
+                        headers=get_java_auth_headers(),
                         timeout=30.0
                     )
                     if java_response.status_code in [200, 201]:
@@ -238,39 +248,27 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
 
     bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
 
-    # ── Store in Java Backend ──────────────────────────────────────
+    # ── Store in Java Backend (Katsu Specification) ────────────────
     try:
         import requests
-        java_url = f"http://localhost:8080/api/testcases/project/{project_id}"
+        # Updated URL as per User's specification
+        java_url = f"http://localhost:8080/projects/{project_id}/test-cases"
+        
         test_plans = result["test_plan"].get("test_plans", [])
 
-        mapped_testcases = []
-        tc_counter = 1
+        # Flatten all test cases into a single list
+        # They are already in TestCaseEditorDTO format from the planner
+        all_test_cases = []
         for plan in test_plans:
-            req_id = plan.get("requirement_id", "N/A")
-            for tc in plan.get("test_cases", []):
-                mapped_testcases.append({
-                    "testCaseId": f"TC-{tc_counter:03d}",
-                    "requirementId": req_id,
-                    "title": tc.get("title", ""),
-                    "description": tc.get("description", ""),
-                    "testType": tc.get("test_type", "Functional"),
-                    "testPhase": tc.get("test_phase", "E2E"),
-                    "priority": tc.get("priority", "High"),
-                    "prerequisites": tc.get("prerequisites", ""),
-                    "testSteps": tc.get("test_steps", []),
-                    "expectedResult": tc.get("expected_result", ""),
-                    "status": "Not Executed",
-                })
-                tc_counter += 1
+            all_test_cases.extend(plan.get("test_cases", []))
 
-        if mapped_testcases:
-            resp = requests.post(java_url, json=mapped_testcases, timeout=30.0)
+        if all_test_cases:
+            logger.info("Uploading %d test cases to Java backend: %s", len(all_test_cases), java_url)
+            resp = requests.post(java_url, json=all_test_cases, headers=get_java_auth_headers(), timeout=30.0)
             if resp.status_code in [200, 201]:
-                logger.info("✓ Stored %d test cases in Java backend. Response: %s",
-                            len(mapped_testcases), resp.text[:500])
+                logger.info("✓ Successfully uploaded test cases. Response: %s", resp.text[:500])
             else:
-                logger.warning("⚠ Java backend error: %s - %s", resp.status_code, resp.text)
+                logger.warning("⚠ Java backend error (%s): %s", resp.status_code, resp.text)
     except Exception as e:
         logger.error("⚠ Failed to store test cases in Java backend: %s", e, exc_info=True)
 
@@ -286,7 +284,7 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
 
 
 @app.task(name="extract_and_filter_duplicates_task", bind=True)
-def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, file_urls=None, document_statuses=None):
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, project_name="Project", file_urls=None, document_statuses=None):
     """
     CLEAN EXTRACTION FLOW:
     1. Extract requirements from files.
@@ -361,7 +359,7 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
             for r in unique_reqs:
                 mapped.append({
                     "is_requirement": True,
-                    "short_title": r.get("title") or r.get("short_title", ""),
+                    "short_title": r.get("title") or r.get("feature_name", ""),
                     "description": r.get("description", ""),
                     "user_story": r.get("user_story", ""),
                     "acceptance_criteria": r.get("acceptance_criteria", []),
@@ -369,21 +367,24 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                     "test_scenarios": r.get("test_scenarios", []),
                     "assumptions": r.get("assumptions", []),
                     "ambiguities": r.get("ambiguities", []),
-                    "confidence": r.get("confidence", "high"),
+                    "confidence_score": r.get("confidence", 0.95),
+                    "feature_name": r.get("feature_name", ""),
+                    "system": r.get("system", ""),
+                    "category": r.get("category", ""),
+                    "requirements_text": r.get("requirements_text", ""),
+                    "source_file": r.get("source_file", ""),
+                    "page_start": r.get("page_start", 0),
+                    "page_end": r.get("page_end", 0),
+                    "line_start": r.get("line_start", 0),
+                    "line_end": r.get("line_end", 0),
+                    "supporting_context": r.get("supporting_context", ""),
                     "extraction_model": "llama-3.3-70b-versatile",
                     "extraction_timestamp": now,
                     "validation_confirmed": True,
-                    "metadata": {
-                        "source_file": file_urls[0] if file_urls else "unknown",
-                        "page_start": 0,
-                        "page_end": 0,
-                        "extraction_timestamp": now,
-                        "extraction_model": "llama-3.3-70b-versatile",
-                        "validation_confirmed": True,
-                    },
+                    "metadata": r.get("metadata", {}),
                 })
 
-            resp = requests.post(java_url, json=mapped, timeout=30)
+            resp = requests.post(java_url, json=mapped, headers=get_java_auth_headers(), timeout=30)
             logger.info("Filtered %d → %d unique. Stored in Java backend (project %s). Response: %s",
                         len(extracted_reqs), len(unique_reqs), project_id, resp.text[:500])
 
@@ -395,11 +396,25 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                 if doc_id:
                     update_status_by_id(project_id, doc_id, url, "COMPLETED")
 
+        # ----------------------------------------------------------
+        # STEP 5: AUTOMATIC TEST CASE GENERATION TRIGGER
+        # ----------------------------------------------------------
+        if unique_reqs:
+            logger.info(">>> Auto-triggering Test Case Generation for project %s", project_id)
+            # We pass the local_files for context and the unique_reqs directly to avoid re-downloading
+            generate_testcases_task.delay(
+                project_id=project_id,
+                project_name=f"Project_{project_id}",
+                requirements_data=unique_reqs,
+                local_doc_paths=local_files
+            )
+
         return {
             "status": "success",
             "extracted": len(extracted_reqs),
             "stored_unique": len(unique_reqs),
-            "removed_duplicates": len(extracted_reqs) - len(unique_reqs)
+            "removed_duplicates": len(extracted_reqs) - len(unique_reqs),
+            "tc_generation_triggered": bool(unique_reqs)
         }
 
     except Exception as e:

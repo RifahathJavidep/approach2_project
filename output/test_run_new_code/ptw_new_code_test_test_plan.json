@@ -1,0 +1,521 @@
+{
+  "project_name": "ptw_new_code_test",
+  "test_plans": [
+    {
+      "requirement_id": "REQ-001",
+      "requirement_title": "Export Feature",
+      "test_cases": [
+        {
+          "test_case_id": "TC-REQ-001-S01",
+          "feature_id": "REQ-001",
+          "feature_name": "Export Feature - Export CSV file",
+          "description": "E2E test for Export CSV file of Export Feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User is logged out",
+            "User has valid credentials",
+            "User has access to the dashboard"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Login to the dashboard with valid credentials",
+              "expected_result": "User is logged in and redirected to the dashboard",
+              "test_data": "username: testuser, password: testpassword"
+            },
+            {
+              "step_num": 2,
+              "action": "Navigate to the data tab",
+              "expected_result": "Data tab is displayed with available data",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Select the data to export",
+              "expected_result": "Data selection options are displayed",
+              "test_data": "Select Share Plan vs individual plans data"
+            },
+            {
+              "step_num": 4,
+              "action": "Choose CSV as the export format",
+              "expected_result": "CSV export option is selected",
+              "test_data": ""
+            },
+            {
+              "step_num": 5,
+              "action": "Verify the exported CSV file contains the correct data",
+              "expected_result": "CSV file contains the correct data, including Share Plan vs individual plans",
+              "test_data": "Verify CSV file contents"
+            },
+            {
+              "step_num": 6,
+              "action": "Verify the CSV file has the correct header columns",
+              "expected_result": "CSV file has the correct header columns, including Cost savings, Benefits, and Leading Indicators",
+              "test_data": "Verify CSV file header columns"
+            },
+            {
+              "step_num": 7,
+              "action": "Verify the CSV file has the correct data rows",
+              "expected_result": "CSV file has the correct data rows, including data for Share Plan vs individual plans",
+              "test_data": "Verify CSV file data rows"
+            },
+            {
+              "step_num": 8,
+              "action": "Logout of the dashboard",
+              "expected_result": "User is logged out and redirected to the login page",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-REQ-001-S02",
+          "feature_id": "REQ-001",
+          "feature_name": "Export Feature - Export PDF file",
+          "description": "E2E test for Export PDF file of Export Feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User is logged in to the dashboard",
+            "User has access to the Export Feature"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Login to the dashboard with valid credentials",
+              "expected_result": "User is logged in successfully",
+              "test_data": "username: testuser, password: testpassword"
+            },
+            {
+              "step_num": 2,
+              "action": "Navigate to the Export Feature page",
+              "expected_result": "Export Feature page is displayed",
+              "test_data": "URL: /export-feature"
+            },
+            {
+              "step_num": 3,
+              "action": "Select the data to export",
+              "expected_result": "Data selection options are displayed",
+              "test_data": "Select 'Bar Graph' and 'Share Plan vs individual plans' data"
+            },
+            {
+              "step_num": 4,
+              "action": "Choose PDF as the export format",
+              "expected_result": "PDF export option is selected",
+              "test_data": "Select 'PDF' from the export format dropdown"
+            },
+            {
+              "step_num": 5,
+              "action": "Verify the exported PDF file contains the correct data and visual of Bar Graph",
+              "expected_result": "Exported PDF file contains the correct data and visual of Bar Graph",
+              "test_data": "Verify the PDF file contents match the selected data"
+            },
+            {
+              "step_num": 6,
+              "action": "Verify the PDF file includes the Bar Graph and other included details",
+              "expected_result": "PDF file includes the Bar Graph and other included details",
+              "test_data": "Verify the PDF file includes the Bar Graph and other details"
+            },
+            {
+              "step_num": 7,
+              "action": "Verify the PDF file is in the correct format",
+              "expected_result": "PDF file is in the correct format",
+              "test_data": "Verify the PDF file is in the correct format"
+            },
+            {
+              "step_num": 8,
+              "action": "Cleanup: Delete the exported PDF file",
+              "expected_result": "Exported PDF file is deleted",
+              "test_data": "Delete the exported PDF file"
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-REQ-001-S03",
+          "feature_id": "REQ-001",
+          "feature_name": "Export Feature - Export EXCEL file",
+          "description": "E2E test for Export EXCEL file scenario of Export Feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User is logged out",
+            "User has access to the dashboard",
+            "User has necessary permissions to export data"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Login to the dashboard with valid credentials",
+              "expected_result": "User is logged in and redirected to the dashboard",
+              "test_data": "username: testuser, password: testpassword"
+            },
+            {
+              "step_num": 2,
+              "action": "Click on the 'Export' button",
+              "expected_result": "Export options are displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Select 'EXCEL' as the export format",
+              "expected_result": "EXCEL export options are displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 4,
+              "action": "Select the data to export (e.g., Bar Graph data, Share Plan vs individual plans)",
+              "expected_result": "Selected data is displayed in the export preview",
+              "test_data": ""
+            },
+            {
+              "step_num": 5,
+              "action": "Click on the 'Export' button to export the data",
+              "expected_result": "EXCEL file is downloaded",
+              "test_data": ""
+            },
+            {
+              "step_num": 6,
+              "action": "Open the exported EXCEL file",
+              "expected_result": "EXCEL file contains the correct data",
+              "test_data": ""
+            },
+            {
+              "step_num": 7,
+              "action": "Verify that the EXCEL file contains the correct data (e.g., Bar Graph data, Share Plan vs individual plans)",
+              "expected_result": "Data in the EXCEL file matches the expected data",
+              "test_data": ""
+            },
+            {
+              "step_num": 8,
+              "action": "Verify that the EXCEL file has the correct format (e.g., columns, rows, headers)",
+              "expected_result": "EXCEL file has the correct format",
+              "test_data": ""
+            },
+            {
+              "step_num": 9,
+              "action": "Logout from the dashboard",
+              "expected_result": "User is logged out",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-REQ-001-S04",
+          "feature_id": "REQ-001",
+          "feature_name": "Export Feature - Export PNG file",
+          "description": "E2E test for Export PNG file of Export Feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User is logged out",
+            "User has access to the dashboard"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Login to the dashboard with valid credentials",
+              "expected_result": "User is logged in and redirected to the dashboard",
+              "test_data": "username: testuser, password: testpassword"
+            },
+            {
+              "step_num": 2,
+              "action": "Click on the 'Export' button",
+              "expected_result": "Export options are displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Select 'PNG' as the export format",
+              "expected_result": "PNG export options are displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 4,
+              "action": "Choose the data to export (e.g. Bar Graph, Share Plan vs individual plans)",
+              "expected_result": "Selected data is displayed in the export preview",
+              "test_data": "Bar Graph, Share Plan vs individual plans"
+            },
+            {
+              "step_num": 5,
+              "action": "Click on the 'Export' button to export the selected data as a PNG file",
+              "expected_result": "PNG file is downloaded",
+              "test_data": ""
+            },
+            {
+              "step_num": 6,
+              "action": "Verify the exported PNG file contains the correct visual of Bar Graph",
+              "expected_result": "PNG file contains the correct visual of Bar Graph",
+              "test_data": ""
+            },
+            {
+              "step_num": 7,
+              "action": "Verify the exported PNG file contains the correct data (e.g. Share Plan vs individual plans)",
+              "expected_result": "PNG file contains the correct data",
+              "test_data": ""
+            },
+            {
+              "step_num": 8,
+              "action": "Logout of the dashboard",
+              "expected_result": "User is logged out and redirected to the login page",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-REQ-001-S05",
+          "feature_id": "REQ-001",
+          "feature_name": "Export Feature - Export JPEG file",
+          "description": "E2E test for Export JPEG file scenario of Export Feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User is logged out of the dashboard",
+            "User has the necessary permissions to export data"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Login to the dashboard with valid credentials",
+              "expected_result": "User is logged in and redirected to the dashboard",
+              "test_data": "username: testuser, password: testpassword"
+            },
+            {
+              "step_num": 2,
+              "action": "Click on the Export Feature button",
+              "expected_result": "Export options are displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Select the data to export (e.g., Bar Graph, Share Plan vs individual plans)",
+              "expected_result": "Selected data is highlighted",
+              "test_data": "Bar Graph, Share Plan vs individual plans"
+            },
+            {
+              "step_num": 4,
+              "action": "Choose the JPEG format from the export options",
+              "expected_result": "JPEG format is selected",
+              "test_data": "JPEG"
+            },
+            {
+              "step_num": 5,
+              "action": "Click on the Export button",
+              "expected_result": "Export process starts",
+              "test_data": ""
+            },
+            {
+              "step_num": 6,
+              "action": "Wait for the export process to complete",
+              "expected_result": "Export process is complete",
+              "test_data": ""
+            },
+            {
+              "step_num": 7,
+              "action": "Verify the exported JPEG file is downloaded",
+              "expected_result": "JPEG file is downloaded",
+              "test_data": ""
+            },
+            {
+              "step_num": 8,
+              "action": "Open the exported JPEG file",
+              "expected_result": "JPEG file opens correctly",
+              "test_data": ""
+            },
+            {
+              "step_num": 9,
+              "action": "Verify the JPEG file contains the correct visual of the Bar Graph",
+              "expected_result": "Bar Graph is displayed correctly",
+              "test_data": ""
+            },
+            {
+              "step_num": 10,
+              "action": "Verify the JPEG file contains the correct details (e.g., Share Plan vs individual plans)",
+              "expected_result": "Details are displayed correctly",
+              "test_data": ""
+            },
+            {
+              "step_num": 11,
+              "action": "Verify the JPEG file is in the correct format (JPEG)",
+              "expected_result": "File is in JPEG format",
+              "test_data": ""
+            },
+            {
+              "step_num": 12,
+              "action": "Verify the file size is reasonable for a JPEG file",
+              "expected_result": "File size is reasonable",
+              "test_data": ""
+            },
+            {
+              "step_num": 13,
+              "action": "Verify the file can be opened on different devices",
+              "expected_result": "File can be opened on different devices",
+              "test_data": ""
+            },
+            {
+              "step_num": 14,
+              "action": "Verify the file can be shared via email or other means",
+              "expected_result": "File can be shared",
+              "test_data": ""
+            },
+            {
+              "step_num": 15,
+              "action": "Cleanup: Delete the exported JPEG file",
+              "expected_result": "File is deleted",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 5
+    },
+    {
+      "requirement_id": "REQ-002",
+      "requirement_title": "NAG (Group) Filter",
+      "test_cases": [
+        {
+          "test_case_id": "TC-REQ-002-S01",
+          "feature_id": "REQ-002",
+          "feature_name": "NAG (Group) Filter - Selecting a NAG from the dropdown filter",
+          "description": "E2E test for selecting a NAG from the dropdown filter of NAG (Group) Filter feature",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "User has admin login credentials",
+            "User is logged out of the system"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Log in to the system using admin credentials",
+              "expected_result": "User is successfully logged in and redirected to the dashboard",
+              "test_data": "admin_username, admin_password"
+            },
+            {
+              "step_num": 2,
+              "action": "Navigate to the dashboard",
+              "expected_result": "Dashboard is displayed with default NAG selected",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Click on the NAG dropdown filter",
+              "expected_result": "Dropdown list of available NAGs is displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 4,
+              "action": "Select a different NAG from the dropdown list",
+              "expected_result": "Dashboard updates to display information for the selected NAG",
+              "test_data": "NAG_name"
+            },
+            {
+              "step_num": 5,
+              "action": "Verify the dashboard information matches the selected NAG",
+              "expected_result": "Information on the dashboard corresponds to the selected NAG",
+              "test_data": ""
+            },
+            {
+              "step_num": 6,
+              "action": "Repeat steps 3-5 for multiple NAGs",
+              "expected_result": "Dashboard updates correctly for each selected NAG",
+              "test_data": "list_of_NAG_names"
+            },
+            {
+              "step_num": 7,
+              "action": "Log out of the system",
+              "expected_result": "User is logged out and redirected to the login page",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        },
+        {
+          "test_case_id": "TC-REQ-002-S02",
+          "feature_id": "REQ-002",
+          "feature_name": "NAG (Group) Filter - Verifying the default view with a single NAG",
+          "description": "E2E test for Verifying the default view with a single NAG of NAG (Group) Filter",
+          "test_type": "Functional",
+          "test_phase": "E2E",
+          "priority": "High",
+          "preconditions": [
+            "Admin user credentials are available",
+            "Multiple NAGs are associated with the logged-in Admin"
+          ],
+          "steps": [
+            {
+              "step_num": 1,
+              "action": "Log in as an admin using valid credentials",
+              "expected_result": "Admin dashboard is displayed",
+              "test_data": "admin_username, admin_password"
+            },
+            {
+              "step_num": 2,
+              "action": "Verify that the default view shows a single NAG's information",
+              "expected_result": "A single NAG's information is displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 3,
+              "action": "Verify that the NAG is selected based on numerical/alphabetical order",
+              "expected_result": "The NAG is selected based on numerical/alphabetical order",
+              "test_data": ""
+            },
+            {
+              "step_num": 4,
+              "action": "Verify that the dropdown filter represents all NAGs associated with the logged-in Admin",
+              "expected_result": "The dropdown filter represents all NAGs associated with the logged-in Admin",
+              "test_data": ""
+            },
+            {
+              "step_num": 5,
+              "action": "Select a different NAG from the dropdown filter",
+              "expected_result": "The selected NAG's information is displayed",
+              "test_data": "different_NAG"
+            },
+            {
+              "step_num": 6,
+              "action": "Verify that the selected NAG's information is accurate",
+              "expected_result": "The selected NAG's information is accurate",
+              "test_data": ""
+            },
+            {
+              "step_num": 7,
+              "action": "Log out of the admin dashboard",
+              "expected_result": "The login page is displayed",
+              "test_data": ""
+            },
+            {
+              "step_num": 8,
+              "action": "Verify that the default view is reset to a single NAG after logging out and logging back in",
+              "expected_result": "The default view shows a single NAG's information",
+              "test_data": ""
+            }
+          ],
+          "expected_result": "Calculated per step",
+          "status": "Not Executed"
+        }
+      ],
+      "total_count": 2
+    }
+  ],
+  "total_requirements": 2,
+  "total_test_cases": 7,
+  "generation_mode": "hybrid"
+}
