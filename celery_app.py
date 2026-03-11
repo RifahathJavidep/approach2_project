@@ -131,31 +131,40 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                     print("Storing %d requirements in Java backend for project %s...", requirements, project_id)
                     mapped_requirements = []
                     for req in requirements:
+                        conf_val = req.get("confidence", 0.95)
+                        conf_str = "high" if conf_val >= 0.8 else "medium" if conf_val >= 0.5 else "low"
+                        now_str = datetime.utcnow().isoformat() + "Z"
+
                         mapped_requirements.append({
+                            "is_requirement": True,
                             "short_title": req.get("title") or req.get("feature_name", ""),
                             "description": req.get("description"),
-                            "is_requirement": True,
                             "user_story": req.get("user_story", ""),
                             "acceptance_criteria": req.get("acceptance_criteria", []),
                             "test_steps": req.get("test_steps", []),
                             "test_scenarios": req.get("test_scenarios", []),
                             "assumptions": req.get("assumptions", []),
                             "ambiguities": req.get("ambiguities", []),
-                            "confidence": req.get("confidence", 0.95),
-                            "feature_name": req.get("feature_name", ""),
-                            "system": req.get("system", ""),
-                            "category": req.get("category", ""),
-                            "requirements_text": req.get("requirements_text", ""),
-                            "source_file": req.get("source_file", ""),
-                            "page_start": req.get("page_start", 0),
-                            "page_end": req.get("page_end", 0),
-                            "line_start": req.get("line_start", 0),
-                            "line_end": req.get("line_end", 0),
-                            "supporting_context": req.get("supporting_context", ""),
+                            "confidence": conf_str,
                             "extraction_model": "llama-3.3-70b-versatile",
-                            "extraction_timestamp": datetime.utcnow().isoformat(),
+                            "extraction_timestamp": now_str,
                             "validation_confirmed": False,
-                            "metadata": req.get("metadata", {})
+                            "metadata": {
+                                "system": req.get("system", ""),
+                                "category": req.get("category", ""),
+                                "requirements_text": req.get("requirements_text", ""),
+                                "confidence_score": conf_val,
+                                "source_file": req.get("source_file", ""),
+                                "page_start": req.get("page_start", 0),
+                                "page_end": req.get("page_end", 0),
+                                "start_line": req.get("line_start", 0),
+                                "end_line": req.get("line_end", 0),
+                                "verbatim_text": req.get("requirements_text", ""),
+                                "supporting_context": req.get("supporting_context", []),
+                                "extraction_model": "llama-3.3-70b-versatile",
+                                "extraction_timestamp": now_str,
+                                "validation_confirmed": False
+                            }
                         })
                     logger.info("Mapped requirements: %s", mapped_requirements)
                     java_response = requests.post(
@@ -357,6 +366,10 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
             
             mapped = []
             for r in unique_reqs:
+                conf_val = r.get("confidence", 0.95)
+                conf_str = "high" if conf_val >= 0.8 else "medium" if conf_val >= 0.5 else "low"
+                now_str = datetime.now().isoformat() + "Z"
+
                 mapped.append({
                     "is_requirement": True,
                     "short_title": r.get("title") or r.get("feature_name", ""),
@@ -367,21 +380,26 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                     "test_scenarios": r.get("test_scenarios", []),
                     "assumptions": r.get("assumptions", []),
                     "ambiguities": r.get("ambiguities", []),
-                    "confidence_score": r.get("confidence", 0.95),
-                    "feature_name": r.get("feature_name", ""),
-                    "system": r.get("system", ""),
-                    "category": r.get("category", ""),
-                    "requirements_text": r.get("requirements_text", ""),
-                    "source_file": r.get("source_file", ""),
-                    "page_start": r.get("page_start", 0),
-                    "page_end": r.get("page_end", 0),
-                    "line_start": r.get("line_start", 0),
-                    "line_end": r.get("line_end", 0),
-                    "supporting_context": r.get("supporting_context", ""),
+                    "confidence": conf_str,
                     "extraction_model": "llama-3.3-70b-versatile",
-                    "extraction_timestamp": now,
+                    "extraction_timestamp": now_str,
                     "validation_confirmed": True,
-                    "metadata": r.get("metadata", {}),
+                    "metadata": {
+                        "system": r.get("system", ""),
+                        "category": r.get("category", ""),
+                        "requirements_text": r.get("requirements_text", ""),
+                        "confidence_score": conf_val,
+                        "source_file": r.get("source_file", ""),
+                        "page_start": r.get("page_start", 0),
+                        "page_end": r.get("page_end", 0),
+                        "start_line": r.get("line_start", 0),
+                        "end_line": r.get("line_end", 0),
+                        "verbatim_text": r.get("requirements_text", ""),
+                        "supporting_context": r.get("supporting_context", []),
+                        "extraction_model": "llama-3.3-70b-versatile",
+                        "extraction_timestamp": now_str,
+                        "validation_confirmed": True
+                    }
                 })
 
             resp = requests.post(java_url, json=mapped, headers=get_java_auth_headers(), timeout=30)
