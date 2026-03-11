@@ -1,0 +1,445 @@
+{
+  "evaluation_date": "2026-03-10T20:31:28.562957",
+  "generated_file": "output/testgen/test_plan.json",
+  "total_scenario_tcs": 59,
+  "total_feature_groups": 27,
+  "tc_level_metrics": {
+    "feature_groups": 27,
+    "gt_count": 17,
+    "matched": 5,
+    "false_positives": 22,
+    "missed": 12,
+    "precision": 0.1852,
+    "recall": 0.2941,
+    "f1_score": 0.2273
+  },
+  "step_level_metrics": {
+    "avg_step_precision": 0.077,
+    "avg_step_recall": 0.0296,
+    "avg_step_f1": 0.0427,
+    "total_gen_steps": 482,
+    "total_gt_steps": 483
+  },
+  "per_tc_results": [
+    {
+      "gen_feature_id": "REQ-012",
+      "gen_feature": "In-plan Usage Threshold \"Donut Wheel\"",
+      "gen_scenario_tcs": [
+        "TC-REQ-012-S01",
+        "TC-REQ-012-S02",
+        "TC-REQ-012-S03"
+      ],
+      "gt_id": "PTWPH1-12",
+      "gt_feature": "PTWPH1-12",
+      "tc_similarity": 0.399,
+      "gen_step_count": 25,
+      "gt_step_count": 56,
+      "step_metrics": {
+        "matched_steps": 3,
+        "total_gen": 25,
+        "total_gt": 56,
+        "step_precision": 0.12,
+        "step_recall": 0.0536,
+        "step_f1": 0.0741,
+        "matched_pairs": [
+          {
+            "gen_step": 22,
+            "gt_step": 50,
+            "gen_action": "Verify the number of shared plans within each threshold",
+            "gt_action": "Navigate to shared plans Donut wheel and Confirm the following\nTable placed besi",
+            "similarity": 0.344
+          },
+          {
+            "gen_step": 11,
+            "gt_step": 53,
+            "gen_action": "Verify the 'Donut Wheel' for the 75-95% threshold",
+            "gt_action": "Navigate to Individual plans Donut wheel and Confirm the following\nTable placed ",
+            "similarity": 0.311
+          },
+          {
+            "gen_step": 5,
+            "gt_step": 36,
+            "gen_action": "Check the number of shared plans within each threshold",
+            "gt_action": "Navigate to shared plans Donut wheel and Confirm the following\nTable placed besi",
+            "similarity": 0.303
+          }
+        ],
+        "missed_gt_actions": [
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Data tab under Usage summary section",
+          "On the bar graph hover over to unbilled month and click on it",
+          "Confirm the Shared plans table is displayed with below tabs and values \nData usage Amount (TB)\t\nRoam",
+          "Confirm the Indivdual plans table is displayed with below tabs and values \nData usage Amount (TB)\t\nR",
+          "Confirm two  Donut wheels are displayed for In-plan usage of the current unbilled month under both s",
+          "Navigate to shared plans Donut wheel and Confirm the following\nTable placed beside donut wheel\n1) Ti",
+          "Click on the shareplans link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Navigate to Individual plans Donut wheel and Confirm the following\nTable placed beside donut wheel: ",
+          "Click on the Subscribers link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Confirm the color for each threshold on the wheel and In-plan table \nUnder 75% - Blue \n75% to 95% - ",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Voice tab under Usage summary section",
+          "On the bar graph hover over to unbilled month and click on it",
+          "Confirm the Shared plans table is displayed with below tabs and values \nVoice usage  Amount (minutes",
+          "Confirm the Indivdual plans table is displayed with below tabs and values \nVoice usage  Amount (minu",
+          "Confirm two  Donut wheels are displayed for In-plan usage of the current unbilled month under both s",
+          "Navigate to shared plans Donut wheel and Confirm the following\nTable placed beside donut wheel: \n1) ",
+          "Click on the shareplans link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Navigate to Individual plans Donut wheel and Confirm the following\nTable placed beside donut wheel: ",
+          "Click on the Subscribers link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Confirm the color for each threshold on the wheel and In-plan table \nUnder 75% - Blue \n75% to 95% - ",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Long distance tab under Usage summary section",
+          "On the bar graph hover over to unbilled month and click on it",
+          "Confirm the Shared plans table is displayed with below tabs and values \nLong distance  Amount (minut",
+          "Confirm the Indivdual plans table is displayed with below tabs and values \nLong distance   Amount (m",
+          "Confirm two  Donut wheels are displayed for In-plan usage of the current unbilled month under both s",
+          "Click on the shareplans link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Navigate to Individual plans Donut wheel and Confirm the following\nTable placed beside donut wheel: ",
+          "Click on the Subscribers link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Confirm the color for each threshold on the wheel and In-plan table \nUnder 75% - Blue \n75% to 95% - ",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Text  messaging  tab under Usage summary section",
+          "On the bar graph hover over to unbilled month and click on it",
+          "Confirm the Shared plans table is displayed with below tabs and values \nText Messaging   Amount (Num",
+          "Confirm the Indivdual plans table is displayed with below tabs and values \nText Messaging    Amount ",
+          "Confirm two  Donut wheels are displayed for In-plan usage of the current unbilled month under both s",
+          "Click on the shareplans link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Click on the Subscribers link next to  the threshold value",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Confirm the color for each threshold on the wheel and In-plan table \nUnder 75% - Blue \n75% to 95% - "
+        ]
+      }
+    },
+    {
+      "gen_feature_id": "REQ-004",
+      "gen_feature": "NAG Metric Tiles",
+      "gen_scenario_tcs": [
+        "TC-REQ-004-S01",
+        "TC-REQ-004-S02"
+      ],
+      "gt_id": "PTWPH1-4",
+      "gt_feature": "PTWPH1-4",
+      "tc_similarity": 0.338,
+      "gen_step_count": 14,
+      "gt_step_count": 34,
+      "step_metrics": {
+        "matched_steps": 0,
+        "total_gen": 14,
+        "total_gt": 34,
+        "step_precision": 0.0,
+        "step_recall": 0.0,
+        "step_f1": 0,
+        "matched_pairs": [],
+        "missed_gt_actions": [
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Verify the below metric tiles are displayed based on NAG \nBilling accounts\nActive Subscribers\nSuspen",
+          "Open the Billing accounts tile",
+          "Navigate to Billing Accounts tab and confirm all the listed BANS are displayed",
+          "Access  NM1 system, Open the NAG from step 2",
+          "Confrim the Billing Accounts are assciated to this NAG in NM1",
+          "Compare the Billing Accounts in NM1 with BANS in BBSSC",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Verify the below metric tiles are displayed based on NAG \nBilling accounts\nActive Subscribers\nSuspen",
+          "Open the Active Subscribers tile",
+          "Navigate to Subscribers  tab and confirm all the list of Active subscribers  are displayed",
+          "Confrim the  Subscriber Page  is displayed with the list of subscribers filtered to \"Active\"",
+          "Access  NM1 system, Open the NAG from step 2",
+          "Confrim the Active subscribers are assciated to this NAG in NM1",
+          "Compare the Active subscribers  in NM1 with BANS in BBSSC",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Verify the below metric tiles are displayed based on NAG \nBilling accounts\nActive Subscribers\nSuspen",
+          "Open the Suspended Subscribers tile",
+          "Confirm  the  Subscriber Page is displayed  with the list of subscribers filtered to \"Suspended\"",
+          "Access  NM1 system, Open the NAG from step 2",
+          "Confrim the Suspended subscribers are assciated to this NAG in NM1",
+          "Compare the Suspended  subscribers  in NM1 with BANS in BBSSC",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Verify the below metric tiles are displayed based on NAG \nBilling accounts\nActive Subscribers\nSuspen",
+          "Open the Cancelled Subscribers tile",
+          "Confirm  the Subscriber Page is dispalyed  with the list of subscribers filtered to \"Cancelled\"",
+          "Verify the Cancelled subscribers displayed are filtered by last 30 days",
+          "Access  NM1 system, Open the NAG from step 2",
+          "Confrim the Cancelled subscribers are assciated to this NAG in NM1",
+          "Compare the Cancelled  subscribers  in NM1 with BANS in BBSSC"
+        ]
+      }
+    },
+    {
+      "gen_feature_id": "REQ-010",
+      "gen_feature": "Shared Plans Usage Breakdown",
+      "gen_scenario_tcs": [
+        "TC-REQ-010-S01",
+        "TC-REQ-010-S02"
+      ],
+      "gt_id": "PTWPH1-10",
+      "gt_feature": "PTWPH1-10",
+      "tc_similarity": 0.332,
+      "gen_step_count": 13,
+      "gt_step_count": 34,
+      "step_metrics": {
+        "matched_steps": 2,
+        "total_gen": 13,
+        "total_gt": 34,
+        "step_precision": 0.1538,
+        "step_recall": 0.0588,
+        "step_f1": 0.0851,
+        "matched_pairs": [
+          {
+            "gen_step": 12,
+            "gt_step": 33,
+            "gen_action": "Click the back button",
+            "gt_action": "Click on back button, navigate back to shared plans table",
+            "similarity": 0.543
+          },
+          {
+            "gen_step": 6,
+            "gt_step": 29,
+            "gen_action": "Click the back button",
+            "gt_action": "Click on back button, navigate back to shared plans table",
+            "similarity": 0.543
+          }
+        ],
+        "missed_gt_actions": [
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Data tab under Usage summary section",
+          "On the bar graph hover over to any billed month and click on it",
+          "Navigate to shared plans table, click on the shareplans related to Roaming on data usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming i",
+          "Click on back button, navigate back to shared plans table",
+          "Click on the shareplans related to Overage on data usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage i",
+          "Click on back button, navigate back to shared plans table",
+          "Click on the shareplans related to In-plan on data usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan, ",
+          "Click on back button, navigate back to shared plans table",
+          "Clcik on back button again",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Voice tab under Usage summary section",
+          "On the bar graph hover over to any billed month and click on it",
+          "Navigate to shared plans table, click on the shareplans related to Roaming on Voice usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming i",
+          "Click on back button, navigate back to shared plans table",
+          "Click on the shareplans related to Overage on voice usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage i",
+          "Click on the shareplans related to In-plan on voice usage",
+          "On shareplan details table, Confirm the shareplans are spilt into Small/Medium/Large business share ",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan, ",
+          "Clcik on back button again"
+        ]
+      }
+    },
+    {
+      "gen_feature_id": "REQ-011",
+      "gen_feature": "Individual Plans Usage Breakdown",
+      "gen_scenario_tcs": [
+        "TC-REQ-011-S01"
+      ],
+      "gt_id": "PTWPH1-11",
+      "gt_feature": "PTWPH1-11",
+      "tc_similarity": 0.295,
+      "gen_step_count": 9,
+      "gt_step_count": 28,
+      "step_metrics": {
+        "matched_steps": 1,
+        "total_gen": 9,
+        "total_gt": 28,
+        "step_precision": 0.1111,
+        "step_recall": 0.0357,
+        "step_f1": 0.0541,
+        "matched_pairs": [
+          {
+            "gen_step": 6,
+            "gt_step": 27,
+            "gen_action": "Click the back button",
+            "gt_action": "Click on back button, navigate back to Individual plans table",
+            "similarity": 0.559
+          }
+        ],
+        "missed_gt_actions": [
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Long distance tab under Usage summary section",
+          "On the bar graph hover over to any billed month and click on it",
+          "Navigate to Individual plans table, click on the subscribers related to Roaming on Long distance usa",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming i",
+          "Click on back button, navigate back to Individual plans table",
+          "Click on the Subscribers related to Overage on Long distance usage",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage i",
+          "Click on back button, navigate back to Individual plans table",
+          "Click on the Subscribers related to In-plan on Long distance usage",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Click on back button, navigate back to Individual plans table",
+          "Clcik on back button again",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Text messaging tab under Usage summary section",
+          "On the bar graph hover over to any billed month and click on it",
+          "Navigate to Individual plans table, click on the subscribers related to Roaming on Text messaging us",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Roaming i",
+          "Click on back button, navigate back to Individual plans table",
+          "Click on the Subscribers related to Overage on Text messaging usage",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total Overage i",
+          "Click on back button, navigate back to Individual plans table",
+          "Click on the Subscribers related to In-plan on Text messaging usage",
+          "On table verify the data accuracy of Allowance, Used & Overage displayed against the total In-plan i",
+          "Clcik on back button again"
+        ]
+      }
+    },
+    {
+      "gen_feature_id": "REQ-007",
+      "gen_feature": "Data Usage Bar Chart",
+      "gen_scenario_tcs": [
+        "TC-REQ-007-S01",
+        "TC-REQ-007-S02",
+        "TC-REQ-007-S03",
+        "TC-REQ-007-S04"
+      ],
+      "gt_id": "PTWPH1-7",
+      "gt_feature": "PTWPH1-7",
+      "tc_similarity": 0.263,
+      "gen_step_count": 37,
+      "gt_step_count": 45,
+      "step_metrics": {
+        "matched_steps": 0,
+        "total_gen": 37,
+        "total_gt": 45,
+        "step_precision": 0.0,
+        "step_recall": 0.0,
+        "step_f1": 0,
+        "matched_pairs": [],
+        "missed_gt_actions": [
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Data tab under Usage summary section",
+          "Verify the Date field value is set to Last 14 months",
+          "Verify the Bar graph on Data usage, contains the following details \nX-axis - Months \nY-axis- TB (dat",
+          "Confirm on X-axis all 14 months are displayed 13 months billed usage data and 1 month unbilled usage",
+          "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually \nConfrim the Bar graph ",
+          "Hover over the Bar graph on months and confirm the data  with relevant information of In-plan, Overa",
+          "Confirm the below the static text is displayed under the graph \n\"Data information Usage is based on ",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Voice tab under Usage summary section",
+          "Verify the Date field value is set to Last 14 months",
+          "Verify the Bar graph on Data usage, contains the following details \nX-axis - Months \nY-axis- Minutes",
+          "Confirm on X-axis all 14 months are displayed 13 months billed usage data and 1 month unbilled usage",
+          "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually \nConfrim the Bar graph ",
+          "Hover over the Bar graph on months and confirm the data  with relevant information of In-plan, Overa",
+          "Confirm the below the static text is displayed under the graph \n\"Voice information Usage is based on",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Long disatnce  tab under Usage summary section",
+          "Verify the Date field value is set to Last 14 months",
+          "Verify the Bar graph on Data usage, contains the following details \nX-axis - Months \nY-axis- Minutes",
+          "Confirm on X-axis all 6 months are displayed 5 months billed usage data and 1 month unbilled usage",
+          "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually \nConfrim the Bar graph ",
+          "Hover over the Bar graph on months and confirm the data  with relevant information of In-plan, Overa",
+          "Confirm the below the static text is displayed under the graph \n\"Long disatnce information Usage is ",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to  Text messaging tab under Usage summary section",
+          "Verify the Date field value is set to Last 14 months",
+          "Verify the Bar graph on Data usage, contains the following details \nX-axis - Months \nY-axis-  Number",
+          "Confirm on X-axis all 3 months are displayed 2 months billed usage data and 1 month unbilled usage",
+          "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually \nConfrim the Bar graph ",
+          "Hover over the Bar graph on months and confirm the data  with relevant information of In-plan, Overa",
+          "Confirm the below the static text is displayed under the graph \n\" Text messaging information Usage i",
+          "Login into BBSSC portal",
+          "Navigate to My dashboard page  and select a NAG in the dropdown on the right corner",
+          "Navigate to Data tab under Usage summary section",
+          "Verify the Date field value is set to Last 14 months",
+          "Verify the Bar graph on Data usage, contains the following details \nX-axis - Months \nY-axis- TB (dat",
+          "Confirm on X-axis  1 month unbilled usage  data is displayed",
+          "Confirm on X-axis, In-plan, Overage & roaming details are displayed Visually \nConfrim the Bar graph ",
+          "Hover over the Bar graph on months and confirm the data  with relevant information of In-plan, Overa",
+          "Confirm the below the static text is displayed under the graph \n\"Data information Usage is based on "
+        ]
+      }
+    }
+  ],
+  "missed_gt": [
+    {
+      "gt_id": "PTWPH1-1",
+      "gt_feature": "PTWPH1-1",
+      "gt_step_count": 138
+    },
+    {
+      "gt_id": "PTWPH1-2",
+      "gt_feature": "PTWPH1-2",
+      "gt_step_count": 5
+    },
+    {
+      "gt_id": "PTWPH1-3",
+      "gt_feature": "PTWPH1-3",
+      "gt_step_count": 7
+    },
+    {
+      "gt_id": "PTWPH1-5",
+      "gt_feature": "PTWPH1-5",
+      "gt_step_count": 9
+    },
+    {
+      "gt_id": "PTWPH1-6",
+      "gt_feature": "PTWPH1-6",
+      "gt_step_count": 20
+    },
+    {
+      "gt_id": "PTWPH1-8",
+      "gt_feature": "PTWPH1-8",
+      "gt_step_count": 3
+    },
+    {
+      "gt_id": "PTWPH1-9",
+      "gt_feature": "PTWPH1-9",
+      "gt_step_count": 36
+    },
+    {
+      "gt_id": "PTWPH1-14",
+      "gt_feature": "PTWPH1-14",
+      "gt_step_count": 22
+    },
+    {
+      "gt_id": "PTWPH1-15",
+      "gt_feature": "PTWPH1-15",
+      "gt_step_count": 24
+    },
+    {
+      "gt_id": "PTWPH1-13 & 16",
+      "gt_feature": "PTWPH1-13 & 16",
+      "gt_step_count": 7
+    },
+    {
+      "gt_id": "PTWPH1-1W",
+      "gt_feature": "PTWPH1-1W",
+      "gt_step_count": 8
+    },
+    {
+      "gt_id": "PTWPH1-2W",
+      "gt_feature": "PTWPH1-2W",
+      "gt_step_count": 7
+    }
+  ]
+}

@@ -4,6 +4,7 @@ Handles per-scenario TCs: groups generated TCs by feature_id before matching to 
 """
 import json
 import logging
+import argparse
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
@@ -58,7 +59,15 @@ def evaluate_tc(generated_path=None, tc_gt_dir=None, output_dir=None):
     gen_file = Path(generated_path) if generated_path else _find_latest_tc_json(output_dir)
     with open(gen_file) as f:
         data = json.load(f)
-    gen_tcs = data.get('test_cases', [])
+    
+    # Flatten test_plans into a single list of test cases if nested
+    if "test_plans" in data:
+        gen_tcs = []
+        for plan in data["test_plans"]:
+            gen_tcs.extend(plan.get("test_cases", []))
+    else:
+        gen_tcs = data.get('test_cases', [])
+        
     logger.info(f"Loaded {len(gen_tcs)} generated TCs (scenario-level)")
 
     gt_files = find_gt_files(str(tc_gt_dir))
@@ -134,6 +143,7 @@ def evaluate_tc(generated_path=None, tc_gt_dir=None, output_dir=None):
         "per_tc_results": per_tc, "missed_gt": missed_gt
     }
 
+    output_dir.mkdir(parents=True, exist_ok=True)
     report_path = output_dir / f"tc_evaluation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(report_path, 'w') as f:
         json.dump(report, f, indent=2)
@@ -160,4 +170,14 @@ def evaluate_tc(generated_path=None, tc_gt_dir=None, output_dir=None):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
-    evaluate_tc()
+    parser = argparse.ArgumentParser(description="Evaluate generated test cases against ground truth.")
+    parser.add_argument("--generated_path", help="Path to the generated test cases JSON file.")
+    parser.add_argument("--tc_gt_dir", help="Directory containing the ground truth Excel files.")
+    parser.add_argument("--output_dir", help="Directory to save the evaluation report.")
+    args = parser.parse_args()
+    
+    evaluate_tc(
+        generated_path=args.generated_path,
+        tc_gt_dir=args.tc_gt_dir,
+        output_dir=args.output_dir
+    )
