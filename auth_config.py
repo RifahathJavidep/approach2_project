@@ -6,6 +6,6 @@ def get_java_auth_headers():
     Includes the hardcoded development JWT token.
     """
     return {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer katsu-hardcoded-jwt-token-for-development"
+        "Content-Type": "application/json"
+        # "Authorization": "Bearer katsu-hardcoded-jwt-token-for-development"
     }
