@@ -76,14 +76,14 @@ class ManualExtractor:
     """Handles single-page requirement extraction using the project's core extractors."""
 
     def __init__(self):
-        self.ocr = LocalOCRExtractor(OCRConfig())
-        self.extractors = {
-            FileType.PDF: PDFExtractor(ocr_extractor=self.ocr),
-            FileType.SCANNED_PDF: PDFExtractor(ocr_extractor=self.ocr),
-            FileType.DOCX: DOCXExtractor(),
-            FileType.PPTX: PPTXExtractor(),
-            FileType.IMAGE: StandaloneImageExtractor(ocr_extractor=self.ocr),
-        }
+        self._ocr = None  # Lazy-loaded only when needed
+
+    @property
+    def ocr(self):
+        """Lazily initialize OCR only when actually needed."""
+        if self._ocr is None:
+            self._ocr = LocalOCRExtractor(OCRConfig())
+        return self._ocr
 
     def extract_from_page(self, file_path: str, description: str, page_no: int) -> Dict[str, Any]:
         """
@@ -98,15 +98,7 @@ class ManualExtractor:
         file_type = router.classify()
         
         # 2. Extract Text
-        extractor = self.extractors.get(file_type)
-        if not extractor:
-            return {
-                "status": "error",
-                "message": f"Unsupported file type: {file_type.value}"
-            }
-
         try:
-            # Different extractors have different methods for page-specific extraction
             if file_type in [FileType.PDF, FileType.SCANNED_PDF]:
                 import fitz
                 doc = fitz.open(file_path)
@@ -114,17 +106,22 @@ class ManualExtractor:
                     doc.close()
                     raise ValueError(f"Page {page_no} out of range (1-{len(doc)})")
                 
-                # Use the logic from PDFExtractor but for one page
-                # Rendering for OCR if needed
                 page = doc[page_no - 1]
                 text = page.get_text().strip()
                 if len(text) < 100:
-                    from PIL import Image
-                    import io
-                    pix = page.get_pixmap(dpi=200)
-                    img = Image.open(io.BytesIO(pix.tobytes("png")))
-                    ocr_res = self.ocr.extract_text_from_pil_image(img)
-                    text = ocr_res.get("text", "")
+                    # Try OCR fallback, but don't crash if OCR isn't available
+                    try:
+                        from PIL import Image
+                        import io
+                        pix = page.get_pixmap(dpi=200)
+                        img = Image.open(io.BytesIO(pix.tobytes("png")))
+                        ocr_res = self.ocr.extract_text_from_pil_image(img)
+                        ocr_text = ocr_res.get("text", "")
+                        if ocr_text:
+                            text = ocr_text
+                    except Exception as ocr_err:
+                        # OCR not available — proceed with whatever text we have
+                        print(f"  OCR fallback skipped: {ocr_err}")
                 doc.close()
 
             elif file_type == FileType.PPTX:
@@ -136,11 +133,15 @@ class ManualExtractor:
                 text = "\n".join([shape.text for shape in slide.shapes if hasattr(shape, "text")])
             
             elif file_type == FileType.DOCX:
-                # DOCX doesn't have true pages, use full text as context
+                extractor = DOCXExtractor()
                 text = extractor.extract_text(file_path)
             
             elif file_type == FileType.IMAGE:
-                text = extractor.extract_text(file_path)
+                try:
+                    extractor = StandaloneImageExtractor(ocr_extractor=self.ocr)
+                    text = extractor.extract_text(file_path)
+                except Exception as ocr_err:
+                    return {"status": "error", "message": f"Image OCR not available: {ocr_err}"}
             
             else:
                 text = ""
@@ -156,6 +157,7 @@ class ManualExtractor:
 
         # 3. Call Groq
         return self._call_groq(description, path.name, page_no, text)
+
 
     def _call_groq(self, description: str, doc_name: str, page_no: int, text: str) -> Dict[str, Any]:
         api_key = os.getenv("GROQ_API_KEY")

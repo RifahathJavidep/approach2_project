@@ -422,7 +422,7 @@ async def manual_extract_endpoint(request: ManualExtractionRequest):
     tmp_dir = None
     try:
         from s3_utils import download_from_s3
-        from manual_extract import extract_requirement_from_page
+        from extraction.manual import ManualExtractor
 
         if request.page_no < 1:
             raise HTTPException(status_code=400, detail="page_no must be 1 or greater")
@@ -434,7 +434,8 @@ async def manual_extract_endpoint(request: ManualExtractionRequest):
         os.makedirs(tmp_dir, exist_ok=True)
         local_path = download_from_s3(request.document_url, tmp_dir)
 
-        result = extract_requirement_from_page(
+        extractor = ManualExtractor()
+        result = extractor.extract_from_page(
             file_path=local_path,
             description=request.description,
             page_no=request.page_no,
