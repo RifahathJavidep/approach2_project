@@ -127,8 +127,8 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 
                 try:
                     java_backend_url = f"http://localhost:8080/api/requirements/project/{project_id}"
-                    logger.info("Storing %d requirements in Java backend for project %s...", requirements, project_id)
-                    print("Storing %d requirements in Java backend for project %s...", requirements, project_id)
+                    logger.info("Storing %d requirements in Java backend for project %s...", len(requirements), project_id)
+                    print(f"Storing {len(requirements)} requirements in Java backend for project {project_id}...")
                     mapped_requirements = []
                     for req in requirements:
                         conf_val = req.get("confidence", 0.95)
@@ -146,21 +146,21 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                             "assumptions": req.get("assumptions", []),
                             "ambiguities": req.get("ambiguities", []),
                             "confidence": conf_str,
+                            "confidence_score": conf_val,
+                            "system": req.get("system", ""),
+                            "category": req.get("category", ""),
+                            "requirements_text": req.get("requirements_text", ""),
                             "extraction_model": "llama-3.3-70b-versatile",
                             "extraction_timestamp": now_str,
                             "validation_confirmed": False,
+                            "supporting_context": req.get("supporting_context", []),
                             "metadata": {
-                                "system": req.get("system", ""),
-                                "category": req.get("category", ""),
-                                "requirements_text": req.get("requirements_text", ""),
-                                "confidence_score": conf_val,
                                 "source_file": req.get("source_file", ""),
                                 "page_start": req.get("page_start", 0),
                                 "page_end": req.get("page_end", 0),
                                 "start_line": req.get("line_start", 0),
                                 "end_line": req.get("line_end", 0),
                                 "verbatim_text": req.get("requirements_text", ""),
-                                "supporting_context": req.get("supporting_context", []),
                                 "extraction_model": "llama-3.3-70b-versatile",
                                 "extraction_timestamp": now_str,
                                 "validation_confirmed": False
@@ -381,21 +381,22 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                     "assumptions": r.get("assumptions", []),
                     "ambiguities": r.get("ambiguities", []),
                     "confidence": conf_str,
+                    "confidence_score": conf_val,
+                    "feature_name": r.get("feature_name", ""),
+                    "system": r.get("system", ""),
+                    "category": r.get("category", ""),
+                    "requirements_text": r.get("requirements_text", ""),
                     "extraction_model": "llama-3.3-70b-versatile",
                     "extraction_timestamp": now_str,
                     "validation_confirmed": True,
+                    "supporting_context": r.get("supporting_context", []),
                     "metadata": {
-                        "system": r.get("system", ""),
-                        "category": r.get("category", ""),
-                        "requirements_text": r.get("requirements_text", ""),
-                        "confidence_score": conf_val,
                         "source_file": r.get("source_file", ""),
                         "page_start": r.get("page_start", 0),
                         "page_end": r.get("page_end", 0),
                         "start_line": r.get("line_start", 0),
                         "end_line": r.get("line_end", 0),
                         "verbatim_text": r.get("requirements_text", ""),
-                        "supporting_context": r.get("supporting_context", []),
                         "extraction_model": "llama-3.3-70b-versatile",
                         "extraction_timestamp": now_str,
                         "validation_confirmed": True
@@ -417,13 +418,25 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
         # ----------------------------------------------------------
         # STEP 5: AUTOMATIC TEST CASE GENERATION TRIGGER
         # ----------------------------------------------------------
+        # We MUST capture the numeric IDs from Java to link test cases correctly.
+        reqs_with_ids = []
         if unique_reqs:
-            logger.info(">>> Auto-triggering Test Case Generation for project %s", project_id)
-            # We pass the local_files for context and the unique_reqs directly to avoid re-downloading
+            try:
+                if 'resp' in locals() and resp.status_code in [200, 201]:
+                    reqs_with_ids = resp.json()
+                    logger.info("Successfully fetched %d requirements with numeric IDs from Java.", len(reqs_with_ids))
+            except Exception as e:
+                logger.warning("Could not parse numeric IDs from Java response: %s", e)
+
+        # Fallback to unique_reqs if Java response failed
+        reqs_to_process = reqs_with_ids if reqs_with_ids else unique_reqs
+
+        if reqs_to_process:
+            logger.info(">>> Auto-triggering Test Case Generation for project %s (%d requirements)", project_id, len(reqs_to_process))
             generate_testcases_task.delay(
                 project_id=project_id,
                 project_name=f"Project_{project_id}",
-                requirements_data=unique_reqs,
+                requirements_data=reqs_to_process,
                 local_doc_paths=local_files
             )
 

@@ -311,9 +311,10 @@ async def extract_requirements_async(request: ExtractionRequest):
     2. Queues the CLEAN extraction task (removes duplicate BRs).
     """
     project_id = str(request.project_id)
+    project_name = getattr(request, 'project_name', None) or f"Project_{project_id}"
     file_urls = request.file_urls
 
-    logger.info("━━━ /extract-async  project=%s  files=%s ━━━", project_id, file_urls)
+    logger.info("━━━ /extract-async  project=%s (%s)  files=%s ━━━", project_id, project_name, file_urls)
 
     if not project_id:
         raise HTTPException(status_code=400, detail="No project_id provided")
