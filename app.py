@@ -311,6 +311,7 @@ async def extract_requirements_async(request: ExtractionRequest):
     2. Queues the CLEAN extraction task (removes duplicate BRs).
     """
     project_id = str(request.project_id)
+    project_name = request.project_name or f"project_{project_id}"
     file_urls = request.file_urls
 
     logger.info("━━━ /extract-async  project=%s  files=%s ━━━", project_id, file_urls)
@@ -574,34 +575,46 @@ def _store_manual_requirements(
         import requests as req_lib
 
         java_backend_url = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
-        java_url = f"{java_backend_url}/api/requirements/drafts/project/{project_id}"
+        java_url = f"{java_backend_url}/api/requirements/project/{project_id}"
 
-        now = datetime.now().isoformat()
         mapped = []
         for r in requirements:
+            conf_val = r.get("confidence", 0.95)
+            conf_str = "high" if conf_val >= 0.8 else "medium" if conf_val >= 0.5 else "low"
+            now_str = datetime.now().isoformat() + "Z"
+
             mapped.append({
                 "is_requirement": True,
-                "short_title": r.get("title") or r.get("short_title", ""),
+                "short_title": r.get("title") or r.get("feature_name", ""),
                 "description": r.get("description", ""),
                 "user_story": r.get("user_story", ""),
-                "acceptance_criteria": r.get("acceptance_criteria", []),
-                "test_steps": r.get("test_steps", []),
-                "test_scenarios": r.get("test_scenarios", []),
-                "assumptions": r.get("assumptions", []),
-                "ambiguities": r.get("ambiguities", []),
-                "confidence": r.get("confidence", "high"),
+                "acceptance_criteria": [str(c) for c in r.get("acceptance_criteria", [])],
+                "test_steps": [
+                    f"Step {s.get('step_num', i+1)}: {s.get('action', '')} -> {s.get('expected_result', '')}" 
+                    if isinstance(s, dict) else str(s)
+                    for i, s in enumerate(r.get("test_steps", []))
+                ],
+                "test_scenarios": [str(s) for s in r.get("test_scenarios", [])],
+                "assumptions": [str(a) for a in r.get("assumptions", [])],
+                "ambiguities": [str(a) for a in r.get("ambiguities", [])],
+                "confidence": conf_str,
                 "extraction_model": "llama-3.3-70b-versatile",
-                "extraction_timestamp": now,
+                "extraction_timestamp": now_str,
                 "validation_confirmed": True,
                 "metadata": {
+                    "system": r.get("system", ""),
+                    "category": r.get("category", ""),
+                    "requirements_text": r.get("requirements_text", ""),
+                    "confidence_score": conf_val,
                     "source_file": document_url,
                     "page_start": page_no,
                     "page_end": page_no,
                     "start_line": 0,
                     "end_line": 0,
-                    "verbatim_text": "",
-                    "extraction_timestamp": now,
+                    "verbatim_text": r.get("requirements_text", ""),
+                    "supporting_context": r.get("supporting_context", []),
                     "extraction_model": "llama-3.3-70b-versatile",
+                    "extraction_timestamp": now_str,
                     "validation_confirmed": True,
                 },
             })

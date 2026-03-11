@@ -334,7 +334,7 @@ class TestCasePlanner:
                 "type": "TestCaseEditorDTO",
                 "title": f"{req.get('title', req.get('feature_name', 'Requirement'))} - {sc_name}",
                 "description": tc_data.get('description', f"Test {sc_name} Feature"),
-                "requirementId": req.get('requirement_id', req.get('id', 1)),
+                "requirementId": int(req.get('id')) if str(req.get('id', '')).isdigit() else 0,
                 "status": "DRAFT",
                 "testPhases": [
                     "FUNCTIONAL_TESTING",
@@ -443,7 +443,12 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
 
             # Set required fields
             tc["type"] = "TestCaseEditorDTO"
-            tc["requirementId"] = req.get('id', req_id)
+            # Ensure requirementId is a numeric Long for Java backend
+            req_db_id = req.get('id')
+            if req_db_id and str(req_db_id).isdigit():
+                tc["requirementId"] = int(req_db_id)
+            else:
+                tc["requirementId"] = 0 # Default for fresh requirements not yet in DB
             tc["status"] = "DRAFT"
             
             # Use multi-phase default if not specified

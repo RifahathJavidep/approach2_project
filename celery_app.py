@@ -140,11 +140,15 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                             "short_title": req.get("title") or req.get("feature_name", ""),
                             "description": req.get("description"),
                             "user_story": req.get("user_story", ""),
-                            "acceptance_criteria": req.get("acceptance_criteria", []),
-                            "test_steps": req.get("test_steps", []),
-                            "test_scenarios": req.get("test_scenarios", []),
-                            "assumptions": req.get("assumptions", []),
-                            "ambiguities": req.get("ambiguities", []),
+                            "acceptance_criteria": [str(c) for c in req.get("acceptance_criteria", [])],
+                            "test_steps": [
+                                f"Step {s.get('step_num', i+1)}: {s.get('action', '')} -> {s.get('expected_result', '')}" 
+                                if isinstance(s, dict) else str(s)
+                                for i, s in enumerate(req.get("test_steps", []))
+                            ],
+                            "test_scenarios": [str(s) for s in req.get("test_scenarios", [])],
+                            "assumptions": [str(a) for a in req.get("assumptions", [])],
+                            "ambiguities": [str(a) for a in req.get("ambiguities", [])],
                             "confidence": conf_str,
                             "extraction_model": "llama-3.3-70b-versatile",
                             "extraction_timestamp": now_str,
@@ -375,11 +379,15 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                     "short_title": r.get("title") or r.get("feature_name", ""),
                     "description": r.get("description", ""),
                     "user_story": r.get("user_story", ""),
-                    "acceptance_criteria": r.get("acceptance_criteria", []),
-                    "test_steps": r.get("test_steps", []),
-                    "test_scenarios": r.get("test_scenarios", []),
-                    "assumptions": r.get("assumptions", []),
-                    "ambiguities": r.get("ambiguities", []),
+                    "acceptance_criteria": [str(c) for c in r.get("acceptance_criteria", [])],
+                    "test_steps": [
+                        f"Step {s.get('step_num', i+1)}: {s.get('action', '')} -> {s.get('expected_result', '')}" 
+                        if isinstance(s, dict) else str(s)
+                        for i, s in enumerate(r.get("test_steps", []))
+                    ],
+                    "test_scenarios": [str(s) for s in r.get("test_scenarios", [])],
+                    "assumptions": [str(a) for a in r.get("assumptions", [])],
+                    "ambiguities": [str(a) for a in r.get("ambiguities", [])],
                     "confidence": conf_str,
                     "extraction_model": "llama-3.3-70b-versatile",
                     "extraction_timestamp": now_str,
@@ -403,6 +411,20 @@ def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir
                 })
 
             resp = requests.post(java_url, json=mapped, headers=get_java_auth_headers(), timeout=30)
+            if resp.status_code in [200, 201]:
+                try:
+                    saved_data = resp.json()
+                    if isinstance(saved_data, list):
+                        # Map returned IDs back to our unique_reqs list
+                        for i, req_obj in enumerate(saved_data):
+                            if i < len(unique_reqs):
+                                db_id = req_obj.get('id')
+                                if db_id:
+                                    unique_reqs[i]['id'] = db_id
+                        logger.info("✓ Updated %d requirements with database IDs", len(saved_data))
+                except Exception as e:
+                    logger.warning("Could not parse Java response for IDs: %s", e)
+            
             logger.info("Filtered %d → %d unique. Stored in Java backend (project %s). Response: %s",
                         len(extracted_reqs), len(unique_reqs), project_id, resp.text[:500])
 
