@@ -1,0 +1,111 @@
+{
+  "evaluation_date": "2026-03-12T19:32:26.409721",
+  "generated_file": "/Users/javid/Documents/prism/approach2_project/output/ptw_complete_v4_20260312_192422/tc/ptw_complete_v4_test_plan.json",
+  "total_scenario_tcs": 29,
+  "total_feature_groups": 0,
+  "tc_level_metrics": {
+    "feature_groups": 0,
+    "gt_count": 17,
+    "matched": 0,
+    "false_positives": 0,
+    "missed": 17,
+    "precision": 0,
+    "recall": 0.0,
+    "f1_score": 0
+  },
+  "step_level_metrics": {
+    "avg_step_precision": 0.0,
+    "avg_step_recall": 0.0,
+    "avg_step_f1": 0.0,
+    "total_gen_steps": 0,
+    "total_gt_steps": 483
+  },
+  "per_tc_results": [],
+  "missed_gt": [
+    {
+      "gt_id": "PTWPH1-1",
+      "gt_feature": "PTWPH1-1",
+      "gt_step_count": 138
+    },
+    {
+      "gt_id": "PTWPH1-2",
+      "gt_feature": "PTWPH1-2",
+      "gt_step_count": 5
+    },
+    {
+      "gt_id": "PTWPH1-3",
+      "gt_feature": "PTWPH1-3",
+      "gt_step_count": 7
+    },
+    {
+      "gt_id": "PTWPH1-4",
+      "gt_feature": "PTWPH1-4",
+      "gt_step_count": 34
+    },
+    {
+      "gt_id": "PTWPH1-5",
+      "gt_feature": "PTWPH1-5",
+      "gt_step_count": 9
+    },
+    {
+      "gt_id": "PTWPH1-6",
+      "gt_feature": "PTWPH1-6",
+      "gt_step_count": 20
+    },
+    {
+      "gt_id": "PTWPH1-7",
+      "gt_feature": "PTWPH1-7",
+      "gt_step_count": 45
+    },
+    {
+      "gt_id": "PTWPH1-8",
+      "gt_feature": "PTWPH1-8",
+      "gt_step_count": 3
+    },
+    {
+      "gt_id": "PTWPH1-9",
+      "gt_feature": "PTWPH1-9",
+      "gt_step_count": 36
+    },
+    {
+      "gt_id": "PTWPH1-10",
+      "gt_feature": "PTWPH1-10",
+      "gt_step_count": 34
+    },
+    {
+      "gt_id": "PTWPH1-11",
+      "gt_feature": "PTWPH1-11",
+      "gt_step_count": 28
+    },
+    {
+      "gt_id": "PTWPH1-12",
+      "gt_feature": "PTWPH1-12",
+      "gt_step_count": 56
+    },
+    {
+      "gt_id": "PTWPH1-14",
+      "gt_feature": "PTWPH1-14",
+      "gt_step_count": 22
+    },
+    {
+      "gt_id": "PTWPH1-15",
+      "gt_feature": "PTWPH1-15",
+      "gt_step_count": 24
+    },
+    {
+      "gt_id": "PTWPH1-13 & 16",
+      "gt_feature": "PTWPH1-13 & 16",
+      "gt_step_count": 7
+    },
+    {
+      "gt_id": "PTWPH1-1W",
+      "gt_feature": "PTWPH1-1W",
+      "gt_step_count": 8
+    },
+    {
+      "gt_id": "PTWPH1-2W",
+      "gt_feature": "PTWPH1-2W",
+      "gt_step_count": 7
+    }
+  ]
+}

@@ -1,0 +1,3619 @@
+{
+  "project_name": "ptw_complete_v4",
+  "test_plans": [
+    {
+      "requirement_id": "REQ-001",
+      "requirement_title": "Export Feature",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Export Feature - Export Dashboard Details",
+          "description": "E2E test for Export Dashboard Details of Export Feature",
+          "requirementId": "REQ-001",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the export feature",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials",
+              "expectedResult": "The dashboard login page accepts the credentials and proceeds to the next step",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Login button",
+              "expectedResult": "The dashboard homepage appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the dashboard section that contains the export feature",
+              "expectedResult": "The export feature is visible on the page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on the Export button",
+              "expectedResult": "The export options appear",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Select CSV as the export file type",
+              "expectedResult": "The CSV export option is selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the Export button to export the data as a CSV file",
+              "expectedResult": "The CSV file is downloaded",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the exported CSV file includes the required data",
+              "expectedResult": "The CSV file contains the required data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the exported CSV file provides a visual representation of the data",
+              "expectedResult": "The CSV file provides a visual representation of the data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Repeat steps 6-9 for PDF, EXCEL, PNG, and JPEG file types",
+              "expectedResult": "The export feature works correctly for all file types",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the export feature works correctly for different types of data",
+              "expectedResult": "The export feature works correctly for all data types",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the export feature works correctly for different time periods",
+              "expectedResult": "The export feature works correctly for all time periods",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Logout of the dashboard",
+              "expectedResult": "The dashboard login page appears",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-002",
+      "requirement_title": "NAG (Group) Filter",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "NAG (Group) Filter -  Filter by NAG",
+          "description": "E2E test for Filter by NAG scenario of NAG (Group) Filter feature",
+          "requirementId": "REQ-002",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in as an Admin\n• User has multiple NAGs associated with their account",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid Admin credentials in the username and password fields",
+              "expectedResult": "The login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click the Login button",
+              "expectedResult": "The dashboard homepage appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the NAG (Group) Filter dropdown",
+              "expectedResult": "The NAG (Group) Filter dropdown is visible",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the default NAG is selected in the dropdown",
+              "expectedResult": "The default NAG is selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Select a different NAG from the dropdown",
+              "expectedResult": "The selected NAG is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the dashboard displays the correct information for the selected NAG",
+              "expectedResult": "The dashboard displays the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Repeat steps 6-7 for multiple NAGs",
+              "expectedResult": "The dashboard displays the correct information for each selected NAG",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify the dropdown filter represents all NAGs associated with the logged-in Admin",
+              "expectedResult": "The dropdown filter represents all NAGs",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Click the Logout button",
+              "expectedResult": "The dashboard login page appears",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-003",
+      "requirement_title": "NAG favoriting",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "NAG favoriting - Favorite NAG",
+          "description": "E2E test for Favorite NAG of NAG favoriting feature",
+          "requirementId": "REQ-003",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged out\n• User has access to the dashboard\n• Multiple NAGs are available in the dropdown filter",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login form",
+              "expectedResult": "The login form is filled with valid credentials",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click the 'Login' button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the NAG selection dropdown filter",
+              "expectedResult": "The NAG selection dropdown filter is expanded",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Select a NAG from the dropdown filter",
+              "expectedResult": "The selected NAG is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on the 'Favorite' button next to the selected NAG",
+              "expectedResult": "The favorite icon is displayed next to the selected NAG",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the 'Logout' button",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Enter valid username and password in the login form again",
+              "expectedResult": "The login form is filled with valid credentials",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Click the 'Login' button again",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the favorite NAG is displayed as the default view",
+              "expectedResult": "The favorite NAG is displayed as the default view",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the favorite NAG is saved and displayed with a favorite icon",
+              "expectedResult": "The favorite NAG is saved and displayed with a favorite icon",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Select a different NAG from the dropdown filter",
+              "expectedResult": "The newly selected NAG is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Verify that the previously favorite NAG is no longer displayed as the default view",
+              "expectedResult": "The previously favorite NAG is no longer displayed as the default view",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Click on the 'Favorite' button next to the newly selected NAG",
+              "expectedResult": "The favorite icon is displayed next to the newly selected NAG",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 14,
+              "description": "Verify that the newly favorite NAG is displayed as the default view",
+              "expectedResult": "The newly favorite NAG is displayed as the default view",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-004",
+      "requirement_title": "NAG Metric Tiles",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "NAG Metric Tiles - View Metric Tiles for NAG",
+          "description": "E2E test for View Metric Tiles for NAG of NAG Metric Tiles",
+          "requirementId": "REQ-004",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the BBSSC dashboard\n• User has access to the NAG Metric Tiles feature",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the BBSSC dashboard URL in a web browser",
+              "expectedResult": "The BBSSC dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "The login credentials are accepted and the user is redirected to the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Login button",
+              "expectedResult": "The user is logged in and the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the NAG Metric Tiles are displayed on the dashboard",
+              "expectedResult": "The NAG Metric Tiles are visible and display the correct data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Select the Billing Accounts tile",
+              "expectedResult": "The user is redirected to the advanced search page with the NAG pre-filled and the list of matching BANs is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the data in the Billing Accounts tile is accurate",
+              "expectedResult": "The data in the tile matches the data in the advanced search page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Repeat steps 5-6 for the Active, Suspended, and Cancelled tiles",
+              "expectedResult": "The data in each tile is accurate and matches the data in the advanced search page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the NAG (Group) Filter is functional",
+              "expectedResult": "The filter allows the user to select a specific NAG and the data in the tiles is updated accordingly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the export feature is functional",
+              "expectedResult": "The user can export the data in the tiles in various formats (CSV, PDF, EXCEL, PNG, JPEG)",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Log out of the BBSSC dashboard",
+              "expectedResult": "The user is logged out and the login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-005",
+      "requirement_title": "Usage Summary Tabs",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Usage Summary Tabs - Default Grouping",
+          "description": "E2E test for Default Grouping of Usage Summary Tabs",
+          "requirementId": "REQ-005",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has at least one usage record for the last 14 months",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the dashboard login page",
+              "expectedResult": "The login page appears with username and password fields",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password and click the Login button",
+              "expectedResult": "The dashboard homepage appears with the Usage Summary widget visible",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Verify that the Data tab is selected by default in the Usage Summary widget",
+              "expectedResult": "The Data tab is selected, and the corresponding bar chart is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart shows 14 months of data, with each bar representing a month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Hover over a bar in the bar chart",
+              "expectedResult": "A tooltip appears showing the specific usage values for In-plan, Overage, and Roaming for that month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on the Voice tab",
+              "expectedResult": "The Voice tab is selected, and the corresponding bar chart is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the bar chart displays usage data for the last 14 months for the Voice tab",
+              "expectedResult": "The bar chart shows 14 months of data for Voice usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Click on the Long Distance tab",
+              "expectedResult": "The Long Distance tab is selected, and the corresponding bar chart is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the bar chart displays usage data for the last 14 months for the Long Distance tab",
+              "expectedResult": "The bar chart shows 14 months of data for Long Distance usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Click on the SMS tab",
+              "expectedResult": "The SMS tab is selected, and the corresponding bar chart is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the bar chart displays usage data for the last 14 months for the SMS tab",
+              "expectedResult": "The bar chart shows 14 months of data for SMS usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Log out of the dashboard",
+              "expectedResult": "The login page appears again",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        },
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Usage Summary Tabs - Selecting Different Groupings",
+          "description": "E2E test for Selecting Different Groupings of Usage Summary Tabs",
+          "requirementId": "REQ-005",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• Usage widget is visible",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the application and navigate to the dashboard",
+              "expectedResult": "The dashboard is displayed with the Data tab selected by default",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Verify that the Data tab is selected by default",
+              "expectedResult": "The Data tab is selected and the corresponding usage data is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Voice tab",
+              "expectedResult": "The Voice tab is selected and the corresponding usage data is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays usage data for the last 14 months, with each bar distinguishing between In-plan, Overage, and Roaming usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Hover over a bar in the bar chart",
+              "expectedResult": "A tooltip appears showing the specific usage values for In-plan, Overage, and Roaming for that month/billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on a bar in the bar chart to drill down into detailed usage information",
+              "expectedResult": "A detailed, paginated list of specific plans or subscribers with their exact usage numbers is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the drill-down page displays a detailed, paginated list of specific plans or subscribers with their exact usage numbers",
+              "expectedResult": "The drill-down page displays a detailed, paginated list of specific plans or subscribers with their exact usage numbers",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Navigate away from the dashboard and return",
+              "expectedResult": "The usage data is updated correctly and the previously selected tab is still selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the usage data is updated correctly when switching between tabs",
+              "expectedResult": "The usage data is updated correctly and the bar chart distinguishes between In-plan, Overage, and Roaming usage using standardized colors",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the donut wheel visuals are displayed for plans approaching their limits",
+              "expectedResult": "The donut wheel visuals are displayed for plans approaching their limits",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on the Long Distance tab",
+              "expectedResult": "The Long Distance tab is selected and the corresponding usage data is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Click on the SMS tab",
+              "expectedResult": "The SMS tab is selected and the corresponding usage data is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Verify that the bar chart distinguishes between In-plan, Overage, and Roaming usage using standardized colors for all tabs",
+              "expectedResult": "The bar chart distinguishes between In-plan, Overage, and Roaming usage using standardized colors for all tabs",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Logout of the application",
+              "expectedResult": "The user is logged out of the application",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 14,
+              "description": "Verify that the application is in a clean state for the next test",
+              "expectedResult": "The application is in a clean state for the next test",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        },
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Usage Summary Tabs - Drill-Down Capability",
+          "description": "E2E test for Drill-Down Capability of Usage Summary Tabs",
+          "requirementId": "REQ-005",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• Usage Summary Tabs feature is enabled",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Log in to the dashboard",
+              "expectedResult": "The dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Click on the 'Data' tab",
+              "expectedResult": "The bar chart displays usage data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays 14 months of data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Hover over a bar in the bar chart",
+              "expectedResult": "A tooltip appears showing the specific usage values for In-plan, Overage, and Roaming for that month/billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on a specific month's bar in the bar chart",
+              "expectedResult": "A summary displays the primary structure of usage for that period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the summary displays the primary structure of usage for that period",
+              "expectedResult": "The summary displays the correct usage data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the 'Voice' tab",
+              "expectedResult": "The bar chart displays usage data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays 14 months of data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Navigate away from the dashboard and return",
+              "expectedResult": "The dashboard is displayed with the previously selected tab still selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Click on the 'SMS' tab",
+              "expectedResult": "The bar chart displays usage data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays 14 months of data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Click on the 'Long Distance' tab",
+              "expectedResult": "The bar chart displays usage data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays 14 months of data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Click on a specific month's bar in the bar chart",
+              "expectedResult": "A summary displays the primary structure of usage for that period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 14,
+              "description": "Verify that the summary displays the primary structure of usage for that period",
+              "expectedResult": "The summary displays the correct usage data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 15,
+              "description": "Log out of the dashboard",
+              "expectedResult": "The login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        },
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Usage Summary Tabs - Export Capability",
+          "description": "E2E test for Export Capability of Usage Summary Tabs",
+          "requirementId": "REQ-005",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• Usage Summary Tabs feature is enabled",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the dashboard login page",
+              "expectedResult": "The login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials and click the Login button",
+              "expectedResult": "The dashboard homepage appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Verify that the Data tab is selected by default",
+              "expectedResult": "The Data tab is selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the Voice tab",
+              "expectedResult": "The Voice tab is selected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the bar chart displays usage data for the last 14 months",
+              "expectedResult": "The bar chart displays usage data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Hover over a bar in the chart",
+              "expectedResult": "A tooltip appears showing the specific usage values",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the Export button",
+              "expectedResult": "The export options appear",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Select the CSV export option",
+              "expectedResult": "The CSV file is downloaded",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the CSV file contains the correct usage data",
+              "expectedResult": "The CSV file contains the correct usage data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Repeat steps 7-9 for PDF, EXCEL, PNG, and JPEG export options",
+              "expectedResult": "The export files include the correct visual representations and data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Logout of the dashboard",
+              "expectedResult": "The login page appears",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 4
+    },
+    {
+      "requirement_id": "REQ-006",
+      "requirement_title": "Billing Period Information",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Billing Period Information - Verify Billing Period Information",
+          "description": "E2E test for Verify Billing Period Information of Billing Period Information",
+          "requirementId": "REQ-006",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• Customer profile is set up with accurate billing period information",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Enter valid username and password in the login fields",
+              "expectedResult": "Login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Click on the Login button",
+              "expectedResult": "User is logged into the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Navigate to the billing period information section",
+              "expectedResult": "Billing period information section is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify the open cycle date is correctly displayed",
+              "expectedResult": "Open cycle date matches the expected date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the closed cycle date is correctly displayed",
+              "expectedResult": "Closed cycle date matches the expected date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the billing period information is accurately displayed",
+              "expectedResult": "All billing period information is correct and up-to-date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the Log out button",
+              "expectedResult": "User is logged out of the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Confirm log out",
+              "expectedResult": "Login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify no sensitive information is retained after log out",
+              "expectedResult": "No sensitive information is visible",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Attempt to access the billing period information section without logging in",
+              "expectedResult": "Access is denied, and the user is redirected to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-007",
+      "requirement_title": "Data Usage Bar Chart",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Data Usage Bar Chart - View Data Usage Bar Chart",
+          "description": "E2E test for View Data Usage Bar Chart of Data Usage Bar Chart",
+          "requirementId": "REQ-007",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Data Usage Bar Chart feature",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login form",
+              "expectedResult": "The login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click the Login button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the navigation menu to access the Data Usage Bar Chart page",
+              "expectedResult": "The Data Usage Bar Chart page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the bar chart reflects data usage for the last 14 months",
+              "expectedResult": "The bar chart displays data for the last 14 months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Hover over a bar in the chart to view the tooltip",
+              "expectedResult": "A tooltip with usage details is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the visuals heading reflects the current grouping and unit of usage",
+              "expectedResult": "The visuals heading matches the current grouping and unit of usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the bar graph represents in-plan, overage, and roaming usage with the correct colors",
+              "expectedResult": "The bar graph correctly represents in-plan, overage, and roaming usage",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the y-axis reflects the units of measurement",
+              "expectedResult": "The y-axis displays the correct units of measurement",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the x-axis reflects the months associated with each bar graph",
+              "expectedResult": "The x-axis displays the correct months",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the graph legend represents in-plan, overage, and roaming with the correct colors",
+              "expectedResult": "The graph legend correctly represents in-plan, overage, and roaming",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that static text is visible to confirm that data is based on billing date",
+              "expectedResult": "Static text confirming data is based on billing date is visible",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Click the Logout button",
+              "expectedResult": "The user is logged out of the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Verify that the user is redirected to the login page",
+              "expectedResult": "The login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-008",
+      "requirement_title": "Interaction Prompt",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Interaction Prompt - Interaction with Data Usage Bar Chart",
+          "description": "E2E test for Interaction with Data Usage Bar Chart of Interaction Prompt feature",
+          "requirementId": "REQ-008",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User has valid login credentials\n• User has access to the dashboard\n• Data Usage Bar Chart section is available",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the 'Login' button",
+              "expectedResult": "The user is logged in and the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the Data Usage Bar Chart section",
+              "expectedResult": "The Data Usage Bar Chart section is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the presence of static instruction text below the charts",
+              "expectedResult": "Static instruction text is displayed below the charts",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on a graph bar to display detailed data",
+              "expectedResult": "Detailed data for the selected period is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the display of detailed data for the selected period",
+              "expectedResult": "Detailed data for the selected period is displayed correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Drill down into shared and individual plans usage breakdowns",
+              "expectedResult": "Shared and individual plans usage breakdowns are displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify the display of usage summary tabs and billing period information",
+              "expectedResult": "Usage summary tabs and billing period information are displayed correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Click on the 'Logout' button",
+              "expectedResult": "The user is logged out and the login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the user is logged out",
+              "expectedResult": "The user is logged out and cannot access the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Close the browser",
+              "expectedResult": "The browser is closed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-009",
+      "requirement_title": "Usage Bar Chart Drilldown",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Usage Bar Chart Drilldown - Usage Bar Chart Drilldown",
+          "description": "E2E test for Usage Bar Chart Drilldown of Usage Bar Chart Drilldown feature",
+          "requirementId": "REQ-009",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Usage Bar Chart Drilldown feature",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the portal",
+              "expectedResult": "Portal login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password",
+              "expectedResult": "Login is successful",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Login button",
+              "expectedResult": "Dashboard page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the Usage Bar Chart Drilldown tab",
+              "expectedResult": "Usage Bar Chart Drilldown page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Select a specific month from the bar graph",
+              "expectedResult": "The heading reflects the selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify the data is accurate for the selected month",
+              "expectedResult": "The data is accurate for the selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the billed usage summary table is displayed",
+              "expectedResult": "The billed usage summary table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Click on the back button",
+              "expectedResult": "The user is returned to the default state",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Repeat steps 5-8 for different months",
+              "expectedResult": "The data is accurate for each month and the billed usage summary table is displayed for each month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify the user is returned to the default state after each month",
+              "expectedResult": "The user is returned to the default state after each month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Logout of the portal",
+              "expectedResult": "Logout is successful",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify the portal login page appears",
+              "expectedResult": "Portal login page appears",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-010",
+      "requirement_title": "Shared Plans Usage Breakdown",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Shared Plans Usage Breakdown - View Shared Plans Usage Breakdown",
+          "description": "E2E test for View Shared Plans Usage Breakdown of Shared Plans Usage Breakdown feature",
+          "requirementId": "REQ-010",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Shared Plans Usage Breakdown table",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the dashboard login page",
+              "expectedResult": "The login page appears with username and password fields",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password",
+              "expectedResult": "The dashboard homepage appears after successful login",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the Shared Plans Usage Breakdown table",
+              "expectedResult": "The Shared Plans Usage Breakdown table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on a link in the Shared Plans Usage Breakdown table",
+              "expectedResult": "The Shareplans Detail Table appears with correct columns (Billing Account, Plan Name, # of Subscribers, Allowance, Used, Overage)",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the Shareplans Detail Table is paginated if there are more than 10 entries",
+              "expectedResult": "Pagination controls are visible and functional if more than 10 entries exist",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on a month's bar in the main bar chart",
+              "expectedResult": "The bar chart view collapses and is replaced by a drill-down view with a header reflecting the selected month or billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown tables are displayed in the drill-down view",
+              "expectedResult": "Both tables are visible and contain the correct data for the selected month/billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the data in the Shared Plans Usage Breakdown and Individual Plans Usage Breakdown tables accurately reflects the usage for the selected month/billing period",
+              "expectedResult": "The data in both tables matches the expected usage data for the selected period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Click on a link in the Shared Plans Usage Breakdown table to navigate to the Shareplans Detail Table",
+              "expectedResult": "The Shareplans Detail Table appears with detailed information for the selected plan",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Logout of the dashboard",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-011",
+      "requirement_title": "Individual Plans Usage Breakdown",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Individual Plans Usage Breakdown - View Individual Plans Usage Breakdown",
+          "description": "E2E test for View Individual Plans Usage Breakdown of Individual Plans Usage Breakdown feature",
+          "requirementId": "REQ-011",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Individual Plans Usage Breakdown feature",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the dashboard login page",
+              "expectedResult": "The login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials and click the 'Login' button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the 'Individual Plans Usage Breakdown' tab",
+              "expectedResult": "The 'Individual Plans Usage Breakdown' table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the table displays the correct columns (Number (MDN), Name, Billing Account, Allowance, Used, Overage)",
+              "expectedResult": "The table displays the correct columns",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on a link in the 'Individual Plans Usage Breakdown' table",
+              "expectedResult": "The 'Individual Plans Detail Table' is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the 'Individual Plans Detail Table' displays the correct columns (Number (MDN), Name, Billing Account, Allowance, Used, Overage) and is paginated if there are more than 10 entries",
+              "expectedResult": "The 'Individual Plans Detail Table' displays the correct columns and is paginated if necessary",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click on the 'Back' button to return to the summary table",
+              "expectedResult": "The 'Individual Plans Usage Breakdown' table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the data in the 'Individual Plans Usage Breakdown' table is accurate and reflects the usage for the selected month/billing period",
+              "expectedResult": "The data in the table is accurate and reflects the usage for the selected month/billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Click on a different month's bar in the bar chart",
+              "expectedResult": "The drill-down view contains two summary tables: 'Shared Plans Usage Breakdown' and 'Individual Plans Usage Breakdown'",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the data in the 'Individual Plans Usage Breakdown' table is accurate and reflects the usage for the selected month/billing period",
+              "expectedResult": "The data in the table is accurate and reflects the usage for the selected month/billing period",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Log out of the dashboard",
+              "expectedResult": "The login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-012",
+      "requirement_title": "In-plan Usage Threshold \"Donut Wheel\"",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "In-plan Usage Threshold \"Donut Wheel\" - Viewing usage summary for current month",
+          "description": "E2E test for viewing usage summary for current month of In-plan Usage Threshold 'Donut Wheel' feature",
+          "requirementId": "REQ-012",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in\n• User has access to the relevant page",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the application URL",
+              "expectedResult": "The application login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login form",
+              "expectedResult": "The user is logged in and the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the 'Play to Win' section",
+              "expectedResult": "The 'Play to Win' section of the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Select the current month from the month selection dropdown",
+              "expectedResult": "The dashboard updates to show data for the selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the 'In-plan Usage Threshold Donut Wheel' is displayed",
+              "expectedResult": "The donut wheel is visible and shows the usage threshold for the current month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the usage details table is displayed below the donut wheel",
+              "expectedResult": "The table shows detailed usage information for the current month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Select a different month from the month selection dropdown",
+              "expectedResult": "The dashboard updates to show data for the newly selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the 'In-plan Usage Threshold Donut Wheel' updates for the new month",
+              "expectedResult": "The donut wheel reflects the usage threshold for the newly selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the usage details table updates for the new month",
+              "expectedResult": "The table shows detailed usage information for the newly selected month",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Select a different threshold option if available",
+              "expectedResult": "The donut wheel and table update to reflect the new threshold",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the 'In-plan Usage Threshold Donut Wheel' reflects the new threshold",
+              "expectedResult": "The donut wheel shows the usage against the new threshold",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the usage details table reflects the new threshold",
+              "expectedResult": "The table shows detailed usage information based on the new threshold",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Click on the logout button",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-013",
+      "requirement_title": "Breakdown Table Back Button",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Breakdown Table Back Button - Breakdown Table Back Button Navigation",
+          "description": "E2E test for Breakdown Table Back Button Navigation of Breakdown Table Back Button",
+          "requirementId": "REQ-013",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the breakdown table",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the dashboard login page",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password and click the Login button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the breakdown table",
+              "expectedResult": "The breakdown table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on a specific table row to drill down into detailed information",
+              "expectedResult": "Detailed information for the selected table row is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click the Back button on the detailed information page",
+              "expectedResult": "The breakdown table page is displayed again",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that existing filters are still applied on the breakdown table page",
+              "expectedResult": "Filters are still applied as before drilling down",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Repeat steps 4-6 for different tables to ensure consistency",
+              "expectedResult": "The back button functions correctly and filters are preserved across different tables",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Click on another specific table row to drill down into detailed information",
+              "expectedResult": "Detailed information for the newly selected table row is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Click the Back button again on the detailed information page",
+              "expectedResult": "The breakdown table page is displayed again with filters still applied",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the back button works correctly after multiple drill-downs and back actions",
+              "expectedResult": "The back button navigates correctly, and filters remain applied",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Logout of the dashboard",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that after logout, the back button does not retain any session history",
+              "expectedResult": "No session history is retained, and the login page is displayed without any prior session data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Close the browser to ensure all session data is cleared",
+              "expectedResult": "All session data is cleared, and the browser is closed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Reopen the browser and navigate back to the dashboard login page",
+              "expectedResult": "The dashboard login page is displayed without any retained session data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 14,
+              "description": "Login again and verify that the back button functionality is consistent across new sessions",
+              "expectedResult": "The back button works as expected, and filters are applied correctly in a new session",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-014",
+      "requirement_title": "Shareplans Detail Table",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Shareplans Detail Table - View Shareplans Detail Table",
+          "description": "E2E test for View Shareplans Detail Table of Shareplans Detail Table",
+          "requirementId": "REQ-014",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the shareplans detail table",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the dashboard login page",
+              "expectedResult": "The login page appears with fields for username and password",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password and click the Login button",
+              "expectedResult": "The dashboard homepage appears after successful login",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the Shareplans section",
+              "expectedResult": "The Shareplans section of the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Select a Shareplan group from the available options",
+              "expectedResult": "The Shareplans Detail Table for the selected group is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the table displays the correct details for the selected Shareplan group",
+              "expectedResult": "The table shows the expected columns and data for the Shareplan group",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Check if the data in the table is sorted by billing account's alphabetical order",
+              "expectedResult": "The data is sorted alphabetically by billing account",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Test the table functionality by sorting, filtering, or searching",
+              "expectedResult": "The table functions as expected, allowing for sorting, filtering, or searching",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Click on a table row to view more details if applicable",
+              "expectedResult": "More detailed information about the selected row is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify any additional table features such as pagination or scrolling",
+              "expectedResult": "The table features work correctly, allowing for easy navigation of data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Logout of the dashboard",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-015",
+      "requirement_title": "Individual Plans Detail Table",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Individual Plans Detail Table - View Individual Plans Detail Table",
+          "description": "E2E test for View Individual Plans Detail Table of Individual Plans Detail Table",
+          "requirementId": "REQ-015",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Individual Plans Usage Breakdown table",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "The login credentials are accepted and the dashboard home page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the Individual Plans Usage Breakdown table",
+              "expectedResult": "The Individual Plans Usage Breakdown table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on a link in the Individual Plans Usage Breakdown table",
+              "expectedResult": "The Individual Plans Detail Table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the Individual Plans Detail Table displays the correct columns (Number (MDN), Name, Billing Account, Allowance, Used, Overage)",
+              "expectedResult": "The correct columns are displayed in the table",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the table is paginated if there are more than 10 entries",
+              "expectedResult": "The table is paginated correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the data within the table accurately reflects the usage for the selected month/billing period",
+              "expectedResult": "The data in the table is accurate and up-to-date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the data is broken down by In-plan, Overage, and Roaming",
+              "expectedResult": "The data is broken down correctly by In-plan, Overage, and Roaming",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the table displays the correct data for each subscriber",
+              "expectedResult": "The table displays the correct data for each subscriber",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the pagination works correctly",
+              "expectedResult": "The pagination works correctly and displays the correct data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on the logout button to exit the dashboard",
+              "expectedResult": "The user is logged out of the dashboard and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-016",
+      "requirement_title": "Back Button to Drill down table",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Back Button to Drill down table - Back Button from Shareplans Detail Table",
+          "description": "E2E test for Back Button from Shareplans Detail Table of Back Button to Drill down table feature",
+          "requirementId": "REQ-016",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Shareplans Detail Table",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the dashboard login page",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials",
+              "expectedResult": "The login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click the Login button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the Shareplans Detail Table",
+              "expectedResult": "The Shareplans Detail Table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the Back Button is displayed on the Shareplans Detail Table page",
+              "expectedResult": "The Back Button is visible and enabled",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click the Back Button",
+              "expectedResult": "The previous view is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify all existing filters remain after clicking the Back Button",
+              "expectedResult": "All filters are preserved",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify the previous view is correctly displayed",
+              "expectedResult": "The user is returned to the expected previous view",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Click on the Logout button",
+              "expectedResult": "The logout option is confirmed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Confirm logout",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-017",
+      "requirement_title": "Shopping and Orders Widget",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Shopping and Orders Widget - View latest orders",
+          "description": "E2E test for View latest orders of Shopping and Orders Widget",
+          "requirementId": "REQ-017",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in with valid credentials\n• User has permission to view shopping and orders widget\n• User has at least 5 orders in their account",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the application URL in a web browser",
+              "expectedResult": "The application login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login form",
+              "expectedResult": "The login credentials are accepted, and the user is redirected to the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the 'Login' button",
+              "expectedResult": "The user is successfully logged in and the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the Shopping and Orders section",
+              "expectedResult": "The Shopping and Orders Widget is visible on the page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on the Shopping and Orders Widget",
+              "expectedResult": "The widget expands to show order details",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify the order details are correctly displayed",
+              "expectedResult": "Order details such as order date, status, and items are correctly shown",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Check the visuals of the orders (e.g., graphs, charts)",
+              "expectedResult": "Visuals are correctly rendered and match the order data",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify the permissions related to the orders",
+              "expectedResult": "Permissions are correctly applied and restrict or allow actions as expected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Check the status of the orders (e.g., in-progress, completed, cancelled)",
+              "expectedResult": "Order statuses are accurately reflected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Review the order history",
+              "expectedResult": "A complete and accurate history of orders is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Test the functionality of the Shopping and Orders Widget",
+              "expectedResult": "The widget functions as expected, allowing users to view and manage their orders",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Click on the 'Logout' button",
+              "expectedResult": "The user is logged out, and the login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Verify the application is in a clean state after logout",
+              "expectedResult": "No user data or session remains active after logout",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-018",
+      "requirement_title": "Shop now Button",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Shop now Button - Successful navigation to shop",
+          "description": "E2E test for Successful navigation to shop of Shop now Button",
+          "requirementId": "REQ-018",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has the necessary permissions to view the Shopping and orders box\n• User has a stable internet connection",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the dashboard login page",
+              "expectedResult": "The login page appears with fields for username and password",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password into the respective fields",
+              "expectedResult": "The login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click the Login button",
+              "expectedResult": "The dashboard homepage loads successfully",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the Shopping and orders box",
+              "expectedResult": "The Shopping and orders box is visible on the screen",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the Shop now button is in the top right corner of the Shopping and orders box",
+              "expectedResult": "The Shop now button is visible and correctly positioned",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click the Shop now button",
+              "expectedResult": "A new browser tab opens with the shopping page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the URL in the new browser tab matches the expected shopping page URL",
+              "expectedResult": "The URL is correct and the page loads as expected",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Close the new browser tab",
+              "expectedResult": "The new tab closes, and the focus returns to the dashboard tab",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify the dashboard and Shopping and orders box are still in the expected state",
+              "expectedResult": "Everything appears as it did before clicking the Shop now button",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Click the Logout button",
+              "expectedResult": "The user is logged out, and the login page appears",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-019",
+      "requirement_title": "Latest Orders Table",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Latest Orders Table - View Latest Orders Table",
+          "description": "E2E test for View Latest Orders Table of Latest Orders Table",
+          "requirementId": "REQ-019",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has at least 5 orders associated with their NAG",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Open a web browser and navigate to the dashboard login page",
+              "expectedResult": "The login page is displayed with username and password fields",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password and click the Login button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the navigation menu to access the Latest Orders section",
+              "expectedResult": "The Latest Orders Table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the Latest Orders Table shows the latest 5 orders",
+              "expectedResult": "The table displays 5 orders with the most recent order at the top",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on an order ID in the table",
+              "expectedResult": "The order details page is displayed with correct order information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the order details page shows the correct order information",
+              "expectedResult": "The order details page displays the correct order information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Click the Back button to return to the Latest Orders Table",
+              "expectedResult": "The Latest Orders Table is displayed again",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the table still shows the latest 5 orders",
+              "expectedResult": "The table still displays the latest 5 orders",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that each order ID in the table is clickable",
+              "expectedResult": "Each order ID is a clickable link",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the table does not show more than 5 orders",
+              "expectedResult": "The table does not display more than 5 orders",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on the Logout button",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-020",
+      "requirement_title": "Submitted Orders link",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Submitted Orders link - Accessing Submitted Orders through Dashboard Link",
+          "description": "E2E test for accessing Submitted Orders through Dashboard Link of Submitted Orders link feature",
+          "requirementId": "REQ-020",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has access to the Submitted Orders link",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "Login credentials are accepted",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Click on the Login button",
+              "expectedResult": "User is logged in and redirected to the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Navigate to the dashboard by clicking on the dashboard link",
+              "expectedResult": "Dashboard is displayed with all its features",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Locate the 'Submitted Orders' link in the 'Shopping and Orders' widget",
+              "expectedResult": "The 'Submitted Orders' link is visible and clickable",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on the 'Submitted Orders' link",
+              "expectedResult": "A new browser tab opens with the submitted orders page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify the URL in the new browser tab",
+              "expectedResult": "The URL matches the expected URL for submitted orders",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the view is filtered to display only orders for mobile devices and plans",
+              "expectedResult": "Only orders for mobile devices and plans are displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify the view is filtered to display only orders for the last 30 days",
+              "expectedResult": "Only orders from the last 30 days are displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify the correct display of orders including 'Request ID', 'Submission date', and 'Status'",
+              "expectedResult": "Orders are displayed with the correct information and formatting",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify the functionality of the 'Request ID' link",
+              "expectedResult": "Clicking on the 'Request ID' link redirects to the order details page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify the user can navigate back to the dashboard",
+              "expectedResult": "The user can close the new tab and return to the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Click on the Logout button",
+              "expectedResult": "User is logged out and redirected to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-021",
+      "requirement_title": "In-Progress Orders link",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "In-Progress Orders link - Accessing In-Progress Orders",
+          "description": "E2E test for Accessing In-Progress Orders of In-Progress Orders link",
+          "requirementId": "REQ-021",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the application\n• User has access to the In-Progress Orders link",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the application URL in a web browser",
+              "expectedResult": "The application login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "The login credentials are accepted and the user is logged in",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Login button",
+              "expectedResult": "The dashboard page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the dashboard page is displayed with the In-Progress Orders link",
+              "expectedResult": "The In-Progress Orders link is visible on the dashboard page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on the In-Progress Orders link",
+              "expectedResult": "A new browser tab opens with the URL https://enterprisecentre.bell.ca/service-requests/my-requests",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the My Request page is filtered to show only orders in-progress for the last 30 days",
+              "expectedResult": "The orders are filtered correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the My Request page is filtered to show only orders related to mobile devices and plans",
+              "expectedResult": "The orders are filtered correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the orders are displayed with the correct columns (Request ID, Submission date, and Status)",
+              "expectedResult": "The orders are displayed with the correct columns",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the status badges (tags) use the standardized colors defined by the UX team",
+              "expectedResult": "The status badges use the correct colors",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the Request ID is a clickable link and is visually underlined to indicate this",
+              "expectedResult": "The Request ID is a clickable link and is visually underlined",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on a Request ID link",
+              "expectedResult": "The order detail page opens in a new browser tab",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the order detail page displays the correct information",
+              "expectedResult": "The order detail page displays the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Click on the Close button to close the order detail page",
+              "expectedResult": "The order detail page is closed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Click on the Logout button to log out of the application",
+              "expectedResult": "The user is logged out of the application",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-022",
+      "requirement_title": "Completed Orders link",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Completed Orders link - Completed Orders Link Test",
+          "description": "E2E test for Completed Orders Link Test of Completed Orders link",
+          "requirementId": "REQ-022",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the application\n• User has access to the page where the Completed Orders link is located",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Log in to the application using valid credentials",
+              "expectedResult": "The dashboard page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Click on the navigation menu to access the orders page",
+              "expectedResult": "The orders page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Completed Orders link",
+              "expectedResult": "The My Request page is displayed with the correct filters",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the My Request page is displayed with the correct filters",
+              "expectedResult": "The page is filtered to show only completed orders for mobile devices and plans",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the orders displayed on the page are in Completed status",
+              "expectedResult": "All orders on the page are in Completed status",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the orders displayed on the page are for mobile devices and plans",
+              "expectedResult": "All orders on the page are for mobile devices and plans",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the orders displayed on the page are within the last 30 days",
+              "expectedResult": "All orders on the page are within the last 30 days",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the page includes the correct columns",
+              "expectedResult": "The page includes the Request ID, Submission date, and Status columns",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the Status column uses the standardized colors defined by the UX team",
+              "expectedResult": "The Status column uses the correct colors",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the Request ID is a clickable link",
+              "expectedResult": "The Request ID is underlined and clickable",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on the Request ID link",
+              "expectedResult": "The order detail page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the order detail page is displayed correctly",
+              "expectedResult": "The order detail page is displayed with the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Log out of the application",
+              "expectedResult": "The login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-023",
+      "requirement_title": "View All Orders link",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "View All Orders link - Viewing All Orders",
+          "description": "E2E test for Viewing All Orders of View All Orders link",
+          "requirementId": "REQ-023",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has permission to view orders",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the dashboard URL in a web browser",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid username and password in the login page",
+              "expectedResult": "The dashboard login page accepts the credentials",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the Login button",
+              "expectedResult": "The dashboard homepage is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Navigate to the Latest Orders Table",
+              "expectedResult": "The Latest Orders Table is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Click on the View All Orders link",
+              "expectedResult": "The orders list page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the orders list is filtered by product",
+              "expectedResult": "The orders list only shows orders for the selected product",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the order data is accurate",
+              "expectedResult": "The order data is accurate and up-to-date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the orders list only shows Mobile Devices and plans",
+              "expectedResult": "The orders list only shows Mobile Devices and plans",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Select a specific order from the orders list",
+              "expectedResult": "The order details page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Verify that the order data is accurate for the selected order",
+              "expectedResult": "The order data is accurate and matches the expected values",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Click on the Logout button",
+              "expectedResult": "The dashboard login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the user is logged out of the dashboard",
+              "expectedResult": "The user is logged out and cannot access the dashboard without logging in again",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-024",
+      "requirement_title": "Permissions Quick Links",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Permissions Quick Links - Permissions Quick Links",
+          "description": "E2E test for Permissions Quick Links of Permissions Quick Links feature",
+          "requirementId": "REQ-024",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User is logged in to the dashboard\n• User has the necessary permissions to access the quick links",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Navigate to the Bell Business Portal login page",
+              "expectedResult": "The login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials",
+              "expectedResult": "The dashboard page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the 'Permissions Quick Links' section",
+              "expectedResult": "The 'Permissions Quick Links' section expands",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the 'Manage my access' link",
+              "expectedResult": "A new tab opens with the 'Manage my access' page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the 'Manage my access' page is displayed correctly",
+              "expectedResult": "The 'Manage my access' page is displayed with the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Click on the 'Manage my users' link",
+              "expectedResult": "A new tab opens with the 'Manage my users' page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify that the 'Manage my users' page is displayed correctly",
+              "expectedResult": "The 'Manage my users' page is displayed with the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Click on the 'Create a new user' link",
+              "expectedResult": "A new tab opens with the 'Create a new user' page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify that the 'Create a new user' page is displayed correctly",
+              "expectedResult": "The 'Create a new user' page is displayed with the correct information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Log out of the dashboard",
+              "expectedResult": "The login page appears",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 10,
+              "description": "Verify that the quick links are not accessible after logging out",
+              "expectedResult": "The quick links are not accessible",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 11,
+              "description": "Verify that the 'Manage my access' link opens in a new tab",
+              "expectedResult": "The 'Manage my access' link opens in a new tab",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 12,
+              "description": "Verify that the 'Manage my users' link opens in a new tab",
+              "expectedResult": "The 'Manage my users' link opens in a new tab",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 13,
+              "description": "Verify that the 'Create a new user' link opens in a new tab",
+              "expectedResult": "The 'Create a new user' link opens in a new tab",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-025",
+      "requirement_title": "Subscriber Page Warranty Display",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "Subscriber Page Warranty Display - Subscriber Page Warranty Display",
+          "description": "E2E test for Subscriber Page Warranty Display of Subscriber Page Warranty Display feature",
+          "requirementId": "REQ-025",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User has a valid account and credentials for the SSC\n• User has a device with a warranty associated with their profile",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the SSC portal in a web browser",
+              "expectedResult": "The SSC portal login page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials (username and password) and click the Login button",
+              "expectedResult": "The user is logged in and the dashboard is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Click on the 'Mobile Devices and Plans' tab",
+              "expectedResult": "The Mobile Devices and Plans page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Click on the 'Subscriber Page' link",
+              "expectedResult": "The Subscriber Information Page is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify that the warranty expiration date is displayed within a specific line on the page",
+              "expectedResult": "The warranty expiration date is displayed correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Verify that the warranty expiration date is accurate towards the customer's activation date associated with the device currently on the profile",
+              "expectedResult": "The warranty expiration date is accurate",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Update the device or profile information (e.g., change the device or plan)",
+              "expectedResult": "The warranty expiration date is updated accordingly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Verify that the warranty expiration date is updated correctly",
+              "expectedResult": "The warranty expiration date is updated correctly",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Select a device without a warranty (e.g., a BYOD device) and verify that the warranty expiration date is not displayed",
+              "expectedResult": "The warranty expiration date is not displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Log out of the SSC portal",
+              "expectedResult": "The user is logged out and the login page is displayed",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    },
+    {
+      "requirement_id": "REQ-026",
+      "requirement_title": "BAN Page Warranty Display",
+      "test_cases": [
+        {
+          "type": "TestCaseEditorDTO",
+          "title": "BAN Page Warranty Display - Full feature functionality",
+          "description": "E2E test for Full feature functionality of BAN Page Warranty Display",
+          "requirementId": "REQ-026",
+          "status": "DRAFT",
+          "testPhases": [
+            "FUNCTIONAL_TESTING",
+            "END_TO_END_TESTING",
+            "DEPLOYMENT_VERIFICATION_TESTING"
+          ],
+          "testTypes": [
+            "UI"
+          ],
+          "prerequisites": "• User has a valid username and password\n• User has a BAN with an active warranty",
+          "expectedResult": "<p>Calculated per step</p>",
+          "testCaseSteps": [
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 0,
+              "description": "Launch the SSC application and navigate to the login page",
+              "expectedResult": "The login page is displayed with fields for username and password",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 1,
+              "description": "Enter valid login credentials and click the login button",
+              "expectedResult": "The user is logged in and redirected to the dashboard",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 2,
+              "description": "Navigate to the BAN Information Page",
+              "expectedResult": "The BAN Information Page is displayed with relevant information",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 3,
+              "description": "Verify that the warranty expiration date is displayed",
+              "expectedResult": "The warranty expiration date is visible on the page",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 4,
+              "description": "Verify the accuracy of the warranty expiration date",
+              "expectedResult": "The warranty expiration date matches the expected date based on the device's activation date",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 5,
+              "description": "Select the 'Billing Accounts' tile",
+              "expectedResult": "The list of billing accounts is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 6,
+              "description": "Verify the list of billing accounts",
+              "expectedResult": "The list includes all expected billing accounts",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 7,
+              "description": "Select the 'Active Subscribers' tile",
+              "expectedResult": "The list of active subscribers is displayed",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 8,
+              "description": "Verify the list of active subscribers",
+              "expectedResult": "The list includes all expected active subscribers",
+              "blocked": false
+            },
+            {
+              "type": "TestCaseStepDTO",
+              "orderNumber": 9,
+              "description": "Logout from the application",
+              "expectedResult": "The user is logged out and returned to the login page",
+              "blocked": false
+            }
+          ],
+          "assignedTags": [],
+          "relatedSystems": [
+            {
+              "type": "SystemSummaryDTO",
+              "id": "bdd66fa1-9578-4d72-9a19-2012eaebf9d0",
+              "name": "Katsu Test",
+              "description": "Katsu product testing",
+              "primeId": "a87205d8-c33f-4f5a-8f56-e9ecbd5c3813"
+            }
+          ],
+          "executionConfigurations": [],
+          "attachments": [],
+          "links": [],
+          "watcherIds": [],
+          "executionConfiguration": null
+        }
+      ],
+      "total_count": 1
+    }
+  ],
+  "total_requirements": 26,
+  "total_test_cases": 29,
+  "generation_mode": "hybrid"
+}

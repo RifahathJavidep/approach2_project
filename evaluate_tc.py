@@ -17,7 +17,15 @@ def evaluate_step_coverage(gen_steps, gt_steps, matcher, threshold=0.30):
         return {"matched_steps": 0, "total_gen": len(gen_steps), "total_gt": len(gt_steps),
                 "step_precision": 0, "step_recall": 0, "step_f1": 0,
                 "matched_pairs": [], "missed_gt_actions": []}
-    gen_a = [s.get('action', '') if isinstance(s, dict) else s.action for s in gen_steps]
+    
+    # Support both 'action' and 'description' fields
+    gen_a = []
+    for s in gen_steps:
+        if isinstance(s, dict):
+            gen_a.append(s.get('action') or s.get('description') or '')
+        else:
+            gen_a.append(getattr(s, 'action', getattr(s, 'description', '')))
+            
     gt_a = [s.get('action', '') if isinstance(s, dict) else s.action for s in gt_steps]
     matches = matcher.match_lists(gen_a, gt_a, threshold=threshold)
     matched_gt = {m[1] for m in matches}
@@ -42,13 +50,28 @@ def _group_tcs_by_feature(gen_tcs: list) -> dict:
     """Group scenario TCs by parent feature_id, merge their steps."""
     groups = defaultdict(lambda: {"feature_name": "", "description": "", "steps": [], "tc_ids": []})
     for tc in gen_tcs:
-        fid = tc.get('feature_id', '')
+        # Support various ID field names used across different generator versions
+        fid = tc.get('feature_id') or tc.get('requirement_id') or tc.get('requirementId', '')
         if not fid:
             continue
-        groups[fid]["feature_name"] = tc.get('feature_name', '').split(' - ')[0].strip()
-        groups[fid]["description"] += tc.get('description', '') + " "
-        groups[fid]["tc_ids"].append(tc.get('test_case_id', ''))
-        groups[fid]["steps"].extend(tc.get('steps', []))
+        
+        # Clean feature name
+        fname = tc.get('feature_name', '').split(' - ')[0].strip()
+        if not fname:
+            fname = tc.get('requirement_title', '').split(' - ')[0].strip()
+            
+        groups[fid]["feature_name"] = fname
+        
+        # Avoid duplicate description text
+        tc_desc = tc.get('description', '')
+        if tc_desc and tc_desc not in groups[fid]["description"]:
+            groups[fid]["description"] += tc_desc + " "
+            
+        groups[fid]["tc_ids"].append(tc.get('test_case_id', tc.get('title', '')))
+        
+        # Test Case Editor DTO uses testCaseSteps, others use steps
+        steps = tc.get('steps') or tc.get('testCaseSteps', [])
+        groups[fid]["steps"].extend(steps)
     return dict(groups)
 
 def evaluate_tc(generated_path=None, tc_gt_dir=None, output_dir=None):

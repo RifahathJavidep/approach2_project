@@ -135,6 +135,14 @@ class ScenarioBasedTCGenerator:
                     "test_data": s.get('test_data', '')
                 })
 
+            # Step Expander Agent (Pass 2)
+            try:
+                from .step_expander import StepExpanderAgent
+                expander = StepExpanderAgent()
+                final_steps = expander.expand_steps(feature, scenario_name, context, final_steps)
+            except Exception as e:
+                logger.error("Failed to run Step Expander for %s: %s", scenario_name, e)
+
             return {
                 "description": data.get('description', f"E2E test for {scenario_name} of {feature}"),
                 "preconditions": data.get('preconditions', ["User is logged into the system"]),

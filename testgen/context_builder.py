@@ -61,8 +61,8 @@ def _get_precise_source_text(req: Dict[str, Any], documents: Dict[str, Any], max
     # or if we only have the full_text string
     return full_text[:max_chars]
 
-def _match_jira_to_feature(feature_name: str, feature_desc: str, jira_docs: Dict[str, str]) -> List[tuple]:
-    """Score JIRA documents against a feature to find the most relevant ones."""
+def _match_supporting_to_feature(feature_name: str, feature_desc: str, supp_docs: Dict[str, str]) -> List[tuple]:
+    """Score paragraphs in supporting documents against a feature to find the most relevant snippets."""
     feature_text = f"{feature_name} {feature_desc}".lower()
     stop_words = {
         'the','a','an','is','are','for','and','or','to','in','of','on','at','by','with','from','as',
@@ -78,17 +78,39 @@ def _match_jira_to_feature(feature_name: str, feature_desc: str, jira_docs: Dict
         'voice','data','sms','messaging','distance'
     }
     
-    scored = []
-    for fname, text in jira_docs.items():
-        doc_lower = text.lower()
-        overlap = sum(1 for kw in feature_kws if kw in doc_lower)
-        domain_overlap = sum(2 for kw in (feature_kws & domain_kws) if kw in doc_lower)
-        score = overlap + domain_overlap
-        if score > 0:
-            scored.append((fname, text, score))
+    scored_snippets = []
     
-    scored.sort(key=lambda x: x[2], reverse=True)
-    return scored
+    # Check paragraphs across all supporting docs
+    for fname, text in supp_docs.items():
+        # Split text into manageable paragraphs (e.g., by double newline)
+        paragraphs = [p.strip() for p in re.split(r'\n\s*\n', text) if len(p.strip()) > 50]
+        
+        for para in paragraphs:
+            para_lower = para.lower()
+            overlap = sum(1 for kw in feature_kws if kw in para_lower)
+            domain_overlap = sum(2 for kw in (feature_kws & domain_kws) if kw in para_lower)
+            score = overlap + domain_overlap
+            
+            # Additional score if the exact feature name is in the paragraph
+            if feature_name.lower() in para_lower:
+                score += 5
+                
+            if score > 0:
+                scored_snippets.append((fname, para, score))
+    
+    # Sort snippets by score
+    scored_snippets.sort(key=lambda x: x[2], reverse=True)
+    
+    # Deduplicate similar overlapping snippets loosely based on text content
+    unique_snippets = []
+    seen_texts = set()
+    for fname, para, score in scored_snippets:
+        snippet_sig = para[:100].lower() # simple signature
+        if snippet_sig not in seen_texts:
+            unique_snippets.append((fname, para, score))
+            seen_texts.add(snippet_sig)
+            
+    return unique_snippets
 
 def get_feature_context(req: Dict[str, Any], documents: Dict[str, Any], max_chars: int = TOTAL_BUDGET) -> str:
     """
@@ -124,26 +146,26 @@ def get_feature_context(req: Dict[str, Any], documents: Dict[str, Any], max_char
             context_parts.append(piece)
             chars_used += len(piece)
 
-    # 3. Dynamic JIRA/Solution matching if no supporting context was pre-populated
+    # 3. Dynamic JIRA/Solution/RTM matching if no supporting context was pre-populated
     else:
-        # Simple classification: JIRA files usually start with PROJECT-ID
-        jira_docs = {}
+        # Include all documents that are NOT the primary source file
+        supp_docs = {}
+        matched_key = _fuzzy_match_filename(source_file, documents)
         for fname, doc in documents.items():
-            basename = Path(fname).stem
-            if re.match(r'^[A-Z]+-\d+', basename):
-                jira_docs[fname] = getattr(doc, 'full_text', str(doc))
+            if fname != matched_key:
+                supp_docs[fname] = getattr(doc, 'full_text', str(doc))
         
-        if jira_docs:
-            jira_budget = min(4000, max_chars - chars_used)
-            matches = _match_jira_to_feature(req.get('feature_name', ''), req.get('description', ''), jira_docs)
-            for fname, text, score in matches[:2]:
-                if jira_budget <= 300:
+        if supp_docs:
+            supp_budget = min(4000, max_chars - chars_used)
+            matches = _match_supporting_to_feature(req.get('feature_name', ''), req.get('description', ''), supp_docs)
+            for fname, text, score in matches[:3]: # Let's pull from top 3
+                if supp_budget <= 300:
                     break
-                header = f"\n[JIRA: {Path(fname).stem} (score={score})]\n"
-                piece = header + text[:max(0, jira_budget - len(header))]
+                header = f"\n[SUPPORTING DOC: {Path(fname).stem} (relevance score={score})]\n"
+                piece = header + text[:max(0, supp_budget - len(header))]
                 context_parts.append(piece)
                 chars_used += len(piece)
-                jira_budget -= len(piece)
+                supp_budget -= len(piece)
 
     total = "\n".join(context_parts)[:max_chars]
     logger.info("Built multi-source context: %d chars", len(total))

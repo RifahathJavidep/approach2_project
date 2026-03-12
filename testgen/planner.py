@@ -18,7 +18,9 @@ import json
 import os
 import re
 from typing import List, Dict, Any, Optional
+import logging
 
+logger = logging.getLogger(__name__)
 from groq import Groq
 from dotenv import load_dotenv
 

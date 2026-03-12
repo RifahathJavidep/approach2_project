@@ -18,6 +18,7 @@ Example:
 
 import base64
 import io
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
@@ -67,12 +68,134 @@ class PDFExtractor:
             text = pymupdf4llm.to_markdown(file_path)
             if text and len(text.strip()) > 100:
                 print(f"  ✓ PDF text extracted via pymupdf4llm ({len(text)} chars)")
+                text = self._post_process_markdown(text)
+                print(f"  ✓ Post-processed to clean structure ({len(text)} chars)")
                 return text
         except Exception as e:
             print(f"  ⚠ pymupdf4llm failed: {e}")
 
         # Strategy 2: OCR fallback for scanned PDFs
         return self._extract_text_with_ocr(file_path)
+
+    # ------------------------------------------------------------------ #
+    #  POST-PROCESSING: Clean up pymupdf4llm output for LLM consumption  #
+    # ------------------------------------------------------------------ #
+
+    def _post_process_markdown(self, text: str) -> str:
+        """
+        Clean up raw pymupdf4llm markdown so the LLM receives structured,
+        readable text instead of messy <br>-separated blobs inside table cells.
+
+        Handles:
+        1. Splitting <br>-separated content into proper bullet points
+        2. Expanding key-value table rows into readable sections
+        3. Cleaning up numbered lists that lost their structure
+        """
+        lines = text.split('\n')
+        output_lines = []
+
+        for line in lines:
+            # Skip pure separator lines
+            if re.match(r'^\|[-|]+\|$', line.strip()):
+                output_lines.append(line)
+                continue
+
+            # Process table rows that contain <br> tags (the core problem)
+            if '|' in line and '<br>' in line.lower():
+                expanded = self._expand_table_row(line)
+                output_lines.append(expanded)
+            else:
+                output_lines.append(line)
+
+        result = '\n'.join(output_lines)
+
+        # Final cleanup: remove leftover empty bold markers
+        result = result.replace('****', '')
+
+        return result
+
+    def _expand_table_row(self, row: str) -> str:
+        """
+        Expand a single table row that has <br>-separated content
+        into a readable, structured block.
+
+        Example Input:
+          |**Acceptance criteria**|1.<br>2.<br>Export files include CSV...<br>Files have...|
+
+        Example Output:
+          **Acceptance criteria:**
+          1. Export files include CSV, PDF, EXCEL, PNG and JPEG files
+          2. Files have the ability to provide visual of Bar Graph
+        """
+        # Split by | and filter empty parts
+        cells = [c.strip() for c in row.split('|') if c.strip()]
+
+        if len(cells) < 2:
+            return row
+
+        # Check if first cell is a label (bold key like **Acceptance criteria**)
+        label = cells[0]
+        is_labeled = label.startswith('**') and label.endswith('**')
+
+        if is_labeled and len(cells) == 2:
+            # This is a key-value row like |**Acceptance criteria**|content...|
+            clean_label = label.strip('*').strip()
+            content = cells[1]
+            expanded_content = self._split_br_content(content)
+            return f"**{clean_label}:**\n{expanded_content}"
+
+        # For multi-cell rows (index tables, feature grids), clean each cell
+        cleaned_cells = []
+        for cell in cells:
+            if '<br>' in cell.lower():
+                # Replace <br> with spaces for compact cells
+                cleaned = re.sub(r'<br>', ' ', cell, flags=re.IGNORECASE)
+                # Clean up resulting whitespace and bold markers
+                cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+                cleaned_cells.append(cleaned)
+            else:
+                cleaned_cells.append(cell)
+
+        return '| ' + ' | '.join(cleaned_cells) + ' |'
+
+    def _split_br_content(self, content: str) -> str:
+        """
+        Split <br>-separated content into clean bullet points.
+
+        Handles patterns like:
+        - "1.<br>2.<br>Export files..." -> numbered items
+        - "Item A<br>Item B<br>Item C" -> bullet items
+        - Dangling numbers like "1.<br>2.<br>" with content after
+        """
+        # Split on <br> (case-insensitive)
+        parts = re.split(r'<br>', content, flags=re.IGNORECASE)
+
+        # Clean each part
+        clean_parts = []
+        for part in parts:
+            part = part.strip()
+            # Remove bold markers
+            part = re.sub(r'\*\*', '', part)
+            # Skip empty parts and dangling numbers like "1." or "2."
+            if not part or re.match(r'^\d+\.\s*$', part):
+                continue
+            clean_parts.append(part)
+
+        if not clean_parts:
+            return content
+
+        # Format as numbered list if we have multiple items
+        if len(clean_parts) > 1:
+            lines = []
+            for i, part in enumerate(clean_parts, 1):
+                # If it already starts with a number, keep it
+                if re.match(r'^\d+[\.\)]', part):
+                    lines.append(f"  {part}")
+                else:
+                    lines.append(f"  {i}. {part}")
+            return '\n'.join(lines)
+        else:
+            return f"  {clean_parts[0]}"
 
     def extract_images(self, file_path: str) -> List[Dict[str, Any]]:
         """
