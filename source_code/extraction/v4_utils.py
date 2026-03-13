@@ -22,7 +22,8 @@ from fnmatch import fnmatch
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
-ROOT_DIR = Path(__file__).parent.parent
+SOURCE_DIR = Path(__file__).parent.parent
+CONFIG_DIR = SOURCE_DIR.parent / "configuration"
 
 
 @dataclass
@@ -83,7 +84,7 @@ class Config:
     @classmethod
     def load(cls, config_path=None):
         if config_path is None:
-            config_path = ROOT_DIR / "config.yaml"
+            config_path = CONFIG_DIR / "config.yaml"
         with open(config_path, 'r') as f:
             cls._data = yaml.safe_load(f)
         return cls._data

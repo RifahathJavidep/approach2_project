@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # FastAPI API Service
+  api:
+    build: .
+    container_name: prism_api
+    ports:
+      - "8000:8000"
+    # Env variables can be loaded from the configuration folder
+    env_file: 
+      - ./configuration/.env
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  # Celery Worker Service
+  worker:
+    build: .
+    container_name: prism_worker
+    command: celery -A celery_app worker --loglevel=info
+    env_file:
+      - ./configuration/.env
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  # Redis for Task Queue
+  redis:
+    image: redis:7-alpine
+    container_name: prism_redis
+    ports:
+      - "6379:6379"

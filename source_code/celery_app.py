@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, "..", "configuration", ".env"))
 
 # Logging
 import logging
@@ -138,8 +138,9 @@ def extract_requirements_task(self, project_id, local_files, output_dir, existin
                 import requests
                 
                 try:
-                    java_backend_url = f"http://localhost:8080/api/requirements/project/{project_id}"
-                    logger.info("Storing %d requirements in Java backend for project %s...", requirements, project_id)
+                    java_api_base = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+                    java_backend_url = f"{java_api_base}/api/requirements/project/{project_id}"
+                    logger.info("Storing %d requirements in Java backend for project %s...", len(requirements), project_id)
                     print("Storing %d requirements in Java backend for project %s...", requirements, project_id)
                     mapped_requirements = []
                     for req in requirements:
@@ -272,8 +273,8 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
     # ── Store in Java Backend (Katsu Specification) ────────────────
     try:
         import requests
-        # Updated URL as per User's specification
-        java_url = f"http://localhost:8080/projects/{project_id}/test-cases"
+        java_api_base = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+        java_url = f"{java_api_base}/projects/{project_id}/test-cases"
         
         test_plans = result["test_plan"].get("test_plans", [])
 
