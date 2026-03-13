@@ -1872,3 +1872,153 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
 2026-03-09 23:50:14 [INFO] prism.api (app.py:87) — ⟵  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7 — 200 in 0.001s
 2026-03-09 23:50:22 [INFO] prism.api (app.py:75) — ⟶  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7  (client=127.0.0.1)
 2026-03-09 23:50:22 [INFO] prism.api (app.py:87) — ⟵  GET /status/766b9617-f956-4cc1-af2c-54c9be1c5cb7 — 200 in 0.001s
+2026-03-12 22:33:12 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-12 22:33:12 [INFO] prism.api (app.py:800) — Starting PRISM AI Service...
+2026-03-12 22:33:12 [INFO] prism.api (app.py:801) — Docs: http://localhost:8000/docs
+2026-03-12 22:41:00 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-12 22:41:00 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-12 23:29:21 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-12 23:29:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-13 00:50:10 [INFO] logging_config (logging_config.py:63) — Logging initialised — console: INFO | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-13 00:50:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+

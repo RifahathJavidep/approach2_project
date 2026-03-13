@@ -33,7 +33,7 @@ def get_s3_client():
 
 def get_bucket_name():
     """Get the S3 bucket name from environment."""
-    return os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+    return os.getenv("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
 
 
 def parse_s3_url(s3_url: str) -> tuple:

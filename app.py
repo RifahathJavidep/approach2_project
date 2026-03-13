@@ -139,7 +139,7 @@ async def health_check():
     """Check if the service is running and all credentials configured."""
     groq_key = os.getenv("GROQ_API_KEY")
     aws_key = os.getenv("AWS_ACCESS_KEY_ID")
-    bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+    bucket = os.getenv("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
 
     return {
         "status": "healthy",
@@ -265,7 +265,7 @@ async def get_requirements(project_id: str):
             "project_id": project_id,
             "total_requirements": len(data.get("requirements", [])),
             "requirements": data.get("requirements", []),
-            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsuai-tcgen')}/{s3_key}",
+            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsu-ai-requirement-documents')}/{s3_key}",
         }
 
     except HTTPException:
@@ -741,7 +741,7 @@ async def generate_testcases_sync(request: TestCaseRequest):
         upload_to_s3(result["json_path"], s3_json_key)
         upload_to_s3(result["excel_path"], s3_excel_key)
 
-        bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+        bucket = os.getenv("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
 
         return {
             "status": "success",
@@ -787,7 +787,7 @@ async def get_testcases(project_id: str):
             "total_requirements": data.get("total_requirements", 0),
             "total_test_cases": data.get("total_test_cases", 0),
             "test_plan": data,
-            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsuai-tcgen')}/{s3_key}",
+            "s3_url": f"s3://{os.getenv('S3_BUCKET_NAME', 'katsu-ai-requirement-documents')}/{s3_key}",
         }
 
     except HTTPException:

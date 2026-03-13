@@ -19,10 +19,22 @@ from logging_config import setup_logging
 setup_logging("INFO")
 logger = logging.getLogger(__name__)
 
+import ssl
+
 # Initialize Celery
-app = Celery('prism',
-             broker=os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
-             backend=os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1'))
+broker_url = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
+result_backend = os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1')
+
+app = Celery('miipe',
+             broker=broker_url,
+             backend=result_backend)
+
+# Handle SSL for AWS ElastiCache (Encryption in Transit)
+if broker_url.startswith('rediss://'):
+    app.conf.update(
+        broker_use_ssl={'ssl_cert_reqs': ssl.CERT_NONE},
+        redis_backend_use_ssl={'ssl_cert_reqs': ssl.CERT_NONE},
+    )
 
 from auth_config import get_java_auth_headers
 
@@ -255,7 +267,7 @@ def generate_testcases_task(self, project_id, project_name, requirements_s3_key=
     upload_to_s3(result["json_path"], s3_json_key)
     upload_to_s3(result["excel_path"], s3_excel_key)
 
-    bucket = os.getenv("S3_BUCKET_NAME", "katsuai-tcgen")
+    bucket = os.getenv("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
 
     # ── Store in Java Backend (Katsu Specification) ────────────────
     try:
