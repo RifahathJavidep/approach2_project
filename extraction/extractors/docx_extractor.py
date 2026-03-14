@@ -17,7 +17,6 @@ Example:
 import base64
 from typing import List, Dict, Any
 
-
 class DOCXExtractor:
     """
     Extract text and embedded images from Word documents.

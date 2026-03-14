@@ -22,11 +22,6 @@ from .signatures import (
     RequirementDeMerger
 )
 
-
-# ============================================================================
-# SIMILARITY FUNCTIONS
-# ============================================================================
-
 def _tokenize(text: str) -> set:
     """Tokenize text into words, stripping punctuation and normalizing plurals."""
     tokens = set(re.findall(r'[a-z0-9](?:[a-z0-9_-]*[a-z0-9])?', text.lower()))
@@ -39,7 +34,6 @@ def _tokenize(text: str) -> set:
             normalized.add(t)
     return normalized
 
-
 def calculate_similarity(text1: str, text2: str) -> float:
     """Word overlap similarity (Jaccard) with punctuation handling."""
     words1 = _tokenize(text1)
@@ -49,7 +43,6 @@ def calculate_similarity(text1: str, text2: str) -> float:
     intersection = words1.intersection(words2)
     union = words1.union(words2)
     return len(intersection) / len(union)
-
 
 def _title_similarity(title1: str, title2: str) -> float:
     """Compare two titles using multiple strategies."""
@@ -78,11 +71,6 @@ def _title_similarity(title1: str, title2: str) -> float:
     union = words1.union(words2)
     return len(intersection) / len(union)
 
-
-# ============================================================================
-# DEDUPLICATION
-# ============================================================================
-
 def _is_subitem_of(candidate_title: str, existing: Dict) -> bool:
     """
     Check if a candidate requirement is a sub-item already covered by an
@@ -109,7 +97,6 @@ def _is_subitem_of(candidate_title: str, existing: Dict) -> bool:
     found = sum(1 for w in title_tokens if w in ac_tokens)
     coverage = found / len(title_tokens)
     return coverage >= 0.60
-
 
 def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.55) -> List[Dict]:
     """Remove duplicate requirements using multi-strategy similarity.
@@ -159,7 +146,6 @@ def deduplicate_requirements(reqs: List[Dict], similarity_threshold: float = 0.5
 
     return unique
 
-
 def deduplicate_multi_layer_requirements(reqs: List[Dict]) -> List[Dict]:
     """
     Deduplicate while preserving layer distinctions.
@@ -192,13 +178,11 @@ def deduplicate_multi_layer_requirements(reqs: List[Dict]) -> List[Dict]:
 
     return unique
 
-
 _SYSTEM_NAMES = frozenset({
     'maximo', 'servicenow', 'datavalet', 'bbssc', 'meraki', 'macd',
     'mcdo', 'mcd', 'nsmis', 'parbac', 'sadrstrang', 'sadefender',
     'omnitotoro'
 })
-
 
 def deduplicate_cross_layer(reqs: List[Dict], title_threshold: float = 0.40, desc_threshold: float = 0.40) -> List[Dict]:
     """
@@ -272,7 +256,6 @@ def deduplicate_cross_layer(reqs: List[Dict], title_threshold: float = 0.40, des
 
     return unique
 
-
 def _extract_domain_terms(text: str) -> set:
     """Extract domain-specific terms (capitalized words, IDs, system names)."""
     import re
@@ -298,7 +281,6 @@ def _extract_domain_terms(text: str) -> set:
         if kw in text_lower:
             terms.add(kw)
     return terms
-
 
 def deduplicate_by_topic(reqs: list, min_shared_terms: int = 3) -> list:
     """
@@ -338,11 +320,6 @@ def deduplicate_by_topic(reqs: list, min_shared_terms: int = 3) -> list:
 
     return unique
 
-
-# ============================================================================
-# LLM-BASED CONSOLIDATION
-# ============================================================================
-
 def _clean_llm_json(raw: str) -> str:
     """Clean LLM JSON output by removing markdown wrappers."""
     clean = raw.strip()
@@ -351,7 +328,6 @@ def _clean_llm_json(raw: str) -> str:
         if clean.startswith('json'):
             clean = clean[4:]
     return clean.strip()
-
 
 def _parse_json_safe(raw: str, fallback: List[Dict] = None) -> List[Dict]:
     """Safely parse JSON from LLM output with fallback strategies."""
@@ -366,7 +342,6 @@ def _parse_json_safe(raw: str, fallback: List[Dict] = None) -> List[Dict]:
             except json.JSONDecodeError:
                 pass
     return fallback or []
-
 
 def _run_consolidation_pass(reqs: List[Dict], consolidator, target_count: int) -> List[Dict]:
     """Run a single pass of LLM-based consolidation.
@@ -412,7 +387,6 @@ def _run_consolidation_pass(reqs: List[Dict], consolidator, target_count: int) -
 
         return intermediate
 
-
 def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
     """Use iterative LLM consolidation to merge sub-features into parent features.
 
@@ -455,7 +429,6 @@ def consolidate_requirements(reqs: List[Dict]) -> List[Dict]:
             break
 
     return current
-
 
 def merge_semantic_siblings(reqs: List[Dict], threshold: float = 0.40) -> List[Dict]:
     """Post-consolidation step: merge remaining sub-features that describe
@@ -511,7 +484,6 @@ def merge_semantic_siblings(reqs: List[Dict], threshold: float = 0.40) -> List[D
         logger.info("Semantic sibling merge: %d → %d (%d merged)", len(reqs), len(unique), merged_count)
 
     return unique
-
 
 def split_composite_requirements(reqs: List[Dict]) -> List[Dict]:
     """Identify and split requirements that cover multiple distinct features (e.g., 'A and B')."""

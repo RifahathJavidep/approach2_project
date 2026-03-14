@@ -57,10 +57,8 @@ logger = logging.getLogger("prism.pipeline")
 # Global LM instance to avoid re-configuring in async tasks
 _global_lm = None
 
-
 # CONFIDENCE STRING -> FLOAT MAPPING
 _CONFIDENCE_MAP = {'high': 0.9, 'medium': 0.6, 'low': 0.3}
-
 
 def _confidence_to_float(conf) -> float:
     """Convert confidence value to float. Handles both string and numeric."""
@@ -69,7 +67,6 @@ def _confidence_to_float(conf) -> float:
     if isinstance(conf, str):
         return _CONFIDENCE_MAP.get(conf.lower().strip(), 0.6)
     return 0.6
-
 
 def _capture_supporting_context(req_title, req_desc, req_ac, supporting_texts, max_per_doc=2000):
     """Scan supporting document texts for content relevant to this requirement.
@@ -144,7 +141,6 @@ def _capture_supporting_context(req_title, req_desc, req_ac, supporting_texts, m
     contexts.sort(key=lambda x: x['relevance_score'], reverse=True)
     return contexts[:3]
 
-
 # SOURCE GROUNDING (Anti-Hallucination)
 
 _GROUNDING_STOPWORDS = frozenset({
@@ -161,12 +157,10 @@ _GROUNDING_STOPWORDS = frozenset({
     'type', 'requirements', 'requirement'
 })
 
-
 def _extract_key_terms(text: str) -> list:
     """Extract meaningful terms from text, skipping stopwords."""
     words = re.findall(r'[A-Za-z_][A-Za-z0-9_-]*', text)
     return [w for w in words if len(w) > 2 and w.lower() not in _GROUNDING_STOPWORDS]
-
 
 def ground_check(requirements: list, source_text: str, min_grounding: float = 0.25) -> list:
     """
@@ -204,7 +198,6 @@ def ground_check(requirements: list, source_text: str, min_grounding: float = 0.
         logger.info("Source grounding: removed %d hallucinated requirements", removed)
 
     return grounded
-
 
 def _consolidate_defect_items(reqs: List[Dict]) -> List[Dict]:
     """
@@ -266,7 +259,6 @@ def _consolidate_defect_items(reqs: List[Dict]) -> List[Dict]:
 
     return non_defect_items + consolidated
 
-
 def _get_lm():
     """Get or create the global DSPy language model."""
     global _global_lm
@@ -276,7 +268,6 @@ def _get_lm():
             raise ValueError("GROQ_API_KEY not found in .env")
         _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key, max_tokens=16384)
     return _global_lm
-
 
 class ExtractionPipeline:
     """
@@ -417,9 +408,7 @@ class ExtractionPipeline:
             })
         return result
 
-    # =========================================================================
     # STAGE 2: CONTENT EXTRACTION
-    # =========================================================================
 
     def _extract_content(self, file_path: str, file_type: FileType) -> str:
         """
@@ -555,9 +544,7 @@ class ExtractionPipeline:
 
         return "\n\n".join(text_parts)
 
-    # =========================================================================
     # STAGE 3: REQUIREMENT GENERATION
-    # =========================================================================
 
     def _generate_requirements(self, text: str) -> tuple:
         """
@@ -660,9 +647,7 @@ class ExtractionPipeline:
 
         return all_reqs, all_filtered
 
-    # =========================================================================
     # MAIN ENTRY POINTS
-    # =========================================================================
 
     def run(self, file_paths: List[str], project_name: str, output_dir: str = None,
             status_callback: Callable[[str, str], None] = None,
@@ -803,7 +788,6 @@ class ExtractionPipeline:
         if len(unique) < before_cross:
             logger.info("After cross-layer dedup: %d -> %d unique", before_cross, len(unique))
 
-
         # Topic-based dedup disabled — was removing valid distinct requirements
         # that share domain terms (e.g., MCDO-03 and MCDO-01 share 'meraki', 'datavalet')
         # before_topic = len(unique)
@@ -914,11 +898,6 @@ class ExtractionPipeline:
         logger.info("Done! %d requirements extracted", len(unique))
         return result_data
 
-
-# =========================================================================
-# CONVENIENCE FUNCTIONS (backward compatibility)
-# =========================================================================
-
 def extract_from_files(
     project_name: str,
     file_paths: List[str],
@@ -937,5 +916,4 @@ def extract_from_files(
     pipeline = ExtractionPipeline(config=config, model_state=model_state)
     return pipeline.run(file_paths=file_paths, project_name=project_name, output_dir=output_dir,
                         status_callback=status_callback, document_tiers=document_tiers)
-
 

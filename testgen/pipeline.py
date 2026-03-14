@@ -18,6 +18,7 @@ Usage:
 """
 
 import json
+import logging
 import os
 from pathlib import Path
 from typing import List, Dict, Any, Optional
@@ -25,6 +26,7 @@ from typing import List, Dict, Any, Optional
 from .planner import TestCasePlanner
 from .exporters import export_test_plan_to_excel
 
+logger = logging.getLogger("prism.testgen.pipeline")
 
 def _extract_text_from_file(file_path: str) -> str:
     """Extract text from a document file for context injection."""
@@ -76,7 +78,6 @@ def _extract_text_from_file(file_path: str) -> str:
 
     return ""
 
-
 class TestGenPipeline:
     """
     Phase 2 Orchestrator.
@@ -119,18 +120,18 @@ class TestGenPipeline:
         # ── Step 0: Load document context ───────────────────────────────
         if source_texts is None and document_paths:
             source_texts = {}
-            print(f"\n  Loading document context for richer test cases...")
+            logger.info("Loading document context for richer test cases")
             for doc_path in document_paths:
                 if os.path.exists(doc_path):
                     filename = Path(doc_path).name
                     text = _extract_text_from_file(doc_path)
                     if text:
                         source_texts[filename] = text
-                        print(f"    ✓ {filename}: {len(text):,} chars loaded")
+                        logger.info("Loaded %s: %d chars", filename, len(text))
                     else:
-                        print(f"    ⚠ {filename}: No text extracted")
+                        logger.warning("No text extracted from %s", filename)
                 else:
-                    print(f"    ✗ {doc_path}: File not found")
+                    logger.warning("Document not found: %s", doc_path)
 
         # ── Step 1: Generate test cases ─────────────────────────────────
         test_plan = self.planner.generate(
@@ -145,7 +146,7 @@ class TestGenPipeline:
         json_path = os.path.join(output_dir, f"{project_name}_test_plan.json")
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(test_plan, f, indent=2, ensure_ascii=False)
-        print(f"  ✓ JSON saved: {json_path}")
+        logger.info("JSON saved: %s", json_path)
 
         # ── Step 3: Export to Excel ─────────────────────────────────────
         excel_path = os.path.join(output_dir, f"{project_name}_test_plan.xlsx")

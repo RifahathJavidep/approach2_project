@@ -34,7 +34,6 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 from PIL import Image
 
-
 @dataclass
 class OCRConfig:
     """Configuration for OCR processing."""
@@ -52,7 +51,6 @@ class OCRConfig:
             confidence_threshold=float(os.getenv("OCR_CONFIDENCE_THRESHOLD", "0.85")),
             verify_with_vision=os.getenv("VERIFY_OCR", "true").lower() == "true",
         )
-
 
 class LocalOCRExtractor:
     """

@@ -1,0 +1,93 @@
+import logging
+
+from fastapi import APIRouter, HTTPException
+
+from api.schemas import TestCaseRequest
+from services.testcases import (
+    queue_testcase_generation,
+    run_testcase_generation_sync,
+    get_cached_testplan,
+)
+
+logger = logging.getLogger("prism.api.testcases")
+router = APIRouter()
+
+
+@router.post("/generate-testcases")
+async def generate_testcases_async(request: TestCaseRequest):
+    """
+    Queue async test case generation (Phase 2).
+    Provide either requirements_s3_key or a direct requirements array.
+    """
+    if not request.requirements_s3_key and not request.requirements:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide either 'requirements_s3_key' or 'requirements'",
+        )
+
+    project_id = str(request.project_id)
+    project_name = request.project_name or f"project_{project_id}"
+
+    try:
+        result = await queue_testcase_generation(
+            project_id=project_id,
+            project_name=project_name,
+            requirements_s3_key=request.requirements_s3_key,
+            requirements=request.requirements,
+            document_urls=request.document_urls or [],
+        )
+        return result
+    except Exception as e:
+        logger.error("Failed to queue test case generation: %s", e, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to queue test case generation: {e}")
+
+
+@router.post("/generate-testcases-sync")
+async def generate_testcases_sync(request: TestCaseRequest):
+    """
+    Synchronous test case generation — returns test cases immediately.
+    Provide either requirements_s3_key or a direct requirements array.
+    """
+    if not request.requirements_s3_key and not request.requirements:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide either 'requirements_s3_key' or 'requirements'",
+        )
+
+    project_id = str(request.project_id)
+    project_name = request.project_name or f"project_{project_id}"
+
+    try:
+        result = await run_testcase_generation_sync(
+            project_id=project_id,
+            project_name=project_name,
+            requirements_s3_key=request.requirements_s3_key,
+            requirements=request.requirements,
+            document_urls=request.document_urls or [],
+        )
+        return result
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Test case generation failed: {e}")
+
+
+@router.get("/testcases/project/{project_id}")
+async def get_testcases(project_id: str):
+    """Fetch cached test plan from S3 (no re-generation)."""
+    try:
+        data = get_cached_testplan(project_id)
+        return {
+            "status": "success",
+            "project_id": project_id,
+            "total_requirements": data.get("total_requirements", 0),
+            "total_test_cases": data.get("total_test_cases", 0),
+            "test_plan": data,
+        }
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No test plan found for project '{project_id}'. Run POST /generate-testcases first.",
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch test plan: {e}")

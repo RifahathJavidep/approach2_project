@@ -25,7 +25,6 @@ from .signatures import (
 )
 from .training import SKIP_KEYWORDS
 
-
 class TrainedExtractor(dspy.Module):
     """
     DSPy module that extracts validated requirements from document text.
@@ -124,11 +123,6 @@ class TrainedExtractor(dspy.Module):
             'filtered_out': filtered_out
         }
 
-
-# ============================================================================
-# SPECIALIZED LAYER EXTRACTORS (New Multi-Pass Architecture)
-# ============================================================================
-
 class BusinessFeatureExtractor(dspy.Module):
     """Extracts high-level business features and capabilities."""
 
@@ -183,7 +177,6 @@ class BusinessFeatureExtractor(dspy.Module):
                 filtered_out.append(candidate)
 
         return {'requirements': valid_requirements, 'filtered_out': filtered_out}
-
 
 class UIRequirementExtractor(dspy.Module):
     """Extracts specific UI components, screens, and interactions."""
@@ -242,7 +235,6 @@ class UIRequirementExtractor(dspy.Module):
 
         return {'requirements': valid_requirements, 'filtered_out': filtered_out}
 
-
 class WorkflowRequirementExtractor(dspy.Module):
     """Extracts step-by-step workflows and business processes."""
 
@@ -300,7 +292,6 @@ class WorkflowRequirementExtractor(dspy.Module):
 
         return {'requirements': valid_requirements, 'filtered_out': filtered_out}
 
-
 class TechnicalRequirementExtractor(dspy.Module):
     """Extracts technical architecture, data models, and SLAs."""
 
@@ -353,7 +344,6 @@ class TechnicalRequirementExtractor(dspy.Module):
                 filtered_out.append(candidate)
 
         return {'requirements': valid_requirements, 'filtered_out': filtered_out}
-
 
 class FunctionalDetailExtractor(dspy.Module):
     """Extracts functional details (UI + Workflows) in a single pass."""

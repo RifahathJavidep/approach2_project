@@ -33,7 +33,6 @@ class ScenarioTestCaseSignature(dspy.Signature):
         desc='JSON: {"description":"E2E test for [scenario] of [feature]","preconditions":["str1"],"steps":[{"step_num":1,"action":"specific action","expected_result":"specific expected outcome","test_data":"relevant data"}]}'
     )
 
-
 class ScenarioGeneratorModule(dspy.Module):
     def __init__(self):
         super().__init__()
@@ -48,7 +47,6 @@ class ScenarioGeneratorModule(dspy.Module):
             scenario_steps_hint=scenario_steps_hint,
             document_context=document_context
         )
-
 
 class ScenarioBasedTCGenerator:
     """

@@ -16,11 +16,6 @@ Moved from: extract_requirements.py lines 63–132, 564–574
 
 import dspy
 
-
-# ============================================================================
-# MULTI-LAYER EXTRACTION SIGNATURES
-# ============================================================================
-
 class BusinessFeatureExtraction(dspy.Signature):
     """Extract BUSINESS FEATURES, capabilities, and configuration requirements.
 
@@ -92,7 +87,6 @@ class BusinessFeatureExtraction(dspy.Signature):
       'confidence': 'high'|'medium'|'low'
     }]""")
 
-
 class UIRequirementExtraction(dspy.Signature):
     """Extract SPECIFIC USER INTERFACE requirements — screens, pages, and forms.
 
@@ -137,7 +131,6 @@ class UIRequirementExtraction(dspy.Signature):
       'ambiguities': [],
       'confidence': 'high'
     }]""")
-
 
 class WorkflowRequirementExtraction(dspy.Signature):
     """Extract STEP-BY-STEP WORKFLOW and PROCESS requirements.
@@ -184,7 +177,6 @@ class WorkflowRequirementExtraction(dspy.Signature):
       'ambiguities': ['What happens if rep rejects lead?'],
       'confidence': 'high'
     }]""")
-
 
 class TechnicalRequirementExtraction(dspy.Signature):
     """Extract TECHNICAL and ARCHITECTURAL requirements.
@@ -235,7 +227,6 @@ class TechnicalRequirementExtraction(dspy.Signature):
       'confidence': 'high'
     }]""")
 
-
 class FunctionalDetailExtraction(dspy.Signature):
     """Extract FUNCTIONAL DETAILS, including UI components and Workflows/Processes.
 
@@ -276,8 +267,6 @@ class FunctionalDetailExtraction(dspy.Signature):
       'confidence': 'high'|'medium'
     }]""")
 
-
-
 class RequirementDeMerger(dspy.Signature):
     """Split a composite requirement into multiple granular requirements if it contains distinct features.
     
@@ -291,7 +280,6 @@ class RequirementDeMerger(dspy.Signature):
     composite_requirement_title = dspy.InputField()
     composite_requirement_desc = dspy.InputField()
     requirements_json = dspy.OutputField(desc="JSON array of distinct requirements (titles and descriptions)")
-
 
 class RequirementClassifier(dspy.Signature):
     """Classify if this is a genuine software requirement of ANY type.
@@ -321,7 +309,6 @@ class RequirementClassifier(dspy.Signature):
     description = dspy.InputField()
     is_requirement = dspy.OutputField(desc="'yes' if this is a specific, actionable requirement of any type, 'no' if document noise or vague")
     reason = dspy.OutputField(desc="Brief explanation of why this is or isn't a valid requirement")
-
 
 class RequirementConsolidation(dspy.Signature):
     """Consolidate a list of requirements by merging duplicates and sub-features into parent features.
@@ -366,9 +353,4 @@ class RequirementConsolidation(dspy.Signature):
       'ambiguities': [...],
       'confidence': '...'
     }]""")
-
-
-
-
-
 

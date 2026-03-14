@@ -21,8 +21,12 @@ import re
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 
+import logging
+
 import dspy
 from dotenv import load_dotenv
+
+logger = logging.getLogger("prism.extraction.manual_dspy")
 
 from .file_router import FileRouter, FileType
 from .extractors.pdf_extractor import PDFExtractor
@@ -42,14 +46,12 @@ load_dotenv()
 # Minimum characters on a page to attempt extraction
 MIN_CONTENT_CHARS = 30
 
-
 def _get_lm():
     """Get or create the DSPy language model."""
     groq_key = os.getenv("GROQ_API_KEY")
     if not groq_key:
         raise ValueError("GROQ_API_KEY not found in .env")
     return dspy.LM("groq/llama-3.3-70b-versatile", api_key=groq_key, max_tokens=16384)
-
 
 class ManualDSPyExtractor:
     """
@@ -151,8 +153,7 @@ class ManualDSPyExtractor:
 
     def _extract_page_text(self, file_path: str, page_no: int) -> str:
         """Extract text from a specific page of any supported document."""
-        router = FileRouter(file_path)
-        file_type = router.classify()
+        file_type = FileRouter.classify(file_path)
 
         if file_type in [FileType.PDF, FileType.SCANNED_PDF]:
             import fitz
@@ -220,7 +221,7 @@ class ManualDSPyExtractor:
                         req["_extraction_layer"] = layer_name
                     all_requirements.extend(reqs)
                 except Exception as e:
-                    print(f"    ⚠ {layer_name} layer failed: {e}")
+                    logger.warning("Layer '%s' failed: %s", layer_name, e, exc_info=True)
 
         return all_requirements
 

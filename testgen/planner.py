@@ -68,7 +68,6 @@ You ALWAYS write from the END-USER's perspective. Never say \
 
 You return ONLY valid JSON. No markdown. No commentary."""
 
-
 # ─────────────────────────────────────────────────────────────────────────────
 # USER PROMPT — The detailed instruction for each requirement
 # ─────────────────────────────────────────────────────────────────────────────
@@ -102,10 +101,10 @@ TEST CASE GENERATION RULES
 
 ▸ RULE 1 — USER PERSPECTIVE
   Every test step must describe what the USER does and sees.
-  ✅ "Click the 'Submit Order' button"
-  ✅ "Verify the confirmation message displays: 'Order placed successfully'"
-  ❌ "System processes the order in the backend"
-  ❌ "Database record is created"
+  "Click the 'Submit Order' button"
+  "Verify the confirmation message displays: 'Order placed successfully'"
+  "System processes the order in the backend"
+  "Database record is created"
 
 ▸ RULE 2 — VERBATIM TERMINOLOGY
   Use the EXACT names, labels, and terms from the requirement.
@@ -114,11 +113,11 @@ TEST CASE GENERATION RULES
 
 ▸ RULE 3 — STEP GRANULARITY (8-15 steps per test case)
   Each step = ONE atomic action. Never combine two actions.
-  ✅ Step 1: "Navigate to the Login page"
-  ✅ Step 2: "Enter valid username in the 'Email' field"
-  ✅ Step 3: "Enter valid password in the 'Password' field"
-  ✅ Step 4: "Click the 'Sign In' button"
-  ❌ Step 1: "Login with valid credentials"  ← TOO VAGUE
+  Step 1: "Navigate to the Login page"
+  Step 2: "Enter valid username in the 'Email' field"
+  Step 3: "Enter valid password in the 'Password' field"
+  Step 4: "Click the 'Sign In' button"
+  Step 1: "Login with valid credentials"  ← TOO VAGUE
 
 ▸ RULE 4 — COMPLETE TEST JOURNEY
   Every test case must follow this flow:
@@ -146,9 +145,9 @@ TEST CASE GENERATION RULES
 
 ▸ RULE 7 — TEST DATA
   Specify realistic test data in each step:
-  ✅ "Enter 'john.doe@company.com' in the Email field"
-  ✅ "Select 'Active' from the Status dropdown"
-  ❌ "Enter a valid email" ← No specific data
+  "Enter 'john.doe@company.com' in the Email field"
+  "Select 'Active' from the Status dropdown"
+  "Enter a valid email" ← No specific data
 
 ▸ RULE 8 — PREREQUISITES
   List everything that must be TRUE before the test starts:
@@ -184,7 +183,6 @@ Return ONLY this JSON structure. Nothing else.
   ],
   "total_count": 1
 }}"""
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PLANNER CLASS

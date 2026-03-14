@@ -23,7 +23,6 @@ import json
 import os
 from typing import Dict, Any, List, Optional
 
-
 class DiagramAnalyzer:
     """
     Extract structured workflow information from diagram images.

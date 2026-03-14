@@ -1,21 +1,16 @@
 """
-Centralized logging configuration for PRISM.
-
-Sets up:
-  - Console handler  : INFO level, coloured prefix
-  - File handler     : DEBUG level, full detail → logs/prism.log (rotates at 10 MB)
+Logging Setup — rotating file handler + console handler for PRISM.
 
 Usage:
-    from logging_config import setup_logging
-    setup_logging()          # default log level INFO
-    setup_logging("DEBUG")   # verbose
+    from utils.logging import setup_logging
+    setup_logging()           # INFO to console, DEBUG to file
+    setup_logging("DEBUG")    # verbose console output
 """
 import logging
 import logging.handlers
-import os
 from pathlib import Path
 
-LOG_DIR = Path(__file__).parent / "logs"
+LOG_DIR = Path(__file__).parent.parent / "logs"
 LOG_FILE = LOG_DIR / "prism.log"
 
 CONSOLE_FORMAT = "%(asctime)s [%(levelname)s] %(name)s — %(message)s"
@@ -32,21 +27,17 @@ def setup_logging(level: str = "INFO") -> None:
 
     root = logging.getLogger()
 
-    # Don't add OUR handlers twice (e.g. if called from both app.py and celery_app.py)
-    # but don't skip if only third-party handlers exist
-    if any(getattr(h, '_prism_handler', False) for h in root.handlers):
+    if any(getattr(h, "_prism_handler", False) for h in root.handlers):
         return
 
-    root.setLevel(logging.DEBUG)  # let handlers decide their own floor
+    root.setLevel(logging.DEBUG)
 
-    # ── Console handler ───────────────────────────────────────────
     console = logging.StreamHandler()
     console.setLevel(getattr(logging, level.upper(), logging.INFO))
     console.setFormatter(logging.Formatter(CONSOLE_FORMAT, datefmt=DATE_FORMAT))
     console._prism_handler = True
     root.addHandler(console)
 
-    # ── Rotating file handler (10 MB × 5 backups) ─────────────────
     file_handler = logging.handlers.RotatingFileHandler(
         LOG_FILE, maxBytes=10 * 1024 * 1024, backupCount=5, encoding="utf-8"
     )
@@ -55,11 +46,10 @@ def setup_logging(level: str = "INFO") -> None:
     file_handler._prism_handler = True
     root.addHandler(file_handler)
 
-    # Silence noisy third-party loggers
     for noisy in ("httpx", "httpcore", "urllib3", "boto3", "botocore",
                   "s3transfer", "dspy", "openai", "groq"):
         logging.getLogger(noisy).setLevel(logging.WARNING)
 
     logging.getLogger(__name__).info(
-        f"Logging initialised — console: {level.upper()} | file: {LOG_FILE}"
+        "Logging initialised — console: %s | file: %s", level.upper(), LOG_FILE
     )

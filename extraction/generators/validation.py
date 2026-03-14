@@ -9,10 +9,6 @@ or non-requirement items (like service descriptions, document metadata, etc.)
 import re
 from typing import Dict, Tuple
 
-# ============================================================================
-# VALIDATION KEYWORDS & PATTERNS
-# ============================================================================
-
 VAGUE_MODIFIERS = [
     'advanced', 'comprehensive', 'robust', 'flexible',
     'intuitive', 'powerful', 'modern', 'efficient'
@@ -41,11 +37,6 @@ MICRO_DETAIL_PATTERNS = [
     'hover effect', 'badge color', 'icon set', 'spinner',
     'toggle switch', 'scrollbar'
 ]
-
-
-# ============================================================================
-# VALIDATION FUNCTIONS
-# ============================================================================
 
 def validate_requirement(req: Dict) -> Tuple[bool, str]:
     """
@@ -92,7 +83,6 @@ def validate_requirement(req: Dict) -> Tuple[bool, str]:
         return False, "Isolated UI micro-detail without page context"
 
     return True, ""
-
 
 def has_specific_details(text: str) -> bool:
     """
@@ -156,7 +146,6 @@ def has_specific_details(text: str) -> bool:
             any(ent in text_lower for ent in entities) or
             any(cfg in text_lower for cfg in config_indicators))
 
-
 def is_umbrella_requirement(title: str, desc: str) -> bool:
     """
     Check if requirement seems like an umbrella covering multiple sub-requirements.
@@ -186,7 +175,6 @@ def is_umbrella_requirement(title: str, desc: str) -> bool:
 
     return False
 
-
 def is_micro_detail(title: str, desc: str) -> bool:
     """
     Reject isolated UI micro-components that lack parent page/screen context.
@@ -208,7 +196,6 @@ def is_micro_detail(title: str, desc: str) -> bool:
             return True
 
     return False
-
 
 def validate_and_enrich(req: Dict) -> Tuple[Dict, bool, str]:
     """

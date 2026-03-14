@@ -17,7 +17,6 @@ Example:
 import base64
 from typing import List, Dict, Any
 
-
 class PPTXExtractor:
     """
     Extract text and embedded images from PowerPoint presentations.

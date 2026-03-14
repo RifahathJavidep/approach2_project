@@ -22,7 +22,6 @@ Example:
 import os
 from typing import Dict, Any, Optional
 
-
 class OCRVerifier:
     """
     Verify and correct OCR output using Groq Vision LLM.

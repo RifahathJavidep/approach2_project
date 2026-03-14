@@ -25,7 +25,6 @@ from enum import Enum
 from pathlib import Path
 from typing import Tuple
 
-
 class FileType(Enum):
     """Supported document types for the extraction pipeline."""
     PDF = "pdf"
@@ -34,7 +33,6 @@ class FileType(Enum):
     PPTX = "pptx"
     IMAGE = "image"
     UNKNOWN = "unknown"
-
 
 class FileRouter:
     """

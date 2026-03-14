@@ -15,7 +15,6 @@ import base64
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-
 class StandaloneImageExtractor:
     """
     Extract text from standalone image files using OCR.

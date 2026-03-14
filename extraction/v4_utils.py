@@ -24,7 +24,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 ROOT_DIR = Path(__file__).parent.parent
 
-
 @dataclass
 class TestStep:
     step_num: int
@@ -76,7 +75,6 @@ class DocumentInfo:
     total_lines: int = 0
     doc_tier: str = "unknown"  # "primary" or "supporting"
 
-
 class Config:
     _data = None
 
@@ -99,7 +97,6 @@ class Config:
             else:
                 return default
         return val
-
 
 # === Token Tracker ===
 class TokenTracker:
@@ -135,7 +132,6 @@ class TokenTracker:
         logger.info(f"TOKEN USAGE {label}: {s['llm_calls']} calls | "
                      f"Input: {s['total_input_tokens']:,} | Output: {s['total_output_tokens']:,} | "
                      f"Total: {s['total_tokens']:,}")
-
 
 # === Document Classifier ===
 class DocumentClassifier:
@@ -227,7 +223,6 @@ class DocumentClassifier:
         # Step 4: Default — treat as supporting to be safe (no false extractions)
         return "supporting"
 
-
 # === Validation ===
 def validate_gt_file(file_path: Path, expected_sheet: str) -> bool:
     if not file_path.exists():
@@ -252,7 +247,6 @@ def validate_api_key() -> str:
     if not key or key == 'gsk_your_api_key_here':
         raise ValueError("GROQ_API_KEY not found or not configured in .env file")
     return key
-
 
 # === PDF Extractor with Page/Line Tracking ===
 class PDFExtractor:
@@ -386,7 +380,6 @@ class PDFExtractor:
             combined += f"\n\n{'='*60}\n[DOCUMENT: {fname}]\n{'='*60}\n{doc.full_text}"
         return combined
 
-
 # === Page/Line Locator ===
 class SourceLocator:
     @staticmethod
@@ -438,7 +431,6 @@ class SourceLocator:
         return {"page_start": page_start, "page_end": page_end,
                 "line_start": line_start, "line_end": line_end}
 
-
 # === GT Readers ===
 class BRGroundTruthReader:
     @staticmethod
@@ -463,7 +455,6 @@ class BRGroundTruthReader:
             ))
         logger.info(f"Loaded {len(requirements)} BR GT requirements")
         return requirements
-
 
 class TCGroundTruthReader:
     @staticmethod
@@ -538,7 +529,6 @@ class TCGroundTruthReader:
                         break
         return col_map
 
-
 # === Semantic Matcher ===
 class SemanticMatcher:
     def __init__(self):
@@ -593,7 +583,6 @@ class SemanticMatcher:
         except:
             return list(range(len(texts)))
 
-
 # === Context Extractor ===
 class ContextExtractor:
     @staticmethod
@@ -637,7 +626,6 @@ class ContextExtractor:
 
         return context.strip()
 
-
 # === Safe Serialization ===
 def safe_str(val) -> str:
     if val is None:
@@ -663,7 +651,6 @@ def safe_str_list(lst) -> List[str]:
         else:
             result.append(str(item))
     return result
-
 
 # === Excel Writer ===
 class ExcelWriter:
@@ -707,7 +694,6 @@ class ExcelWriter:
             })
         pd.DataFrame(rows).to_excel(str(output_path), index=False, sheet_name='Extracted Requirements')
         logger.info(f"Written {len(requirements)} requirements to {output_path}")
-
 
 # === JSON Helpers ===
 def safe_json_parse(text: str, fallback=None):

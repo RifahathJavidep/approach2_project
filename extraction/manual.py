@@ -17,7 +17,6 @@ import re
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-
 from groq import Groq
 
 from .file_router import FileRouter, FileType
@@ -94,8 +93,7 @@ class ManualExtractor:
             raise FileNotFoundError(f"File not found: {file_path}")
 
         # 1. Classify
-        router = FileRouter(file_path)
-        file_type = router.classify()
+        file_type = FileRouter.classify(file_path)
         
         # 2. Extract Text
         extractor = self.extractors.get(file_type)
@@ -146,6 +144,8 @@ class ManualExtractor:
                 text = ""
 
         except Exception as e:
+            import logging as _log
+            _log.getLogger("prism.extraction.manual").error("Page text extraction failed: %s", e, exc_info=True)
             return {"status": "error", "message": f"Extraction failed: {str(e)}"}
 
         if len(text.strip()) < MIN_CONTENT_CHARS:

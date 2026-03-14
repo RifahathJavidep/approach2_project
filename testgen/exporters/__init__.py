@@ -26,7 +26,6 @@ from openpyxl.utils import get_column_letter
 
 from ..utils import to_excel_safe
 
-
 def export_test_plan_to_excel(
     test_plan: Dict[str, Any],
     output_path: str,

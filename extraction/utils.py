@@ -9,13 +9,11 @@ Moved from: extract_requirements.py lines 458–494
 import re
 from typing import List
 
-
 def _get_section_number(header_line: str) -> str:
     """Extract the section number (e.g., '2', '2.1', '7') from a header line."""
     # Try numbered patterns: **2.1, ### 2.1, **7., ### **5.
     match = re.search(r'(\d+(?:\.\d+)*)', header_line.split('\n')[0])
     return match.group(1) if match else ''
-
 
 def _split_by_sections(text: str) -> List[str]:
     """Split text into sections based on markdown headers and numbered sections.
@@ -97,7 +95,6 @@ def _split_by_sections(text: str) -> List[str]:
 
     return result_sections
 
-
 def _split_by_paragraphs(text: str, max_chars: int) -> List[str]:
     """Fallback: split a large section by paragraphs into chunks."""
     chunks = []
@@ -136,7 +133,6 @@ def _split_by_paragraphs(text: str, max_chars: int) -> List[str]:
         chunks.append("\n\n".join(current_chunk))
 
     return chunks
-
 
 def chunk_document(text: str, max_chars: int = 6000, overlap: float = 0.20) -> List[str]:
     """Split document into overlapping chunks, preferring section boundaries.

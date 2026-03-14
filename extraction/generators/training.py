@@ -15,11 +15,6 @@ import dspy
 
 from .signatures import BusinessFeatureExtraction
 
-
-# ============================================================================
-# PATTERN-BASED TRAINING EXAMPLES (Domain Agnostic)
-# ============================================================================
-
 # POSITIVE EXAMPLES - Organized by extraction layer
 # Teaches the LLM to recognize PATTERNS, not domain-specific content
 
@@ -112,8 +107,6 @@ POSITIVE_EXAMPLES_BY_LAYER = {
 #     ]
 }
 
-
-
 # NEGATIVE EXAMPLES - Patterns to REJECT
 NEGATIVE_EXAMPLES = [
     # Vague/Generic requirements (no specifics)
@@ -175,13 +168,6 @@ SKIP_KEYWORDS = [
     'aws deployment', 'engagement and feedback', 'analytics and reporting',
     'customer support', 'fast transaction processing', 'settings management',
 ]
-
-
-
-
-# ============================================================================
-# MULTI-PROJECT TRAINING DATA GENERATION
-# ============================================================================
 
 def _generate_training_from_projects(
     current_project: str,
@@ -255,7 +241,6 @@ def _generate_training_from_projects(
 
     return extra_examples
 
-
 def _read_gt_file(gt_path: Path) -> List[Dict]:
     """Read requirements from a ground truth file (JSON or Excel)."""
     if not gt_path.exists():
@@ -285,7 +270,6 @@ def _read_gt_file(gt_path: Path) -> List[Dict]:
     
     return []
 
-
 def _generate_training_from_ground_truth(gt_dir: str) -> List[Dict]:
     """Scan GT directory for requirements to use as positive training examples."""
     gt_examples = []
@@ -310,11 +294,6 @@ def _generate_training_from_ground_truth(gt_dir: str) -> List[Dict]:
                 })
     
     return gt_examples
-
-
-# ============================================================================
-# TRAINING FUNCTION
-# ============================================================================
 
 def train_extractor(extractor, config: Dict = None):
     """

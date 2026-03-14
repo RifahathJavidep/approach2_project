@@ -23,7 +23,6 @@ from typing import List, Dict, Any, Optional
 
 from PIL import Image
 
-
 class PDFExtractor:
     """
     Extract text and embedded images from PDF documents.

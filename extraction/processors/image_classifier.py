@@ -25,7 +25,6 @@ Example:
 import os
 from typing import Dict, Any, Optional
 
-
 class ImageClassifier:
     """
     Classify images as workflow diagrams or informational images.

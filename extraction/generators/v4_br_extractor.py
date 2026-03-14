@@ -23,7 +23,6 @@ from ..v4_utils import (
 
 logger = logging.getLogger(__name__)
 
-
 class RequirementExtractorSignature(dspy.Signature):
     """Extract SPECIFIC, USER-FACING business requirements from a BRD/Feature document."""
     document_text: str = dspy.InputField(desc="Full document text with page/line markers")
@@ -33,7 +32,6 @@ class RequirementExtractorSignature(dspy.Signature):
     requirements_json: str = dspy.OutputField(
         desc='JSON array: [{"title":"specific feature name","description":"what user sees/does","type":"UI|Functional|Navigation","category":"Dashboard|Warranty|Navigation|Export|Usage|Orders","acceptance_criteria":["AC1","AC2"],"page_hint":"page number where found"}]'
     )
-
 
 class MetadataEnricherSignature(dspy.Signature):
     """Enrich a business requirement with test metadata and scenario variants."""
@@ -47,7 +45,6 @@ class MetadataEnricherSignature(dspy.Signature):
         desc='JSON: {"user_story":"...","acceptance_criteria":["str1","str2"],"test_scenarios":[{"scenario_name":"name from AC","scenario_steps":["step1","step2"]}],"system_dependencies":["str1"],"preconditions":["str1"],"business_rules":["str1"]}'
     )
 
-
 class ExtractorModule(dspy.Module):
     def __init__(self):
         super().__init__()
@@ -58,7 +55,6 @@ class ExtractorModule(dspy.Module):
             document_text=document_text, document_name=document_name,
             extraction_guidance=extraction_guidance
         )
-
 
 class EnricherModule(dspy.Module):
     def __init__(self):
@@ -75,7 +71,6 @@ class EnricherModule(dspy.Module):
             document_context=document_context
         )
 
-
 def _build_extraction_guidance(gt_reqs):
     guidance = """EXTRACTION GUIDANCE:
 - Look for structured feature definitions: Feature #, Feature Name, Description, Acceptance Criteria
@@ -85,13 +80,11 @@ def _build_extraction_guidance(gt_reqs):
         guidance += f"\n- Expected total across ALL primary documents: approximately {len(gt_reqs)} features"
     return guidance
 
-
 def _validate_scenarios(scenarios, acceptance_criteria, feature_title):
     if not scenarios: return []
     ac_text = " ".join(safe_str_list(acceptance_criteria)).lower()
     # Logic to ensure scenarios match the AC
     return scenarios[:8]
-
 
 def _smart_dedup(all_reqs, threshold=0.55):
     if len(all_reqs) <= 1: return all_reqs
@@ -105,7 +98,6 @@ def _smart_dedup(all_reqs, threshold=0.55):
             if matcher.compute_similarity(all_reqs[i]['title'], all_reqs[j]['title']) >= threshold:
                 removed.add(j)
     return [all_reqs[i] for i in range(len(all_reqs)) if i not in removed]
-
 
 def extract_requirements(input_dir=None, br_gt_dir=None, output_dir=None, model_path=None, document_tiers=None):
     cfg = Config.load()

@@ -6,7 +6,6 @@ Ported from ai_test_case with minimal changes.
 import re
 from typing import Any
 
-
 def clean_for_json(obj: Any) -> Any:
     """
     Recursively clean an object for JSON serialization.
@@ -21,7 +20,6 @@ def clean_for_json(obj: Any) -> Any:
     else:
         return str(obj)
 
-
 def to_excel_safe(value: Any) -> str:
     """
     Convert a value to an Excel-safe string.
@@ -33,7 +31,6 @@ def to_excel_safe(value: Any) -> str:
     # Remove XML-illegal characters (control chars except \t, \n, \r)
     text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
     return text
-
 
 def safe_json_serialize(obj: Any) -> str:
     """Serialize to JSON, handling non-standard types."""
