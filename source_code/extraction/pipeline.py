@@ -50,7 +50,8 @@ from .generators.v4_br_extractor import extract_requirements as v4_extract_requi
 from .utils import chunk_document
 
 # Load environment
-load_dotenv()
+env_path = Path(__file__).parent.parent.parent.parent / "configuration" / ".env"
+load_dotenv(dotenv_path=env_path)
 
 logger = logging.getLogger("prism.pipeline")
 

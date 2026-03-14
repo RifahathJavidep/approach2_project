@@ -11,7 +11,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-load_dotenv()
+env_path = Path(__file__).parent.parent / "configuration" / ".env"
+load_dotenv(dotenv_path=env_path)
 
 # Logging
 import logging

@@ -30,7 +30,8 @@ import logging
 from logging_config import setup_logging
 
 # Load environment
-load_dotenv()
+env_path = Path(__file__).parent.parent / "configuration" / ".env"
+load_dotenv(dotenv_path=env_path)
 
 # ── Logging ─────────────────────────────────────────────────────
 setup_logging("DEBUG")

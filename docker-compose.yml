@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # AI API Service
+  ai-api:
+    build: .
+    container_name: miipe_ai
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./configuration/.env
+    environment:
+      - CELERY_BROKER_URL=rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      - CELERY_RESULT_BACKEND=rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+    depends_on:
+      - redis
+
+  # AI Celery Worker
+  ai-worker:
+    build: .
+    container_name: miipe_worker
+    command: celery -A celery_app worker --loglevel=info
+    env_file:
+      - ./configuration/.env
+    environment:
+      - CELERY_BROKER_URL=rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      - CELERY_RESULT_BACKEND=rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+    depends_on:
+      - redis
+
+  # Redis for Task Queue
+  redis:
+    image: redis:7-alpine
+    container_name: miipe_redis
+    ports:
+      - "6379:6379"

@@ -63,3 +63,30 @@ extraction:
 evaluation:
   similarity_threshold: 0.25
   step_match_threshold: 0.30
+
+# Senior Requested Deployment & Environment Settings
+deployment:
+  s3:
+    bucket_name: "katsu-ai-requirement-documents"
+    region: "us-east-2"
+    auth_method: "iam_user"  # access_key based for now
+  ftp:
+    enabled: true
+    protocol: "sftp"
+    host: "ftp.miipe.team"
+    port: 22
+    user: "your_username"    # Update in .env OR here
+    remote_path: "/uploads"
+  rdp:
+    remote_rdp:
+      host: "10.0.1.50"      # Placeholder for Senior to update
+      port: 3389
+      user: "Administrator"
+    local_rdp:
+      host: "localhost"
+      port: 3388
+
+environment:
+  type: "development"  # Options: production, staging, development
+  java_backend_url: "http://localhost:8080"
+  redis_url: "rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0"
