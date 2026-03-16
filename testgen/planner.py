@@ -20,12 +20,9 @@ import re
 from typing import List, Dict, Any, Optional
 
 from groq import Groq
-from dotenv import load_dotenv
-
 from .context_builder import get_feature_context
 from .scenario_generator import ScenarioBasedTCGenerator
-
-load_dotenv()
+from utils.secrets import get_secret
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ENUM MAPPINGS — Current string values → TestCaseEditorDTO enum arrays
@@ -197,9 +194,9 @@ class TestCasePlanner:
     """
 
     def __init__(self, model: str = "llama-3.3-70b-versatile", mode: str = "hybrid", model_state_path: Optional[str] = None):
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = get_secret("GROQ_API_KEY")
         if not api_key:
-            raise ValueError("GROQ_API_KEY not set in environment")
+            raise ValueError("GROQ_API_KEY not found in AWS Secrets Manager or environment")
         self.client = Groq(api_key=api_key)
         self.model = model
         self.mode = mode

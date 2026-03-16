@@ -6,15 +6,16 @@ import os
 import ssl
 
 from celery import Celery
-from dotenv import load_dotenv
-
+from utils.secrets import get_secret
 from utils.logging import setup_logging
 
+# WITHOUT DEPLOYMENT: loads from local .env
+# WITH DEPLOYMENT: fetches from AWS Secrets Manager
 load_dotenv()
 setup_logging("INFO")
 
-broker_url = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0")
-result_backend = os.getenv("CELERY_RESULT_BACKEND", "redis://localhost:6379/1")
+broker_url = get_secret("CELERY_BROKER_URL", "redis://localhost:6379/0")
+result_backend = get_secret("CELERY_RESULT_BACKEND", "redis://localhost:6379/1")
 
 app = Celery("extraction", broker=broker_url, backend=result_backend)
 

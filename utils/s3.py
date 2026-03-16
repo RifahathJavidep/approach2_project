@@ -9,9 +9,8 @@ from urllib.parse import urlparse
 
 import boto3
 from botocore.config import Config
-from dotenv import load_dotenv
 
-load_dotenv()
+from utils.secrets import get_secret
 
 logger = logging.getLogger("prism.s3")
 
@@ -20,17 +19,17 @@ def get_client():
     """Create an S3 client with SigV4 signing."""
     return boto3.client(
         "s3",
-        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-        aws_session_token=os.getenv("AWS_SESSION_TOKEN"),
-        region_name=os.getenv("AWS_REGION", "us-east-1"),
+        aws_access_key_id=get_secret("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=get_secret("AWS_SECRET_ACCESS_KEY"),
+        aws_session_token=get_secret("AWS_SESSION_TOKEN"),
+        region_name=get_secret("AWS_REGION", "us-east-1"),
         config=Config(signature_version="s3v4"),
     )
 
 
 def get_bucket() -> str:
     """Return the configured S3 bucket name."""
-    return os.getenv("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
+    return get_secret("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
 
 
 def parse_url(s3_url: str) -> tuple:

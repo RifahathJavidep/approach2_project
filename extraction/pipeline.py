@@ -25,8 +25,6 @@ from pathlib import Path
 from typing import List, Dict, Optional, Callable
 
 import dspy
-from dotenv import load_dotenv
-
 from .file_router import FileRouter, FileType
 from .extractors.pdf_extractor import PDFExtractor
 from .extractors.docx_extractor import DOCXExtractor
@@ -48,9 +46,7 @@ from .generators.postprocessing import deduplicate_requirements, deduplicate_mul
 from .generators.validation import validate_requirement
 from .generators.v4_br_extractor import extract_requirements as v4_extract_requirements
 from .utils import chunk_document
-
-# Load environment
-load_dotenv()
+from utils.secrets import get_secret
 
 logger = logging.getLogger("prism.pipeline")
 
@@ -263,9 +259,9 @@ def _get_lm():
     """Get or create the global DSPy language model."""
     global _global_lm
     if _global_lm is None:
-        groq_key = os.getenv("GROQ_API_KEY")
+        groq_key = get_secret("GROQ_API_KEY")
         if not groq_key:
-            raise ValueError("GROQ_API_KEY not found in .env")
+            raise ValueError("GROQ_API_KEY not found in AWS Secrets Manager or environment")
         _global_lm = dspy.LM('groq/llama-3.3-70b-versatile', api_key=groq_key, max_tokens=16384)
     return _global_lm
 
@@ -304,7 +300,7 @@ class ExtractionPipeline:
         self._ocr_config = OCRConfig.from_env()
 
         # Image processing pipeline (uses Groq Llama 3.2 Vision — same API key as DSPy)
-        groq_key = os.getenv("GROQ_API_KEY")
+        groq_key = get_secret("GROQ_API_KEY")
         self.ocr_verifier = OCRVerifier(groq_api_key=groq_key)
         self.image_classifier = ImageClassifier(groq_api_key=groq_key)
         self.diagram_analyzer = DiagramAnalyzer(groq_api_key=groq_key)
@@ -673,7 +669,7 @@ class ExtractionPipeline:
         logger.info("=" * 80)
 
         # Check v4.0 Enrichment-Pass flag
-        use_v4 = os.getenv('USE_V4_BR_EXTRACTION', 'false').lower() == 'true'
+        use_v4 = get_secret('USE_V4_BR_EXTRACTION', 'false').lower() == 'true'
 
         if use_v4:
             import tempfile

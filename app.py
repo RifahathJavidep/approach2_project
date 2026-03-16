@@ -15,6 +15,9 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from utils.logging import setup_logging
 
+# Load local .env file. 
+# WITHOUT DEPLOYMENT: this is the primary source of credentials.
+# WITH DEPLOYMENT: constants are fetched from AWS Secrets Manager, and this serves as a fallback.
 load_dotenv()
 setup_logging("DEBUG")
 logger = logging.getLogger("prism.api")

@@ -1,37 +1,40 @@
 version: "3.9"
 
-# ─── Shared environment loaded by both services ─────────────────────────────
-# Copy .env.example to .env and fill in your values before running.
+# PRISM — Python Services (Extraction + TestGen)
+#
+# Uses AWS ElastiCache (external) as the Celery broker — no local Redis container needed.
+# All API keys are fetched from AWS Secret Manager at startup (utils/secrets.py).
+# Non-secret config is set inline below.
+#
+# Start:   docker-compose up --build
+# Monitor: http://localhost:8003  (Celery Flower dashboard)
 
 services:
 
-  # ── Infrastructure ─────────────────────────────────────────────────────────
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
-
-  # ── Extraction Service ─────────────────────────────────────────────────────
+  # ── Extraction Service  (port 8001) ──────────────────────────────────────────
 
   extraction-api:
     build:
       context: .
       dockerfile: extraction-service/Dockerfile
-    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    container_name: extraction_api
     ports:
-      - "8000:8000"
-    env_file: .env
+      - "8001:8001"
     environment:
-      - TESTGEN_SERVICE_URL=http://testgen-api:8001
-    depends_on:
-      redis:
-        condition: service_healthy
+      # AWS Secret Manager — all API keys and credentials live here
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      IS_DEPLOYED: "true"
+      # Celery — AWS ElastiCache (Valkey/Redis, SSL)
+      CELERY_BROKER_URL: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      CELERY_RESULT_BACKEND: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+      # S3
+      S3_BUCKET_NAME: katsu-ai-requirement-documents
+      # Feature flags
+      USE_V4_BR_EXTRACTION: "true"
+      # Inter-service URLs
+      JAVA_BACKEND_URL: http://java-api:8081
+      TESTGEN_SERVICE_URL: http://testgen-api:8002
     restart: unless-stopped
 
   extraction-worker:
@@ -39,27 +42,36 @@ services:
       context: .
       dockerfile: extraction-service/Dockerfile
     command: celery -A celery_app worker --loglevel=info -Q extraction --concurrency=2
-    env_file: .env
+    container_name: extraction_worker
     environment:
-      - TESTGEN_SERVICE_URL=http://testgen-api:8001
-    depends_on:
-      redis:
-        condition: service_healthy
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      CELERY_RESULT_BACKEND: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+      S3_BUCKET_NAME: katsu-ai-requirement-documents
+      USE_V4_BR_EXTRACTION: "true"
+      JAVA_BACKEND_URL: http://java-api:8081
+      TESTGEN_SERVICE_URL: http://testgen-api:8002
     restart: unless-stopped
 
-  # ── TestGen Service ────────────────────────────────────────────────────────
+  # ── TestGen Service  (port 8002) ─────────────────────────────────────────────
 
   testgen-api:
     build:
       context: .
       dockerfile: testgen-service/Dockerfile
-    command: uvicorn app:app --host 0.0.0.0 --port 8001 --reload
+    container_name: testgen_api
     ports:
-      - "8001:8001"
-    env_file: .env
-    depends_on:
-      redis:
-        condition: service_healthy
+      - "8002:8002"
+    environment:
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      CELERY_RESULT_BACKEND: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+      S3_BUCKET_NAME: katsu-ai-requirement-documents
+      JAVA_BACKEND_URL: http://java-api:8081
     restart: unless-stopped
 
   testgen-worker:
@@ -67,16 +79,37 @@ services:
       context: .
       dockerfile: testgen-service/Dockerfile
     command: celery -A celery_app worker --loglevel=info -Q testgen --concurrency=2
-    env_file: .env
-    depends_on:
-      redis:
-        condition: service_healthy
+    container_name: testgen_worker
+    environment:
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      CELERY_RESULT_BACKEND: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/1
+      S3_BUCKET_NAME: katsu-ai-requirement-documents
+      JAVA_BACKEND_URL: http://java-api:8081
     restart: unless-stopped
 
-  # ── API Gateway ────────────────────────────────────────────────────────────
+  # ── Celery Flower — task monitoring dashboard  (port 8003) ───────────────────
+
+  flower:
+    image: mher/flower:2.0
+    container_name: celery_flower
+    command: >
+      celery
+      --broker=rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+      flower --port=8003
+    ports:
+      - "8003:8003"
+    environment:
+      FLOWER_BROKER_API: rediss://katsu-khru8m.serverless.use1.cache.amazonaws.com:6379/0
+    restart: unless-stopped
+
+  # ── Nginx — API Gateway  (port 80) ───────────────────────────────────────────
 
   nginx:
     build: ./nginx
+    container_name: nginx_gateway
     ports:
       - "80:80"
     depends_on:

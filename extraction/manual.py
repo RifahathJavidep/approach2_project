@@ -25,6 +25,7 @@ from .extractors.docx_extractor import DOCXExtractor
 from .extractors.pptx_extractor import PPTXExtractor
 from .extractors.image_extractor import StandaloneImageExtractor
 from .extractors.ocr_extractor import LocalOCRExtractor, OCRConfig
+from utils.secrets import get_secret
 
 # Minimum characters on a page to attempt requirement extraction
 MIN_CONTENT_CHARS = 30
@@ -158,9 +159,9 @@ class ManualExtractor:
         return self._call_groq(description, path.name, page_no, text)
 
     def _call_groq(self, description: str, doc_name: str, page_no: int, text: str) -> Dict[str, Any]:
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = get_secret("GROQ_API_KEY")
         if not api_key:
-            return {"status": "error", "message": "GROQ_API_KEY not set"}
+            return {"status": "error", "message": "GROQ_API_KEY not found in AWS Secrets Manager or environment"}
 
         client = Groq(api_key=api_key)
         prompt = EXTRACTION_PROMPT.format(
