@@ -1,0 +1,25 @@
+# PRISM Configuration
+paths:
+  input_dir: "data/inputs"
+  br_gt_dir: "data/groundtruth"
+  output_dir: "output"
+  models_dir: "models"
+
+llm:
+  model: "llama-3.3-70b-versatile"
+
+document_classification:
+  primary_patterns: ["*Feature*", "*BRD*", "*Requirement*", "*Dashboard*", "*Warranty*"]
+  supporting_patterns: ["*Solution*", "*Traceability*", "*Matrix*", "*Complete*"]
+  jira_pattern: "^[A-Z]+-\\d+"
+  auto_detect: true
+
+br_gt:
+  sheet_name: "Requirements Summary"
+  header_row: 1
+  columns:
+    feature_id: "Feature ID"
+    feature_name: "Feature Name"
+    description: "Description"
+    system: "System"
+    requirements: "Requirements"

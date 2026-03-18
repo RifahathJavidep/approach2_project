@@ -27,19 +27,19 @@ def run_full_pipeline():
 
     # 1. Define Input Files and Tiers
     input_files = [
-        "inputs/BBMBT-3917.pdf",
-        "inputs/BBMBT-3920.pdf",
-        "inputs/BBMOMNI-4424.pdf",
-        "inputs/BBMOMNI-5101.pdf",
-        "inputs/BBMOMNI-5111.pdf",
-        "inputs/BBMOMNI-5113.pdf",
-        "inputs/BBMOMNI-5114.pdf",
-        "inputs/BBMSA-13025.pdf",
-        "inputs/Play to Win SS Ph1 - Dashboard_Features.pdf",
-        "inputs/Play to Win SS Ph1 - Warranty_Feature.pdf",
-        "inputs/PTW Self Serve Phase 1 Solution.pdf",
-        "inputs/Requirements Traceability Matrix.pdf",
-        "inputs/Test Strategy_PTW SS Ph1_V0.1.pptx"
+        "data/inputs/BBMBT-3917.pdf",
+        "data/inputs/BBMBT-3920.pdf",
+        "data/inputs/BBMOMNI-4424.pdf",
+        "data/inputs/BBMOMNI-5101.pdf",
+        "data/inputs/BBMOMNI-5111.pdf",
+        "data/inputs/BBMOMNI-5113.pdf",
+        "data/inputs/BBMOMNI-5114.pdf",
+        "data/inputs/BBMSA-13025.pdf",
+        "data/inputs/Play to Win SS Ph1 - Dashboard_Features.pdf",
+        "data/inputs/Play to Win SS Ph1 - Warranty_Feature.pdf",
+        "data/inputs/PTW Self Serve Phase 1 Solution.pdf",
+        "data/inputs/Requirements Traceability Matrix.pdf",
+        "data/inputs/Test Strategy_PTW SS Ph1_V0.1.pptx"
     ]
     
     document_tiers = {

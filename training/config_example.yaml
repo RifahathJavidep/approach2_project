@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PRISM Training Configuration — Example
+#
+# Copy and edit this file for your project.
+# Pass it to the training scripts using: --config path/to/your_config.yaml
+#
+# Usage:
+#   python training/train_br.py --config training/my_project_config.yaml
+#   python training/train_testcases.py --config training/my_project_config.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Project name (used for logging only)
+project_name: "my-project"
+
+# Language model for training
+# Options:
+#   groq/llama-3.1-70b-versatile    (recommended — fast, good quality)
+#   groq/llama-3.1-8b-instant       (faster, lower quality)
+#   openai/gpt-4o                   (high quality, costs more)
+language_model: "groq/llama-3.1-70b-versatile"
+
+# ── BR Extractor Training ─────────────────────────────────────────────────────
+
+# Directory containing ground truth BR files (JSON or Excel)
+# Each file should contain a list of requirements:
+#   [ { "title": "...", "description": "...", "type": "Functional" }, ... ]
+ground_truth_dir: "data/groundtruth/my-project/"
+
+# Directory containing project PDF documents (optional, for multi-project training)
+# The trainer will scan other projects' PDFs to generate additional examples.
+documents_dir: "data/inputs/my-project/"
+
+# ── Test Case Generator Training ──────────────────────────────────────────────
+
+# Path to requirements JSON file (output from BR extraction pipeline)
+requirements_file: "data/outputs/my-project/requirements.json"
+
+# Directory containing ground truth test case files (JSON)
+# Each file should contain:
+#   { "test_cases": [ { "title": "...", "description": "...", "steps": [...] }, ... ] }
+tc_ground_truth_dir: "data/groundtruth/my-project/test_cases/"
+
+# ── Output ────────────────────────────────────────────────────────────────────
+
+# Directory where trained models will be saved
+output_dir: "data/trained_models/my-project/"

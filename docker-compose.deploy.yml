@@ -141,9 +141,9 @@ services:
   flower:
     image: mher/flower:2.0
     container_name: celery_flower
-    command: celery --broker=redis://redis:6379/0 flower --port=8003
+    command: celery --broker=redis://redis:6379/0 flower --port=8004
     ports:
-      - "8003:8003"
+      - "8004:8004"
     networks:
       - prism-network
     depends_on:
@@ -153,6 +153,49 @@ services:
 
   # ── Java Backend  (port 8081) ─────────────────────────────────────────────────
 
+  # ── Manual Service  (port 8003) — Add New Business Requirement ───────────────
+
+  manual-api:
+    build:
+      context: ./python
+      dockerfile: manual-service/Dockerfile
+    container_name: manual_api
+    ports:
+      - "8003:8003"
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+      java-api:
+        condition: service_started
+    restart: unless-stopped
+
+  manual-worker:
+    build:
+      context: ./python
+      dockerfile: manual-service/Dockerfile
+    container_name: manual_worker
+    command: celery -A celery_app worker --loglevel=info -Q manual --concurrency=2
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
   java-api:
     build: ./java
     container_name: java_api
@@ -161,13 +204,13 @@ services:
     networks:
       - prism-network
     environment:
-      # PostgreSQL — as given by Bhasker
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres.svc:5432/prism
-      SPRING_DATASOURCE_USERNAME: prism_user
-      SPRING_DATASOURCE_PASSWORD: prism_pass
+      # PostgreSQL — configure via .env file, do not hardcode credentials
+      SPRING_DATASOURCE_URL: ${DB_URL:-jdbc:postgresql://postgres.svc:5432/prism}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
       # Java fetches its own secrets from Secret Manager
-      AWS_SECRET_ID: miipe/production
-      AWS_DEFAULT_REGION: us-east-1
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
     restart: unless-stopped
 
 # ── Shared network — all containers talk to each other by service name ──────────
