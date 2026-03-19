@@ -110,6 +110,7 @@ def to_payload(req: dict, validation_confirmed: bool = False) -> dict:
         "category": req.get("category", ""),
         "requirements_text": req.get("requirements_text", ""),
         "confidence_score": conf_score,
+        "is_duplicate": req.get("is_duplicate", False),
 
         # Lists — Java expects List<String> for these
         "acceptance_criteria": _to_string_list(req.get("acceptance_criteria", [])),
