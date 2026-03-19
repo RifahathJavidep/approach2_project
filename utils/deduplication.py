@@ -16,6 +16,7 @@ def find_duplicates(
     project_id: str,
     new_requirements: List[Dict],
     threshold: float = DEFAULT_THRESHOLD,
+    tenant_id: Optional[str] = None,
 ) -> Tuple[List[Dict], int]:
     """
     Annotate each requirement with is_duplicate and duplicate_of.
@@ -26,7 +27,7 @@ def find_duplicates(
     """
     from utils.java_client import get_requirements
 
-    existing = get_requirements(project_id)
+    existing = get_requirements(project_id, tenant_id)
 
     if not existing:
         for req in new_requirements:
@@ -65,11 +66,12 @@ def filter_unique(
     project_id: str,
     new_requirements: List[Dict],
     threshold: float = DEFAULT_THRESHOLD,
+    tenant_id: Optional[str] = None,
 ) -> List[Dict]:
     """Return only requirements that are NOT duplicates of existing ones."""
     from utils.java_client import get_requirements
 
-    existing = get_requirements(project_id)
+    existing = get_requirements(project_id, tenant_id)
     if not existing:
         return new_requirements
 

@@ -22,6 +22,7 @@ def generate_testcases_task(
     requirements_s3_key=None,
     requirements_data=None,
     local_doc_paths=None,
+    tenant_id=None,
 ):
     """Generate test cases from requirements."""
     from services.testcases import _load_requirements, generate_and_store
@@ -40,6 +41,7 @@ def generate_testcases_task(
         project_name=project_name,
         requirements=requirements,
         local_doc_paths=local_doc_paths,
+        tenant_id=tenant_id,
     )
 
     logger.info(

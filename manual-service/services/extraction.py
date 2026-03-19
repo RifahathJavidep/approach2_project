@@ -44,7 +44,7 @@ async def run_manual_extraction(
 
 
 async def run_manual_dspy_extraction(
-    project_id: str, document_url: str, description: str, page_no: int
+    project_id: str, document_url: str, description: str, page_no: int, tenant_id: str | None = None
 ) -> dict:
     """
     Download a document, run DSPy extraction on a single page,
@@ -62,9 +62,9 @@ async def run_manual_dspy_extraction(
         if result.get("status") != "success" or not result.get("requirements"):
             return result
 
-        requirements, duplicates_count = find_duplicates(project_id, result["requirements"])
+        requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
 
-        _store_manual_requirements(project_id, requirements, document_url, page_no)
+        _store_manual_requirements(project_id, requirements, document_url, page_no, tenant_id)
 
         return {
             "status": "success",
@@ -80,7 +80,7 @@ async def run_manual_dspy_extraction(
 
 
 def _store_manual_requirements(
-    project_id: str, requirements: list, document_url: str, page_no: int
+    project_id: str, requirements: list, document_url: str, page_no: int, tenant_id: str | None = None
 ) -> None:
     """Map and store manual requirements as drafts in the Java backend."""
     mapped = []
@@ -100,4 +100,4 @@ def _store_manual_requirements(
 
         mapped.append(payload)
 
-    store_draft_requirements(project_id, mapped)
+    store_draft_requirements(project_id, mapped, tenant_id)

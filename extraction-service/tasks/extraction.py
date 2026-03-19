@@ -31,6 +31,7 @@ def extract_requirements_task(
     multi_project_config,
     file_urls=None,
     document_statuses=None,
+    tenant_id=None,
 ):
     """Extract requirements and store them in the Java backend."""
     from extraction.pipeline import extract_from_files, _get_lm
@@ -60,12 +61,12 @@ def extract_requirements_task(
                 fname = urllib.parse.unquote(url).split("/")[-1]
                 doc_id = filename_to_id.get(fname)
                 if doc_id:
-                    update_document_status(project_id, doc_id, url, "COMPLETED")
+                    update_document_status(project_id, doc_id, url, "COMPLETED", tenant_id)
 
         requirements = result.get("requirements", [])
         if requirements:
             mapped = [to_payload(r, validation_confirmed=False) for r in requirements]
-            store_requirements(project_id, mapped)
+            store_requirements(project_id, mapped, tenant_id)
 
         return {"status": "success", "total": len(requirements)}
 
@@ -76,7 +77,7 @@ def extract_requirements_task(
                 fname = urllib.parse.unquote(url).split("/")[-1]
                 doc_id = filename_to_id.get(fname)
                 if doc_id:
-                    update_document_status(project_id, doc_id, url, "FAILED")
+                    update_document_status(project_id, doc_id, url, "FAILED", tenant_id)
         raise
 
 
@@ -89,6 +90,7 @@ def extract_and_filter_duplicates_task(
     project_name="Project",
     file_urls=None,
     document_statuses=None,
+    tenant_id=None,
 ):
     """
     Full extraction flow:
@@ -124,11 +126,11 @@ def extract_and_filter_duplicates_task(
             return {"status": "success", "message": "No requirements found", "stored_count": 0}
 
         self.update_state(state="PROGRESS", meta={"message": "Filtering duplicates"})
-        unique = filter_unique(project_id=project_id, new_requirements=extracted, threshold=0.85)
+        unique = filter_unique(project_id=project_id, new_requirements=extracted, threshold=0.85, tenant_id=tenant_id)
 
         if unique:
             mapped = [to_payload(r) for r in unique]
-            store_requirements(project_id, mapped)
+            store_requirements(project_id, mapped, tenant_id)
             logger.info(
                 "Stored %d unique requirements (%d filtered) for project %s",
                 len(unique), len(extracted) - len(unique), project_id,
@@ -139,11 +141,11 @@ def extract_and_filter_duplicates_task(
                 fname = urllib.parse.unquote(url).split("/")[-1]
                 doc_id = filename_to_id.get(fname)
                 if doc_id:
-                    update_document_status(project_id, doc_id, url, "COMPLETED")
+                    update_document_status(project_id, doc_id, url, "COMPLETED", tenant_id)
 
         # Trigger test case generation via HTTP — testgen-service handles it from here
         if unique:
-            _trigger_testgen(project_id, project_name, unique)
+            _trigger_testgen(project_id, project_name, unique, tenant_id)
 
         return {
             "status": "success",
@@ -160,13 +162,15 @@ def extract_and_filter_duplicates_task(
                 fname = urllib.parse.unquote(url).split("/")[-1]
                 doc_id = filename_to_id.get(fname)
                 if doc_id:
-                    update_document_status(project_id, doc_id, url, "FAILED")
+                    update_document_status(project_id, doc_id, url, "FAILED", tenant_id)
         raise
 
 
-def _trigger_testgen(project_id: str, project_name: str, requirements: list) -> None:
+def _trigger_testgen(project_id: str, project_name: str, requirements: list, tenant_id: str | None = None) -> None:
     """POST to testgen-service to kick off test case generation. Non-blocking — failure is logged, not raised."""
+    from utils.java_client import get_headers
     try:
+        headers = get_headers(tenant_id)
         resp = requests.post(
             f"{TESTGEN_SERVICE_URL}/generate-testcases",
             json={
@@ -174,6 +178,7 @@ def _trigger_testgen(project_id: str, project_name: str, requirements: list) -> 
                 "project_name": project_name,
                 "requirements": requirements,
             },
+            headers=headers,
             timeout=10,
         )
         if resp.status_code == 200:

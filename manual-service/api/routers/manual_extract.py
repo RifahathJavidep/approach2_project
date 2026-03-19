@@ -1,16 +1,17 @@
 import logging
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
 from api.schemas import ManualExtractionRequest
 from services.extraction import run_manual_extraction, run_manual_dspy_extraction
+from utils.security import get_tenant_user
 
 logger = logging.getLogger("prism.manual.api.manual_extract")
 router = APIRouter()
 
 
 @router.post("/manual-extract")
-async def manual_extract_endpoint(request: ManualExtractionRequest):
+async def manual_extract_endpoint(request: ManualExtractionRequest, user: dict = Depends(get_tenant_user)):
     """
     Extract a single requirement from a specific page using basic Groq LLM.
     Fallback when automatic extraction is too broad.
@@ -34,7 +35,7 @@ async def manual_extract_endpoint(request: ManualExtractionRequest):
 
 
 @router.post("/manual-extract-dspy")
-async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
+async def manual_extract_dspy_endpoint(request: ManualExtractionRequest, user: dict = Depends(get_tenant_user)):
     """
     Extract requirements from a specific page using the trained DSPy pipeline.
     Includes duplicate detection against existing project requirements.
@@ -50,6 +51,7 @@ async def manual_extract_dspy_endpoint(request: ManualExtractionRequest):
             document_url=request.document_url,
             description=request.description,
             page_no=request.page_no,
+            tenant_id=user.get("tenant_id"),
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

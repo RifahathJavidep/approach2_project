@@ -20,6 +20,7 @@ async def queue_testcase_generation(
     requirements_s3_key: str = None,
     requirements: list = None,
     document_urls: list = None,
+    tenant_id: str | None = None,
 ) -> dict:
     """Queue a Celery task for async test case generation."""
     from tasks.testcases import generate_testcases_task
@@ -35,6 +36,7 @@ async def queue_testcase_generation(
         requirements_s3_key=requirements_s3_key,
         requirements_data=requirements,
         local_doc_paths=local_docs if local_docs else None,
+        tenant_id=tenant_id,
     )
 
     logger.info("Test case generation task queued: task_id=%s", task.id)
@@ -51,6 +53,7 @@ async def run_testcase_generation_sync(
     requirements_s3_key: str = None,
     requirements: list = None,
     document_urls: list = None,
+    tenant_id: str | None = None,
 ) -> dict:
     """Run test case generation synchronously and return results immediately."""
     from testgen import TestGenPipeline
@@ -71,7 +74,7 @@ async def run_testcase_generation_sync(
         )
 
         s3_urls = _upload_results(project_id, result)
-        store_test_cases(project_id, _flatten_test_cases(result))
+        store_test_cases(project_id, _flatten_test_cases(result), tenant_id)
 
         return {
             "status": "success",
@@ -97,6 +100,7 @@ def generate_and_store(
     project_name: str,
     requirements_data: list,
     local_doc_paths: list = None,
+    tenant_id: str | None = None,
 ) -> dict:
     """Run the test gen pipeline, upload results to S3, and store in Java backend."""
     from testgen import TestGenPipeline
@@ -113,6 +117,7 @@ def generate_and_store(
     )
 
     s3_urls = _upload_results(project_id, result)
+    store_test_cases(project_id, _flatten_test_cases(result), tenant_id)
     
     # NEW: Map raw result to TestCaseEditorDTO format using mapped requirements metadata
     mapped_tcs = map_test_plan_to_payload(result, requirements_with_ids=requirements_data)

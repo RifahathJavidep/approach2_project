@@ -3,6 +3,10 @@ Java Backend Client — all HTTP calls to the Java (Katsu) backend.
 
 Combines auth headers and document status tracking in one place,
 since both are purely about communicating with the Java service.
+
+Security:
+  - Uses Keycloak Client Credentials Grant for service-to-service auth
+  - Includes X-TENANT-ID header on every request (required by Java TenantInterceptor)
 """
 import logging
 import os
@@ -15,14 +19,43 @@ load_dotenv()
 
 logger = logging.getLogger("prism.java_client")
 
-BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8080")
+BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8081")
 
-def get_headers() -> dict:
-    """Return standard headers for all Java backend requests."""
-    return {"Content-Type": "application/json"}
+# ── Tenant header constant (matches Java TenantAwareDispatcherServlet.TENANT_HEADER)
+TENANT_HEADER = "X-TENANT-ID"
+
+
+def get_headers(tenant_id: Optional[str] = None) -> dict:
+    """
+    Build headers for Java backend requests.
+    Includes:
+      - Content-Type
+      - Authorization: Bearer <service-token>  (from Keycloak)
+      - X-TENANT-ID                             (required by Java TenantInterceptor)
+    """
+    headers = {"Content-Type": "application/json"}
+
+    # ── Service-to-Service JWT ────────────────────────────────────────────────
+    try:
+        from utils.security import get_service_token
+        token = get_service_token()
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        else:
+            logger.warning("No service token available — request may be rejected by Java backend")
+    except Exception as e:
+        logger.warning("Could not obtain service token: %s", e)
+
+    # ── Tenant ID ─────────────────────────────────────────────────────────────
+    if tenant_id:
+        headers[TENANT_HEADER] = tenant_id
+
+    return headers
+
 
 def create_document_statuses(
-    project_id: str, file_urls: List[str], status: str
+    project_id: str, file_urls: List[str], status: str,
+    tenant_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     """
     POST a batch of document status records.
@@ -34,7 +67,7 @@ def create_document_statuses(
 
     logger.info("Creating '%s' status for %d documents (project %s)", status, len(file_urls), project_id)
     try:
-        response = requests.post(url, json=payload, headers=get_headers(), timeout=10)
+        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=10)
         if response.status_code in [200, 201]:
             result = response.json()
             logger.info("Document statuses created: %s", result)
@@ -47,7 +80,8 @@ def create_document_statuses(
         return []
 
 def update_document_status(
-    project_id: str, doc_status_id: int, document_url: str, status: str
+    project_id: str, doc_status_id: int, document_url: str, status: str,
+    tenant_id: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """
     Update a specific document status record by its ID.
@@ -59,7 +93,7 @@ def update_document_status(
 
     try:
         logger.info("Updating document status: id=%s → %s", doc_status_id, status)
-        response = requests.post(url, json=payload, headers=get_headers(), timeout=10)
+        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=10)
         if response.status_code in [200, 201]:
             logger.info("Document status %s updated to '%s'", doc_status_id, status)
             data = response.json()
@@ -71,11 +105,14 @@ def update_document_status(
         logger.error("Exception updating document status id=%s: %s", doc_status_id, e, exc_info=True)
         return None
 
-def get_document_statuses(project_id: str) -> List[Dict[str, Any]]:
+def get_document_statuses(
+    project_id: str,
+    tenant_id: Optional[str] = None,
+) -> List[Dict[str, Any]]:
     """Fetch all document status records for a project."""
     url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
     try:
-        response = requests.get(url, headers=get_headers(), timeout=10)
+        response = requests.get(url, headers=get_headers(tenant_id), timeout=10)
         if response.status_code == 200:
             return response.json()
         return []
@@ -83,11 +120,14 @@ def get_document_statuses(project_id: str) -> List[Dict[str, Any]]:
         logger.error("Exception fetching document statuses: %s", e, exc_info=True)
         return []
 
-def get_requirements(project_id: str) -> List[Dict]:
+def get_requirements(
+    project_id: str,
+    tenant_id: Optional[str] = None,
+) -> List[Dict]:
     """Fetch all requirements for a project."""
     url = f"{BASE_URL}/api/requirements/project/{project_id}"
     try:
-        response = requests.get(url, headers=get_headers(), timeout=15)
+        response = requests.get(url, headers=get_headers(tenant_id), timeout=15)
         if response.status_code == 200:
             data = response.json()
             if isinstance(data, list):
@@ -99,11 +139,14 @@ def get_requirements(project_id: str) -> List[Dict]:
         logger.error("Failed to fetch requirements for project %s: %s", project_id, e, exc_info=True)
         return []
 
-def store_requirements(project_id: str, requirements: list) -> bool:
+def store_requirements(
+    project_id: str, requirements: list,
+    tenant_id: Optional[str] = None,
+) -> bool:
     """POST a list of mapped requirements to the Java backend."""
     url = f"{BASE_URL}/api/requirements/project/{project_id}"
     try:
-        response = requests.post(url, json=requirements, headers=get_headers(), timeout=30)
+        response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
             logger.info("Stored %d requirements for project %s", len(requirements), project_id)
             return True
@@ -114,11 +157,14 @@ def store_requirements(project_id: str, requirements: list) -> bool:
         logger.error("Exception storing requirements: %s", e, exc_info=True)
         return False
 
-def store_draft_requirements(project_id: str, requirements: list) -> bool:
+def store_draft_requirements(
+    project_id: str, requirements: list,
+    tenant_id: Optional[str] = None,
+) -> bool:
     """POST requirements as drafts to the Java backend."""
     url = f"{BASE_URL}/api/requirements/drafts/project/{project_id}"
     try:
-        response = requests.post(url, json=requirements, headers=get_headers(), timeout=30)
+        response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
             logger.info("Stored %d draft requirements for project %s", len(requirements), project_id)
             return True
@@ -129,11 +175,14 @@ def store_draft_requirements(project_id: str, requirements: list) -> bool:
         logger.error("Exception storing draft requirements: %s", e, exc_info=True)
         return False
 
-def store_test_cases(project_id: str, test_cases: list) -> bool:
+def store_test_cases(
+    project_id: str, test_cases: list,
+    tenant_id: Optional[str] = None,
+) -> bool:
     """POST test cases to the Java backend."""
     url = f"{BASE_URL}/projects/{project_id}/test-cases"
     try:
-        response = requests.post(url, json=test_cases, headers=get_headers(), timeout=30)
+        response = requests.post(url, json=test_cases, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
             logger.info("Stored %d test cases for project %s", len(test_cases), project_id)
             return True

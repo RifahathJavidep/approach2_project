@@ -35,6 +35,12 @@ services:
       # Inter-service URLs
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
       TESTGEN_SERVICE_URL: http://testgen-api:8002
+      # Keycloak
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: extracter-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_EXTRACTION_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   extraction-worker:
@@ -53,6 +59,11 @@ services:
       USE_V4_BR_EXTRACTION: ${USE_V4_BR_EXTRACTION:-true}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
       TESTGEN_SERVICE_URL: http://testgen-api:8002
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: extracter-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_EXTRACTION_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   # ── TestGen Service  (port 8002) ─────────────────────────────────────────────
@@ -72,6 +83,11 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: testcase-service-ai
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_TESTCASE_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   testgen-worker:
@@ -88,6 +104,11 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: testcase-service-ai
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_TESTCASE_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   # ── Manual Service  (port 8003) — Add New Business Requirement ───────────────
@@ -107,6 +128,11 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: manual-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_MANUAL_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   manual-worker:
@@ -123,6 +149,11 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: manual-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_MANUAL_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
   # ── Celery Flower — task monitoring dashboard  (port 8004) ───────────────────

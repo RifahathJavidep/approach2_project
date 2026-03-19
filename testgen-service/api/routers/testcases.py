@@ -1,6 +1,6 @@
 import logging
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
 from api.schemas import TestCaseRequest
 from services.testcases import (
@@ -8,13 +8,14 @@ from services.testcases import (
     run_testcase_generation_sync,
     get_cached_testplan,
 )
+from utils.security import get_current_user, get_tenant_user
 
 logger = logging.getLogger("prism.api.testcases")
 router = APIRouter()
 
 
 @router.post("/generate-testcases")
-async def generate_testcases_async(request: TestCaseRequest):
+async def generate_testcases_async(request: TestCaseRequest, user: dict = Depends(get_tenant_user)):
     """
     Queue async test case generation (Phase 2).
     Provide either requirements_s3_key or a direct requirements array.
@@ -35,6 +36,7 @@ async def generate_testcases_async(request: TestCaseRequest):
             requirements_s3_key=request.requirements_s3_key,
             requirements=request.requirements,
             document_urls=request.document_urls or [],
+            tenant_id=user.get("tenant_id"),
         )
         return result
     except Exception as e:
@@ -43,7 +45,7 @@ async def generate_testcases_async(request: TestCaseRequest):
 
 
 @router.post("/generate-testcases-sync")
-async def generate_testcases_sync(request: TestCaseRequest):
+async def generate_testcases_sync(request: TestCaseRequest, user: dict = Depends(get_tenant_user)):
     """
     Synchronous test case generation — returns test cases immediately.
     Provide either requirements_s3_key or a direct requirements array.
@@ -64,6 +66,7 @@ async def generate_testcases_sync(request: TestCaseRequest):
             requirements_s3_key=request.requirements_s3_key,
             requirements=request.requirements,
             document_urls=request.document_urls or [],
+            tenant_id=user.get("tenant_id"),
         )
         return result
     except HTTPException:
@@ -73,7 +76,7 @@ async def generate_testcases_sync(request: TestCaseRequest):
 
 
 @router.get("/testcases/project/{project_id}")
-async def get_testcases(project_id: str):
+async def get_testcases(project_id: str, user: dict = Depends(get_tenant_user)):
     """Fetch cached test plan from S3 (no re-generation)."""
     try:
         data = get_cached_testplan(project_id)

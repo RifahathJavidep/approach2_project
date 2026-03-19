@@ -24,7 +24,9 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 from utils.logging import setup_logging
 
+import os
 load_dotenv()
+os.environ.setdefault("KEYCLOAK_CLIENT_ID", "extracter-service")
 setup_logging("DEBUG")
 logger = logging.getLogger("prism.extraction")
 
