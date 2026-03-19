@@ -2022,3 +2022,4 @@ def xmap(task, it):
 def backend_cleanup():
     return 1
 
+2026-03-19 17:26:05 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/javid/Documents/prism/approach2_project/logs/prism.log

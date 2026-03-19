@@ -1,6 +1,6 @@
 import logging
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile, Depends
 
 from api.schemas import UploadUrlRequest
 from services.documents import (
@@ -8,13 +8,14 @@ from services.documents import (
     list_general_documents,
     upload_document,
 )
+from utils.security import get_current_user
 
 logger = logging.getLogger("prism.api.documents")
 router = APIRouter()
 
 
 @router.get("/documents/general")
-async def list_documents():
+async def list_documents(user: dict = Depends(get_current_user)):
     """List all documents in the uploads/general S3 folder."""
     try:
         files = list_general_documents()
@@ -24,7 +25,7 @@ async def list_documents():
 
 
 @router.post("/generate-upload-url")
-async def generate_upload_url_endpoint(request: UploadUrlRequest):
+async def generate_upload_url_endpoint(request: UploadUrlRequest, user: dict = Depends(get_current_user)):
     """Generate a pre-signed S3 URL so the frontend can upload directly without exposing AWS keys."""
     try:
         result = generate_upload_url(request.project_id, request.filename)
@@ -37,6 +38,7 @@ async def generate_upload_url_endpoint(request: UploadUrlRequest):
 async def upload_document_endpoint(
     project_id: str = Form("general"),
     file: UploadFile = File(...),
+    user: dict = Depends(get_current_user)
 ):
     """Upload a file directly to S3."""
     try:

@@ -19,7 +19,7 @@ from services.documents import is_already_processed
 
 logger = logging.getLogger("prism.services.extraction")
 
-async def queue_extraction(project_id: str, project_name: str, file_urls: list) -> dict:
+async def queue_extraction(project_id: str, project_name: str, file_urls: list, tenant_id: str | None = None) -> dict:
     """
     Download files from S3 in parallel, set PENDING status,
     then dispatch a Celery task. Returns task_id and document status records.
@@ -45,7 +45,7 @@ async def queue_extraction(project_id: str, project_name: str, file_urls: list) 
     if not local_files:
         raise ValueError("Failed to download any files from S3")
 
-    document_statuses = create_document_statuses(project_id, file_urls, "PENDING")
+    document_statuses = create_document_statuses(project_id, file_urls, "PENDING", tenant_id)
     logger.info("Queuing extraction: project=%s, files=%d", project_id, len(local_files))
 
     task = extract_and_filter_duplicates_task.delay(
@@ -55,6 +55,7 @@ async def queue_extraction(project_id: str, project_name: str, file_urls: list) 
         output_dir=output_dir,
         file_urls=file_urls,
         document_statuses=document_statuses,
+        tenant_id=tenant_id,
     )
 
     logger.info("Extraction task queued: task_id=%s", task.id)
@@ -85,7 +86,7 @@ async def run_manual_extraction(document_url: str, description: str, page_no: in
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
 async def run_manual_dspy_extraction(
-    project_id: str, document_url: str, description: str, page_no: int
+    project_id: str, document_url: str, description: str, page_no: int, tenant_id: str | None = None
 ) -> dict:
     """
     Download a document, run DSPy extraction on a single page,
@@ -103,9 +104,9 @@ async def run_manual_dspy_extraction(
         if result.get("status") != "success" or not result.get("requirements"):
             return result
 
-        requirements, duplicates_count = find_duplicates(project_id, result["requirements"])
+        requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
 
-        _store_manual_requirements(project_id, requirements, document_url, page_no)
+        _store_manual_requirements(project_id, requirements, document_url, page_no, tenant_id)
 
         return {
             "status": "success",
@@ -120,7 +121,7 @@ async def run_manual_dspy_extraction(
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
 def _store_manual_requirements(
-    project_id: str, requirements: list, document_url: str, page_no: int
+    project_id: str, requirements: list, document_url: str, page_no: int, tenant_id: str | None = None
 ) -> None:
     mapped = []
     for r in requirements:
@@ -130,7 +131,7 @@ def _store_manual_requirements(
         payload["metadata"]["page_end"] = page_no
         mapped.append(payload)
 
-    store_draft_requirements(project_id, mapped)
+    store_draft_requirements(project_id, mapped, tenant_id)
 
 def _download_parallel(file_urls: list, target_dir: str) -> list:
     """Download S3 files in parallel (up to 5 workers). Returns local paths."""
