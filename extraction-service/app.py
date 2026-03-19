@@ -5,6 +5,14 @@ Handles Phase 1: document ingestion and BR extraction.
 Start: uvicorn app:app --host 0.0.0.0 --port 8000
 Docs:  http://localhost:8000/docs
 """
+import sys
+from pathlib import Path
+
+# Add project root to sys.path so 'utils' and 'extraction' are visible
+root_path = Path(__file__).parent.parent
+if str(root_path) not in sys.path:
+    sys.path.insert(0, str(root_path))
+
 import logging
 import time
 

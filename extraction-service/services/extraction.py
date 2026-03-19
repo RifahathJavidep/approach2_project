@@ -125,7 +125,7 @@ def _store_manual_requirements(
 ) -> None:
     mapped = []
     for r in requirements:
-        payload = to_payload(r, validation_confirmed=True)
+        payload = to_payload(r, validation_confirmed=False)
         payload["metadata"]["source_file"] = document_url
         payload["metadata"]["page_start"] = page_no
         payload["metadata"]["page_end"] = page_no
