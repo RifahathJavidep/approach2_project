@@ -18,7 +18,7 @@ if BASE_DIR not in sys.path:
 
 logger = logging.getLogger("prism.tasks.extraction")
 
-TESTGEN_SERVICE_URL = os.getenv("TESTGEN_SERVICE_URL", "http://testgen-service:8001")
+TESTGEN_SERVICE_URL = os.getenv("TESTGEN_SERVICE_URL", "http://localhost:8002")
 
 
 @app.task(name="extract_requirements_task", bind=True)

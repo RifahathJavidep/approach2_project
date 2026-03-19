@@ -22,6 +22,7 @@ async def manual_extract_endpoint(request: ManualExtractionRequest):
 
     try:
         return await run_manual_extraction(
+            project_id=str(request.project_id),
             document_url=request.document_url,
             description=request.description,
             page_no=request.page_no,

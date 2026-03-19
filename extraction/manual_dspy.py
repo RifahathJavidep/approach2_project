@@ -67,7 +67,7 @@ class ManualDSPyExtractor:
     """
 
     def __init__(self):
-        self.ocr = LocalOCRExtractor(OCRConfig())
+        self.ocr = LocalOCRExtractor(config=OCRConfig())
         self._extractors_initialized = False
         self._business_extractor = None
         self._functional_extractor = None

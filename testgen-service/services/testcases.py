@@ -95,29 +95,34 @@ def get_cached_testplan(project_id: str) -> dict:
 def generate_and_store(
     project_id: str,
     project_name: str,
-    requirements: list,
+    requirements_data: list,
     local_doc_paths: list = None,
 ) -> dict:
     """Run the test gen pipeline, upload results to S3, and store in Java backend."""
     from testgen import TestGenPipeline
+    from utils.testcase_mapper import map_test_plan_to_payload
 
     output_dir = os.path.join(tempfile.gettempdir(), f"prism_testgen_{project_id}", "output")
     os.makedirs(output_dir, exist_ok=True)
 
     result = TestGenPipeline().run(
-        requirements=requirements,
+        requirements=requirements_data,
         project_name=project_name,
         output_dir=output_dir,
         document_paths=local_doc_paths or None,
     )
 
     s3_urls = _upload_results(project_id, result)
-    store_test_cases(project_id, _flatten_test_cases(result))
+    
+    # NEW: Map raw result to TestCaseEditorDTO format using mapped requirements metadata
+    mapped_tcs = map_test_plan_to_payload(result, requirements_with_ids=requirements_data)
+    
+    store_test_cases(project_id, mapped_tcs)
 
     return {
         "status": "success",
         "total_requirements": result["total_requirements"],
-        "total_test_cases": result["total_test_cases"],
+        "total_test_cases": len(mapped_tcs),
         "s3_output": s3_urls,
     }
 

@@ -3,9 +3,17 @@ TestGen Service — Celery bootstrap.
 Start worker: celery -A celery_app worker --loglevel=info -Q testgen
 """
 import os
+import sys
 import ssl
-
+from pathlib import Path
 from celery import Celery
+from dotenv import load_dotenv
+
+# Add project root to sys.path so 'utils' and 'extraction' are visible
+root_path = Path(__file__).parent.parent
+if str(root_path) not in sys.path:
+    sys.path.insert(0, str(root_path))
+
 from utils.secrets import get_secret
 from utils.logging import setup_logging
 
@@ -35,4 +43,5 @@ app.conf.update(
     task_default_queue="testgen",
 )
 
-app.autodiscover_tasks(["tasks"])
+# Explicitly import task modules
+app.conf.imports = ("tasks.testcases",)

@@ -21,6 +21,7 @@ from botocore.exceptions import ClientError
 logger = logging.getLogger("prism.secrets")
 
 _cache: dict = {}
+_MISSING = object()
 
 # Secret names in AWS Secret Manager
 SECRET_NAME = os.getenv("AWS_SECRET_ID", "miipe/production")
@@ -31,7 +32,7 @@ REGION_NAME = os.getenv("AWS_DEFAULT_REGION", "us-east-1")
 IS_DEPLOYED = os.getenv("IS_DEPLOYED", "false").lower() == "true"
 
 
-def get_secret(key: str, default: str = None) -> str:
+def get_secret(key: str, default=_MISSING) -> str:
     """
     Return a secret value by key.
     
@@ -62,7 +63,7 @@ def get_secret(key: str, default: str = None) -> str:
         return value
 
     # 3. Last Resort: Default or Error
-    if default is not None:
+    if default is not _MISSING:
         return default
 
     raise RuntimeError(

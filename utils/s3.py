@@ -16,13 +16,20 @@ logger = logging.getLogger("prism.s3")
 
 
 def get_client():
-    """Create an S3 client with SigV4 signing."""
+    """Create an S3 client, falling back to default credentials if secrets are missing."""
+    # Using None as default prevents RuntimeError if keys are not in secrets/env.
+    # If they are None, Boto3 will automatically check IAM Roles, ENV, etc.
+    access_key = get_secret("AWS_ACCESS_KEY_ID", None)
+    secret_key = get_secret("AWS_SECRET_ACCESS_KEY", None)
+    session_token = get_secret("AWS_SESSION_TOKEN", None)
+    region = get_secret("AWS_REGION", "us-east-1")
+
     return boto3.client(
         "s3",
-        aws_access_key_id=get_secret("AWS_ACCESS_KEY_ID"),
-        aws_secret_access_key=get_secret("AWS_SECRET_ACCESS_KEY"),
-        aws_session_token=get_secret("AWS_SESSION_TOKEN"),
-        region_name=get_secret("AWS_REGION", "us-east-1"),
+        aws_access_key_id=access_key,
+        aws_secret_access_key=secret_key,
+        aws_session_token=session_token,
+        region_name=region,
         config=Config(signature_version="s3v4"),
     )
 
