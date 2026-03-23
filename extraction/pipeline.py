@@ -18,11 +18,25 @@ import shutil
 from pathlib import Path
 from typing import List, Dict, Optional, Callable, Any
 
+import dspy
+from dotenv import load_dotenv
+
 from .generators.v4_br_extractor import extract_requirements as v4_extract_requirements
+
+load_dotenv()
 
 logger = logging.getLogger("prism.pipeline")
 
 _CONFIDENCE_MAP = {'high': 0.9, 'medium': 0.6, 'low': 0.3}
+
+
+def _get_lm():
+    """Get the configured language model for DSPy."""
+    groq_key = os.getenv("GROQ_API_KEY")
+    if not groq_key:
+        raise ValueError("GROQ_API_KEY not found in .env")
+    return dspy.LM("groq/llama-3.3-70b-versatile", api_key=groq_key, max_tokens=16384)
+
 
 def _confidence_to_float(conf) -> float:
     """Convert confidence value to float. Handles both string and numeric."""

@@ -22,6 +22,7 @@ from .generators.trained_extractor import (
     WorkflowRequirementExtractor,
     TechnicalRequirementExtractor,
 )
+from .pipeline import _get_lm
 
 load_dotenv()
 
@@ -30,11 +31,6 @@ logger = logging.getLogger("prism.extraction.manual_dspy")
 MIN_CONTENT_CHARS = 30
 
 
-def _get_lm():
-    groq_key = os.getenv("GROQ_API_KEY")
-    if not groq_key:
-        raise ValueError("GROQ_API_KEY not found in .env")
-    return dspy.LM("groq/llama-3.3-70b-versatile", api_key=groq_key, max_tokens=16384)
 
 
 class ManualDSPyExtractor:

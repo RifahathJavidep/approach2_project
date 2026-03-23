@@ -27,6 +27,7 @@ from utils.logging import setup_logging
 import os
 load_dotenv()
 os.environ.setdefault("KEYCLOAK_CLIENT_ID", "manual-service")
+os.environ.setdefault("KEYCLOAK_CLIENT_SECRET", os.getenv("KEYCLOAK_MANUAL_CLIENT_SECRET", ""))
 setup_logging("DEBUG")
 logger = logging.getLogger("prism.manual")
 
@@ -38,8 +39,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=[
+        "http://localhost:4200",  # Angular dev server
+        "http://localhost:3000",  # Alternative port
+        "http://127.0.0.1:4200",
+        "*"  # Allow all origins (for development only)
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )

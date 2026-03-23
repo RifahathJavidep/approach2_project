@@ -20,6 +20,8 @@ from utils.logging import setup_logging
 # WITHOUT DEPLOYMENT: loads from local .env
 # WITH DEPLOYMENT: fetches from AWS Secrets Manager
 load_dotenv()
+os.environ.setdefault("KEYCLOAK_CLIENT_ID", "testcase-service-ai")
+os.environ.setdefault("KEYCLOAK_CLIENT_SECRET", os.getenv("KEYCLOAK_TESTCASE_CLIENT_SECRET", ""))
 setup_logging("INFO")
 
 broker_url = get_secret("CELERY_BROKER_URL", "redis://localhost:6379/0")

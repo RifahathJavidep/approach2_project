@@ -145,15 +145,16 @@ def extract_and_filter_duplicates_task(
                 if doc_id:
                     update_document_status(project_id, doc_id, url, "COMPLETED", tenant_id)
 
-        if unique:
-            _trigger_testgen(team_id, project_id, project_name, unique, tenant_id)
+        # Automatic test generation disabled per user request
+        # if unique:
+        #     _trigger_testgen(team_id, project_id, project_name, unique, tenant_id)
 
         return {
             "status": "success",
             "extracted": len(extracted),
             "stored_unique": len(unique),
             "removed_duplicates": len(extracted) - len(unique),
-            "tc_generation_triggered": bool(unique),
+            "tc_generation_triggered": False,
         }
 
     except Exception as e:

@@ -29,5 +29,5 @@ class TestCaseRequest(BaseModel):
 
 
 class UploadUrlRequest(BaseModel):
-    project_id: str
+    project_id: Optional[str] = None
     filename: str

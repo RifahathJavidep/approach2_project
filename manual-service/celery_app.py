@@ -18,6 +18,8 @@ from utils.secrets import get_secret
 from utils.logging import setup_logging
 
 load_dotenv()
+os.environ.setdefault("KEYCLOAK_CLIENT_ID", "manual-service")
+os.environ.setdefault("KEYCLOAK_CLIENT_SECRET", os.getenv("KEYCLOAK_MANUAL_CLIENT_SECRET", ""))
 setup_logging("INFO")
 
 broker_url = get_secret("CELERY_BROKER_URL", "redis://localhost:6379/0")

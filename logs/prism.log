@@ -1,0 +1,2160 @@
+2026-03-23 17:59:32 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 17:59:33 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 17:59:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 17:59:33 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 17:59:34 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 17:59:34 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 17:59:34 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:00:07 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:00:07 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:00:07 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:00:07 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:00:07 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:00:08 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:00:08 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:00:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:00:58 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:00:58 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:00:59 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:00:59 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:00:59 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:00:59 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:01:31 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:01:52 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:02:08 [INFO] prism.extraction (app.py:60) — GET /favicon.ico -- 404  0.001s
+2026-03-23 18:02:28 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/20/generate-upload-url -- 200  0.004s
+2026-03-23 18:04:49 [INFO] prism.extraction (app.py:60) — GET /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/20/generate-upload-url -- 405  0.002s
+2026-03-23 18:05:27 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/21/generate-upload-url -- 200  0.004s
+2026-03-23 18:10:33 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/22/generate-upload-url -- 200  0.015s
+2026-03-23 18:10:33 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:10:34 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:10:34 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/22/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:10:34 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/22/generate-upload-url -- 200  0.220s
+2026-03-23 18:12:51 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/23/generate-upload-url -- 200  0.005s
+2026-03-23 18:12:51 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:12:51 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/23/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:12:51 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/23/generate-upload-url -- 200  0.037s
+2026-03-23 18:14:31 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:14:31 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:31 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:32 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:14:33 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:14:33 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:14:33 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:14:38 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:14:38 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:14:38 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:14:38 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:14:38 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:14:39 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:14:39 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:14:39 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:14:51 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:14:51 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:14:52 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:14:52 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:14:52 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:14:52 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:14:56 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:15:01 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:15:32 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/24/generate-upload-url -- 200  0.001s
+2026-03-23 18:15:32 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:15:32 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:15:32 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/24/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:15:32 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/24/generate-upload-url -- 200  0.098s
+2026-03-23 18:16:10 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/24/extract-async -- 200  0.001s
+2026-03-23 18:16:10 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=24  files=['s3://katsu-ai-requirement-documents/uploads/24/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 18:16:10 [WARNING] prism.security (security.py:455) — KEYCLOAK_CLIENT_ID or KEYCLOAK_CLIENT_SECRET not set — skipping service token
+2026-03-23 18:16:10 [WARNING] prism.java_client (java_client.py:42) — No service token available — request may be rejected by Java backend
+2026-03-23 18:16:10 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:16:10 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/24/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:16:17 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 18:16:17 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/24/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:16:17 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 24)
+2026-03-23 18:16:17 [WARNING] prism.security (security.py:455) — KEYCLOAK_CLIENT_ID or KEYCLOAK_CLIENT_SECRET not set — skipping service token
+2026-03-23 18:16:17 [WARNING] prism.java_client (java_client.py:42) — No service token available — request may be rejected by Java backend
+2026-03-23 18:16:17 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 401 — 
+2026-03-23 18:16:17 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=24, files=1
+2026-03-23 18:16:17 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:16:17 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=92932dcf-948a-40ed-b643-3c40db8d3146
+2026-03-23 18:16:17 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/24/extract-async -- 200  7.485s
+2026-03-23 18:26:08 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:26:09 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:09 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:26:10 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:26:10 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:26:10 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:26:13 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:26:13 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:26:14 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:26:14 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:26:14 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:26:14 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:26:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:26:15 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:26:34 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/25/generate-upload-url -- 200  0.000s
+2026-03-23 18:26:34 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:26:34 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:26:34 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/25/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:26:34 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/25/generate-upload-url -- 200  0.064s
+2026-03-23 18:27:16 [INFO] prism.extraction (app.py:60) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/25/extract-async -- 200  0.001s
+2026-03-23 18:27:16 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=25  files=['s3://katsu-ai-requirement-documents/uploads/25/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 18:27:16 [WARNING] prism.security (security.py:455) — KEYCLOAK_CLIENT_ID or KEYCLOAK_CLIENT_SECRET not set — skipping service token
+2026-03-23 18:27:16 [WARNING] prism.java_client (java_client.py:42) — No service token available — request may be rejected by Java backend
+2026-03-23 18:27:16 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:27:16 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/25/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:27:18 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 18:27:18 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/25/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:27:18 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 25)
+2026-03-23 18:27:18 [WARNING] prism.security (security.py:455) — KEYCLOAK_CLIENT_ID or KEYCLOAK_CLIENT_SECRET not set — skipping service token
+2026-03-23 18:27:18 [WARNING] prism.java_client (java_client.py:42) — No service token available — request may be rejected by Java backend
+2026-03-23 18:27:18 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 401 — 
+2026-03-23 18:27:18 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=25, files=1
+2026-03-23 18:27:18 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:27:18 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=638e533f-e4d8-4700-a196-d13a1b9012ab
+2026-03-23 18:27:18 [INFO] prism.extraction (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/25/extract-async -- 200  2.811s
+2026-03-23 18:28:13 [INFO] prism.testgen (app.py:60) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/25/generate-testcases -- 401  0.002s
+2026-03-23 18:30:06 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:30:07 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:07 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:07 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:30:08 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:30:08 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:30:08 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:30:13 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:30:13 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:30:13 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:30:13 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:30:13 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:30:14 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:30:14 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:30:14 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:30:35 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:30:35 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:30:36 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:30:36 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:30:36 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:30:36 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:30:40 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:30:45 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:31:00 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/26/generate-upload-url -- 200  0.001s
+2026-03-23 18:31:00 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:31:00 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:31:00 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/26/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:31:00 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/26/generate-upload-url -- 200  0.069s
+2026-03-23 18:33:00 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:33:00 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:01 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:01 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:02 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:02 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:33:02 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:02 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:02 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:33:04 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:33:04 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:04 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:04 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:33:04 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:05 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:05 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:33:06 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:33:06 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:33:06 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:33:20 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/27/generate-upload-url -- 200  0.002s
+2026-03-23 18:33:20 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:33:20 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:21 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_ACCESS_KEY_ID' loaded from environment variable (local dev)
+2026-03-23 18:33:21 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:22 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:22 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_SECRET_ACCESS_KEY' loaded from environment variable (local dev)
+2026-03-23 18:33:22 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:23 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:23 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:24 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:24 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:33:24 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:33:24 [WARNING] prism.secrets (secrets.py:110) — AWS Secret Manager unavailable (An error occurred (ResourceNotFoundException) when calling the GetSecretValue operation: Secrets Manager can't find the specified secret.) — falling back to environment variables
+2026-03-23 18:33:24 [DEBUG] prism.secrets (secrets.py:62) — Secret 'S3_BUCKET_NAME' loaded from environment variable (local dev)
+2026-03-23 18:33:24 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/27/Requirements Traceability Matrix (1).pdf
+2026-03-23 18:33:24 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/27/generate-upload-url -- 200  4.273s
+2026-03-23 18:36:27 [INFO] prism.extraction (app.py:61) — GET /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/27/generate-upload-url -- 405  0.002s
+2026-03-23 18:37:02 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:37:03 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:03 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:37:04 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:37:04 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:37:04 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:37:08 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:37:08 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:37:09 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:37:09 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:37:09 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:37:09 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:37:10 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:37:10 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:38:26 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:38:27 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:27 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:38:28 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:38:28 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:38:28 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:38:30 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:38:30 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:38:31 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:38:31 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:38:31 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:38:31 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:38:32 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:38:32 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:38:41 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/28/generate-upload-url -- 200  0.001s
+2026-03-23 18:38:41 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:38:41 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:38:41 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/28/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:38:41 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/28/generate-upload-url -- 200  0.091s
+2026-03-23 18:39:44 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/28/extract-async -- 200  0.001s
+2026-03-23 18:39:44 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=28  files=['s3://katsu-ai-requirement-documents/uploads/28/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 18:39:45 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 18:39:45 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:39:45 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/28/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:39:53 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 18:39:53 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/28/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:39:53 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 28)
+2026-03-23 18:39:53 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 18:39:53 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=28, files=1
+2026-03-23 18:39:53 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:39:53 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=be40fca6-a088-41fb-9ed8-1da485daf2fd
+2026-03-23 18:39:53 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/28/extract-async -- 200  8.951s
+2026-03-23 18:42:24 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:42:24 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:42:24 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:42:24 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:42:24 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:42:25 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:25 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:42:26 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:42:32 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:42:32 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:42:33 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:42:33 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:42:33 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:42:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:42:41 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:42:41 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:42:42 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:42:42 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:42:42 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:42:42 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:42:43 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:42:43 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:43:04 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:43:04 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:43:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:43:05 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:43:05 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:43:05 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:43:05 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:43:27 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/29/generate-upload-url -- 200  0.002s
+2026-03-23 18:43:27 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:43:27 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:43:27 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/29/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:43:27 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/29/generate-upload-url -- 200  0.088s
+2026-03-23 18:43:56 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/29/extract-async -- 200  0.000s
+2026-03-23 18:43:56 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=29  files=['s3://katsu-ai-requirement-documents/uploads/29/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 18:43:56 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 18:43:56 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:43:56 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/29/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:44:01 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 18:44:01 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/29/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:44:01 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 29)
+2026-03-23 18:44:01 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 18:44:01 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=29, files=1
+2026-03-23 18:44:01 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:44:01 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=9d76848e-6ea9-4011-8a3c-c16d01807803
+2026-03-23 18:44:01 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/29/extract-async -- 200  5.198s
+2026-03-23 18:45:49 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:45:49 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:45:50 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:45:50 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:45:50 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:45:51 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:45:51 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:45:51 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:46:03 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:46:03 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:46:04 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:46:04 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:46:04 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:46:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:50:20 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:50:20 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:50:21 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:50:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:50:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:50:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:52:08 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:52:09 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:52:09 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:52:09 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:52:10 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:52:10 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:52:10 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:53:02 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:53:02 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 18:53:03 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 18:53:03 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 18:53:03 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 18:53:03 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 18:53:04 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 18:53:04 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 18:53:27 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 18:54:16 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/30/generate-upload-url -- 200  0.004s
+2026-03-23 18:54:16 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:54:16 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:54:16 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/30/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:54:16 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/30/generate-upload-url -- 200  0.123s
+2026-03-23 18:54:24 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/30/extract-async -- 200  0.000s
+2026-03-23 18:54:24 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=30  files=['s3://katsu-ai-requirement-documents/uploads/30/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 18:54:24 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 18:54:24 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 18:54:24 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/30/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:54:34 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 18:54:34 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/30/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 18:54:34 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 30)
+2026-03-23 18:54:34 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 18:54:34 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=30, files=1
+2026-03-23 18:54:34 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 18:54:34 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=09ddf123-aeaa-414a-a314-196859e3d644
+2026-03-23 18:54:34 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/30/extract-async -- 200  9.735s
+2026-03-23 18:54:40 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 18:54:40 [WARNING] prism.security (security.py:344) — User service-account-extracter-service lacks required roles. Has: []
+2026-03-23 18:54:40 [INFO] prism.testgen (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/30/generate-testcases -- 403  0.019s
+2026-03-23 19:08:25 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/31/generate-upload-url -- 200  0.001s
+2026-03-23 19:08:25 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 19:08:25 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:08:25 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/31/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:08:25 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/31/generate-upload-url -- 200  0.069s
+2026-03-23 19:08:31 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/31/extract-async -- 200  0.000s
+2026-03-23 19:08:31 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=31  files=['s3://katsu-ai-requirement-documents/uploads/31/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 19:08:31 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:08:31 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/31/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:08:34 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 19:08:34 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/31/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:08:34 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 31)
+2026-03-23 19:08:34 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 19:08:34 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=31, files=1
+2026-03-23 19:08:34 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=528ab6af-2534-430d-8862-9c27ed7c02fa
+2026-03-23 19:08:34 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/31/extract-async -- 200  2.687s
+2026-03-23 19:08:34 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 19:08:34 [WARNING] prism.security (security.py:344) — User service-account-extracter-service lacks required roles. Has: []
+2026-03-23 19:08:34 [INFO] prism.testgen (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/31/generate-testcases -- 403  0.008s
+2026-03-23 19:13:31 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:13:31 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:13:32 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:13:32 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:13:32 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:13:33 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:13:33 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:13:33 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:14:19 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:14:19 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:14:20 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:14:20 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:14:20 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:14:20 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:14:21 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:14:21 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:18:25 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:18:26 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:26 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:26 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:18:27 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:18:27 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:18:27 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:18:28 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:18:28 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:18:29 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:18:29 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:18:29 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:18:30 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:18:30 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:18:30 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:18:33 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:18:45 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:18:45 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:18:46 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:18:46 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:18:46 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:18:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:19:25 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/32/generate-upload-url -- 200  0.001s
+2026-03-23 19:19:25 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 19:19:25 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:19:25 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/32/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:19:25 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/32/generate-upload-url -- 200  0.109s
+2026-03-23 19:19:45 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/32/extract-async -- 200  0.001s
+2026-03-23 19:19:45 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=32  files=['s3://katsu-ai-requirement-documents/uploads/32/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 19:19:45 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 19:19:45 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:19:45 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/32/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:19:54 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 19:19:54 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/32/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:19:54 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 32)
+2026-03-23 19:19:54 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 19:19:54 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=32, files=1
+2026-03-23 19:19:54 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:19:54 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=b0e990b1-2c5b-4c1d-890e-d739d33c899a
+2026-03-23 19:19:54 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/32/extract-async -- 200  9.051s
+2026-03-23 19:23:44 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/33/generate-upload-url -- 200  0.001s
+2026-03-23 19:23:44 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:23:44 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/33/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:23:44 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/33/generate-upload-url -- 200  0.023s
+2026-03-23 19:23:49 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/33/extract-async -- 200  0.000s
+2026-03-23 19:23:49 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=33  files=['s3://katsu-ai-requirement-documents/uploads/33/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 19:23:49 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:23:49 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/33/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:23:57 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 19:23:57 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/33/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:23:57 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 33)
+2026-03-23 19:23:57 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 19:23:57 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=33, files=1
+2026-03-23 19:23:57 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=40e4013c-a24b-451e-86a0-88084a5affa9
+2026-03-23 19:23:57 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/33/extract-async -- 200  7.768s
+2026-03-23 19:27:25 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:27:25 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:27:26 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:27:26 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:27:26 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:27:26 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 19:27:27 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:27:27 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:27:45 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 19:27:45 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 19:27:46 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 19:27:46 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 19:27:46 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 19:27:46 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 19:33:09 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/34/generate-upload-url -- 200  0.004s
+2026-03-23 19:33:09 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 19:33:09 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:33:09 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/34/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:33:09 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/34/generate-upload-url -- 200  0.088s
+2026-03-23 19:33:37 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/34/extract-async -- 200  0.000s
+2026-03-23 19:33:37 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=34  files=['s3://katsu-ai-requirement-documents/uploads/34/Play to Win SS Ph1 - Dashboard_Features (1).pdf']
+2026-03-23 19:33:37 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 19:33:37 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/34/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:33:39 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Dashboard_Features (1).pdf (2652373 bytes)
+2026-03-23 19:33:39 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/34/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 19:33:39 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 34)
+2026-03-23 19:33:39 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 19:33:39 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=34, files=1
+2026-03-23 19:33:39 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=c8ad6385-d62c-4a18-a749-cf46c8ac09de
+2026-03-23 19:33:39 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/34/extract-async -- 200  2.578s
+2026-03-23 20:18:28 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/35/generate-upload-url -- 200  0.014s
+2026-03-23 20:18:28 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 20:18:28 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 20:18:28 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/35/Play to Win SS Ph1 - Dashboard_Features (1).pdf
+2026-03-23 20:18:28 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/35/generate-upload-url -- 200  0.106s
+2026-03-23 21:30:16 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:30:17 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:17 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:17 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:30:18 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:30:18 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:30:18 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:30:20 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:30:20 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:30:21 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:30:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:30:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:30:22 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:30:22 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 21:30:22 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 21:30:24 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:30:30 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:30:30 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:30:31 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:30:31 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:30:31 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 21:30:31 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 21:31:13 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:31:34 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/36/generate-upload-url -- 200  0.001s
+2026-03-23 21:31:34 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 21:31:34 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 21:31:34 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/36/PTW Self Serve Phase 1 Solution (1).pdf
+2026-03-23 21:31:34 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/36/generate-upload-url -- 200  0.109s
+2026-03-23 21:31:41 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/36/extract-async -- 200  0.000s
+2026-03-23 21:31:41 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=36  files=['s3://katsu-ai-requirement-documents/uploads/36/PTW Self Serve Phase 1 Solution (1).pdf']
+2026-03-23 21:31:41 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 21:31:41 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 21:31:41 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/36/PTW Self Serve Phase 1 Solution (1).pdf
+2026-03-23 21:31:44 [INFO] prism.s3 (s3.py:72) — Downloaded PTW Self Serve Phase 1 Solution (1).pdf (184833 bytes)
+2026-03-23 21:31:44 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/36/PTW Self Serve Phase 1 Solution (1).pdf
+2026-03-23 21:31:44 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 36)
+2026-03-23 21:31:44 [INFO] prism.java_client (java_client.py:70) — Document statuses created: [{'id': 1, 'documentUrl': 's3://katsu-ai-requirement-documents/uploads/36/PTW Self Serve Phase 1 Solution (1).pdf', 'status': 'PENDING'}]
+2026-03-23 21:31:44 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=36, files=1
+2026-03-23 21:31:44 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:31:44 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=7733907e-6b2b-4ba9-a5a7-e9a0c58631bd
+2026-03-23 21:31:44 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/36/extract-async -- 200  3.574s
+2026-03-23 21:52:57 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:52:58 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:52:58 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:52:58 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:52:59 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:52:59 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:52:59 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:53:01 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:53:01 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:53:02 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:53:02 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:53:02 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:53:03 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 21:53:03 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_requirements_task(self, team_id, project_id, local_files, output_dir, existing_model_state, multi_project_config, file_urls=0, document_statuses=1, tenant_id=2):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 21:53:03 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 21:53:04 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:53:08 [INFO] utils.logging (logging.py:53) — Logging initialised — console: INFO | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:53:08 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 21:53:08 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 21:53:08 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_BROKER_URL' loaded from environment variable (local dev)
+2026-03-23 21:53:08 [DEBUG] prism.secrets (secrets.py:62) — Secret 'CELERY_RESULT_BACKEND' loaded from environment variable (local dev)
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def generate_testcases_task(self, team_id, project_id, project_name, requirements_s3_key=0, requirements_data=1, local_doc_paths=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chain(*args, **kwargs):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xstarmap(task, it):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def chunks(task, it, n):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def xmap(task, it):
+    return 1
+
+2026-03-23 21:53:08 [DEBUG] celery.utils.functional (functional.py:335) — 
+def backend_cleanup():
+    return 1
+
+2026-03-23 21:53:11 [INFO] utils.logging (logging.py:53) — Logging initialised — console: DEBUG | file: /Users/kavya/Documents/prism/approach2_project/logs/prism.log
+2026-03-23 21:53:43 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/37/generate-upload-url -- 200  0.001s
+2026-03-23 21:53:43 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 21:53:43 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 21:53:43 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/37/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 21:53:43 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/37/generate-upload-url -- 200  0.181s
+2026-03-23 21:53:47 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/37/extract-async -- 200  0.000s
+2026-03-23 21:53:47 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=37  files=['s3://katsu-ai-requirement-documents/uploads/37/Play to Win SS Ph1 - Warranty_Feature (1).pdf']
+2026-03-23 21:53:47 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 21:53:47 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 21:53:47 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/37/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 21:53:49 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Warranty_Feature (1).pdf (384517 bytes)
+2026-03-23 21:53:49 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/37/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 21:53:49 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 37)
+2026-03-23 21:53:49 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 21:53:49 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=37, files=1
+2026-03-23 21:53:49 [DEBUG] celery.utils.functional (functional.py:335) — 
+def extract_and_filter_duplicates_task(self, team_id, project_id, local_files, output_dir, project_name=0, file_urls=1, document_statuses=2, tenant_id=3):
+    return 1
+
+2026-03-23 21:53:49 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=cacc3402-1cd9-44d8-887b-68f675c14b65
+2026-03-23 21:53:49 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/37/extract-async -- 200  2.153s
+2026-03-23 22:11:41 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:11:41 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:11:41 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.065s
+2026-03-23 22:12:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.068s
+2026-03-23 22:12:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.102s
+2026-03-23 22:12:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:12:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:13:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:13:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:13:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:14:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:15:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:16:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:17:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:17:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.057s
+2026-03-23 22:18:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.008s
+2026-03-23 22:19:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:20:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:21:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:22:01 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.000s
+2026-03-23 22:22:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:22:19 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:22:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.029s
+2026-03-23 22:22:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:22:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:24:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:25:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:26:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:27:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.020s
+2026-03-23 22:28:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:28:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.043s
+2026-03-23 22:29:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.030s
+2026-03-23 22:30:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.022s
+2026-03-23 22:31:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.014s
+2026-03-23 22:32:01 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:32:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.046s
+2026-03-23 22:32:07 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/23/extract-async -- 422  0.002s
+2026-03-23 22:33:00 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/23/extract-async -- 403  0.005s
+2026-03-23 22:33:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.007s
+2026-03-23 22:33:20 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:33:20 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.134s
+2026-03-23 22:33:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:33:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:34:04 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/23/extract-async -- 422  0.006s
+2026-03-23 22:34:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:34:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:34:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:35:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:35:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.007s
+2026-03-23 22:35:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.004s
+2026-03-23 22:36:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.005s
+2026-03-23 22:36:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:36:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:37:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:37:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.005s
+2026-03-23 22:37:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:38:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:38:39 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:38:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.044s
+2026-03-23 22:38:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.006s
+2026-03-23 22:39:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:39:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:39:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:40:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:40:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:40:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:41:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:41:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:41:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:42:19 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:42:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:42:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:42:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:43:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:43:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:43:59 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:43:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.034s
+2026-03-23 22:44:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:44:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:44:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:45:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:45:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:45:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:46:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.006s
+2026-03-23 22:46:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:46:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:47:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.008s
+2026-03-23 22:47:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:47:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:48:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.006s
+2026-03-23 22:48:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 22:48:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.006s
+2026-03-23 22:49:19 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:49:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.078s
+2026-03-23 22:49:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.012s
+2026-03-23 22:49:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:50:19 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.010s
+2026-03-23 22:50:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 22:50:59 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.005s
+2026-03-23 22:52:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.010s
+2026-03-23 22:53:01 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.005s
+2026-03-23 22:53:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.009s
+2026-03-23 22:54:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.018s
+2026-03-23 22:55:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 22:55:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.099s
+2026-03-23 22:56:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.010s
+2026-03-23 22:57:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.011s
+2026-03-23 22:58:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.003s
+2026-03-23 22:59:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.025s
+2026-03-23 23:00:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.010s
+2026-03-23 23:01:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:01:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.069s
+2026-03-23 23:02:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.012s
+2026-03-23 23:03:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.009s
+2026-03-23 23:04:01 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 23:04:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.005s
+2026-03-23 23:05:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.026s
+2026-03-23 23:06:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.026s
+2026-03-23 23:07:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:07:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.050s
+2026-03-23 23:08:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.015s
+2026-03-23 23:09:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.018s
+2026-03-23 23:10:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.010s
+2026-03-23 23:11:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.006s
+2026-03-23 23:12:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.023s
+2026-03-23 23:13:01 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:13:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.073s
+2026-03-23 23:14:01 [INFO] prism.extraction (app.py:61) — OPTIONS /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 23:14:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.038s
+2026-03-23 23:15:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.017s
+2026-03-23 23:16:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 23:17:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.023s
+2026-03-23 23:18:02 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:18:02 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.109s
+2026-03-23 23:19:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.008s
+2026-03-23 23:20:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.001s
+2026-03-23 23:21:01 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 23:21:33 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 23:21:39 [INFO] prism.extraction (app.py:61) — GET /status/cacc3402-1cd9-44d8-887b-68f675c14b65 -- 200  0.002s
+2026-03-23 23:21:55 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/generate-upload-url -- 200  0.001s
+2026-03-23 23:21:55 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 23:21:55 [INFO] prism.s3 (s3.py:116) — Generating pre-signed URL for s3://katsu-ai-requirement-documents/uploads/38/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 23:21:55 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/generate-upload-url -- 200  0.063s
+2026-03-23 23:22:03 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/extract-async -- 200  0.000s
+2026-03-23 23:22:03 [INFO] prism.api.requirements (requirements.py:28) — POST extract-async  team=df8b6d57-d922-407c-9369-b799fe282a9d  project=38  files=['s3://katsu-ai-requirement-documents/uploads/38/Play to Win SS Ph1 - Warranty_Feature (1).pdf']
+2026-03-23 23:22:03 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 23:22:03 [INFO] prism.s3 (s3.py:70) — Downloading s3://katsu-ai-requirement-documents/uploads/38/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 23:22:05 [INFO] prism.s3 (s3.py:72) — Downloaded Play to Win SS Ph1 - Warranty_Feature (1).pdf (384517 bytes)
+2026-03-23 23:22:05 [INFO] prism.services.extraction (extraction.py:181) — Downloaded s3://katsu-ai-requirement-documents/uploads/38/Play to Win SS Ph1 - Warranty_Feature (1).pdf
+2026-03-23 23:22:05 [INFO] prism.java_client (java_client.py:65) — Creating 'PENDING' status for 1 documents (project 38)
+2026-03-23 23:22:05 [WARNING] prism.java_client (java_client.py:72) — Failed to create document statuses: Java returned 403 — 
+2026-03-23 23:22:05 [INFO] prism.services.extraction (extraction.py:59) — Queuing extraction: project=38, files=1
+2026-03-23 23:22:05 [INFO] prism.services.extraction (extraction.py:72) — Extraction task queued: task_id=5cc7f0bb-7b62-4a60-9cc3-4f031c601263
+2026-03-23 23:22:05 [INFO] prism.extraction (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/extract-async -- 200  1.989s
+2026-03-23 23:22:05 [INFO] prism.extraction (app.py:61) — OPTIONS /status/5cc7f0bb-7b62-4a60-9cc3-4f031c601263 -- 200  0.000s
+2026-03-23 23:22:05 [INFO] prism.extraction (app.py:61) — GET /status/5cc7f0bb-7b62-4a60-9cc3-4f031c601263 -- 200  0.001s
+2026-03-23 23:22:25 [INFO] prism.extraction (app.py:61) — GET /status/5cc7f0bb-7b62-4a60-9cc3-4f031c601263 -- 200  0.003s
+2026-03-23 23:22:56 [INFO] prism.testgen (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/generate-testcases-sync -- 200  0.002s
+2026-03-23 23:22:56 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:22:56 [DEBUG] LiteLLM (litellm_logging.py:194) — [Non-Blocking] Unable to import GenericAPILogger - LiteLLM Enterprise Feature - No module named 'litellm_enterprise'
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:791) — Using AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:859) — Creating AiohttpTransport...
+2026-03-23 23:22:57 [DEBUG] LiteLLM (http_handler.py:872) — NEW SESSION: Creating new ClientSession (no shared session provided)
+2026-03-23 23:22:57 [INFO] prism.secrets (secrets.py:81) — Fetching secrets from AWS Secret Manager (id=miipe/production)...
+2026-03-23 23:22:58 [INFO] prism.secrets (secrets.py:102) — Loaded 7 secrets from AWS Secret Manager
+2026-03-23 23:23:04 [INFO] prism.testgen.context (context_builder.py:149) — Built multi-source context: 0 chars
+2026-03-23 23:23:07 [INFO] prism.testgen.context (context_builder.py:149) — Built multi-source context: 0 chars
+2026-03-23 23:23:10 [INFO] prism.testgen.pipeline (pipeline.py:149) — JSON saved: /var/folders/2y/p87zskh51c9bjgpn24lsm4g80000gn/T/prism_testgen_38_23374/output/new_test_plan.json
+2026-03-23 23:23:11 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 23:23:11 [INFO] prism.s3 (s3.py:82) — Uploading /var/folders/2y/p87zskh51c9bjgpn24lsm4g80000gn/T/prism_testgen_38_23374/output/new_test_plan.json → s3://katsu-ai-requirement-documents/projects/38/output/test_plan.json
+2026-03-23 23:23:12 [INFO] prism.s3 (s3.py:85) — Uploaded: s3://katsu-ai-requirement-documents/projects/38/output/test_plan.json
+2026-03-23 23:23:12 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 23:23:12 [INFO] prism.s3 (s3.py:82) — Uploading /var/folders/2y/p87zskh51c9bjgpn24lsm4g80000gn/T/prism_testgen_38_23374/output/new_test_plan.xlsx → s3://katsu-ai-requirement-documents/projects/38/output/test_plan.xlsx
+2026-03-23 23:23:13 [INFO] prism.s3 (s3.py:85) — Uploaded: s3://katsu-ai-requirement-documents/projects/38/output/test_plan.xlsx
+2026-03-23 23:23:13 [INFO] prism.security (security.py:483) — Service token obtained (expires in 36000s)
+2026-03-23 23:23:13 [INFO] prism.java_client (java_client.py:219) — Stored 4 test cases for project 38
+2026-03-23 23:23:13 [INFO] prism.testgen (app.py:61) — POST /teams/df8b6d57-d922-407c-9369-b799fe282a9d/projects/38/generate-testcases-sync -- 200  17.321s
+2026-03-23 23:25:21 [INFO] prism.extraction (app.py:61) — OPTIONS /teams/df8b6d57-d922-407c-9369-b799fe282a9d/documents/general -- 200  0.001s
+2026-03-23 23:25:21 [INFO] prism.security (security.py:110) — Fetching JWKS from http://localhost:8080/realms/miipe/protocol/openid-connect/certs
+2026-03-23 23:25:21 [DEBUG] prism.secrets (secrets.py:62) — Secret 'AWS_REGION' loaded from environment variable (local dev)
+2026-03-23 23:25:22 [INFO] prism.extraction (app.py:61) — GET /teams/df8b6d57-d922-407c-9369-b799fe282a9d/documents/general -- 200  0.761s
