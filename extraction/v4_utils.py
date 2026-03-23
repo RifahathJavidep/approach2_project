@@ -12,6 +12,8 @@ import fitz
 import logging
 import pandas as pd
 from pathlib import Path
+from docx import Document
+from pptx import Presentation
 from dataclasses import dataclass, field
 from typing import List, Dict, Tuple, Optional, Callable
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -299,7 +301,6 @@ class PDFExtractor:
     @staticmethod
     def _extract_docx(file_path: Path) -> DocumentInfo:
         try:
-            from docx import Document
             doc = Document(str(file_path))
             lines = [p.text for p in doc.paragraphs if p.text.strip()]
             text = "\n".join(lines)
@@ -315,7 +316,6 @@ class PDFExtractor:
     @staticmethod
     def _extract_pptx(file_path: Path) -> DocumentInfo:
         try:
-            from pptx import Presentation
             prs = Presentation(str(file_path))
             pages = []
             global_line = 1

@@ -30,8 +30,6 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       # S3
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
-      # Feature flags
-      USE_V4_BR_EXTRACTION: ${USE_V4_BR_EXTRACTION:-true}
       # Inter-service URLs
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
       TESTGEN_SERVICE_URL: http://testgen-api:8002
@@ -56,7 +54,6 @@ services:
       CELERY_BROKER_URL: ${CELERY_BROKER_URL}
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
-      USE_V4_BR_EXTRACTION: ${USE_V4_BR_EXTRACTION:-true}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
       TESTGEN_SERVICE_URL: http://testgen-api:8002
       KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
@@ -169,16 +166,4 @@ services:
       - "8004:8004"
     environment:
       FLOWER_BROKER_API: ${CELERY_BROKER_URL}
-    restart: unless-stopped
-
-  # ── Nginx — API Gateway  (port 80) ───────────────────────────────────────────
-
-  nginx:
-    build: ./nginx
-    container_name: nginx_gateway
-    ports:
-      - "80:80"
-    depends_on:
-      - extraction-api
-      - testgen-api
     restart: unless-stopped

@@ -1,54 +1,16 @@
-"""
-Diagram Analyzer Module
-
-Extracts structured information from workflow diagrams using Groq Vision LLM.
-Converts flowcharts, process diagrams, and state diagrams into:
-    1. Graph JSON: Nodes, connections, decision points, flow paths
-    2. Text Narrative: Readable text description of the workflow
-
-The text narrative is then combined with document text and sent to
-the DSPy requirement extractor.
-
-Adapted from: ai_test_case/test_case_generator/processors/diagram_processor.py
-
-Example:
-    from extraction.processors import DiagramAnalyzer
-
-    analyzer = DiagramAnalyzer(groq_api_key="gsk_...")
-    graph = analyzer.extract_graph_json(image_base64)
-    narrative = analyzer.convert_to_narrative(graph)
-"""
-
 import json
 import os
 from typing import Dict, Any, List, Optional
 
+from groq import Groq
+
+
 class DiagramAnalyzer:
-    """
-    Extract structured workflow information from diagram images.
-
-    Uses Groq's Llama 3.2 Vision model to analyze workflow diagrams
-    and extract:
-    - Nodes (steps, actions, processes)
-    - Connections (flows between nodes)
-    - Decision points (branches, conditions)
-    - Flow paths (start-to-end sequences)
-
-    The extracted structure is then converted to a text narrative
-    suitable for downstream AI processing (DSPy requirement extraction).
-    """
+    """Extracts structured workflow information from diagram images using Groq Vision."""
 
     DEFAULT_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
     def __init__(self, groq_api_key: str = None, model: str = None):
-        """
-        Initialize the diagram analyzer.
-
-        Args:
-            groq_api_key: Groq API key for Vision model access.
-                          Falls back to GROQ_API_KEY env var.
-            model: Vision model to use
-        """
         self.client = None
         self.model = model or self.DEFAULT_MODEL
 
@@ -56,11 +18,7 @@ class DiagramAnalyzer:
 
         if api_key:
             try:
-                from groq import Groq
-                self.client = Groq(
-                    api_key=api_key,
-                )
-                # Test connection by making a dummy call
+                self.client = Groq(api_key=api_key)
                 self.client.models.list()
             except Exception as e:
                 self.client = None
@@ -69,31 +27,9 @@ class DiagramAnalyzer:
 
     @property
     def is_available(self) -> bool:
-        """Check if diagram analysis is available."""
         return self.client is not None
 
     def extract_graph_json(self, image_base64: str, source: str = "diagram") -> Dict[str, Any]:
-        """
-        Extract the complete diagram structure as a graph JSON.
-
-        Sends the diagram image to Groq Vision LLM and extracts all
-        nodes, connections, decision points, and flow paths.
-
-        Args:
-            image_base64: Base64-encoded diagram image
-            source: Source identifier for logging
-
-        Returns:
-            Dictionary containing:
-                - has_diagram: Whether a diagram was detected
-                - diagram_type: Type (flowchart, process, state, etc.)
-                - diagram_title: Title if visible
-                - nodes: List of nodes with id, label, type
-                - connections: List of connections between nodes
-                - decision_points: List of branching conditions
-                - flow_paths: List of start-to-end paths
-                - source: Source identifier
-        """
         if not self.client:
             return self._empty_result(source, "No Vision LLM configured")
 
@@ -129,10 +65,7 @@ class DiagramAnalyzer:
                     "role": "user",
                     "content": [
                         {"type": "text", "text": prompt},
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": f"data:image/png;base64,{image_base64}"}
-                        },
+                        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}},
                     ],
                 }],
                 max_tokens=4000,
@@ -141,7 +74,6 @@ class DiagramAnalyzer:
 
             raw = response.choices[0].message.content.strip()
 
-            # Handle markdown-wrapped JSON
             if "```" in raw:
                 raw = raw.split("```")[1]
                 if raw.startswith("json"):
@@ -150,7 +82,6 @@ class DiagramAnalyzer:
             graph = json.loads(raw.strip())
             graph["source"] = source
 
-            # Log summary
             nodes = len(graph.get("nodes", []))
             connections = len(graph.get("connections", []))
             decisions = len(graph.get("decision_points", []))
@@ -163,33 +94,15 @@ class DiagramAnalyzer:
             return self._empty_result(source, str(e))
 
     def convert_to_narrative(self, graph_json: Dict[str, Any]) -> str:
-        """
-        Convert diagram graph JSON into a readable text narrative.
-
-        Creates a sequential description of the workflow that can be
-        processed by the DSPy requirement extractor, including:
-        - Diagram title and type
-        - Step-by-step process flow
-        - Decision points and their branches
-        - All flow paths
-
-        Args:
-            graph_json: Graph structure from extract_graph_json()
-
-        Returns:
-            Human-readable text narrative of the workflow
-        """
         if not graph_json.get("has_diagram"):
             return ""
 
         parts = []
 
-        # Title
         title = graph_json.get("diagram_title") or "Untitled Workflow"
         diagram_type = graph_json.get("diagram_type", "diagram")
         parts.append(f"=== WORKFLOW DIAGRAM: {title} ({diagram_type}) ===\n")
 
-        # Nodes summary
         nodes = graph_json.get("nodes", [])
         if nodes:
             parts.append("Process Steps:")
@@ -200,7 +113,6 @@ class DiagramAnalyzer:
                 parts.append(f"  - [{node_type.upper()}] {node.get('label', node['id'])}")
             parts.append("")
 
-        # Connections (flow)
         connections = graph_json.get("connections", [])
         if connections:
             parts.append("Process Flow:")
@@ -211,7 +123,6 @@ class DiagramAnalyzer:
                 parts.append(f"  {from_label} → {to_label}{arrow_label}")
             parts.append("")
 
-        # Decision points
         decisions = graph_json.get("decision_points", [])
         if decisions:
             parts.append("Decision Points:")
@@ -224,7 +135,6 @@ class DiagramAnalyzer:
                 parts.append(f"    NO  → {no_node}")
             parts.append("")
 
-        # Flow paths
         flow_paths = graph_json.get("flow_paths", [])
         if flow_paths:
             parts.append("End-to-End Paths:")
@@ -238,7 +148,6 @@ class DiagramAnalyzer:
 
     @staticmethod
     def _empty_result(source: str, reason: str) -> Dict[str, Any]:
-        """Return an empty diagram result."""
         return {
             "has_diagram": False,
             "diagram_type": "none",

@@ -3,6 +3,7 @@ Utility helpers for test case generation.
 Ported from ai_test_case with minimal changes.
 """
 
+import json
 import re
 from typing import Any
 
@@ -34,5 +35,4 @@ def to_excel_safe(value: Any) -> str:
 
 def safe_json_serialize(obj: Any) -> str:
     """Serialize to JSON, handling non-standard types."""
-    import json
     return json.dumps(clean_for_json(obj), indent=2, ensure_ascii=False)

@@ -33,6 +33,7 @@ from typing import List, Dict, Any, Optional
 
 import numpy as np
 from PIL import Image
+from paddleocr import PaddleOCR
 
 @dataclass
 class OCRConfig:
@@ -79,10 +80,6 @@ class LocalOCRExtractor:
         """
         self.config = config or OCRConfig(language=lang, use_gpu=use_gpu)
 
-        from paddleocr import PaddleOCR
-
-        # PaddleOCR initialization has become very sensitive to argument names in recent versions.
-        # We use a defensive approach to only pass arguments supported by the current version.
         kwargs = {
             "lang": self.config.language,
         }
