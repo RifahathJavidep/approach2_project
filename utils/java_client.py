@@ -2,9 +2,9 @@
 Java Backend Client — all HTTP calls to the Java (Katsu) backend.
 
 URL structure mirrors the new Java controllers:
-  RequirementController  → /teams/{teamId}/projects/{projectId}/requirements
-  TestCaseController     → /teams/{teamId}/projects/{projectId}/test-cases
-  DocumentStatusController → /api/document-statuses/projects/{projectId}  (no team scope)
+  RequirementController  → /integration/projects/{projectId}/requirements?teamId={teamId}
+  TestCaseController     → /integration/projects/{projectId}/test-cases?teamId={teamId}
+  DocumentStatusController → /integration/document-statuses/projects/{projectId}
 
 Security:
   - Uses Keycloak Client Credentials Grant for service-to-service auth
@@ -59,7 +59,7 @@ def create_document_statuses(
     tenant_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     """POST a batch of document status records. Returns the created records."""
-    url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
+    url = f"{BASE_URL}/integration/document-statuses/projects/{project_id}"
     payload = [{"documentUrl": u, "status": status} for u in file_urls]
 
     logger.info("Creating '%s' status for %d documents (project %s)", status, len(file_urls), project_id)
@@ -82,7 +82,7 @@ def update_document_status(
     tenant_id: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """Update a specific document status record by its ID."""
-    url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
+    url = f"{BASE_URL}/integration/document-statuses/projects/{project_id}"
     payload = [{"id": int(doc_status_id), "documentUrl": document_url, "status": status}]
 
     try:
@@ -105,7 +105,7 @@ def get_document_statuses(
     tenant_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     """Fetch all document status records for a project."""
-    url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
+    url = f"{BASE_URL}/integration/document-statuses/projects/{project_id}"
     try:
         response = requests.get(url, headers=get_headers(tenant_id), timeout=10)
         if response.status_code == 200:
@@ -128,10 +128,9 @@ def get_requirements(
 ) -> List[Dict]:
     """
     Fetch all requirements for a project.
-    Java: GET /teams/{teamId}/projects/{projectId}/requirements
-    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'View')")
+    Java: GET /integration/projects/{projectId}/requirements?teamId={teamId}
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
+    url = f"{BASE_URL}/integration/projects/{project_id}/requirements?teamId={team_id}"
     try:
         response = requests.get(url, headers=get_headers(tenant_id), timeout=15)
         if response.status_code == 200:
@@ -154,10 +153,9 @@ def store_requirements(
 ) -> bool:
     """
     POST a list of mapped requirements to the Java backend.
-    Java: POST /teams/{teamId}/projects/{projectId}/requirements
-    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
+    Java: POST /integration/projects/{projectId}/requirements?teamId={teamId}
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
+    url = f"{BASE_URL}/integration/projects/{project_id}/requirements?teamId={team_id}"
     try:
         response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
@@ -179,10 +177,9 @@ def store_draft_requirements(
 ) -> bool:
     """
     POST requirements as drafts to the Java backend.
-    Java: POST /teams/{teamId}/projects/{projectId}/requirements/drafts
-    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
+    Java: POST /integration/projects/{projectId}/requirements/drafts?teamId={teamId}
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements/drafts"
+    url = f"{BASE_URL}/integration/projects/{project_id}/requirements/drafts?teamId={team_id}"
     try:
         response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
@@ -209,10 +206,9 @@ def store_test_cases(
 ) -> bool:
     """
     POST test cases to the Java backend.
-    Java: POST /teams/{teamId}/projects/{projectId}/test-cases
-    Java: @PreAuthorize("hasPermission(#teamId, 'Test Cases', 'Create')")
+    Java: POST /integration/projects/{projectId}/test-cases?teamId={teamId}
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/test-cases"
+    url = f"{BASE_URL}/integration/projects/{project_id}/test-cases?teamId={team_id}"
     try:
         response = requests.post(url, json=test_cases, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
