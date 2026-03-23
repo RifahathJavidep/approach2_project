@@ -16,15 +16,25 @@ from utils.deduplication import find_duplicates
 from utils.java_client import create_document_statuses, store_draft_requirements
 from utils.requirement_mapper import to_payload
 from services.documents import is_already_processed
+from tasks.extraction import extract_and_filter_duplicates_task
+from extraction.manual import ManualExtractor
+from extraction.manual_dspy import ManualDSPyExtractor
+
 
 logger = logging.getLogger("prism.services.extraction")
 
-async def queue_extraction(project_id: str, project_name: str, file_urls: list, tenant_id: str | None = None) -> dict:
+
+async def queue_extraction(
+    team_id: str,
+    project_id: str,
+    project_name: str,
+    file_urls: list,
+    tenant_id: str | None = None,
+) -> dict:
     """
     Download files from S3 in parallel, set PENDING status,
     then dispatch a Celery task. Returns task_id and document status records.
     """
-    from tasks.extraction import extract_and_filter_duplicates_task
 
     if is_already_processed(project_id, file_urls):
         logger.warning("Documents already processed for project %s", project_id)
@@ -49,6 +59,7 @@ async def queue_extraction(project_id: str, project_name: str, file_urls: list, 
     logger.info("Queuing extraction: project=%s, files=%d", project_id, len(local_files))
 
     task = extract_and_filter_duplicates_task.delay(
+        team_id=team_id,
         project_id=project_id,
         project_name=project_name,
         local_files=local_files,
@@ -66,6 +77,7 @@ async def queue_extraction(project_id: str, project_name: str, file_urls: list, 
         "document_statuses": document_statuses,
     }
 
+
 def get_cached_requirements(project_id: str) -> dict:
     """Fetch the last extraction result from S3. Raises FileNotFoundError if absent."""
     s3_key = f"projects/{project_id}/output/requirements.json"
@@ -73,26 +85,43 @@ def get_cached_requirements(project_id: str) -> dict:
         raise FileNotFoundError(f"No requirements found for project '{project_id}'")
     return s3.download_json(s3_key)
 
-async def run_manual_extraction(document_url: str, description: str, page_no: int) -> dict:
+
+async def run_manual_extraction(
+    team_id: str,
+    project_id: str,
+    document_url: str,
+    description: str,
+    page_no: int,
+    tenant_id: str | None = None,
+) -> dict:
     """Download a document and extract a single requirement with basic Groq LLM."""
-    from extraction.manual import ManualExtractor
 
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_{os.getpid()}")
     try:
         os.makedirs(tmp_dir, exist_ok=True)
         local_path = s3.download(document_url, tmp_dir)
-        return ManualExtractor().extract_from_page(local_path, description, page_no)
+        result = ManualExtractor().extract_from_page(local_path, description, page_no)
+
+        if result.get("status") == "success" and result.get("requirements"):
+            _store_manual_requirements(team_id, project_id, result["requirements"], document_url, page_no, tenant_id)
+
+        return result
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
+
 async def run_manual_dspy_extraction(
-    project_id: str, document_url: str, description: str, page_no: int, tenant_id: str | None = None
+    team_id: str,
+    project_id: str,
+    document_url: str,
+    description: str,
+    page_no: int,
+    tenant_id: str | None = None,
 ) -> dict:
     """
     Download a document, run DSPy extraction on a single page,
     check duplicates, then store results as drafts in the Java backend.
     """
-    from extraction.manual_dspy import ManualDSPyExtractor
 
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_dspy_{os.getpid()}")
     try:
@@ -106,7 +135,7 @@ async def run_manual_dspy_extraction(
 
         requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
 
-        _store_manual_requirements(project_id, requirements, document_url, page_no, tenant_id)
+        _store_manual_requirements(team_id, project_id, requirements, document_url, page_no, tenant_id)
 
         return {
             "status": "success",
@@ -120,8 +149,14 @@ async def run_manual_dspy_extraction(
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
+
 def _store_manual_requirements(
-    project_id: str, requirements: list, document_url: str, page_no: int, tenant_id: str | None = None
+    team_id: str,
+    project_id: str,
+    requirements: list,
+    document_url: str,
+    page_no: int,
+    tenant_id: str | None = None,
 ) -> None:
     mapped = []
     for r in requirements:
@@ -131,7 +166,8 @@ def _store_manual_requirements(
         payload["metadata"]["page_end"] = page_no
         mapped.append(payload)
 
-    store_draft_requirements(project_id, mapped, tenant_id)
+    store_draft_requirements(team_id, project_id, mapped, tenant_id)
+
 
 def _download_parallel(file_urls: list, target_dir: str) -> list:
     """Download S3 files in parallel (up to 5 workers). Returns local paths."""

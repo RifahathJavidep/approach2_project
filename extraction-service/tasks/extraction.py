@@ -24,6 +24,7 @@ TESTGEN_SERVICE_URL = os.getenv("TESTGEN_SERVICE_URL", "http://localhost:8002")
 @app.task(name="extract_requirements_task", bind=True)
 def extract_requirements_task(
     self,
+    team_id,
     project_id,
     local_files,
     output_dir,
@@ -66,7 +67,7 @@ def extract_requirements_task(
         requirements = result.get("requirements", [])
         if requirements:
             mapped = [to_payload(r, validation_confirmed=False) for r in requirements]
-            store_requirements(project_id, mapped, tenant_id)
+            store_requirements(team_id, project_id, mapped, tenant_id)
 
         return {"status": "success", "total": len(requirements)}
 
@@ -84,6 +85,7 @@ def extract_requirements_task(
 @app.task(name="extract_and_filter_duplicates_task", bind=True)
 def extract_and_filter_duplicates_task(
     self,
+    team_id,
     project_id,
     local_files,
     output_dir,
@@ -130,7 +132,7 @@ def extract_and_filter_duplicates_task(
 
         if unique:
             mapped = [to_payload(r) for r in unique]
-            store_requirements(project_id, mapped, tenant_id)
+            store_requirements(team_id, project_id, mapped, tenant_id)
             logger.info(
                 "Stored %d unique requirements (%d filtered) for project %s",
                 len(unique), len(extracted) - len(unique), project_id,
@@ -143,9 +145,8 @@ def extract_and_filter_duplicates_task(
                 if doc_id:
                     update_document_status(project_id, doc_id, url, "COMPLETED", tenant_id)
 
-        # Trigger test case generation via HTTP — testgen-service handles it from here
         if unique:
-            _trigger_testgen(project_id, project_name, unique, tenant_id)
+            _trigger_testgen(team_id, project_id, project_name, unique, tenant_id)
 
         return {
             "status": "success",
@@ -166,13 +167,17 @@ def extract_and_filter_duplicates_task(
         raise
 
 
-def _trigger_testgen(project_id: str, project_name: str, requirements: list, tenant_id: str | None = None) -> None:
-    """POST to testgen-service to kick off test case generation. Non-blocking — failure is logged, not raised."""
+def _trigger_testgen(
+    team_id: str, project_id: str, project_name: str,
+    requirements: list, tenant_id: str | None = None,
+) -> None:
+    """POST to testgen-service to kick off test case generation. Failure is logged, not raised."""
     from utils.java_client import get_headers
     try:
         headers = get_headers(tenant_id)
+        url = f"{TESTGEN_SERVICE_URL}/teams/{team_id}/projects/{project_id}/generate-testcases"
         resp = requests.post(
-            f"{TESTGEN_SERVICE_URL}/generate-testcases",
+            url,
             json={
                 "project_id": project_id,
                 "project_name": project_name,

@@ -1,8 +1,10 @@
 """
 Java Backend Client — all HTTP calls to the Java (Katsu) backend.
 
-Combines auth headers and document status tracking in one place,
-since both are purely about communicating with the Java service.
+URL structure mirrors the new Java controllers:
+  RequirementController  → /teams/{teamId}/projects/{projectId}/requirements
+  TestCaseController     → /teams/{teamId}/projects/{projectId}/test-cases
+  DocumentStatusController → /api/document-statuses/projects/{projectId}  (no team scope)
 
 Security:
   - Uses Keycloak Client Credentials Grant for service-to-service auth
@@ -21,21 +23,16 @@ logger = logging.getLogger("prism.java_client")
 
 BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8081")
 
-# ── Tenant header constant (matches Java TenantAwareDispatcherServlet.TENANT_HEADER)
 TENANT_HEADER = "X-TENANT-ID"
 
 
 def get_headers(tenant_id: Optional[str] = None) -> dict:
     """
     Build headers for Java backend requests.
-    Includes:
-      - Content-Type
-      - Authorization: Bearer <service-token>  (from Keycloak)
-      - X-TENANT-ID                             (required by Java TenantInterceptor)
+    Includes Authorization Bearer token (Keycloak service account) and X-TENANT-ID.
     """
     headers = {"Content-Type": "application/json"}
 
-    # ── Service-to-Service JWT ────────────────────────────────────────────────
     try:
         from utils.security import get_service_token
         token = get_service_token()
@@ -46,22 +43,22 @@ def get_headers(tenant_id: Optional[str] = None) -> dict:
     except Exception as e:
         logger.warning("Could not obtain service token: %s", e)
 
-    # ── Tenant ID ─────────────────────────────────────────────────────────────
     if tenant_id:
         headers[TENANT_HEADER] = tenant_id
 
     return headers
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# Document Status — /api/document-statuses/projects/{project_id}
+# (no team scope in Java — endpoint remains unchanged)
+# ═════════════════════════════════════════════════════════════════════════════
+
 def create_document_statuses(
     project_id: str, file_urls: List[str], status: str,
     tenant_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
-    """
-    POST a batch of document status records.
-    Returns the created records (each with an assigned ID).
-    Used to set initial PENDING status before a task starts.
-    """
+    """POST a batch of document status records. Returns the created records."""
     url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
     payload = [{"documentUrl": u, "status": status} for u in file_urls]
 
@@ -79,15 +76,12 @@ def create_document_statuses(
         logger.error("Exception creating document statuses: %s", e, exc_info=True)
         return []
 
+
 def update_document_status(
     project_id: str, doc_status_id: int, document_url: str, status: str,
     tenant_id: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
-    """
-    Update a specific document status record by its ID.
-    POST /api/document-statuses/projects/{project_id}
-    Body: [{ "id": X, "documentUrl": "...", "status": "..." }]
-    """
+    """Update a specific document status record by its ID."""
     url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
     payload = [{"id": int(doc_status_id), "documentUrl": document_url, "status": status}]
 
@@ -105,6 +99,7 @@ def update_document_status(
         logger.error("Exception updating document status id=%s: %s", doc_status_id, e, exc_info=True)
         return None
 
+
 def get_document_statuses(
     project_id: str,
     tenant_id: Optional[str] = None,
@@ -120,12 +115,23 @@ def get_document_statuses(
         logger.error("Exception fetching document statuses: %s", e, exc_info=True)
         return []
 
+
+# ═════════════════════════════════════════════════════════════════════════════
+# Requirements — /teams/{team_id}/projects/{project_id}/requirements
+# Mirrors RequirementController.java
+# ═════════════════════════════════════════════════════════════════════════════
+
 def get_requirements(
+    team_id: str,
     project_id: str,
     tenant_id: Optional[str] = None,
 ) -> List[Dict]:
-    """Fetch all requirements for a project."""
-    url = f"{BASE_URL}/api/requirements/project/{project_id}"
+    """
+    Fetch all requirements for a project.
+    Java: GET /teams/{teamId}/projects/{projectId}/requirements
+    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'View')")
+    """
+    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
     try:
         response = requests.get(url, headers=get_headers(tenant_id), timeout=15)
         if response.status_code == 200:
@@ -139,12 +145,19 @@ def get_requirements(
         logger.error("Failed to fetch requirements for project %s: %s", project_id, e, exc_info=True)
         return []
 
+
 def store_requirements(
-    project_id: str, requirements: list,
+    team_id: str,
+    project_id: str,
+    requirements: list,
     tenant_id: Optional[str] = None,
 ) -> bool:
-    """POST a list of mapped requirements to the Java backend."""
-    url = f"{BASE_URL}/api/requirements/project/{project_id}"
+    """
+    POST a list of mapped requirements to the Java backend.
+    Java: POST /teams/{teamId}/projects/{projectId}/requirements
+    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
+    """
+    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
     try:
         response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
@@ -157,12 +170,19 @@ def store_requirements(
         logger.error("Exception storing requirements: %s", e, exc_info=True)
         return False
 
+
 def store_draft_requirements(
-    project_id: str, requirements: list,
+    team_id: str,
+    project_id: str,
+    requirements: list,
     tenant_id: Optional[str] = None,
 ) -> bool:
-    """POST requirements as drafts to the Java backend."""
-    url = f"{BASE_URL}/api/requirements/drafts/project/{project_id}"
+    """
+    POST requirements as drafts to the Java backend.
+    Java: POST /teams/{teamId}/projects/{projectId}/requirements/drafts
+    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
+    """
+    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements/drafts"
     try:
         response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
@@ -175,12 +195,24 @@ def store_draft_requirements(
         logger.error("Exception storing draft requirements: %s", e, exc_info=True)
         return False
 
+
+# ═════════════════════════════════════════════════════════════════════════════
+# Test Cases — /teams/{team_id}/projects/{project_id}/test-cases
+# Mirrors TestCaseController.java
+# ═════════════════════════════════════════════════════════════════════════════
+
 def store_test_cases(
-    project_id: str, test_cases: list,
+    team_id: str,
+    project_id: str,
+    test_cases: list,
     tenant_id: Optional[str] = None,
 ) -> bool:
-    """POST test cases to the Java backend."""
-    url = f"{BASE_URL}/projects/{project_id}/test-cases"
+    """
+    POST test cases to the Java backend.
+    Java: POST /teams/{teamId}/projects/{projectId}/test-cases
+    Java: @PreAuthorize("hasPermission(#teamId, 'Test Cases', 'Create')")
+    """
+    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/test-cases"
     try:
         response = requests.post(url, json=test_cases, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:

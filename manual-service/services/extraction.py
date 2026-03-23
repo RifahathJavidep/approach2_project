@@ -16,7 +16,12 @@ logger = logging.getLogger("prism.manual.services.extraction")
 
 
 async def run_manual_extraction(
-    project_id: str, document_url: str, description: str, page_no: int
+    team_id: str,
+    project_id: str,
+    document_url: str,
+    description: str,
+    page_no: int,
+    tenant_id: str | None = None,
 ) -> dict:
     """Download a document and extract requirements with basic Groq LLM."""
     from extraction.manual import ManualExtractor
@@ -28,9 +33,8 @@ async def run_manual_extraction(
         result = ManualExtractor().extract_from_page(local_path, description, page_no)
 
         if result.get("status") == "success" and result.get("requirements"):
-            # Ensure findings ARE saved to DB
-            _store_manual_requirements(project_id, result["requirements"], document_url, page_no)
-            
+            _store_manual_requirements(team_id, project_id, result["requirements"], document_url, page_no, tenant_id)
+
         return {
             "status": "success",
             "requirements": result.get("requirements", []),
@@ -44,7 +48,12 @@ async def run_manual_extraction(
 
 
 async def run_manual_dspy_extraction(
-    project_id: str, document_url: str, description: str, page_no: int, tenant_id: str | None = None
+    team_id: str,
+    project_id: str,
+    document_url: str,
+    description: str,
+    page_no: int,
+    tenant_id: str | None = None,
 ) -> dict:
     """
     Download a document, run DSPy extraction on a single page,
@@ -64,7 +73,7 @@ async def run_manual_dspy_extraction(
 
         requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
 
-        _store_manual_requirements(project_id, requirements, document_url, page_no, tenant_id)
+        _store_manual_requirements(team_id, project_id, requirements, document_url, page_no, tenant_id)
 
         return {
             "status": "success",
@@ -80,19 +89,22 @@ async def run_manual_dspy_extraction(
 
 
 def _store_manual_requirements(
-    project_id: str, requirements: list, document_url: str, page_no: int, tenant_id: str | None = None
+    team_id: str,
+    project_id: str,
+    requirements: list,
+    document_url: str,
+    page_no: int,
+    tenant_id: str | None = None,
 ) -> None:
     """Map and store manual requirements as drafts in the Java backend."""
     mapped = []
     for r in requirements:
-        # Inject source info into the requirement dict before mapping
         r["source_file"] = document_url
         r["page_start"] = page_no
         r["page_end"] = page_no
 
         payload = to_payload(r, validation_confirmed=False)
 
-        # Also update the metadata object directly
         if isinstance(payload.get("metadata"), dict):
             payload["metadata"]["source_file"] = document_url
             payload["metadata"]["page_start"] = page_no
@@ -100,4 +112,4 @@ def _store_manual_requirements(
 
         mapped.append(payload)
 
-    store_draft_requirements(project_id, mapped, tenant_id)
+    store_draft_requirements(team_id, project_id, mapped, tenant_id)

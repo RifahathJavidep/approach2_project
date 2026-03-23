@@ -17,6 +17,7 @@ logger = logging.getLogger("prism.tasks.testcases")
 @app.task(name="generate_testcases_task", bind=True)
 def generate_testcases_task(
     self,
+    team_id,
     project_id,
     project_name,
     requirements_s3_key=None,
@@ -37,9 +38,10 @@ def generate_testcases_task(
     )
 
     result = generate_and_store(
+        team_id=team_id,
         project_id=project_id,
         project_name=project_name,
-        requirements=requirements,
+        requirements_data=requirements,
         local_doc_paths=local_doc_paths,
         tenant_id=tenant_id,
     )

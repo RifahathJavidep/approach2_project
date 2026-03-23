@@ -2,34 +2,38 @@
 Keycloak JWT Security — Python equivalent of Java's security stack.
 
 Maps to:
-  - JwtAuthConverter.java        → extract_roles()
-  - JwtAuthConverterProperties   → config from env vars
-  - WebSecurityConfig.java       → get_current_user() dependency
-  - TenantInterceptor.java       → get_tenant_user() dependency
-  - TenantContext.java           → tenant_id in returned user dict
-  - MethodSecurityConfig.java    → role-checking helpers
+  - Policy.java                    → Policy dataclass
+  - TeamRole.java                  → TeamRole dataclass
+  - AuthUtils.java                 → extract_team_roles(), is_team_authenticated()
+  - TeamPermissionEvaluator.java   → has_permission()
+  - JwtAuthConverter.java          → extract_roles()
+  - JwtAuthConverterProperties     → config from env vars
+  - WebSecurityConfig.java         → get_current_user() dependency
+  - TenantInterceptor.java         → get_tenant_user() dependency
+  - TenantContext.java             → tenant_id in returned user dict
 
 Usage in routers:
-  from utils.security import get_current_user, get_tenant_user
+  from utils.security import get_current_user, get_tenant_user, get_team_user, has_permission
 
-  @router.get("/api/something")
-  async def endpoint(user = Depends(get_current_user)):        # no tenant needed
+  @router.get("/teams/{team_id}/projects/{project_id}/requirements")
+  async def endpoint(team_id: str, user = Depends(get_team_user)):
       ...
 
-  @router.post("/api/project/{id}")
-  async def endpoint(user = Depends(get_tenant_user)):         # tenant required
-      ...
+  # Fine-grained permission check (mirrors @PreAuthorize("hasPermission(#teamId, 'Requirements', 'View')"))
+  if not has_permission(team_id, "Requirements", "View", user):
+      raise HTTPException(403)
 """
 import os
 import time
 import logging
 import threading
+from dataclasses import dataclass, field
 from typing import List, Optional
 
 import jwt
 import requests
 from jwt.algorithms import RSAAlgorithm
-from fastapi import Depends, Header, HTTPException, Request, Security, status
+from fastapi import Depends, Header, HTTPException, Path, Request, Security, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 logger = logging.getLogger("prism.security")
@@ -37,33 +41,62 @@ logger = logging.getLogger("prism.security")
 # ── Configuration (mirrors application.yaml) ─────────────────────────────────
 KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL", "http://localhost:8080")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM", "miipe")
-KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")          # per-service
-KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")   # per-service
+KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
+KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
 TENANT_PREFIX = os.getenv("KEYCLOAK_TENANT_PREFIX", "tenant_")
 
-# ── Derived URLs (mirrors application.yaml issuer-uri / jwk-set-uri) ─────────
+# ── Derived URLs ──────────────────────────────────────────────────────────────
 ISSUER_URL = f"{KEYCLOAK_SERVER_URL}/realms/{KEYCLOAK_REALM}"
 JWKS_URL = f"{ISSUER_URL}/protocol/openid-connect/certs"
 TOKEN_URL = f"{ISSUER_URL}/protocol/openid-connect/token"
 
-# ── Paths that bypass authentication (like Java's permitAll) ──────────────────
+# ── Public paths (no auth required) ──────────────────────────────────────────
 PUBLIC_PATHS = {"/health", "/docs", "/openapi.json", "/redoc"}
 
-# ── FastAPI security scheme ───────────────────────────────────────────────────
-_bearer = HTTPBearer(auto_error=False)  # auto_error=False so we can handle public paths
+_bearer = HTTPBearer(auto_error=False)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# JWKS Cache — time-based (fixes stale-key issue from @lru_cache)
+# Models — mirrors Policy.java and TeamRole.java
+# ═════════════════════════════════════════════════════════════════════════════
+
+@dataclass
+class Policy:
+    """
+    Python equivalent of com.katsu.config.keycloak.models.Policy.
+
+    resource   → resource name, e.g. "Requirements", "Test Cases", "Owner"
+    authorized → True = allow, False = deny
+    actions    → action names, e.g. ["View", "Create", "Update", "Delete"]
+    """
+    resource: str = ""
+    authorized: bool = False
+    actions: List[str] = field(default_factory=list)
+
+
+@dataclass
+class TeamRole:
+    """
+    Python equivalent of com.katsu.config.keycloak.models.TeamRole.
+
+    id         → team UUID as string
+    policyList → list of Policy objects for this team
+    """
+    id: str = ""
+    policyList: List[Policy] = field(default_factory=list)
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# JWKS Cache
 # ═════════════════════════════════════════════════════════════════════════════
 _jwks_cache: Optional[dict] = None
 _jwks_cache_time: float = 0.0
 _jwks_lock = threading.Lock()
-JWKS_TTL_SECONDS = 300  # refresh every 5 minutes
+JWKS_TTL_SECONDS = 300
 
 
 def _fetch_jwks() -> Optional[dict]:
-    """Fetches the JWKS from Keycloak with TTL-based caching."""
+    """Fetch JWKS from Keycloak with TTL-based caching."""
     global _jwks_cache, _jwks_cache_time
     now = time.time()
 
@@ -71,7 +104,6 @@ def _fetch_jwks() -> Optional[dict]:
         return _jwks_cache
 
     with _jwks_lock:
-        # Double-check after acquiring lock
         if _jwks_cache and (now - _jwks_cache_time) < JWKS_TTL_SECONDS:
             return _jwks_cache
         try:
@@ -83,15 +115,11 @@ def _fetch_jwks() -> Optional[dict]:
             return _jwks_cache
         except Exception as e:
             logger.error("Failed to fetch JWKS: %s", e)
-            # Return stale cache if available, otherwise None
             return _jwks_cache
 
 
 def _get_rsa_public_key(token: str):
-    """
-    Extracts the RSA public key from the JWKS that matches the token's kid.
-    Uses jwt.algorithms.RSAAlgorithm.from_jwk() for proper key construction.
-    """
+    """Extract the RSA public key from JWKS matching the token's kid header."""
     jwks = _fetch_jwks()
     if not jwks:
         raise HTTPException(
@@ -104,7 +132,6 @@ def _get_rsa_public_key(token: str):
 
     for key_data in jwks.get("keys", []):
         if key_data.get("kid") == kid:
-            # Proper RSA key construction (fixes the raw-dict bug)
             return RSAAlgorithm.from_jwk(key_data)
 
     raise HTTPException(
@@ -121,21 +148,20 @@ def extract_roles(payload: dict) -> List[str]:
     """
     Python equivalent of JwtAuthConverter.extractResourceRoles().
 
-    1. Extracts roles under resource_access → {CLIENT_ID} → roles
-    2. Extracts tenant roles under resource_access → tenant_XXX → roles
-       and maps them to TENANT_{XXX}_{ROLE}
-    3. If any tenant roles exist, adds USER (matching Java logic)
-    4. Prefixes everything with ROLE_ (matching Spring Security authorities)
+    Extracts:
+    1. Client-specific roles from resource_access → {CLIENT_ID} → roles
+    2. Tenant roles from resource_access → tenant_XXX → roles
+       formatted as TENANT_{XXX}_{ROLE}
+    3. Adds USER if any tenant roles were found (mirrors Java logic)
+    4. Prefixes all roles with ROLE_
     """
     roles: List[str] = []
     resource_access = payload.get("resource_access", {})
 
-    # ── 1. Client-specific roles ──────────────────────────────────────────────
     if KEYCLOAK_CLIENT_ID and KEYCLOAK_CLIENT_ID in resource_access:
         client_roles = resource_access[KEYCLOAK_CLIENT_ID].get("roles", [])
         roles.extend(client_roles)
 
-    # ── 2. Tenant roles (Java: tenantPrefix matching) ─────────────────────────
     tenant_roles_found = False
     for key, value in resource_access.items():
         if key.startswith(TENANT_PREFIX):
@@ -144,19 +170,138 @@ def extract_roles(payload: dict) -> List[str]:
             if tenant_role_list:
                 tenant_roles_found = True
                 for role in tenant_role_list:
-                    # Java: String.format("TENANT_%s_%s", tenantName, role)
                     roles.append(f"TENANT_{tenant_name}_{role}")
 
-    # ── 3. Auto-add USER if tenant roles exist (Java logic) ───────────────────
     if tenant_roles_found:
         roles.append("USER")
 
-    # ── 4. Prefix with ROLE_ (Spring Security convention) ─────────────────────
     return [f"ROLE_{r}" if not r.startswith("ROLE_") else r for r in roles]
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# FastAPI Dependencies — mirrors WebSecurityConfig + TenantInterceptor
+# Team Roles — mirrors AuthUtils.getTeamPolicies()
+# ═════════════════════════════════════════════════════════════════════════════
+
+def extract_team_roles(payload: dict) -> List[TeamRole]:
+    """
+    Python equivalent of AuthUtils.getTeamPolicies().
+
+    Parses the 'team_roles' JWT claim into TeamRole objects.
+
+    JWT claim structure (set by Keycloak mapper):
+    [
+      {
+        "id": "uuid-team-1",
+        "policyList": [
+          {"resource": "Requirements", "authorized": true,  "actions": ["View", "Create"]},
+          {"resource": "Test Cases",   "authorized": true,  "actions": ["View"]},
+          {"resource": "Projects",     "authorized": false, "actions": ["Delete"]}
+        ]
+      }
+    ]
+    """
+    raw = payload.get("team_roles", [])
+    if not raw:
+        return []
+
+    result = []
+    for item in raw:
+        policies = [
+            Policy(
+                resource=p.get("resource", ""),
+                authorized=bool(p.get("authorized", False)),
+                actions=list(p.get("actions", [])),
+            )
+            for p in item.get("policyList", [])
+        ]
+        result.append(TeamRole(id=str(item.get("id", "")), policyList=policies))
+    return result
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# Team Permission Evaluator — mirrors TeamPermissionEvaluator.java
+# ═════════════════════════════════════════════════════════════════════════════
+
+def has_permission(team_id: str, resource: str, action: str, user: dict) -> bool:
+    """
+    Python equivalent of TeamPermissionEvaluator.hasPermission(Serializable, String, Object).
+
+    Called as the Python equivalent of:
+        @PreAuthorize("hasPermission(#teamId, 'Requirements', 'View')")
+
+    Evaluation order (mirrors Java exactly):
+    1. ROLE_ADMIN or ROLE_INTEGRATION       → always True
+    2. ROLE_TENANT_{ID}_ADMIN               → always True
+    3. 'Owner' policy on the target team    → True
+    4. Deny-first: authorized=False match   → False (short-circuits)
+    5. Allow: authorized=True match         → True
+    6. ROLE_SHARED fallback                 → True
+    """
+    roles: List[str] = user.get("roles", [])
+    team_roles: List[TeamRole] = user.get("team_roles_parsed", [])
+
+    # 1. Global admin / integration bypass
+    if "ROLE_ADMIN" in roles or "ROLE_INTEGRATION" in roles:
+        return True
+
+    # 2. Tenant admin bypass
+    tenant_id = user.get("tenant_id", "")
+    if tenant_id and f"ROLE_TENANT_{tenant_id.upper()}_ADMIN" in roles:
+        return True
+
+    # 3. Owner policy on the specific target team
+    for tr in team_roles:
+        if str(tr.id) == str(team_id):
+            for p in (tr.policyList or []):
+                if p.resource == "Owner":
+                    return True
+
+    # 4 & 5. Policy evaluation for the target team (deny-first)
+    authorized = False
+    for tr in team_roles:
+        if str(tr.id) != str(team_id):
+            continue
+        for p in (tr.policyList or []):
+            if p.resource == resource and action in p.actions:
+                if not p.authorized:
+                    return False  # explicit deny — short-circuit (mirrors Java)
+                authorized = True
+
+    # 6. ROLE_SHARED fallback (mirrors Java atomic authorized.set(true) for ROLE_SHARED)
+    if not authorized and "ROLE_SHARED" in roles:
+        return True
+
+    return authorized
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# is_team_authenticated — mirrors AuthUtils.isTeamAuthenticated()
+# ═════════════════════════════════════════════════════════════════════════════
+
+def is_team_authenticated(team_id: str, user: dict) -> bool:
+    """
+    Python equivalent of AuthUtils.isTeamAuthenticated().
+
+    Returns True if:
+    - User is ROLE_ADMIN, ROLE_INTEGRATION, or ROLE_SHARED, OR
+    - User is tenant admin for the current tenant, OR
+    - User's team_roles_parsed list contains an entry matching team_id
+    """
+    roles: List[str] = user.get("roles", [])
+
+    if any(r in roles for r in ("ROLE_ADMIN", "ROLE_INTEGRATION", "ROLE_SHARED")):
+        return True
+
+    tenant_id = user.get("tenant_id", "")
+    if tenant_id and f"ROLE_TENANT_{tenant_id.upper()}_ADMIN" in roles:
+        return True
+
+    team_roles: List[TeamRole] = user.get("team_roles_parsed", [])
+    return any(str(tr.id) == str(team_id) for tr in team_roles)
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# FastAPI Dependencies
 # ═════════════════════════════════════════════════════════════════════════════
 
 async def get_current_user(
@@ -166,14 +311,11 @@ async def get_current_user(
     """
     FastAPI dependency — equivalent to WebSecurityConfig.securityFilterChain().
 
-    - Public paths (/health, /docs, etc.) are permitted without auth.
-    - All other paths require a valid JWT with USER, ADMIN, or SHARED role.
-
-    Returns the decoded JWT payload with an added 'roles' key.
+    Validates the Bearer JWT, extracts roles and team_roles from the token.
+    Returns the decoded payload with added 'roles' and 'team_roles_parsed' keys.
     """
-    # ── Permit public paths (Java: .requestMatchers(...).permitAll()) ─────────
     if request.url.path in PUBLIC_PATHS:
-        return {"public": True, "roles": []}
+        return {"public": True, "roles": [], "team_roles_parsed": []}
 
     if not credentials:
         raise HTTPException(
@@ -185,26 +327,18 @@ async def get_current_user(
     token = credentials.credentials
 
     try:
-        # ── 1. Get the correct RSA public key ─────────────────────────────────
         rsa_key = _get_rsa_public_key(token)
-
-        # ── 2. Decode and verify (signature + expiry + issuer) ────────────────
         payload = jwt.decode(
             token,
             rsa_key,
             algorithms=["RS256"],
             issuer=ISSUER_URL,
-            options={
-                "verify_aud": False,   # Keycloak audience varies per client
-                "verify_exp": True,
-                "verify_iss": True,
-            },
+            options={"verify_aud": False, "verify_exp": True, "verify_iss": True},
         )
 
-        # ── 3. Extract roles (mirrors JwtAuthConverter) ───────────────────────
         payload["roles"] = extract_roles(payload)
+        payload["team_roles_parsed"] = extract_team_roles(payload)
 
-        # ── 4. Enforce base roles (Java: hasAnyRole("USER","ADMIN","SHARED")) ─
         required = {"ROLE_USER", "ROLE_ADMIN", "ROLE_SHARED", "ROLE_INTEGRATION"}
         if not required.intersection(payload["roles"]):
             logger.warning(
@@ -220,15 +354,9 @@ async def get_current_user(
         return payload
 
     except jwt.ExpiredSignatureError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token has expired",
-        )
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token has expired")
     except jwt.InvalidIssuerError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token issuer",
-        )
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token issuer")
     except HTTPException:
         raise
     except Exception as e:
@@ -248,12 +376,11 @@ async def get_tenant_user(
     FastAPI dependency — equivalent of TenantInterceptor.preHandle().
 
     Validates:
-      1. X-TENANT-ID header is present
-      2. User JWT has matching ROLE_TENANT_{ID}_* OR ROLE_ADMIN/INTEGRATION/SHARED
+    1. X-TENANT-ID header is present
+    2. User JWT has matching ROLE_TENANT_{ID}_* or ROLE_ADMIN/INTEGRATION/SHARED
 
-    Returns the user dict with added 'tenant_id' key.
+    Returns user dict with 'tenant_id' key added.
     """
-    # Skip for public paths
     if user.get("public"):
         return user
 
@@ -263,7 +390,6 @@ async def get_tenant_user(
             detail="Missing required header: X-TENANT-ID",
         )
 
-    # ── Java: tenantMatcherString = "ROLE_TENANT_{ID}" ────────────────────────
     tenant_matcher = f"ROLE_TENANT_{x_tenant_id.upper()}"
     bypass_roles = {"ROLE_ADMIN", "ROLE_INTEGRATION", "ROLE_SHARED"}
 
@@ -282,9 +408,34 @@ async def get_tenant_user(
     return user
 
 
+async def get_team_user(
+    team_id: str = Path(...),
+    user: dict = Depends(get_tenant_user),
+) -> dict:
+    """
+    FastAPI dependency — equivalent of @PreAuthorize("isTeamAuthenticated(#teamId)").
+
+    Validates that the authenticated user has any role on the requested team
+    (or is admin/integration/shared). Mirrors AuthUtils.isTeamAuthenticated().
+
+    Use this on routes that follow the /teams/{team_id}/... URL pattern.
+    Returns user dict with 'team_id' key added.
+    """
+    if user.get("public"):
+        return user
+
+    if not is_team_authenticated(team_id, user):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"No access to team '{team_id}'",
+        )
+
+    user["team_id"] = team_id
+    return user
+
+
 # ═════════════════════════════════════════════════════════════════════════════
 # Service-to-Service Token — Client Credentials Grant
-# Used by java_client.py to authenticate with the Java backend
 # ═════════════════════════════════════════════════════════════════════════════
 
 _service_token: Optional[str] = None
@@ -295,9 +446,8 @@ _token_lock = threading.Lock()
 def get_service_token() -> Optional[str]:
     """
     Obtain a service account token via Keycloak Client Credentials Grant.
-    Matches how Java services authenticate service-to-service.
-
-    The token is cached and auto-refreshed 30 seconds before expiry.
+    Token is cached and auto-refreshed 30 seconds before expiry.
+    Used by java_client.py for service-to-service calls to the Java backend.
     """
     global _service_token, _service_token_expiry
 
@@ -310,7 +460,6 @@ def get_service_token() -> Optional[str]:
         return _service_token
 
     with _token_lock:
-        # Double-check after lock
         if _service_token and (now < _service_token_expiry - 30):
             return _service_token
 
@@ -331,12 +480,9 @@ def get_service_token() -> Optional[str]:
             _service_token = data["access_token"]
             _service_token_expiry = now + data.get("expires_in", 300)
 
-            logger.info(
-                "Service token obtained (expires in %ds)",
-                data.get("expires_in", 300),
-            )
+            logger.info("Service token obtained (expires in %ds)", data.get("expires_in", 300))
             return _service_token
 
         except Exception as e:
             logger.error("Failed to obtain service token: %s", e, exc_info=True)
-            return _service_token  # return stale token if available
+            return _service_token

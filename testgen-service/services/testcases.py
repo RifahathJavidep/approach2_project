@@ -10,11 +10,13 @@ import shutil
 import tempfile
 
 import utils.s3 as s3
-from utils.java_client import get_headers, store_test_cases
+from utils.java_client import store_test_cases
 
 logger = logging.getLogger("prism.services.testcases")
 
+
 async def queue_testcase_generation(
+    team_id: str,
     project_id: str,
     project_name: str,
     requirements_s3_key: str = None,
@@ -31,6 +33,7 @@ async def queue_testcase_generation(
     )
 
     task = generate_testcases_task.delay(
+        team_id=team_id,
         project_id=project_id,
         project_name=project_name,
         requirements_s3_key=requirements_s3_key,
@@ -47,7 +50,9 @@ async def queue_testcase_generation(
         "documents_loaded": len(local_docs),
     }
 
+
 async def run_testcase_generation_sync(
+    team_id: str,
     project_id: str,
     project_name: str,
     requirements_s3_key: str = None,
@@ -74,7 +79,7 @@ async def run_testcase_generation_sync(
         )
 
         s3_urls = _upload_results(project_id, result)
-        store_test_cases(project_id, _flatten_test_cases(result), tenant_id)
+        store_test_cases(team_id, project_id, _flatten_test_cases(result), tenant_id)
 
         return {
             "status": "success",
@@ -88,6 +93,7 @@ async def run_testcase_generation_sync(
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
+
 def get_cached_testplan(project_id: str) -> dict:
     """Fetch the last test plan from S3. Raises FileNotFoundError if absent."""
     s3_key = f"projects/{project_id}/output/test_plan.json"
@@ -95,7 +101,9 @@ def get_cached_testplan(project_id: str) -> dict:
         raise FileNotFoundError(f"No test plan found for project '{project_id}'")
     return s3.download_json(s3_key)
 
+
 def generate_and_store(
+    team_id: str,
     project_id: str,
     project_name: str,
     requirements_data: list,
@@ -117,12 +125,9 @@ def generate_and_store(
     )
 
     s3_urls = _upload_results(project_id, result)
-    store_test_cases(project_id, _flatten_test_cases(result), tenant_id)
-    
-    # NEW: Map raw result to TestCaseEditorDTO format using mapped requirements metadata
+
     mapped_tcs = map_test_plan_to_payload(result, requirements_with_ids=requirements_data)
-    
-    store_test_cases(project_id, mapped_tcs)
+    store_test_cases(team_id, project_id, mapped_tcs, tenant_id)
 
     return {
         "status": "success",
@@ -130,6 +135,7 @@ def generate_and_store(
         "total_test_cases": len(mapped_tcs),
         "s3_output": s3_urls,
     }
+
 
 def _load_requirements(requirements: list, requirements_s3_key: str) -> list:
     """Load requirements from direct list or from an S3 JSON file."""
@@ -139,6 +145,7 @@ def _load_requirements(requirements: list, requirements_s3_key: str) -> list:
         data = s3.download_json(requirements_s3_key)
         return data.get("requirements", []) if isinstance(data, dict) else data
     raise ValueError("No requirements provided")
+
 
 def _download_context_docs(document_urls: list, tmp_dir: str) -> list:
     """Download source documents for context injection. Failures are non-fatal."""
@@ -153,12 +160,14 @@ def _download_context_docs(document_urls: list, tmp_dir: str) -> list:
             logger.warning("Could not download document %s for context: %s", url, e)
     return local_docs
 
+
 def _flatten_test_cases(result: dict) -> list:
     """Extract a flat list of test cases from the test_plan result dict."""
     all_test_cases = []
     for plan in result.get("test_plan", {}).get("test_plans", []):
         all_test_cases.extend(plan.get("test_cases", []))
     return all_test_cases
+
 
 def _upload_results(project_id: str, result: dict) -> dict:
     """Upload JSON and Excel test plan to S3. Returns S3 URL dict."""
