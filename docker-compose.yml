@@ -1,9 +1,9 @@
 version: "3.9"
 
-# PRISM — Python Services (Extraction + TestGen)
+# PRISM — Python Services (BR Creation + TestGen)
 #
 # Uses AWS ElastiCache (external) as the Celery broker — no local Redis container needed.
-# All API keys are fetched from AWS Secret Manager at startup (utils/secrets.py).
+# All API keys are fetched from AWS Secret Manager at startup (common/secrets.py).
 # Non-secret config is set inline below.
 #
 # Start:   docker-compose up --build
@@ -11,13 +11,13 @@ version: "3.9"
 
 services:
 
-  # ── Extraction Service  (port 8001) ──────────────────────────────────────────
+  # ── BR Creation Service (Extraction)  (port 8001) ────────────────────────────────
 
-  extraction-api:
+  br-creation-api:
     build:
       context: .
-      dockerfile: extraction-service/Dockerfile
-    container_name: extraction_api
+      dockerfile: br-creation-service/Dockerfile
+    container_name: br_creation_api
     ports:
       - "8001:8001"
     environment:
@@ -32,7 +32,7 @@ services:
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       # Inter-service URLs
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
-      TESTGEN_SERVICE_URL: http://testgen-api:8002
+      TESTGEN_SERVICE_URL: http://testcase-generation-api:8002
       # Keycloak
       KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
       KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
@@ -41,12 +41,12 @@ services:
       KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
-  extraction-worker:
+  br-creation-worker:
     build:
       context: .
-      dockerfile: extraction-service/Dockerfile
+      dockerfile: br-creation-service/Dockerfile
     command: celery -A celery_app worker --loglevel=info -Q extraction --concurrency=2
-    container_name: extraction_worker
+    container_name: br_creation_worker
     environment:
       AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
@@ -55,7 +55,7 @@ services:
       CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
       S3_BUCKET_NAME: ${S3_BUCKET_NAME}
       JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
-      TESTGEN_SERVICE_URL: http://testgen-api:8002
+      TESTGEN_SERVICE_URL: http://testcase-generation-api:8002
       KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
       KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
       KEYCLOAK_CLIENT_ID: extracter-service
@@ -63,13 +63,13 @@ services:
       KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
-  # ── TestGen Service  (port 8002) ─────────────────────────────────────────────
+  # ── Test Case Generation Service  (port 8002) ─────────────────────────────
 
-  testgen-api:
+  testcase-generation-api:
     build:
       context: .
-      dockerfile: testgen-service/Dockerfile
-    container_name: testgen_api
+      dockerfile: testcase-generation-service/Dockerfile
+    container_name: testcase_generation_api
     ports:
       - "8002:8002"
     environment:
@@ -87,12 +87,12 @@ services:
       KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
-  testgen-worker:
+  testcase-generation-worker:
     build:
       context: .
-      dockerfile: testgen-service/Dockerfile
+      dockerfile: testcase-generation-service/Dockerfile
     command: celery -A celery_app worker --loglevel=info -Q testgen --concurrency=2
-    container_name: testgen_worker
+    container_name: testcase_generation_worker
     environment:
       AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
@@ -108,13 +108,13 @@ services:
       KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
-  # ── Manual Service  (port 8003) — Add New Business Requirement ───────────────
+  # ── BR Manual Creation Service  (port 8003) ───────────────
 
-  manual-api:
+  br-manual-creation-api:
     build:
       context: .
-      dockerfile: manual-service/Dockerfile
-    container_name: manual_api
+      dockerfile: br-manual-creation-service/Dockerfile
+    container_name: br_manual_creation_api
     ports:
       - "8003:8003"
     environment:
@@ -132,12 +132,12 @@ services:
       KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
     restart: unless-stopped
 
-  manual-worker:
+  br-manual-creation-worker:
     build:
       context: .
-      dockerfile: manual-service/Dockerfile
+      dockerfile: br-manual-creation-service/Dockerfile
     command: celery -A celery_app worker --loglevel=info -Q manual --concurrency=2
-    container_name: manual_worker
+    container_name: br_manual_creation_worker
     environment:
       AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
