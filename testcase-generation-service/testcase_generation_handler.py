@@ -25,7 +25,7 @@ async def queue_testcase_generation(
     tenant_id: str | None = None,
 ) -> dict:
     """Queue a Celery task for async test case generation."""
-    from tasks.testcases import generate_testcases_task
+    from testcase_generation_task import generate_testcases_task
 
     local_docs = _download_context_docs(
         document_urls or [],
