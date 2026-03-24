@@ -9,7 +9,7 @@ from pathlib import Path
 
 import utils.s3 as s3
 from utils.deduplication import find_duplicates
-from utils.java_client import store_draft_requirements
+from utils.java_client import store_requirements
 from utils.requirement_mapper import to_payload
 
 logger = logging.getLogger("prism.manual.services.extraction")
@@ -96,7 +96,7 @@ def _store_manual_requirements(
     page_no: int,
     tenant_id: str | None = None,
 ) -> None:
-    """Map and store manual requirements as drafts in the Java backend."""
+    """Map and store manual requirements in the Java backend."""
     mapped = []
     for r in requirements:
         r["source_file"] = document_url
@@ -112,4 +112,4 @@ def _store_manual_requirements(
 
         mapped.append(payload)
 
-    store_draft_requirements(team_id, project_id, mapped, tenant_id)
+    store_requirements(team_id, project_id, mapped, tenant_id)

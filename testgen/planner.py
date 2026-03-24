@@ -307,12 +307,24 @@ class TestCasePlanner:
             
         test_cases = []
         for i, sc in enumerate(scenarios, 1):
-            sc_name = sc if isinstance(sc, str) else sc.get('scenario_name', f"Scenario {i}")
+            if isinstance(sc, dict):
+                sc_name = sc.get('scenario_name', f"Scenario {i}")
+            elif isinstance(sc, str) and sc.startswith('{'):
+                # Handle stringified dicts sometimes returned by Phase 1
+                try:
+                    import ast
+                    sc_dict = ast.literal_eval(sc)
+                    sc_name = sc_dict.get('scenario_name', f"Scenario {i}") if isinstance(sc_dict, dict) else sc
+                except:
+                    sc_name = sc
+            else:
+                sc_name = sc if sc else f"Scenario {i}"
             
             # 3. Generate hybrid TC
             tc_data = self.scenario_gen.generate_for_scenario(req, sc_name, context)
             
             # 4. Map to TestCaseEditorDTO
+            title_prefix = req.get('title') or req.get('feature_name') or 'Requirement'
             preconditions = tc_data.get('preconditions', [])
             prerequisites_str = "\n".join([f"• {p}" for p in preconditions]) if preconditions else ""
             tc_steps = [
@@ -327,7 +339,7 @@ class TestCasePlanner:
             ]
             test_cases.append({
                 "type": "TestCaseEditorDTO",
-                "title": f"{req.get('title', req.get('feature_name', 'Requirement'))} - {sc_name}",
+                "title": sc_name,
                 "description": tc_data.get('description', f"Test {sc_name} Feature"),
                 "requirementId": req.get('requirement_id', req.get('id', 1)),
                 "status": "DRAFT",

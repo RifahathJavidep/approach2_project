@@ -10,6 +10,7 @@ from urllib.parse import urlparse
 import boto3
 from botocore.config import Config
 
+from utils.config import settings
 from utils.secrets import get_secret
 
 logger = logging.getLogger("prism.s3")
@@ -22,7 +23,7 @@ def get_client():
     access_key = get_secret("AWS_ACCESS_KEY_ID", None)
     secret_key = get_secret("AWS_SECRET_ACCESS_KEY", None)
     session_token = get_secret("AWS_SESSION_TOKEN", None)
-    region = get_secret("AWS_REGION", "us-east-1")
+    region = get_secret("AWS_REGION", settings.AWS_REGION)
 
     return boto3.client(
         "s3",
@@ -36,7 +37,7 @@ def get_client():
 
 def get_bucket() -> str:
     """Return the configured S3 bucket name."""
-    return get_secret("S3_BUCKET_NAME", "katsu-ai-requirement-documents")
+    return get_secret("S3_BUCKET_NAME", settings.S3_BUCKET_NAME)
 
 
 def parse_url(s3_url: str) -> tuple:

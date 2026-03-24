@@ -1,11 +1,11 @@
 import logging
 
-from celery.result import AsyncResult
+
 from fastapi import APIRouter, HTTPException, Depends
 
 from api.schemas import ExtractionRequest
 from services.extraction import queue_extraction, get_cached_requirements
-from utils.security import get_current_user, get_team_user
+from utils.security import get_team_user
 
 logger = logging.getLogger("prism.api.requirements")
 router = APIRouter()
@@ -42,19 +42,6 @@ async def extract_requirements_async(
         logger.error("Failed to queue extraction: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail=f"Failed to queue extraction: {e}")
 
-
-@router.get("/status/{task_id}")
-async def get_task_status(task_id: str, user: dict = Depends(get_current_user)):
-    """Poll the status of a Celery task."""
-    task = AsyncResult(task_id)
-    response = {"task_id": task_id, "status": task.status}
-
-    if task.status == "SUCCESS":
-        response["result"] = task.result
-    elif task.status == "FAILURE":
-        response["error"] = str(task.result)
-
-    return response
 
 
 @router.get("/teams/{team_id}/projects/{project_id}/requirements")

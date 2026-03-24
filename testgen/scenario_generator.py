@@ -30,7 +30,7 @@ class ScenarioTestCaseSignature(dspy.Signature):
     document_context: str = dspy.InputField(desc="Source document text for this feature")
 
     test_case_json: str = dspy.OutputField(
-        desc='JSON: {"description":"E2E test for [scenario] of [feature]","preconditions":["str1"],"steps":[{"step_num":1,"action":"specific action","expected_result":"specific expected outcome","test_data":"relevant data"}]}'
+        desc='JSON: {"description":"E2E test for [scenario] of [feature]","preconditions":["str1"],"expected_result":"overall success outcome","steps":[{"step_num":1,"action":"specific action","expected_result":"specific expected outcome","test_data":"relevant data"}]}'
     )
 
 class ScenarioGeneratorModule(dspy.Module):
@@ -136,6 +136,7 @@ class ScenarioBasedTCGenerator:
             return {
                 "description": data.get('description', f"E2E test for {scenario_name} of {feature}"),
                 "preconditions": data.get('preconditions', ["User is logged into the system"]),
+                "expected_result": data.get('expected_result', "Test executed successfully"),
                 "steps": final_steps
             }
             

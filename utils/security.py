@@ -36,14 +36,16 @@ from jwt.algorithms import RSAAlgorithm
 from fastapi import Depends, Header, HTTPException, Path, Request, Security, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
+from utils.config import settings
+
 logger = logging.getLogger("prism.security")
 
 # ── Configuration (mirrors application.yaml) ─────────────────────────────────
-KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL", "http://localhost:8080")
-KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM", "miipe")
+KEYCLOAK_SERVER_URL = settings.KEYCLOAK_SERVER_URL
+KEYCLOAK_REALM = settings.KEYCLOAK_REALM
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
 KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
-TENANT_PREFIX = os.getenv("KEYCLOAK_TENANT_PREFIX", "tenant_")
+TENANT_PREFIX = settings.KEYCLOAK_TENANT_PREFIX
 
 # ── Derived URLs ──────────────────────────────────────────────────────────────
 ISSUER_URL = f"{KEYCLOAK_SERVER_URL}/realms/{KEYCLOAK_REALM}"
@@ -51,7 +53,7 @@ JWKS_URL = f"{ISSUER_URL}/protocol/openid-connect/certs"
 TOKEN_URL = f"{ISSUER_URL}/protocol/openid-connect/token"
 
 # ── Public paths (no auth required) ──────────────────────────────────────────
-PUBLIC_PATHS = {"/health", "/docs", "/openapi.json", "/redoc"}
+PUBLIC_PATHS = set(settings.PUBLIC_PATHS)
 
 _bearer = HTTPBearer(auto_error=False)
 
@@ -92,7 +94,7 @@ class TeamRole:
 _jwks_cache: Optional[dict] = None
 _jwks_cache_time: float = 0.0
 _jwks_lock = threading.Lock()
-JWKS_TTL_SECONDS = 300
+JWKS_TTL_SECONDS = settings.JWKS_TTL_SECONDS
 
 
 def _fetch_jwks() -> Optional[dict]:
@@ -108,7 +110,7 @@ def _fetch_jwks() -> Optional[dict]:
             return _jwks_cache
         try:
             logger.info("Fetching JWKS from %s", JWKS_URL)
-            resp = requests.get(JWKS_URL, timeout=10)
+            resp = requests.get(JWKS_URL, timeout=settings.SHORT_TIMEOUT)
             resp.raise_for_status()
             _jwks_cache = resp.json()
             _jwks_cache_time = time.time()
@@ -456,11 +458,11 @@ def get_service_token() -> Optional[str]:
         return None
 
     now = time.time()
-    if _service_token and (now < _service_token_expiry - 30):
+    if _service_token and (now < _service_token_expiry - settings.TOKEN_REFRESH_BUFFER):
         return _service_token
 
     with _token_lock:
-        if _service_token and (now < _service_token_expiry - 30):
+        if _service_token and (now < _service_token_expiry - settings.TOKEN_REFRESH_BUFFER):
             return _service_token
 
         try:
@@ -472,7 +474,7 @@ def get_service_token() -> Optional[str]:
                     "client_secret": KEYCLOAK_CLIENT_SECRET,
                 },
                 headers={"Content-Type": "application/x-www-form-urlencoded"},
-                timeout=10,
+                timeout=settings.SHORT_TIMEOUT,
             )
             resp.raise_for_status()
             data = resp.json()

@@ -12,8 +12,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import utils.s3 as s3
+from utils.config import settings
 from utils.deduplication import find_duplicates
-from utils.java_client import create_document_statuses, store_draft_requirements
+from utils.java_client import create_document_statuses, store_requirements
 from utils.requirement_mapper import to_payload
 from services.documents import is_already_processed
 from tasks.extraction import extract_and_filter_duplicates_task
@@ -120,7 +121,7 @@ async def run_manual_dspy_extraction(
 ) -> dict:
     """
     Download a document, run DSPy extraction on a single page,
-    check duplicates, then store results as drafts in the Java backend.
+    check duplicates, then store results in the Java backend.
     """
 
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_manual_dspy_{os.getpid()}")
@@ -166,13 +167,13 @@ def _store_manual_requirements(
         payload["metadata"]["page_end"] = page_no
         mapped.append(payload)
 
-    store_draft_requirements(team_id, project_id, mapped, tenant_id)
+    store_requirements(team_id, project_id, mapped, tenant_id)
 
 
 def _download_parallel(file_urls: list, target_dir: str) -> list:
     """Download S3 files in parallel (up to 5 workers). Returns local paths."""
     local_files = []
-    with ThreadPoolExecutor(max_workers=min(len(file_urls), 5)) as pool:
+    with ThreadPoolExecutor(max_workers=min(len(file_urls), settings.MAX_DOWNLOAD_WORKERS)) as pool:
         futures = {pool.submit(s3.download, url, target_dir): url for url in file_urls}
         for future in as_completed(futures):
             url = futures[future]

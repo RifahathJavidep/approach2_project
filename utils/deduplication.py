@@ -8,9 +8,11 @@ import logging
 import re
 from typing import Dict, List, Optional, Tuple
 
+from utils.config import settings
+
 logger = logging.getLogger("prism.deduplication")
 
-DEFAULT_THRESHOLD = 0.80
+DEFAULT_THRESHOLD = settings.DEFAULT_DEDUP_THRESHOLD
 
 def find_duplicates(
     project_id: str,
@@ -107,7 +109,7 @@ def _best_match(
 
         all_texts = [new_text] + [_to_text(r) for r in existing]
 
-        vectorizer = TfidfVectorizer(stop_words="english", max_features=5000)
+        vectorizer = TfidfVectorizer(stop_words="english", max_features=settings.TFIDF_MAX_FEATURES)
         matrix = vectorizer.fit_transform(all_texts)
         scores = cosine_similarity(matrix[0:1], matrix[1:])[0]
 

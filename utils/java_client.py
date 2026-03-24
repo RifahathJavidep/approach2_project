@@ -16,12 +16,13 @@ from typing import Any, Dict, List, Optional
 
 import requests
 from dotenv import load_dotenv
+from utils.config import settings
 
 load_dotenv()
 
 logger = logging.getLogger("prism.java_client")
 
-BASE_URL = os.getenv("JAVA_BACKEND_URL", "http://localhost:8081")
+BASE_URL = settings.JAVA_BACKEND_URL
 
 TENANT_HEADER = "X-TENANT-ID"
 
@@ -64,7 +65,7 @@ def create_document_statuses(
 
     logger.info("Creating '%s' status for %d documents (project %s)", status, len(file_urls), project_id)
     try:
-        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=10)
+        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=settings.SHORT_TIMEOUT)
         if response.status_code in [200, 201]:
             result = response.json()
             logger.info("Document statuses created: %s", result)
@@ -82,12 +83,12 @@ def update_document_status(
     tenant_id: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """Update a specific document status record by its ID."""
-    url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
+    url = f"{BASE_URL}/integration/api/document-statuses/projects/{project_id}"
     payload = [{"id": int(doc_status_id), "documentUrl": document_url, "status": status}]
 
     try:
         logger.info("Updating document status: id=%s → %s", doc_status_id, status)
-        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=10)
+        response = requests.post(url, json=payload, headers=get_headers(tenant_id), timeout=settings.SHORT_TIMEOUT)
         if response.status_code in [200, 201]:
             logger.info("Document status %s updated to '%s'", doc_status_id, status)
             data = response.json()
@@ -107,7 +108,7 @@ def get_document_statuses(
     """Fetch all document status records for a project."""
     url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
     try:
-        response = requests.get(url, headers=get_headers(tenant_id), timeout=10)
+        response = requests.get(url, headers=get_headers(tenant_id), timeout=settings.SHORT_TIMEOUT)
         if response.status_code == 200:
             return response.json()
         return []
@@ -133,7 +134,7 @@ def get_requirements(
     """
     url = f"{BASE_URL}/integration/teams/{team_id}/projects/{project_id}/requirements"
     try:
-        response = requests.get(url, headers=get_headers(tenant_id), timeout=15)
+        response = requests.get(url, headers=get_headers(tenant_id), timeout=settings.DEFAULT_TIMEOUT)
         if response.status_code == 200:
             data = response.json()
             if isinstance(data, list):
@@ -159,7 +160,7 @@ def store_requirements(
     """
     url = f"{BASE_URL}/integration/teams/{team_id}/projects/{project_id}/requirements"
     try:
-        response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
+        response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=settings.DEFAULT_TIMEOUT)
         if response.status_code in [200, 201]:
             logger.info("Stored %d requirements for project %s", len(requirements), project_id)
             return True
@@ -171,29 +172,6 @@ def store_requirements(
         return False
 
 
-def store_draft_requirements(
-    team_id: str,
-    project_id: str,
-    requirements: list,
-    tenant_id: Optional[str] = None,
-) -> bool:
-    """
-    POST requirements as drafts to the Java backend.
-    Java: POST /teams/{teamId}/projects/{projectId}/requirements/drafts
-    Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
-    """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements/drafts"
-    try:
-        response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
-        if response.status_code in [200, 201]:
-            logger.info("Stored %d draft requirements for project %s", len(requirements), project_id)
-            return True
-        logger.warning("Failed to store drafts: Java returned %s — %s",
-                       response.status_code, response.text)
-        return False
-    except Exception as e:
-        logger.error("Exception storing draft requirements: %s", e, exc_info=True)
-        return False
 
 
 # ═════════════════════════════════════════════════════════════════════════════
