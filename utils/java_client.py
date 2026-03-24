@@ -59,7 +59,7 @@ def create_document_statuses(
     tenant_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     """POST a batch of document status records. Returns the created records."""
-    url = f"{BASE_URL}/api/document-statuses/projects/{project_id}"
+    url = f"{BASE_URL}/integration/api/document-statuses/projects/{project_id}"
     payload = [{"documentUrl": u, "status": status} for u in file_urls]
 
     logger.info("Creating '%s' status for %d documents (project %s)", status, len(file_urls), project_id)
@@ -131,7 +131,7 @@ def get_requirements(
     Java: GET /teams/{teamId}/projects/{projectId}/requirements
     Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'View')")
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
+    url = f"{BASE_URL}/integration/teams/{team_id}/projects/{project_id}/requirements"
     try:
         response = requests.get(url, headers=get_headers(tenant_id), timeout=15)
         if response.status_code == 200:
@@ -157,7 +157,7 @@ def store_requirements(
     Java: POST /teams/{teamId}/projects/{projectId}/requirements
     Java: @PreAuthorize("hasPermission(#teamId, 'Requirements', 'Create')")
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/requirements"
+    url = f"{BASE_URL}/integration/teams/{team_id}/projects/{project_id}/requirements"
     try:
         response = requests.post(url, json=requirements, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
@@ -212,7 +212,7 @@ def store_test_cases(
     Java: POST /teams/{teamId}/projects/{projectId}/test-cases
     Java: @PreAuthorize("hasPermission(#teamId, 'Test Cases', 'Create')")
     """
-    url = f"{BASE_URL}/teams/{team_id}/projects/{project_id}/test-cases"
+    url = f"{BASE_URL}/integration/teams/{team_id}/projects/{project_id}/test-cases"
     try:
         response = requests.post(url, json=test_cases, headers=get_headers(tenant_id), timeout=30)
         if response.status_code in [200, 201]:
