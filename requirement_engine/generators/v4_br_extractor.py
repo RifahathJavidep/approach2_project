@@ -50,7 +50,7 @@ class ExtractorModule(dspy.Module):
         super().__init__()
         self.extract = dspy.ChainOfThought(RequirementExtractorSignature)
 
-    def forward(self, document_text, document_name, requirement_engine_guidance):
+    def forward(self, document_text, document_name, extraction_guidance):
         return self.extract(
             document_text=document_text, document_name=document_name,
             requirement_engine_guidance=extraction_guidance
@@ -144,7 +144,7 @@ def extract_requirements(input_dir=None, br_gt_dir=None, output_dir=None, model_
     for doc_name, doc_info in primary_docs.items():
         doc_text = doc_info.full_text[:50000]
         try:
-            result = extractor(document_text=doc_text, document_name=doc_name, requirement_engine_guidance=extraction_guidance)
+            result = extractor(document_text=doc_text, document_name=doc_name, extraction_guidance=requirement_engine_guidance)
             parsed = safe_json_parse(result.requirements_json, [])
             for item in parsed:
                 if isinstance(item, dict) and item.get('title'):

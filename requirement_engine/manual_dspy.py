@@ -179,12 +179,14 @@ class ManualDSPyExtractor:
         self, requirements: List[Dict], description: str, threshold: float = 0.25
     ) -> List[Dict]:
         """Filter requirements by keyword overlap with the user's description."""
+        import string
+        clean_desc = description.translate(str.maketrans('', '', string.punctuation))
         desc_words = set(
             w.lower()
-            for w in description.split()
+            for w in clean_desc.split()
             if len(w) > 3 and w.lower() not in {
                 "the", "and", "for", "with", "from", "that", "this",
-                "must", "should", "system", "user", "want", "able",
+                "must", "should", "system", "user", "want", "able", "ability"
             }
         )
 
