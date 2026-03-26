@@ -93,6 +93,7 @@ def extract_and_filter_duplicates_task(
     file_urls=None,
     document_statuses=None,
     tenant_id=None,
+    document_tiers=None,
 ):
     """
     Full requirement_engine flow:
@@ -121,6 +122,7 @@ def extract_and_filter_duplicates_task(
                 file_paths=local_files,
                 output_dir=output_dir,
                 status_callback=status_callback,
+                document_tiers=document_tiers,
             )
 
         extracted = result.get("requirements", [])
@@ -128,7 +130,7 @@ def extract_and_filter_duplicates_task(
             return {"status": "success", "message": "No requirements found", "stored_count": 0}
 
         self.update_state(state="PROGRESS", meta={"message": "Filtering duplicates"})
-        unique = filter_unique(project_id=project_id, new_requirements=extracted, threshold=0.85, tenant_id=tenant_id)
+        unique = filter_unique(team_id=team_id, project_id=project_id, new_requirements=extracted, threshold=0.85, tenant_id=tenant_id)
 
         if unique:
             mapped = [to_payload(r) for r in unique]

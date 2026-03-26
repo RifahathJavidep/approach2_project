@@ -15,6 +15,7 @@ logger = logging.getLogger("prism.deduplication")
 DEFAULT_THRESHOLD = settings.DEFAULT_DEDUP_THRESHOLD
 
 def find_duplicates(
+    team_id: str,
     project_id: str,
     new_requirements: List[Dict],
     threshold: float = DEFAULT_THRESHOLD,
@@ -29,7 +30,7 @@ def find_duplicates(
     """
     from common.java_client import get_requirements
 
-    existing = get_requirements(project_id, tenant_id)
+    existing = get_requirements(team_id, project_id, tenant_id)
 
     if not existing:
         for req in new_requirements:
@@ -37,7 +38,7 @@ def find_duplicates(
             req["duplicate_of"] = None
         return new_requirements, 0
 
-    duplicate_count = 0
+    duplicate_count: int = 0
     for req in new_requirements:
         match = _best_match(req, existing, threshold)
         if match:
@@ -65,6 +66,7 @@ def find_duplicates(
     return new_requirements, duplicate_count
 
 def filter_unique(
+    team_id: str,
     project_id: str,
     new_requirements: List[Dict],
     threshold: float = DEFAULT_THRESHOLD,
@@ -73,7 +75,7 @@ def filter_unique(
     """Return only requirements that are NOT duplicates of existing ones."""
     from common.java_client import get_requirements
 
-    existing = get_requirements(project_id, tenant_id)
+    existing = get_requirements(team_id, project_id, tenant_id)
     if not existing:
         return new_requirements
 

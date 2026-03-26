@@ -71,7 +71,7 @@ async def run_manual_dspy_extraction(
         if result.get("status") != "success" or not result.get("requirements"):
             return result
 
-        requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
+        requirements, duplicates_count = find_duplicates(team_id, project_id, result["requirements"], tenant_id=tenant_id)
 
         _store_manual_requirements(team_id, project_id, requirements, document_url, page_no, tenant_id)
 

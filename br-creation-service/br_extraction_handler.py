@@ -8,6 +8,7 @@ import logging
 import os
 import shutil
 import tempfile
+import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -16,7 +17,7 @@ from config import settings
 from common.deduplication import find_duplicates
 from common.java_client import create_document_statuses, store_requirements
 from common.requirement_mapper import to_payload
-from document_handler import is_already_processed
+from document_handler import filter_new_files
 from br_extraction_task import extract_and_filter_duplicates_task
 from requirement_engine.manual import ManualExtractor
 from requirement_engine.manual_dspy import ManualDSPyExtractor
@@ -33,17 +34,35 @@ async def queue_extraction(
     tenant_id: str | None = None,
 ) -> dict:
     """
-    Download files from S3 in parallel, set PENDING status,
-    then dispatch a Celery task. Returns task_id and document status records.
+    Download files from S3, set PENDING status, then dispatch a Celery task.
+
+    Partial upload strategy (Bhasker):
+      - New files  → downloaded as PRIMARY   (LLM extracts BRs from these)
+      - Old files  → downloaded as SUPPORTING (LLM uses as context only, no new BRs)
+      - All files sent to pipeline so the LLM has full context
+      - PENDING status created for new files only
+      - Deduplication against Java DB removes any cross-run duplicates
     """
 
-    if is_already_processed(project_id, file_urls):
-        logger.warning("Documents already processed for project %s", project_id)
+    # --- Step 1: separate new files from already-processed ---
+    new_urls, skipped_urls = filter_new_files(project_id, file_urls, tenant_id)
+    new_urls = list(new_urls)
+    skipped_urls = list(skipped_urls)
+
+    if not new_urls:
+        logger.warning("All %d files already processed for project %s", len(file_urls), project_id)
         return {
             "status": "conflict",
-            "message": "This document has already been uploaded and processed for this project.",
+            "message": "All documents have already been uploaded and processed for this project.",
             "document_urls": file_urls,
+            "skipped_files": skipped_urls,
         }
+
+    if skipped_urls:
+        logger.info(
+            "Partial upload: %d new (primary) + %d existing (supporting context) — project %s",
+            len(new_urls), len(skipped_urls), project_id,
+        )
 
     tmp_dir = os.path.join(tempfile.gettempdir(), f"prism_{project_id}")
     input_dir = os.path.join(tmp_dir, "input")
@@ -51,13 +70,28 @@ async def queue_extraction(
     os.makedirs(input_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
-    local_files = _download_parallel(file_urls, input_dir)
+    # --- Step 2: download ALL files (new + old) for the pipeline ---
+    all_urls = new_urls + skipped_urls
+    local_files = _download_parallel(all_urls, input_dir)
 
     if not local_files:
         raise ValueError("Failed to download any files from S3")
 
-    document_statuses = create_document_statuses(project_id, file_urls, "PENDING", tenant_id)
-    logger.info("Queuing requirement_engine: project=%s, files=%d", project_id, len(local_files))
+    # --- Step 3: build document_tiers so pipeline knows what to extract from ---
+    # new files  → "primary"   (LLM extracts BRs only from these)
+    # old files  → "supporting" (LLM uses for context, never creates BRs from them)
+    document_tiers = {}
+    for url in new_urls:
+        document_tiers[urllib.parse.unquote(url).split("/")[-1]] = "primary"
+    for url in skipped_urls:
+        document_tiers[urllib.parse.unquote(url).split("/")[-1]] = "supporting"
+
+    # --- Step 4: PENDING status for NEW files only ---
+    document_statuses = create_document_statuses(project_id, new_urls, "PENDING", tenant_id)
+    logger.info(
+        "Queuing extraction: project=%s, primary=%d, supporting=%d",
+        project_id, len(new_urls), len(skipped_urls),
+    )
 
     task = extract_and_filter_duplicates_task.delay(
         team_id=team_id,
@@ -65,16 +99,19 @@ async def queue_extraction(
         project_name=project_name,
         local_files=local_files,
         output_dir=output_dir,
-        file_urls=file_urls,
+        file_urls=new_urls,           # status tracking for new files only
         document_statuses=document_statuses,
         tenant_id=tenant_id,
+        document_tiers=document_tiers,
     )
 
     logger.info("Extraction task queued: task_id=%s", task.id)
     return {
         "status": "accepted",
         "task_id": task.id,
-        "message": "Extraction queued. Duplicates will be filtered before storage.",
+        "message": "Extraction queued. New files extracted as primary; existing files used as context.",
+        "new_files": len(new_urls),
+        "context_files": len(skipped_urls),
         "document_statuses": document_statuses,
     }
 
@@ -134,7 +171,7 @@ async def run_manual_dspy_extraction(
         if result.get("status") != "success" or not result.get("requirements"):
             return result
 
-        requirements, duplicates_count = find_duplicates(project_id, result["requirements"], tenant_id=tenant_id)
+        requirements, duplicates_count = find_duplicates(team_id, project_id, result["requirements"], tenant_id=tenant_id)
 
         _store_manual_requirements(team_id, project_id, requirements, document_url, page_no, tenant_id)
 
