@@ -1,0 +1,220 @@
+version: "3.9"
+
+# PRISM — Full Stack Deploy
+# Hand this file + the 3 repo Dockerfiles to Khalil for Kubernetes conversion.
+#
+# Expected folder layout on the deploy server:
+#   /deploy/
+#     angular/                   (frontend repo)
+#     python/                    (this repo)
+#     java/                      (java backend repo)
+#     docker-compose.deploy.yml  (this file)
+#
+# Non-secret config lives here.
+# All API keys and credentials are fetched from AWS Secret Manager at startup.
+# The only AWS values set here are region and the secret name.
+
+services:
+
+  # ── Redis — message broker for Celery ────────────────────────────────────────
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    networks:
+      - prism-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── Angular Frontend  (port 80) ───────────────────────────────────────────────
+
+  angular-ui:
+    build: ./angular
+    container_name: angular_ui
+    ports:
+      - "80:80"
+    networks:
+      - prism-network
+    depends_on:
+      - extraction-api
+      - java-api
+    restart: unless-stopped
+
+  # ── Extraction API  (port 8001) ───────────────────────────────────────────────
+
+  extraction-api:
+    build:
+      context: ./python
+      dockerfile: extraction-service/Dockerfile
+    container_name: extraction_api
+    ports:
+      - "8001:8001"
+    networks:
+      - prism-network
+    environment:
+      # AWS — fetches GROQ_API_KEY, AWS_ACCESS_KEY_ID, S3_BUCKET_NAME etc. at startup
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      # Service URLs — not secrets, safe to put here
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+      TESTGEN_SERVICE_URL: http://testgen-api:8002
+    depends_on:
+      redis:
+        condition: service_healthy
+      java-api:
+        condition: service_started
+    restart: unless-stopped
+
+  # ── Extraction Worker  (Celery, queue: extraction) ────────────────────────────
+
+  extraction-worker:
+    build:
+      context: ./python
+      dockerfile: extraction-service/Dockerfile
+    container_name: extraction_worker
+    command: celery -A celery_app worker --loglevel=info -Q extraction --concurrency=2
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+      TESTGEN_SERVICE_URL: http://testgen-api:8002
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── TestGen API  (port 8002) ───────────────────────────────────────────────────
+
+  testgen-api:
+    build:
+      context: ./python
+      dockerfile: testgen-service/Dockerfile
+    container_name: testgen_api
+    ports:
+      - "8002:8002"
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── TestGen Worker  (Celery, queue: testgen) ───────────────────────────────────
+
+  testgen-worker:
+    build:
+      context: ./python
+      dockerfile: testgen-service/Dockerfile
+    container_name: testgen_worker
+    command: celery -A celery_app worker --loglevel=info -Q testgen --concurrency=2
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: miipe/production
+      AWS_DEFAULT_REGION: us-east-1
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── Celery Flower — task monitor  (port 8003) ─────────────────────────────────
+
+  flower:
+    image: mher/flower:2.0
+    container_name: celery_flower
+    command: celery --broker=redis://redis:6379/0 flower --port=8004
+    ports:
+      - "8004:8004"
+    networks:
+      - prism-network
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── Java Backend  (port 8081) ─────────────────────────────────────────────────
+
+  # ── Manual Service  (port 8003) — Add New Business Requirement ───────────────
+
+  manual-api:
+    build:
+      context: ./python
+      dockerfile: manual-service/Dockerfile
+    container_name: manual_api
+    ports:
+      - "8003:8003"
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+      java-api:
+        condition: service_started
+    restart: unless-stopped
+
+  manual-worker:
+    build:
+      context: ./python
+      dockerfile: manual-service/Dockerfile
+    container_name: manual_worker
+    command: celery -A celery_app worker --loglevel=info -Q manual --concurrency=2
+    networks:
+      - prism-network
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      JAVA_BACKEND_URL: http://java-api:8081
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  java-api:
+    build: ./java
+    container_name: java_api
+    ports:
+      - "8081:8081"
+    networks:
+      - prism-network
+    environment:
+      # PostgreSQL — configure via .env file, do not hardcode credentials
+      SPRING_DATASOURCE_URL: ${DB_URL:-jdbc:postgresql://postgres.svc:5432/prism}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
+      # Java fetches its own secrets from Secret Manager
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+    restart: unless-stopped
+
+# ── Shared network — all containers talk to each other by service name ──────────
+
+networks:
+  prism-network:
+    driver: bridge

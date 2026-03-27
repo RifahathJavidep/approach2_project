@@ -1,0 +1,110 @@
+{
+  "predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "text": "Display dashboard with key metrics and charts",
+        "title": "Dashboard Display",
+        "description": "Show key metrics and charts on main dashboard page",
+        "reasoning": "The text describes a specific feature that can be seen on screen, which is the display of a dashboard with key metrics and charts.",
+        "is_requirement": "yes",
+        "reason": "User can see it on screen, which meets the criteria for a genuine software requirement."
+      },
+      {
+        "augmented": true,
+        "text": "Export data to CSV, PDF, Excel formats",
+        "title": "Export Functionality",
+        "description": "Allow users to export data in multiple formats including CSV, PDF, Excel, PNG, JPEG",
+        "reasoning": "The text describes a specific functionality that allows users to export data in multiple formats, which is a user-facing feature that can be seen or interacted with.",
+        "is_requirement": "yes",
+        "reason": "User-facing feature that can be seen or interacted with, as it provides a specific functionality for exporting data in various formats."
+      },
+      {
+        "augmented": true,
+        "text": "Filter results by NAG group",
+        "title": "NAG Group Filter",
+        "description": "Implementation of NAG filter within dashboard screen",
+        "reasoning": "The text describes a specific feature that allows users to filter results by NAG group, which is a functional requirement that can be seen or interacted with on the dashboard screen.",
+        "is_requirement": "yes",
+        "reason": "User-facing feature that can be seen or interacted with, allowing users to filter results by a specific criterion."
+      },
+      {
+        "augmented": true,
+        "text": "Click bar chart to view detailed breakdown",
+        "title": "Chart Drilldown",
+        "description": "User can click chart elements to see detailed data breakdown",
+        "reasoning": "The text describes a specific interaction that the user can have with the system, which is clicking on a chart element to view detailed data.",
+        "is_requirement": "yes",
+        "reason": "User can interact with it (functional/UI) - the ability to click on a chart and view a detailed breakdown is a specific, user-facing feature."
+      },
+      {
+        "augmented": true,
+        "text": "Display usage summary with tabs for Data, Voice, Text",
+        "title": "Usage Summary Tabs",
+        "description": "Display tabs for Data, Voice, Long Distance, Text Messaging usage",
+        "reasoning": "The text describes a specific UI component that displays usage summary with tabs for different types of usage, which is a functional requirement.",
+        "is_requirement": "yes",
+        "reason": "It describes a user-facing feature that can be seen on screen, making it a specific and actionable requirement."
+      },
+      {
+        "augmented": true,
+        "text": "User can favorite items for quick access",
+        "title": "Favorite Feature",
+        "description": "Allow users to mark items as favorites for default view",
+        "reasoning": "The statement describes a specific feature that allows users to interact with the system, marking items as favorites for quick access.",
+        "is_requirement": "yes",
+        "reason": "This is a functional requirement as it describes a specific user interaction and a resulting system behavior, allowing users to see and interact with their favorite items."
+      },
+      {
+        "augmented": true,
+        "text": "Display 14 months billed and unbilled data usage in bar chart",
+        "title": "Data Usage Bar Chart",
+        "description": "Bar chart showing 14+ months of billed and unbilled data usage",
+        "reasoning": "The text describes a specific UI component, a bar chart, that displays a particular type of data, namely 14 months of billed and unbilled data usage. This suggests that the requirement is related to the visualization of data.",
+        "is_requirement": "yes",
+        "reason": "The requirement is specific and user-facing, describing a particular type of data visualization that the user can see and interact with."
+      },
+      {
+        "augmented": true,
+        "text": "Display notification when task completes",
+        "title": "Completion Notification",
+        "description": "Show notification message when background task finishes",
+        "reasoning": "The text describes a specific, user-facing feature that can be seen on the screen, which is a notification message displayed when a background task finishes.",
+        "is_requirement": "yes",
+        "reason": "User-facing feature that can be seen or interacted with, specifically a notification that appears when a task is completed."
+      }
+    ],
+    "signature": {
+      "instructions": "Classify if this is a genuine software requirement of ANY type.\n\nAnswer 'yes' if ANY of these are true:\n1. User can SEE it on screen or DO/interact with it (functional/UI)\n2. It describes a workflow or end-to-end process flow\n3. It specifies architecture, API design, or system integration\n4. It defines a data model, entity relationship, or schema\n5. It sets a performance target, SLA, or scalability requirement\n6. It defines security, compliance, or data protection standards\n\nAnswer 'no' ONLY if it is:\n- Document noise (executive summary, project objectives, scope statements)\n- A UI micro-detail (tooltip text, color hex code, hover animation)\n- Vague/generic with no specifics (e.g., 'ensure security', 'optimize performance')",
+      "fields": [
+        {
+          "prefix": "Text:",
+          "description": "${text}"
+        },
+        {
+          "prefix": "Title:",
+          "description": "${title}"
+        },
+        {
+          "prefix": "Description:",
+          "description": "${description}"
+        },
+        {
+          "prefix": "Reasoning: Let's think step by step in order to",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Is Requirement:",
+          "description": "'yes' if this is a specific, actionable requirement of any type, 'no' if document noise or vague"
+        },
+        {
+          "prefix": "Reason:",
+          "description": "Brief explanation of why this is or isn't a valid requirement"
+        }
+      ]
+    },
+    "lm": null
+  }
+}

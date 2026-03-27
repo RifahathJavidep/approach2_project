@@ -1,0 +1,169 @@
+version: "3.9"
+
+# PRISM — Python Services (BR Creation + TestGen)
+#
+# Uses AWS ElastiCache (external) as the Celery broker — no local Redis container needed.
+# All API keys are fetched from AWS Secret Manager at startup (common/secrets.py).
+# Non-secret config is set inline below.
+#
+# Start:   docker-compose up --build
+# Monitor: http://localhost:8004  (Celery Flower dashboard)
+
+services:
+
+  # ── BR Creation Service (Extraction)  (port 8001) ────────────────────────────────
+
+  br-creation-api:
+    build:
+      context: .
+      dockerfile: br-creation-service/Dockerfile
+    container_name: br_creation_api
+    ports:
+      - "8001:8001"
+    environment:
+      # AWS Secret Manager — all API keys and credentials live here
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      # Celery — set CELERY_BROKER_URL in your .env file
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      # S3
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      # Inter-service URLs
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      TESTGEN_SERVICE_URL: http://testcase-generation-api:8002
+      # Keycloak
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: extracter-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_EXTRACTION_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  br-creation-worker:
+    build:
+      context: .
+      dockerfile: br-creation-service/Dockerfile
+    command: celery -A celery_app worker --loglevel=info -Q extraction --concurrency=2
+    container_name: br_creation_worker
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      TESTGEN_SERVICE_URL: http://testcase-generation-api:8002
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: extracter-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_EXTRACTION_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  # ── Test Case Generation Service  (port 8002) ─────────────────────────────
+
+  testcase-generation-api:
+    build:
+      context: .
+      dockerfile: testcase-generation-service/Dockerfile
+    container_name: testcase_generation_api
+    ports:
+      - "8002:8002"
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: testcase-service-ai
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_TESTCASE_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  testcase-generation-worker:
+    build:
+      context: .
+      dockerfile: testcase-generation-service/Dockerfile
+    command: celery -A celery_app worker --loglevel=info -Q testgen --concurrency=2
+    container_name: testcase_generation_worker
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: testcase-service-ai
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_TESTCASE_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  # ── BR Manual Creation Service  (port 8003) ───────────────
+
+  br-manual-creation-api:
+    build:
+      context: .
+      dockerfile: br-manual-creation-service/Dockerfile
+    container_name: br_manual_creation_api
+    ports:
+      - "8003:8003"
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: manual-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_MANUAL_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  br-manual-creation-worker:
+    build:
+      context: .
+      dockerfile: br-manual-creation-service/Dockerfile
+    command: celery -A celery_app worker --loglevel=info -Q manual --concurrency=2
+    container_name: br_manual_creation_worker
+    environment:
+      AWS_SECRET_ID: ${AWS_SECRET_ID:-miipe/production}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+      IS_DEPLOYED: "true"
+      CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+      CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      JAVA_BACKEND_URL: ${JAVA_BACKEND_URL:-http://java-api:8081}
+      KEYCLOAK_SERVER_URL: ${KEYCLOAK_SERVER_URL:-http://keycloak:8080}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-miipe}
+      KEYCLOAK_CLIENT_ID: manual-service
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_MANUAL_CLIENT_SECRET}
+      KEYCLOAK_TENANT_PREFIX: ${KEYCLOAK_TENANT_PREFIX:-tenant_}
+    restart: unless-stopped
+
+  # ── Celery Flower — task monitoring dashboard  (port 8004) ───────────────────
+
+  flower:
+    image: mher/flower:2.0
+    container_name: celery_flower
+    command: >
+      celery
+      --broker=${CELERY_BROKER_URL}
+      flower --port=8004
+    ports:
+      - "8004:8004"
+    environment:
+      FLOWER_BROKER_API: ${CELERY_BROKER_URL}
+    restart: unless-stopped
