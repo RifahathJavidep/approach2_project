@@ -118,27 +118,35 @@ class TestGenPipeline:
         os.makedirs(output_dir, exist_ok=True)
 
         # ── Step 0: Load document context ───────────────────────────────
-        if source_texts is None and document_paths:
-            source_texts = {}
-            logger.info("Loading document context for richer test cases")
+        # doc_file_map: filename → local file path (used for exact page extraction)
+        # source_texts: filename → full text (fallback for keyword search)
+        doc_file_map: Dict[str, str] = {}
+
+        if document_paths:
+            logger.info("Indexing %d document(s) for context", len(document_paths))
             for doc_path in document_paths:
                 if os.path.exists(doc_path):
                     filename = Path(doc_path).name
-                    text = _extract_text_from_file(doc_path)
-                    if text:
-                        source_texts[filename] = text
-                        logger.info("Loaded %s: %d chars", filename, len(text))
-                    else:
-                        logger.warning("No text extracted from %s", filename)
+                    doc_file_map[filename] = doc_path
+                    logger.info("Indexed document: %s", filename)
                 else:
                     logger.warning("Document not found: %s", doc_path)
+
+        if source_texts is None and doc_file_map:
+            source_texts = {}
+            for filename, doc_path in doc_file_map.items():
+                text = _extract_text_from_file(doc_path)
+                if text:
+                    source_texts[filename] = text
+                    logger.info("Full text loaded %s: %d chars", filename, len(text))
 
         # ── Step 1: Generate test cases ─────────────────────────────────
         test_plan = self.planner.generate(
             requirements=requirements,
             project_name=project_name,
-            documents=source_texts,  # For hybrid context building
+            documents=source_texts,
             source_texts=source_texts,
+            doc_file_map=doc_file_map,   # exact file paths for page-level extraction
             status_callback=status_callback,
         )
 

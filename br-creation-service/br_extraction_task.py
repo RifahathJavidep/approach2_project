@@ -198,6 +198,35 @@ def _trigger_testgen(
         logger.warning("Could not reach testcase_engine-service for project %s: %s", project_id, e)
 
 
+@app.task(name="upload_document_to_s3_task", bind=True)
+def upload_document_to_s3_task(self, tmp_path: str, s3_key: str, original_filename: str):
+    """
+    Async Celery task: upload a file from a local temp path to S3, then clean up.
+    The HTTP endpoint returns immediately with a task_id; this runs in the background.
+    """
+    import common.s3_client as s3_client
+
+    self.update_state(state="PROGRESS", meta={"message": f"Uploading {original_filename} to S3"})
+    try:
+        s3_url = s3_client.upload(tmp_path, s3_key)
+        logger.info("Async upload complete: %s → %s", original_filename, s3_url)
+        return {
+            "status": "success",
+            "filename": original_filename,
+            "s3_key": s3_key,
+            "s3_url": s3_url,
+        }
+    except Exception as e:
+        logger.error("Async S3 upload failed for %s: %s", original_filename, e, exc_info=True)
+        raise
+    finally:
+        try:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+        except Exception:
+            pass
+
+
 def _build_filename_id_map(document_statuses: list) -> dict:
     if not document_statuses:
         return {}

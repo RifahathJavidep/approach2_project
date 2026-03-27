@@ -28,6 +28,3 @@ class TestCaseRequest(BaseModel):
     document_urls: Optional[List[str]] = []
 
 
-class UploadUrlRequest(BaseModel):
-    project_id: Optional[str] = None
-    filename: str

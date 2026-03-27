@@ -34,7 +34,7 @@ setup_logging("DEBUG")
 logger = logging.getLogger("prism.br_creation")
 
 # ─── Schemas ─────────────────────────────────────────────────────────────────
-from schemas import ExtractionRequest, ManualExtractionRequest, UploadUrlRequest
+from schemas import ExtractionRequest, ManualExtractionRequest
 
 # ─── Handlers ────────────────────────────────────────────────────────────────
 from br_extraction_handler import (
@@ -44,9 +44,8 @@ from br_extraction_handler import (
     run_manual_dspy_extraction,
 )
 from document_handler import (
-    generate_upload_url,
     list_general_documents,
-    upload_document,
+    upload_document_async,
 )
 from common.security import get_current_user, get_team_user, get_tenant_user
 
@@ -238,21 +237,6 @@ async def list_documents(team_id: str, user: dict = Depends(get_team_user)):
         raise HTTPException(status_code=500, detail=f"Failed to list documents: {e}")
 
 
-@app.post("/teams/{team_id}/projects/{project_id}/generate-upload-url")
-async def generate_upload_url_endpoint(
-    team_id: str,
-    project_id: str,
-    request: UploadUrlRequest,
-    user: dict = Depends(get_team_user),
-):
-    """Generate a pre-signed S3 URL so the frontend can upload directly."""
-    try:
-        result = generate_upload_url(project_id, request.filename)
-        return {"status": "success", **result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to generate upload URL: {e}")
-
-
 @app.post("/teams/{team_id}/projects/{project_id}/upload-document")
 async def upload_document_endpoint(
     team_id: str,
@@ -260,13 +244,43 @@ async def upload_document_endpoint(
     file: UploadFile = File(...),
     user: dict = Depends(get_team_user),
 ):
-    """Upload a file directly to S3."""
+    """
+    Receive a file from the frontend and queue it for upload to S3.
+
+    The browser sends the file here (multipart/form-data). The Python service
+    saves it to a temp file and dispatches a Celery task to push it to S3.
+    Returns immediately with a task_id — no waiting for the S3 upload to finish.
+    AWS credentials are NEVER sent to the browser.
+    """
     try:
-        result = await upload_document(project_id, file)
-        return {"status": "success", **result}
+        result = await upload_document_async(project_id, file)
+        return {"status": "accepted", **result}
     except Exception as e:
         logger.error("Upload failed: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail=f"Upload failed: {e}")
+
+
+@app.get("/teams/{team_id}/projects/{project_id}/upload-status/{task_id}")
+async def upload_status_endpoint(
+    team_id: str,
+    project_id: str,
+    task_id: str,
+    user: dict = Depends(get_team_user),
+):
+    """
+    Poll the status of an async document upload.
+    Frontend calls this after receiving a task_id from /upload-document.
+    """
+    from celery_app import app as celery_app
+    from celery.result import AsyncResult
+
+    result = AsyncResult(task_id, app=celery_app)
+    if result.state == "SUCCESS":
+        return {"status": "success", "task_id": task_id, **result.result}
+    elif result.state == "FAILURE":
+        return {"status": "failed", "task_id": task_id, "error": str(result.result)}
+    else:
+        return {"status": result.state.lower(), "task_id": task_id}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

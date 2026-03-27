@@ -19,6 +19,7 @@ import os
 import re
 from typing import List, Dict, Any, Optional
 
+from fastapi import logger
 from groq import Groq
 from .context_builder import get_feature_context
 from .scenario_generator import ScenarioBasedTCGenerator
@@ -212,6 +213,7 @@ class TestCasePlanner:
         project_name: str = "Project",
         documents: Optional[Dict[str, Any]] = None,
         source_texts: Optional[Dict[str, str]] = None,
+        doc_file_map: Optional[Dict[str, str]] = None,
         status_callback: Optional[callable] = None,
     ) -> Dict[str, Any]:
         """
@@ -232,6 +234,7 @@ class TestCasePlanner:
         total_test_cases = 0
         source_texts = source_texts or {}
         documents = documents or {}
+        doc_file_map = doc_file_map or {}
 
         print(f"\n{'='*60}")
         print(f"TEST CASE GENERATION — {project_name.upper()} ({self.mode.upper()} MODE)")
@@ -261,7 +264,7 @@ class TestCasePlanner:
                     plan = self._generate_hybrid(req, documents)
                 else:
                     # Original prompt-only generation
-                    plan = self._generate_for_requirement(req, idx, source_texts)
+                    plan = self._generate_for_requirement(req, idx, source_texts, doc_file_map)
                 
                 tc_count = len(plan.get("test_cases", []))
                 total_test_cases += tc_count
@@ -378,16 +381,23 @@ class TestCasePlanner:
 
     # ─── Private Methods ──────────────────────────────────────────────────
 
-    def _generate_for_requirement(self, req: Dict, index: int, source_texts: Dict[str, str] = None) -> Dict:
+    def _generate_for_requirement(
+        self,
+        req: Dict,
+        index: int,
+        source_texts: Dict[str, str] = None,
+        doc_file_map: Dict[str, str] = None,
+    ) -> Dict:
         """Generate test cases for a single requirement."""
         source_texts = source_texts or {}
+        doc_file_map = doc_file_map or {}
 
         # Build the prompt with all available context
         prompt = self._build_prompt(req, index)
 
-        # Inject original document context if available
-        if source_texts:
-            context = self._extract_relevant_context(req, source_texts)
+        # Inject original document context — exact pages first, keyword fallback
+        if doc_file_map or source_texts:
+            context = self._extract_relevant_context(req, source_texts, doc_file_map)
             if context:
                 prompt += f"""
 
@@ -487,81 +497,105 @@ IMPORTANT: Use the EXACT terminology from this document context in your test ste
         return parsed
 
     def _extract_relevant_context(
-        self, req: Dict, source_texts: Dict[str, str], max_chars: int = 3000
+        self,
+        req: Dict,
+        source_texts: Dict[str, str],
+        doc_file_map: Dict[str, str] = None,
+        max_chars: int = 4000,
     ) -> str:
         """
-        Find the most relevant section of the source document for this requirement.
+        Extract the most precise context for a requirement.
 
-        Strategy:
-        1. Search for the requirement title keywords in the document
-        2. Extract ±1500 chars around the match for context
-        3. If no keyword match, search for description keywords
-        4. Fallback: return the first chunk of the document
+        Strategy 1 (PREFERRED): Exact page extraction
+          - Uses metadata.source_file  → picks the exact PDF this BR came from
+          - Uses metadata.page_start / page_end → extracts only those pages
+          - No guessing, no keyword search — the exact source text
+
+        Strategy 2 (FALLBACK): Keyword search on full pre-extracted text
+          - Used when doc_file_map is not available or page extraction fails
         """
+        doc_file_map = doc_file_map or {}
+
+        # ── Read metadata from the BR ──────────────────────────────────────
+        metadata = req.get("metadata", {})
+        source_file = metadata.get("source_file") or req.get("source_file", "")
+        page_start = metadata.get("page_start")
+        page_end = metadata.get("page_end")
+
+        # ── Strategy 1: Exact page extraction ─────────────────────────────
+        if source_file and page_start is not None and doc_file_map:
+            # Find the matching local file path (exact or partial filename match)
+            file_path = doc_file_map.get(source_file)
+            if not file_path:
+                for fname, fpath in doc_file_map.items():
+                    if source_file in fname or fname in source_file:
+                        file_path = fpath
+                        break
+
+            if file_path and file_path.lower().endswith(".pdf"):
+                try:
+                    import fitz  # PyMuPDF
+                    doc = fitz.open(file_path)
+                    # page_start/page_end are 1-based; fitz uses 0-based index
+                    p_start = max(0, int(page_start) - 1)
+                    p_end = min(len(doc) - 1, int(page_end) if page_end is not None else p_start + 2)
+                    pages_text = []
+                    for p in range(p_start, p_end + 1):
+                        pages_text.append(doc[p].get_text())
+                    doc.close()
+                    extracted = "\n".join(pages_text).strip()
+                    if extracted:
+                        logger.info(
+                            "Exact page context: %s pages %s-%s → %d chars",
+                            source_file, page_start, page_end, len(extracted),
+                        )
+                        return extracted[:max_chars]
+                except Exception as e:
+                    logger.warning(
+                        "Exact page extraction failed for %s p%s-%s: %s",
+                        source_file, page_start, page_end, e,
+                    )
+
+        # ── Strategy 2: Keyword search fallback ───────────────────────────
         if not source_texts:
             return ""
 
-        # Get the document text (try all available documents)
+        # Pick the right document text
         doc_text = ""
-        source_file = req.get("source_file", "")
-
-        # Try exact match first
         if source_file and source_file in source_texts:
             doc_text = source_texts[source_file]
         else:
-            # Try partial match, then fall back to first document
             for name, text in source_texts.items():
-                if source_file and source_file in name:
+                if source_file and (source_file in name or name in source_file):
                     doc_text = text
                     break
             if not doc_text and source_texts:
-                # Use all documents combined (or just the first one)
                 doc_text = "\n\n".join(source_texts.values())
 
         if not doc_text:
             return ""
 
         doc_lower = doc_text.lower()
-
-        # Strategy 1: Search for title keywords
         title = req.get("title", "")
-        title_words = [w for w in title.split() if len(w) > 3 and w.lower() not in {
-            'the', 'and', 'for', 'with', 'from', 'that', 'this', 'must', 'should',
-            'system', 'user', 'based', 'management', 'support'
-        }]
+        title_words = [
+            w for w in title.split()
+            if len(w) > 3 and w.lower() not in {
+                'the', 'and', 'for', 'with', 'from', 'that', 'this',
+                'must', 'should', 'system', 'user', 'based', 'management', 'support',
+            }
+        ]
 
-        # Try multi-word match first (more specific)
         for i in range(len(title_words) - 1):
             phrase = f"{title_words[i]} {title_words[i+1]}".lower()
             pos = doc_lower.find(phrase)
             if pos >= 0:
-                start = max(0, pos - 500)
-                end = min(len(doc_text), pos + 2500)
-                return doc_text[start:end][:max_chars]
+                return doc_text[max(0, pos - 300): pos + 2500][:max_chars]
 
-        # Try single keyword match
-        for word in reversed(title_words):  # Reversed = most specific words first
+        for word in reversed(title_words):
             pos = doc_lower.find(word.lower())
             if pos >= 0:
-                start = max(0, pos - 500)
-                end = min(len(doc_text), pos + 2500)
-                return doc_text[start:end][:max_chars]
+                return doc_text[max(0, pos - 300): pos + 2500][:max_chars]
 
-        # Strategy 2: Search for description keywords
-        description = req.get("description", "")
-        desc_words = [w for w in description.split() if len(w) > 5 and w.lower() not in {
-            'should', 'system', 'users', 'allows', 'enable', 'provide',
-            'support', 'ensure', 'including', 'specific', 'multiple'
-        }]
-
-        for word in reversed(desc_words):
-            pos = doc_lower.find(word.lower())
-            if pos >= 0:
-                start = max(0, pos - 500)
-                end = min(len(doc_text), pos + 2500)
-                return doc_text[start:end][:max_chars]
-
-        # Strategy 3: Fallback — return first chunk
         return doc_text[:max_chars]
 
     def _build_prompt(self, req: Dict, index: int) -> str:

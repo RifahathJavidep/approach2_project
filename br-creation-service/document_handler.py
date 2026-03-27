@@ -1,5 +1,11 @@
 """
 Document Service — S3 document operations and duplication checks.
+
+Upload flow (server-side only — browser never touches S3):
+  1. Frontend POSTs file (multipart) to /upload-document
+  2. Python saves to a local temp file
+  3. Celery task picks it up and uploads to S3 in the background
+  4. HTTP returns 202 + task_id immediately (no waiting for S3)
 """
 import logging
 import os
@@ -18,37 +24,36 @@ def list_general_documents() -> list:
     return s3.list_files("uploads/general/")
 
 
-def generate_upload_url(project_id: str, filename: str) -> dict:
-    """Generate a pre-signed S3 POST URL for direct browser uploads."""
-    s3_key = f"uploads/{project_id}/{filename}"
-    return {
-        "project_id": project_id,
-        "filename": filename,
-        "s3_key": s3_key,
-        "presigned_post": s3.presign_upload(s3_key),
-    }
+async def upload_document_async(project_id: str, file: UploadFile) -> dict:
+    """
+    Receive file from browser, save to temp, dispatch Celery task for S3 upload.
+    Returns immediately with task_id — S3 upload happens in background.
+    The browser never receives any AWS credentials or presigned URLs.
+    """
+    from br_extraction_task import upload_document_to_s3_task
 
-
-async def upload_document(project_id: str, file: UploadFile) -> dict:
-    """Save an uploaded file to a temp path then push to S3."""
-    tmp_path = None
+    fd, tmp_path = tempfile.mkstemp(suffix=os.path.splitext(file.filename)[-1])
     try:
-        fd, tmp_path = tempfile.mkstemp()
         with os.fdopen(fd, "wb") as f:
             f.write(await file.read())
+    except Exception:
+        os.remove(tmp_path)
+        raise
 
-        s3_key = f"uploads/{project_id}/{file.filename}"
-        s3_url = s3.upload(tmp_path, s3_key)
+    s3_key = f"uploads/{project_id}/{file.filename}"
+    task = upload_document_to_s3_task.delay(tmp_path, s3_key, file.filename)
 
-        return {
-            "project_id": project_id,
-            "filename": file.filename,
-            "s3_url": s3_url,
-            "s3_key": s3_key,
-        }
-    finally:
-        if tmp_path and os.path.exists(tmp_path):
-            os.remove(tmp_path)
+    logger.info(
+        "Upload received for project %s — file=%s — dispatched task %s",
+        project_id, file.filename, task.id,
+    )
+    return {
+        "project_id": project_id,
+        "filename": file.filename,
+        "s3_key": s3_key,
+        "task_id": task.id,
+        "message": "Upload queued. File will be available in S3 shortly.",
+    }
 
 
 
